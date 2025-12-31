@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#000000"/>
+  
+  <!-- Border -->
+  <rect x="20" y="20" width="1160" height="590" fill="none" stroke="#1e3a5f" stroke-width="8"/>
+  
+  <!-- Inner glow border -->
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Background pattern (pixel grid) -->
+  <defs>
+    <pattern id="pixelGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="transparent"/>
+      <rect width="1" height="1" fill="#1e3a5f" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect x="40" y="40" width="1120" height="550" fill="url(#pixelGrid)"/>
+  
+  <!-- Gamepad icon -->
+  <g transform="translate(540, 120)">
+    <rect x="20" y="0" width="80" height="60" fill="#3b82f6"/>
+    <rect x="0" y="20" width="120" height="40" fill="#3b82f6"/>
+    <rect x="30" y="10" width="20" height="20" fill="#60a5fa"/>
+    <rect x="70" y="10" width="20" height="20" fill="#60a5fa"/>
+    <circle cx="30" cy="40" r="8" fill="#0a1628"/>
+    <circle cx="90" cy="40" r="8" fill="#0a1628"/>
+  </g>
+  
+  <!-- VIBEBUFF Title -->
+  <text x="600" y="280" font-family="monospace" font-size="72" font-weight="bold" fill="#60a5fa" text-anchor="middle" letter-spacing="8">
+    VIBEBUFF
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="340" font-family="monospace" font-size="24" fill="#3b82f6" text-anchor="middle" letter-spacing="4">
+    AI-POWERED TECH STACK RECOMMENDATIONS
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="400" font-family="monospace" font-size="18" fill="#60a5fa" text-anchor="middle" letter-spacing="2">
+    CHOOSE YOUR TOOLS WISELY, ADVENTURER
+  </text>
+  
+  <!-- Stats bar -->
+  <g transform="translate(200, 480)">
+    <rect x="0" y="0" width="800" height="60" fill="#0a1628" stroke="#1e3a5f" stroke-width="4"/>
+    
+    <text x="100" y="25" font-family="monospace" font-size="20" fill="#60a5fa" text-anchor="middle">500+</text>
+    <text x="100" y="45" font-family="monospace" font-size="12" fill="#3b82f6" text-anchor="middle">TOOLS</text>
+    
+    <text x="300" y="25" font-family="monospace" font-size="20" fill="#60a5fa" text-anchor="middle">15+</text>
+    <text x="300" y="45" font-family="monospace" font-size="12" fill="#3b82f6" text-anchor="middle">CATEGORIES</text>
+    
+    <text x="500" y="25" font-family="monospace" font-size="20" fill="#60a5fa" text-anchor="middle">AI</text>
+    <text x="500" y="45" font-family="monospace" font-size="12" fill="#3b82f6" text-anchor="middle">POWERED</text>
+    
+    <text x="700" y="25" font-family="monospace" font-size="20" fill="#60a5fa" text-anchor="middle">FREE</text>
+    <text x="700" y="45" font-family="monospace" font-size="12" fill="#3b82f6" text-anchor="middle">TO USE</text>
+  </g>
+  
+  <!-- URL -->
+  <text x="600" y="580" font-family="monospace" font-size="16" fill="#3b82f6" text-anchor="middle" letter-spacing="2">
+    vibebuff.com
+  </text>
+</svg>

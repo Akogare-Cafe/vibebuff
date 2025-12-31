@@ -1,0 +1,98 @@
+import { query, mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+// Get all tools
+export const list = query({
+  args: {
+    categorySlug: v.optional(v.string()),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    let toolsQuery = ctx.db.query("tools").filter((q) => q.eq(q.field("isActive"), true));
+    
+    const tools = await toolsQuery.collect();
+    
+    // If category filter, get category first
+    if (args.categorySlug) {
+      const category = await ctx.db
+        .query("categories")
+        .withIndex("by_slug", (q) => q.eq("slug", args.categorySlug!))
+        .first();
+      
+      if (category) {
+        return tools.filter((t) => t.categoryId === category._id).slice(0, args.limit || 50);
+      }
+    }
+    
+    return tools.slice(0, args.limit || 50);
+  },
+});
+
+// Get featured tools
+export const featured = query({
+  handler: async (ctx) => {
+    return await ctx.db
+      .query("tools")
+      .withIndex("by_featured", (q) => q.eq("isFeatured", true))
+      .collect();
+  },
+});
+
+// Get tool by slug
+export const getBySlug = query({
+  args: { slug: v.string() },
+  handler: async (ctx, args) => {
+    const tool = await ctx.db
+      .query("tools")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+    
+    if (!tool) return null;
+    
+    // Get category
+    const category = await ctx.db.get(tool.categoryId);
+    
+    // Get pricing tiers
+    const pricingTiers = await ctx.db
+      .query("pricingTiers")
+      .withIndex("by_tool", (q) => q.eq("toolId", tool._id))
+      .collect();
+    
+    return {
+      ...tool,
+      category,
+      pricingTiers,
+    };
+  },
+});
+
+// Search tools
+export const search = query({
+  args: { query: v.string() },
+  handler: async (ctx, args) => {
+    const searchTerm = args.query.toLowerCase();
+    const allTools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+    
+    return allTools.filter(
+      (tool) =>
+        tool.name.toLowerCase().includes(searchTerm) ||
+        tool.tagline.toLowerCase().includes(searchTerm) ||
+        tool.tags.some((tag) => tag.toLowerCase().includes(searchTerm))
+    );
+  },
+});
+
+// Get tools by category
+export const byCategory = query({
+  args: { categoryId: v.id("categories") },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("tools")
+      .withIndex("by_category", (q) => q.eq("categoryId", args.categoryId))
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+  },
+});
