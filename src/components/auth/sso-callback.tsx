@@ -1,0 +1,63 @@
+"use client";
+
+import { useEffect } from "react";
+import { useSignIn, useSignUp } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { Loader2, Gamepad2 } from "lucide-react";
+
+export function SSOCallback() {
+  const { signIn, setActive: setSignInActive } = useSignIn();
+  const { signUp, setActive: setSignUpActive } = useSignUp();
+  const router = useRouter();
+
+  useEffect(() => {
+    async function handleCallback() {
+      try {
+        // Check if this is a sign-in callback
+        if (signIn?.firstFactorVerification?.status === "transferable") {
+          // User exists, complete sign in
+          const result = await signIn.create({ transfer: true });
+          if (result.status === "complete" && setSignInActive) {
+            await setSignInActive({ session: result.createdSessionId });
+            router.push("/");
+          }
+        } else if (signUp?.verifications?.externalAccount?.status === "transferable") {
+          // New user from OAuth, complete sign up
+          const result = await signUp.create({ transfer: true });
+          if (result.status === "complete" && setSignUpActive) {
+            await setSignUpActive({ session: result.createdSessionId });
+            router.push("/");
+          }
+        } else if (signIn?.status === "complete" && setSignInActive) {
+          await setSignInActive({ session: signIn.createdSessionId });
+          router.push("/");
+        } else if (signUp?.status === "complete" && setSignUpActive) {
+          await setSignUpActive({ session: signUp.createdSessionId });
+          router.push("/");
+        }
+      } catch (err) {
+        console.error("SSO callback error:", err);
+        router.push("/sign-in?error=sso_failed");
+      }
+    }
+
+    handleCallback();
+  }, [signIn, signUp, setSignInActive, setSignUpActive, router]);
+
+  return (
+    <div className="min-h-screen bg-[#000000] flex flex-col items-center justify-center">
+      <div className="text-center">
+        <div className="relative inline-block mb-6">
+          <Gamepad2 className="w-16 h-16 text-[#3b82f6] animate-pulse" />
+        </div>
+        <div className="flex items-center gap-3 text-[#60a5fa]">
+          <Loader2 className="w-5 h-5 animate-spin" />
+          <span className="text-sm">COMPLETING LOGIN...</span>
+        </div>
+        <p className="text-[#3b82f6] text-[8px] mt-4">
+          PLEASE WAIT WHILE WE VERIFY YOUR CREDENTIALS
+        </p>
+      </div>
+    </div>
+  );
+}

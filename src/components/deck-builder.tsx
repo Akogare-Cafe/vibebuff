@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
@@ -53,15 +53,14 @@ export function DeckBuilder({ userId, deckId, className }: DeckBuilderProps) {
   const addToolToDeck = useMutation(api.decks.addToolToDeck);
   const removeToolFromDeck = useMutation(api.decks.removeToolFromDeck);
 
-  // Initialize from existing deck
-  useState(() => {
+  useEffect(() => {
     if (existingDeck) {
       setName(existingDeck.name);
       setDescription(existingDeck.description || "");
       setSelectedToolIds(existingDeck.toolIds);
       setIsPublic(existingDeck.isPublic);
     }
-  });
+  }, [existingDeck]);
 
   const handleAddTool = async (toolId: Id<"tools">) => {
     if (selectedToolIds.includes(toolId)) return;

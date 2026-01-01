@@ -269,3 +269,195 @@ export const getPastWinners = query({
     return winnersWithDetails.filter((w) => w.winner !== null);
   },
 });
+
+// Search tools for nomination
+export const searchToolsForNomination = query({
+  args: { 
+    query: v.string(),
+    categoryId: v.optional(v.id("categories")),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    let tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+
+    if (args.categoryId) {
+      tools = tools.filter((t) => t.categoryId === args.categoryId);
+    }
+
+    if (args.query && args.query.length > 0) {
+      const searchLower = args.query.toLowerCase();
+      tools = tools.filter((t) => 
+        t.name.toLowerCase().includes(searchLower) ||
+        t.tagline.toLowerCase().includes(searchLower)
+      );
+    }
+
+    return tools.slice(0, args.limit || 20).map((tool) => ({
+      _id: tool._id,
+      name: tool.name,
+      tagline: tool.tagline,
+      categoryId: tool.categoryId,
+      githubStars: tool.githubStars,
+    }));
+  },
+});
+
+// Nominate a tool (vote for any tool in the category)
+export const nominateTool = mutation({
+  args: {
+    userId: v.string(),
+    toolId: v.id("tools"),
+  },
+  handler: async (ctx, args) => {
+    const tool = await ctx.db.get(args.toolId);
+    if (!tool) {
+      return { success: false, message: "Tool not found" };
+    }
+
+    const now = new Date();
+    const currentMonth = now.getFullYear() * 100 + (now.getMonth() + 1);
+
+    let period = await ctx.db
+      .query("monthlyVotingPeriods")
+      .withIndex("by_category_month", (q) => 
+        q.eq("categoryId", tool.categoryId).eq("month", currentMonth)
+      )
+      .first();
+
+    if (!period) {
+      const periodId = await ctx.db.insert("monthlyVotingPeriods", {
+        categoryId: tool.categoryId,
+        month: currentMonth,
+        year: now.getFullYear(),
+        isActive: true,
+      });
+      period = await ctx.db.get(periodId);
+    }
+
+    if (!period || !period.isActive) {
+      return { success: false, message: "Voting period is not active" };
+    }
+
+    const existingVote = await ctx.db
+      .query("toolVotes")
+      .withIndex("by_user_period", (q) => 
+        q.eq("userId", args.userId).eq("votingPeriodId", period!._id)
+      )
+      .first();
+
+    if (existingVote) {
+      return { success: false, message: "Already voted in this category this month" };
+    }
+
+    await ctx.db.insert("toolVotes", {
+      userId: args.userId,
+      votingPeriodId: period._id,
+      toolId: args.toolId,
+      votedAt: Date.now(),
+    });
+
+    const profile = await ctx.db
+      .query("userProfiles")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.userId))
+      .first();
+
+    if (profile) {
+      await ctx.db.patch(profile._id, {
+        votescast: profile.votescast + 1,
+        xp: profile.xp + 15,
+      });
+    }
+
+    const category = await ctx.db.get(tool.categoryId);
+
+    return { 
+      success: true, 
+      xpAwarded: 15,
+      message: `Nominated ${tool.name} for ${category?.name || "this category"}!`,
+    };
+  },
+});
+
+// Get user's nominations/votes this month
+export const getUserVotesThisMonth = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const now = new Date();
+    const currentMonth = now.getFullYear() * 100 + (now.getMonth() + 1);
+
+    const activePeriods = await ctx.db
+      .query("monthlyVotingPeriods")
+      .filter((q) => q.eq(q.field("month"), currentMonth))
+      .collect();
+
+    const periodIds = activePeriods.map((p) => p._id);
+
+    const thisMonthVotes = [];
+    for (const period of activePeriods) {
+      const votes = await ctx.db
+        .query("toolVotes")
+        .withIndex("by_user_period", (q) => 
+          q.eq("userId", args.userId).eq("votingPeriodId", period._id)
+        )
+        .collect();
+      thisMonthVotes.push(...votes);
+    }
+
+    const votesWithDetails = await Promise.all(
+      thisMonthVotes.map(async (vote) => {
+        const tool = await ctx.db.get(vote.toolId);
+        const period = await ctx.db.get(vote.votingPeriodId);
+        const category = period ? await ctx.db.get(period.categoryId) : null;
+        return { ...vote, tool, category };
+      })
+    );
+
+    return votesWithDetails.filter((v) => v.tool !== null);
+  },
+});
+
+// Get categories user hasn't voted in this month
+export const getUnvotedCategories = query({
+  args: { userId: v.string() },
+  handler: async (ctx, args) => {
+    const now = new Date();
+    const currentMonth = now.getFullYear() * 100 + (now.getMonth() + 1);
+
+    const categories = await ctx.db.query("categories").collect();
+    
+    const activePeriods = await ctx.db
+      .query("monthlyVotingPeriods")
+      .filter((q) => 
+        q.and(
+          q.eq(q.field("month"), currentMonth),
+          q.eq(q.field("isActive"), true)
+        )
+      )
+      .collect();
+
+    const userVotedPeriodIds = new Set<string>();
+    for (const period of activePeriods) {
+      const vote = await ctx.db
+        .query("toolVotes")
+        .withIndex("by_user_period", (q) => 
+          q.eq("userId", args.userId).eq("votingPeriodId", period._id)
+        )
+        .first();
+      if (vote) {
+        userVotedPeriodIds.add(period._id.toString());
+      }
+    }
+
+    const votedPeriodIds = userVotedPeriodIds;
+    const votedCategoryIds = new Set(
+      activePeriods
+        .filter((p) => votedPeriodIds.has(p._id.toString()))
+        .map((p) => p.categoryId.toString())
+    );
+
+    return categories.filter((c) => !votedCategoryIds.has(c._id.toString()));
+  },
+});

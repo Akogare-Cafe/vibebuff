@@ -1,17 +1,13 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import Link from "next/link";
-import { use } from "react";
-import { UserNav } from "@/components/user-nav";
+import { use, useEffect, useRef } from "react";
 import {
-  Gamepad2,
-  Wrench,
-  Compass,
   ArrowLeft,
   ChevronRight,
   Star,
@@ -25,14 +21,25 @@ import {
   AlertTriangle,
   Zap,
   DollarSign,
-  Tag,
-  Scale
+  Tag
 } from "lucide-react";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const tool = useQuery(api.tools.getBySlug, { slug });
+  const trackEvent = useMutation(api.popularity.trackEvent);
+  const hasTrackedView = useRef(false);
+
+  useEffect(() => {
+    if (tool && tool._id && !hasTrackedView.current) {
+      hasTrackedView.current = true;
+      trackEvent({
+        toolId: tool._id,
+        eventType: "view",
+        sessionId: typeof window !== "undefined" ? sessionStorage.getItem("sessionId") || undefined : undefined,
+      });
+    }
+  }, [tool, trackEvent]);
 
   if (tool === undefined) {
     return (
@@ -57,32 +64,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
 
   return (
     <div className="min-h-screen bg-[#000000]">
-      {/* Header */}
-      <header className="border-b-4 border-[#1e3a5f] p-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Gamepad2 className="w-6 h-6 text-[#3b82f6]" />
-            <h1 className="text-[#60a5fa] text-sm pixel-glow">VIBEBUFF</h1>
-          </Link>
-          <nav className="flex gap-4 items-center">
-            <Link href="/tools" className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Wrench className="w-3 h-3" />
-              Tools
-            </Link>
-            <Link href="/compare" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Scale className="w-3 h-3" />
-              Compare
-            </Link>
-            <Link href="/quest" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Compass className="w-3 h-3" />
-              Quest
-            </Link>
-            <ThemeSwitcher />
-            <UserNav />
-          </nav>
-        </div>
-      </header>
-
       <main className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="mb-6 text-[10px] flex items-center gap-1">
@@ -308,21 +289,36 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
           {tool.websiteUrl && (
-            <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer">
+            <a 
+              href={tool.websiteUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
+            >
               <PixelButton>
                 <Globe className="w-4 h-4 mr-2" /> VISIT WEBSITE
               </PixelButton>
             </a>
           )}
           {tool.githubUrl && (
-            <a href={tool.githubUrl} target="_blank" rel="noopener noreferrer">
+            <a 
+              href={tool.githubUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
+            >
               <PixelButton variant="secondary">
                 <Github className="w-4 h-4 mr-2" /> GITHUB
               </PixelButton>
             </a>
           )}
           {tool.docsUrl && (
-            <a href={tool.docsUrl} target="_blank" rel="noopener noreferrer">
+            <a 
+              href={tool.docsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
+            >
               <PixelButton variant="outline">
                 <BookOpen className="w-4 h-4 mr-2" /> DOCS
               </PixelButton>
@@ -330,17 +326,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
           )}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t-4 border-[#1e3a5f] p-4 mt-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <Link href="/tools">
-            <PixelButton variant="ghost" size="sm">
-              <ArrowLeft className="w-3 h-3 mr-1" /> BACK TO INVENTORY
-            </PixelButton>
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 }

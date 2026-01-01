@@ -180,10 +180,10 @@ export function PowerTrajectory({ toolName, data, className }: PowerTrajectoryPr
 
       <div className="flex justify-between mt-1">
         <span className="text-[#3b82f6] text-[8px]">
-          {data[0]?.stars.toLocaleString()} ⭐
+          {data[0]?.stars.toLocaleString()} stars
         </span>
         <span className="text-[#60a5fa] text-[8px]">
-          {data[data.length - 1]?.stars.toLocaleString()} ⭐
+          {data[data.length - 1]?.stars.toLocaleString()} stars
         </span>
       </div>
     </PixelCard>

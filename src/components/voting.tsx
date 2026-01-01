@@ -16,8 +16,10 @@ import {
   Star,
   Check,
   ChevronRight,
-  Calendar
+  Calendar,
+  Medal
 } from "lucide-react";
+import { DynamicIcon } from "./dynamic-icon";
 
 interface VotingProps {
   userId?: string;
@@ -121,7 +123,7 @@ function VotingCard({ period, userId }: VotingCardProps) {
   return (
     <PixelCard className="p-4">
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-2xl">{period.category?.icon || "🏆"}</span>
+        <DynamicIcon name={period.category?.icon || "Trophy"} className="w-6 h-6 text-[#60a5fa]" />
         <div>
           <h3 className="text-[#60a5fa] text-[12px]">{period.category?.name}</h3>
           <p className="text-[#3b82f6] text-[8px]">{period.totalVotes} votes cast</p>
@@ -161,7 +163,7 @@ function VotingCard({ period, userId }: VotingCardProps) {
                   index === 1 && "text-gray-400",
                   index === 2 && "text-orange-400"
                 )}>
-                  {index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
+                  {index + 1}
                 </span>
                 <Link href={`/tools/${item.tool.slug}`} className="text-[#60a5fa] text-[10px] hover:underline">
                   {item.tool.name}
@@ -230,7 +232,7 @@ export function VotingWidget({ userId }: { userId?: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#60a5fa] text-[10px]">🏆 VOTE NOW</span>
+        <span className="text-[#60a5fa] text-[10px] flex items-center gap-1"><Trophy className="w-3 h-3" /> VOTE NOW</span>
         <PixelBadge variant="outline" className="text-[6px]">
           {period.totalVotes} VOTES
         </PixelBadge>

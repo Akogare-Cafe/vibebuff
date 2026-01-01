@@ -14,8 +14,10 @@ import {
   Layers,
   Scroll,
   Vote,
-  TrendingUp
+  TrendingUp,
+  Medal
 } from "lucide-react";
+import { DynamicIcon } from "./dynamic-icon";
 
 interface UserProfileProps {
   userId: string;
@@ -136,7 +138,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
                 className="flex items-center gap-1 p-2 border border-[#1e3a5f] bg-[#0a1628]"
                 title={ua.achievement?.description}
               >
-                <span className="text-lg">{ua.achievement?.icon}</span>
+                <DynamicIcon name={ua.achievement?.icon || "Trophy"} className="w-5 h-5 text-[#60a5fa]" />
                 <span className="text-[#60a5fa] text-[8px]">{ua.achievement?.name}</span>
               </div>
             ))}
@@ -235,7 +237,7 @@ export function Leaderboard({ className }: { className?: string }) {
                 index === 2 && "text-orange-400",
                 index > 2 && "text-[#3b82f6]"
               )}>
-                {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : `#${user.rank}`}
+                {index < 3 ? <Medal className={`w-4 h-4 ${index === 0 ? "text-yellow-400" : index === 1 ? "text-gray-400" : "text-orange-400"}`} /> : `#${user.rank}`}
               </span>
               <div>
                 <p className="text-[#60a5fa] text-[10px]">{user.username || "Anonymous"}</p>

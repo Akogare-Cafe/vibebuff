@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Gamepad2, Wrench, Scale, Compass, Layers, BookOpen } from "lucide-react";
-import { UserNav } from "@/components/user-nav";
+import { Gamepad2, Wrench, Scale, Compass, Layers, BookOpen, Trophy } from "lucide-react";
+import { UserMenu } from "@/components/auth";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export function Header() {
@@ -49,8 +49,15 @@ export function Header() {
             <BookOpen className="w-3 h-3" />
             <span className="hidden sm:inline">Blog</span>
           </Link>
+          <Link
+            href="/leaderboard"
+            className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1"
+          >
+            <Trophy className="w-3 h-3" />
+            <span className="hidden sm:inline">Rankings</span>
+          </Link>
           <ThemeSwitcher />
-          <UserNav />
+          <UserMenu />
         </nav>
       </div>
     </header>

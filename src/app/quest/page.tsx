@@ -7,11 +7,7 @@ import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import Link from "next/link";
-import { UserNav } from "@/components/user-nav";
 import {
-  Gamepad2,
-  Wrench,
-  Compass,
   ArrowLeft,
   ArrowRight,
   ChevronRight,
@@ -20,9 +16,32 @@ import {
   RefreshCw,
   Package,
   Play,
-  Scale
+  Briefcase,
+  ShoppingCart,
+  FileText,
+  LayoutDashboard,
+  Zap,
+  Smartphone,
+  Wrench,
+  Bot,
+  Home,
+  Rocket,
+  TrendingUp,
+  Building2,
+  CircleDollarSign,
+  Banknote,
+  Wallet,
+  Gem,
+  Lock,
+  Database,
+  HardDrive,
+  CreditCard,
+  Mail,
+  Search,
+  BarChart3,
+  FileEdit,
+  type LucideIcon
 } from "lucide-react";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 
 type Step = "intro" | "type" | "scale" | "budget" | "features" | "results";
 
@@ -33,42 +52,42 @@ interface QuestAnswers {
   features: string[];
 }
 
-const PROJECT_TYPES = [
-  { id: "saas", name: "SaaS App", icon: "💼", description: "Subscription-based software" },
-  { id: "ecommerce", name: "E-Commerce", icon: "🛒", description: "Online store or marketplace" },
-  { id: "blog", name: "Blog/Portfolio", icon: "📝", description: "Content site or personal page" },
-  { id: "dashboard", name: "Dashboard", icon: "📊", description: "Data visualization & admin" },
-  { id: "realtime", name: "Realtime App", icon: "⚡", description: "Chat, collaboration, gaming" },
-  { id: "mobile", name: "Mobile App", icon: "📱", description: "iOS/Android application" },
-  { id: "api", name: "API/Backend", icon: "🔧", description: "Backend service or API" },
-  { id: "ai", name: "AI/ML App", icon: "🤖", description: "AI-powered application" },
+const PROJECT_TYPES: { id: string; name: string; icon: LucideIcon; description: string }[] = [
+  { id: "saas", name: "SaaS App", icon: Briefcase, description: "Subscription-based software" },
+  { id: "ecommerce", name: "E-Commerce", icon: ShoppingCart, description: "Online store or marketplace" },
+  { id: "blog", name: "Blog/Portfolio", icon: FileText, description: "Content site or personal page" },
+  { id: "dashboard", name: "Dashboard", icon: LayoutDashboard, description: "Data visualization & admin" },
+  { id: "realtime", name: "Realtime App", icon: Zap, description: "Chat, collaboration, gaming" },
+  { id: "mobile", name: "Mobile App", icon: Smartphone, description: "iOS/Android application" },
+  { id: "api", name: "API/Backend", icon: Wrench, description: "Backend service or API" },
+  { id: "ai", name: "AI/ML App", icon: Bot, description: "AI-powered application" },
 ];
 
-const SCALES = [
-  { id: "hobby", name: "Hobby", icon: "🏠", users: "< 100 users", budget: "Free - $20/mo" },
-  { id: "startup", name: "Startup", icon: "🚀", users: "100 - 10K users", budget: "$20 - $200/mo" },
-  { id: "growth", name: "Growth", icon: "📈", users: "10K - 100K users", budget: "$200 - $2K/mo" },
-  { id: "enterprise", name: "Enterprise", icon: "🏢", users: "100K+ users", budget: "$2K+/mo" },
+const SCALES: { id: string; name: string; icon: LucideIcon; users: string; budget: string }[] = [
+  { id: "hobby", name: "Hobby", icon: Home, users: "< 100 users", budget: "Free - $20/mo" },
+  { id: "startup", name: "Startup", icon: Rocket, users: "100 - 10K users", budget: "$20 - $200/mo" },
+  { id: "growth", name: "Growth", icon: TrendingUp, users: "10K - 100K users", budget: "$200 - $2K/mo" },
+  { id: "enterprise", name: "Enterprise", icon: Building2, users: "100K+ users", budget: "$2K+/mo" },
 ];
 
-const BUDGETS = [
-  { id: "free", name: "Free Only", icon: "🆓", range: "$0/mo" },
-  { id: "low", name: "Budget", icon: "💵", range: "$1 - $50/mo" },
-  { id: "medium", name: "Standard", icon: "💰", range: "$50 - $200/mo" },
-  { id: "high", name: "Premium", icon: "💎", range: "$200+/mo" },
+const BUDGETS: { id: string; name: string; icon: LucideIcon; range: string }[] = [
+  { id: "free", name: "Free Only", icon: CircleDollarSign, range: "$0/mo" },
+  { id: "low", name: "Budget", icon: Banknote, range: "$1 - $50/mo" },
+  { id: "medium", name: "Standard", icon: Wallet, range: "$50 - $200/mo" },
+  { id: "high", name: "Premium", icon: Gem, range: "$200+/mo" },
 ];
 
-const FEATURES = [
-  { id: "auth", name: "Authentication", icon: "🔐" },
-  { id: "database", name: "Database", icon: "🗄️" },
-  { id: "realtime", name: "Realtime", icon: "⚡" },
-  { id: "storage", name: "File Storage", icon: "📁" },
-  { id: "payments", name: "Payments", icon: "💳" },
-  { id: "email", name: "Email", icon: "📧" },
-  { id: "search", name: "Search", icon: "🔍" },
-  { id: "analytics", name: "Analytics", icon: "📊" },
-  { id: "ai", name: "AI/LLM", icon: "🤖" },
-  { id: "cms", name: "CMS", icon: "📝" },
+const FEATURES: { id: string; name: string; icon: LucideIcon }[] = [
+  { id: "auth", name: "Authentication", icon: Lock },
+  { id: "database", name: "Database", icon: Database },
+  { id: "realtime", name: "Realtime", icon: Zap },
+  { id: "storage", name: "File Storage", icon: HardDrive },
+  { id: "payments", name: "Payments", icon: CreditCard },
+  { id: "email", name: "Email", icon: Mail },
+  { id: "search", name: "Search", icon: Search },
+  { id: "analytics", name: "Analytics", icon: BarChart3 },
+  { id: "ai", name: "AI/LLM", icon: Bot },
+  { id: "cms", name: "CMS", icon: FileEdit },
 ];
 
 export default function QuestPage() {
@@ -153,32 +172,6 @@ export default function QuestPage() {
 
   return (
     <div className="min-h-screen bg-[#000000]">
-      {/* Header */}
-      <header className="border-b-4 border-[#1e3a5f] p-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Gamepad2 className="w-6 h-6 text-[#3b82f6]" />
-            <h1 className="text-[#60a5fa] text-sm pixel-glow">VIBEBUFF</h1>
-          </Link>
-          <nav className="flex gap-4 items-center">
-            <Link href="/tools" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Wrench className="w-3 h-3" />
-              Tools
-            </Link>
-            <Link href="/compare" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Scale className="w-3 h-3" />
-              Compare
-            </Link>
-            <Link href="/quest" className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Compass className="w-3 h-3" />
-              Quest
-            </Link>
-            <ThemeSwitcher />
-            <UserNav />
-          </nav>
-        </div>
-      </header>
-
       <main className="max-w-4xl mx-auto px-4 py-8">
         {/* Progress Bar */}
         {step !== "intro" && step !== "results" && (
@@ -256,7 +249,9 @@ export default function QuestPage() {
                   }`}
                   onClick={() => handleSelectType(type.id)}
                 >
-                  <div className="text-3xl mb-2">{type.icon}</div>
+                  <div className="flex justify-center mb-2">
+                    <type.icon className={`w-8 h-8 ${answers.projectType === type.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  </div>
                   <p className={`text-[10px] mb-1 ${
                     answers.projectType === type.id ? "text-[#000000]" : "text-[#60a5fa]"
                   }`}>
@@ -292,7 +287,9 @@ export default function QuestPage() {
                   }`}
                   onClick={() => handleSelectScale(scale.id)}
                 >
-                  <div className="text-3xl mb-2">{scale.icon}</div>
+                  <div className="flex justify-center mb-2">
+                    <scale.icon className={`w-8 h-8 ${answers.scale === scale.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  </div>
                   <p className={`text-[10px] mb-1 ${
                     answers.scale === scale.id ? "text-[#000000]" : "text-[#60a5fa]"
                   }`}>
@@ -334,7 +331,9 @@ export default function QuestPage() {
                   }`}
                   onClick={() => handleSelectBudget(budget.id)}
                 >
-                  <div className="text-3xl mb-2">{budget.icon}</div>
+                  <div className="flex justify-center mb-2">
+                    <budget.icon className={`w-8 h-8 ${answers.budget === budget.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  </div>
                   <p className={`text-[10px] mb-1 ${
                     answers.budget === budget.id ? "text-[#000000]" : "text-[#60a5fa]"
                   }`}>
@@ -376,7 +375,9 @@ export default function QuestPage() {
                   }`}
                   onClick={() => handleToggleFeature(feature.id)}
                 >
-                  <div className="text-2xl mb-2">{feature.icon}</div>
+                  <div className="flex justify-center mb-2">
+                    <feature.icon className={`w-6 h-6 ${answers.features.includes(feature.id) ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  </div>
                   <p className={`text-[8px] ${
                     answers.features.includes(feature.id) ? "text-[#000000]" : "text-[#60a5fa]"
                   }`}>
@@ -421,21 +422,30 @@ export default function QuestPage() {
             <PixelCard className="mb-8 p-6">
               <div className="flex flex-wrap justify-around gap-4 text-center">
                 <div>
-                  <p className="text-3xl mb-2">
-                    {PROJECT_TYPES.find(t => t.id === answers.projectType)?.icon}
-                  </p>
+                  <div className="flex justify-center mb-2">
+                    {(() => {
+                      const ProjectIcon = PROJECT_TYPES.find(t => t.id === answers.projectType)?.icon;
+                      return ProjectIcon ? <ProjectIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                    })()}
+                  </div>
                   <p className="text-[#3b82f6] text-[8px]">PROJECT</p>
                 </div>
                 <div>
-                  <p className="text-3xl mb-2">
-                    {SCALES.find(s => s.id === answers.scale)?.icon}
-                  </p>
+                  <div className="flex justify-center mb-2">
+                    {(() => {
+                      const ScaleIcon = SCALES.find(s => s.id === answers.scale)?.icon;
+                      return ScaleIcon ? <ScaleIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                    })()}
+                  </div>
                   <p className="text-[#3b82f6] text-[8px]">SCALE</p>
                 </div>
                 <div>
-                  <p className="text-3xl mb-2">
-                    {BUDGETS.find(b => b.id === answers.budget)?.icon}
-                  </p>
+                  <div className="flex justify-center mb-2">
+                    {(() => {
+                      const BudgetIcon = BUDGETS.find(b => b.id === answers.budget)?.icon;
+                      return BudgetIcon ? <BudgetIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                    })()}
+                  </div>
                   <p className="text-[#3b82f6] text-[8px]">BUDGET</p>
                 </div>
                 <div>
@@ -497,17 +507,6 @@ export default function QuestPage() {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t-4 border-[#1e3a5f] p-4 mt-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <Link href="/">
-            <PixelButton variant="ghost" size="sm">
-              <ArrowLeft className="w-3 h-3 mr-1" /> BACK TO HOME
-            </PixelButton>
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 }

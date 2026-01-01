@@ -4,7 +4,6 @@ import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ClerkClientProvider } from "@/components/providers/clerk-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { MusicToggle } from "@/components/music-toggle";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
@@ -103,7 +102,6 @@ export default function RootLayout({
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />
-              <MusicToggle />
             </ThemeProvider>
           </ConvexClientProvider>
         </ClerkClientProvider>

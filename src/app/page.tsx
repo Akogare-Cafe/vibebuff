@@ -331,7 +331,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-6">
             <Link href="/blog" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px]">
-              VIEW ALL ARTICLES →
+              VIEW ALL ARTICLES
             </Link>
           </div>
         </section>

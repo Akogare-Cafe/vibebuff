@@ -142,6 +142,10 @@ export const updateDeck = mutation({
     description: v.optional(v.string()),
     toolIds: v.optional(v.array(v.id("tools"))),
     isPublic: v.optional(v.boolean()),
+    categoryAssignments: v.optional(v.array(v.object({
+      categorySlug: v.string(),
+      toolId: v.id("tools"),
+    }))),
   },
   handler: async (ctx, args) => {
     const { deckId, ...updates } = args;
@@ -153,6 +157,98 @@ export const updateDeck = mutation({
       ...filteredUpdates,
       updatedAt: Date.now(),
     });
+  },
+});
+
+// Assign tool to category slot in deck
+export const assignToolToSlot = mutation({
+  args: {
+    deckId: v.id("userDecks"),
+    categorySlug: v.string(),
+    toolId: v.id("tools"),
+  },
+  handler: async (ctx, args) => {
+    const deck = await ctx.db.get(args.deckId);
+    if (!deck) throw new Error("Deck not found");
+
+    const currentAssignments = deck.categoryAssignments || [];
+    const filteredAssignments = currentAssignments.filter(
+      (a) => a.categorySlug !== args.categorySlug
+    );
+
+    const newAssignments = [
+      ...filteredAssignments,
+      { categorySlug: args.categorySlug, toolId: args.toolId },
+    ];
+
+    await ctx.db.patch(args.deckId, {
+      categoryAssignments: newAssignments,
+      updatedAt: Date.now(),
+    });
+
+    return { message: "Tool assigned to slot" };
+  },
+});
+
+// Remove tool from category slot
+export const removeToolFromSlot = mutation({
+  args: {
+    deckId: v.id("userDecks"),
+    categorySlug: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const deck = await ctx.db.get(args.deckId);
+    if (!deck) throw new Error("Deck not found");
+
+    const currentAssignments = deck.categoryAssignments || [];
+    const newAssignments = currentAssignments.filter(
+      (a) => a.categorySlug !== args.categorySlug
+    );
+
+    await ctx.db.patch(args.deckId, {
+      categoryAssignments: newAssignments,
+      updatedAt: Date.now(),
+    });
+  },
+});
+
+// Get deck with full category details
+export const getDeckWithCategories = query({
+  args: { deckId: v.id("userDecks") },
+  handler: async (ctx, args) => {
+    const deck = await ctx.db.get(args.deckId);
+    if (!deck) return null;
+
+    const tools = await Promise.all(
+      deck.toolIds.map((id) => ctx.db.get(id))
+    );
+
+    const categories = await ctx.db.query("categories").collect();
+    
+    const slotsWithTools = await Promise.all(
+      categories.map(async (category) => {
+        const assignment = deck.categoryAssignments?.find(
+          (a) => a.categorySlug === category.slug
+        );
+        const assignedTool = assignment 
+          ? await ctx.db.get(assignment.toolId)
+          : null;
+        
+        return {
+          category,
+          assignedTool,
+          availableTools: tools.filter(Boolean).filter((t) => 
+            t && t.categoryId === category._id
+          ),
+        };
+      })
+    );
+
+    return {
+      ...deck,
+      tools: tools.filter(Boolean),
+      slots: slotsWithTools.filter((s) => s.availableTools.length > 0 || s.assignedTool),
+    };
   },
 });
 

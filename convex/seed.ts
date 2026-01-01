@@ -42,21 +42,21 @@ export const seedDatabase = mutation({
 
     // Seed categories - comprehensive list from TECH_STACK_DATABASE
     const categories = [
-      { name: "IDEs & Editors", slug: "ides", description: "Code editors and development environments", icon: "💻", sortOrder: 1 },
-      { name: "AI Assistants", slug: "ai-assistants", description: "AI-powered coding assistants", icon: "🤖", sortOrder: 2 },
-      { name: "Frontend", slug: "frontend", description: "Frontend frameworks and libraries", icon: "⚛️", sortOrder: 3 },
-      { name: "Meta-Frameworks", slug: "meta-frameworks", description: "Full-stack frameworks", icon: "🏗️", sortOrder: 4 },
-      { name: "Backend", slug: "backend", description: "Backend runtimes and frameworks", icon: "🔧", sortOrder: 5 },
-      { name: "Databases", slug: "databases", description: "Database platforms and services", icon: "🗄️", sortOrder: 6 },
-      { name: "Auth", slug: "auth", description: "Authentication providers", icon: "🔐", sortOrder: 7 },
-      { name: "Hosting", slug: "hosting", description: "Hosting and deployment platforms", icon: "☁️", sortOrder: 8 },
-      { name: "Realtime", slug: "realtime", description: "Realtime and WebSocket services", icon: "⚡", sortOrder: 9 },
-      { name: "LLMs", slug: "llms", description: "Large Language Models and AI APIs", icon: "🧠", sortOrder: 10 },
-      { name: "Styling", slug: "styling", description: "CSS frameworks and component libraries", icon: "🎨", sortOrder: 11 },
-      { name: "Testing", slug: "testing", description: "Testing frameworks and tools", icon: "🧪", sortOrder: 12 },
-      { name: "Observability", slug: "observability", description: "Error tracking, analytics, and monitoring", icon: "📊", sortOrder: 13 },
-      { name: "Vibe Coding", slug: "vibe-coding", description: "AI-powered app builders and browser-based development tools", icon: "✨", sortOrder: 14 },
-      { name: "CLI Agents", slug: "cli-agents", description: "Command-line AI coding agents and assistants", icon: "⌨️", sortOrder: 15 },
+      { name: "IDEs & Editors", slug: "ides", description: "Code editors and development environments", icon: "Monitor", sortOrder: 1 },
+      { name: "AI Assistants", slug: "ai-assistants", description: "AI-powered coding assistants", icon: "Bot", sortOrder: 2 },
+      { name: "Frontend", slug: "frontend", description: "Frontend frameworks and libraries", icon: "Layout", sortOrder: 3 },
+      { name: "Meta-Frameworks", slug: "meta-frameworks", description: "Full-stack frameworks", icon: "Layers", sortOrder: 4 },
+      { name: "Backend", slug: "backend", description: "Backend runtimes and frameworks", icon: "Wrench", sortOrder: 5 },
+      { name: "Databases", slug: "databases", description: "Database platforms and services", icon: "Database", sortOrder: 6 },
+      { name: "Auth", slug: "auth", description: "Authentication providers", icon: "Lock", sortOrder: 7 },
+      { name: "Hosting", slug: "hosting", description: "Hosting and deployment platforms", icon: "Cloud", sortOrder: 8 },
+      { name: "Realtime", slug: "realtime", description: "Realtime and WebSocket services", icon: "Zap", sortOrder: 9 },
+      { name: "LLMs", slug: "llms", description: "Large Language Models and AI APIs", icon: "Brain", sortOrder: 10 },
+      { name: "Styling", slug: "styling", description: "CSS frameworks and component libraries", icon: "Palette", sortOrder: 11 },
+      { name: "Testing", slug: "testing", description: "Testing frameworks and tools", icon: "FlaskConical", sortOrder: 12 },
+      { name: "Observability", slug: "observability", description: "Error tracking, analytics, and monitoring", icon: "BarChart3", sortOrder: 13 },
+      { name: "Vibe Coding", slug: "vibe-coding", description: "AI-powered app builders and browser-based development tools", icon: "Sparkles", sortOrder: 14 },
+      { name: "CLI Agents", slug: "cli-agents", description: "Command-line AI coding agents and assistants", icon: "Terminal", sortOrder: 15 },
     ];
 
     const categoryIds: Record<string, any> = {};

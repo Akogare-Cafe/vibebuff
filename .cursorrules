@@ -1,0 +1,45 @@
+# Vibebuff Project Rules
+
+## Icon Usage - CRITICAL
+
+**DO NOT use system emojis or unicode icons anywhere in the codebase.**
+
+All icons MUST come from our custom icon library: `lucide-react`
+
+### Correct Usage
+```tsx
+import { Search, Star, Gamepad2 } from "lucide-react";
+
+// Use in components
+<Search className="w-4 h-4" />
+<Star className="w-4 h-4" />
+```
+
+### Forbidden
+- Unicode emojis: ❌ 🎮 ⭐ 🔍 etc.
+- HTML entities: &star; &check; etc.
+- Inline SVGs (unless absolutely necessary for custom graphics)
+- Other icon libraries (Font Awesome, Heroicons, etc.)
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **UI**: React 19, Tailwind CSS v4, Radix UI
+- **Icons**: lucide-react (ONLY)
+- **Backend**: Convex
+- **Auth**: Clerk
+- **Animations**: Framer Motion
+- **Flow Diagrams**: @xyflow/react
+
+## Code Style
+
+- Use TypeScript for all files
+- Follow existing pixel/retro gaming aesthetic
+- Use the custom Pixel* components (PixelCard, PixelButton, etc.)
+- Keep components in `src/components/`
+- Keep pages in `src/app/`
+
+## Comments
+
+- Do not add or delete comments unless explicitly asked
+- Preserve existing documentation

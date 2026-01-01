@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Gamepad2, Github, Twitter, Mail, Heart } from "lucide-react";
+import { Gamepad2, Github, Twitter, Mail, Heart, Clock } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 const footerLinks = {
   product: [
@@ -32,6 +34,20 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const stats = useQuery(api.tools.getStats);
+  
+  const formatLastUpdated = (timestamp: number | null | undefined) => {
+    if (!timestamp) return "Loading...";
+    const date = new Date(timestamp);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
   return (
     <footer className="border-t-4 border-[#1e3a5f] bg-[#0a0a0a] mt-12">
       <div className="max-w-6xl mx-auto px-4 py-12">
@@ -148,6 +164,9 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[#3b82f6] text-[8px]">
               © {new Date().getFullYear()} VIBEBUFF. All rights reserved.
+            </p>
+            <p className="text-[#3b82f6] text-[8px] flex items-center gap-1">
+              <Clock className="w-3 h-3" /> Data updated: {formatLastUpdated(stats?.lastUpdated)}
             </p>
             <p className="text-[#3b82f6] text-[8px] flex items-center gap-1">
               Made with <Heart className="w-3 h-3 text-red-500" /> for developers

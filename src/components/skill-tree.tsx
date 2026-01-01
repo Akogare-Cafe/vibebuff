@@ -11,7 +11,16 @@ import {
   Check, 
   Lock, 
   ChevronRight,
-  Zap
+  Zap,
+  Atom,
+  Layers,
+  Palette,
+  Wrench,
+  Database,
+  KeyRound,
+  Cloud,
+  Bot,
+  Monitor
 } from "lucide-react";
 
 interface SkillTreeProps {
@@ -21,11 +30,23 @@ interface SkillTreeProps {
 }
 
 // Define the skill tree structure
+const SKILL_TREE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  frontend: Atom,
+  "meta-frameworks": Layers,
+  styling: Palette,
+  backend: Wrench,
+  databases: Database,
+  auth: KeyRound,
+  hosting: Cloud,
+  realtime: Zap,
+  "ai-assistants": Bot,
+  ides: Monitor,
+};
+
 const SKILL_TREE_STRUCTURE = [
   {
     id: "frontend",
     name: "Frontend",
-    icon: "⚛️",
     x: 50,
     y: 10,
     children: ["meta-frameworks", "styling"],
@@ -33,7 +54,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "meta-frameworks",
     name: "Meta-Framework",
-    icon: "🏗️",
     x: 30,
     y: 25,
     children: ["backend"],
@@ -42,7 +62,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "styling",
     name: "Styling",
-    icon: "🎨",
     x: 70,
     y: 25,
     children: [],
@@ -51,7 +70,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "backend",
     name: "Backend",
-    icon: "🔧",
     x: 30,
     y: 45,
     children: ["databases", "auth"],
@@ -60,7 +78,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "databases",
     name: "Database",
-    icon: "🗄️",
     x: 20,
     y: 65,
     children: ["hosting"],
@@ -69,7 +86,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "auth",
     name: "Auth",
-    icon: "🔐",
     x: 50,
     y: 65,
     children: ["hosting"],
@@ -78,7 +94,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "hosting",
     name: "Hosting",
-    icon: "☁️",
     x: 35,
     y: 85,
     children: [],
@@ -87,7 +102,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "realtime",
     name: "Realtime",
-    icon: "⚡",
     x: 70,
     y: 45,
     children: [],
@@ -96,7 +110,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "ai-assistants",
     name: "AI Tools",
-    icon: "🤖",
     x: 85,
     y: 65,
     children: [],
@@ -105,7 +118,6 @@ const SKILL_TREE_STRUCTURE = [
   {
     id: "ides",
     name: "IDE",
-    icon: "💻",
     x: 85,
     y: 85,
     children: [],
@@ -221,7 +233,10 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
               onMouseLeave={() => setHoveredNode(null)}
               disabled={!unlocked}
             >
-              <span className="text-2xl">{node.icon}</span>
+              {(() => {
+                const NodeIcon = SKILL_TREE_ICONS[node.id] || Zap;
+                return <NodeIcon className="w-6 h-6 text-[#60a5fa]" />;
+              })()}
               {completed && (
                 <Check className="absolute -top-1 -right-1 w-4 h-4 text-[#60a5fa] bg-[#0a1628] rounded-full" />
               )}
@@ -246,7 +261,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
               {SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.name}
             </p>
             <p className="text-[#3b82f6] text-[8px]">
-              {isNodeCompleted(hoveredNode) ? "✓ Completed" : 
+              {isNodeCompleted(hoveredNode) ? "Completed" : 
                isNodeUnlocked(hoveredNode) ? "Click to select" : "Locked"}
             </p>
           </div>

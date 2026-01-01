@@ -13,7 +13,8 @@ import {
   Clock, 
   Check,
   Star,
-  ChevronRight
+  ChevronRight,
+  Package
 } from "lucide-react";
 
 interface LootDropsProps {
@@ -174,8 +175,8 @@ export function TreasureChest({ isOpen, onClick }: { isOpen: boolean; onClick: (
         isOpen && "animate-bounce"
       )}
     >
-      <div className="text-6xl">
-        {isOpen ? "🎁" : "📦"}
+      <div className="flex items-center justify-center">
+        {isOpen ? <Gift className="w-16 h-16 text-yellow-400" /> : <Package className="w-16 h-16 text-[#3b82f6]" />}
       </div>
       {!isOpen && (
         <div className="absolute -top-2 -right-2">

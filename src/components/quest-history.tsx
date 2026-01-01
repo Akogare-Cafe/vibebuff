@@ -18,7 +18,16 @@ import {
   Rocket,
   RotateCcw,
   Calendar,
-  Target
+  Target,
+  Briefcase,
+  ShoppingCart,
+  FileText,
+  BarChart3,
+  Zap,
+  Smartphone,
+  Wrench,
+  Bot,
+  Package
 } from "lucide-react";
 
 interface QuestHistoryProps {
@@ -26,15 +35,26 @@ interface QuestHistoryProps {
   className?: string;
 }
 
-const PROJECT_TYPES: Record<string, { name: string; icon: string }> = {
-  saas: { name: "SaaS App", icon: "💼" },
-  ecommerce: { name: "E-Commerce", icon: "🛒" },
-  blog: { name: "Blog/Portfolio", icon: "📝" },
-  dashboard: { name: "Dashboard", icon: "📊" },
-  realtime: { name: "Realtime App", icon: "⚡" },
-  mobile: { name: "Mobile App", icon: "📱" },
-  api: { name: "API/Backend", icon: "🔧" },
-  ai: { name: "AI/ML App", icon: "🤖" },
+const PROJECT_TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  saas: Briefcase,
+  ecommerce: ShoppingCart,
+  blog: FileText,
+  dashboard: BarChart3,
+  realtime: Zap,
+  mobile: Smartphone,
+  api: Wrench,
+  ai: Bot,
+};
+
+const PROJECT_TYPES: Record<string, { name: string }> = {
+  saas: { name: "SaaS App" },
+  ecommerce: { name: "E-Commerce" },
+  blog: { name: "Blog/Portfolio" },
+  dashboard: { name: "Dashboard" },
+  realtime: { name: "Realtime App" },
+  mobile: { name: "Mobile App" },
+  api: { name: "API/Backend" },
+  ai: { name: "AI/ML App" },
 };
 
 const OUTCOME_CONFIG = {
@@ -142,7 +162,8 @@ function QuestCard({ quest }: QuestCardProps) {
 
   const updateOutcome = useMutation(api.questHistory.updateQuestOutcome);
 
-  const projectType = PROJECT_TYPES[quest.answers.projectType] || { name: quest.answers.projectType, icon: "📦" };
+  const projectType = PROJECT_TYPES[quest.answers.projectType] || { name: quest.answers.projectType };
+  const ProjectIcon = PROJECT_TYPE_ICONS[quest.answers.projectType] || Package;
   const outcomeConfig = OUTCOME_CONFIG[quest.outcome as keyof typeof OUTCOME_CONFIG] || OUTCOME_CONFIG.pending;
   const OutcomeIcon = outcomeConfig.icon;
 
@@ -159,7 +180,7 @@ function QuestCard({ quest }: QuestCardProps) {
     <PixelCard className={cn("p-4", quest.outcome === "shipped" && "border-green-400")}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <span className="text-3xl">{projectType.icon}</span>
+          <ProjectIcon className="w-8 h-8 text-[#60a5fa]" />
           <div>
             <h3 className="text-[#60a5fa] text-[12px]">{projectType.name}</h3>
             <p className="text-[#3b82f6] text-[8px]">

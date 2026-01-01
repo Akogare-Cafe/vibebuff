@@ -96,3 +96,24 @@ export const byCategory = query({
       .collect();
   },
 });
+
+// Get database stats including last update time
+export const getStats = query({
+  handler: async (ctx) => {
+    const tools = await ctx.db.query("tools").collect();
+    const categories = await ctx.db.query("categories").collect();
+    
+    let lastUpdated: number | null = null;
+    for (const tool of tools) {
+      if (!lastUpdated || tool._creationTime > lastUpdated) {
+        lastUpdated = tool._creationTime;
+      }
+    }
+    
+    return {
+      toolsCount: tools.length,
+      categoriesCount: categories.length,
+      lastUpdated,
+    };
+  },
+});

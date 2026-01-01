@@ -308,7 +308,7 @@ export function PartyWidget({ userId }: { userId: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#60a5fa] text-[10px]">👥 YOUR GUILDS</span>
+        <span className="text-[#60a5fa] text-[10px] flex items-center gap-1"><Users className="w-3 h-3" /> YOUR GUILDS</span>
         <PixelBadge variant="outline" className="text-[6px]">
           {userParties.length}
         </PixelBadge>

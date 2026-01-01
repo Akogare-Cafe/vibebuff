@@ -5,7 +5,8 @@ import { api } from "../../convex/_generated/api";
 import { PixelCard } from "./pixel-card";
 import { PixelBadge } from "./pixel-badge";
 import { cn } from "@/lib/utils";
-import { Trophy, Lock, Star } from "lucide-react";
+import { Trophy, Lock, Star, Map, Layers, Users, Swords, X } from "lucide-react";
+import { DynamicIcon } from "./dynamic-icon";
 
 interface AchievementDisplayProps {
   userId: string;
@@ -48,11 +49,11 @@ export function AchievementDisplay({ userId, showAll = false, className }: Achie
     return acc;
   }, {} as Record<string, typeof displayAchievements>);
 
-  const categoryIcons: Record<string, string> = {
-    exploration: "🗺️",
-    collection: "🃏",
-    social: "👥",
-    mastery: "⚔️",
+  const categoryIcons: Record<string, React.ReactNode> = {
+    exploration: <Map className="w-4 h-4" />,
+    collection: <Layers className="w-4 h-4" />,
+    social: <Users className="w-4 h-4" />,
+    mastery: <Swords className="w-4 h-4" />,
   };
 
   return (
@@ -90,7 +91,7 @@ export function AchievementDisplay({ userId, showAll = false, className }: Achie
                   )}
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <span className="text-2xl">{achievement.icon}</span>
+                    <DynamicIcon name={achievement.icon} className="w-6 h-6 text-[#60a5fa]" />
                     {isUnlocked ? (
                       <Star className="w-4 h-4 text-yellow-400" />
                     ) : (
@@ -165,7 +166,7 @@ export function AchievementUnlock({ achievement, onClose }: AchievementUnlockPro
         rarity="legendary"
       >
         <div className="flex items-center gap-3">
-          <span className="text-3xl">{achievement.icon}</span>
+          <DynamicIcon name={achievement.icon} className="w-8 h-8 text-[#60a5fa]" />
           <div>
             <p className="text-yellow-400 text-[10px] uppercase">Achievement Unlocked!</p>
             <p className="text-[#60a5fa] text-sm">{achievement.name}</p>
@@ -177,7 +178,7 @@ export function AchievementUnlock({ achievement, onClose }: AchievementUnlockPro
             onClick={onClose}
             className="absolute top-2 right-2 text-[#3b82f6] hover:text-[#60a5fa]"
           >
-            ✕
+            <X className="w-4 h-4" />
           </button>
         )}
       </PixelCard>

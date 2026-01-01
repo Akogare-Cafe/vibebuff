@@ -9,20 +9,14 @@ import { PixelInput } from "@/components/pixel-input";
 import { PixelBadge } from "@/components/pixel-badge";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { UserNav } from "@/components/user-nav";
 import { 
-  Gamepad2, 
-  Wrench, 
-  Compass, 
   Package, 
   Search, 
   Star, 
   Unlock,
   ArrowLeft,
-  ChevronRight,
-  Scale
+  ChevronRight
 } from "lucide-react";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export default function ToolsPage() {
   return (
@@ -56,32 +50,6 @@ function ToolsPageContent() {
 
   return (
     <div className="min-h-screen bg-[#000000]">
-      {/* Header */}
-      <header className="border-b-4 border-[#1e3a5f] p-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Gamepad2 className="w-6 h-6 text-[#3b82f6]" />
-            <h1 className="text-[#60a5fa] text-sm pixel-glow">VIBEBUFF</h1>
-          </Link>
-          <nav className="flex gap-4 items-center">
-            <Link href="/tools" className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Wrench className="w-3 h-3" />
-              Tools
-            </Link>
-            <Link href="/compare" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Scale className="w-3 h-3" />
-              Compare
-            </Link>
-            <Link href="/quest" className="text-[#3b82f6] hover:text-[#60a5fa] text-[10px] uppercase flex items-center gap-1">
-              <Compass className="w-3 h-3" />
-              Quest
-            </Link>
-            <ThemeSwitcher />
-            <UserNav />
-          </nav>
-        </div>
-      </header>
-
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* Page Title */}
         <div className="mb-8">

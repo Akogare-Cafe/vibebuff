@@ -120,10 +120,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.setAttribute("data-theme", theme);
   }, [theme, mounted]);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme, colors: themes[theme] }}>
       {children}
