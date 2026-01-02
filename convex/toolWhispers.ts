@@ -20,7 +20,7 @@ export const getWhispersForTool = query({
     const unlocks = await ctx.db
       .query("whisperUnlocks")
       .withIndex("by_user_tool", (q) =>
-        q.eq("userId", args.userId).eq("toolId", args.toolId)
+        q.eq("userId", args.userId!).eq("toolId", args.toolId)
       )
       .first();
 

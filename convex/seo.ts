@@ -1,4 +1,4 @@
-import { query, mutation, action, internalMutation, internalQuery } from "./_generated/server";
+import { query, mutation, action, internalMutation, internalQuery, internalAction } from "./_generated/server";
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
@@ -586,7 +586,7 @@ export const getToolsForComparison = internalQuery({
   },
 });
 
-export const generateAIComparison = action({
+export const generateAIComparison = internalAction({
   args: { tool1Slug: v.string(), tool2Slug: v.string() },
   handler: async (ctx, args): Promise<string> => {
     const tools = await ctx.runQuery(internal.seo.getToolsForComparison, {
