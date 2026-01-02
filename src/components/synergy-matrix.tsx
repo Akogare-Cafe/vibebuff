@@ -71,9 +71,10 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
             </p>
             
             {synergy.bonusEffect && (
-              <div className="bg-[#0a1628] border border-[#3b82f6] px-2 py-1 inline-block">
+              <div className="bg-[#0a1628] border border-[#3b82f6] px-2 py-1 inline-flex items-center gap-1">
+                <Zap className="w-3 h-3 text-yellow-400" />
                 <span className="text-[#60a5fa] text-[8px]">
-                  ⚡ {synergy.bonusEffect}
+                  {synergy.bonusEffect}
                 </span>
               </div>
             )}

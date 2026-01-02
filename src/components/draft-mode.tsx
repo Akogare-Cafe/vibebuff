@@ -18,7 +18,10 @@ import {
   Clock,
   Trophy,
   Crown,
-  ThumbsUp
+  ThumbsUp,
+  Zap,
+  Star,
+  Timer
 } from "lucide-react";
 
 interface DraftModeProps {
@@ -112,9 +115,30 @@ export function DraftMode({ userId, className }: DraftModeProps) {
           ))}
         </div>
       ) : (
-        <PixelCard className="p-8 text-center">
-          <Users className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO ACTIVE DRAFTS</p>
+        <PixelCard className="p-6 text-center">
+          <Users className="w-12 h-12 mx-auto mb-4 text-[#3b82f6]" />
+          <h3 className="text-[#60a5fa] text-lg mb-2">TOOL DRAFT</h3>
+          <p className="text-[#3b82f6] text-[10px] mb-4">
+            Compete with friends to build the best tech stack!
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Users className="w-5 h-5 mx-auto text-blue-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">2-4 PLAYERS</p>
+            </div>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Timer className="w-5 h-5 mx-auto text-yellow-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">30s PICKS</p>
+            </div>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Star className="w-5 h-5 mx-auto text-purple-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">5 ROUNDS</p>
+            </div>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Zap className="w-5 h-5 mx-auto text-green-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">+100 XP</p>
+            </div>
+          </div>
           <p className="text-[#1e3a5f] text-[8px]">Create or join a draft to compete!</p>
         </PixelCard>
       )}

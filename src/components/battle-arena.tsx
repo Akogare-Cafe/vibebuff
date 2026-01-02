@@ -331,23 +331,29 @@ interface BattleResultProps {
     scoreDiff: number;
     statComparisons: Array<{ stat: string; val1: number; val2: number; winner: string }>;
   };
+  xpAwarded?: number;
   onRematch: () => void;
 }
 
-function BattleResult({ result, onRematch }: BattleResultProps) {
+function BattleResult({ result, xpAwarded = 25, onRematch }: BattleResultProps) {
   const isClose = result.scoreDiff < 50;
 
   return (
     <div className="text-center py-6">
       <Trophy className="w-16 h-16 mx-auto text-yellow-400 mb-4" />
       <h3 className="text-yellow-400 text-lg mb-2">WINNER!</h3>
-      <p className="text-[#60a5fa] text-xl mb-4">{result.winner.name}</p>
+      <p className="text-[#60a5fa] text-xl mb-2">{result.winner.name}</p>
       
-      {isClose && (
-        <PixelBadge variant="outline" className="text-[8px] text-yellow-400 border-yellow-400 mb-4">
-          CLOSE MATCH!
+      <div className="flex items-center justify-center gap-2 mb-4">
+        <PixelBadge variant="default" className="text-[8px] bg-green-400 text-black">
+          <Zap className="w-3 h-3 mr-1" /> +{xpAwarded} XP
         </PixelBadge>
-      )}
+        {isClose && (
+          <PixelBadge variant="outline" className="text-[8px] text-yellow-400 border-yellow-400">
+            CLOSE MATCH!
+          </PixelBadge>
+        )}
+      </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6 max-w-md mx-auto">
         <div className="text-center">

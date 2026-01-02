@@ -1,8 +1,19 @@
 import { MetadataRoute } from "next";
+import { fetchQuery } from "convex/nextjs";
+import { api } from "../../convex/_generated/api";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
+  let tools: Array<{ slug: string }> = [];
+
+  try {
+    comparisons = await fetchQuery(api.seo.listComparisons, { limit: 100 });
+    tools = await fetchQuery(api.tools.list, { limit: 200 });
+  } catch (error) {
+    console.error("Failed to fetch dynamic sitemap data:", error);
+  }
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
@@ -109,5 +120,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPosts, ...categoryPages];
+  const comparisonPages: MetadataRoute.Sitemap = comparisons.map((comparison) => ({
+    url: `${siteUrl}/compare/${comparison.slug}`,
+    lastModified: new Date(comparison.lastUpdated),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
+    url: `${siteUrl}/tools/${tool.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPosts, ...categoryPages, ...comparisonPages, ...toolPages];
 }

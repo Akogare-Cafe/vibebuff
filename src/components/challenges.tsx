@@ -117,11 +117,53 @@ interface ChallengeSectionProps {
 }
 
 function ChallengeSection({ title, icon, challenges, userId }: ChallengeSectionProps) {
+  const [timeUntilReset, setTimeUntilReset] = useState("");
+  
+  useEffect(() => {
+    const calculateReset = () => {
+      const now = new Date();
+      let resetTime: Date;
+      
+      if (title.includes("DAILY")) {
+        resetTime = new Date(now);
+        resetTime.setHours(24, 0, 0, 0);
+      } else if (title.includes("WEEKLY")) {
+        resetTime = new Date(now);
+        const daysUntilMonday = (8 - now.getDay()) % 7 || 7;
+        resetTime.setDate(now.getDate() + daysUntilMonday);
+        resetTime.setHours(0, 0, 0, 0);
+      } else {
+        return "";
+      }
+      
+      const diff = resetTime.getTime() - now.getTime();
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      
+      if (hours > 24) {
+        const days = Math.floor(hours / 24);
+        return `${days}d ${hours % 24}h`;
+      }
+      return `${hours}h ${minutes}m`;
+    };
+    
+    setTimeUntilReset(calculateReset());
+    const interval = setInterval(() => setTimeUntilReset(calculateReset()), 60000);
+    return () => clearInterval(interval);
+  }, [title]);
+
   return (
     <div>
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
-        {icon} {title}
-      </h3>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-2">
+          {icon} {title}
+        </h3>
+        {timeUntilReset && (
+          <PixelBadge variant="outline" className="text-[6px] text-[#3b82f6]">
+            <Clock className="w-2 h-2 mr-1" /> RESETS IN {timeUntilReset}
+          </PixelBadge>
+        )}
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {challenges.map((challenge) => (
           <ChallengeCard key={challenge._id} challenge={challenge} userId={userId} />

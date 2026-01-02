@@ -31,7 +31,8 @@ export default function ToolsPage() {
 function ToolsPageContent() {
   const searchParams = useSearchParams();
   const categoryFilter = searchParams.get("category");
-  const [searchQuery, setSearchQuery] = useState("");
+  const urlSearchQuery = searchParams.get("search");
+  const [searchQuery, setSearchQuery] = useState(urlSearchQuery || "");
   
   const categories = useQuery(api.categories.list);
   const tools = useQuery(api.tools.list, { 
@@ -40,10 +41,10 @@ function ToolsPageContent() {
   });
   const searchResults = useQuery(
     api.tools.search,
-    searchQuery.length > 2 ? { query: searchQuery } : "skip"
+    searchQuery.length > 1 ? { query: searchQuery } : "skip"
   );
 
-  const displayTools = searchQuery.length > 2 ? searchResults : tools;
+  const displayTools = searchQuery.length > 1 ? searchResults : tools;
   const activeCategory = categories?.find(c => c.slug === categoryFilter);
 
   return (

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery } from "convex/react";
+import { useQuery, useAction } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { Id } from "../../../convex/_generated/dataModel";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
@@ -124,25 +125,45 @@ export default function QuestPage() {
     setAnswers({ ...answers, features });
   };
 
-  const handleComplete = () => {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [aiRecommendations, setAiRecommendations] = useState<{
+    recommendations: Record<string, Array<{
+      id: string;
+      name: string;
+      slug: string;
+      tagline: string;
+      reasoning: string;
+      confidence: number;
+    }>>;
+    aiReasoning: string;
+    estimatedMonthlyCost: string;
+  } | null>(null);
+
+  const generateAIRecommendations = useAction(api.ai.generateRecommendations);
+
+  const handleComplete = async () => {
+    setIsGenerating(true);
     setStep("results");
+    
+    try {
+      const result = await generateAIRecommendations({
+        projectType: answers.projectType,
+        scale: answers.scale,
+        budget: answers.budget,
+        features: answers.features,
+      });
+      setAiRecommendations(result);
+    } catch (error) {
+      console.error("AI recommendation error:", error);
+      setAiRecommendations(getFallbackRecommendations());
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
-  const getRecommendations = () => {
+  const getFallbackRecommendations = () => {
     if (!allTools || !categories) return null;
 
-    const recommendations: Record<string, typeof allTools> = {};
-
-    // Simple recommendation logic based on answers
-    const categoryMap: Record<string, string[]> = {
-      frontend: ["frontend", "meta-frameworks"],
-      backend: ["backend", "databases"],
-      hosting: ["hosting"],
-      auth: ["auth"],
-      ai: ["llms", "ai-assistants"],
-    };
-
-    // Filter tools based on budget
     const budgetFilter = (tool: (typeof allTools)[0]) => {
       if (answers.budget === "free") {
         return tool.pricingModel === "free" || tool.pricingModel === "open_source";
@@ -153,7 +174,15 @@ export default function QuestPage() {
       return true;
     };
 
-    // Get tools by category
+    const recommendations: Record<string, Array<{
+      id: string;
+      name: string;
+      slug: string;
+      tagline: string;
+      reasoning: string;
+      confidence: number;
+    }>> = {};
+
     categories.forEach((cat) => {
       const categoryTools = allTools
         .filter((t) => t.categoryId === cat._id)
@@ -161,14 +190,30 @@ export default function QuestPage() {
         .slice(0, 3);
       
       if (categoryTools.length > 0) {
-        recommendations[cat.name] = categoryTools;
+        recommendations[cat.name] = categoryTools.map((tool, index) => ({
+          id: tool._id as string,
+          name: tool.name,
+          slug: tool.slug,
+          tagline: tool.tagline,
+          reasoning: tool.bestFor?.[0] || tool.pros?.[0] || "Popular choice",
+          confidence: 90 - index * 10,
+        }));
       }
     });
 
-    return recommendations;
-  };
+    const costEstimates: Record<string, string> = {
+      free: "$0/month",
+      low: "$10-50/month",
+      medium: "$50-150/month",
+      high: "$200-500/month",
+    };
 
-  const recommendations = step === "results" ? getRecommendations() : null;
+    return {
+      recommendations,
+      aiReasoning: `Based on your ${answers.projectType} project at ${answers.scale} scale with a ${answers.budget} budget, we've selected tools that balance cost, features, and scalability.`,
+      estimatedMonthlyCost: costEstimates[answers.budget] || "Varies",
+    };
+  };
 
   return (
     <div className="min-h-screen bg-[#000000]">
@@ -455,15 +500,40 @@ export default function QuestPage() {
               </div>
             </PixelCard>
 
+            {/* Loading State */}
+            {isGenerating && (
+              <div className="text-center py-12">
+                <Bot className="w-12 h-12 mx-auto mb-4 text-[#3b82f6] animate-pulse" />
+                <p className="text-[#60a5fa] text-sm mb-2">AI IS ANALYZING YOUR REQUIREMENTS...</p>
+                <p className="text-[#3b82f6] text-[8px]">THIS MAY TAKE A FEW SECONDS</p>
+              </div>
+            )}
+
+            {/* AI Reasoning */}
+            {!isGenerating && aiRecommendations && (
+              <PixelCard className="mb-8 p-4 border-[#3b82f6]">
+                <div className="flex items-start gap-3">
+                  <Bot className="w-6 h-6 text-[#3b82f6] shrink-0 mt-1" />
+                  <div>
+                    <p className="text-[#60a5fa] text-[10px] mb-2">AI ANALYSIS</p>
+                    <p className="text-[#3b82f6] text-[8px] leading-relaxed">{aiRecommendations.aiReasoning}</p>
+                    <p className="text-[#60a5fa] text-[10px] mt-3">
+                      ESTIMATED COST: {aiRecommendations.estimatedMonthlyCost}
+                    </p>
+                  </div>
+                </div>
+              </PixelCard>
+            )}
+
             {/* Recommendations by Category */}
-            {recommendations && Object.entries(recommendations).map(([category, tools]) => (
+            {!isGenerating && aiRecommendations && Object.entries(aiRecommendations.recommendations).map(([category, tools]) => (
               <div key={category} className="mb-8">
                 <h3 className="text-[#60a5fa] text-[12px] mb-4 flex items-center gap-2">
                   <ChevronRight className="w-4 h-4 pixel-cursor" /> {category.toUpperCase()}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {tools.map((tool, index) => (
-                    <Link key={tool._id} href={`/tools/${tool.slug}`}>
+                    <Link key={tool.id} href={`/tools/${tool.slug}`}>
                       <PixelCard className={`h-full ${index === 0 ? "border-[#3b82f6]" : ""}`}>
                         <PixelCardHeader>
                           <div className="flex items-start justify-between">
@@ -472,19 +542,13 @@ export default function QuestPage() {
                               {tool.name}
                             </PixelCardTitle>
                             <PixelBadge variant={index === 0 ? "default" : "outline"}>
-                              {index === 0 ? "TOP PICK" : `#${index + 1}`}
+                              {tool.confidence}%
                             </PixelBadge>
                           </div>
                         </PixelCardHeader>
                         <PixelCardContent>
                           <p className="text-[#3b82f6] text-[8px] mb-2">{tool.tagline}</p>
-                          <div className="flex flex-wrap gap-1">
-                            {tool.tags.slice(0, 2).map((tag) => (
-                              <PixelBadge key={tag} variant="outline" className="text-[6px]">
-                                {tag}
-                              </PixelBadge>
-                            ))}
-                          </div>
+                          <p className="text-[#60a5fa] text-[8px] italic">{tool.reasoning}</p>
                         </PixelCardContent>
                       </PixelCard>
                     </Link>

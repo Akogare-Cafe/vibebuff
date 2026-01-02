@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, Suspense } from "react";
+import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { AuthForm } from "@/components/auth";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
@@ -45,6 +47,7 @@ export default function LeaderboardPage() {
 }
 
 function LeaderboardContent() {
+  const { isLoaded, isSignedIn } = useUser();
   const [sortBy, setSortBy] = useState<SortOption>("trend");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -55,6 +58,22 @@ function LeaderboardContent() {
     categoryId: selectedCategory ? (selectedCategory as any) : undefined,
   });
   const trending = useQuery(api.popularity.getTrendingTools, { limit: 5 });
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-[#000000] flex items-center justify-center">
+        <div className="text-[#60a5fa] text-sm">LOADING...</div>
+      </div>
+    );
+  }
+
+  if (!isSignedIn) {
+    return (
+      <div className="min-h-screen bg-[#000000] flex items-center justify-center p-4">
+        <AuthForm mode="sign-in" />
+      </div>
+    );
+  }
 
   const sortOptions: { value: SortOption; label: string; icon: React.ReactNode }[] = [
     { value: "trend", label: "TRENDING", icon: <TrendingUp className="w-3 h-3" /> },

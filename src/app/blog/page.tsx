@@ -23,6 +23,36 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: "vue-vs-react-2025",
+    title: "Vue vs React in 2025: Which Frontend Framework Should You Choose?",
+    description:
+      "A detailed comparison of Vue.js and React covering performance, ecosystem, learning curve, and job market to help you pick the right framework.",
+    date: "2025-01-20",
+    readTime: "11 min read",
+    tags: ["Vue", "React", "Frontend", "Frameworks"],
+    featured: true,
+  },
+  {
+    slug: "best-orms-nodejs-2025",
+    title: "Best ORMs for Node.js in 2025: Prisma vs Drizzle vs TypeORM",
+    description:
+      "Compare the top Node.js ORMs including Prisma, Drizzle, and TypeORM. Learn which ORM fits your project based on performance and type safety.",
+    date: "2025-01-18",
+    readTime: "10 min read",
+    tags: ["ORM", "Prisma", "Drizzle", "Node.js"],
+    featured: true,
+  },
+  {
+    slug: "serverless-database-guide",
+    title: "Serverless Databases in 2025: PlanetScale vs Neon vs Turso",
+    description:
+      "A comprehensive guide to serverless databases. Compare PlanetScale, Neon, Turso, and other options for your next serverless application.",
+    date: "2025-01-16",
+    readTime: "9 min read",
+    tags: ["Serverless", "Database", "PlanetScale", "Neon"],
+    featured: true,
+  },
+  {
     slug: "best-react-frameworks-2025",
     title: "Best React Frameworks in 2025: Next.js vs Remix vs Gatsby",
     description:
@@ -33,6 +63,26 @@ const blogPosts = [
     featured: true,
   },
   {
+    slug: "authentication-solutions-2025",
+    title: "Best Authentication Solutions in 2025: Clerk vs Auth0 vs NextAuth",
+    description:
+      "Compare top authentication providers including Clerk, Auth0, and NextAuth. Find the best auth solution for your web application.",
+    date: "2025-01-14",
+    readTime: "10 min read",
+    tags: ["Authentication", "Clerk", "Auth0", "Security"],
+    featured: true,
+  },
+  {
+    slug: "tailwind-vs-bootstrap-2025",
+    title: "Tailwind CSS vs Bootstrap in 2025: Which CSS Framework Wins?",
+    description:
+      "A comprehensive comparison of Tailwind CSS and Bootstrap. Learn which CSS framework is better for your project.",
+    date: "2025-01-12",
+    readTime: "8 min read",
+    tags: ["Tailwind CSS", "Bootstrap", "CSS", "Styling"],
+    featured: false,
+  },
+  {
     slug: "nextjs-vs-remix-comparison",
     title: "Next.js vs Remix: Which Should You Choose in 2025?",
     description:
@@ -40,7 +90,27 @@ const blogPosts = [
     date: "2025-01-10",
     readTime: "12 min read",
     tags: ["Next.js", "Remix", "Comparison"],
-    featured: true,
+    featured: false,
+  },
+  {
+    slug: "supabase-vs-firebase-2025",
+    title: "Supabase vs Firebase in 2025: The Complete Comparison",
+    description:
+      "Compare Supabase and Firebase for your next project. Detailed analysis of features, pricing, performance, and use cases.",
+    date: "2025-01-08",
+    readTime: "12 min read",
+    tags: ["Supabase", "Firebase", "BaaS", "Backend"],
+    featured: false,
+  },
+  {
+    slug: "frontend-framework-beginners-2025",
+    title: "Best Frontend Framework for Beginners in 2025",
+    description:
+      "New to web development? Learn which frontend framework is easiest to learn in 2025. Compare React, Vue, Svelte, and more.",
+    date: "2025-01-06",
+    readTime: "9 min read",
+    tags: ["Beginners", "Frontend", "React", "Vue"],
+    featured: false,
   },
   {
     slug: "choosing-database-for-startup",
@@ -50,7 +120,37 @@ const blogPosts = [
     date: "2025-01-05",
     readTime: "10 min read",
     tags: ["Database", "PostgreSQL", "MongoDB", "Startup"],
-    featured: true,
+    featured: false,
+  },
+  {
+    slug: "typescript-vs-javascript-2025",
+    title: "TypeScript vs JavaScript in 2025: Should You Make the Switch?",
+    description:
+      "Is TypeScript worth learning? Compare TypeScript and JavaScript to understand the benefits, trade-offs, and when to use each.",
+    date: "2025-01-04",
+    readTime: "8 min read",
+    tags: ["TypeScript", "JavaScript", "Programming"],
+    featured: false,
+  },
+  {
+    slug: "monorepo-tools-2025",
+    title: "Best Monorepo Tools in 2025: Turborepo vs Nx vs pnpm Workspaces",
+    description:
+      "Compare the top monorepo tools for JavaScript and TypeScript projects. Learn about Turborepo, Nx, pnpm workspaces, and when to use each.",
+    date: "2025-01-02",
+    readTime: "10 min read",
+    tags: ["Monorepo", "Turborepo", "Nx", "pnpm"],
+    featured: false,
+  },
+  {
+    slug: "api-design-rest-vs-graphql",
+    title: "REST vs GraphQL in 2025: Which API Design Should You Choose?",
+    description:
+      "Compare REST and GraphQL API architectures. Learn the pros, cons, and best use cases for each approach to build better APIs.",
+    date: "2024-12-30",
+    readTime: "11 min read",
+    tags: ["API", "REST", "GraphQL", "Backend"],
+    featured: false,
   },
   {
     slug: "ai-tools-for-developers",
@@ -70,7 +170,7 @@ const blogPosts = [
     date: "2024-12-20",
     readTime: "15 min read",
     tags: ["SaaS", "Tech Stack", "Full Stack"],
-    featured: true,
+    featured: false,
   },
 ];
 

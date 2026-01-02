@@ -20,7 +20,11 @@ import {
   X,
   Star,
   Zap,
-  Crown
+  Crown,
+  Flame,
+  Shield,
+  Target,
+  Gift
 } from "lucide-react";
 
 interface RoguelikeModeProps {
@@ -55,18 +59,26 @@ export function RoguelikeMode({ userId, className }: RoguelikeModeProps) {
           <p className="text-[#3b82f6] text-[10px] mb-4">
             Navigate through project challenges. Pick the right tools or lose HP!
           </p>
-          <div className="flex justify-center gap-4 mb-4">
-            <div className="text-center">
-              <Heart className="w-6 h-6 mx-auto text-red-400 mb-1" />
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Heart className="w-5 h-5 mx-auto text-red-400 mb-1" />
               <p className="text-[#3b82f6] text-[8px]">3 LIVES</p>
             </div>
-            <div className="text-center">
-              <Star className="w-6 h-6 mx-auto text-yellow-400 mb-1" />
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Star className="w-5 h-5 mx-auto text-yellow-400 mb-1" />
               <p className="text-[#3b82f6] text-[8px]">10 ROOMS</p>
             </div>
-            <div className="text-center">
-              <Zap className="w-6 h-6 mx-auto text-purple-400 mb-1" />
-              <p className="text-[#3b82f6] text-[8px]">SCORE XP</p>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Zap className="w-5 h-5 mx-auto text-purple-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">EARN XP</p>
+            </div>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Flame className="w-5 h-5 mx-auto text-orange-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">STREAK BONUS</p>
+            </div>
+            <div className="text-center border border-[#1e3a5f] p-2">
+              <Gift className="w-5 h-5 mx-auto text-green-400 mb-1" />
+              <p className="text-[#3b82f6] text-[8px]">POWER-UPS</p>
             </div>
           </div>
           <PixelButton onClick={handleStartRun}>

@@ -15,7 +15,10 @@ import {
   TrendingDown,
   Minus,
   History,
-  Medal
+  Medal,
+  Flame,
+  Zap,
+  Target
 } from "lucide-react";
 
 interface BattleHistoryProps {
@@ -46,6 +49,16 @@ export function BattleHistory({ userId, className }: BattleHistoryProps) {
 
   const wins = battleHistory.filter((b) => b.winner).length;
   const total = battleHistory.length;
+  const winRate = total > 0 ? Math.round((wins / total) * 100) : 0;
+
+  let currentStreak = 0;
+  for (const battle of battleHistory) {
+    if (battle.winner) {
+      currentStreak++;
+    } else {
+      break;
+    }
+  }
 
   return (
     <div className={cn("space-y-4", className)}>
@@ -54,9 +67,16 @@ export function BattleHistory({ userId, className }: BattleHistoryProps) {
           <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
             <History className="w-4 h-4" /> BATTLE HISTORY
           </h2>
-          <PixelBadge variant="default">
-            {wins} WINS / {total} BATTLES
-          </PixelBadge>
+          <div className="flex items-center gap-2">
+            {currentStreak >= 3 && (
+              <PixelBadge variant="default" className="text-[6px] bg-orange-400 text-black">
+                <Flame className="w-2 h-2 mr-1" /> {currentStreak} STREAK
+              </PixelBadge>
+            )}
+            <PixelBadge variant="default">
+              {wins}W / {total - wins}L ({winRate}%)
+            </PixelBadge>
+          </div>
         </div>
 
         <div className="space-y-2">

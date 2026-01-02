@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
@@ -8,6 +8,7 @@ import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, Pixel
 import { PixelInput } from "@/components/pixel-input";
 import { PixelBadge } from "@/components/pixel-badge";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { 
   Search, 
   Swords, 
@@ -26,11 +27,40 @@ import { useTheme } from "@/components/providers/theme-provider";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const categories = useQuery(api.categories.list);
   const featuredTools = useQuery(api.tools.featured);
+  const searchResults = useQuery(
+    api.tools.search,
+    searchQuery.length > 1 ? { query: searchQuery } : "skip"
+  );
   const seedDatabase = useMutation(api.seed.seedDatabase);
   const [isSeeding, setIsSeeding] = useState(false);
   const { colors } = useTheme();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowSearchResults(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      router.push(`/tools?search=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   const handleSeed = async () => {
     setIsSeeding(true);
@@ -78,15 +108,51 @@ export default function Home() {
           </p>
 
           {/* Search Box */}
-          <div className="max-w-2xl mx-auto mb-8">
+          <div className="max-w-2xl mx-auto mb-8" ref={searchRef}>
             <div className="flex gap-4 flex-col sm:flex-row">
-              <PixelInput
-                placeholder="DESCRIBE YOUR PROJECT..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1"
-              />
-              <PixelButton size="lg">
+              <div className="relative flex-1">
+                <PixelInput
+                  placeholder="SEARCH TOOLS..."
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowSearchResults(true);
+                  }}
+                  onFocus={() => setShowSearchResults(true)}
+                  onKeyDown={handleKeyDown}
+                  className="w-full"
+                />
+                {showSearchResults && searchResults && searchResults.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-2 z-50 border-4 border-[#1e3a5f] bg-[#0a1628] max-h-64 overflow-y-auto">
+                    {searchResults.slice(0, 6).map((tool) => (
+                      <Link
+                        key={tool._id}
+                        href={`/tools/${tool.slug}`}
+                        onClick={() => setShowSearchResults(false)}
+                        className="block p-3 hover:bg-[#1e3a5f] transition-colors border-b border-[#1e3a5f] last:border-b-0"
+                      >
+                        <p className="text-[#60a5fa] text-[10px]">{tool.name}</p>
+                        <p className="text-[#3b82f6] text-[8px]">{tool.tagline}</p>
+                      </Link>
+                    ))}
+                    {searchResults.length > 6 && (
+                      <Link
+                        href={`/tools?search=${encodeURIComponent(searchQuery)}`}
+                        onClick={() => setShowSearchResults(false)}
+                        className="block p-3 text-center hover:bg-[#1e3a5f] transition-colors"
+                      >
+                        <p className="text-[#3b82f6] text-[8px]">VIEW ALL {searchResults.length} RESULTS</p>
+                      </Link>
+                    )}
+                  </div>
+                )}
+                {showSearchResults && searchQuery.length > 1 && searchResults && searchResults.length === 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-2 z-50 border-4 border-[#1e3a5f] bg-[#0a1628] p-4 text-center">
+                    <p className="text-[#3b82f6] text-[8px]">NO TOOLS FOUND</p>
+                  </div>
+                )}
+              </div>
+              <PixelButton size="lg" onClick={handleSearch}>
                 <Search className="w-4 h-4 mr-2" />
                 SEARCH
               </PixelButton>

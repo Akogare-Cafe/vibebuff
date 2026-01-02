@@ -22,7 +22,10 @@ import {
   Github,
   Globe,
   Search,
-  ChevronRight
+  ChevronRight,
+  TrendingUp,
+  Eye,
+  Sparkles
 } from "lucide-react";
 import { Id } from "../../../convex/_generated/dataModel";
 
@@ -56,6 +59,8 @@ function ComparePageContent() {
     api.tools.search,
     searchQuery.length > 2 ? { query: searchQuery } : "skip"
   );
+
+  const popularComparisons = useQuery(api.seo.getPopularComparisons, { limit: 8 });
 
   const handleAddTool = (slug: string) => {
     if (!selectedSlugs.includes(slug) && selectedSlugs.length < 4) {
@@ -363,6 +368,60 @@ function ComparePageContent() {
               </PixelButton>
             </Link>
           </PixelCard>
+        )}
+
+        {/* Popular AI-Generated Comparisons */}
+        {popularComparisons && popularComparisons.length > 0 && (
+          <div className="mt-12">
+            <div className="text-center mb-6">
+              <h2 className="text-[#60a5fa] text-sm mb-2 flex items-center justify-center gap-2">
+                <Sparkles className="w-4 h-4" /> AI-GENERATED COMPARISONS
+              </h2>
+              <p className="text-[#3b82f6] text-[10px]">
+                IN-DEPTH TOOL COMPARISONS POWERED BY AI
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {popularComparisons.map((comparison) => (
+                <Link
+                  key={comparison._id}
+                  href={`/compare/${comparison.slug}`}
+                  className="block"
+                >
+                  <PixelCard className="h-full hover:border-[#3b82f6] transition-colors">
+                    <PixelCardContent className="p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <PixelBadge variant="outline" className="text-[6px]">
+                          <Eye className="w-2 h-2 mr-1" />
+                          {comparison.views}
+                        </PixelBadge>
+                        <TrendingUp className="w-3 h-3 text-[#60a5fa]" />
+                      </div>
+                      <p className="text-[#60a5fa] text-[10px] mb-1">
+                        {comparison.tool1?.name} vs {comparison.tool2?.name}
+                      </p>
+                      <p className="text-[#3b82f6] text-[8px] line-clamp-2">
+                        {comparison.metaDescription}
+                      </p>
+                      <div className="mt-2 flex items-center text-[#3b82f6] text-[8px]">
+                        <span>READ COMPARISON</span>
+                        <ChevronRight className="w-2 h-2 ml-1" />
+                      </div>
+                    </PixelCardContent>
+                  </PixelCard>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-6">
+              <Link href="/seo">
+                <PixelButton variant="outline">
+                  <Sparkles className="w-4 h-4 mr-2" /> VIEW ALL COMPARISONS
+                </PixelButton>
+              </Link>
+            </div>
+          </div>
         )}
       </section>
     </div>

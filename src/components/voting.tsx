@@ -17,7 +17,10 @@ import {
   Check,
   ChevronRight,
   Calendar,
-  Medal
+  Medal,
+  Zap,
+  Clock,
+  TrendingUp
 } from "lucide-react";
 import { DynamicIcon } from "./dynamic-icon";
 
@@ -178,9 +181,12 @@ function VotingCard({ period, userId }: VotingCardProps) {
       {/* Vote Action */}
       {userId ? (
         hasVoted ? (
-          <div className="text-center">
-            <PixelBadge variant="outline" className="text-[8px]">
+          <div className="text-center space-y-2">
+            <PixelBadge variant="outline" className="text-[8px] text-green-400 border-green-400">
               <Check className="w-3 h-3 mr-1" /> VOTE CAST
+            </PixelBadge>
+            <PixelBadge variant="default" className="text-[6px] bg-green-400 text-black">
+              <Zap className="w-2 h-2 mr-1" /> +10 XP EARNED
             </PixelBadge>
           </div>
         ) : (

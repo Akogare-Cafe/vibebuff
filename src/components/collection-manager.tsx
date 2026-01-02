@@ -20,7 +20,10 @@ import {
   List,
   Check,
   Crown,
-  Gem
+  Gem,
+  Trophy,
+  Target,
+  Zap
 } from "lucide-react";
 
 interface CollectionManagerProps {
@@ -195,6 +198,42 @@ export function CollectionManager({ userId, className }: CollectionManagerProps)
         </div>
       )}
 
+      <PixelCard className="p-4">
+        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+          <Trophy className="w-4 h-4" /> COLLECTION MILESTONES
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <MilestoneCard 
+            target={10} 
+            current={stats.collected} 
+            label="Starter" 
+            reward={50} 
+            icon={<Star className="w-4 h-4" />}
+          />
+          <MilestoneCard 
+            target={25} 
+            current={stats.collected} 
+            label="Collector" 
+            reward={150} 
+            icon={<Package className="w-4 h-4" />}
+          />
+          <MilestoneCard 
+            target={50} 
+            current={stats.collected} 
+            label="Enthusiast" 
+            reward={300} 
+            icon={<Gem className="w-4 h-4" />}
+          />
+          <MilestoneCard 
+            target={100} 
+            current={stats.collected} 
+            label="Master" 
+            reward={1000} 
+            icon={<Crown className="w-4 h-4" />}
+          />
+        </div>
+      </PixelCard>
+
       {stats.byCategory.length > 0 && (
         <PixelCard className="p-4">
           <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
@@ -296,6 +335,51 @@ function CollectionCard({ item, onMarkSeen }: CollectionItemProps) {
         </PixelBadge>
       </PixelCard>
     </Link>
+  );
+}
+
+interface MilestoneCardProps {
+  target: number;
+  current: number;
+  label: string;
+  reward: number;
+  icon: React.ReactNode;
+}
+
+function MilestoneCard({ target, current, label, reward, icon }: MilestoneCardProps) {
+  const isComplete = current >= target;
+  const progress = Math.min(100, (current / target) * 100);
+
+  return (
+    <div 
+      className={cn(
+        "border-2 p-3 text-center",
+        isComplete ? "border-green-400 bg-green-400/10" : "border-[#1e3a5f] bg-[#0a1628]"
+      )}
+    >
+      <div className={cn("mb-2", isComplete ? "text-green-400" : "text-[#3b82f6]")}>
+        {icon}
+      </div>
+      <p className={cn("text-[10px] mb-1", isComplete ? "text-green-400" : "text-[#60a5fa]")}>
+        {label}
+      </p>
+      <p className="text-[#3b82f6] text-[8px] mb-2">{target} Tools</p>
+      
+      <div className="h-1 bg-[#0a1628] border border-[#1e3a5f] mb-2">
+        <div 
+          className={cn("h-full transition-all", isComplete ? "bg-green-400" : "bg-[#3b82f6]")}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      
+      <PixelBadge 
+        variant={isComplete ? "default" : "outline"} 
+        className={cn("text-[6px]", isComplete ? "bg-green-400 text-black" : "")}
+      >
+        {isComplete ? <Check className="w-2 h-2 mr-1" /> : <Zap className="w-2 h-2 mr-1" />}
+        +{reward} XP
+      </PixelBadge>
+    </div>
   );
 }
 

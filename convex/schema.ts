@@ -1754,9 +1754,42 @@ export default defineSchema({
     content: v.string(),
     createdAt: v.number(),
     expiresAt: v.number(),
+    messageType: v.optional(v.union(
+      v.literal("message"),
+      v.literal("announcement"),
+      v.literal("system")
+    )),
+    replyToId: v.optional(v.id("globalChatMessages")),
+    replyToUsername: v.optional(v.string()),
+    replyToContent: v.optional(v.string()),
+    reactions: v.optional(v.array(v.object({
+      emoji: v.string(),
+      userIds: v.array(v.string()),
+    }))),
+    isDeleted: v.optional(v.boolean()),
+    userLevel: v.optional(v.number()),
+    userBadges: v.optional(v.array(v.string())),
   })
     .index("by_created", ["createdAt"])
     .index("by_expires", ["expiresAt"]),
+
+  chatSettings: defineTable({
+    slowModeSeconds: v.number(),
+    isSlowModeEnabled: v.boolean(),
+    subscriberOnlyMode: v.boolean(),
+    emoteOnlyMode: v.boolean(),
+    minLevelToChat: v.number(),
+    updatedAt: v.number(),
+    updatedBy: v.optional(v.string()),
+  }),
+
+  chatUserState: defineTable({
+    oderId: v.string(),
+    lastMessageAt: v.number(),
+    isMuted: v.boolean(),
+    mutedUntil: v.optional(v.number()),
+    messageCount: v.number(),
+  }).index("by_user", ["oderId"]),
 
   userStreaks: defineTable({
     userId: v.string(),
@@ -1775,4 +1808,559 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_user_timestamp", ["userId", "timestamp"]),
+
+  // ============================================
+  // NEW FEATURE 31: Daily Spin Wheel
+  // ============================================
+  spinWheelRewards: defineTable({
+    slug: v.string(),
+    name: v.string(),
+    description: v.string(),
+    rewardType: v.union(
+      v.literal("xp"),
+      v.literal("pack"),
+      v.literal("tool_reveal"),
+      v.literal("title"),
+      v.literal("badge"),
+      v.literal("multiplier"),
+      v.literal("nothing")
+    ),
+    rewardValue: v.number(),
+    rewardMeta: v.optional(v.string()),
+    weight: v.number(),
+    rarity: v.union(v.literal("common"), v.literal("uncommon"), v.literal("rare"), v.literal("legendary")),
+    isActive: v.boolean(),
+  }).index("by_slug", ["slug"]),
+
+  userSpins: defineTable({
+    userId: v.string(),
+    rewardId: v.id("spinWheelRewards"),
+    rewardType: v.string(),
+    rewardValue: v.number(),
+    spunAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_date", ["userId", "spunAt"]),
+
+  // ============================================
+  // NEW FEATURE 32: Tool Bounty Hunts
+  // ============================================
+  bountyHunts: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    targetToolId: v.id("tools"),
+    huntType: v.union(
+      v.literal("find_and_battle"),
+      v.literal("add_to_deck"),
+      v.literal("review"),
+      v.literal("compare"),
+      v.literal("master")
+    ),
+    requirement: v.object({
+      action: v.string(),
+      count: v.number(),
+    }),
+    rewards: v.object({
+      xp: v.number(),
+      bonusTitle: v.optional(v.string()),
+      bonusBadge: v.optional(v.string()),
+    }),
+    maxHunters: v.number(),
+    currentHunters: v.number(),
+    expiresAt: v.number(),
+    difficulty: v.union(v.literal("easy"), v.literal("medium"), v.literal("hard"), v.literal("legendary")),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_tool", ["targetToolId"])
+    .index("by_active", ["isActive"]),
+
+  bountyHunters: defineTable({
+    bountyId: v.id("bountyHunts"),
+    userId: v.string(),
+    progress: v.number(),
+    status: v.union(v.literal("hunting"), v.literal("completed"), v.literal("claimed"), v.literal("expired")),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_bounty", ["bountyId"])
+    .index("by_user", ["userId"])
+    .index("by_user_bounty", ["userId", "bountyId"]),
+
+  // ============================================
+  // NEW FEATURE 33: Combo Chains
+  // ============================================
+  comboChains: defineTable({
+    userId: v.string(),
+    chainType: v.union(
+      v.literal("battle_win"),
+      v.literal("deck_create"),
+      v.literal("tool_view"),
+      v.literal("review_write"),
+      v.literal("daily_login")
+    ),
+    currentCount: v.number(),
+    multiplier: v.number(),
+    lastActionAt: v.number(),
+    expiresAt: v.number(),
+    bestChain: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_type", ["userId", "chainType"]),
+
+  comboHistory: defineTable({
+    userId: v.string(),
+    chainType: v.string(),
+    chainLength: v.number(),
+    totalXpEarned: v.number(),
+    brokenAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_length", ["chainLength"]),
+
+  // ============================================
+  // NEW FEATURE 34: Prestige System
+  // ============================================
+  userPrestige: defineTable({
+    userId: v.string(),
+    prestigeLevel: v.number(),
+    prestigeTier: v.union(
+      v.literal("none"),
+      v.literal("bronze"),
+      v.literal("silver"),
+      v.literal("gold"),
+      v.literal("platinum"),
+      v.literal("diamond"),
+      v.literal("master")
+    ),
+    totalXpEarned: v.number(),
+    permanentBonuses: v.object({
+      xpMultiplier: v.number(),
+      packLuckBonus: v.number(),
+      battleStatBonus: v.number(),
+      dailySpinBonus: v.number(),
+    }),
+    prestigedAt: v.optional(v.number()),
+    timesPrestiged: v.number(),
+  }).index("by_user", ["userId"]),
+
+  prestigeRewards: defineTable({
+    level: v.number(),
+    tier: v.string(),
+    rewardType: v.union(
+      v.literal("xp_multiplier"),
+      v.literal("pack_luck"),
+      v.literal("battle_bonus"),
+      v.literal("exclusive_title"),
+      v.literal("exclusive_frame"),
+      v.literal("spin_bonus")
+    ),
+    rewardValue: v.number(),
+    rewardMeta: v.optional(v.string()),
+  }).index("by_level", ["level"]),
+
+  // ============================================
+  // NEW FEATURE 35: Tool Whispers (AI Hints)
+  // ============================================
+  toolWhispers: defineTable({
+    toolId: v.id("tools"),
+    whisperType: v.union(
+      v.literal("pro_tip"),
+      v.literal("hidden_feature"),
+      v.literal("gotcha"),
+      v.literal("best_practice"),
+      v.literal("performance_tip"),
+      v.literal("cost_saving")
+    ),
+    content: v.string(),
+    source: v.optional(v.string()),
+    upvotes: v.number(),
+    isVerified: v.boolean(),
+    createdBy: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_tool", ["toolId"])
+    .index("by_type", ["whisperType"]),
+
+  whisperUnlocks: defineTable({
+    userId: v.string(),
+    toolId: v.id("tools"),
+    unlockedWhisperIds: v.array(v.id("toolWhispers")),
+    unlockedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_tool", ["userId", "toolId"]),
+
+  // ============================================
+  // NEW FEATURE 36: Stack Contracts
+  // ============================================
+  stackContracts: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    clientName: v.string(),
+    clientAvatar: v.optional(v.string()),
+    contractType: v.union(v.literal("daily"), v.literal("weekly"), v.literal("special")),
+    requirements: v.object({
+      projectType: v.string(),
+      maxBudget: v.optional(v.number()),
+      minTools: v.optional(v.number()),
+      maxTools: v.optional(v.number()),
+      requiredCategories: v.array(v.string()),
+      bannedCategories: v.optional(v.array(v.string())),
+      mustIncludeToolIds: v.optional(v.array(v.id("tools"))),
+    }),
+    rewards: v.object({
+      xp: v.number(),
+      coins: v.optional(v.number()),
+      bonusTitle: v.optional(v.string()),
+    }),
+    difficulty: v.union(v.literal("easy"), v.literal("medium"), v.literal("hard"), v.literal("expert")),
+    expiresAt: v.number(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_type", ["contractType"])
+    .index("by_active", ["isActive"]),
+
+  contractSubmissions: defineTable({
+    contractId: v.id("stackContracts"),
+    userId: v.string(),
+    toolIds: v.array(v.id("tools")),
+    totalCost: v.number(),
+    score: v.number(),
+    feedback: v.optional(v.string()),
+    status: v.union(v.literal("pending"), v.literal("approved"), v.literal("rejected")),
+    submittedAt: v.number(),
+    reviewedAt: v.optional(v.number()),
+  })
+    .index("by_contract", ["contractId"])
+    .index("by_user", ["userId"]),
+
+  // ============================================
+  // NEW FEATURE 37: Tool Affinity System
+  // ============================================
+  userToolAffinity: defineTable({
+    userId: v.string(),
+    toolId: v.id("tools"),
+    affinityLevel: v.union(
+      v.literal("stranger"),
+      v.literal("acquaintance"),
+      v.literal("friend"),
+      v.literal("companion"),
+      v.literal("soulmate")
+    ),
+    affinityPoints: v.number(),
+    interactions: v.object({
+      views: v.number(),
+      deckAdds: v.number(),
+      battleWins: v.number(),
+      reviews: v.number(),
+      recommendations: v.number(),
+    }),
+    unlockedPerks: v.array(v.string()),
+    firstInteractionAt: v.number(),
+    lastInteractionAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_tool", ["userId", "toolId"])
+    .index("by_affinity", ["affinityLevel"]),
+
+  affinityPerks: defineTable({
+    toolId: v.id("tools"),
+    level: v.string(),
+    perkType: v.union(
+      v.literal("stat_boost"),
+      v.literal("xp_bonus"),
+      v.literal("exclusive_whisper"),
+      v.literal("battle_ability"),
+      v.literal("cosmetic")
+    ),
+    perkValue: v.string(),
+    description: v.string(),
+  })
+    .index("by_tool", ["toolId"])
+    .index("by_level", ["level"]),
+
+  // ============================================
+  // NEW FEATURE 38: Leaderboard Seasons
+  // ============================================
+  leaderboardSeasons: defineTable({
+    slug: v.string(),
+    name: v.string(),
+    description: v.string(),
+    startDate: v.number(),
+    endDate: v.number(),
+    leaderboardType: v.union(
+      v.literal("xp"),
+      v.literal("battles"),
+      v.literal("decks"),
+      v.literal("reviews"),
+      v.literal("speedruns"),
+      v.literal("predictions")
+    ),
+    rewards: v.array(v.object({
+      rank: v.number(),
+      rewardType: v.string(),
+      rewardValue: v.string(),
+    })),
+    isActive: v.boolean(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_active", ["isActive"]),
+
+  seasonalRankings: defineTable({
+    seasonId: v.id("leaderboardSeasons"),
+    userId: v.string(),
+    score: v.number(),
+    rank: v.number(),
+    previousRank: v.optional(v.number()),
+    updatedAt: v.number(),
+  })
+    .index("by_season", ["seasonId"])
+    .index("by_season_score", ["seasonId", "score"])
+    .index("by_user", ["userId"]),
+
+  // ============================================
+  // NEW FEATURE 39: Tool Nomination System
+  // ============================================
+  toolNominations: defineTable({
+    name: v.string(),
+    websiteUrl: v.string(),
+    githubUrl: v.optional(v.string()),
+    categorySlug: v.string(),
+    description: v.string(),
+    whyAdd: v.string(),
+    nominatedBy: v.string(),
+    upvotes: v.number(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("under_review"),
+      v.literal("approved"),
+      v.literal("rejected"),
+      v.literal("added")
+    ),
+    reviewNotes: v.optional(v.string()),
+    addedToolId: v.optional(v.id("tools")),
+    createdAt: v.number(),
+    reviewedAt: v.optional(v.number()),
+  })
+    .index("by_status", ["status"])
+    .index("by_user", ["nominatedBy"])
+    .index("by_upvotes", ["upvotes"]),
+
+  nominationVotes: defineTable({
+    nominationId: v.id("toolNominations"),
+    userId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_nomination", ["nominationId"])
+    .index("by_user", ["userId"]),
+
+  // ============================================
+  // NEW FEATURE 40: Global Events & Raids
+  // ============================================
+  globalRaids: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    bossName: v.string(),
+    bossHp: v.number(),
+    currentHp: v.number(),
+    bossStats: v.object({
+      attack: v.number(),
+      defense: v.number(),
+      speed: v.number(),
+    }),
+    targetToolCategory: v.optional(v.string()),
+    participantCount: v.number(),
+    totalDamageDealt: v.number(),
+    rewards: v.object({
+      participationXp: v.number(),
+      victoryXp: v.number(),
+      topDamagerTitle: v.optional(v.string()),
+    }),
+    status: v.union(v.literal("upcoming"), v.literal("active"), v.literal("victory"), v.literal("defeat")),
+    startsAt: v.number(),
+    endsAt: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_status", ["status"]),
+
+  raidParticipants: defineTable({
+    raidId: v.id("globalRaids"),
+    userId: v.string(),
+    damageDealt: v.number(),
+    attackCount: v.number(),
+    bestAttack: v.number(),
+    toolsUsed: v.array(v.id("tools")),
+    joinedAt: v.number(),
+    lastAttackAt: v.number(),
+  })
+    .index("by_raid", ["raidId"])
+    .index("by_user", ["userId"])
+    .index("by_damage", ["raidId", "damageDealt"]),
+
+  // ============================================
+  // AI SEO SYSTEM
+  // ============================================
+  seoMetadata: defineTable({
+    entityType: v.union(
+      v.literal("tool"),
+      v.literal("comparison"),
+      v.literal("category"),
+      v.literal("blog")
+    ),
+    entityId: v.string(),
+    slug: v.string(),
+    title: v.string(),
+    metaDescription: v.string(),
+    keywords: v.array(v.string()),
+    ogTitle: v.optional(v.string()),
+    ogDescription: v.optional(v.string()),
+    canonicalUrl: v.optional(v.string()),
+    structuredData: v.optional(v.string()),
+    generatedAt: v.number(),
+    lastUpdated: v.number(),
+    isAiGenerated: v.boolean(),
+  })
+    .index("by_entity", ["entityType", "entityId"])
+    .index("by_slug", ["slug"]),
+
+  seoFaqs: defineTable({
+    entityType: v.union(
+      v.literal("tool"),
+      v.literal("comparison"),
+      v.literal("category")
+    ),
+    entityId: v.string(),
+    question: v.string(),
+    answer: v.string(),
+    sortOrder: v.number(),
+    isAiGenerated: v.boolean(),
+    generatedAt: v.number(),
+  })
+    .index("by_entity", ["entityType", "entityId"]),
+
+  seoComparisons: defineTable({
+    tool1Slug: v.string(),
+    tool2Slug: v.string(),
+    slug: v.string(),
+    title: v.string(),
+    metaDescription: v.string(),
+    introduction: v.string(),
+    tool1Summary: v.string(),
+    tool2Summary: v.string(),
+    comparisonPoints: v.array(v.object({
+      category: v.string(),
+      tool1Score: v.number(),
+      tool2Score: v.number(),
+      tool1Reason: v.string(),
+      tool2Reason: v.string(),
+    })),
+    verdict: v.string(),
+    useCaseRecommendations: v.array(v.object({
+      useCase: v.string(),
+      recommendedTool: v.string(),
+      reason: v.string(),
+    })),
+    faqs: v.array(v.object({
+      question: v.string(),
+      answer: v.string(),
+    })),
+    generatedAt: v.number(),
+    lastUpdated: v.number(),
+    views: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_tools", ["tool1Slug", "tool2Slug"])
+    .index("by_views", ["views"]),
+
+  seoBlogOutlines: defineTable({
+    targetKeyword: v.string(),
+    title: v.string(),
+    slug: v.string(),
+    outline: v.array(v.object({
+      heading: v.string(),
+      subheadings: v.array(v.string()),
+      keyPoints: v.array(v.string()),
+    })),
+    suggestedInternalLinks: v.array(v.object({
+      anchorText: v.string(),
+      targetUrl: v.string(),
+    })),
+    estimatedWordCount: v.number(),
+    difficulty: v.union(v.literal("easy"), v.literal("medium"), v.literal("hard")),
+    status: v.union(v.literal("draft"), v.literal("approved"), v.literal("published")),
+    generatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_status", ["status"])
+    .index("by_keyword", ["targetKeyword"]),
+
+  seoKeywordClusters: defineTable({
+    primaryKeyword: v.string(),
+    relatedKeywords: v.array(v.object({
+      keyword: v.string(),
+      searchVolume: v.optional(v.number()),
+      difficulty: v.optional(v.number()),
+      relevanceScore: v.number(),
+    })),
+    suggestedContent: v.array(v.object({
+      title: v.string(),
+      contentType: v.union(v.literal("blog"), v.literal("comparison"), v.literal("guide"), v.literal("faq")),
+      targetKeywords: v.array(v.string()),
+    })),
+    toolIds: v.optional(v.array(v.id("tools"))),
+    generatedAt: v.number(),
+  })
+    .index("by_keyword", ["primaryKeyword"]),
+
+  seoContentScores: defineTable({
+    contentType: v.union(v.literal("blog"), v.literal("tool"), v.literal("comparison")),
+    contentId: v.string(),
+    overallScore: v.number(),
+    keywordScore: v.number(),
+    readabilityScore: v.number(),
+    structureScore: v.number(),
+    internalLinkScore: v.number(),
+    suggestions: v.array(v.object({
+      type: v.string(),
+      priority: v.union(v.literal("high"), v.literal("medium"), v.literal("low")),
+      suggestion: v.string(),
+    })),
+    analyzedAt: v.number(),
+  })
+    .index("by_content", ["contentType", "contentId"])
+    .index("by_score", ["overallScore"]),
+
+  seoAltTexts: defineTable({
+    imageUrl: v.string(),
+    altText: v.string(),
+    context: v.optional(v.string()),
+    toolId: v.optional(v.id("tools")),
+    generatedAt: v.number(),
+  })
+    .index("by_image", ["imageUrl"])
+    .index("by_tool", ["toolId"]),
+
+  usageTracking: defineTable({
+    identifier: v.string(),
+    userId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
+    action: v.string(),
+    metadata: v.optional(v.object({
+      toolId: v.optional(v.string()),
+      deckId: v.optional(v.string()),
+      projectType: v.optional(v.string()),
+    })),
+    timestamp: v.number(),
+  })
+    .index("by_identifier", ["identifier"])
+    .index("by_action", ["action"])
+    .index("by_timestamp", ["timestamp"]),
 });

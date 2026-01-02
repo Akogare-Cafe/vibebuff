@@ -18,7 +18,11 @@ import {
   Star,
   TrendingUp,
   Medal,
-  Zap
+  Zap,
+  Flame,
+  Calendar,
+  Package,
+  Gift
 } from "lucide-react";
 
 interface PlayerStatsProps {
@@ -140,7 +144,7 @@ export function PlayerStats({ userId, className }: PlayerStatsProps) {
         </div>
       </PixelCard>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <PixelCard className="p-4">
           <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
             <TrendingUp className="w-4 h-4" /> BATTLE RECORD
@@ -168,6 +172,41 @@ export function PlayerStats({ userId, className }: PlayerStatsProps) {
                 style={{ width: `${100 - winRate}%` }}
               />
             </div>
+          </div>
+        </PixelCard>
+
+        <PixelCard className="p-4">
+          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+            <Calendar className="w-4 h-4" /> DAILY PROGRESS
+          </h3>
+          <div className="space-y-3">
+            <Link href="/play?tab=daily" className="block">
+              <div className="flex items-center justify-between p-2 border border-[#1e3a5f] hover:border-orange-400 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Flame className="w-4 h-4 text-orange-400" />
+                  <span className="text-[#60a5fa] text-[10px]">Daily Login</span>
+                </div>
+                <Gift className="w-4 h-4 text-yellow-400" />
+              </div>
+            </Link>
+            <Link href="/play?tab=packs" className="block">
+              <div className="flex items-center justify-between p-2 border border-[#1e3a5f] hover:border-[#3b82f6] transition-colors">
+                <div className="flex items-center gap-2">
+                  <Package className="w-4 h-4 text-[#3b82f6]" />
+                  <span className="text-[#60a5fa] text-[10px]">Open Packs</span>
+                </div>
+                <span className="text-[#3b82f6] text-[8px]">FREE</span>
+              </div>
+            </Link>
+            <Link href="/play?tab=challenges" className="block">
+              <div className="flex items-center justify-between p-2 border border-[#1e3a5f] hover:border-[#3b82f6] transition-colors">
+                <div className="flex items-center gap-2">
+                  <Target className="w-4 h-4 text-green-400" />
+                  <span className="text-[#60a5fa] text-[10px]">Challenges</span>
+                </div>
+                <span className="text-green-400 text-[8px]">+XP</span>
+              </div>
+            </Link>
           </div>
         </PixelCard>
 

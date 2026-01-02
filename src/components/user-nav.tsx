@@ -1,29 +1,24 @@
 "use client";
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { PixelButton } from "./pixel-button";
 import { User } from "lucide-react";
+import Link from "next/link";
+import { UserMenu } from "./auth/user-menu";
 
 export function UserNav() {
   return (
     <>
       <SignedOut>
-        <SignInButton mode="modal">
+        <Link href="/sign-in">
           <PixelButton variant="outline" size="sm">
             <User className="w-3 h-3 mr-1" />
             LOGIN
           </PixelButton>
-        </SignInButton>
+        </Link>
       </SignedOut>
       <SignedIn>
-        <UserButton 
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: "w-8 h-8 border-2 border-[#3b82f6]",
-            },
-          }}
-        />
+        <UserMenu />
       </SignedIn>
     </>
   );

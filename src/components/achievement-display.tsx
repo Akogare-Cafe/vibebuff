@@ -5,7 +5,7 @@ import { api } from "../../convex/_generated/api";
 import { PixelCard } from "./pixel-card";
 import { PixelBadge } from "./pixel-badge";
 import { cn } from "@/lib/utils";
-import { Trophy, Lock, Star, Map, Layers, Users, Swords, X } from "lucide-react";
+import { Trophy, Lock, Star, Map, Layers, Users, Swords, X, Zap, Target } from "lucide-react";
 import { DynamicIcon } from "./dynamic-icon";
 
 interface AchievementDisplayProps {
@@ -59,14 +59,42 @@ export function AchievementDisplay({ userId, showAll = false, className }: Achie
   return (
     <div className={cn("space-y-6", className)}>
       {/* Summary */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
-          <Trophy className="w-4 h-4" /> ACHIEVEMENTS
-        </h2>
-        <PixelBadge variant="default">
-          {userAchievements?.length || 0} / {allAchievements.length}
-        </PixelBadge>
-      </div>
+      <PixelCard className="p-4 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+            <Trophy className="w-4 h-4" /> ACHIEVEMENTS
+          </h2>
+          <PixelBadge variant="default">
+            {userAchievements?.length || 0} / {allAchievements.length}
+          </PixelBadge>
+        </div>
+        
+        <div className="h-3 bg-[#0a1628] border border-[#1e3a5f] mb-2">
+          <div 
+            className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500"
+            style={{ width: `${((userAchievements?.length || 0) / allAchievements.length) * 100}%` }}
+          />
+        </div>
+        
+        <div className="grid grid-cols-4 gap-2 text-center">
+          <div className="border border-[#1e3a5f] p-2">
+            <p className="text-yellow-400 text-lg">{allAchievements.filter(a => a.rarity === "legendary" && unlockedIds.has(a._id)).length}</p>
+            <p className="text-[#3b82f6] text-[6px]">LEGENDARY</p>
+          </div>
+          <div className="border border-[#1e3a5f] p-2">
+            <p className="text-purple-400 text-lg">{allAchievements.filter(a => a.rarity === "rare" && unlockedIds.has(a._id)).length}</p>
+            <p className="text-[#3b82f6] text-[6px]">RARE</p>
+          </div>
+          <div className="border border-[#1e3a5f] p-2">
+            <p className="text-blue-400 text-lg">{allAchievements.filter(a => a.rarity === "uncommon" && unlockedIds.has(a._id)).length}</p>
+            <p className="text-[#3b82f6] text-[6px]">UNCOMMON</p>
+          </div>
+          <div className="border border-[#1e3a5f] p-2">
+            <p className="text-[#60a5fa] text-lg">{allAchievements.filter(a => a.rarity === "common" && unlockedIds.has(a._id)).length}</p>
+            <p className="text-[#3b82f6] text-[6px]">COMMON</p>
+          </div>
+        </div>
+      </PixelCard>
 
       {/* Categories */}
       {Object.entries(groupedByCategory).map(([category, achievements]) => (

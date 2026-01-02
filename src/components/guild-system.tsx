@@ -20,7 +20,10 @@ import {
   Star,
   LogOut,
   Settings,
-  Layers
+  Layers,
+  Zap,
+  TrendingUp,
+  Target
 } from "lucide-react";
 
 interface GuildSystemProps {

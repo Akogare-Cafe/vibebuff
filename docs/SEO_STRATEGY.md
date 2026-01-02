@@ -196,9 +196,101 @@ NEXT_PUBLIC_SITE_URL=https://vibebuff.com
 4. Submit sitemap: `https://vibebuff.com/sitemap.xml`
 5. Update `verification.google` in layout.tsx with your code
 
+## AI SEO System (NEW)
+
+### Overview
+VIBEBUFF now includes a comprehensive AI-powered SEO system that automates content generation and optimization.
+
+### Features Implemented
+
+#### 1. Programmatic Comparison Pages
+- **Route**: `/compare/[tool1-vs-tool2]`
+- **Function**: `api.seo.generateAIComparison`
+- Automatically generates SEO-optimized comparison pages for any two tools
+- Includes: introduction, summaries, head-to-head scoring, verdict, use case recommendations, FAQs
+- JSON-LD structured data for Article and FAQPage schemas
+- View tracking for popularity metrics
+
+#### 2. AI Blog Content Generation
+- **Function**: `api.seoBlog.generateBlogOutline`
+- Generates complete blog outlines with:
+  - SEO-optimized titles
+  - Section headings and subheadings
+  - Key points for each section
+  - Suggested internal links
+  - Estimated word count
+  - Difficulty rating
+
+#### 3. Keyword Clustering
+- **Function**: `api.seoBlog.generateKeywordCluster`
+- Groups related keywords around primary topics
+- Suggests content pieces for each cluster
+- Links keywords to relevant tools
+
+#### 4. Content Optimization Scoring
+- **Function**: `api.seoBlog.analyzeContent`
+- Scores content on:
+  - Keyword density (30%)
+  - Readability (25%)
+  - Structure (25%)
+  - Internal linking (20%)
+- Provides actionable improvement suggestions
+
+#### 5. Automated Alt Text Generation
+- **Function**: `api.seoBlog.generateAltText`
+- Generates SEO-friendly alt text for tool logos and images
+- Includes tool name and tagline for context
+
+#### 6. Dynamic Sitemap
+- Automatically includes all generated comparison pages
+- Includes all tool pages
+- Updates `lastModified` based on content updates
+
+### SEO Dashboard
+Access at `/seo` to:
+- View and generate new comparisons
+- Monitor keyword clusters
+- Check content optimization scores
+- Manage blog outlines
+- See internal linking suggestions
+
+### Database Tables
+- `seoMetadata` - Page-level SEO data
+- `seoFaqs` - FAQ content for schema markup
+- `seoComparisons` - AI-generated comparison content
+- `seoBlogOutlines` - Blog content outlines
+- `seoKeywordClusters` - Keyword groupings
+- `seoContentScores` - Content optimization scores
+- `seoAltTexts` - Generated alt text
+
+### Usage Examples
+
+```typescript
+// Generate a comparison
+await generateAIComparison({ tool1Slug: "nextjs", tool2Slug: "remix" });
+
+// Generate bulk comparisons (5 at a time)
+await generateBulkComparisons({ limit: 5 });
+
+// Generate blog outline
+await generateBlogOutline({ 
+  targetKeyword: "best react frameworks",
+  relatedTools: ["nextjs", "remix", "gatsby"]
+});
+
+// Analyze content
+await analyzeContent({
+  contentType: "blog",
+  contentId: "best-react-frameworks-2025",
+  content: "...",
+  targetKeywords: ["react frameworks", "nextjs", "remix"]
+});
+```
+
 ## Notes
 
 - The pixel art aesthetic is unique and memorable - leverage this in marketing
 - Focus on developer-focused content that provides genuine value
 - Prioritize user experience over keyword stuffing
 - Update content regularly to maintain freshness signals
+- Use the AI SEO dashboard to generate and manage programmatic content

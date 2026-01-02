@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { GlobalChat } from "@/components/global-chat";
+import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { Analytics } from "@vercel/analytics/react";
 
 const pixelFont = Press_Start_2P({
@@ -103,6 +104,7 @@ export default function RootLayout({
             <ThemeProvider>
               <Header />
               <GlobalChat />
+              <OnboardingWrapper />
               <main className="flex-1">{children}</main>
               <Footer />
             </ThemeProvider>
