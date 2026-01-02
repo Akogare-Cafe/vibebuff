@@ -3,14 +3,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* 2-BIT RETRO GAME DESIGN SYSTEM */
-/* Colors: Blue and Black theme */
+/* GUILD WARS 2 INSPIRED PASTEL FANTASY DESIGN SYSTEM */
+/* Soft watercolor gradients, golden accents, elegant fantasy UI */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-pixel);
-  --font-mono: var(--font-pixel);
+  --font-sans: var(--font-fantasy);
+  --font-mono: var(--font-fantasy);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -40,118 +40,118 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-pixel-black: #000000;
-  --color-pixel-dark: #0a1628;
-  --color-pixel-light: #3b82f6;
-  --color-pixel-white: #60a5fa;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
+  --color-gw2-gold: #d4a853;
+  --color-gw2-gold-light: #f0d890;
+  --color-gw2-cream: #faf6e9;
+  --color-gw2-parchment: #f5efe0;
+  --color-gw2-stone: #3d3a35;
+  --color-gw2-brown: #5c4d3c;
+  --color-gw2-teal: #7eb8b8;
+  --color-gw2-rose: #d4a5a5;
+  --color-gw2-lavender: #b8a5d4;
+  --color-gw2-sage: #a5d4b8;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
 }
 
 :root {
-  --radius: 0px;
-  /* Blue/Black 2-bit palette */
-  --background: #000000;
-  --foreground: #60a5fa;
-  --card: #0a1628;
-  --card-foreground: #60a5fa;
-  --popover: #0a1628;
-  --popover-foreground: #60a5fa;
-  --primary: #3b82f6;
-  --primary-foreground: #000000;
-  --secondary: #0a1628;
-  --secondary-foreground: #60a5fa;
-  --muted: #0a1628;
-  --muted-foreground: #3b82f6;
-  --accent: #2563eb;
-  --accent-foreground: #000000;
-  --destructive: #ef4444;
-  --border: #1e3a5f;
-  --input: #0a1628;
-  --ring: #3b82f6;
-  --chart-1: #3b82f6;
-  --chart-2: #60a5fa;
-  --chart-3: #1e3a5f;
-  --chart-4: #2563eb;
-  --chart-5: #93c5fd;
-  --sidebar: #000000;
-  --sidebar-foreground: #60a5fa;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #0a1628;
-  --sidebar-accent-foreground: #60a5fa;
-  --sidebar-border: #1e3a5f;
-  --sidebar-ring: #3b82f6;
+  --radius: 8px;
+  /* GW2 Pastel Fantasy Palette - Light Mode */
+  --background: #faf8f3;
+  --foreground: #3d3a35;
+  --card: #ffffff;
+  --card-foreground: #3d3a35;
+  --popover: #ffffff;
+  --popover-foreground: #3d3a35;
+  --primary: #d4a853;
+  --primary-foreground: #2d2a25;
+  --secondary: #f5efe0;
+  --secondary-foreground: #5c4d3c;
+  --muted: #f0ebe0;
+  --muted-foreground: #8b7355;
+  --accent: #7eb8b8;
+  --accent-foreground: #2d3d3d;
+  --destructive: #d4a5a5;
+  --border: #e8dcc8;
+  --input: #faf6e9;
+  --ring: #d4a853;
+  --chart-1: #d4a853;
+  --chart-2: #7eb8b8;
+  --chart-3: #d4a5a5;
+  --chart-4: #b8a5d4;
+  --chart-5: #a5d4b8;
+  --sidebar: #f5efe0;
+  --sidebar-foreground: #3d3a35;
+  --sidebar-primary: #d4a853;
+  --sidebar-primary-foreground: #2d2a25;
+  --sidebar-accent: #e8dcc8;
+  --sidebar-accent-foreground: #5c4d3c;
+  --sidebar-border: #e8dcc8;
+  --sidebar-ring: #d4a853;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #60a5fa;
-  --card: #0a1628;
-  --card-foreground: #60a5fa;
-  --popover: #0a1628;
-  --popover-foreground: #60a5fa;
-  --primary: #3b82f6;
-  --primary-foreground: #000000;
-  --secondary: #0a1628;
-  --secondary-foreground: #60a5fa;
-  --muted: #0a1628;
-  --muted-foreground: #3b82f6;
-  --accent: #2563eb;
-  --accent-foreground: #000000;
-  --destructive: #ef4444;
-  --border: #1e3a5f;
-  --input: #0a1628;
-  --ring: #3b82f6;
-  --chart-1: #3b82f6;
-  --chart-2: #60a5fa;
-  --chart-3: #1e3a5f;
-  --chart-4: #2563eb;
-  --chart-5: #93c5fd;
-  --sidebar: #000000;
-  --sidebar-foreground: #60a5fa;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #0a1628;
-  --sidebar-accent-foreground: #60a5fa;
-  --sidebar-border: #1e3a5f;
-  --sidebar-ring: #3b82f6;
+  /* GW2 Pastel Fantasy Palette - Dark Mode */
+  --background: #1a1816;
+  --foreground: #f0ebe0;
+  --card: #252220;
+  --card-foreground: #f0ebe0;
+  --popover: #252220;
+  --popover-foreground: #f0ebe0;
+  --primary: #d4a853;
+  --primary-foreground: #1a1816;
+  --secondary: #2d2a25;
+  --secondary-foreground: #f0d890;
+  --muted: #2d2a25;
+  --muted-foreground: #b8a080;
+  --accent: #5a9090;
+  --accent-foreground: #f0ebe0;
+  --destructive: #a07070;
+  --border: #3d3835;
+  --input: #2d2a25;
+  --ring: #d4a853;
+  --chart-1: #d4a853;
+  --chart-2: #7eb8b8;
+  --chart-3: #d4a5a5;
+  --chart-4: #b8a5d4;
+  --chart-5: #a5d4b8;
+  --sidebar: #1a1816;
+  --sidebar-foreground: #f0ebe0;
+  --sidebar-primary: #d4a853;
+  --sidebar-primary-foreground: #1a1816;
+  --sidebar-accent: #2d2a25;
+  --sidebar-accent-foreground: #f0d890;
+  --sidebar-border: #3d3835;
+  --sidebar-ring: #d4a853;
 }
 
-/* Pixel font import */
-@font-face {
-  font-family: 'Press Start 2P';
-  src: url('https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* Fantasy font imports - Cinzel for headers, Lora for body */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    image-rendering: pixelated;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 12px;
-    line-height: 1.8;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.7;
   }
-  
-  /* Pixel-perfect borders */
-  button, .card, input, [class*="border"] {
-    border-width: 4px !important;
-    border-style: solid !important;
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
-  
-  /* Scanline effect overlay */
-  body::after {
+
+  /* Subtle parchment texture overlay */
+  body::before {
     content: "";
     position: fixed;
     top: 0;
@@ -159,108 +159,264 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.1) 0px,
-      rgba(0, 0, 0, 0.1) 1px,
-      transparent 1px,
-      transparent 2px
-    );
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
     z-index: 9999;
   }
 }
 
-/* Pixel button hover effect */
+/* GW2 Fantasy UI Components */
 @layer components {
-  .pixel-btn {
+  /* Fantasy button with golden border */
+  .fantasy-btn {
     position: relative;
-    transition: transform 0.1s;
+    transition: all 0.3s ease;
+    background: linear-gradient(180deg, #f5efe0 0%, #e8dcc8 100%);
+    border: 2px solid #d4a853;
     box-shadow: 
-      4px 4px 0 #000000,
-      -2px -2px 0 #60a5fa inset,
-      2px 2px 0 #0a1628 inset;
+      0 2px 8px rgba(212, 168, 83, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
   }
   
-  .pixel-btn:hover {
-    transform: translate(2px, 2px);
+  .fantasy-btn:hover {
+    background: linear-gradient(180deg, #f0d890 0%, #d4a853 100%);
     box-shadow: 
-      2px 2px 0 #000000,
-      -2px -2px 0 #60a5fa inset,
-      2px 2px 0 #0a1628 inset;
+      0 4px 16px rgba(212, 168, 83, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
   }
   
-  .pixel-btn:active {
-    transform: translate(4px, 4px);
+  .fantasy-btn:active {
+    transform: translateY(0);
     box-shadow: 
-      0px 0px 0 #000000,
-      -2px -2px 0 #0a1628 inset,
-      2px 2px 0 #60a5fa inset;
+      0 1px 4px rgba(212, 168, 83, 0.3),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  /* Pixel card style */
-  .pixel-card {
-    border: 4px solid #1e3a5f;
+  /* Fantasy card with ornate border */
+  .fantasy-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(250,246,233,0.95) 100%);
+    border: 2px solid #e8dcc8;
+    border-radius: 12px;
     box-shadow: 
-      8px 8px 0 #000000,
-      -4px -4px 0 #3b82f6 inset,
-      4px 4px 0 #0a1628 inset;
+      0 4px 20px rgba(93, 77, 60, 0.08),
+      0 1px 3px rgba(93, 77, 60, 0.05);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Blinking cursor animation */
-  .pixel-cursor {
-    animation: blink 1s step-end infinite;
-  }
-  
-  @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+  .fantasy-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4a853, transparent);
   }
 
-  /* Pixel text glow */
-  .pixel-glow {
+  .dark .fantasy-card {
+    background: linear-gradient(180deg, rgba(37,34,32,0.98) 0%, rgba(26,24,22,0.98) 100%);
+    border-color: #3d3835;
+  }
+
+  /* Golden glow effect */
+  .golden-glow {
     text-shadow: 
-      0 0 10px #3b82f6,
-      0 0 20px #2563eb,
-      0 0 30px #1e3a5f;
+      0 0 10px rgba(212, 168, 83, 0.5),
+      0 0 20px rgba(212, 168, 83, 0.3),
+      0 0 30px rgba(212, 168, 83, 0.2);
   }
 
-  /* 8-bit loading animation */
-  .pixel-loading {
-    animation: pixel-bounce 0.5s step-end infinite;
+  /* Soft pulse animation for highlights */
+  .soft-pulse {
+    animation: softPulse 3s ease-in-out infinite;
   }
   
-  @keyframes pixel-bounce {
+  @keyframes softPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Elegant fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Shimmer effect for legendary items */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 168, 83, 0.2),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Ornate divider */
+  .ornate-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a853, transparent);
+    position: relative;
+  }
+
+  .ornate-divider::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #d4a853;
+    border-radius: 50%;
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
   }
 
-  /* Retro screen flicker */
+  /* Watercolor gradient backgrounds */
+  .watercolor-bg {
+    background: 
+      radial-gradient(ellipse at 20% 30%, rgba(126, 184, 184, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(212, 165, 165, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(184, 165, 212, 0.1) 0%, transparent 60%),
+      linear-gradient(180deg, var(--background) 0%, var(--background) 100%);
+  }
+
+  /* Rarity glow effects */
+  .rarity-common {
+    border-color: #8b7355;
+  }
+  
+  .rarity-uncommon {
+    border-color: #7eb8b8;
+    box-shadow: 0 0 15px rgba(126, 184, 184, 0.3);
+  }
+  
+  .rarity-rare {
+    border-color: #b8a5d4;
+    box-shadow: 0 0 20px rgba(184, 165, 212, 0.4);
+  }
+  
+  .rarity-legendary {
+    border-color: #d4a853;
+    box-shadow: 0 0 25px rgba(212, 168, 83, 0.5);
+    animation: legendaryGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes legendaryGlow {
+    0%, 100% { box-shadow: 0 0 25px rgba(212, 168, 83, 0.5); }
+    50% { box-shadow: 0 0 35px rgba(212, 168, 83, 0.7); }
+  }
+
+  /* Keep legacy class names for compatibility */
+  .pixel-btn {
+    position: relative;
+    transition: all 0.3s ease;
+    background: linear-gradient(180deg, #f5efe0 0%, #e8dcc8 100%);
+    border: 2px solid #d4a853;
+    box-shadow: 
+      0 2px 8px rgba(212, 168, 83, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+  }
+  
+  .pixel-btn:hover {
+    background: linear-gradient(180deg, #f0d890 0%, #d4a853 100%);
+    box-shadow: 
+      0 4px 16px rgba(212, 168, 83, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  .pixel-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 1px 4px rgba(212, 168, 83, 0.3),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .pixel-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(250,246,233,0.95) 100%);
+    border: 2px solid #e8dcc8;
+    border-radius: 12px;
+    box-shadow: 
+      0 4px 20px rgba(93, 77, 60, 0.08),
+      0 1px 3px rgba(93, 77, 60, 0.05);
+  }
+
+  .pixel-cursor {
+    animation: softPulse 2s ease-in-out infinite;
+  }
+
+  .pixel-glow {
+    text-shadow: 
+      0 0 10px rgba(212, 168, 83, 0.5),
+      0 0 20px rgba(212, 168, 83, 0.3);
+  }
+
+  .pixel-loading {
+    animation: float 1.5s ease-in-out infinite;
+  }
+
   .screen-flicker {
-    animation: flicker 0.15s infinite;
-  }
-  
-  @keyframes flicker {
-    0% { opacity: 0.97; }
-    50% { opacity: 1; }
-    100% { opacity: 0.98; }
+    /* Removed flicker for cleaner look */
   }
 
-  /* Pixel border animation */
   .pixel-border-animate {
-    animation: border-march 1s linear infinite;
-    background-image: 
-      linear-gradient(90deg, #3b82f6 50%, transparent 50%),
-      linear-gradient(90deg, #3b82f6 50%, transparent 50%),
-      linear-gradient(0deg, #3b82f6 50%, transparent 50%),
-      linear-gradient(0deg, #3b82f6 50%, transparent 50%);
-    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-    background-size: 8px 4px, 8px 4px, 4px 8px, 4px 8px;
-    background-position: 0 0, 100% 100%, 0 100%, 100% 0;
+    position: relative;
+    border: 2px solid #d4a853;
+    border-radius: 8px;
   }
   
-  @keyframes border-march {
-    0% { background-position: 0 0, 100% 100%, 0 100%, 100% 0; }
-    100% { background-position: 8px 0, calc(100% - 8px) 100%, 0 calc(100% - 8px), 100% 8px; }
+  .pixel-border-animate::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #d4a853, #f0d890, #d4a853) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: borderRotate 3s linear infinite;
   }
-
+  
+  @keyframes borderRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
 }

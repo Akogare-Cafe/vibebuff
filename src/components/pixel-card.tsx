@@ -12,28 +12,32 @@ interface PixelCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const rarityStyles = {
   common: {
-    border: "border-[#1e3a5f]",
+    border: "border-[#e8dcc8]",
     glow: "",
-    accent: "from-[#1e3a5f] to-[#0a1628]",
+    accent: "from-[#8b7355] to-[#5c4d3c]",
     shine: "",
+    ring: "",
   },
   uncommon: {
-    border: "border-[#3b82f6]",
-    glow: "shadow-[0_0_15px_rgba(59,130,246,0.3)]",
-    accent: "from-[#3b82f6] to-[#1e3a5f]",
+    border: "border-[#7eb8b8]",
+    glow: "shadow-[0_0_20px_rgba(126,184,184,0.25)]",
+    accent: "from-[#7eb8b8] to-[#5a9090]",
     shine: "",
+    ring: "ring-1 ring-[#7eb8b8]/30",
   },
   rare: {
-    border: "border-[#60a5fa]",
-    glow: "shadow-[0_0_20px_rgba(96,165,250,0.4)]",
-    accent: "from-[#60a5fa] to-[#3b82f6]",
-    shine: "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-transparent before:pointer-events-none",
+    border: "border-[#b8a5d4]",
+    glow: "shadow-[0_0_25px_rgba(184,165,212,0.3)]",
+    accent: "from-[#b8a5d4] to-[#9080b0]",
+    shine: "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-transparent before:pointer-events-none before:rounded-xl",
+    ring: "ring-1 ring-[#b8a5d4]/40",
   },
   legendary: {
-    border: "border-[#fbbf24]",
-    glow: "shadow-[0_0_30px_rgba(251,191,36,0.5)]",
-    accent: "from-[#fbbf24] via-[#f59e0b] to-[#d97706]",
-    shine: "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-white/5 before:pointer-events-none before:animate-pulse",
+    border: "border-[#d4a853]",
+    glow: "shadow-[0_0_30px_rgba(212,168,83,0.4)]",
+    accent: "from-[#f0d890] via-[#d4a853] to-[#b8923d]",
+    shine: "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/25 before:via-transparent before:to-white/5 before:pointer-events-none before:rounded-xl shimmer",
+    ring: "ring-2 ring-[#d4a853]/50",
   },
 };
 
@@ -45,38 +49,37 @@ export const PixelCard = forwardRef<HTMLDivElement, PixelCardProps>(
       <Card
         ref={ref}
         className={cn(
-          "pokemon-card relative overflow-hidden",
-          "bg-gradient-to-b from-[#0a1628] via-[#0d1f3c] to-[#0a1628]",
-          "border-[6px] rounded-xl",
+          "fantasy-card relative overflow-hidden",
+          "bg-gradient-to-b from-white via-[#faf8f3] to-[#f5efe0]",
+          "dark:from-[#252220] dark:via-[#1f1d1b] dark:to-[#1a1816]",
+          "border-2 rounded-xl",
           styles.border,
           styles.glow,
           styles.shine,
+          styles.ring,
           "hover:scale-[1.02] hover:-translate-y-1",
-          "hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]",
+          "hover:shadow-[0_8px_30px_rgba(212,168,83,0.15)]",
           "transition-all duration-300 ease-out",
           "group",
           className
         )}
-        style={glowColor ? { boxShadow: `0 0 20px ${glowColor}` } : undefined}
+        style={glowColor ? { boxShadow: `0 0 25px ${glowColor}` } : undefined}
         {...props}
       >
-        {/* Holographic shimmer effect */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+        {/* Golden shimmer effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4a853]/10 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000" />
         </div>
         
-        {/* Inner border frame */}
-        <div className="absolute inset-[3px] border-2 border-[#1e3a5f]/50 rounded-lg pointer-events-none" />
-        
-        {/* Corner accents */}
-        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#60a5fa]/60 rounded-tl-lg" />
-        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#60a5fa]/60 rounded-tr-lg" />
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#60a5fa]/60 rounded-bl-lg" />
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#60a5fa]/60 rounded-br-lg" />
+        {/* Ornate corner decorations */}
+        <div className="absolute top-1 left-1 w-6 h-6 border-t-2 border-l-2 border-[#d4a853]/40 rounded-tl-lg pointer-events-none" />
+        <div className="absolute top-1 right-1 w-6 h-6 border-t-2 border-r-2 border-[#d4a853]/40 rounded-tr-lg pointer-events-none" />
+        <div className="absolute bottom-1 left-1 w-6 h-6 border-b-2 border-l-2 border-[#d4a853]/40 rounded-bl-lg pointer-events-none" />
+        <div className="absolute bottom-1 right-1 w-6 h-6 border-b-2 border-r-2 border-[#d4a853]/40 rounded-br-lg pointer-events-none" />
         
         {/* Rarity indicator strip */}
         <div className={cn(
-          "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r",
+          "absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r rounded-t-xl",
           styles.accent
         )} />
         
@@ -98,8 +101,8 @@ export const PixelCardHeader = forwardRef<
     ref={ref}
     className={cn(
       "relative pb-3 pt-4",
-      "border-b-2 border-[#1e3a5f]/60",
-      "bg-gradient-to-b from-[#0d1f3c]/50 to-transparent",
+      "border-b border-[#e8dcc8] dark:border-[#3d3835]",
+      "bg-gradient-to-b from-[#faf8f3]/50 to-transparent dark:from-[#252220]/50",
       className
     )}
     {...props}
@@ -114,8 +117,8 @@ export const PixelCardTitle = forwardRef<
   <CardTitle
     ref={ref}
     className={cn(
-      "text-[#60a5fa] text-sm uppercase tracking-wider font-bold",
-      "drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]",
+      "text-[#5c4d3c] dark:text-[#f0d890] text-base tracking-wide font-semibold",
+      "font-heading",
       className
     )}
     {...props}
@@ -129,7 +132,7 @@ export const PixelCardDescription = forwardRef<
 >(({ className, ...props }, ref) => (
   <CardDescription
     ref={ref}
-    className={cn("text-[#3b82f6] text-[10px] mt-2 leading-relaxed", className)}
+    className={cn("text-[#8b7355] dark:text-[#b8a080] text-sm mt-2 leading-relaxed", className)}
     {...props}
   />
 ));
@@ -143,7 +146,7 @@ export const PixelCardContent = forwardRef<
     ref={ref} 
     className={cn(
       "pt-4 pb-4",
-      "bg-gradient-to-b from-transparent to-[#0a1628]/30",
+      "bg-gradient-to-b from-transparent to-[#f5efe0]/30 dark:to-[#1a1816]/30",
       className
     )} 
     {...props} 
@@ -160,8 +163,8 @@ export const PixelCardArtwork = forwardRef<
     ref={ref}
     className={cn(
       "relative mx-3 my-2 rounded-lg overflow-hidden",
-      "border-2 border-[#1e3a5f]",
-      "bg-gradient-to-br from-[#0d1f3c] to-[#0a1628]",
+      "border border-[#e8dcc8] dark:border-[#3d3835]",
+      "bg-gradient-to-br from-[#faf8f3] to-[#f0ebe0] dark:from-[#252220] dark:to-[#1a1816]",
       "aspect-[4/3]",
       "flex items-center justify-center",
       className
@@ -182,43 +185,43 @@ export const PixelCardStats = forwardRef<
     ref={ref}
     className={cn(
       "flex justify-around items-center px-3 py-2",
-      "border-t border-[#1e3a5f]/40",
-      "bg-[#0a1628]/50",
+      "border-t border-[#e8dcc8]/60 dark:border-[#3d3835]/60",
+      "bg-[#f5efe0]/50 dark:bg-[#1a1816]/50",
       className
     )}
     {...props}
   >
     {stats.map((stat, i) => (
       <div key={i} className="text-center">
-        <p className="text-[#60a5fa] text-xs font-bold">{stat.value}</p>
-        <p className="text-[#3b82f6] text-[8px] uppercase">{stat.label}</p>
+        <p className="text-[#d4a853] text-sm font-semibold font-heading">{stat.value}</p>
+        <p className="text-[#8b7355] dark:text-[#b8a080] text-xs uppercase tracking-wide">{stat.label}</p>
       </div>
     ))}
   </div>
 ));
 PixelCardStats.displayName = "PixelCardStats";
 
-// Type badge (like Pokemon type icons)
+// Type badge (element types with pastel fantasy colors)
 export const PixelCardType = forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement> & { type?: "fire" | "water" | "electric" | "grass" | "dark" | "steel" | "psychic" }
 >(({ className, type = "dark", children, ...props }, ref) => {
   const typeColors = {
-    fire: "bg-gradient-to-r from-orange-500 to-red-500",
-    water: "bg-gradient-to-r from-blue-400 to-cyan-500",
-    electric: "bg-gradient-to-r from-yellow-400 to-amber-500",
-    grass: "bg-gradient-to-r from-green-400 to-emerald-500",
-    dark: "bg-gradient-to-r from-[#3b82f6] to-[#1e3a5f]",
-    steel: "bg-gradient-to-r from-slate-400 to-slate-600",
-    psychic: "bg-gradient-to-r from-purple-400 to-pink-500",
+    fire: "bg-gradient-to-r from-[#d4a5a5] to-[#c08080] text-[#5c3030]",
+    water: "bg-gradient-to-r from-[#7eb8b8] to-[#5a9090] text-[#2d4040]",
+    electric: "bg-gradient-to-r from-[#f0d890] to-[#d4a853] text-[#5c4d3c]",
+    grass: "bg-gradient-to-r from-[#a5d4b8] to-[#80b090] text-[#304030]",
+    dark: "bg-gradient-to-r from-[#8b7355] to-[#5c4d3c] text-[#f5efe0]",
+    steel: "bg-gradient-to-r from-[#b0b0b8] to-[#8888a0] text-[#303040]",
+    psychic: "bg-gradient-to-r from-[#b8a5d4] to-[#9080b0] text-[#403050]",
   };
   
   return (
     <span
       ref={ref}
       className={cn(
-        "inline-flex items-center px-2 py-0.5 rounded-full text-[8px] uppercase font-bold text-white",
-        "shadow-md",
+        "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
+        "shadow-sm border border-white/20",
         typeColors[type],
         className
       )}

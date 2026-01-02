@@ -9,6 +9,27 @@ const AFFINITY_LEVELS = [
   { level: "soulmate", minPoints: 1000 },
 ];
 
+const AFFINITY_PERKS: Record<string, { name: string; description: string; bonus: string }[]> = {
+  acquaintance: [
+    { name: "Tool Insights", description: "See detailed usage statistics", bonus: "+5% battle stats" },
+  ],
+  friend: [
+    { name: "Synergy Boost", description: "Enhanced synergy detection", bonus: "+10% battle stats" },
+    { name: "Quick Add", description: "One-click add to any deck", bonus: "UI shortcut" },
+  ],
+  companion: [
+    { name: "Battle Mastery", description: "Bonus damage in battles", bonus: "+15% battle stats" },
+    { name: "Exclusive Tips", description: "Hidden tips and tricks", bonus: "Content unlock" },
+    { name: "Priority Support", description: "Tool-specific recommendations", bonus: "AI priority" },
+  ],
+  soulmate: [
+    { name: "Ultimate Bond", description: "Maximum battle effectiveness", bonus: "+25% battle stats" },
+    { name: "Lore Access", description: "Full tool history and lore", bonus: "Content unlock" },
+    { name: "Badge Display", description: "Show soulmate badge on profile", bonus: "Cosmetic" },
+    { name: "Recommendation Weight", description: "Higher weight in AI recommendations", bonus: "AI boost" },
+  ],
+};
+
 const INTERACTION_POINTS = {
   view: 1,
   deckAdd: 10,
@@ -29,6 +50,9 @@ export const getUserAffinities = query({
     const tools = await Promise.all(toolIds.map((id) => ctx.db.get(id)));
     const toolMap = new Map(tools.filter(Boolean).map((t) => [t!._id, t]));
 
+    const unlockedPerks: { name: string; description: string; bonus: string }[] = [];
+    const levelOrder = ["stranger", "acquaintance", "friend", "companion", "soulmate"];
+
     return affinities
       .map((affinity) => {
         const currentLevel = AFFINITY_LEVELS.find((l) => l.level === affinity.affinityLevel);
@@ -42,11 +66,22 @@ export const getUserAffinities = query({
           progress = Math.min(100, Math.floor((pointsInLevel / pointsNeeded) * 100));
         }
 
+        const perks: { name: string; description: string; bonus: string }[] = [];
+        const currentLevelIndex = levelOrder.indexOf(affinity.affinityLevel);
+        for (let i = 1; i <= currentLevelIndex; i++) {
+          const levelPerks = AFFINITY_PERKS[levelOrder[i]];
+          if (levelPerks) {
+            perks.push(...levelPerks);
+          }
+        }
+
         return {
           ...affinity,
           tool: toolMap.get(affinity.toolId),
           nextLevel: nextLevel?.level,
           progress,
+          perks,
+          nextPerks: nextLevel ? AFFINITY_PERKS[nextLevel.level] || [] : [],
         };
       })
       .sort((a, b) => b.affinityPoints - a.affinityPoints);

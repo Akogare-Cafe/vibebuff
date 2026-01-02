@@ -12,11 +12,13 @@ export const PixelInput = forwardRef<HTMLInputElement, PixelInputProps>(
       <Input
         ref={ref}
         className={cn(
-          "bg-[#000000] border-4 border-[#1e3a5f] text-[#60a5fa]",
-          "placeholder:text-[#1e3a5f] text-[10px]",
-          "focus:ring-2 focus:ring-[#3b82f6] focus:border-[#3b82f6]",
-          "shadow-[inset_2px_2px_0_#0a1628]",
+          "bg-white dark:bg-[#252220] border-2 border-[#e8dcc8] dark:border-[#3d3835] rounded-lg",
+          "text-[#3d3a35] dark:text-[#f0ebe0] text-sm",
+          "placeholder:text-[#8b7355] dark:placeholder:text-[#6b5b4b]",
+          "focus:ring-2 focus:ring-[#d4a853]/50 focus:border-[#d4a853]",
+          "shadow-sm",
           "h-12 px-4",
+          "transition-all duration-200",
           className
         )}
         {...props}

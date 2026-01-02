@@ -49,16 +49,18 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t-4 border-[#1e3a5f] bg-[#0a0a0a] mt-12">
+    <footer className="border-t-2 border-[#e8dcc8] dark:border-[#3d3835] bg-[#f5efe0] dark:bg-[#1a1816] mt-12">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Gamepad2 className="w-6 h-6 text-[#3b82f6]" />
-              <span className="text-[#60a5fa] text-sm pixel-glow">VIBEBUFF</span>
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d4a853] to-[#b8923d] flex items-center justify-center">
+                <Gamepad2 className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-lg">VIBEBUFF</span>
             </Link>
-            <p className="text-[#3b82f6] text-[8px] leading-relaxed mb-4">
+            <p className="text-[#8b7355] dark:text-[#b8a080] text-sm leading-relaxed mb-4">
               AI-powered tech stack recommendations for developers. Find the perfect tools for your next project.
             </p>
             <div className="flex gap-3">
@@ -66,7 +68,7 @@ export function Footer() {
                 href="https://github.com/vibebuff"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#3b82f6] hover:text-[#60a5fa] transition-colors"
+                className="w-9 h-9 rounded-lg bg-white dark:bg-[#252220] border border-[#e8dcc8] dark:border-[#3d3835] flex items-center justify-center text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] hover:border-[#d4a853] transition-all"
                 aria-label="GitHub"
               >
                 <Github className="w-4 h-4" />
@@ -75,14 +77,14 @@ export function Footer() {
                 href="https://twitter.com/vibebuff"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#3b82f6] hover:text-[#60a5fa] transition-colors"
+                className="w-9 h-9 rounded-lg bg-white dark:bg-[#252220] border border-[#e8dcc8] dark:border-[#3d3835] flex items-center justify-center text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] hover:border-[#d4a853] transition-all"
                 aria-label="Twitter"
               >
                 <Twitter className="w-4 h-4" />
               </a>
               <a
                 href="mailto:hello@vibebuff.com"
-                className="text-[#3b82f6] hover:text-[#60a5fa] transition-colors"
+                className="w-9 h-9 rounded-lg bg-white dark:bg-[#252220] border border-[#e8dcc8] dark:border-[#3d3835] flex items-center justify-center text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] hover:border-[#d4a853] transition-all"
                 aria-label="Email"
               >
                 <Mail className="w-4 h-4" />
@@ -92,13 +94,13 @@ export function Footer() {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">Product</h3>
+            <h3 className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-sm mb-4">Product</h3>
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] transition-colors"
+                    className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -109,13 +111,13 @@ export function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">Resources</h3>
+            <h3 className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-sm mb-4">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] transition-colors"
+                    className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -126,13 +128,13 @@ export function Footer() {
 
           {/* Categories Links */}
           <div>
-            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">Categories</h3>
+            <h3 className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-sm mb-4">Categories</h3>
             <ul className="space-y-2">
               {footerLinks.categories.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] transition-colors"
+                    className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -143,13 +145,13 @@ export function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">Company</h3>
+            <h3 className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-sm mb-4">Company</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] transition-colors"
+                    className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -160,16 +162,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#1e3a5f] mt-8 pt-8">
+        <div className="border-t border-[#e8dcc8] dark:border-[#3d3835] mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#3b82f6] text-[8px]">
+            <p className="text-[#8b7355] dark:text-[#b8a080] text-sm">
               © {new Date().getFullYear()} VIBEBUFF. All rights reserved.
             </p>
-            <p className="text-[#3b82f6] text-[8px] flex items-center gap-1">
-              <Clock className="w-3 h-3" /> Data updated: {formatLastUpdated(stats?.lastUpdated)}
+            <p className="text-[#8b7355] dark:text-[#b8a080] text-sm flex items-center gap-1">
+              <Clock className="w-4 h-4" /> Data updated: {formatLastUpdated(stats?.lastUpdated)}
             </p>
-            <p className="text-[#3b82f6] text-[8px] flex items-center gap-1">
-              Made with <Heart className="w-3 h-3 text-red-500" /> for developers
+            <p className="text-[#8b7355] dark:text-[#b8a080] text-sm flex items-center gap-1">
+              Made with <Heart className="w-4 h-4 text-[#d4a5a5]" /> for developers
             </p>
           </div>
         </div>

@@ -17,6 +17,9 @@ import {
   Users,
   Sparkles,
   TrendingUp,
+  Gift,
+  Lock,
+  ChevronRight,
 } from "lucide-react";
 
 interface ToolAffinityDisplayProps {
@@ -148,10 +151,23 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
                 />
               </div>
 
-              <div className="mt-3 pt-2 border-t border-[#1e3a5f] text-center">
-                <span className="text-[#3b82f6] text-[8px]">
-                  {affinity.affinityPoints} Affinity Points
-                </span>
+              <div className="mt-3 pt-2 border-t border-[#1e3a5f]">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[#3b82f6] text-[8px]">
+                    {affinity.affinityPoints} Affinity Points
+                  </span>
+                  {affinity.perks && affinity.perks.length > 0 && (
+                    <span className="text-[#60a5fa] text-[6px] flex items-center gap-1">
+                      <Gift className="w-3 h-3" /> {affinity.perks.length} PERKS
+                    </span>
+                  )}
+                </div>
+                {affinity.nextPerks && affinity.nextPerks.length > 0 && (
+                  <div className="text-[6px] text-[#3b82f6] flex items-center gap-1">
+                    <Lock className="w-2 h-2" />
+                    <span>Next: {affinity.nextPerks[0]?.name}</span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

@@ -2363,4 +2363,492 @@ export default defineSchema({
     .index("by_identifier", ["identifier"])
     .index("by_action", ["action"])
     .index("by_timestamp", ["timestamp"]),
+
+  // ============================================
+  // BEGINNER VIBE CODER FEATURES
+  // ============================================
+
+  // Feature 1: Learning Paths (Vibe Coding Academy)
+  learningPaths: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    estimatedMinutes: v.number(),
+    icon: v.string(),
+    color: v.string(),
+    prerequisites: v.array(v.string()),
+    toolIds: v.array(v.id("tools")),
+    xpReward: v.number(),
+    isPublished: v.boolean(),
+    sortOrder: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_difficulty", ["difficulty"])
+    .index("by_published", ["isPublished"]),
+
+  learningLessons: defineTable({
+    pathId: v.id("learningPaths"),
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    content: v.string(),
+    lessonType: v.union(
+      v.literal("video"),
+      v.literal("article"),
+      v.literal("interactive"),
+      v.literal("quiz")
+    ),
+    videoUrl: v.optional(v.string()),
+    estimatedMinutes: v.number(),
+    sortOrder: v.number(),
+    xpReward: v.number(),
+    toolId: v.optional(v.id("tools")),
+  })
+    .index("by_path", ["pathId"])
+    .index("by_slug", ["slug"]),
+
+  userLearningProgress: defineTable({
+    userId: v.string(),
+    pathId: v.id("learningPaths"),
+    completedLessons: v.array(v.id("learningLessons")),
+    currentLessonId: v.optional(v.id("learningLessons")),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+    totalXpEarned: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_path", ["userId", "pathId"]),
+
+  // Feature 2: Video Tutorial Hub
+  videoTutorials: defineTable({
+    title: v.string(),
+    description: v.string(),
+    youtubeId: v.string(),
+    thumbnailUrl: v.optional(v.string()),
+    duration: v.number(),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    category: v.union(
+      v.literal("setup"),
+      v.literal("prompting"),
+      v.literal("build-along"),
+      v.literal("tips"),
+      v.literal("deep-dive"),
+      v.literal("mcp")
+    ),
+    toolIds: v.array(v.id("tools")),
+    tags: v.array(v.string()),
+    authorName: v.string(),
+    authorChannel: v.optional(v.string()),
+    views: v.number(),
+    likes: v.number(),
+    isOfficial: v.boolean(),
+    isFeatured: v.boolean(),
+    publishedAt: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_youtube_id", ["youtubeId"])
+    .index("by_category", ["category"])
+    .index("by_difficulty", ["difficulty"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_views", ["views"]),
+
+  userVideoProgress: defineTable({
+    userId: v.string(),
+    videoId: v.id("videoTutorials"),
+    watchedSeconds: v.number(),
+    isCompleted: v.boolean(),
+    isBookmarked: v.boolean(),
+    lastWatchedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_video", ["userId", "videoId"])
+    .index("by_bookmarked", ["userId", "isBookmarked"]),
+
+  // Feature 3: Prompt Playground
+  promptTemplates: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    category: v.union(
+      v.literal("landing-page"),
+      v.literal("authentication"),
+      v.literal("database"),
+      v.literal("api"),
+      v.literal("styling"),
+      v.literal("debugging"),
+      v.literal("refactoring"),
+      v.literal("testing")
+    ),
+    prompt: v.string(),
+    exampleOutput: v.optional(v.string()),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    toolIds: v.array(v.id("tools")),
+    tags: v.array(v.string()),
+    usageCount: v.number(),
+    rating: v.number(),
+    isOfficial: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"])
+    .index("by_difficulty", ["difficulty"])
+    .index("by_usage", ["usageCount"]),
+
+  promptChallenges: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    task: v.string(),
+    hints: v.array(v.string()),
+    solutionPrompt: v.string(),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    xpReward: v.number(),
+    sortOrder: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_difficulty", ["difficulty"]),
+
+  userPromptAttempts: defineTable({
+    userId: v.string(),
+    challengeId: v.id("promptChallenges"),
+    prompt: v.string(),
+    isSuccessful: v.boolean(),
+    attemptedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_challenge", ["userId", "challengeId"]),
+
+  // Feature 4: Visual Stack Builder (uses @xyflow/react)
+  stackBlueprints: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    projectType: v.union(
+      v.literal("landing-page"),
+      v.literal("saas"),
+      v.literal("e-commerce"),
+      v.literal("blog"),
+      v.literal("dashboard"),
+      v.literal("mobile-app"),
+      v.literal("api")
+    ),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    nodes: v.array(v.object({
+      id: v.string(),
+      type: v.string(),
+      position: v.object({ x: v.number(), y: v.number() }),
+      data: v.object({
+        label: v.string(),
+        toolId: v.optional(v.id("tools")),
+        category: v.string(),
+        description: v.optional(v.string()),
+      }),
+    })),
+    edges: v.array(v.object({
+      id: v.string(),
+      source: v.string(),
+      target: v.string(),
+      label: v.optional(v.string()),
+      animated: v.optional(v.boolean()),
+    })),
+    toolIds: v.array(v.id("tools")),
+    estimatedCost: v.optional(v.string()),
+    isTemplate: v.boolean(),
+    isFeatured: v.boolean(),
+    views: v.number(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_project_type", ["projectType"])
+    .index("by_featured", ["isFeatured"]),
+
+  userStackBuilds: defineTable({
+    userId: v.string(),
+    title: v.string(),
+    description: v.optional(v.string()),
+    nodes: v.array(v.object({
+      id: v.string(),
+      type: v.string(),
+      position: v.object({ x: v.number(), y: v.number() }),
+      data: v.object({
+        label: v.string(),
+        toolId: v.optional(v.id("tools")),
+        category: v.string(),
+        description: v.optional(v.string()),
+      }),
+    })),
+    edges: v.array(v.object({
+      id: v.string(),
+      source: v.string(),
+      target: v.string(),
+      label: v.optional(v.string()),
+      animated: v.optional(v.boolean()),
+    })),
+    isPublic: v.boolean(),
+    shareToken: v.optional(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_share_token", ["shareToken"]),
+
+  // Feature 5: Setup Wizard
+  setupGuides: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    toolId: v.id("tools"),
+    platform: v.union(v.literal("mac"), v.literal("windows"), v.literal("linux"), v.literal("all")),
+    steps: v.array(v.object({
+      title: v.string(),
+      description: v.string(),
+      command: v.optional(v.string()),
+      imageUrl: v.optional(v.string()),
+      videoUrl: v.optional(v.string()),
+      tips: v.array(v.string()),
+      warnings: v.array(v.string()),
+    })),
+    prerequisites: v.array(v.string()),
+    estimatedMinutes: v.number(),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    views: v.number(),
+    helpfulCount: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_tool", ["toolId"])
+    .index("by_platform", ["platform"]),
+
+  userSetupProgress: defineTable({
+    userId: v.string(),
+    guideId: v.id("setupGuides"),
+    completedSteps: v.array(v.number()),
+    isCompleted: v.boolean(),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_guide", ["userId", "guideId"]),
+
+  // Feature 6: Glossary & Concept Cards
+  glossaryTerms: defineTable({
+    slug: v.string(),
+    term: v.string(),
+    shortDefinition: v.string(),
+    fullDefinition: v.string(),
+    eli5Definition: v.string(),
+    category: v.union(
+      v.literal("general"),
+      v.literal("ai"),
+      v.literal("ide"),
+      v.literal("backend"),
+      v.literal("frontend"),
+      v.literal("devops"),
+      v.literal("database")
+    ),
+    relatedTerms: v.array(v.string()),
+    toolIds: v.array(v.id("tools")),
+    examples: v.array(v.string()),
+    icon: v.optional(v.string()),
+    sortOrder: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"])
+    .index("by_term", ["term"]),
+
+  conceptCards: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    content: v.string(),
+    visualType: v.union(
+      v.literal("diagram"),
+      v.literal("flowchart"),
+      v.literal("comparison"),
+      v.literal("timeline"),
+      v.literal("infographic")
+    ),
+    imageUrl: v.optional(v.string()),
+    category: v.string(),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    relatedTerms: v.array(v.string()),
+    toolIds: v.array(v.id("tools")),
+    sortOrder: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"]),
+
+  userFlashcardProgress: defineTable({
+    userId: v.string(),
+    termId: v.id("glossaryTerms"),
+    lastReviewedAt: v.number(),
+    nextReviewAt: v.number(),
+    easeFactor: v.number(),
+    interval: v.number(),
+    repetitions: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_term", ["userId", "termId"])
+    .index("by_next_review", ["userId", "nextReviewAt"]),
+
+  // Feature 7: Beginner Tool Comparisons
+  beginnerComparisons: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    tool1Id: v.id("tools"),
+    tool2Id: v.id("tools"),
+    beginnerVerdict: v.string(),
+    beginnerScores: v.object({
+      tool1: v.object({
+        easeOfSetup: v.number(),
+        learningCurve: v.number(),
+        documentation: v.number(),
+        communitySupport: v.number(),
+        costForBeginners: v.number(),
+        overall: v.number(),
+      }),
+      tool2: v.object({
+        easeOfSetup: v.number(),
+        learningCurve: v.number(),
+        documentation: v.number(),
+        communitySupport: v.number(),
+        costForBeginners: v.number(),
+        overall: v.number(),
+      }),
+    }),
+    comparisonPoints: v.array(v.object({
+      aspect: v.string(),
+      tool1: v.string(),
+      tool2: v.string(),
+      winnerForBeginners: v.union(v.literal("tool1"), v.literal("tool2"), v.literal("tie")),
+    })),
+    recommendedFor: v.array(v.object({
+      useCase: v.string(),
+      recommendation: v.string(),
+      toolSlug: v.string(),
+    })),
+    views: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_tools", ["tool1Id", "tool2Id"])
+    .index("by_views", ["views"]),
+
+  // Feature 8: Community Q&A
+  communityQuestions: defineTable({
+    userId: v.string(),
+    title: v.string(),
+    content: v.string(),
+    toolIds: v.array(v.id("tools")),
+    tags: v.array(v.string()),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    status: v.union(v.literal("open"), v.literal("answered"), v.literal("closed")),
+    views: v.number(),
+    upvotes: v.number(),
+    answerCount: v.number(),
+    acceptedAnswerId: v.optional(v.id("communityAnswers")),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"])
+    .index("by_upvotes", ["upvotes"])
+    .index("by_created", ["createdAt"]),
+
+  communityAnswers: defineTable({
+    questionId: v.id("communityQuestions"),
+    userId: v.string(),
+    content: v.string(),
+    upvotes: v.number(),
+    isAccepted: v.boolean(),
+    isMentorAnswer: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_question", ["questionId"])
+    .index("by_user", ["userId"])
+    .index("by_upvotes", ["questionId", "upvotes"]),
+
+  // Feature 9: Project Starter Templates
+  starterTemplates: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    description: v.string(),
+    longDescription: v.string(),
+    projectType: v.union(
+      v.literal("hello-world"),
+      v.literal("landing-page"),
+      v.literal("saas-starter"),
+      v.literal("blog"),
+      v.literal("e-commerce"),
+      v.literal("dashboard"),
+      v.literal("api")
+    ),
+    difficulty: v.union(v.literal("beginner"), v.literal("intermediate"), v.literal("advanced")),
+    toolIds: v.array(v.id("tools")),
+    githubUrl: v.string(),
+    demoUrl: v.optional(v.string()),
+    thumbnailUrl: v.optional(v.string()),
+    features: v.array(v.string()),
+    setupCommands: v.array(v.object({
+      command: v.string(),
+      description: v.string(),
+    })),
+    recommendedPrompts: v.array(v.object({
+      title: v.string(),
+      prompt: v.string(),
+      description: v.string(),
+    })),
+    videoWalkthroughUrl: v.optional(v.string()),
+    estimatedSetupMinutes: v.number(),
+    downloads: v.number(),
+    stars: v.number(),
+    isFeatured: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_project_type", ["projectType"])
+    .index("by_difficulty", ["difficulty"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_downloads", ["downloads"]),
+
+  // Feature 10: Onboarding Wizard State
+  userOnboarding: defineTable({
+    userId: v.string(),
+    currentStep: v.number(),
+    completedSteps: v.array(v.number()),
+    answers: v.object({
+      experienceLevel: v.optional(v.union(
+        v.literal("no-coding"),
+        v.literal("some-coding"),
+        v.literal("experienced")
+      )),
+      goal: v.optional(v.union(
+        v.literal("learn"),
+        v.literal("build-project"),
+        v.literal("explore-tools")
+      )),
+      projectType: v.optional(v.string()),
+      preferredIde: v.optional(v.string()),
+      budget: v.optional(v.union(
+        v.literal("free"),
+        v.literal("low"),
+        v.literal("medium"),
+        v.literal("high")
+      )),
+    }),
+    recommendedPathId: v.optional(v.id("learningPaths")),
+    recommendedToolIds: v.array(v.id("tools")),
+    isCompleted: v.boolean(),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"]),
 });
