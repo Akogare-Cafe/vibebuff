@@ -1743,4 +1743,36 @@ export default defineSchema({
   })
     .index("by_from", ["fromToolName"])
     .index("by_to", ["toToolId"]),
+
+  // ============================================
+  // REALTIME GLOBAL CHAT (messages expire after 1 hour)
+  // ============================================
+  globalChatMessages: defineTable({
+    userId: v.optional(v.string()),
+    username: v.string(),
+    avatarUrl: v.optional(v.string()),
+    content: v.string(),
+    createdAt: v.number(),
+    expiresAt: v.number(),
+  })
+    .index("by_created", ["createdAt"])
+    .index("by_expires", ["expiresAt"]),
+
+  userStreaks: defineTable({
+    userId: v.string(),
+    currentStreak: v.number(),
+    longestStreak: v.number(),
+    lastClaimDate: v.optional(v.number()),
+    totalXpFromStreaks: v.optional(v.number()),
+  }).index("by_user", ["userId"]),
+
+  xpActivityLog: defineTable({
+    userId: v.string(),
+    amount: v.number(),
+    source: v.string(),
+    description: v.optional(v.string()),
+    timestamp: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_timestamp", ["userId", "timestamp"]),
 });

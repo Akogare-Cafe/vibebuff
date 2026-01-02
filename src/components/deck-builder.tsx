@@ -20,8 +20,11 @@ import {
   Check,
   Layers,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Shield,
+  Swords
 } from "lucide-react";
+import { DeckLoadout } from "./deck-loadout";
 
 interface DeckBuilderProps {
   userId: string;
@@ -267,6 +270,19 @@ export function DeckBuilder({ userId, deckId, className }: DeckBuilderProps) {
             </div>
           </div>
         </PixelCard>
+
+        {/* Loadout Slots - RPG Style */}
+        {deckId && (
+          <PixelCard className="p-4">
+            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+              <Shield className="w-4 h-4" /> EQUIP LOADOUT
+            </h3>
+            <p className="text-[#3b82f6] text-[8px] mb-4">
+              Assign tools to category slots for your battle loadout
+            </p>
+            <DeckLoadout deckId={deckId} userId={userId} />
+          </PixelCard>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import { ClerkClientProvider } from "@/components/providers/clerk-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { GlobalChat } from "@/components/global-chat";
+import { Analytics } from "@vercel/analytics/react";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -100,11 +102,13 @@ export default function RootLayout({
           <ConvexClientProvider>
             <ThemeProvider>
               <Header />
+              <GlobalChat />
               <main className="flex-1">{children}</main>
               <Footer />
             </ThemeProvider>
           </ConvexClientProvider>
         </ClerkClientProvider>
+        <Analytics />
       </body>
     </html>
   );

@@ -22,6 +22,7 @@ import type * as draft from "../draft.js";
 import type * as events from "../events.js";
 import type * as evolution from "../evolution.js";
 import type * as fusions from "../fusions.js";
+import type * as globalChat from "../globalChat.js";
 import type * as graveyard from "../graveyard.js";
 import type * as guilds from "../guilds.js";
 import type * as interviews from "../interviews.js";
@@ -43,6 +44,7 @@ import type * as seed from "../seed.js";
 import type * as simulator from "../simulator.js";
 import type * as speedruns from "../speedruns.js";
 import type * as startupStories from "../startupStories.js";
+import type * as streaks from "../streaks.js";
 import type * as synergies from "../synergies.js";
 import type * as templates from "../templates.js";
 import type * as tierLists from "../tierLists.js";
@@ -53,6 +55,7 @@ import type * as trading from "../trading.js";
 import type * as trophyRoom from "../trophyRoom.js";
 import type * as userProfiles from "../userProfiles.js";
 import type * as voting from "../voting.js";
+import type * as xpActivity from "../xpActivity.js";
 
 import type {
   ApiFromModules,
@@ -75,6 +78,7 @@ declare const fullApi: ApiFromModules<{
   events: typeof events;
   evolution: typeof evolution;
   fusions: typeof fusions;
+  globalChat: typeof globalChat;
   graveyard: typeof graveyard;
   guilds: typeof guilds;
   interviews: typeof interviews;
@@ -96,6 +100,7 @@ declare const fullApi: ApiFromModules<{
   simulator: typeof simulator;
   speedruns: typeof speedruns;
   startupStories: typeof startupStories;
+  streaks: typeof streaks;
   synergies: typeof synergies;
   templates: typeof templates;
   tierLists: typeof tierLists;
@@ -106,6 +111,7 @@ declare const fullApi: ApiFromModules<{
   trophyRoom: typeof trophyRoom;
   userProfiles: typeof userProfiles;
   voting: typeof voting;
+  xpActivity: typeof xpActivity;
 }>;
 
 /**

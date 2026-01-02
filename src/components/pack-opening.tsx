@@ -15,7 +15,11 @@ import {
   Clock,
   Gift,
   ChevronRight,
-  X
+  X,
+  Copy,
+  Coins,
+  Flame,
+  Calendar
 } from "lucide-react";
 
 interface PackOpeningProps {
@@ -23,9 +27,15 @@ interface PackOpeningProps {
   className?: string;
 }
 
+interface PackResult {
+  tools: any[];
+  newTools: any[];
+  duplicates: number;
+}
+
 export function PackOpening({ userId, className }: PackOpeningProps) {
   const [isOpening, setIsOpening] = useState(false);
-  const [revealedTools, setRevealedTools] = useState<any[] | null>(null);
+  const [packResult, setPackResult] = useState<PackResult | null>(null);
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
 
   const packTypes = useQuery(api.packs.getPackTypes);
@@ -40,7 +50,11 @@ export function PackOpening({ userId, className }: PackOpeningProps) {
       const result = await openPack({ userId, packTypeSlug: packSlug });
       
       setTimeout(() => {
-        setRevealedTools(result.tools);
+        setPackResult({
+          tools: result.tools,
+          newTools: result.newTools,
+          duplicates: result.duplicates,
+        });
         setIsOpening(false);
       }, 2000);
     } catch (error) {
@@ -50,7 +64,7 @@ export function PackOpening({ userId, className }: PackOpeningProps) {
   };
 
   const closeReveal = () => {
-    setRevealedTools(null);
+    setPackResult(null);
     setSelectedPack(null);
   };
 
@@ -103,8 +117,13 @@ export function PackOpening({ userId, className }: PackOpeningProps) {
         <PackOpeningAnimation />
       )}
 
-      {revealedTools && (
-        <RevealModal tools={revealedTools} onClose={closeReveal} />
+      {packResult && (
+        <RevealModal 
+          tools={packResult.tools} 
+          newTools={packResult.newTools}
+          duplicates={packResult.duplicates}
+          onClose={closeReveal} 
+        />
       )}
     </div>
   );
@@ -206,16 +225,21 @@ function PackOpeningAnimation() {
 
 interface RevealModalProps {
   tools: any[];
+  newTools?: any[];
+  duplicates?: number;
   onClose: () => void;
 }
 
-function RevealModal({ tools, onClose }: RevealModalProps) {
+function RevealModal({ tools, newTools = [], duplicates = 0, onClose }: RevealModalProps) {
   const getRarity = (stars: number) => {
     if (stars > 50000) return { label: "LEGENDARY", color: "border-yellow-400 bg-yellow-400/10", textColor: "text-yellow-400" };
     if (stars > 20000) return { label: "RARE", color: "border-purple-400 bg-purple-400/10", textColor: "text-purple-400" };
     if (stars > 5000) return { label: "UNCOMMON", color: "border-green-400 bg-green-400/10", textColor: "text-green-400" };
     return { label: "COMMON", color: "border-gray-400 bg-gray-400/10", textColor: "text-gray-400" };
   };
+
+  const newToolIds = new Set(newTools.map((t: any) => t._id));
+  const xpFromDuplicates = duplicates * 10;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
@@ -232,14 +256,27 @@ function RevealModal({ tools, onClose }: RevealModalProps) {
         <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
           {tools.map((tool, index) => {
             const rarity = getRarity(tool.githubStars || 0);
+            const isNew = newToolIds.has(tool._id);
+            const isDuplicate = !isNew;
             return (
               <Link key={`${tool._id}-${index}`} href={`/tools/${tool.slug}`}>
                 <PixelCard 
                   className={cn(
-                    "p-3 text-center hover:scale-105 transition-transform",
-                    rarity.color
+                    "p-3 text-center hover:scale-105 transition-transform relative",
+                    rarity.color,
+                    isDuplicate && "opacity-70"
                   )}
                 >
+                  {isNew && (
+                    <PixelBadge variant="default" className="absolute -top-2 -right-2 text-[6px] bg-green-400 text-black">
+                      NEW
+                    </PixelBadge>
+                  )}
+                  {isDuplicate && (
+                    <div className="absolute -top-2 -right-2 flex items-center gap-1">
+                      <Copy className="w-3 h-3 text-yellow-400" />
+                    </div>
+                  )}
                   <Star className={cn("w-8 h-8 mx-auto mb-2", rarity.textColor)} />
                   <p className="text-[#60a5fa] text-[10px] truncate">{tool.name}</p>
                   <PixelBadge variant="outline" className={cn("text-[6px] mt-2", rarity.textColor)}>
@@ -250,6 +287,19 @@ function RevealModal({ tools, onClose }: RevealModalProps) {
             );
           })}
         </div>
+
+        {duplicates > 0 && (
+          <PixelCard className="p-3 mt-4 border-yellow-400 bg-yellow-400/10">
+            <div className="flex items-center justify-center gap-3">
+              <Copy className="w-5 h-5 text-yellow-400" />
+              <div className="text-center">
+                <p className="text-yellow-400 text-[10px]">{duplicates} DUPLICATE{duplicates > 1 ? "S" : ""} CONVERTED</p>
+                <p className="text-[#3b82f6] text-[8px]">+{xpFromDuplicates} XP bonus awarded!</p>
+              </div>
+              <Coins className="w-5 h-5 text-yellow-400" />
+            </div>
+          </PixelCard>
+        )}
 
         <div className="text-center mt-6">
           <PixelButton onClick={onClose}>

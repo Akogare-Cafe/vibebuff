@@ -5,7 +5,6 @@ import {
   Gamepad2, 
   Wrench, 
   Compass, 
-  ArrowLeft,
   Layers,
   Database,
   Globe,
@@ -17,7 +16,6 @@ import {
   FileCode,
   Layout
 } from "lucide-react";
-import { PixelButton } from "@/components/pixel-button";
 import { PixelCard } from "@/components/pixel-card";
 
 const techStack = [
@@ -63,14 +61,6 @@ export default function ArchitecturePage() {
               </div>
             </PixelCard>
           ))}
-        </div>
-
-        <div className="text-center mt-8">
-          <Link href="/">
-            <PixelButton variant="ghost" size="sm">
-              <ArrowLeft className="w-3 h-3 mr-1" /> BACK TO HOME
-            </PixelButton>
-          </Link>
         </div>
       </main>
     </div>

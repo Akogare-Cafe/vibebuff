@@ -3,7 +3,6 @@
 import { useState, Suspense } from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, PixelCardContent } from "@/components/pixel-card";
 import { PixelInput } from "@/components/pixel-input";
 import { PixelBadge } from "@/components/pixel-badge";
@@ -14,7 +13,6 @@ import {
   Search, 
   Star, 
   Unlock,
-  ArrowLeft,
   ChevronRight
 } from "lucide-react";
 
@@ -168,17 +166,6 @@ function ToolsPageContent() {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t-4 border-[#1e3a5f] p-4 mt-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <Link href="/">
-            <PixelButton variant="ghost" size="sm">
-              <ArrowLeft className="w-3 h-3 mr-1" /> BACK TO HOME
-            </PixelButton>
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 }
