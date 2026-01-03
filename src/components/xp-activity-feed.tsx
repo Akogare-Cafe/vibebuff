@@ -54,13 +54,13 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
   if (!activities || activities.length === 0) {
     return (
       <PixelCard className={cn("p-4", className)}>
-        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+        <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
           <Zap className="w-4 h-4" /> XP ACTIVITY
         </h3>
         <div className="text-center py-4">
-          <Zap className="w-8 h-8 mx-auto mb-2 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[8px]">NO RECENT ACTIVITY</p>
-          <p className="text-[#1e3a5f] text-[6px]">Start playing to earn XP!</p>
+          <Zap className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+          <p className="text-muted-foreground text-[8px]">NO RECENT ACTIVITY</p>
+          <p className="text-muted-foreground text-[6px]">Start playing to earn XP!</p>
         </div>
       </PixelCard>
     );
@@ -71,7 +71,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
   return (
     <PixelCard className={cn("p-4", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
           <Zap className="w-4 h-4" /> XP ACTIVITY
         </h3>
         <PixelBadge variant="default" className="text-[6px]">
@@ -83,7 +83,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
         {(activities as XpActivity[]).map((activity) => {
           const config = XP_SOURCE_CONFIG[activity.source] || { 
             icon: Zap, 
-            color: "text-[#3b82f6]", 
+            color: "text-muted-foreground", 
             label: activity.source 
           };
           const Icon = config.icon;
@@ -92,14 +92,14 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
           return (
             <div
               key={activity._id}
-              className="flex items-center justify-between p-2 border border-[#1e3a5f] bg-[#0a1628]"
+              className="flex items-center justify-between p-2 border border-border bg-[#191022]"
             >
               <div className="flex items-center gap-2">
                 <Icon className={cn("w-4 h-4", config.color)} />
                 <div>
-                  <p className="text-[#60a5fa] text-[9px]">{config.label}</p>
+                  <p className="text-primary text-[9px]">{config.label}</p>
                   {activity.description && (
-                    <p className="text-[#3b82f6] text-[7px]">{activity.description}</p>
+                    <p className="text-muted-foreground text-[7px]">{activity.description}</p>
                   )}
                 </div>
               </div>
@@ -110,7 +110,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
                 )}>
                   {activity.amount > 0 ? "+" : ""}{activity.amount} XP
                 </p>
-                <p className="text-[#1e3a5f] text-[6px] flex items-center gap-1">
+                <p className="text-muted-foreground text-[6px] flex items-center gap-1">
                   <Clock className="w-2 h-2" /> {timeAgo}
                 </p>
               </div>
@@ -146,7 +146,7 @@ export function XpActivityWidget({ userId }: { userId: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#60a5fa] text-[10px] flex items-center gap-1">
+        <span className="text-primary text-[10px] flex items-center gap-1">
           <Zap className="w-3 h-3" /> RECENT XP
         </span>
         <PixelBadge variant="default" className="text-[6px] bg-green-400 text-black">
@@ -157,12 +157,12 @@ export function XpActivityWidget({ userId }: { userId: string }) {
         {(activities as XpActivity[]).slice(0, 3).map((activity) => {
           const config = XP_SOURCE_CONFIG[activity.source] || { 
             icon: Zap, 
-            color: "text-[#3b82f6]", 
+            color: "text-muted-foreground", 
             label: activity.source 
           };
           return (
             <div key={activity._id} className="flex items-center justify-between text-[8px]">
-              <span className="text-[#3b82f6] truncate flex-1">{config.label}</span>
+              <span className="text-muted-foreground truncate flex-1">{config.label}</span>
               <span className="text-green-400 ml-2">+{activity.amount}</span>
             </div>
           );

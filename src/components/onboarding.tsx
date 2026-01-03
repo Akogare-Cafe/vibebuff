@@ -48,12 +48,12 @@ const ONBOARDING_STEPS = [
     action: { label: "BROWSE", href: "/tools" },
   },
   {
-    id: "battle",
-    title: "BOSS BATTLES",
-    description: "COMPARE TOOLS HEAD-TO-HEAD",
+    id: "compare",
+    title: "COMPARE TOOLS",
+    description: "SIDE-BY-SIDE COMPARISON",
     icon: Target,
-    content: "Pit tools against each other in RPG-style battles to see which one wins based on your priorities.",
-    action: { label: "BATTLE", href: "/play" },
+    content: "Compare tools head-to-head to see strengths, weaknesses, and which one fits your needs best.",
+    action: { label: "COMPARE", href: "/compare" },
   },
   {
     id: "decks",
@@ -101,7 +101,7 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
       <PixelCard className="max-w-lg w-full p-6 relative">
         <button
           onClick={onSkip}
-          className="absolute top-4 right-4 text-[#3b82f6] hover:text-[#60a5fa]"
+          className="absolute top-4 right-4 text-muted-foreground hover:text-primary"
         >
           <X className="w-4 h-4" />
         </button>
@@ -111,7 +111,7 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
             <div
               key={index}
               className={`h-1 flex-1 ${
-                index <= currentStep ? "bg-[#3b82f6]" : "bg-[#1e3a5f]"
+                index <= currentStep ? "bg-primary" : "bg-card"
               }`}
             />
           ))}
@@ -127,14 +127,14 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
             className="text-center"
           >
             <div className="mb-6">
-              <div className="w-16 h-16 mx-auto mb-4 border-4 border-[#3b82f6] bg-[#0a1628] flex items-center justify-center">
-                <StepIcon className="w-8 h-8 text-[#60a5fa]" />
+              <div className="w-16 h-16 mx-auto mb-4 border-4 border-primary bg-[#191022] flex items-center justify-center">
+                <StepIcon className="w-8 h-8 text-primary" />
               </div>
-              <h2 className="text-[#60a5fa] text-sm mb-2">{step.title}</h2>
-              <p className="text-[#3b82f6] text-[10px]">{step.description}</p>
+              <h2 className="text-primary text-sm mb-2">{step.title}</h2>
+              <p className="text-muted-foreground text-[10px]">{step.description}</p>
             </div>
 
-            <p className="text-[#3b82f6] text-[10px] mb-6 leading-relaxed">
+            <p className="text-muted-foreground text-[10px] mb-6 leading-relaxed">
               {step.content}
             </p>
 
@@ -159,7 +159,7 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
             BACK
           </PixelButton>
 
-          <p className="text-[#3b82f6] text-[8px]">
+          <p className="text-muted-foreground text-[8px]">
             {currentStep + 1} / {ONBOARDING_STEPS.length}
           </p>
 

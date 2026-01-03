@@ -97,7 +97,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <BarChart3 className="w-4 h-4" /> TIER LIST BUILDER
         </h2>
         <div className="flex gap-2">
@@ -106,9 +106,9 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
               type="checkbox"
               checked={isPublic}
               onChange={(e) => setIsPublic(e.target.checked)}
-              className="accent-[#3b82f6]"
+              className="accent-primary"
             />
-            <span className="text-[#3b82f6] text-[10px]">PUBLIC</span>
+            <span className="text-muted-foreground text-[10px]">PUBLIC</span>
           </label>
           <PixelButton onClick={handleSave}>
             <Save className="w-4 h-4 mr-2" /> SAVE
@@ -128,34 +128,34 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
             <div className={cn("w-12 flex items-center justify-center font-bold text-xl", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-2 p-2 bg-[#0a1628]/50">
+            <div className="flex-1 flex flex-wrap gap-2 p-2 bg-[#191022]/50">
               {tiers[tier].map((toolId) => {
                 const tool = getToolById(toolId);
                 if (!tool) return null;
                 return (
                   <div
                     key={toolId}
-                    className="group relative border border-[#1e3a5f] bg-[#0a1628] px-2 py-1"
+                    className="group relative border border-border bg-[#191022] px-2 py-1"
                   >
-                    <span className="text-[#60a5fa] text-[10px]">{tool.name}</span>
+                    <span className="text-primary text-[10px]">{tool.name}</span>
                     <div className="absolute -top-6 right-0 hidden group-hover:flex gap-1">
                       <button
                         onClick={() => moveTier(toolId, tier, "up")}
-                        className="p-0.5 bg-[#0a1628] border border-[#3b82f6] text-[#3b82f6]"
+                        className="p-0.5 bg-[#191022] border border-primary text-muted-foreground"
                         disabled={tier === "s"}
                       >
                         <ChevronUp className="w-3 h-3" />
                       </button>
                       <button
                         onClick={() => moveTier(toolId, tier, "down")}
-                        className="p-0.5 bg-[#0a1628] border border-[#3b82f6] text-[#3b82f6]"
+                        className="p-0.5 bg-[#191022] border border-primary text-muted-foreground"
                         disabled={tier === "d"}
                       >
                         <ChevronDown className="w-3 h-3" />
                       </button>
                       <button
                         onClick={() => removeFromTier(toolId, tier)}
-                        className="p-0.5 bg-[#0a1628] border border-red-400 text-red-400"
+                        className="p-0.5 bg-[#191022] border border-red-400 text-red-400"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -169,7 +169,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
       </div>
 
       <PixelCard className="p-4">
-        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3">UNRANKED TOOLS</h3>
+        <h3 className="text-primary text-[10px] uppercase mb-3">UNRANKED TOOLS</h3>
         <div className="flex flex-wrap gap-2">
           {unrankedTools.map((tool) => (
             <div key={tool._id} className="group relative">
@@ -214,7 +214,7 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
   if (!tierList) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING TIER LIST...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING TIER LIST...</div>
       </div>
     );
   }
@@ -223,8 +223,8 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
     <div className={cn("space-y-4", className)}>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-[#60a5fa] text-sm">{tierList.name}</h2>
-          <p className="text-[#3b82f6] text-[8px]">{tierList.category?.name}</p>
+          <h2 className="text-primary text-sm">{tierList.name}</h2>
+          <p className="text-muted-foreground text-[8px]">{tierList.category?.name}</p>
         </div>
         <div className="flex items-center gap-2">
           <PixelBadge variant="outline" className="text-[8px]">
@@ -239,13 +239,13 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
             <div className={cn("w-10 flex items-center justify-center font-bold text-lg", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-1 p-2 bg-[#0a1628]/50">
+            <div className="flex-1 flex flex-wrap gap-1 p-2 bg-[#191022]/50">
               {tierList.tiers[tier].map((toolId: string) => {
                 const tool = tierList.toolsMap[toolId];
                 if (!tool) return null;
                 return (
                   <Link key={toolId} href={`/tools/${tool.slug}`}>
-                    <PixelBadge variant="outline" className="text-[8px] hover:border-[#3b82f6]">
+                    <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
                       {tool.name}
                     </PixelBadge>
                   </Link>
@@ -267,7 +267,7 @@ export function CommunityConsensusTierList({ categoryId }: { categoryId: Id<"cat
   return (
     <PixelCard className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
           <BarChart3 className="w-4 h-4" /> COMMUNITY CONSENSUS
         </h3>
         <PixelBadge variant="outline" className="text-[6px]">
@@ -281,7 +281,7 @@ export function CommunityConsensusTierList({ categoryId }: { categoryId: Id<"cat
             <div className={cn("w-8 flex items-center justify-center font-bold text-sm", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-1 p-1 bg-[#0a1628]/50">
+            <div className="flex-1 flex flex-wrap gap-1 p-1 bg-[#191022]/50">
               {consensus.consensus[tier].slice(0, 5).map((toolId: string) => (
                 <PixelBadge key={toolId} variant="outline" className="text-[6px]">
                   {toolId.slice(-4)}

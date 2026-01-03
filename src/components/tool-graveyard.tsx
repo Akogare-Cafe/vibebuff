@@ -52,7 +52,7 @@ export function ToolGraveyard({ className }: ToolGraveyardProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Skull className="w-4 h-4" /> TOOL GRAVEYARD
         </h2>
       </div>
@@ -104,7 +104,7 @@ export function ToolGraveyard({ className }: ToolGraveyardProps) {
       )}
 
       <div>
-        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+        <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
           <Skull className="w-4 h-4" /> REST IN PEACE
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -124,17 +124,17 @@ function GraveyardCard({ entry }: { entry: any }) {
     <PixelCard className={cn("p-4", config?.color)}>
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="text-[#60a5fa] text-[12px]">{entry.name}</h3>
-          <p className="text-[#3b82f6] text-[8px]">{entry.tagline}</p>
+          <h3 className="text-primary text-[12px]">{entry.name}</h3>
+          <p className="text-muted-foreground text-[8px]">{entry.tagline}</p>
         </div>
-        <Skull className="w-5 h-5 text-[#3b82f6]" />
+        <Skull className="w-5 h-5 text-muted-foreground" />
       </div>
 
       <PixelBadge variant="outline" className={cn("text-[6px] mb-3", config?.color)}>
         {config?.label}
       </PixelBadge>
 
-      <div className="flex items-center gap-4 mb-3 text-[8px] text-[#3b82f6]">
+      <div className="flex items-center gap-4 mb-3 text-[8px] text-muted-foreground">
         <span className="flex items-center gap-1">
           <TrendingUp className="w-3 h-3" /> Peak: {entry.peakYear}
         </span>
@@ -143,10 +143,10 @@ function GraveyardCard({ entry }: { entry: any }) {
         </span>
       </div>
 
-      <p className="text-[#3b82f6] text-[10px] mb-3 line-clamp-3">{entry.obituary}</p>
+      <p className="text-muted-foreground text-[10px] mb-3 line-clamp-3">{entry.obituary}</p>
 
       <div className="flex items-center justify-between">
-        <span className="text-[#3b82f6] text-[8px] flex items-center gap-1">
+        <span className="text-muted-foreground text-[8px] flex items-center gap-1">
           <MessageSquare className="w-3 h-3" /> {entry.memorialMessages} memorials
         </span>
         <Link href={`/graveyard/${entry._id}`}>
@@ -166,7 +166,7 @@ function ResurrectedCard({ entry }: { entry: any }) {
         <Sparkles className="w-4 h-4 text-green-400" />
         <span className="text-green-400 text-[10px]">{entry.name}</span>
       </div>
-      <p className="text-[#3b82f6] text-[8px]">
+      <p className="text-muted-foreground text-[8px]">
         Died {entry.deathYear}, Resurrected {new Date(entry.resurrectionDate).getFullYear()}
       </p>
     </PixelCard>
@@ -179,21 +179,21 @@ function ResurrectionWatchCard({ watch }: { watch: any }) {
   return (
     <PixelCard className="p-3 border-yellow-400">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#60a5fa] text-[10px]">{watch.name}</span>
+        <span className="text-primary text-[10px]">{watch.name}</span>
         <PixelBadge variant="outline" className="text-[6px] text-yellow-400 border-yellow-400">
           {watch.hopeLevel}% HOPE
         </PixelBadge>
       </div>
       
-      <div className="h-2 bg-[#0a1628] border border-[#1e3a5f] mb-2">
+      <div className="h-2 bg-[#191022] border border-border mb-2">
         <div className="h-full bg-yellow-400" style={{ width: `${watch.hopeLevel}%` }} />
       </div>
 
-      <div className="flex items-center justify-between text-[8px] text-[#3b82f6]">
+      <div className="flex items-center justify-between text-[8px] text-muted-foreground">
         <span>{watch.signs.length} signs</span>
         <button 
           onClick={() => watchResurrection({ watchId: watch._id })}
-          className="flex items-center gap-1 hover:text-[#60a5fa]"
+          className="flex items-center gap-1 hover:text-primary"
         >
           <Eye className="w-3 h-3" /> {watch.watchers} watching
         </button>
@@ -236,8 +236,8 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
   if (!entry) {
     return (
       <PixelCard className="p-8 text-center">
-        <Skull className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-        <p className="text-[#3b82f6] text-[10px]">LOADING...</p>
+        <Skull className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+        <p className="text-muted-foreground text-[10px]">LOADING...</p>
       </PixelCard>
     );
   }
@@ -248,10 +248,10 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
     <div className="space-y-6">
       <PixelCard className={cn("p-6", config?.color)}>
         <div className="text-center mb-6">
-          <Skull className="w-16 h-16 mx-auto mb-4 text-[#3b82f6]" />
-          <h1 className="text-[#60a5fa] text-2xl mb-2">{entry.name}</h1>
-          <p className="text-[#3b82f6] text-[12px] mb-4">{entry.tagline}</p>
-          <p className="text-[#3b82f6] text-[10px]">
+          <Skull className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+          <h1 className="text-primary text-2xl mb-2">{entry.name}</h1>
+          <p className="text-muted-foreground text-[12px] mb-4">{entry.tagline}</p>
+          <p className="text-muted-foreground text-[10px]">
             {entry.peakYear} - {entry.deathYear}
           </p>
         </div>
@@ -260,21 +260,21 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
           {config?.label}
         </PixelBadge>
 
-        <div className="border-t border-[#1e3a5f] pt-4">
-          <h2 className="text-[#60a5fa] text-[10px] uppercase mb-3">OBITUARY</h2>
-          <p className="text-[#3b82f6] text-[12px]">{entry.obituary}</p>
+        <div className="border-t border-border pt-4">
+          <h2 className="text-primary text-[10px] uppercase mb-3">OBITUARY</h2>
+          <p className="text-muted-foreground text-[12px]">{entry.obituary}</p>
         </div>
       </PixelCard>
 
       {entry.lessonsLearned.length > 0 && (
         <PixelCard className="p-4">
-          <h2 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h2 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4" /> LESSONS LEARNED
           </h2>
           <ul className="space-y-2">
             {entry.lessonsLearned.map((lesson: string, i: number) => (
-              <li key={i} className="text-[#3b82f6] text-[10px] flex items-start gap-2">
-                <span className="text-[#1e3a5f]">{i + 1}.</span> {lesson}
+              <li key={i} className="text-muted-foreground text-[10px] flex items-start gap-2">
+                <span className="text-muted-foreground">{i + 1}.</span> {lesson}
               </li>
             ))}
           </ul>
@@ -283,13 +283,13 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
 
       {entry.successors && entry.successors.length > 0 && (
         <PixelCard className="p-4">
-          <h2 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h2 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <ArrowRight className="w-4 h-4" /> SUCCESSORS
           </h2>
           <div className="flex flex-wrap gap-2">
             {entry.successors.map((successor: any) => (
               <Link key={successor._id} href={`/tools/${successor.slug}`}>
-                <PixelBadge variant="outline" className="text-[8px] hover:border-[#3b82f6]">
+                <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
                   {successor.name}
                 </PixelBadge>
               </Link>
@@ -300,7 +300,7 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
 
       {migrationGuides && migrationGuides.length > 0 && (
         <PixelCard className="p-4">
-          <h2 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h2 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <ArrowRight className="w-4 h-4" /> ESCAPE ROUTES
           </h2>
           <div className="space-y-3">
@@ -312,17 +312,17 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
       )}
 
       <PixelCard className="p-4">
-        <h2 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+        <h2 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
           <Heart className="w-4 h-4" /> MEMORIALS ({entry.memorials?.length || 0})
         </h2>
         
         {userId && (
-          <div className="mb-4 p-3 border border-[#1e3a5f] bg-[#0a1628]">
+          <div className="mb-4 p-3 border border-border bg-[#191022]">
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Share your memories..."
-              className="w-full bg-transparent border-none text-[#60a5fa] text-[10px] h-20 resize-none focus:outline-none"
+              className="w-full bg-transparent border-none text-primary text-[10px] h-20 resize-none focus:outline-none"
             />
             <div className="flex items-center gap-3 mt-2">
               <input
@@ -330,14 +330,14 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
                 value={yearsUsed || ""}
                 onChange={(e) => setYearsUsed(e.target.value ? parseInt(e.target.value) : undefined)}
                 placeholder="Years used"
-                className="w-24 bg-[#0a1628] border border-[#1e3a5f] p-1 text-[#60a5fa] text-[8px]"
+                className="w-24 bg-[#191022] border border-border p-1 text-primary text-[8px]"
               />
               <input
                 type="text"
                 value={fondestMemory}
                 onChange={(e) => setFondestMemory(e.target.value)}
                 placeholder="Fondest memory..."
-                className="flex-1 bg-[#0a1628] border border-[#1e3a5f] p-1 text-[#60a5fa] text-[8px]"
+                className="flex-1 bg-[#191022] border border-border p-1 text-primary text-[8px]"
               />
               <PixelButton size="sm" onClick={handleSubmitMemorial} disabled={!message}>
                 <Send className="w-3 h-3" />
@@ -348,14 +348,14 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
 
         <div className="space-y-3">
           {entry.memorials?.map((memorial: any) => (
-            <div key={memorial._id} className="p-3 border border-[#1e3a5f]">
-              <p className="text-[#60a5fa] text-[10px] mb-2">"{memorial.message}"</p>
-              <div className="flex items-center gap-3 text-[8px] text-[#3b82f6]">
+            <div key={memorial._id} className="p-3 border border-border">
+              <p className="text-primary text-[10px] mb-2">"{memorial.message}"</p>
+              <div className="flex items-center gap-3 text-[8px] text-muted-foreground">
                 <span>- {memorial.oderId.slice(-6)}</span>
                 {memorial.yearsUsed && <span>{memorial.yearsUsed} years</span>}
               </div>
               {memorial.fondestMemory && (
-                <p className="text-[#1e3a5f] text-[8px] mt-1 italic">
+                <p className="text-muted-foreground text-[8px] mt-1 italic">
                   Fondest memory: {memorial.fondestMemory}
                 </p>
               )}
@@ -382,7 +382,7 @@ function MigrationGuideCard({ guide }: { guide: any }) {
     <div className={cn("p-3 border", difficultyColor)}>
       <div className="flex items-center justify-between mb-2">
         <Link href={`/tools/${guide.toTool?.slug}`}>
-          <span className="text-[#60a5fa] text-[10px] hover:underline flex items-center gap-1">
+          <span className="text-primary text-[10px] hover:underline flex items-center gap-1">
             <ArrowRight className="w-3 h-3" /> {guide.toTool?.name}
           </span>
         </Link>
@@ -390,13 +390,13 @@ function MigrationGuideCard({ guide }: { guide: any }) {
           {guide.difficulty.toUpperCase()}
         </PixelBadge>
       </div>
-      <div className="flex items-center gap-3 text-[8px] text-[#3b82f6]">
+      <div className="flex items-center gap-3 text-[8px] text-muted-foreground">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" /> ~{guide.estimatedHours}h
         </span>
         <button 
           onClick={() => upvoteGuide({ guideId: guide._id })}
-          className="flex items-center gap-1 hover:text-[#60a5fa]"
+          className="flex items-center gap-1 hover:text-primary"
         >
           <ThumbsUp className="w-3 h-3" /> {guide.upvotes}
         </button>

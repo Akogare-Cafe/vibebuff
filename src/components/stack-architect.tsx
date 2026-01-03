@@ -45,7 +45,7 @@ export function StackArchitect({ userId, className }: StackArchitectProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Puzzle className="w-4 h-4" /> STACK ARCHITECT
         </h2>
       </div>
@@ -61,7 +61,7 @@ export function StackArchitect({ userId, className }: StackArchitectProps) {
       )}
 
       <div>
-        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3">ALL PUZZLES</h3>
+        <h3 className="text-primary text-[10px] uppercase mb-3">ALL PUZZLES</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {puzzles?.map((puzzle: any) => (
             <PuzzleCard key={puzzle._id} puzzle={puzzle} userId={userId} />
@@ -80,7 +80,7 @@ function PuzzleCard({ puzzle, userId, isDaily }: { puzzle: any; userId?: string;
     <PixelCard className={cn("p-4", config?.color)}>
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="text-[#60a5fa] text-[12px]">{puzzle.title}</h3>
+          <h3 className="text-primary text-[12px]">{puzzle.title}</h3>
           <PixelBadge variant="outline" className={cn("text-[6px] mt-1", config?.color)}>
             <DifficultyIcon className="w-3 h-3 mr-1" /> {config?.label}
           </PixelBadge>
@@ -88,22 +88,22 @@ function PuzzleCard({ puzzle, userId, isDaily }: { puzzle: any; userId?: string;
         {isDaily && <Clock className="w-5 h-5 text-yellow-400" />}
       </div>
 
-      <p className="text-[#3b82f6] text-[10px] mb-3">{puzzle.description}</p>
+      <p className="text-muted-foreground text-[10px] mb-3">{puzzle.description}</p>
 
       {puzzle.constraints && (
         <div className="space-y-1 mb-3">
           {puzzle.constraints.maxBudget !== undefined && (
-            <div className="flex items-center gap-1 text-[8px] text-[#3b82f6]">
+            <div className="flex items-center gap-1 text-[8px] text-muted-foreground">
               <DollarSign className="w-3 h-3" /> Max Budget: ${puzzle.constraints.maxBudget}
             </div>
           )}
           {puzzle.constraints.maxTools && (
-            <div className="flex items-center gap-1 text-[8px] text-[#3b82f6]">
+            <div className="flex items-center gap-1 text-[8px] text-muted-foreground">
               <Layers className="w-3 h-3" /> Max Tools: {puzzle.constraints.maxTools}
             </div>
           )}
           {puzzle.constraints.customConstraints?.slice(0, 2).map((c: string, i: number) => (
-            <div key={i} className="flex items-center gap-1 text-[8px] text-[#3b82f6]">
+            <div key={i} className="flex items-center gap-1 text-[8px] text-muted-foreground">
               <Target className="w-3 h-3" /> {c}
             </div>
           ))}
@@ -148,8 +148,8 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
   if (!puzzle) {
     return (
       <PixelCard className="p-8 text-center">
-        <Puzzle className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-        <p className="text-[#3b82f6] text-[10px]">LOADING PUZZLE...</p>
+        <Puzzle className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+        <p className="text-muted-foreground text-[10px]">LOADING PUZZLE...</p>
       </PixelCard>
     );
   }
@@ -159,8 +159,8 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
   return (
     <div className="space-y-6">
       <PixelCard className={cn("p-4", config?.color)}>
-        <h2 className="text-[#60a5fa] text-lg mb-2">{puzzle.title}</h2>
-        <p className="text-[#3b82f6] text-[10px] mb-4">{puzzle.description}</p>
+        <h2 className="text-primary text-lg mb-2">{puzzle.title}</h2>
+        <p className="text-muted-foreground text-[10px] mb-4">{puzzle.description}</p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
           <ScoreWeight label="COST" weight={puzzle.scoringCriteria.costWeight} icon={<DollarSign className="w-4 h-4" />} />
@@ -170,11 +170,11 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
         </div>
 
         {puzzle.constraints?.customConstraints && (
-          <div className="p-3 border border-[#1e3a5f] bg-[#0a1628] mb-4">
-            <p className="text-[#60a5fa] text-[8px] mb-2">CONSTRAINTS:</p>
+          <div className="p-3 border border-border bg-[#191022] mb-4">
+            <p className="text-primary text-[8px] mb-2">CONSTRAINTS:</p>
             <ul className="space-y-1">
               {puzzle.constraints.customConstraints.map((c: string, i: number) => (
-                <li key={i} className="text-[#3b82f6] text-[8px] flex items-center gap-1">
+                <li key={i} className="text-muted-foreground text-[8px] flex items-center gap-1">
                   <Target className="w-3 h-3" /> {c}
                 </li>
               ))}
@@ -184,10 +184,10 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
       </PixelCard>
 
       <PixelCard className="p-4">
-        <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3">YOUR STACK ({selectedTools.length} tools)</h3>
-        <div className="flex flex-wrap gap-2 mb-4 min-h-[60px] p-3 border border-dashed border-[#1e3a5f]">
+        <h3 className="text-primary text-[10px] uppercase mb-3">YOUR STACK ({selectedTools.length} tools)</h3>
+        <div className="flex flex-wrap gap-2 mb-4 min-h-[60px] p-3 border border-dashed border-border">
           {selectedTools.length === 0 ? (
-            <p className="text-[#1e3a5f] text-[10px]">Add tools to your stack...</p>
+            <p className="text-muted-foreground text-[10px]">Add tools to your stack...</p>
           ) : (
             selectedTools.map((toolId, i) => (
               <PixelBadge key={i} variant="outline" className="text-[8px]">
@@ -210,10 +210,10 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
 
 function ScoreWeight({ label, weight, icon }: { label: string; weight: number; icon: React.ReactNode }) {
   return (
-    <div className="text-center p-2 border border-[#1e3a5f]">
-      <div className="text-[#3b82f6] mb-1">{icon}</div>
-      <p className="text-[#60a5fa] text-lg">{weight}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+    <div className="text-center p-2 border border-border">
+      <div className="text-muted-foreground mb-1">{icon}</div>
+      <p className="text-primary text-lg">{weight}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -225,7 +225,7 @@ export function PuzzleLeaderboard({ puzzleId }: { puzzleId: Id<"architectPuzzles
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <Trophy className="w-4 h-4" /> LEADERBOARD
       </h3>
       <div className="space-y-2">
@@ -237,7 +237,7 @@ export function PuzzleLeaderboard({ puzzleId }: { puzzleId: Id<"architectPuzzles
               entry.rank === 1 && "border-yellow-400 bg-yellow-400/10",
               entry.rank === 2 && "border-gray-400 bg-gray-400/10",
               entry.rank === 3 && "border-orange-400 bg-orange-400/10",
-              entry.rank > 3 && "border-[#1e3a5f]"
+              entry.rank > 3 && "border-border"
             )}
           >
             <div className="flex items-center gap-2">
@@ -246,13 +246,13 @@ export function PuzzleLeaderboard({ puzzleId }: { puzzleId: Id<"architectPuzzles
                 entry.rank === 1 && "text-yellow-400",
                 entry.rank === 2 && "text-gray-400",
                 entry.rank === 3 && "text-orange-400",
-                entry.rank > 3 && "text-[#3b82f6]"
+                entry.rank > 3 && "text-muted-foreground"
               )}>
                 #{entry.rank}
               </span>
-              <span className="text-[#60a5fa] text-[10px]">{entry.userId.slice(-6)}</span>
+              <span className="text-primary text-[10px]">{entry.userId.slice(-6)}</span>
             </div>
-            <span className="text-[#3b82f6] text-[10px]">{entry.score} pts</span>
+            <span className="text-muted-foreground text-[10px]">{entry.score} pts</span>
           </div>
         ))}
       </div>

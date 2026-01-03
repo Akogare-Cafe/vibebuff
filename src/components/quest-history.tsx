@@ -61,7 +61,7 @@ const OUTCOME_CONFIG = {
   shipped: { label: "SHIPPED", icon: Rocket, color: "text-green-400 border-green-400" },
   in_progress: { label: "IN PROGRESS", icon: Clock, color: "text-yellow-400 border-yellow-400" },
   abandoned: { label: "ABANDONED", icon: XCircle, color: "text-red-400 border-red-400" },
-  pending: { label: "PENDING", icon: Target, color: "text-[#3b82f6] border-[#3b82f6]" },
+  pending: { label: "PENDING", icon: Target, color: "text-muted-foreground border-primary" },
 };
 
 export function QuestHistory({ userId, className }: QuestHistoryProps) {
@@ -71,7 +71,7 @@ export function QuestHistory({ userId, className }: QuestHistoryProps) {
   if (!quests) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING QUEST LOG...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING QUEST LOG...</div>
       </div>
     );
   }
@@ -80,7 +80,7 @@ export function QuestHistory({ userId, className }: QuestHistoryProps) {
     <div className={cn("space-y-6", className)}>
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Scroll className="w-4 h-4" /> QUEST LOG
         </h2>
         <PixelBadge variant="default">
@@ -94,22 +94,22 @@ export function QuestHistory({ userId, className }: QuestHistoryProps) {
           <PixelCard className="p-3 text-center">
             <Rocket className="w-6 h-6 mx-auto mb-2 text-green-400" />
             <p className="text-green-400 text-lg">{stats.shipped}</p>
-            <p className="text-[#3b82f6] text-[8px]">SHIPPED</p>
+            <p className="text-muted-foreground text-[8px]">SHIPPED</p>
           </PixelCard>
           <PixelCard className="p-3 text-center">
             <Clock className="w-6 h-6 mx-auto mb-2 text-yellow-400" />
             <p className="text-yellow-400 text-lg">{stats.inProgress}</p>
-            <p className="text-[#3b82f6] text-[8px]">IN PROGRESS</p>
+            <p className="text-muted-foreground text-[8px]">IN PROGRESS</p>
           </PixelCard>
           <PixelCard className="p-3 text-center">
-            <Target className="w-6 h-6 mx-auto mb-2 text-[#60a5fa]" />
-            <p className="text-[#60a5fa] text-lg">{stats.pending}</p>
-            <p className="text-[#3b82f6] text-[8px]">PENDING</p>
+            <Target className="w-6 h-6 mx-auto mb-2 text-primary" />
+            <p className="text-primary text-lg">{stats.pending}</p>
+            <p className="text-muted-foreground text-[8px]">PENDING</p>
           </PixelCard>
           <PixelCard className="p-3 text-center">
             <XCircle className="w-6 h-6 mx-auto mb-2 text-red-400" />
             <p className="text-red-400 text-lg">{stats.abandoned}</p>
-            <p className="text-[#3b82f6] text-[8px]">ABANDONED</p>
+            <p className="text-muted-foreground text-[8px]">ABANDONED</p>
           </PixelCard>
         </div>
       )}
@@ -117,9 +117,9 @@ export function QuestHistory({ userId, className }: QuestHistoryProps) {
       {/* Quest List */}
       {quests.length === 0 ? (
         <PixelCard className="p-8 text-center">
-          <Scroll className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO QUESTS YET</p>
-          <p className="text-[#1e3a5f] text-[8px] mb-4">Start your first quest to get recommendations!</p>
+          <Scroll className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO QUESTS YET</p>
+          <p className="text-muted-foreground text-[8px] mb-4">Start your first quest to get recommendations!</p>
           <Link href="/quest">
             <PixelButton>
               <Target className="w-4 h-4 mr-2" /> START QUEST
@@ -180,10 +180,10 @@ function QuestCard({ quest }: QuestCardProps) {
     <PixelCard className={cn("p-4", quest.outcome === "shipped" && "border-green-400")}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <ProjectIcon className="w-8 h-8 text-[#60a5fa]" />
+          <ProjectIcon className="w-8 h-8 text-primary" />
           <div>
-            <h3 className="text-[#60a5fa] text-[12px]">{projectType.name}</h3>
-            <p className="text-[#3b82f6] text-[8px]">
+            <h3 className="text-primary text-[12px]">{projectType.name}</h3>
+            <p className="text-muted-foreground text-[8px]">
               {quest.answers.scale} • {quest.answers.budget} budget
             </p>
           </div>
@@ -203,7 +203,7 @@ function QuestCard({ quest }: QuestCardProps) {
       <div className="flex flex-wrap gap-1 mb-3">
         {quest.tools.slice(0, 5).map((tool: any) => (
           <Link key={tool._id} href={`/tools/${tool.slug}`}>
-            <PixelBadge variant="outline" className="text-[6px] hover:border-[#3b82f6]">
+            <PixelBadge variant="outline" className="text-[6px] hover:border-primary">
               {tool.name}
             </PixelBadge>
           </Link>
@@ -219,7 +219,7 @@ function QuestCard({ quest }: QuestCardProps) {
       {quest.answers.features.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-3">
           {quest.answers.features.map((feature) => (
-            <span key={feature} className="text-[#1e3a5f] text-[6px]">
+            <span key={feature} className="text-muted-foreground text-[6px]">
               #{feature}
             </span>
           ))}
@@ -228,7 +228,7 @@ function QuestCard({ quest }: QuestCardProps) {
 
       {/* Timestamp & Actions */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 text-[#1e3a5f] text-[8px]">
+        <div className="flex items-center gap-1 text-muted-foreground text-[8px]">
           <Calendar className="w-3 h-3" />
           {new Date(quest.createdAt).toLocaleDateString()}
         </div>
@@ -250,8 +250,8 @@ function QuestCard({ quest }: QuestCardProps) {
 
       {/* Outcome Form */}
       {showOutcomeForm && (
-        <div className="mt-4 pt-4 border-t-2 border-[#1e3a5f]">
-          <p className="text-[#60a5fa] text-[10px] mb-2">UPDATE QUEST STATUS</p>
+        <div className="mt-4 pt-4 border-t-2 border-border">
+          <p className="text-primary text-[10px] mb-2">UPDATE QUEST STATUS</p>
           <div className="grid grid-cols-4 gap-2 mb-3">
             {Object.entries(OUTCOME_CONFIG).map(([key, config]) => {
               const Icon = config.icon;
@@ -262,8 +262,8 @@ function QuestCard({ quest }: QuestCardProps) {
                   className={cn(
                     "p-2 border-2 text-center transition-colors",
                     selectedOutcome === key 
-                      ? `${config.color} bg-[#0a1628]` 
-                      : "border-[#1e3a5f]"
+                      ? `${config.color} bg-[#191022]` 
+                      : "border-border"
                   )}
                 >
                   <Icon className={cn("w-4 h-4 mx-auto mb-1", config.color.split(" ")[0])} />
@@ -276,7 +276,7 @@ function QuestCard({ quest }: QuestCardProps) {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Add notes about this project..."
-            className="w-full bg-[#0a1628] border-2 border-[#1e3a5f] p-2 text-[#60a5fa] text-[10px] mb-3 h-16 resize-none"
+            className="w-full bg-[#191022] border-2 border-border p-2 text-primary text-[10px] mb-3 h-16 resize-none"
           />
           <div className="flex gap-2">
             <PixelButton size="sm" onClick={handleSaveOutcome}>

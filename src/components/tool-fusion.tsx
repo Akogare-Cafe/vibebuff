@@ -63,7 +63,7 @@ export function ToolFusion({ userId, className }: ToolFusionProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Combine className="w-4 h-4" /> TOOL FUSION LAB
         </h2>
         <PixelBadge variant="default">
@@ -81,7 +81,7 @@ export function ToolFusion({ userId, className }: ToolFusionProps) {
             excludeId={tool2Id}
           />
           
-          <Plus className="w-8 h-8 text-[#3b82f6]" />
+          <Plus className="w-8 h-8 text-muted-foreground" />
           
           <FusionSlot 
             tool={tool2} 
@@ -91,11 +91,11 @@ export function ToolFusion({ userId, className }: ToolFusionProps) {
             excludeId={tool1Id}
           />
           
-          <ArrowRight className="w-8 h-8 text-[#3b82f6]" />
+          <ArrowRight className="w-8 h-8 text-muted-foreground" />
           
           <div className={cn(
             "w-24 h-24 border-4 border-dashed flex items-center justify-center",
-            fusionResult?.success ? "border-yellow-400 bg-yellow-400/10" : "border-[#1e3a5f]"
+            fusionResult?.success ? "border-yellow-400 bg-yellow-400/10" : "border-border"
           )}>
             {isAnimating ? (
               <Sparkles className="w-10 h-10 text-yellow-400 animate-spin" />
@@ -107,7 +107,7 @@ export function ToolFusion({ userId, className }: ToolFusionProps) {
                 </p>
               </div>
             ) : (
-              <span className="text-[#3b82f6] text-[8px]">RESULT</span>
+              <span className="text-muted-foreground text-[8px]">RESULT</span>
             )}
           </div>
         </div>
@@ -131,7 +131,7 @@ export function ToolFusion({ userId, className }: ToolFusionProps) {
 
       {userFusions && userFusions.length > 0 && (
         <div>
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <Star className="w-4 h-4" /> YOUR DISCOVERED FUSIONS
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -161,27 +161,27 @@ function FusionSlot({ tool, onSelect, onClear, allTools, excludeId }: FusionSlot
   return (
     <div className="relative">
       {tool ? (
-        <div className="w-24 h-24 border-4 border-[#3b82f6] bg-[#0a1628] p-2 text-center relative">
+        <div className="w-24 h-24 border-4 border-primary bg-[#191022] p-2 text-center relative">
           <button 
             onClick={onClear}
             className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"
           >
             <X className="w-3 h-3 text-white" />
           </button>
-          <Star className="w-6 h-6 mx-auto text-[#3b82f6] mb-1" />
-          <p className="text-[#60a5fa] text-[8px] truncate">{tool.name}</p>
+          <Star className="w-6 h-6 mx-auto text-muted-foreground mb-1" />
+          <p className="text-primary text-[8px] truncate">{tool.name}</p>
         </div>
       ) : (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-24 h-24 border-4 border-dashed border-[#1e3a5f] flex items-center justify-center hover:border-[#3b82f6] transition-colors"
+          className="w-24 h-24 border-4 border-dashed border-border flex items-center justify-center hover:border-primary transition-colors"
         >
-          <Plus className="w-8 h-8 text-[#3b82f6]" />
+          <Plus className="w-8 h-8 text-muted-foreground" />
         </button>
       )}
 
       {isOpen && !tool && (
-        <div className="absolute top-full left-0 mt-2 w-48 max-h-60 overflow-y-auto bg-[#0a1628] border-2 border-[#1e3a5f] z-20">
+        <div className="absolute top-full left-0 mt-2 w-48 max-h-60 overflow-y-auto bg-[#191022] border-2 border-border z-20">
           {availableTools.slice(0, 20).map((t) => (
             <button
               key={t._id}
@@ -189,7 +189,7 @@ function FusionSlot({ tool, onSelect, onClear, allTools, excludeId }: FusionSlot
                 onSelect(t._id);
                 setIsOpen(false);
               }}
-              className="w-full text-left px-3 py-2 hover:bg-[#1e3a5f] text-[#60a5fa] text-[10px] border-b border-[#1e3a5f]"
+              className="w-full text-left px-3 py-2 hover:bg-card text-primary text-[10px] border-b border-border"
             >
               {t.name}
             </button>
@@ -227,8 +227,8 @@ function FusionResultCard({ result }: { result: any }) {
       )}
 
       <div className="text-center mb-4">
-        <h3 className="text-[#60a5fa] text-lg">{fusion.name}</h3>
-        <p className="text-[#3b82f6] text-[10px]">{fusion.description}</p>
+        <h3 className="text-primary text-lg">{fusion.name}</h3>
+        <p className="text-muted-foreground text-[10px]">{fusion.description}</p>
         <PixelBadge variant="outline" className="text-[8px] mt-2">
           {fusion.rarity.toUpperCase()}
         </PixelBadge>
@@ -256,15 +256,15 @@ function FusionResultCard({ result }: { result: any }) {
 function StatBar({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) {
   return (
     <div className="text-center">
-      <div className="text-[#3b82f6] mb-1">{icon}</div>
-      <div className="h-16 w-full bg-[#0a1628] border border-[#1e3a5f] relative">
+      <div className="text-muted-foreground mb-1">{icon}</div>
+      <div className="h-16 w-full bg-[#191022] border border-border relative">
         <div 
-          className="absolute bottom-0 w-full bg-[#3b82f6]"
+          className="absolute bottom-0 w-full bg-primary"
           style={{ height: `${value}%` }}
         />
       </div>
-      <p className="text-[#60a5fa] text-[8px] mt-1">{value}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+      <p className="text-primary text-[8px] mt-1">{value}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -279,13 +279,13 @@ function FusionCard({ fusion }: { fusion: any }) {
   return (
     <PixelCard className={cn("p-3", rarityColors[fusion.rarity as keyof typeof rarityColors])}>
       <div className="flex items-center justify-between mb-2">
-        <h4 className="text-[#60a5fa] text-[11px]">{fusion.name}</h4>
+        <h4 className="text-primary text-[11px]">{fusion.name}</h4>
         <PixelBadge variant="outline" className="text-[6px]">
           {fusion.rarity.toUpperCase()}
         </PixelBadge>
       </div>
       
-      <div className="flex items-center gap-1 text-[8px] text-[#3b82f6] mb-2">
+      <div className="flex items-center gap-1 text-[8px] text-muted-foreground mb-2">
         <span>{fusion.tool1?.name}</span>
         <Plus className="w-2 h-2" />
         <span>{fusion.tool2?.name}</span>

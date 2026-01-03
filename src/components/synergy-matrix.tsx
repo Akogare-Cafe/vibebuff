@@ -24,7 +24,7 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
     if (type === "conflict" || score < 0) return "text-red-400 border-red-400";
     if (type === "combo" || score >= 80) return "text-yellow-400 border-yellow-400";
     if (type === "integration") return "text-green-400 border-green-400";
-    return "text-[#3b82f6] border-[#3b82f6]";
+    return "text-muted-foreground border-primary";
   };
 
   const getSynergyIcon = (type: string) => {
@@ -38,7 +38,7 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
 
   return (
     <PixelCard className={cn("p-4", className)}>
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
         <Zap className="w-4 h-4" /> SYNERGY MATRIX
       </h3>
       
@@ -47,14 +47,14 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
           <div
             key={synergy._id}
             className={cn(
-              "border-2 p-3 bg-[#0a1628]/50",
+              "border-2 p-3 bg-[#191022]/50",
               getSynergyColor(synergy.synergyType, synergy.synergyScore)
             )}
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 {getSynergyIcon(synergy.synergyType)}
-                <span className="text-[#60a5fa] text-[10px]">
+                <span className="text-primary text-[10px]">
                   {synergy.otherTool?.name}
                 </span>
               </div>
@@ -66,14 +66,14 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
               </PixelBadge>
             </div>
             
-            <p className="text-[#3b82f6] text-[8px] mb-2">
+            <p className="text-muted-foreground text-[8px] mb-2">
               {synergy.description}
             </p>
             
             {synergy.bonusEffect && (
-              <div className="bg-[#0a1628] border border-[#3b82f6] px-2 py-1 inline-flex items-center gap-1">
+              <div className="bg-[#191022] border border-primary px-2 py-1 inline-flex items-center gap-1">
                 <Zap className="w-3 h-3 text-yellow-400" />
-                <span className="text-[#60a5fa] text-[8px]">
+                <span className="text-primary text-[8px]">
                   {synergy.bonusEffect}
                 </span>
               </div>
@@ -96,8 +96,8 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
   if (!synergyData || synergyData.synergies.length === 0) {
     return (
       <div className={cn("text-center p-4", className)}>
-        <p className="text-[#3b82f6] text-[10px]">NO SYNERGIES DETECTED</p>
-        <p className="text-[#1e3a5f] text-[8px]">Add more tools to see combos</p>
+        <p className="text-muted-foreground text-[10px]">NO SYNERGIES DETECTED</p>
+        <p className="text-muted-foreground text-[8px]">Add more tools to see combos</p>
       </div>
     );
   }
@@ -107,13 +107,13 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
     : synergyData.totalScore >= 50 
       ? "text-green-400" 
       : synergyData.totalScore >= 0 
-        ? "text-[#60a5fa]" 
+        ? "text-primary" 
         : "text-red-400";
 
   return (
     <PixelCard className={cn("p-4", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
           <Sparkles className="w-4 h-4" /> DECK SYNERGY
         </h3>
         <div className={cn("text-lg font-bold", scoreColor)}>
@@ -123,13 +123,13 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
 
       <div className="space-y-2">
         {synergyData.synergies.map((syn, i) => (
-          <div key={i} className="flex items-center justify-between text-[8px] border-b border-[#1e3a5f] pb-2">
-            <span className="text-[#3b82f6]">
+          <div key={i} className="flex items-center justify-between text-[8px] border-b border-border pb-2">
+            <span className="text-muted-foreground">
               {syn.toolA} + {syn.toolB}
             </span>
             <div className="flex items-center gap-2">
               {syn.bonusEffect && (
-                <span className="text-[#60a5fa]">{syn.bonusEffect}</span>
+                <span className="text-primary">{syn.bonusEffect}</span>
               )}
               <span className={syn.score >= 0 ? "text-green-400" : "text-red-400"}>
                 {syn.score > 0 ? "+" : ""}{syn.score}

@@ -53,7 +53,7 @@ export function StackTemplates({ userId, className }: StackTemplatesProps) {
   if (!templates) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING TEMPLATES...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING TEMPLATES...</div>
       </div>
     );
   }
@@ -61,7 +61,7 @@ export function StackTemplates({ userId, className }: StackTemplatesProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <BookOpen className="w-4 h-4" /> STACK TEMPLATES
         </h2>
         <PixelBadge variant="default">
@@ -94,9 +94,9 @@ export function StackTemplates({ userId, className }: StackTemplatesProps) {
 
       {templates.length === 0 ? (
         <PixelCard className="p-8 text-center">
-          <BookOpen className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO TEMPLATES FOUND</p>
-          <p className="text-[#1e3a5f] text-[8px]">Try a different category</p>
+          <BookOpen className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO TEMPLATES FOUND</p>
+          <p className="text-muted-foreground text-[8px]">Try a different category</p>
         </PixelCard>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -155,8 +155,8 @@ function TemplateCard({ template, userId }: TemplateCardProps) {
         <div className="flex items-center gap-2">
           <CategoryIcon className={cn("w-5 h-5", categoryConfig.color)} />
           <div>
-            <h3 className="text-[#60a5fa] text-[12px]">{template.name}</h3>
-            <p className="text-[#3b82f6] text-[8px]">{template.description}</p>
+            <h3 className="text-primary text-[12px]">{template.name}</h3>
+            <p className="text-muted-foreground text-[8px]">{template.description}</p>
           </div>
         </div>
         {template.isFeatured && (
@@ -167,7 +167,7 @@ function TemplateCard({ template, userId }: TemplateCardProps) {
       <div className="flex flex-wrap gap-1 mb-3">
         {template.tools.slice(0, 5).map((tool) => (
           <Link key={tool.slug} href={`/tools/${tool.slug}`}>
-            <PixelBadge variant="outline" className="text-[6px] hover:border-[#3b82f6]">
+            <PixelBadge variant="outline" className="text-[6px] hover:border-primary">
               {tool.name}
             </PixelBadge>
           </Link>
@@ -180,9 +180,9 @@ function TemplateCard({ template, userId }: TemplateCardProps) {
       </div>
 
       {template.caseStudy && (
-        <div className="border border-[#1e3a5f] p-2 mb-3 bg-[#0a1628]">
-          <p className="text-[#60a5fa] text-[8px]">{template.caseStudy.projectName}</p>
-          <p className="text-[#3b82f6] text-[6px]">{template.caseStudy.outcome}</p>
+        <div className="border border-border p-2 mb-3 bg-[#191022]">
+          <p className="text-primary text-[8px]">{template.caseStudy.projectName}</p>
+          <p className="text-muted-foreground text-[6px]">{template.caseStudy.outcome}</p>
         </div>
       )}
 
@@ -191,12 +191,12 @@ function TemplateCard({ template, userId }: TemplateCardProps) {
           <PixelBadge variant="outline" className={cn("text-[6px]", difficultyConfig.color)}>
             {difficultyConfig.label}
           </PixelBadge>
-          <div className="flex items-center gap-1 text-[#3b82f6] text-[8px]">
+          <div className="flex items-center gap-1 text-muted-foreground text-[8px]">
             <DollarSign className="w-3 h-3" />
             ${template.estimatedMonthlyCost}/mo
           </div>
         </div>
-        <span className="text-[#1e3a5f] text-[8px]">{template.usageCount} uses</span>
+        <span className="text-muted-foreground text-[8px]">{template.usageCount} uses</span>
       </div>
 
       <div className="flex gap-2">
@@ -229,14 +229,14 @@ export function FeaturedTemplates({ userId }: { userId?: string }) {
 
   return (
     <div className="space-y-3">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
         <BookOpen className="w-4 h-4" /> META STACKS
       </h3>
       {templates.map((template: any) => (
         <Link key={template._id} href={`/templates/${template.slug}`}>
-          <PixelCard className="p-3 hover:border-[#3b82f6] transition-colors">
-            <p className="text-[#60a5fa] text-[10px]">{template.name}</p>
-            <p className="text-[#3b82f6] text-[8px]">{template.tools.length} tools</p>
+          <PixelCard className="p-3 hover:border-primary transition-colors">
+            <p className="text-primary text-[10px]">{template.name}</p>
+            <p className="text-muted-foreground text-[8px]">{template.tools.length} tools</p>
           </PixelCard>
         </Link>
       ))}

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = "blue" | "green" | "purple" | "amber" | "red";
+export type Theme = "purple" | "cyan" | "orange" | "green" | "blue";
 
 interface ThemeColors {
   name: string;
@@ -12,53 +12,71 @@ interface ThemeColors {
   primary: string;
   border: string;
   accent: string;
+  surface: string;
+  surfaceBorder: string;
+  textSubtle: string;
 }
 
 export const themes: Record<Theme, ThemeColors> = {
-  blue: {
-    name: "Cyber Blue",
-    background: "#000000",
-    foreground: "#60a5fa",
-    card: "#0a1628",
-    primary: "#3b82f6",
-    border: "#1e3a5f",
-    accent: "#2563eb",
+  purple: {
+    name: "TechQuest",
+    background: "#191022",
+    foreground: "#ffffff",
+    card: "#261933",
+    primary: "#7f13ec",
+    border: "#362348",
+    accent: "#a855f7",
+    surface: "#261933",
+    surfaceBorder: "#362348",
+    textSubtle: "#ad92c9",
+  },
+  cyan: {
+    name: "DevOps Paladin",
+    background: "#0f1419",
+    foreground: "#ffffff",
+    card: "#1a2332",
+    primary: "#06b6d4",
+    border: "#1e3a4c",
+    accent: "#22d3ee",
+    surface: "#1a2332",
+    surfaceBorder: "#1e3a4c",
+    textSubtle: "#7dd3fc",
+  },
+  orange: {
+    name: "Backend Warrior",
+    background: "#1a1410",
+    foreground: "#ffffff",
+    card: "#2d2318",
+    primary: "#f97316",
+    border: "#44362a",
+    accent: "#fb923c",
+    surface: "#2d2318",
+    surfaceBorder: "#44362a",
+    textSubtle: "#fdba74",
   },
   green: {
-    name: "Game Boy",
-    background: "#0f380f",
-    foreground: "#9bbc0f",
-    card: "#306230",
-    primary: "#8bac0f",
-    border: "#0f380f",
-    accent: "#9bbc0f",
+    name: "Code Ranger",
+    background: "#0f1a14",
+    foreground: "#ffffff",
+    card: "#1a2d22",
+    primary: "#22c55e",
+    border: "#2d4a3a",
+    accent: "#4ade80",
+    surface: "#1a2d22",
+    surfaceBorder: "#2d4a3a",
+    textSubtle: "#86efac",
   },
-  purple: {
-    name: "Synthwave",
-    background: "#0d0221",
-    foreground: "#e879f9",
-    card: "#1a0533",
-    primary: "#a855f7",
-    border: "#581c87",
-    accent: "#c026d3",
-  },
-  amber: {
-    name: "Terminal",
-    background: "#000000",
-    foreground: "#fbbf24",
-    card: "#1c1a00",
-    primary: "#f59e0b",
-    border: "#78350f",
-    accent: "#d97706",
-  },
-  red: {
-    name: "Virtual Boy",
-    background: "#000000",
-    foreground: "#f87171",
-    card: "#1c0a0a",
-    primary: "#ef4444",
-    border: "#7f1d1d",
-    accent: "#dc2626",
+  blue: {
+    name: "Frontend Mage",
+    background: "#0f1629",
+    foreground: "#ffffff",
+    card: "#1a2744",
+    primary: "#7f13ec",
+    border: "#2d4a6a",
+    accent: "#7f13ec",
+    surface: "#1a2744",
+    surfaceBorder: "#2d4a6a",
+    textSubtle: "#93c5fd",
   },
 };
 
@@ -71,13 +89,18 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("blue");
+  const [theme, setTheme] = useState<Theme>("purple");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem("vibebuff-theme") as Theme | null;
-    if (stored && themes[stored]) {
+    const migrated = localStorage.getItem("vibebuff-theme-migrated-v2");
+    if (!migrated) {
+      localStorage.setItem("vibebuff-theme", "purple");
+      localStorage.setItem("vibebuff-theme-migrated-v2", "true");
+      setTheme("purple");
+    } else if (stored && themes[stored]) {
       setTheme(stored);
     }
   }, []);
@@ -96,22 +119,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.style.setProperty("--popover", colors.card);
     root.style.setProperty("--popover-foreground", colors.foreground);
     root.style.setProperty("--primary", colors.primary);
-    root.style.setProperty("--primary-foreground", colors.background);
-    root.style.setProperty("--secondary", colors.card);
+    root.style.setProperty("--primary-foreground", "#ffffff");
+    root.style.setProperty("--secondary", colors.surface);
     root.style.setProperty("--secondary-foreground", colors.foreground);
-    root.style.setProperty("--muted", colors.card);
-    root.style.setProperty("--muted-foreground", colors.primary);
+    root.style.setProperty("--muted", colors.surface);
+    root.style.setProperty("--muted-foreground", colors.textSubtle);
     root.style.setProperty("--accent", colors.accent);
-    root.style.setProperty("--accent-foreground", colors.background);
+    root.style.setProperty("--accent-foreground", "#ffffff");
     root.style.setProperty("--border", colors.border);
     root.style.setProperty("--input", colors.card);
     root.style.setProperty("--ring", colors.primary);
-    
-    // Update pixel colors
-    root.style.setProperty("--color-pixel-black", colors.background);
-    root.style.setProperty("--color-pixel-dark", colors.card);
-    root.style.setProperty("--color-pixel-light", colors.primary);
-    root.style.setProperty("--color-pixel-white", colors.foreground);
+    root.style.setProperty("--surface", colors.surface);
+    root.style.setProperty("--surface-border", colors.surfaceBorder);
+    root.style.setProperty("--text-subtle", colors.textSubtle);
     
     // Store preference
     localStorage.setItem("vibebuff-theme", theme);
@@ -132,9 +152,9 @@ export function useTheme() {
   if (!context) {
     // Return default theme for SSR/static generation
     return {
-      theme: "blue" as Theme,
+      theme: "purple" as Theme,
       setTheme: () => {},
-      colors: themes.blue,
+      colors: themes.purple,
     };
   }
   return context;

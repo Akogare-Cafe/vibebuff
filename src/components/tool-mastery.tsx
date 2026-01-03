@@ -39,7 +39,7 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
   if (!masteries) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING MASTERY...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING MASTERY...</div>
       </div>
     );
   }
@@ -47,7 +47,7 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Award className="w-4 h-4" /> TOOL MASTERY
         </h2>
         <PixelBadge variant="default">
@@ -68,7 +68,7 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
 
       {stats && (
         <PixelCard className="p-4">
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <BarChart3 className="w-4 h-4" /> INTERACTION STATS
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
@@ -84,9 +84,9 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
 
       {masteries.length === 0 ? (
         <PixelCard className="p-8 text-center">
-          <Award className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO MASTERY YET</p>
-          <p className="text-[#1e3a5f] text-[8px]">Start exploring tools to build mastery!</p>
+          <Award className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO MASTERY YET</p>
+          <p className="text-muted-foreground text-[8px]">Start exploring tools to build mastery!</p>
         </PixelCard>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -102,9 +102,9 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
 function StatItem({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) {
   return (
     <div className="text-center">
-      <div className="text-[#3b82f6] mb-1">{icon}</div>
-      <p className="text-[#60a5fa] text-sm">{value}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+      <div className="text-muted-foreground mb-1">{icon}</div>
+      <p className="text-primary text-sm">{value}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -140,8 +140,8 @@ function MasteryCard({ mastery }: MasteryCardProps) {
       <PixelCard className={cn("p-3 h-full hover:scale-105 transition-transform", levelConfig.color)}>
         <div className="flex items-start justify-between mb-2">
           <div>
-            <p className="text-[#60a5fa] text-[10px]">{mastery.tool.name}</p>
-            <p className="text-[#3b82f6] text-[8px] truncate">{mastery.tool.tagline}</p>
+            <p className="text-primary text-[10px]">{mastery.tool.name}</p>
+            <p className="text-muted-foreground text-[8px] truncate">{mastery.tool.tagline}</p>
           </div>
           <PixelBadge variant="outline" className={cn("text-[6px]", levelConfig.color)}>
             {levelConfig.label}
@@ -150,20 +150,20 @@ function MasteryCard({ mastery }: MasteryCardProps) {
 
         <div className="mb-2">
           <div className="flex justify-between text-[6px] mb-1">
-            <span className="text-[#3b82f6]">{mastery.xp} XP</span>
+            <span className="text-muted-foreground">{mastery.xp} XP</span>
             {nextLevelConfig && (
-              <span className="text-[#1e3a5f]">{nextLevelConfig.minXp} XP</span>
+              <span className="text-muted-foreground">{nextLevelConfig.minXp} XP</span>
             )}
           </div>
-          <div className="h-1 bg-[#0a1628] border border-[#1e3a5f]">
+          <div className="h-1 bg-[#191022] border border-border">
             <div 
-              className={cn("h-full", levelConfig.color.includes("yellow") ? "bg-yellow-400" : "bg-[#3b82f6]")}
+              className={cn("h-full", levelConfig.color.includes("yellow") ? "bg-yellow-400" : "bg-primary")}
               style={{ width: `${Math.min(100, progressPercent)}%` }}
             />
           </div>
         </div>
 
-        <div className="flex gap-2 text-[6px] text-[#3b82f6]">
+        <div className="flex gap-2 text-[6px] text-muted-foreground">
           <span className="flex items-center gap-1">
             <Eye className="w-2 h-2" /> {mastery.interactions.views}
           </span>

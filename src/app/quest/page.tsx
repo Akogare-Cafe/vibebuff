@@ -216,8 +216,8 @@ export default function QuestPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000]">
-      <main className="max-w-4xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background">
+      <main className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12">
         {/* Progress Bar */}
         {step !== "intro" && step !== "results" && (
           <div className="mb-8">
@@ -225,15 +225,15 @@ export default function QuestPage() {
               {["type", "scale", "budget", "features"].map((s, i) => (
                 <div
                   key={s}
-                  className={`h-4 flex-1 border-2 border-[#1e3a5f] ${
+                  className={`h-4 flex-1 border-2 border-border ${
                     ["type", "scale", "budget", "features"].indexOf(step) >= i
-                      ? "bg-[#3b82f6]"
-                      : "bg-[#0a1628]"
+                      ? "bg-primary"
+                      : "bg-card"
                   }`}
                 />
               ))}
             </div>
-            <p className="text-[#3b82f6] text-[8px] text-center">
+            <p className="text-muted-foreground text-[8px] text-center">
               STAGE {["type", "scale", "budget", "features"].indexOf(step) + 1} OF 4
             </p>
           </div>
@@ -243,7 +243,7 @@ export default function QuestPage() {
         {step === "intro" && (
           <div className="text-center">
             <div className="mb-8">
-              <pre className="text-[#60a5fa] text-[8px] leading-none inline-block mb-4">
+              <pre className="text-primary text-[8px] leading-none inline-block mb-4">
 {`
  ██████╗ ██╗   ██╗███████╗███████╗████████╗
 ██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝
@@ -253,15 +253,15 @@ export default function QuestPage() {
  ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   
 `}
               </pre>
-              <h1 className="text-[#60a5fa] text-lg mb-4">BEGIN YOUR QUEST</h1>
-              <p className="text-[#3b82f6] text-[10px] max-w-md mx-auto leading-relaxed">
+              <h1 className="text-primary text-lg mb-4">BEGIN YOUR QUEST</h1>
+              <p className="text-muted-foreground text-[10px] max-w-md mx-auto leading-relaxed">
                 ANSWER A FEW QUESTIONS AND OUR AI WILL RECOMMEND THE PERFECT TECH STACK FOR YOUR PROJECT.
               </p>
             </div>
 
             <PixelCard className="inline-block p-8 mb-8">
-              <Swords className="w-12 h-12 mx-auto mb-4 text-[#3b82f6]" />
-              <p className="text-[#60a5fa] text-[10px] mb-4">
+              <Swords className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-primary text-[10px] mb-4">
                 READY TO CHOOSE YOUR LOADOUT?
               </p>
               <PixelButton size="lg" onClick={() => setStep("type")}>
@@ -269,7 +269,7 @@ export default function QuestPage() {
               </PixelButton>
             </PixelCard>
 
-            <div className="text-[#1e3a5f] text-[8px]">
+            <div className="text-muted-foreground text-[8px]">
               <p>ESTIMATED TIME: 2 MINUTES</p>
             </div>
           </div>
@@ -278,32 +278,32 @@ export default function QuestPage() {
         {/* Project Type Step */}
         {step === "type" && (
           <div>
-            <h2 className="text-[#60a5fa] text-sm mb-2 text-center">
+            <h2 className="text-primary text-sm mb-2 text-center">
               WHAT ARE YOU BUILDING?
             </h2>
-            <p className="text-[#3b82f6] text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-[10px] mb-8 text-center">
               SELECT YOUR PROJECT TYPE
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-5">
               {PROJECT_TYPES.map((type) => (
                 <PixelCard
                   key={type.id}
-                  className={`cursor-pointer text-center p-4 ${
-                    answers.projectType === type.id ? "bg-[#3b82f6]" : ""
+                  className={`cursor-pointer text-center p-4 md:p-5 min-h-[120px] md:min-h-[140px] ${
+                    answers.projectType === type.id ? "bg-primary" : ""
                   }`}
                   onClick={() => handleSelectType(type.id)}
                 >
-                  <div className="flex justify-center mb-2">
-                    <type.icon className={`w-8 h-8 ${answers.projectType === type.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  <div className="flex justify-center mb-2 md:mb-3">
+                    <type.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.projectType === type.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] mb-1 ${
-                    answers.projectType === type.id ? "text-[#000000]" : "text-[#60a5fa]"
+                  <p className={`text-[10px] md:text-xs mb-1 ${
+                    answers.projectType === type.id ? "text-background" : "text-primary"
                   }`}>
                     {type.name}
                   </p>
                   <p className={`text-[8px] ${
-                    answers.projectType === type.id ? "text-[#0a1628]" : "text-[#3b82f6]"
+                    answers.projectType === type.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {type.description}
                   </p>
@@ -316,32 +316,32 @@ export default function QuestPage() {
         {/* Scale Step */}
         {step === "scale" && (
           <div>
-            <h2 className="text-[#60a5fa] text-sm mb-2 text-center">
+            <h2 className="text-primary text-sm mb-2 text-center">
               WHAT&apos;S YOUR SCALE?
             </h2>
-            <p className="text-[#3b82f6] text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-[10px] mb-8 text-center">
               SELECT YOUR EXPECTED USER BASE
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5">
               {SCALES.map((scale) => (
                 <PixelCard
                   key={scale.id}
-                  className={`cursor-pointer text-center p-4 ${
-                    answers.scale === scale.id ? "bg-[#3b82f6]" : ""
+                  className={`cursor-pointer text-center p-4 md:p-5 min-h-[120px] md:min-h-[140px] ${
+                    answers.scale === scale.id ? "bg-primary" : ""
                   }`}
                   onClick={() => handleSelectScale(scale.id)}
                 >
-                  <div className="flex justify-center mb-2">
-                    <scale.icon className={`w-8 h-8 ${answers.scale === scale.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  <div className="flex justify-center mb-2 md:mb-3">
+                    <scale.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.scale === scale.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] mb-1 ${
-                    answers.scale === scale.id ? "text-[#000000]" : "text-[#60a5fa]"
+                  <p className={`text-[10px] md:text-xs mb-1 ${
+                    answers.scale === scale.id ? "text-background" : "text-primary"
                   }`}>
                     {scale.name}
                   </p>
                   <p className={`text-[8px] ${
-                    answers.scale === scale.id ? "text-[#0a1628]" : "text-[#3b82f6]"
+                    answers.scale === scale.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {scale.users}
                   </p>
@@ -360,32 +360,32 @@ export default function QuestPage() {
         {/* Budget Step */}
         {step === "budget" && (
           <div>
-            <h2 className="text-[#60a5fa] text-sm mb-2 text-center">
+            <h2 className="text-primary text-sm mb-2 text-center">
               WHAT&apos;S YOUR BUDGET?
             </h2>
-            <p className="text-[#3b82f6] text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-[10px] mb-8 text-center">
               SELECT YOUR MONTHLY BUDGET FOR TOOLS
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5">
               {BUDGETS.map((budget) => (
                 <PixelCard
                   key={budget.id}
-                  className={`cursor-pointer text-center p-4 ${
-                    answers.budget === budget.id ? "bg-[#3b82f6]" : ""
+                  className={`cursor-pointer text-center p-4 md:p-5 min-h-[120px] md:min-h-[140px] ${
+                    answers.budget === budget.id ? "bg-primary" : ""
                   }`}
                   onClick={() => handleSelectBudget(budget.id)}
                 >
-                  <div className="flex justify-center mb-2">
-                    <budget.icon className={`w-8 h-8 ${answers.budget === budget.id ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  <div className="flex justify-center mb-2 md:mb-3">
+                    <budget.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.budget === budget.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] mb-1 ${
-                    answers.budget === budget.id ? "text-[#000000]" : "text-[#60a5fa]"
+                  <p className={`text-[10px] md:text-xs mb-1 ${
+                    answers.budget === budget.id ? "text-background" : "text-primary"
                   }`}>
                     {budget.name}
                   </p>
                   <p className={`text-[8px] ${
-                    answers.budget === budget.id ? "text-[#0a1628]" : "text-[#3b82f6]"
+                    answers.budget === budget.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {budget.range}
                   </p>
@@ -404,27 +404,27 @@ export default function QuestPage() {
         {/* Features Step */}
         {step === "features" && (
           <div>
-            <h2 className="text-[#60a5fa] text-sm mb-2 text-center">
+            <h2 className="text-primary text-sm mb-2 text-center">
               WHAT FEATURES DO YOU NEED?
             </h2>
-            <p className="text-[#3b82f6] text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-[10px] mb-8 text-center">
               SELECT ALL THAT APPLY
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 mb-8">
               {FEATURES.map((feature) => (
                 <PixelCard
                   key={feature.id}
-                  className={`cursor-pointer text-center p-4 ${
-                    answers.features.includes(feature.id) ? "bg-[#3b82f6]" : ""
+                  className={`cursor-pointer text-center p-4 md:p-5 min-h-[100px] md:min-h-[110px] ${
+                    answers.features.includes(feature.id) ? "bg-primary" : ""
                   }`}
                   onClick={() => handleToggleFeature(feature.id)}
                 >
-                  <div className="flex justify-center mb-2">
-                    <feature.icon className={`w-6 h-6 ${answers.features.includes(feature.id) ? "text-[#000000]" : "text-[#60a5fa]"}`} />
+                  <div className="flex justify-center mb-2 md:mb-3">
+                    <feature.icon className={`w-6 h-6 md:w-8 md:h-8 ${answers.features.includes(feature.id) ? "text-background" : "text-primary"}`} />
                   </div>
                   <p className={`text-[8px] ${
-                    answers.features.includes(feature.id) ? "text-[#000000]" : "text-[#60a5fa]"
+                    answers.features.includes(feature.id) ? "text-background" : "text-primary"
                   }`}>
                     {feature.name}
                   </p>
@@ -447,7 +447,7 @@ export default function QuestPage() {
         {step === "results" && (
           <div>
             <div className="text-center mb-8">
-              <pre className="text-[#60a5fa] text-[6px] leading-none inline-block mb-4">
+              <pre className="text-primary text-[6px] leading-none inline-block mb-4">
 {`
 ██╗      ██████╗  █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗
 ██║     ██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝
@@ -457,8 +457,8 @@ export default function QuestPage() {
 ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   
 `}
               </pre>
-              <h2 className="text-[#60a5fa] text-sm mb-2">YOUR RECOMMENDED LOADOUT</h2>
-              <p className="text-[#3b82f6] text-[10px]">
+              <h2 className="text-primary text-sm mb-2">YOUR RECOMMENDED LOADOUT</h2>
+              <p className="text-muted-foreground text-[10px]">
                 BASED ON: {PROJECT_TYPES.find(t => t.id === answers.projectType)?.name.toUpperCase()} | {SCALES.find(s => s.id === answers.scale)?.name.toUpperCase()} | {BUDGETS.find(b => b.id === answers.budget)?.name.toUpperCase()}
               </p>
             </div>
@@ -470,32 +470,32 @@ export default function QuestPage() {
                   <div className="flex justify-center mb-2">
                     {(() => {
                       const ProjectIcon = PROJECT_TYPES.find(t => t.id === answers.projectType)?.icon;
-                      return ProjectIcon ? <ProjectIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                      return ProjectIcon ? <ProjectIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-[#3b82f6] text-[8px]">PROJECT</p>
+                  <p className="text-muted-foreground text-[8px]">PROJECT</p>
                 </div>
                 <div>
                   <div className="flex justify-center mb-2">
                     {(() => {
                       const ScaleIcon = SCALES.find(s => s.id === answers.scale)?.icon;
-                      return ScaleIcon ? <ScaleIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                      return ScaleIcon ? <ScaleIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-[#3b82f6] text-[8px]">SCALE</p>
+                  <p className="text-muted-foreground text-[8px]">SCALE</p>
                 </div>
                 <div>
                   <div className="flex justify-center mb-2">
                     {(() => {
                       const BudgetIcon = BUDGETS.find(b => b.id === answers.budget)?.icon;
-                      return BudgetIcon ? <BudgetIcon className="w-8 h-8 text-[#60a5fa]" /> : null;
+                      return BudgetIcon ? <BudgetIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-[#3b82f6] text-[8px]">BUDGET</p>
+                  <p className="text-muted-foreground text-[8px]">BUDGET</p>
                 </div>
                 <div>
-                  <p className="text-[#60a5fa] text-lg mb-2">{answers.features.length}</p>
-                  <p className="text-[#3b82f6] text-[8px]">FEATURES</p>
+                  <p className="text-primary text-lg mb-2">{answers.features.length}</p>
+                  <p className="text-muted-foreground text-[8px]">FEATURES</p>
                 </div>
               </div>
             </PixelCard>
@@ -503,21 +503,21 @@ export default function QuestPage() {
             {/* Loading State */}
             {isGenerating && (
               <div className="text-center py-12">
-                <Bot className="w-12 h-12 mx-auto mb-4 text-[#3b82f6] animate-pulse" />
-                <p className="text-[#60a5fa] text-sm mb-2">AI IS ANALYZING YOUR REQUIREMENTS...</p>
-                <p className="text-[#3b82f6] text-[8px]">THIS MAY TAKE A FEW SECONDS</p>
+                <Bot className="w-12 h-12 mx-auto mb-4 text-muted-foreground animate-pulse" />
+                <p className="text-primary text-sm mb-2">AI IS ANALYZING YOUR REQUIREMENTS...</p>
+                <p className="text-muted-foreground text-[8px]">THIS MAY TAKE A FEW SECONDS</p>
               </div>
             )}
 
             {/* AI Reasoning */}
             {!isGenerating && aiRecommendations && (
-              <PixelCard className="mb-8 p-4 border-[#3b82f6]">
+              <PixelCard className="mb-8 p-4 border-primary">
                 <div className="flex items-start gap-3">
-                  <Bot className="w-6 h-6 text-[#3b82f6] shrink-0 mt-1" />
+                  <Bot className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
                   <div>
-                    <p className="text-[#60a5fa] text-[10px] mb-2">AI ANALYSIS</p>
-                    <p className="text-[#3b82f6] text-[8px] leading-relaxed">{aiRecommendations.aiReasoning}</p>
-                    <p className="text-[#60a5fa] text-[10px] mt-3">
+                    <p className="text-primary text-[10px] mb-2">AI ANALYSIS</p>
+                    <p className="text-muted-foreground text-[8px] leading-relaxed">{aiRecommendations.aiReasoning}</p>
+                    <p className="text-primary text-[10px] mt-3">
                       ESTIMATED COST: {aiRecommendations.estimatedMonthlyCost}
                     </p>
                   </div>
@@ -528,13 +528,13 @@ export default function QuestPage() {
             {/* Recommendations by Category */}
             {!isGenerating && aiRecommendations && Object.entries(aiRecommendations.recommendations).map(([category, tools]) => (
               <div key={category} className="mb-8">
-                <h3 className="text-[#60a5fa] text-[12px] mb-4 flex items-center gap-2">
+                <h3 className="text-primary text-[12px] mb-4 flex items-center gap-2">
                   <ChevronRight className="w-4 h-4 pixel-cursor" /> {category.toUpperCase()}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
                   {tools.map((tool, index) => (
                     <Link key={tool.id} href={`/tools/${tool.slug}`}>
-                      <PixelCard className={`h-full ${index === 0 ? "border-[#3b82f6]" : ""}`}>
+                      <PixelCard className={`h-full ${index === 0 ? "border-primary" : ""}`}>
                         <PixelCardHeader>
                           <div className="flex items-start justify-between">
                             <PixelCardTitle>
@@ -547,8 +547,8 @@ export default function QuestPage() {
                           </div>
                         </PixelCardHeader>
                         <PixelCardContent>
-                          <p className="text-[#3b82f6] text-[8px] mb-2">{tool.tagline}</p>
-                          <p className="text-[#60a5fa] text-[8px] italic">{tool.reasoning}</p>
+                          <p className="text-muted-foreground text-[8px] mb-2">{tool.tagline}</p>
+                          <p className="text-primary text-[8px] italic">{tool.reasoning}</p>
                         </PixelCardContent>
                       </PixelCard>
                     </Link>

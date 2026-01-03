@@ -32,7 +32,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
   if (!profile) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING PROFILE...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING PROFILE...</div>
       </div>
     );
   }
@@ -45,41 +45,41 @@ export function UserProfile({ userId, className }: UserProfileProps) {
       {/* Profile Header */}
       <PixelCard className="p-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 border-4 border-[#3b82f6] bg-[#0a1628] flex items-center justify-center">
+          <div className="w-16 h-16 border-4 border-primary bg-[#191022] flex items-center justify-center">
             {profile.avatarUrl ? (
               <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
             ) : (
-              <User className="w-8 h-8 text-[#3b82f6]" />
+              <User className="w-8 h-8 text-muted-foreground" />
             )}
           </div>
           <div className="flex-1">
-            <h2 className="text-[#60a5fa] text-lg">{profile.username || "ADVENTURER"}</h2>
-            <p className="text-[#3b82f6] text-[10px]">{profile.title || "Novice Developer"}</p>
+            <h2 className="text-primary text-lg">{profile.username || "ADVENTURER"}</h2>
+            <p className="text-muted-foreground text-[10px]">{profile.title || "Novice Developer"}</p>
             {rank && (
-              <p className="text-[#1e3a5f] text-[8px] mt-1">
+              <p className="text-muted-foreground text-[8px] mt-1">
                 Rank #{rank.rank} • Top {rank.percentile}%
               </p>
             )}
           </div>
           <div className="text-right">
             <p className="text-yellow-400 text-2xl">LV.{profile.level}</p>
-            <p className="text-[#3b82f6] text-[8px]">{profile.xp.toLocaleString()} XP</p>
+            <p className="text-muted-foreground text-[8px]">{profile.xp.toLocaleString()} XP</p>
           </div>
         </div>
 
         {/* XP Progress Bar */}
         <div className="mb-4">
           <div className="flex justify-between text-[8px] mb-1">
-            <span className="text-[#3b82f6]">LEVEL {profile.level}</span>
-            <span className="text-[#3b82f6]">LEVEL {profile.level + 1}</span>
+            <span className="text-muted-foreground">LEVEL {profile.level}</span>
+            <span className="text-muted-foreground">LEVEL {profile.level + 1}</span>
           </div>
-          <div className="h-4 bg-[#0a1628] border-2 border-[#1e3a5f]">
+          <div className="h-4 bg-[#191022] border-2 border-border">
             <div 
-              className="h-full bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] transition-all duration-500"
+              className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
               style={{ width: `${xpProgress}%` }}
             />
           </div>
-          <p className="text-[#1e3a5f] text-[8px] text-center mt-1">
+          <p className="text-muted-foreground text-[8px] text-center mt-1">
             {xpToNextLevel.toLocaleString()} XP to next level
           </p>
         </div>
@@ -128,18 +128,18 @@ export function UserProfile({ userId, className }: UserProfileProps) {
       {/* Recent Achievements */}
       {achievements && achievements.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> RECENT ACHIEVEMENTS
           </h3>
           <div className="flex flex-wrap gap-2">
             {achievements.slice(0, 6).map((ua: any) => (
               <div 
                 key={ua._id}
-                className="flex items-center gap-1 p-2 border border-[#1e3a5f] bg-[#0a1628]"
+                className="flex items-center gap-1 p-2 border border-border bg-[#191022]"
                 title={ua.achievement?.description}
               >
-                <DynamicIcon name={ua.achievement?.icon || "Trophy"} className="w-5 h-5 text-[#60a5fa]" />
-                <span className="text-[#60a5fa] text-[8px]">{ua.achievement?.name}</span>
+                <DynamicIcon name={ua.achievement?.icon || "Trophy"} className="w-5 h-5 text-primary" />
+                <span className="text-primary text-[8px]">{ua.achievement?.name}</span>
               </div>
             ))}
           </div>
@@ -161,10 +161,10 @@ function StatBox({
   color: string;
 }) {
   return (
-    <div className="text-center p-2 border border-[#1e3a5f] bg-[#0a1628]">
+    <div className="text-center p-2 border border-border bg-[#191022]">
       <div className={cn("mb-1", color)}>{icon}</div>
       <p className={cn("text-lg", color)}>{value}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -179,18 +179,18 @@ export function ProfileWidget({ userId }: { userId: string }) {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="w-8 h-8 border-2 border-[#3b82f6] bg-[#0a1628] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-primary bg-[#191022] flex items-center justify-center">
         {profile.avatarUrl ? (
           <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
         ) : (
-          <User className="w-4 h-4 text-[#3b82f6]" />
+          <User className="w-4 h-4 text-muted-foreground" />
         )}
       </div>
       <div className="hidden md:block">
-        <p className="text-[#60a5fa] text-[10px]">LV.{profile.level}</p>
-        <div className="w-16 h-1 bg-[#0a1628] border border-[#1e3a5f]">
+        <p className="text-primary text-[10px]">LV.{profile.level}</p>
+        <div className="w-16 h-1 bg-[#191022] border border-border">
           <div 
-            className="h-full bg-[#3b82f6]"
+            className="h-full bg-primary"
             style={{ width: `${xpProgress}%` }}
           />
         </div>
@@ -206,14 +206,14 @@ export function Leaderboard({ className }: { className?: string }) {
   if (!leaderboard) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING LEADERBOARD...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING LEADERBOARD...</div>
       </div>
     );
   }
 
   return (
     <PixelCard className={cn("p-4", className)}>
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
         <TrendingUp className="w-4 h-4" /> LEADERBOARD
       </h3>
 
@@ -226,7 +226,7 @@ export function Leaderboard({ className }: { className?: string }) {
               index === 0 && "border-yellow-400 bg-yellow-400/10",
               index === 1 && "border-gray-400 bg-gray-400/10",
               index === 2 && "border-orange-400 bg-orange-400/10",
-              index > 2 && "border-[#1e3a5f]"
+              index > 2 && "border-border"
             )}
           >
             <div className="flex items-center gap-2">
@@ -235,18 +235,18 @@ export function Leaderboard({ className }: { className?: string }) {
                 index === 0 && "text-yellow-400",
                 index === 1 && "text-gray-400",
                 index === 2 && "text-orange-400",
-                index > 2 && "text-[#3b82f6]"
+                index > 2 && "text-muted-foreground"
               )}>
                 {index < 3 ? <Medal className={`w-4 h-4 ${index === 0 ? "text-yellow-400" : index === 1 ? "text-gray-400" : "text-orange-400"}`} /> : `#${user.rank}`}
               </span>
               <div>
-                <p className="text-[#60a5fa] text-[10px]">{user.username || "Anonymous"}</p>
-                <p className="text-[#3b82f6] text-[8px]">{user.title}</p>
+                <p className="text-primary text-[10px]">{user.username || "Anonymous"}</p>
+                <p className="text-muted-foreground text-[8px]">{user.title}</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[#60a5fa] text-[10px]">LV.{user.level}</p>
-              <p className="text-[#3b82f6] text-[8px]">{user.xp.toLocaleString()} XP</p>
+              <p className="text-primary text-[10px]">LV.{user.level}</p>
+              <p className="text-muted-foreground text-[8px]">{user.xp.toLocaleString()} XP</p>
             </div>
           </div>
         ))}

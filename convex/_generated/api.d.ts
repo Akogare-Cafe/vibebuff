@@ -21,6 +21,7 @@ import type * as comboChains from "../comboChains.js";
 import type * as communityQA from "../communityQA.js";
 import type * as compare from "../compare.js";
 import type * as compatibility from "../compatibility.js";
+import type * as dailyQuests from "../dailyQuests.js";
 import type * as debates from "../debates.js";
 import type * as decks from "../decks.js";
 import type * as draft from "../draft.js";
@@ -102,6 +103,7 @@ declare const fullApi: ApiFromModules<{
   communityQA: typeof communityQA;
   compare: typeof compare;
   compatibility: typeof compatibility;
+  dailyQuests: typeof dailyQuests;
   debates: typeof debates;
   decks: typeof decks;
   draft: typeof draft;

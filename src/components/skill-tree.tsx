@@ -134,7 +134,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
   if (!categories || !allTools) {
     return (
       <div className="text-center p-8">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING SKILL TREE...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING SKILL TREE...</div>
       </div>
     );
   }
@@ -165,7 +165,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
 
   return (
     <PixelCard className={cn("p-6 relative", className)}>
-      <h2 className="text-[#60a5fa] text-sm mb-6 flex items-center gap-2">
+      <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
         <Zap className="w-4 h-4" /> SKILL TREE
       </h2>
 
@@ -174,16 +174,16 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
         <PixelBadge variant="default">
           {selectedCategories.size} / {SKILL_TREE_STRUCTURE.length} UNLOCKED
         </PixelBadge>
-        <div className="h-2 flex-1 mx-4 bg-[#0a1628] border border-[#1e3a5f]">
+        <div className="h-2 flex-1 mx-4 bg-[#191022] border border-border">
           <div 
-            className="h-full bg-[#3b82f6] transition-all duration-500"
+            className="h-full bg-primary transition-all duration-500"
             style={{ width: `${(selectedCategories.size / SKILL_TREE_STRUCTURE.length) * 100}%` }}
           />
         </div>
       </div>
 
       {/* Tree Visualization */}
-      <div className="relative h-[500px] border-2 border-[#1e3a5f] bg-[#0a1628]/50">
+      <div className="relative h-[500px] border-2 border-border bg-[#191022]/50">
         {/* Connection Lines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
           {SKILL_TREE_STRUCTURE.map((node) =>
@@ -200,7 +200,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
                   y1={`${node.y + 3}%`}
                   x2={`${child.x}%`}
                   y2={`${child.y - 3}%`}
-                  stroke={isActive ? "#3b82f6" : "#1e3a5f"}
+                  stroke={isActive ? "#7f13ec" : "#362348"}
                   strokeWidth="2"
                   strokeDasharray={isActive ? "0" : "4"}
                 />
@@ -221,10 +221,10 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
               className={cn(
                 "absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300",
                 "w-16 h-16 flex flex-col items-center justify-center",
-                "border-4 bg-[#0a1628]",
-                completed && "border-[#3b82f6] bg-[#3b82f6]/20 shadow-[0_0_15px_rgba(59,130,246,0.5)]",
-                unlocked && !completed && "border-[#1e3a5f] hover:border-[#3b82f6]",
-                !unlocked && "border-[#1e3a5f]/50 opacity-50 cursor-not-allowed",
+                "border-4 bg-[#191022]",
+                completed && "border-primary bg-primary/20 shadow-[0_0_15px_rgba(59,130,246,0.5)]",
+                unlocked && !completed && "border-border hover:border-primary",
+                !unlocked && "border-border/50 opacity-50 cursor-not-allowed",
                 isHovered && "scale-110 z-10"
               )}
               style={{ left: `${node.x}%`, top: `${node.y}%` }}
@@ -235,13 +235,13 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
             >
               {(() => {
                 const NodeIcon = SKILL_TREE_ICONS[node.id] || Zap;
-                return <NodeIcon className="w-6 h-6 text-[#60a5fa]" />;
+                return <NodeIcon className="w-6 h-6 text-primary" />;
               })()}
               {completed && (
-                <Check className="absolute -top-1 -right-1 w-4 h-4 text-[#60a5fa] bg-[#0a1628] rounded-full" />
+                <Check className="absolute -top-1 -right-1 w-4 h-4 text-primary bg-[#191022] rounded-full" />
               )}
               {!unlocked && (
-                <Lock className="absolute -top-1 -right-1 w-4 h-4 text-[#1e3a5f]" />
+                <Lock className="absolute -top-1 -right-1 w-4 h-4 text-muted-foreground" />
               )}
             </button>
           );
@@ -250,17 +250,17 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
         {/* Tooltip */}
         {hoveredNode && (
           <div 
-            className="absolute z-20 bg-[#0a1628] border-2 border-[#3b82f6] p-3 pointer-events-none"
+            className="absolute z-20 bg-[#191022] border-2 border-primary p-3 pointer-events-none"
             style={{
               left: `${SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.x}%`,
               top: `${(SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.y || 0) + 10}%`,
               transform: "translateX(-50%)",
             }}
           >
-            <p className="text-[#60a5fa] text-[10px] font-bold">
+            <p className="text-primary text-[10px] font-bold">
               {SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.name}
             </p>
-            <p className="text-[#3b82f6] text-[8px]">
+            <p className="text-muted-foreground text-[8px]">
               {isNodeCompleted(hoveredNode) ? "Completed" : 
                isNodeUnlocked(hoveredNode) ? "Click to select" : "Locked"}
             </p>
@@ -271,16 +271,16 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
       {/* Legend */}
       <div className="flex gap-4 mt-4 justify-center">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-[#3b82f6] bg-[#3b82f6]/20" />
-          <span className="text-[#3b82f6] text-[8px]">COMPLETED</span>
+          <div className="w-4 h-4 border-2 border-primary bg-primary/20" />
+          <span className="text-muted-foreground text-[8px]">COMPLETED</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-[#1e3a5f]" />
-          <span className="text-[#3b82f6] text-[8px]">AVAILABLE</span>
+          <div className="w-4 h-4 border-2 border-border" />
+          <span className="text-muted-foreground text-[8px]">AVAILABLE</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-[#1e3a5f]/50 opacity-50" />
-          <span className="text-[#3b82f6] text-[8px]">LOCKED</span>
+          <div className="w-4 h-4 border-2 border-border/50 opacity-50" />
+          <span className="text-muted-foreground text-[8px]">LOCKED</span>
         </div>
       </div>
     </PixelCard>

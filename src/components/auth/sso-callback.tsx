@@ -45,16 +45,16 @@ export function SSOCallback() {
   }, [signIn, signUp, setSignInActive, setSignUpActive, router]);
 
   return (
-    <div className="min-h-screen bg-[#000000] flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center">
       <div className="text-center">
         <div className="relative inline-block mb-6">
-          <Gamepad2 className="w-16 h-16 text-[#3b82f6] animate-pulse" />
+          <Gamepad2 className="w-16 h-16 text-muted-foreground animate-pulse" />
         </div>
-        <div className="flex items-center gap-3 text-[#60a5fa]">
+        <div className="flex items-center gap-3 text-primary">
           <Loader2 className="w-5 h-5 animate-spin" />
           <span className="text-sm">COMPLETING LOGIN...</span>
         </div>
-        <p className="text-[#3b82f6] text-[8px] mt-4">
+        <p className="text-muted-foreground text-[8px] mt-4">
           PLEASE WAIT WHILE WE VERIFY YOUR CREDENTIALS
         </p>
       </div>

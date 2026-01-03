@@ -76,27 +76,27 @@ export default function ForgotPasswordPage() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen bg-[#000000] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-[#3b82f6] animate-spin" />
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-muted-foreground animate-spin" />
       </div>
     );
   }
 
   if (step === "success") {
     return (
-      <div className="min-h-screen bg-[#000000] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <PixelCard className="w-full max-w-md mx-auto text-center">
           <PixelCardHeader>
             <div className="flex justify-center mb-4">
               <CheckCircle className="w-16 h-16 text-green-500" />
             </div>
             <PixelCardTitle>PASSWORD RESET!</PixelCardTitle>
-            <p className="text-[#3b82f6] text-[8px] mt-2">
+            <p className="text-muted-foreground text-[8px] mt-2">
               YOUR PASSWORD HAS BEEN SUCCESSFULLY CHANGED
             </p>
           </PixelCardHeader>
           <PixelCardContent>
-            <p className="text-[#60a5fa] text-[10px]">
+            <p className="text-primary text-[10px]">
               REDIRECTING TO LOGIN...
             </p>
           </PixelCardContent>
@@ -106,16 +106,16 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#000000] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <PixelCard className="w-full max-w-md mx-auto">
         <PixelCardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <KeyRound className="w-12 h-12 text-[#3b82f6]" />
+            <KeyRound className="w-12 h-12 text-muted-foreground" />
           </div>
           <PixelCardTitle>
             {step === "email" ? "FORGOT PASSWORD?" : "ENTER RESET CODE"}
           </PixelCardTitle>
-          <p className="text-[#3b82f6] text-[8px] mt-2">
+          <p className="text-muted-foreground text-[8px] mt-2">
             {step === "email"
               ? "ENTER YOUR EMAIL TO RECEIVE A RESET CODE"
               : `WE SENT A CODE TO ${email.toUpperCase()}`}
@@ -126,7 +126,7 @@ export default function ForgotPasswordPage() {
           {step === "email" ? (
             <form onSubmit={handleSendCode} className="space-y-4">
               <div>
-                <label className="text-[#60a5fa] text-[8px] block mb-2">
+                <label className="text-primary text-[8px] block mb-2">
                   <Mail className="w-3 h-3 inline mr-1" />
                   EMAIL ADDRESS
                 </label>
@@ -160,7 +160,7 @@ export default function ForgotPasswordPage() {
           ) : (
             <form onSubmit={handleResetPassword} className="space-y-4">
               <div>
-                <label className="text-[#60a5fa] text-[8px] block mb-2">
+                <label className="text-primary text-[8px] block mb-2">
                   <Shield className="w-3 h-3 inline mr-1" />
                   VERIFICATION CODE
                 </label>
@@ -176,7 +176,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               <div>
-                <label className="text-[#60a5fa] text-[8px] block mb-2">
+                <label className="text-primary text-[8px] block mb-2">
                   <Lock className="w-3 h-3 inline mr-1" />
                   NEW PASSWORD
                 </label>
@@ -187,7 +187,7 @@ export default function ForgotPasswordPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <p className="text-[#1e3a5f] text-[6px] mt-1">
+                <p className="text-muted-foreground text-[6px] mt-1">
                   MIN 8 CHARACTERS WITH NUMBERS & SYMBOLS
                 </p>
               </div>
@@ -213,7 +213,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="button"
                 onClick={() => setStep("email")}
-                className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] w-full text-center"
+                className="text-muted-foreground hover:text-primary text-[8px] w-full text-center"
               >
                 <ArrowLeft className="w-3 h-3 inline mr-1" />
                 BACK TO EMAIL
@@ -224,7 +224,7 @@ export default function ForgotPasswordPage() {
           <div className="mt-6 text-center">
             <Link
               href="/sign-in"
-              className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] flex items-center justify-center gap-1"
+              className="text-muted-foreground hover:text-primary text-[8px] flex items-center justify-center gap-1"
             >
               <ArrowLeft className="w-3 h-3" />
               BACK TO LOGIN

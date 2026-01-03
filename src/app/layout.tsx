@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
+import { Space_Grotesk, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ClerkClientProvider } from "@/components/providers/clerk-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { GlobalChat } from "@/components/global-chat";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { Analytics } from "@vercel/analytics/react";
 
-const pixelFont = Press_Start_2P({
-  weight: "400",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-pixel",
+  variable: "--font-display",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
@@ -98,12 +103,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${pixelFont.variable} ${pixelFont.className} antialiased min-h-screen flex flex-col`}>
+      <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col`}>
         <ClerkClientProvider>
           <ConvexClientProvider>
             <ThemeProvider>
               <Header />
-              <GlobalChat />
               <OnboardingWrapper />
               <main className="flex-1">{children}</main>
               <Footer />

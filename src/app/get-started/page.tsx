@@ -20,7 +20,7 @@ export default function GetStartedPage() {
     return (
       <main className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="animate-pulse text-[#60a5fa]">Loading...</div>
+          <div className="animate-pulse text-primary">Loading...</div>
         </div>
       </main>
     );

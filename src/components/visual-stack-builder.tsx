@@ -62,7 +62,7 @@ const categoryColors: Record<string, string> = {
   backend: "#f59e0b",
   database: "#6366f1",
   deployment: "#14b8a6",
-  tool: "#60a5fa",
+  tool: "#7f13ec",
 };
 
 interface ToolNodeData {
@@ -74,12 +74,12 @@ interface ToolNodeData {
 }
 
 function ToolNode({ data }: { data: ToolNodeData }) {
-  const color = categoryColors[data.category] || "#60a5fa";
+  const color = categoryColors[data.category] || "#7f13ec";
   const icon = categoryIcons[data.category] || <Wrench className="w-4 h-4" />;
 
   return (
     <div
-      className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#0d1f3c]"
+      className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#261933]"
       style={{ borderColor: color }}
     >
       <div className="flex items-center gap-2 mb-1">
@@ -89,10 +89,10 @@ function ToolNode({ data }: { data: ToolNodeData }) {
         >
           <span style={{ color }}>{icon}</span>
         </div>
-        <span className="text-[#60a5fa] font-bold text-sm">{data.label}</span>
+        <span className="text-primary font-bold text-sm">{data.label}</span>
       </div>
       {data.description && (
-        <p className="text-[#3b82f6] text-xs">{data.description}</p>
+        <p className="text-muted-foreground text-xs">{data.description}</p>
       )}
       <PixelBadge
         className="mt-2 text-[8px]"
@@ -131,10 +131,10 @@ function BlueprintCard({
   return (
     <PixelCard className="cursor-pointer" onClick={onSelect}>
       <PixelCardContent className="p-4">
-        <h3 className="text-[#60a5fa] font-bold text-sm mb-1">
+        <h3 className="text-primary font-bold text-sm mb-1">
           {blueprint.title}
         </h3>
-        <p className="text-[#3b82f6] text-xs line-clamp-2 mb-3">
+        <p className="text-muted-foreground text-xs line-clamp-2 mb-3">
           {blueprint.description}
         </p>
         <div className="flex items-center justify-between">
@@ -169,8 +169,8 @@ function ToolPalette({
   }, [tools]);
 
   return (
-    <div className="w-64 bg-[#0a1628] border-2 border-[#1e3a5f] rounded-lg p-4 max-h-[500px] overflow-y-auto">
-      <h3 className="text-[#60a5fa] font-bold text-sm mb-4 flex items-center gap-2">
+    <div className="w-64 bg-[#191022] border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
+      <h3 className="text-primary font-bold text-sm mb-4 flex items-center gap-2">
         <Wrench className="w-4 h-4" />
         Tool Palette
       </h3>
@@ -180,7 +180,7 @@ function ToolPalette({
           <div key={category}>
             <h4
               className="text-xs font-bold mb-2 flex items-center gap-1"
-              style={{ color: categoryColors[category] || "#60a5fa" }}
+              style={{ color: categoryColors[category] || "#7f13ec" }}
             >
               {categoryIcons[category] || <Wrench className="w-3 h-3" />}
               {category}
@@ -190,7 +190,7 @@ function ToolPalette({
                 <button
                   key={tool._id}
                   onClick={() => onAddNode(category, tool.name)}
-                  className="w-full text-left px-2 py-1 rounded text-xs text-[#3b82f6] hover:bg-[#1e3a5f] hover:text-[#60a5fa] transition-colors"
+                  className="w-full text-left px-2 py-1 rounded text-xs text-muted-foreground hover:bg-card hover:text-primary transition-colors"
                 >
                   {tool.name}
                 </button>
@@ -200,8 +200,8 @@ function ToolPalette({
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-[#1e3a5f]">
-        <h4 className="text-[#60a5fa] text-xs font-bold mb-2">Custom Node</h4>
+      <div className="mt-4 pt-4 border-t border-border">
+        <h4 className="text-primary text-xs font-bold mb-2">Custom Node</h4>
         <div className="grid grid-cols-3 gap-1">
           {Object.keys(categoryColors).map((cat) => (
             <button
@@ -238,8 +238,8 @@ export function VisualStackBuilder() {
         addEdge(
           {
             ...params,
-            markerEnd: { type: MarkerType.ArrowClosed, color: "#60a5fa" },
-            style: { stroke: "#60a5fa", strokeWidth: 2 },
+            markerEnd: { type: MarkerType.ArrowClosed, color: "#7f13ec" },
+            style: { stroke: "#7f13ec", strokeWidth: 2 },
             animated: true,
           },
           eds
@@ -308,11 +308,11 @@ export function VisualStackBuilder() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#60a5fa] flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-primary flex items-center gap-2">
             <Layers className="w-6 h-6" />
             Visual Stack Builder
           </h1>
-          <p className="text-[#3b82f6] text-sm mt-1">
+          <p className="text-muted-foreground text-sm mt-1">
             Design your tech stack visually with drag-and-drop
           </p>
         </div>
@@ -322,7 +322,7 @@ export function VisualStackBuilder() {
             type="text"
             value={buildTitle}
             onChange={(e) => setBuildTitle(e.target.value)}
-            className="px-3 py-2 bg-[#0d1f3c] border-2 border-[#1e3a5f] rounded-lg text-[#60a5fa] text-sm focus:border-[#60a5fa] outline-none"
+            className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
             placeholder="Stack name..."
           />
           <PixelButton variant="outline" onClick={() => setShowPalette(!showPalette)}>
@@ -340,7 +340,7 @@ export function VisualStackBuilder() {
 
       {blueprints && blueprints.length > 0 && nodes.length === 0 && (
         <div>
-          <h2 className="text-lg font-bold text-[#60a5fa] mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
             Start from a Template
             <ChevronRight className="w-4 h-4" />
           </h2>
@@ -359,7 +359,7 @@ export function VisualStackBuilder() {
       <div className="flex gap-4">
         {showPalette && <ToolPalette onAddNode={handleAddNode} />}
 
-        <div className="flex-1 h-[600px] bg-[#0a1628] border-2 border-[#1e3a5f] rounded-lg overflow-hidden">
+        <div className="flex-1 h-[600px] bg-[#191022] border-2 border-border rounded-lg overflow-hidden">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -368,12 +368,12 @@ export function VisualStackBuilder() {
             onConnect={onConnect}
             nodeTypes={nodeTypes}
             fitView
-            className="bg-[#0a1628]"
+            className="bg-[#191022]"
           >
-            <Background color="#1e3a5f" gap={20} />
-            <Controls className="bg-[#0d1f3c] border-[#1e3a5f]" />
-            <Panel position="top-right" className="bg-[#0d1f3c] p-2 rounded-lg border border-[#1e3a5f]">
-              <div className="text-[#3b82f6] text-xs">
+            <Background color="#362348" gap={20} />
+            <Controls className="bg-[#261933] border-border" />
+            <Panel position="top-right" className="bg-[#261933] p-2 rounded-lg border border-border">
+              <div className="text-muted-foreground text-xs">
                 <p>Drag to move nodes</p>
                 <p>Connect by dragging from edges</p>
               </div>
@@ -401,7 +401,7 @@ export function VisualStackBuilder() {
                 </PixelBadge>
               ))}
             </div>
-            <p className="text-[#3b82f6] text-sm mt-4">
+            <p className="text-muted-foreground text-sm mt-4">
               {nodes.length} tools connected with {edges.length} relationships
             </p>
           </PixelCardContent>

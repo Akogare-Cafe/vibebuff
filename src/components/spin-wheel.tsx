@@ -67,7 +67,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
       case "uncommon":
         return "text-blue-400 border-blue-400";
       default:
-        return "text-[#60a5fa] border-[#1e3a5f]";
+        return "text-primary border-border";
     }
   };
 
@@ -93,7 +93,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
     <div className={cn("space-y-6", className)}>
       <PixelCard className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+          <h2 className="text-primary text-sm flex items-center gap-2">
             <RotateCw className="w-5 h-5" /> DAILY SPIN WHEEL
           </h2>
           {!canSpin && (
@@ -106,7 +106,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
         <div className="flex flex-col items-center">
           <div className="relative w-64 h-64 mb-6">
             <motion.div
-              className="w-full h-full rounded-full border-4 border-[#3b82f6] bg-gradient-to-br from-[#0a1628] to-[#1e3a5f] flex items-center justify-center"
+              className="w-full h-full rounded-full border-4 border-primary bg-gradient-to-br from-[#191022] to-[#362348] flex items-center justify-center"
               animate={{ rotate: rotation }}
               transition={{ duration: 3, ease: "easeOut" }}
             >
@@ -120,7 +120,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
                   <div
                     key={reward._id}
                     className={cn(
-                      "absolute w-12 h-12 flex items-center justify-center rounded-full border-2 bg-[#0a1628]",
+                      "absolute w-12 h-12 flex items-center justify-center rounded-full border-2 bg-[#191022]",
                       getRarityColor(reward.rarity)
                     )}
                     style={{
@@ -131,7 +131,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
                   </div>
                 );
               })}
-              <div className="absolute w-8 h-8 rounded-full bg-[#3b82f6] flex items-center justify-center">
+              <div className="absolute w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                 <Star className="w-4 h-4 text-white" />
               </div>
             </motion.div>
@@ -173,14 +173,14 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
             >
               <div
                 className={cn(
-                  "border-4 p-6 bg-[#0a1628]",
+                  "border-4 p-6 bg-[#191022]",
                   getRarityColor(result.reward.rarity)
                 )}
               >
                 <div className={cn("mb-2", getRarityColor(result.reward.rarity))}>
                   {getRewardIcon(result.reward.rewardType)}
                 </div>
-                <p className="text-[#60a5fa] text-lg mb-1">{result.reward.name}</p>
+                <p className="text-primary text-lg mb-1">{result.reward.name}</p>
                 <PixelBadge
                   variant="outline"
                   className={cn("text-[8px]", getRarityColor(result.reward.rarity))}
@@ -200,24 +200,24 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
 
       {spinHistory && spinHistory.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">
+          <h3 className="text-primary text-[10px] uppercase mb-4">
             RECENT SPINS
           </h3>
           <div className="space-y-2">
             {spinHistory.map((spin) => (
               <div
                 key={spin._id}
-                className="flex items-center justify-between p-2 border border-[#1e3a5f]"
+                className="flex items-center justify-between p-2 border border-border"
               >
                 <div className="flex items-center gap-2">
                   <span className={getRarityColor(spin.reward?.rarity ?? "common")}>
                     {getRewardIcon(spin.rewardType)}
                   </span>
-                  <span className="text-[#60a5fa] text-[10px]">
+                  <span className="text-primary text-[10px]">
                     {spin.reward?.name ?? "Unknown"}
                   </span>
                 </div>
-                <span className="text-[#3b82f6] text-[8px]">
+                <span className="text-muted-foreground text-[8px]">
                   {new Date(spin.spunAt).toLocaleDateString()}
                 </span>
               </div>

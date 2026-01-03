@@ -38,7 +38,7 @@ export function ToolEvolutionDisplay({ toolId, className }: ToolEvolutionProps) 
   if (!evolution) {
     return (
       <div className="text-center p-4">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING...</div>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export function ToolEvolutionDisplay({ toolId, className }: ToolEvolutionProps) 
           <div className="flex items-center gap-3">
             <TierIcon className={cn("w-10 h-10", tierConfig.color.split(" ")[0])} />
             <div>
-              <h3 className="text-[#60a5fa] text-[12px]">{evolution.tool?.name}</h3>
+              <h3 className="text-primary text-[12px]">{evolution.tool?.name}</h3>
               <PixelBadge variant="outline" className={cn("text-[8px]", tierConfig.color)}>
                 {evolution.currentTier.toUpperCase()} TIER
               </PixelBadge>
@@ -63,7 +63,7 @@ export function ToolEvolutionDisplay({ toolId, className }: ToolEvolutionProps) 
         </div>
 
         {evolution.evolution && (
-          <div className="text-[8px] text-[#3b82f6]">
+          <div className="text-[8px] text-muted-foreground">
             <p>Evolved via: {evolution.evolution.milestone.type}</p>
             <p>Value: {evolution.evolution.milestone.value.toLocaleString()}</p>
           </div>
@@ -72,7 +72,7 @@ export function ToolEvolutionDisplay({ toolId, className }: ToolEvolutionProps) 
 
       {history && history.length > 0 && (
         <div>
-          <h4 className="text-[#60a5fa] text-[10px] uppercase mb-2 flex items-center gap-2">
+          <h4 className="text-primary text-[10px] uppercase mb-2 flex items-center gap-2">
             <Clock className="w-4 h-4" /> EVOLUTION HISTORY
           </h4>
           <div className="space-y-2">
@@ -82,12 +82,12 @@ export function ToolEvolutionDisplay({ toolId, className }: ToolEvolutionProps) 
                 <div key={e._id} className={cn("flex items-center gap-3 p-2 border", config.color)}>
                   <config.icon className={cn("w-4 h-4", config.color.split(" ")[0])} />
                   <div className="flex-1">
-                    <span className="text-[#60a5fa] text-[10px]">{e.tier.toUpperCase()}</span>
-                    <span className="text-[#3b82f6] text-[8px] ml-2">
+                    <span className="text-primary text-[10px]">{e.tier.toUpperCase()}</span>
+                    <span className="text-muted-foreground text-[8px] ml-2">
                       {new Date(e.evolvedAt).toLocaleDateString()}
                     </span>
                   </div>
-                  <span className="text-[#3b82f6] text-[8px]">
+                  <span className="text-muted-foreground text-[8px]">
                     {e.milestone.type}: {e.milestone.value.toLocaleString()}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export function EvolvingToolsFeed({ limit = 5 }: { limit?: number }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <TrendingUp className="w-4 h-4" /> RECENTLY EVOLVED
       </h3>
       <div className="space-y-2">
@@ -115,9 +115,9 @@ export function EvolvingToolsFeed({ limit = 5 }: { limit?: number }) {
           const config = TIER_CONFIG[e.tier as keyof typeof TIER_CONFIG];
           return (
             <Link key={e._id} href={`/tools/${e.tool?.slug}`}>
-              <div className={cn("flex items-center gap-2 p-2 border hover:border-[#3b82f6]", config.color)}>
+              <div className={cn("flex items-center gap-2 p-2 border hover:border-primary", config.color)}>
                 <config.icon className={cn("w-4 h-4", config.color.split(" ")[0])} />
-                <span className="text-[#60a5fa] text-[10px] flex-1">{e.tool?.name}</span>
+                <span className="text-primary text-[10px] flex-1">{e.tool?.name}</span>
                 <PixelBadge variant="outline" className={cn("text-[6px]", config.color)}>
                   {e.tier.toUpperCase()}
                 </PixelBadge>
@@ -139,7 +139,7 @@ export function TierDistribution() {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <Gem className="w-4 h-4" /> TIER DISTRIBUTION
       </h3>
       <div className="space-y-2">
@@ -152,13 +152,13 @@ export function TierDistribution() {
               <span className={cn("w-20 text-[8px]", config.color.split(" ")[0])}>
                 {tier.toUpperCase()}
               </span>
-              <div className="flex-1 h-2 bg-[#0a1628] border border-[#1e3a5f]">
+              <div className="flex-1 h-2 bg-[#191022] border border-border">
                 <div 
                   className={cn("h-full", config.bg.replace("/10", ""))}
                   style={{ width: `${percent}%` }}
                 />
               </div>
-              <span className="text-[#3b82f6] text-[8px] w-8">{count}</span>
+              <span className="text-muted-foreground text-[8px] w-8">{count}</span>
             </div>
           );
         })}
@@ -174,7 +174,7 @@ export function OGBadges({ userId }: { userId: string }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <Award className="w-4 h-4" /> OG COLLECTOR BADGES
       </h3>
       <div className="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ export function OGBadges({ userId }: { userId: string }) {
             <Link key={badge._id} href={`/tools/${badge.tool?.slug}`}>
               <div className={cn("p-2 border text-center", currentConfig.color, currentConfig.bg)}>
                 <currentConfig.icon className={cn("w-6 h-6 mx-auto", currentConfig.color.split(" ")[0])} />
-                <p className="text-[#60a5fa] text-[8px] mt-1">{badge.tool?.name}</p>
+                <p className="text-primary text-[8px] mt-1">{badge.tool?.name}</p>
                 <PixelBadge variant="outline" className="text-[6px] mt-1">
                   OG @ {badge.tierAtCollection.toUpperCase()}
                 </PixelBadge>

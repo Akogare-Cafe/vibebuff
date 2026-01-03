@@ -151,7 +151,7 @@ export function AuthForm({ mode }: AuthFormProps) {
   if (!isLoaded) {
     return (
       <div className="flex items-center justify-center p-8">
-        <Loader2 className="w-8 h-8 text-[#3b82f6] animate-spin" />
+        <Loader2 className="w-8 h-8 text-muted-foreground animate-spin" />
       </div>
     );
   }
@@ -163,19 +163,19 @@ export function AuthForm({ mode }: AuthFormProps) {
         <PixelCardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <Mail className="w-12 h-12 text-[#3b82f6]" />
-              <Sparkles className="w-4 h-4 text-[#60a5fa] absolute -top-1 -right-1 animate-pulse" />
+              <Mail className="w-12 h-12 text-muted-foreground" />
+              <Sparkles className="w-4 h-4 text-primary absolute -top-1 -right-1 animate-pulse" />
             </div>
           </div>
           <PixelCardTitle>CHECK YOUR EMAIL</PixelCardTitle>
-          <p className="text-[#3b82f6] text-[8px] mt-2">
+          <p className="text-muted-foreground text-[8px] mt-2">
             WE SENT A VERIFICATION CODE TO {email.toUpperCase()}
           </p>
         </PixelCardHeader>
         <PixelCardContent>
           <form onSubmit={handleVerification} className="space-y-4">
             <div>
-              <label className="text-[#60a5fa] text-[8px] block mb-2">
+              <label className="text-primary text-[8px] block mb-2">
                 VERIFICATION CODE
               </label>
               <PixelInput
@@ -213,7 +213,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <button
               type="button"
               onClick={() => setVerificationPending(false)}
-              className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px] w-full text-center"
+              className="text-muted-foreground hover:text-primary text-[8px] w-full text-center"
             >
               ← BACK TO SIGN UP
             </button>
@@ -228,14 +228,14 @@ export function AuthForm({ mode }: AuthFormProps) {
       <PixelCardHeader className="text-center">
         <div className="flex justify-center mb-4">
           <div className="relative">
-            <Gamepad2 className="w-12 h-12 text-[#3b82f6]" />
-            <Zap className="w-4 h-4 text-[#60a5fa] absolute -top-1 -right-1 animate-pulse" />
+            <Gamepad2 className="w-12 h-12 text-muted-foreground" />
+            <Zap className="w-4 h-4 text-primary absolute -top-1 -right-1 animate-pulse" />
           </div>
         </div>
         <PixelCardTitle>
           {mode === "sign-in" ? "WELCOME BACK" : "JOIN THE QUEST"}
         </PixelCardTitle>
-        <p className="text-[#3b82f6] text-[8px] mt-2">
+        <p className="text-muted-foreground text-[8px] mt-2">
           {mode === "sign-in" 
             ? "ENTER YOUR CREDENTIALS TO CONTINUE" 
             : "CREATE YOUR ADVENTURER PROFILE"}
@@ -268,10 +268,10 @@ export function AuthForm({ mode }: AuthFormProps) {
         {/* Divider */}
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t-2 border-[#1e3a5f]" />
+            <div className="w-full border-t-2 border-border" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-[#0a1628] px-4 text-[#3b82f6] text-[8px]">
+            <span className="bg-[#191022] px-4 text-muted-foreground text-[8px]">
               OR USE EMAIL
             </span>
           </div>
@@ -282,7 +282,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           {mode === "sign-up" && (
             <>
               <div>
-                <label className="text-[#60a5fa] text-[8px] block mb-2">
+                <label className="text-primary text-[8px] block mb-2">
                   <User className="w-3 h-3 inline mr-1" />
                   USERNAME
                 </label>
@@ -295,7 +295,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                 />
               </div>
               <div>
-                <label className="text-[#60a5fa] text-[8px] block mb-2">
+                <label className="text-primary text-[8px] block mb-2">
                   <Sparkles className="w-3 h-3 inline mr-1" />
                   DISPLAY NAME
                 </label>
@@ -310,7 +310,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           )}
 
           <div>
-            <label className="text-[#60a5fa] text-[8px] block mb-2">
+            <label className="text-primary text-[8px] block mb-2">
               <Mail className="w-3 h-3 inline mr-1" />
               EMAIL ADDRESS
             </label>
@@ -324,7 +324,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           </div>
 
           <div>
-            <label className="text-[#60a5fa] text-[8px] block mb-2">
+            <label className="text-primary text-[8px] block mb-2">
               <Lock className="w-3 h-3 inline mr-1" />
               PASSWORD
             </label>
@@ -340,13 +340,13 @@ export function AuthForm({ mode }: AuthFormProps) {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#3b82f6] hover:text-[#60a5fa]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
             {mode === "sign-up" && (
-              <p className="text-[#1e3a5f] text-[6px] mt-1">
+              <p className="text-muted-foreground text-[6px] mt-1">
                 MIN 8 CHARACTERS WITH NUMBERS & SYMBOLS
               </p>
             )}
@@ -356,7 +356,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <div className="text-right">
               <Link 
                 href="/forgot-password" 
-                className="text-[#3b82f6] hover:text-[#60a5fa] text-[8px]"
+                className="text-muted-foreground hover:text-primary text-[8px]"
               >
                 FORGOT PASSWORD?
               </Link>
@@ -393,12 +393,12 @@ export function AuthForm({ mode }: AuthFormProps) {
 
         {/* Toggle Link */}
         <div className="mt-6 text-center">
-          <p className="text-[#3b82f6] text-[8px]">
+          <p className="text-muted-foreground text-[8px]">
             {mode === "sign-in" ? "NEW TO VIBEBUFF?" : "ALREADY HAVE AN ACCOUNT?"}
           </p>
           <Link
             href={mode === "sign-in" ? "/sign-up" : "/sign-in"}
-            className="text-[#60a5fa] hover:text-[#3b82f6] text-[10px] font-bold"
+            className="text-primary hover:text-muted-foreground text-[10px] font-bold"
           >
             {mode === "sign-in" ? "CREATE ACCOUNT →" : "← LOGIN HERE"}
           </Link>

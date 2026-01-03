@@ -55,7 +55,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
       case "rejected":
         return "text-red-400 border-red-400";
       default:
-        return "text-[#3b82f6] border-[#1e3a5f]";
+        return "text-muted-foreground border-border";
     }
   };
 
@@ -70,7 +70,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
       case "rejected":
         return <XCircle className="w-4 h-4 text-red-400" />;
       default:
-        return <Clock className="w-4 h-4 text-[#3b82f6]" />;
+        return <Clock className="w-4 h-4 text-muted-foreground" />;
     }
   };
 
@@ -115,7 +115,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
     <div className={cn("space-y-6", className)}>
       <PixelCard className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+          <h2 className="text-primary text-sm flex items-center gap-2">
             <PlusCircle className="w-5 h-5" /> TOOL NOMINATIONS
           </h2>
           <PixelButton
@@ -128,14 +128,14 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
         </div>
 
         {showForm && (
-          <div className="mb-6 p-4 border-2 border-[#3b82f6] bg-[#3b82f6]/5">
-            <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">
+          <div className="mb-6 p-4 border-2 border-primary bg-primary/5">
+            <h3 className="text-primary text-[10px] uppercase mb-4">
               NOMINATE A NEW TOOL
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="text-[#3b82f6] text-[8px] block mb-1">TOOL NAME *</label>
+                <label className="text-muted-foreground text-[8px] block mb-1">TOOL NAME *</label>
                 <PixelInput
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -143,7 +143,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 />
               </div>
               <div>
-                <label className="text-[#3b82f6] text-[8px] block mb-1">CATEGORY *</label>
+                <label className="text-muted-foreground text-[8px] block mb-1">CATEGORY *</label>
                 <PixelInput
                   value={formData.categorySlug}
                   onChange={(e) => setFormData({ ...formData, categorySlug: e.target.value })}
@@ -151,7 +151,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 />
               </div>
               <div>
-                <label className="text-[#3b82f6] text-[8px] block mb-1">WEBSITE URL *</label>
+                <label className="text-muted-foreground text-[8px] block mb-1">WEBSITE URL *</label>
                 <PixelInput
                   value={formData.websiteUrl}
                   onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
@@ -159,7 +159,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 />
               </div>
               <div>
-                <label className="text-[#3b82f6] text-[8px] block mb-1">GITHUB URL</label>
+                <label className="text-muted-foreground text-[8px] block mb-1">GITHUB URL</label>
                 <PixelInput
                   value={formData.githubUrl}
                   onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
@@ -169,22 +169,22 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
             </div>
 
             <div className="mb-4">
-              <label className="text-[#3b82f6] text-[8px] block mb-1">DESCRIPTION *</label>
+              <label className="text-muted-foreground text-[8px] block mb-1">DESCRIPTION *</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="What does this tool do?"
-                className="w-full bg-[#0a1628] border-2 border-[#1e3a5f] text-[#60a5fa] text-[10px] p-2 min-h-[60px]"
+                className="w-full bg-[#191022] border-2 border-border text-primary text-[10px] p-2 min-h-[60px]"
               />
             </div>
 
             <div className="mb-4">
-              <label className="text-[#3b82f6] text-[8px] block mb-1">WHY ADD IT? *</label>
+              <label className="text-muted-foreground text-[8px] block mb-1">WHY ADD IT? *</label>
               <textarea
                 value={formData.whyAdd}
                 onChange={(e) => setFormData({ ...formData, whyAdd: e.target.value })}
                 placeholder="Why should this tool be added to VibeBuff?"
-                className="w-full bg-[#0a1628] border-2 border-[#1e3a5f] text-[#60a5fa] text-[10px] p-2 min-h-[60px]"
+                className="w-full bg-[#191022] border-2 border-border text-primary text-[10px] p-2 min-h-[60px]"
               />
             </div>
 
@@ -195,10 +195,10 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
         )}
 
         <div className="mb-4">
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <TrendingUp className="w-4 h-4" /> TOP NOMINATIONS
           </h3>
-          <p className="text-[#3b82f6] text-[8px] mb-4">
+          <p className="text-muted-foreground text-[8px] mb-4">
             Vote for tools you want to see added! Tools with 50+ votes go under review.
           </p>
         </div>
@@ -207,13 +207,13 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
           {topNominations?.map((nomination, index) => (
             <div
               key={nomination._id}
-              className="border-2 border-[#1e3a5f] p-4 hover:border-[#3b82f6] transition-all"
+              className="border-2 border-border p-4 hover:border-primary transition-all"
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-[#3b82f6] text-[12px]">#{index + 1}</span>
+                  <span className="text-muted-foreground text-[12px]">#{index + 1}</span>
                   <div>
-                    <h4 className="text-[#60a5fa] text-[12px]">{nomination.name}</h4>
+                    <h4 className="text-primary text-[12px]">{nomination.name}</h4>
                     <div className="flex items-center gap-2 mt-1">
                       <PixelBadge variant="outline" className="text-[6px]">
                         {nomination.categorySlug}
@@ -230,7 +230,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 {getStatusIcon(nomination.status)}
               </div>
 
-              <p className="text-[#3b82f6] text-[8px] mb-3">{nomination.description}</p>
+              <p className="text-muted-foreground text-[8px] mb-3">{nomination.description}</p>
 
               <div className="flex items-center gap-3 mb-3">
                 {nomination.websiteUrl && (
@@ -238,7 +238,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                     href={nomination.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[#3b82f6] hover:text-[#60a5fa] text-[8px]"
+                    className="flex items-center gap-1 text-muted-foreground hover:text-primary text-[8px]"
                   >
                     <Globe className="w-3 h-3" /> Website
                   </a>
@@ -248,7 +248,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                     href={nomination.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[#3b82f6] hover:text-[#60a5fa] text-[8px]"
+                    className="flex items-center gap-1 text-muted-foreground hover:text-primary text-[8px]"
                   >
                     <Github className="w-3 h-3" /> GitHub
                   </a>
@@ -256,12 +256,12 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-[8px] text-[#3b82f6]">
+                <div className="flex items-center gap-2 text-[8px] text-muted-foreground">
                   <User className="w-3 h-3" />
                   {nomination.nominatedByUser?.username ?? "Unknown"}
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#60a5fa] text-[10px]">
+                  <span className="text-primary text-[10px]">
                     {nomination.upvotes} votes
                   </span>
                   {nomination.status === "pending" && (
@@ -281,8 +281,8 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
 
         {(!topNominations || topNominations.length === 0) && (
           <div className="text-center py-12">
-            <PlusCircle className="w-12 h-12 mx-auto text-[#1e3a5f] mb-4" />
-            <p className="text-[#3b82f6] text-[10px]">
+            <PlusCircle className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
+            <p className="text-muted-foreground text-[10px]">
               No nominations yet. Be the first to nominate a tool!
             </p>
           </div>
@@ -291,21 +291,21 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
 
       {userNominations && userNominations.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4">
+          <h3 className="text-primary text-[10px] uppercase mb-4">
             YOUR NOMINATIONS
           </h3>
           <div className="space-y-2">
             {userNominations.map((nomination) => (
               <div
                 key={nomination._id}
-                className="flex items-center justify-between p-2 border border-[#1e3a5f]"
+                className="flex items-center justify-between p-2 border border-border"
               >
                 <div className="flex items-center gap-2">
                   {getStatusIcon(nomination.status)}
-                  <span className="text-[#60a5fa] text-[10px]">{nomination.name}</span>
+                  <span className="text-primary text-[10px]">{nomination.name}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[#3b82f6] text-[8px]">
+                  <span className="text-muted-foreground text-[8px]">
                     {nomination.upvotes} votes
                   </span>
                   <PixelBadge

@@ -76,23 +76,23 @@ export function DeckShare({
   return (
     <PixelCard className="p-6 max-w-md w-full">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h3 className="text-primary text-sm flex items-center gap-2">
           <Share2 className="w-4 h-4" /> SHARE DECK
         </h3>
         {onClose && (
-          <button onClick={onClose} className="text-[#3b82f6] hover:text-[#60a5fa]">
+          <button onClick={onClose} className="text-muted-foreground hover:text-primary">
             <X className="w-4 h-4" />
           </button>
         )}
       </div>
 
-      <p className="text-[#3b82f6] text-[10px] mb-4">
+      <p className="text-muted-foreground text-[10px] mb-4">
         DECK: {deckName.toUpperCase()}
       </p>
 
       {!isPublic ? (
         <div className="text-center py-4">
-          <p className="text-[#3b82f6] text-[8px] mb-4">
+          <p className="text-muted-foreground text-[8px] mb-4">
             THIS DECK IS PRIVATE. MAKE IT PUBLIC TO SHARE.
           </p>
           <PixelButton onClick={handleMakePublic} disabled={isUpdating}>
@@ -103,7 +103,7 @@ export function DeckShare({
       ) : (
         <div className="space-y-4">
           <div>
-            <p className="text-[#60a5fa] text-[8px] mb-2">SHARE LINK</p>
+            <p className="text-primary text-[8px] mb-2">SHARE LINK</p>
             <div className="flex gap-2">
               <PixelInput 
                 value={shareUrl || ""} 
@@ -117,7 +117,7 @@ export function DeckShare({
           </div>
 
           <div>
-            <p className="text-[#60a5fa] text-[8px] mb-2">SHARE ON</p>
+            <p className="text-primary text-[8px] mb-2">SHARE ON</p>
             <div className="flex gap-2">
               {twitterUrl && (
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
@@ -136,14 +136,14 @@ export function DeckShare({
             </div>
           </div>
 
-          <div className="border-t border-[#1e3a5f] pt-4">
-            <p className="text-[#60a5fa] text-[8px] mb-2">EMBED BADGE</p>
-            <div className="bg-[#0a1628] border-2 border-[#1e3a5f] p-3">
-              <code className="text-[#3b82f6] text-[6px] break-all">
+          <div className="border-t border-border pt-4">
+            <p className="text-primary text-[8px] mb-2">EMBED BADGE</p>
+            <div className="bg-[#191022] border-2 border-border p-3">
+              <code className="text-muted-foreground text-[6px] break-all">
                 {`[![My Stack](${siteUrl}/api/badge/${shareToken})](${shareUrl})`}
               </code>
             </div>
-            <p className="text-[#3b82f6] text-[6px] mt-2">
+            <p className="text-muted-foreground text-[6px] mt-2">
               ADD THIS TO YOUR README TO SHOW YOUR STACK
             </p>
           </div>

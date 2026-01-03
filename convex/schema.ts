@@ -2851,4 +2851,80 @@ export default defineSchema({
     completedAt: v.optional(v.number()),
   })
     .index("by_user", ["userId"]),
+
+  // ============================================
+  // Daily Quests / Bounty Board System
+  // ============================================
+  dailyQuests: defineTable({
+    title: v.string(),
+    description: v.string(),
+    classType: v.union(
+      v.literal("frontend"),
+      v.literal("backend"),
+      v.literal("devops"),
+      v.literal("general")
+    ),
+    difficulty: v.union(
+      v.literal("novice"),
+      v.literal("adept"),
+      v.literal("master")
+    ),
+    xpReward: v.number(),
+    estimatedMinutes: v.number(),
+    icon: v.string(),
+    iconColor: v.string(),
+    status: v.union(
+      v.literal("available"),
+      v.literal("in_progress"),
+      v.literal("completed")
+    ),
+    isFeatured: v.boolean(),
+    isCommunity: v.boolean(),
+    lootReward: v.optional(v.string()),
+    activeDate: v.number(),
+  })
+    .index("by_status", ["status"])
+    .index("by_difficulty", ["difficulty"])
+    .index("by_class", ["classType"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_date", ["activeDate"]),
+
+  weeklyChallenges: defineTable({
+    title: v.string(),
+    description: v.string(),
+    targetCount: v.number(),
+    currentCount: v.number(),
+    rewardDescription: v.string(),
+    weekStart: v.number(),
+    weekEnd: v.number(),
+  })
+    .index("by_week", ["weekStart", "weekEnd"]),
+
+  userQuestStats: defineTable({
+    userId: v.string(),
+    streak: v.number(),
+    points: v.number(),
+    level: v.number(),
+    levelTitle: v.string(),
+    xpProgress: v.number(),
+    inProgressCount: v.number(),
+    completedToday: v.number(),
+    lastActiveDate: v.number(),
+  })
+    .index("by_user", ["userId"]),
+
+  userQuestProgress: defineTable({
+    questId: v.id("dailyQuests"),
+    userId: v.string(),
+    status: v.union(
+      v.literal("in_progress"),
+      v.literal("completed")
+    ),
+    progress: v.number(),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"])
+    .index("by_quest", ["questId"])
+    .index("by_user_quest", ["userId", "questId"]),
 });

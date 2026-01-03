@@ -51,7 +51,7 @@ export function ToolRelationshipMap({ toolId, className }: ToolRelationshipMapPr
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Network className="w-4 h-4" /> TOOL RELATIONSHIPS
         </h2>
       </div>
@@ -76,14 +76,14 @@ export function ToolRelationshipMap({ toolId, className }: ToolRelationshipMapPr
         })
       ) : (
         <PixelCard className="p-8 text-center">
-          <Network className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO RELATIONSHIPS FOUND</p>
+          <Network className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO RELATIONSHIPS FOUND</p>
         </PixelCard>
       )}
 
       {migrationPaths && migrationPaths.length > 0 && (
         <div>
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
             <ArrowRight className="w-4 h-4" /> MIGRATION PATHS
           </h3>
           <div className="space-y-3">
@@ -103,23 +103,23 @@ function RelationshipCard({ relationship, config }: { relationship: any; config:
   return (
     <PixelCard className={cn("p-3", config?.color)}>
       <Link href={`/tools/${relationship.relatedTool?.slug}`}>
-        <p className="text-[#60a5fa] text-[10px] mb-2 hover:underline">
+        <p className="text-primary text-[10px] mb-2 hover:underline">
           {relationship.relatedTool?.name}
         </p>
       </Link>
       
-      <div className="h-2 bg-[#0a1628] border border-[#1e3a5f] mb-2">
+      <div className="h-2 bg-[#191022] border border-border mb-2">
         <div 
-          className={cn("h-full", config?.color.includes("green") ? "bg-green-400" : "bg-[#3b82f6]")}
+          className={cn("h-full", config?.color.includes("green") ? "bg-green-400" : "bg-primary")}
           style={{ width: `${relationship.strength}%` }}
         />
       </div>
       
       <div className="flex items-center justify-between">
-        <span className="text-[#3b82f6] text-[8px]">{relationship.strength}% match</span>
+        <span className="text-muted-foreground text-[8px]">{relationship.strength}% match</span>
         <button 
           onClick={() => voteOnRelationship({ relationshipId: relationship._id })}
-          className="flex items-center gap-1 text-[#3b82f6] text-[8px] hover:text-[#60a5fa]"
+          className="flex items-center gap-1 text-muted-foreground text-[8px] hover:text-primary"
         >
           <ThumbsUp className="w-3 h-3" /> {relationship.communityVotes}
         </button>
@@ -145,9 +145,9 @@ function MigrationPathCard({ path }: { path: any }) {
     <PixelCard className={cn("p-4", difficultyColor)}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <ArrowRight className="w-5 h-5 text-[#3b82f6]" />
+          <ArrowRight className="w-5 h-5 text-muted-foreground" />
           <Link href={`/tools/${path.toTool?.slug}`}>
-            <span className="text-[#60a5fa] text-[12px] hover:underline">{path.toTool?.name}</span>
+            <span className="text-primary text-[12px] hover:underline">{path.toTool?.name}</span>
           </Link>
         </div>
         <PixelBadge variant="outline" className={cn("text-[6px]", difficultyColor)}>
@@ -155,7 +155,7 @@ function MigrationPathCard({ path }: { path: any }) {
         </PixelBadge>
       </div>
 
-      <div className="flex items-center gap-4 mb-3 text-[8px] text-[#3b82f6]">
+      <div className="flex items-center gap-4 mb-3 text-[8px] text-muted-foreground">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" /> ~{path.estimatedHours}h
         </span>
@@ -172,11 +172,11 @@ function MigrationPathCard({ path }: { path: any }) {
       {expanded && (
         <div className="mt-3 space-y-3">
           <div>
-            <p className="text-[#60a5fa] text-[8px] mb-2">STEPS:</p>
+            <p className="text-primary text-[8px] mb-2">STEPS:</p>
             <ol className="space-y-1">
               {path.steps.map((step: string, i: number) => (
-                <li key={i} className="text-[#3b82f6] text-[8px] flex items-start gap-2">
-                  <span className="text-[#1e3a5f]">{i + 1}.</span> {step}
+                <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-2">
+                  <span className="text-muted-foreground">{i + 1}.</span> {step}
                 </li>
               ))}
             </ol>
@@ -187,7 +187,7 @@ function MigrationPathCard({ path }: { path: any }) {
               <p className="text-orange-400 text-[8px] mb-2">GOTCHAS:</p>
               <ul className="space-y-1">
                 {path.gotchas.map((gotcha: string, i: number) => (
-                  <li key={i} className="text-[#3b82f6] text-[8px] flex items-start gap-2">
+                  <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-2">
                     <AlertTriangle className="w-3 h-3 text-orange-400 flex-shrink-0" /> {gotcha}
                   </li>
                 ))}
@@ -197,7 +197,7 @@ function MigrationPathCard({ path }: { path: any }) {
 
           {path.resources.length > 0 && (
             <div>
-              <p className="text-[#60a5fa] text-[8px] mb-2">RESOURCES:</p>
+              <p className="text-primary text-[8px] mb-2">RESOURCES:</p>
               <div className="flex flex-wrap gap-2">
                 {path.resources.map((resource: any, i: number) => (
                   <a 
@@ -205,7 +205,7 @@ function MigrationPathCard({ path }: { path: any }) {
                     href={resource.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-[#3b82f6] text-[8px] underline hover:text-[#60a5fa]"
+                    className="text-muted-foreground text-[8px] underline hover:text-primary"
                   >
                     {resource.title}
                   </a>
@@ -214,7 +214,7 @@ function MigrationPathCard({ path }: { path: any }) {
             </div>
           )}
 
-          <div className="flex gap-2 pt-2 border-t border-[#1e3a5f]">
+          <div className="flex gap-2 pt-2 border-t border-border">
             <PixelButton 
               size="sm" 
               onClick={() => reportSuccess({ pathId: path._id, wasSuccessful: true })}
@@ -242,13 +242,13 @@ export function RelationshipGraphWidget({ toolId }: { toolId: Id<"tools"> }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <Network className="w-4 h-4" /> ECOSYSTEM
       </h3>
       <div className="flex flex-wrap gap-2">
         {graph.nodes.slice(1, 7).map((node: any) => (
           <Link key={node.id} href={`/tools/${node.data?.slug}`}>
-            <PixelBadge variant="outline" className="text-[8px] hover:border-[#3b82f6]">
+            <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
               {node.data?.name}
             </PixelBadge>
           </Link>

@@ -1555,12 +1555,12 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#000000]">
+    <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-12">
         {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-[#3b82f6] hover:text-[#60a5fa] text-[10px] mb-8"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary text-[10px] mb-8"
         >
           <ChevronLeft className="w-4 h-4" />
           BACK TO BLOG
@@ -1569,10 +1569,10 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Article Header */}
         <article>
           <header className="mb-8">
-            <h1 className="text-[#60a5fa] text-lg mb-4 leading-relaxed pixel-glow">
+            <h1 className="text-primary text-lg mb-4 leading-relaxed pixel-glow">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 text-[8px] text-[#3b82f6] mb-4">
+            <div className="flex flex-wrap items-center gap-4 text-[8px] text-muted-foreground mb-4">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3" />
                 {new Date(post.date).toLocaleDateString("en-US", {
@@ -1591,13 +1591,13 @@ export default async function BlogPostPage({ params }: Props) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[6px] px-2 py-1 border border-[#3b82f6] text-[#3b82f6]"
+                  className="text-[6px] px-2 py-1 border border-primary text-muted-foreground"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-            <p className="text-[#3b82f6] text-[10px] leading-relaxed border-l-4 border-[#3b82f6] pl-4">
+            <p className="text-muted-foreground text-[10px] leading-relaxed border-l-4 border-primary pl-4">
               {post.description}
             </p>
           </header>
@@ -1608,31 +1608,31 @@ export default async function BlogPostPage({ params }: Props) {
               className="text-[#a0aec0] text-[10px] leading-relaxed space-y-4 blog-content"
               dangerouslySetInnerHTML={{
                 __html: post.content
-                  .replace(/## (.*)/g, '<h2 class="text-[#60a5fa] text-sm mt-8 mb-4">$1</h2>')
-                  .replace(/### (.*)/g, '<h3 class="text-[#3b82f6] text-[11px] mt-6 mb-3">$1</h3>')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#60a5fa]">$1</strong>')
+                  .replace(/## (.*)/g, '<h2 class="text-primary text-sm mt-8 mb-4">$1</h2>')
+                  .replace(/### (.*)/g, '<h3 class="text-muted-foreground text-[11px] mt-6 mb-3">$1</h3>')
+                  .replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>')
                   .replace(/- (.*)/g, '<li class="ml-4 text-[#a0aec0]">$1</li>')
                   .replace(/\n\n/g, '</p><p class="mb-4">')
-                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#3b82f6] hover:text-[#60a5fa] underline">$1</a>')
-                  .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-[#0a1628] border-2 border-[#1e3a5f] p-4 my-4 overflow-x-auto"><code class="text-[#60a5fa] text-[8px]">$2</code></pre>')
+                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-muted-foreground hover:text-primary underline">$1</a>')
+                  .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-card border-2 border-border p-4 my-4 overflow-x-auto"><code class="text-primary text-[8px]">$2</code></pre>')
                   .replace(/\|(.+)\|/g, (match) => {
                     const cells = match.split('|').filter(c => c.trim());
-                    return `<tr>${cells.map(c => `<td class="border border-[#1e3a5f] px-2 py-1 text-[8px]">${c.trim()}</td>`).join('')}</tr>`;
+                    return `<tr>${cells.map(c => `<td class="border border-border px-2 py-1 text-[8px]">${c.trim()}</td>`).join('')}</tr>`;
                   }),
               }}
             />
           </div>
 
           {/* Share Section */}
-          <div className="border-t-4 border-[#1e3a5f] mt-12 pt-8">
+          <div className="border-t-4 border-border mt-12 pt-8">
             <div className="flex items-center justify-between">
-              <span className="text-[#60a5fa] text-[10px]">SHARE THIS ARTICLE</span>
+              <span className="text-primary text-[10px]">SHARE THIS ARTICLE</span>
               <div className="flex gap-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.com/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#3b82f6] hover:text-[#60a5fa]"
+                  className="text-muted-foreground hover:text-primary"
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
@@ -1640,7 +1640,7 @@ export default async function BlogPostPage({ params }: Props) {
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://vibebuff.com/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#3b82f6] hover:text-[#60a5fa]"
+                  className="text-muted-foreground hover:text-primary"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -1650,14 +1650,14 @@ export default async function BlogPostPage({ params }: Props) {
         </article>
 
         {/* Related Posts CTA */}
-        <div className="border-4 border-[#1e3a5f] bg-[#0a1628] p-8 mt-12 text-center">
-          <h2 className="text-[#60a5fa] text-sm mb-4">FIND YOUR PERFECT TECH STACK</h2>
-          <p className="text-[#3b82f6] text-[8px] mb-6">
+        <div className="border-4 border-border bg-card p-8 mt-12 text-center">
+          <h2 className="text-primary text-sm mb-4">FIND YOUR PERFECT TECH STACK</h2>
+          <p className="text-muted-foreground text-[8px] mb-6">
             Use our AI-powered Quest to get personalized recommendations for your project.
           </p>
           <Link
             href="/quest"
-            className="inline-block bg-[#3b82f6] text-[#000000] px-6 py-2 text-[10px] hover:bg-[#60a5fa] transition-colors"
+            className="inline-block bg-primary text-background px-6 py-2 text-[10px] hover:bg-primary transition-colors"
           >
             START YOUR QUEST
           </Link>

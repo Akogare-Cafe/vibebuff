@@ -19,7 +19,7 @@ export function ThemeSwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const themeOrder: Theme[] = ["blue", "green", "purple", "amber", "red"];
+  const themeOrder: Theme[] = ["purple", "cyan", "orange", "green", "blue"];
 
   return (
     <div className="relative" ref={dropdownRef}>

@@ -54,7 +54,7 @@ export function StackReplays({ userId, className }: StackReplaysProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Play className="w-4 h-4" /> STACK REPLAYS
         </h2>
       </div>
@@ -93,9 +93,9 @@ export function StackReplays({ userId, className }: StackReplaysProps) {
         </div>
       ) : (
         <PixelCard className="p-8 text-center">
-          <Play className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO REPLAYS YET</p>
-          <p className="text-[#1e3a5f] text-[8px]">Complete battles or runs to create replays!</p>
+          <Play className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO REPLAYS YET</p>
+          <p className="text-muted-foreground text-[8px]">Complete battles or runs to create replays!</p>
         </PixelCard>
       )}
     </div>
@@ -143,7 +143,7 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
         <div className="flex items-center gap-2">
           <TypeIcon className={cn("w-6 h-6", config?.color)} />
           <div>
-            <h3 className="text-[#60a5fa] text-[11px]">{replay.title}</h3>
+            <h3 className="text-primary text-[11px]">{replay.title}</h3>
             <div className="flex items-center gap-2">
               <PixelBadge variant="outline" className={cn("text-[6px]", config?.color)}>
                 {config?.label}
@@ -157,10 +157,10 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       </div>
 
       {replay.description && (
-        <p className="text-[#3b82f6] text-[8px] mb-3">{replay.description}</p>
+        <p className="text-muted-foreground text-[8px] mb-3">{replay.description}</p>
       )}
 
-      <div className="flex items-center gap-3 mb-3 text-[8px] text-[#3b82f6]">
+      <div className="flex items-center gap-3 mb-3 text-[8px] text-muted-foreground">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" /> {minutes}:{seconds.toString().padStart(2, "0")}
         </span>
@@ -173,15 +173,15 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       </div>
 
       {replay.replayData.keyMoments.length > 0 && (
-        <div className="mb-3 p-2 border border-[#1e3a5f] bg-[#0a1628]">
-          <p className="text-[#60a5fa] text-[8px] mb-1">KEY MOMENTS:</p>
+        <div className="mb-3 p-2 border border-border bg-[#191022]">
+          <p className="text-primary text-[8px] mb-1">KEY MOMENTS:</p>
           <div className="space-y-1">
             {replay.replayData.keyMoments.slice(0, 2).map((moment: any, i: number) => (
               <div key={i} className="flex items-center gap-2 text-[8px]">
-                <span className="text-[#3b82f6]">
+                <span className="text-muted-foreground">
                   {Math.floor(moment.timestamp / 1000)}s
                 </span>
-                <span className="text-[#60a5fa]">{moment.event}</span>
+                <span className="text-primary">{moment.event}</span>
               </div>
             ))}
           </div>
@@ -189,7 +189,7 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       )}
 
       <div className="flex items-center justify-between">
-        <span className="text-[#3b82f6] text-[8px]">
+        <span className="text-muted-foreground text-[8px]">
           by {replay.username || "Anonymous"}
         </span>
         <div className="flex gap-2">
@@ -229,7 +229,7 @@ export function WeeklyHighlights() {
               className={cn(
                 "flex items-center justify-between p-2 border",
                 index === 0 && "border-yellow-400 bg-yellow-400/10",
-                index > 0 && "border-[#1e3a5f]"
+                index > 0 && "border-border"
               )}
             >
               <div className="flex items-center gap-2">
@@ -238,14 +238,14 @@ export function WeeklyHighlights() {
                   index === 0 && "text-yellow-400",
                   index === 1 && "text-gray-400",
                   index === 2 && "text-orange-400",
-                  index > 2 && "text-[#3b82f6]"
+                  index > 2 && "text-muted-foreground"
                 )}>
                   #{index + 1}
                 </span>
                 {config && <config.icon className={cn("w-4 h-4", config.color)} />}
-                <span className="text-[#60a5fa] text-[10px]">{replay.title}</span>
+                <span className="text-primary text-[10px]">{replay.title}</span>
               </div>
-              <span className="text-[#3b82f6] text-[8px] flex items-center gap-1">
+              <span className="text-muted-foreground text-[8px] flex items-center gap-1">
                 <ThumbsUp className="w-3 h-3" /> {replay.upvotes}
               </span>
             </div>
@@ -264,7 +264,7 @@ export function ReplayWidget({ userId }: { userId: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#60a5fa] text-[10px] flex items-center gap-1">
+        <span className="text-primary text-[10px] flex items-center gap-1">
           <Play className="w-3 h-3" /> YOUR REPLAYS
         </span>
         <Link href="/replays">
@@ -280,9 +280,9 @@ export function ReplayWidget({ userId }: { userId: string }) {
             <div key={replay._id} className="flex items-center justify-between text-[8px]">
               <div className="flex items-center gap-1">
                 {config && <config.icon className={cn("w-3 h-3", config.color)} />}
-                <span className="text-[#60a5fa]">{replay.title}</span>
+                <span className="text-primary">{replay.title}</span>
               </div>
-              <span className="text-[#3b82f6]">{replay.upvotes} votes</span>
+              <span className="text-muted-foreground">{replay.upvotes} votes</span>
             </div>
           );
         })}

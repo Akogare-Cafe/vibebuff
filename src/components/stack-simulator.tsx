@@ -63,7 +63,7 @@ export function StackSimulator({ userId, deckId, toolIds, className }: StackSimu
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <FlaskConical className="w-4 h-4" /> STACK SIMULATOR
         </h2>
       </div>
@@ -76,17 +76,17 @@ export function StackSimulator({ userId, deckId, toolIds, className }: StackSimu
               key={scenario._id}
               className={cn(
                 "p-4 cursor-pointer transition-all",
-                selectedScenario === scenario.slug && "border-[#3b82f6] bg-[#3b82f6]/10"
+                selectedScenario === scenario.slug && "border-primary bg-primary/10"
               )}
               onClick={() => setSelectedScenario(scenario.slug)}
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-[#60a5fa] text-[12px]">{scenario.name}</h3>
+                <h3 className="text-primary text-[12px]">{scenario.name}</h3>
                 <PixelBadge variant="outline" className={cn("text-[6px]", diffConfig.color)}>
                   {diffConfig.label}
                 </PixelBadge>
               </div>
-              <p className="text-[#3b82f6] text-[8px] mb-3">{scenario.description}</p>
+              <p className="text-muted-foreground text-[8px] mb-3">{scenario.description}</p>
               <div className="flex flex-wrap gap-1">
                 {scenario.challenges.slice(0, 3).map((c: any, i: number) => (
                   <PixelBadge key={i} variant="outline" className="text-[6px]">
@@ -114,9 +114,9 @@ export function StackSimulator({ userId, deckId, toolIds, className }: StackSimu
 
       {isRunning && (
         <PixelCard className="p-8 text-center">
-          <FlaskConical className="w-16 h-16 mx-auto text-[#3b82f6] animate-pulse mb-4" />
-          <p className="text-[#60a5fa] text-[12px]">Running simulation...</p>
-          <p className="text-[#3b82f6] text-[8px]">Testing your stack against challenges</p>
+          <FlaskConical className="w-16 h-16 mx-auto text-muted-foreground animate-pulse mb-4" />
+          <p className="text-primary text-[12px]">Running simulation...</p>
+          <p className="text-muted-foreground text-[8px]">Testing your stack against challenges</p>
         </PixelCard>
       )}
 
@@ -150,7 +150,7 @@ function SimulationResults({ results }: { results: any }) {
         <div className={cn("text-6xl font-bold", getScoreColor(overallScore))}>
           {getGrade(overallScore)}
         </div>
-        <p className="text-[#60a5fa] text-lg">{overallScore}/100</p>
+        <p className="text-primary text-lg">{overallScore}/100</p>
         <PixelBadge variant="default" className="mt-2">
           +{results.xpEarned} XP EARNED
         </PixelBadge>
@@ -177,15 +177,15 @@ function StatBar({ icon, label, value }: { icon: React.ReactNode; label: string;
 
   return (
     <div className="text-center">
-      <div className="text-[#3b82f6] mb-1">{icon}</div>
-      <div className="h-24 w-full bg-[#0a1628] border border-[#1e3a5f] relative mb-1">
+      <div className="text-muted-foreground mb-1">{icon}</div>
+      <div className="h-24 w-full bg-[#191022] border border-border relative mb-1">
         <div 
           className={cn("absolute bottom-0 w-full transition-all duration-1000", getColor(value))}
           style={{ height: `${value}%` }}
         />
       </div>
-      <p className="text-[#60a5fa] text-[10px]">{value}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+      <p className="text-primary text-[10px]">{value}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -197,21 +197,21 @@ export function SimulationHistory({ userId }: { userId: string }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <RotateCcw className="w-4 h-4" /> RECENT SIMULATIONS
       </h3>
       <div className="space-y-2">
         {history.map((sim: any) => (
-          <div key={sim._id} className="flex items-center justify-between p-2 border border-[#1e3a5f]">
+          <div key={sim._id} className="flex items-center justify-between p-2 border border-border">
             <div>
-              <p className="text-[#60a5fa] text-[10px]">{sim.scenario.name}</p>
-              <p className="text-[#3b82f6] text-[8px]">
+              <p className="text-primary text-[10px]">{sim.scenario.name}</p>
+              <p className="text-muted-foreground text-[8px]">
                 {new Date(sim.completedAt).toLocaleDateString()}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-[#60a5fa] text-lg">{sim.results.overallScore}</p>
-              <p className="text-[#3b82f6] text-[8px]">+{sim.xpEarned} XP</p>
+              <p className="text-primary text-lg">{sim.results.overallScore}</p>
+              <p className="text-muted-foreground text-[8px]">+{sim.xpEarned} XP</p>
             </div>
           </div>
         ))}

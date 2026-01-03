@@ -54,7 +54,7 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
   if (!deckWithCategories) {
     return (
       <PixelCard className="p-6 text-center">
-        <div className="text-[#3b82f6] text-[10px] pixel-loading">LOADING LOADOUT...</div>
+        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING LOADOUT...</div>
       </PixelCard>
     );
   }
@@ -77,7 +77,7 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
     <div className={cn("space-y-4", className)}>
       <PixelCard className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+          <h2 className="text-primary text-sm flex items-center gap-2">
             <Shield className="w-4 h-4" /> LOADOUT SLOTS
           </h2>
           <div className="flex items-center gap-2">
@@ -95,15 +95,15 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
 
         <div className="mb-4">
           <div className="flex justify-between text-[8px] mb-1">
-            <span className="text-[#3b82f6]">LOADOUT COMPLETION</span>
-            <span className="text-[#60a5fa]">{loadoutScore}%</span>
+            <span className="text-muted-foreground">LOADOUT COMPLETION</span>
+            <span className="text-primary">{loadoutScore}%</span>
           </div>
-          <div className="h-3 bg-[#0a1628] border border-[#1e3a5f]">
+          <div className="h-3 bg-[#191022] border border-border">
             <div 
               className={cn(
                 "h-full transition-all duration-500",
                 loadoutScore >= 80 ? "bg-green-400" : 
-                loadoutScore >= 50 ? "bg-yellow-400" : "bg-[#3b82f6]"
+                loadoutScore >= 50 ? "bg-yellow-400" : "bg-primary"
               )}
               style={{ width: `${loadoutScore}%` }}
             />
@@ -127,9 +127,9 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
 
         {slots.length === 0 && (
           <div className="text-center py-8">
-            <Layers className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-            <p className="text-[#3b82f6] text-[10px]">NO TOOLS IN DECK</p>
-            <p className="text-[#1e3a5f] text-[8px]">Add tools to see available slots</p>
+            <Layers className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <p className="text-muted-foreground text-[10px]">NO TOOLS IN DECK</p>
+            <p className="text-muted-foreground text-[8px]">Add tools to see available slots</p>
           </div>
         )}
       </PixelCard>
@@ -140,7 +140,7 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
             <Sparkles className="w-8 h-8 text-yellow-400" />
             <div>
               <p className="text-yellow-400 text-[12px]">LOADOUT COMPLETE!</p>
-              <p className="text-[#3b82f6] text-[8px]">All slots equipped - ready for battle!</p>
+              <p className="text-muted-foreground text-[8px]">All slots equipped - ready for battle!</p>
             </div>
           </div>
         </PixelCard>
@@ -185,8 +185,8 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
   return (
     <div className={cn(
       "border-2 transition-all",
-      hasAssigned ? "border-green-400 bg-green-400/5" : "border-[#1e3a5f]",
-      isExpanded && "border-[#3b82f6]"
+      hasAssigned ? "border-green-400 bg-green-400/5" : "border-border",
+      isExpanded && "border-primary"
     )}>
       <button
         onClick={onToggle}
@@ -196,22 +196,22 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
         <div className="flex items-center gap-3">
           <div className={cn(
             "w-10 h-10 border-2 flex items-center justify-center",
-            hasAssigned ? "border-green-400 bg-green-400/20" : "border-[#1e3a5f] bg-[#0a1628]"
+            hasAssigned ? "border-green-400 bg-green-400/20" : "border-border bg-[#191022]"
           )}>
             <DynamicIcon 
               name={iconName} 
               className={cn(
                 "w-5 h-5",
-                hasAssigned ? "text-green-400" : "text-[#3b82f6]"
+                hasAssigned ? "text-green-400" : "text-muted-foreground"
               )} 
             />
           </div>
           <div>
-            <p className="text-[#60a5fa] text-[10px] uppercase">{slot.category.name}</p>
+            <p className="text-primary text-[10px] uppercase">{slot.category.name}</p>
             {hasAssigned ? (
               <p className="text-green-400 text-[10px]">{slot.assignedTool!.name}</p>
             ) : (
-              <p className="text-[#1e3a5f] text-[8px]">
+              <p className="text-muted-foreground text-[8px]">
                 {hasOptions ? `${slot.availableTools.length} available` : "No tools available"}
               </p>
             )}
@@ -231,17 +231,17 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
           )}
           {(hasOptions || hasAssigned) && (
             isExpanded ? (
-              <ChevronUp className="w-4 h-4 text-[#3b82f6]" />
+              <ChevronUp className="w-4 h-4 text-muted-foreground" />
             ) : (
-              <ChevronDown className="w-4 h-4 text-[#3b82f6]" />
+              <ChevronDown className="w-4 h-4 text-muted-foreground" />
             )
           )}
         </div>
       </button>
 
       {isExpanded && hasOptions && (
-        <div className="border-t border-[#1e3a5f] p-3 bg-[#0a1628]">
-          <p className="text-[#3b82f6] text-[8px] mb-2">SELECT TOOL FOR THIS SLOT:</p>
+        <div className="border-t border-border p-3 bg-[#191022]">
+          <p className="text-muted-foreground text-[8px] mb-2">SELECT TOOL FOR THIS SLOT:</p>
           <div className="grid grid-cols-1 gap-2 max-h-40 overflow-y-auto">
             {validTools.map((tool) => (
               <button
@@ -251,12 +251,12 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
                   "flex items-center justify-between p-2 border text-left transition-colors",
                   slot.assignedTool?._id === tool._id 
                     ? "border-green-400 bg-green-400/10" 
-                    : "border-[#1e3a5f] hover:border-[#3b82f6]"
+                    : "border-border hover:border-primary"
                 )}
               >
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#60a5fa] text-[10px] truncate">{tool.name}</p>
-                  <p className="text-[#3b82f6] text-[8px] truncate">{tool.tagline}</p>
+                  <p className="text-primary text-[10px] truncate">{tool.name}</p>
+                  <p className="text-muted-foreground text-[8px] truncate">{tool.tagline}</p>
                 </div>
                 <div className="flex items-center gap-2 ml-2">
                   <PixelBadge variant="outline" className="text-[6px]">
@@ -324,13 +324,13 @@ export function LoadoutStats({ deckId }: { deckId: Id<"userDecks"> }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-4 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
         <Zap className="w-4 h-4" /> LOADOUT STATS
       </h3>
       
       <div className="space-y-3">
         <div className="flex justify-between items-center">
-          <span className="text-[#3b82f6] text-[10px]">Slots Equipped</span>
+          <span className="text-muted-foreground text-[10px]">Slots Equipped</span>
           <PixelBadge 
             variant={equippedCount === totalSlots ? "default" : "outline"}
             className={cn(
@@ -343,22 +343,22 @@ export function LoadoutStats({ deckId }: { deckId: Id<"userDecks"> }) {
         </div>
         
         <div className="flex justify-between items-center">
-          <span className="text-[#3b82f6] text-[10px]">Total Tools</span>
-          <span className="text-[#60a5fa] text-[10px]">{tools.length}</span>
+          <span className="text-muted-foreground text-[10px]">Total Tools</span>
+          <span className="text-primary text-[10px]">{tools.length}</span>
         </div>
         
         <div className="flex justify-between items-center">
-          <span className="text-[#3b82f6] text-[10px]">Open Source</span>
-          <span className="text-[#60a5fa] text-[10px]">{openSourceCount}</span>
+          <span className="text-muted-foreground text-[10px]">Open Source</span>
+          <span className="text-primary text-[10px]">{openSourceCount}</span>
         </div>
         
         <div className="flex justify-between items-center">
-          <span className="text-[#3b82f6] text-[10px]">Free Tools</span>
-          <span className="text-[#60a5fa] text-[10px]">{freeCount}</span>
+          <span className="text-muted-foreground text-[10px]">Free Tools</span>
+          <span className="text-primary text-[10px]">{freeCount}</span>
         </div>
 
         {equippedCount === totalSlots && totalSlots > 0 && (
-          <div className="pt-2 border-t border-[#1e3a5f]">
+          <div className="pt-2 border-t border-border">
             <div className="flex items-center gap-2 text-green-400">
               <Sparkles className="w-4 h-4" />
               <span className="text-[10px]">LOADOUT COMPLETE!</span>

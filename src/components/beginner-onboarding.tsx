@@ -198,13 +198,13 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                   key={step.id}
                   className={cn(
                     "w-2 h-2 rounded-full transition-colors",
-                    i <= currentStep ? "bg-[#60a5fa]" : "bg-[#1e3a5f]"
+                    i <= currentStep ? "bg-primary" : "bg-card"
                   )}
                 />
               ))}
             </div>
           </div>
-          <p className="text-[#3b82f6] text-sm mt-2">
+          <p className="text-muted-foreground text-sm mt-2">
             {steps[currentStep].description}
           </p>
         </PixelCardHeader>
@@ -221,10 +221,10 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
               {currentStep === 0 && (
                 <div className="text-center py-8">
                   <Zap className="w-16 h-16 text-[#fbbf24] mx-auto mb-4" />
-                  <h3 className="text-xl text-[#60a5fa] font-bold mb-2">
+                  <h3 className="text-xl text-primary font-bold mb-2">
                     Welcome to Vibe Coding
                   </h3>
-                  <p className="text-[#3b82f6] mb-4">
+                  <p className="text-muted-foreground mb-4">
                     Vibe coding is about using AI tools to build software without
                     needing to be an expert programmer. Let us help you find the
                     perfect setup.
@@ -250,17 +250,17 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-[#60a5fa] hover:bg-[#0d1f3c]/50",
+                        "hover:border-primary hover:bg-[#261933]/50",
                         answers.experienceLevel === level.value
-                          ? "border-[#60a5fa] bg-[#0d1f3c]/50"
-                          : "border-[#1e3a5f] bg-transparent"
+                          ? "border-primary bg-[#261933]/50"
+                          : "border-border bg-transparent"
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="text-[#60a5fa]">{level.icon}</div>
+                        <div className="text-primary">{level.icon}</div>
                         <div>
-                          <p className="text-[#60a5fa] font-bold">{level.label}</p>
-                          <p className="text-[#3b82f6] text-sm">
+                          <p className="text-primary font-bold">{level.label}</p>
+                          <p className="text-muted-foreground text-sm">
                             {level.description}
                           </p>
                         </div>
@@ -283,17 +283,17 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-[#60a5fa] hover:bg-[#0d1f3c]/50",
+                        "hover:border-primary hover:bg-[#261933]/50",
                         answers.goal === goal.value
-                          ? "border-[#60a5fa] bg-[#0d1f3c]/50"
-                          : "border-[#1e3a5f] bg-transparent"
+                          ? "border-primary bg-[#261933]/50"
+                          : "border-border bg-transparent"
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="text-[#60a5fa]">{goal.icon}</div>
+                        <div className="text-primary">{goal.icon}</div>
                         <div>
-                          <p className="text-[#60a5fa] font-bold">{goal.label}</p>
-                          <p className="text-[#3b82f6] text-sm">
+                          <p className="text-primary font-bold">{goal.label}</p>
+                          <p className="text-muted-foreground text-sm">
                             {goal.description}
                           </p>
                         </div>
@@ -319,16 +319,16 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "p-4 rounded-lg border-2 transition-all text-center",
-                        "hover:border-[#60a5fa] hover:bg-[#0d1f3c]/50",
+                        "hover:border-primary hover:bg-[#261933]/50",
                         answers.projectType === type.value
-                          ? "border-[#60a5fa] bg-[#0d1f3c]/50"
-                          : "border-[#1e3a5f] bg-transparent"
+                          ? "border-primary bg-[#261933]/50"
+                          : "border-border bg-transparent"
                       )}
                     >
-                      <div className="text-[#60a5fa] flex justify-center mb-2">
+                      <div className="text-primary flex justify-center mb-2">
                         {type.icon}
                       </div>
-                      <p className="text-[#60a5fa] font-bold text-sm">
+                      <p className="text-primary font-bold text-sm">
                         {type.label}
                       </p>
                       {answers.projectType === type.value && (
@@ -349,18 +349,18 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-[#60a5fa] hover:bg-[#0d1f3c]/50",
+                        "hover:border-primary hover:bg-[#261933]/50",
                         answers.budget === option.value
-                          ? "border-[#60a5fa] bg-[#0d1f3c]/50"
-                          : "border-[#1e3a5f] bg-transparent"
+                          ? "border-primary bg-[#261933]/50"
+                          : "border-border bg-transparent"
                       )}
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-[#60a5fa] font-bold">
+                          <p className="text-primary font-bold">
                             {option.label}
                           </p>
-                          <p className="text-[#3b82f6] text-sm">
+                          <p className="text-muted-foreground text-sm">
                             {option.description}
                           </p>
                         </div>
@@ -421,8 +421,8 @@ export function OnboardingResults() {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
-          <Sparkles className="w-12 h-12 text-[#60a5fa] mx-auto mb-4 animate-pulse" />
-          <p className="text-[#3b82f6]">Loading your recommendations...</p>
+          <Sparkles className="w-12 h-12 text-primary mx-auto mb-4 animate-pulse" />
+          <p className="text-muted-foreground">Loading your recommendations...</p>
         </div>
       </div>
     );
@@ -440,14 +440,14 @@ export function OnboardingResults() {
         <PixelCardContent>
           {recommendations.path && (
             <div className="mb-6">
-              <h3 className="text-[#60a5fa] font-bold mb-2">
+              <h3 className="text-primary font-bold mb-2">
                 Recommended Learning Path
               </h3>
-              <div className="p-4 rounded-lg border-2 border-[#1e3a5f] bg-[#0d1f3c]/30">
-                <p className="text-[#60a5fa] font-bold">
+              <div className="p-4 rounded-lg border-2 border-border bg-[#261933]/30">
+                <p className="text-primary font-bold">
                   {recommendations.path.title}
                 </p>
-                <p className="text-[#3b82f6] text-sm">
+                <p className="text-muted-foreground text-sm">
                   {recommendations.path.description}
                 </p>
                 <div className="flex gap-2 mt-2">
@@ -462,22 +462,22 @@ export function OnboardingResults() {
 
           {recommendations.tools.length > 0 && (
             <div>
-              <h3 className="text-[#60a5fa] font-bold mb-2">
+              <h3 className="text-primary font-bold mb-2">
                 Recommended Tools
               </h3>
               <div className="grid gap-3">
-                {recommendations.tools.map((tool) => (
+                {recommendations.tools.filter((tool): tool is NonNullable<typeof tool> => tool !== null).map((tool) => (
                   <div
                     key={tool._id}
-                    className="p-4 rounded-lg border-2 border-[#1e3a5f] bg-[#0d1f3c]/30"
+                    className="p-4 rounded-lg border-2 border-border bg-[#261933]/30"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1e3a5f] flex items-center justify-center">
-                        <Wrench className="w-5 h-5 text-[#60a5fa]" />
+                      <div className="w-10 h-10 rounded-lg bg-card flex items-center justify-center">
+                        <Wrench className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-[#60a5fa] font-bold">{tool.name}</p>
-                        <p className="text-[#3b82f6] text-sm">{tool.tagline}</p>
+                        <p className="text-primary font-bold">{tool.name}</p>
+                        <p className="text-muted-foreground text-sm">{tool.tagline}</p>
                       </div>
                     </div>
                   </div>

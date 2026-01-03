@@ -46,13 +46,13 @@ export function TradingPost({ userId, className }: TradingPostProps) {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Store className="w-4 h-4" /> TRADING POST
         </h2>
         {marketStats && (
           <div className="flex gap-3 text-[8px]">
-            <span className="text-[#3b82f6]">{marketStats.activeListings} listings</span>
-            <span className="text-[#3b82f6]">{marketStats.recentTrades} trades</span>
+            <span className="text-muted-foreground">{marketStats.activeListings} listings</span>
+            <span className="text-muted-foreground">{marketStats.recentTrades} trades</span>
           </div>
         )}
       </div>
@@ -88,8 +88,8 @@ export function TradingPost({ userId, className }: TradingPostProps) {
           ))}
           {(!listings || listings.length === 0) && (
             <PixelCard className="col-span-full p-8 text-center">
-              <Store className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-              <p className="text-[#3b82f6] text-[10px]">NO ACTIVE LISTINGS</p>
+              <Store className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-muted-foreground text-[10px]">NO ACTIVE LISTINGS</p>
             </PixelCard>
           )}
         </div>
@@ -102,9 +102,9 @@ export function TradingPost({ userId, className }: TradingPostProps) {
           ))}
           {(!userCards || userCards.length === 0) && (
             <PixelCard className="col-span-full p-8 text-center">
-              <Gem className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-              <p className="text-[#3b82f6] text-[10px]">NO CARDS YET</p>
-              <p className="text-[#1e3a5f] text-[8px]">Open packs to collect cards!</p>
+              <Gem className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-muted-foreground text-[10px]">NO CARDS YET</p>
+              <p className="text-muted-foreground text-[8px]">Open packs to collect cards!</p>
             </PixelCard>
           )}
         </div>
@@ -143,22 +143,22 @@ function ListingCard({ listing, userId }: { listing: any; userId: string }) {
     <PixelCard className={cn("p-3", rarityConfig.color)}>
       <div className="text-center mb-2">
         <Star className={cn("w-8 h-8 mx-auto", rarityConfig.color.split(" ")[0])} />
-        <p className="text-[#60a5fa] text-[10px] mt-1">{listing.tool?.name}</p>
+        <p className="text-primary text-[10px] mt-1">{listing.tool?.name}</p>
         <PixelBadge variant="outline" className={cn("text-[6px]", rarityConfig.color)}>
           {rarityConfig.label} #{listing.card?.serialNumber}
         </PixelBadge>
       </div>
 
       <div className="flex items-center justify-between mb-2 text-[8px]">
-        <span className="text-[#3b82f6] flex items-center gap-1">
+        <span className="text-muted-foreground flex items-center gap-1">
           <Clock className="w-3 h-3" /> {hoursLeft}h
         </span>
-        <span className="text-[#3b82f6]">{listing.card?.edition}</span>
+        <span className="text-muted-foreground">{listing.card?.edition}</span>
       </div>
 
       {listing.listingType === "fixed" && (
         <div className="text-center mb-2">
-          <p className="text-[#60a5fa] text-lg">{listing.price} XP</p>
+          <p className="text-primary text-lg">{listing.price} XP</p>
           {!isOwn && (
             <PixelButton size="sm" onClick={handleBuy} className="w-full mt-2">
               BUY NOW
@@ -169,8 +169,8 @@ function ListingCard({ listing, userId }: { listing: any; userId: string }) {
 
       {listing.listingType === "auction" && (
         <div className="text-center mb-2">
-          <p className="text-[#3b82f6] text-[8px]">Current Bid</p>
-          <p className="text-[#60a5fa] text-lg">{listing.currentBid || listing.price || 0} XP</p>
+          <p className="text-muted-foreground text-[8px]">Current Bid</p>
+          <p className="text-primary text-lg">{listing.currentBid || listing.price || 0} XP</p>
           {!isOwn && (
             <div className="flex gap-1 mt-2">
               <PixelInput
@@ -190,7 +190,7 @@ function ListingCard({ listing, userId }: { listing: any; userId: string }) {
 
       {listing.listingType === "trade" && (
         <div className="text-center">
-          <p className="text-[#3b82f6] text-[8px]">Looking for trade</p>
+          <p className="text-muted-foreground text-[8px]">Looking for trade</p>
           <PixelButton size="sm" className="w-full mt-2" disabled={isOwn}>
             <ArrowLeftRight className="w-3 h-3 mr-1" /> OFFER
           </PixelButton>
@@ -208,13 +208,13 @@ function CardDisplay({ card, userId, showListButton }: { card: any; userId: stri
     <PixelCard className={cn("p-3", rarityConfig.color, card.isListed && "opacity-50")}>
       <div className="text-center mb-2">
         <Star className={cn("w-8 h-8 mx-auto", rarityConfig.color.split(" ")[0])} />
-        <p className="text-[#60a5fa] text-[10px] mt-1">{card.tool?.name}</p>
+        <p className="text-primary text-[10px] mt-1">{card.tool?.name}</p>
         <PixelBadge variant="outline" className={cn("text-[6px]", rarityConfig.color)}>
           {rarityConfig.label} #{card.serialNumber}
         </PixelBadge>
       </div>
 
-      <div className="text-[8px] text-[#3b82f6] mb-2">
+      <div className="text-[8px] text-muted-foreground mb-2">
         <p>Edition: {card.edition}</p>
         <p>From: {card.acquiredFrom}</p>
       </div>
@@ -256,7 +256,7 @@ function ListCardForm({ cardId, userId, onClose }: { cardId: Id<"tradableCards">
   };
 
   return (
-    <div className="mt-3 p-2 border border-[#1e3a5f] bg-[#0a1628]">
+    <div className="mt-3 p-2 border border-border bg-[#191022]">
       <div className="flex gap-2 mb-2">
         <PixelButton
           size="sm"
@@ -283,7 +283,7 @@ function ListCardForm({ cardId, userId, onClose }: { cardId: Id<"tradableCards">
       <select
         value={duration}
         onChange={(e) => setDuration(e.target.value)}
-        className="w-full bg-[#0a1628] border-2 border-[#1e3a5f] p-1 text-[#60a5fa] text-[10px] mb-2"
+        className="w-full bg-[#191022] border-2 border-border p-1 text-primary text-[10px] mb-2"
       >
         <option value="24">24 hours</option>
         <option value="48">48 hours</option>
@@ -308,27 +308,27 @@ function MyListings({ userId }: { userId: string }) {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase">TRADE HISTORY</h3>
+      <h3 className="text-primary text-[10px] uppercase">TRADE HISTORY</h3>
       {history?.map((trade: any) => (
-        <div key={trade._id} className="flex items-center justify-between p-3 border border-[#1e3a5f]">
+        <div key={trade._id} className="flex items-center justify-between p-3 border border-border">
           <div className="flex items-center gap-3">
-            <Star className="w-6 h-6 text-[#3b82f6]" />
+            <Star className="w-6 h-6 text-muted-foreground" />
             <div>
-              <p className="text-[#60a5fa] text-[10px]">{trade.tool?.name}</p>
-              <p className="text-[#3b82f6] text-[8px]">
+              <p className="text-primary text-[10px]">{trade.tool?.name}</p>
+              <p className="text-muted-foreground text-[8px]">
                 {trade.role === "seller" ? "Sold" : "Bought"} for {trade.price} XP
               </p>
             </div>
           </div>
-          <span className="text-[#1e3a5f] text-[8px]">
+          <span className="text-muted-foreground text-[8px]">
             {new Date(trade.completedAt).toLocaleDateString()}
           </span>
         </div>
       ))}
       {(!history || history.length === 0) && (
         <PixelCard className="p-8 text-center">
-          <TrendingUp className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO TRADE HISTORY</p>
+          <TrendingUp className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO TRADE HISTORY</p>
         </PixelCard>
       )}
     </div>

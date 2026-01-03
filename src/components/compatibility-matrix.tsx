@@ -39,7 +39,7 @@ export function CompatibilityMatrix({ toolId, className }: CompatibilityMatrixPr
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-center justify-between">
-        <h2 className="text-[#60a5fa] text-sm flex items-center gap-2">
+        <h2 className="text-primary text-sm flex items-center gap-2">
           <Grid3X3 className="w-4 h-4" /> COMPATIBILITY MATRIX
         </h2>
       </div>
@@ -52,9 +52,9 @@ export function CompatibilityMatrix({ toolId, className }: CompatibilityMatrixPr
         </div>
       ) : (
         <PixelCard className="p-8 text-center">
-          <Grid3X3 className="w-12 h-12 mx-auto mb-4 text-[#1e3a5f]" />
-          <p className="text-[#3b82f6] text-[10px]">NO COMPATIBILITY DATA YET</p>
-          <p className="text-[#1e3a5f] text-[8px]">Be the first to report!</p>
+          <Grid3X3 className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-muted-foreground text-[10px]">NO COMPATIBILITY DATA YET</p>
+          <p className="text-muted-foreground text-[8px]">Be the first to report!</p>
         </PixelCard>
       )}
     </div>
@@ -75,12 +75,12 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
     <PixelCard className="p-4">
       <div className="flex items-start justify-between mb-3">
         <Link href={`/tools/${compatibility.otherTool?.slug}`}>
-          <p className="text-[#60a5fa] text-[12px] hover:underline">{compatibility.otherTool?.name}</p>
+          <p className="text-primary text-[12px] hover:underline">{compatibility.otherTool?.name}</p>
         </Link>
         <span className={cn("text-lg", scoreColor)}>{compatibility.overallScore}</span>
       </div>
 
-      <div className="h-2 bg-[#0a1628] border border-[#1e3a5f] mb-3">
+      <div className="h-2 bg-[#191022] border border-border mb-3">
         <div 
           className={cn("h-full", scoreColor.replace("text-", "bg-"))}
           style={{ width: `${compatibility.overallScore}%` }}
@@ -94,7 +94,7 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
         <ScoreItem label="Performance" score={compatibility.breakdown.performanceTogether} />
       </div>
 
-      <div className="flex items-center gap-2 text-[8px] text-[#3b82f6] mb-3">
+      <div className="flex items-center gap-2 text-[8px] text-muted-foreground mb-3">
         <span>{compatibility.reportCount} reports</span>
         {compatibility.integrationGuide && (
           <PixelBadge variant="outline" className="text-[6px] text-green-400 border-green-400">
@@ -113,15 +113,15 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
       </PixelButton>
 
       {expanded && compatibility.integrationGuide && (
-        <div className="mt-3 p-3 border border-[#1e3a5f] bg-[#0a1628]">
-          <p className="text-[#60a5fa] text-[8px] mb-2">INTEGRATION GUIDE:</p>
-          <p className="text-[#3b82f6] text-[8px]">{compatibility.integrationGuide}</p>
+        <div className="mt-3 p-3 border border-border bg-[#191022]">
+          <p className="text-primary text-[8px] mb-2">INTEGRATION GUIDE:</p>
+          <p className="text-muted-foreground text-[8px]">{compatibility.integrationGuide}</p>
           {compatibility.boilerplateUrl && (
             <a 
               href={compatibility.boilerplateUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 mt-2 text-[#3b82f6] text-[8px] hover:text-[#60a5fa]"
+              className="inline-flex items-center gap-1 mt-2 text-muted-foreground text-[8px] hover:text-primary"
             >
               <ExternalLink className="w-3 h-3" /> View Boilerplate
             </a>
@@ -134,9 +134,9 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
 
 function ScoreItem({ label, score }: { label: string; score: number }) {
   return (
-    <div className="text-center p-1 border border-[#1e3a5f]">
-      <p className="text-[#60a5fa] text-[10px]">{score}</p>
-      <p className="text-[#3b82f6] text-[6px]">{label}</p>
+    <div className="text-center p-1 border border-border">
+      <p className="text-primary text-[10px]">{score}</p>
+      <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
 }
@@ -153,9 +153,9 @@ export function CompatibilityChecker({ tool1Id, tool2Id }: CompatibilityCheckerP
   if (!compatibility) {
     return (
       <PixelCard className="p-4 text-center">
-        <Grid3X3 className="w-8 h-8 mx-auto mb-2 text-[#1e3a5f]" />
-        <p className="text-[#3b82f6] text-[10px]">NO COMPATIBILITY DATA</p>
-        <p className="text-[#1e3a5f] text-[8px]">Be the first to report!</p>
+        <Grid3X3 className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+        <p className="text-muted-foreground text-[10px]">NO COMPATIBILITY DATA</p>
+        <p className="text-muted-foreground text-[8px]">Be the first to report!</p>
       </PixelCard>
     );
   }
@@ -173,9 +173,9 @@ export function CompatibilityChecker({ tool1Id, tool2Id }: CompatibilityCheckerP
       <PixelCard className={cn("p-4", scoreColor)}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-[#60a5fa] text-[12px]">{compatibility.tool1?.name}</span>
-            <span className="text-[#3b82f6]">+</span>
-            <span className="text-[#60a5fa] text-[12px]">{compatibility.tool2?.name}</span>
+            <span className="text-primary text-[12px]">{compatibility.tool1?.name}</span>
+            <span className="text-muted-foreground">+</span>
+            <span className="text-primary text-[12px]">{compatibility.tool2?.name}</span>
           </div>
           <span className={cn("text-2xl", scoreColor.replace("border-", "text-"))}>
             {compatibility.overallScore}%
@@ -192,7 +192,7 @@ export function CompatibilityChecker({ tool1Id, tool2Id }: CompatibilityCheckerP
 
       {reports && reports.length > 0 && (
         <div>
-          <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3">COMMUNITY REPORTS</h3>
+          <h3 className="text-primary text-[10px] uppercase mb-3">COMMUNITY REPORTS</h3>
           <div className="space-y-2">
             {reports.map((report: any) => (
               <ReportCard key={report._id} report={report} />
@@ -217,7 +217,7 @@ function ReportCard({ report }: { report: any }) {
         </PixelBadge>
         <button 
           onClick={() => upvoteReport({ reportId: report._id })}
-          className="flex items-center gap-1 text-[#3b82f6] text-[8px] hover:text-[#60a5fa]"
+          className="flex items-center gap-1 text-muted-foreground text-[8px] hover:text-primary"
         >
           <ThumbsUp className="w-3 h-3" /> {report.upvotes}
         </button>
@@ -228,7 +228,7 @@ function ReportCard({ report }: { report: any }) {
           <p className="text-orange-400 text-[8px] mb-1">GOTCHAS:</p>
           <ul className="space-y-1">
             {report.gotchas.map((gotcha: string, i: number) => (
-              <li key={i} className="text-[#3b82f6] text-[8px] flex items-start gap-1">
+              <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
                 <AlertTriangle className="w-3 h-3 text-orange-400 flex-shrink-0" /> {gotcha}
               </li>
             ))}
@@ -241,7 +241,7 @@ function ReportCard({ report }: { report: any }) {
           <p className="text-green-400 text-[8px] mb-1">TIPS:</p>
           <ul className="space-y-1">
             {report.tips.map((tip: string, i: number) => (
-              <li key={i} className="text-[#3b82f6] text-[8px] flex items-start gap-1">
+              <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
                 <Lightbulb className="w-3 h-3 text-green-400 flex-shrink-0" /> {tip}
               </li>
             ))}
@@ -250,7 +250,7 @@ function ReportCard({ report }: { report: any }) {
       )}
 
       {report.projectContext && (
-        <p className="text-[#1e3a5f] text-[8px] mt-2 italic">Context: {report.projectContext}</p>
+        <p className="text-muted-foreground text-[8px] mt-2 italic">Context: {report.projectContext}</p>
       )}
     </PixelCard>
   );
@@ -263,7 +263,7 @@ export function TopCompatiblePairs() {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-[#60a5fa] text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
         <Star className="w-4 h-4" /> TOP COMPATIBLE PAIRS
       </h3>
       <div className="space-y-2">
@@ -275,14 +275,14 @@ export function TopCompatiblePairs() {
               i === 0 && "border-yellow-400 bg-yellow-400/10",
               i === 1 && "border-gray-400 bg-gray-400/10",
               i === 2 && "border-orange-400 bg-orange-400/10",
-              i > 2 && "border-[#1e3a5f]"
+              i > 2 && "border-border"
             )}
           >
             <div className="flex items-center gap-2">
-              <span className="text-[#3b82f6] text-[10px]">#{i + 1}</span>
-              <span className="text-[#60a5fa] text-[10px]">{pair.tool1?.name}</span>
-              <span className="text-[#3b82f6]">+</span>
-              <span className="text-[#60a5fa] text-[10px]">{pair.tool2?.name}</span>
+              <span className="text-muted-foreground text-[10px]">#{i + 1}</span>
+              <span className="text-primary text-[10px]">{pair.tool1?.name}</span>
+              <span className="text-muted-foreground">+</span>
+              <span className="text-primary text-[10px]">{pair.tool2?.name}</span>
             </div>
             <span className="text-green-400 text-[10px]">{pair.overallScore}%</span>
           </div>

@@ -1,73 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { Gamepad2, Wrench, Scale, Compass, Layers, BookOpen, Trophy, Swords } from "lucide-react";
+import { Swords, Wrench, Scale, Compass, Bell, Search, LogIn } from "lucide-react";
 import { UserMenu } from "@/components/auth";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { useUser } from "@clerk/nextjs";
 
 export function Header() {
+  const { user, isLoaded } = useUser();
+
   return (
-    <header className="border-b-2 border-[#e8dcc8] dark:border-[#3d3835] p-4 bg-white/80 dark:bg-[#1a1816]/90 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d4a853] to-[#b8923d] flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <Gamepad2 className="w-5 h-5 text-white" />
+    <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border bg-background/95 backdrop-blur-sm px-4 lg:px-10 py-3">
+      <div className="flex items-center gap-4 lg:gap-8">
+        <Link href="/" className="flex items-center gap-3 text-foreground">
+          <div className="size-8 text-primary flex items-center justify-center">
+            <Swords className="w-7 h-7" />
           </div>
-          <h1 className="font-heading text-[#5c4d3c] dark:text-[#f0d890] text-lg tracking-wide">VIBEBUFF</h1>
+          <h2 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] hidden sm:block">VibeBuff</h2>
         </Link>
-        <nav className="flex gap-5 items-center">
-          <Link
-            href="/play"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors"
-          >
-            <Swords className="w-4 h-4" />
-            <span className="hidden sm:inline">Play</span>
-          </Link>
-          <Link
-            href="/tools"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors"
-          >
-            <Wrench className="w-4 h-4" />
-            <span className="hidden sm:inline">Tools</span>
-          </Link>
-          <Link
-            href="/compare"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors"
-          >
-            <Scale className="w-4 h-4" />
-            <span className="hidden sm:inline">Compare</span>
-          </Link>
-          <Link
-            href="/quest"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors"
-          >
-            <Compass className="w-4 h-4" />
-            <span className="hidden sm:inline">Quest</span>
-          </Link>
-          <Link
-            href="/architecture"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors hidden md:flex"
-          >
-            <Layers className="w-4 h-4" />
-            <span className="hidden sm:inline">Architecture</span>
-          </Link>
-          <Link
-            href="/blog"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors hidden md:flex"
-          >
-            <BookOpen className="w-4 h-4" />
-            <span className="hidden sm:inline">Blog</span>
-          </Link>
-          <Link
-            href="/leaderboard"
-            className="text-[#8b7355] dark:text-[#b8a080] hover:text-[#d4a853] text-sm flex items-center gap-1.5 transition-colors hidden lg:flex"
-          >
-            <Trophy className="w-4 h-4" />
-            <span className="hidden sm:inline">Rankings</span>
-          </Link>
-          <ThemeSwitcher />
+        <div className="hidden md:flex items-center gap-3 bg-card px-3 py-1.5 rounded-lg border border-border">
+          <span className="text-xs font-bold text-primary uppercase tracking-wider">Lvl 1 Novice</span>
+          <div className="w-24 h-2 bg-black/40 rounded-full overflow-hidden">
+            <div className="h-full w-[30%] bg-gradient-to-r from-primary to-purple-400"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex-1 max-w-lg px-4 hidden sm:block">
+        <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+          <div className="text-muted-foreground flex border-none bg-card items-center justify-center pl-4 rounded-l-lg">
+            <Search className="w-5 h-5" />
+          </div>
+          <input
+            className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none text-foreground focus:outline-0 bg-card border-none h-full placeholder:text-muted-foreground/50 px-4 pl-2 text-sm font-normal"
+            placeholder="Cast 'Lookup' spell..."
+          />
+        </label>
+      </div>
+
+      <div className="flex gap-3">
+        <button className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border relative">
+          <Bell className="w-5 h-5" />
+          <span className="absolute top-2 right-2 size-2 bg-red-500 rounded-full animate-pulse"></span>
+        </button>
+        {isLoaded && user ? (
           <UserMenu />
-        </nav>
+        ) : (
+          <Link href="/sign-in">
+            <button className="flex items-center justify-center rounded-lg h-10 bg-primary hover:bg-primary/90 text-white gap-2 px-4 text-sm font-bold transition-all shadow-[0_0_15px_rgba(127,19,236,0.4)]">
+              <LogIn className="w-5 h-5" />
+              <span className="hidden sm:inline">Connect</span>
+            </button>
+          </Link>
+        )}
       </div>
     </header>
   );

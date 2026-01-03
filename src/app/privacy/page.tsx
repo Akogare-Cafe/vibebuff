@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-[#000000]">
+    <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-[#60a5fa] text-xl mb-8 pixel-glow">PRIVACY POLICY</h1>
+        <h1 className="text-primary text-xl mb-8 pixel-glow">PRIVACY POLICY</h1>
         
-        <div className="space-y-8 text-[#3b82f6] text-[10px] leading-relaxed">
+        <div className="space-y-8 text-muted-foreground text-[10px] leading-relaxed">
           <p>Last updated: January 2025</p>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">1. INFORMATION WE COLLECT</h2>
+            <h2 className="text-primary text-sm mb-4">1. INFORMATION WE COLLECT</h2>
             <p className="mb-4">
               We collect information you provide directly to us, including:
             </p>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">2. HOW WE USE YOUR INFORMATION</h2>
+            <h2 className="text-primary text-sm mb-4">2. HOW WE USE YOUR INFORMATION</h2>
             <p className="mb-4">We use the information we collect to:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Provide and improve our services</li>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">3. DATA SHARING</h2>
+            <h2 className="text-primary text-sm mb-4">3. DATA SHARING</h2>
             <p>
               We do not sell your personal information. We may share data with:
             </p>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">4. DATA SECURITY</h2>
+            <h2 className="text-primary text-sm mb-4">4. DATA SECURITY</h2>
             <p>
               We implement industry-standard security measures to protect your data,
               including encryption, secure servers, and regular security audits.
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">5. COOKIES</h2>
+            <h2 className="text-primary text-sm mb-4">5. COOKIES</h2>
             <p>
               We use cookies and similar technologies to enhance your experience,
               remember your preferences, and analyze site traffic. You can control
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">6. YOUR RIGHTS</h2>
+            <h2 className="text-primary text-sm mb-4">6. YOUR RIGHTS</h2>
             <p className="mb-4">You have the right to:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Access your personal data</li>
@@ -85,10 +85,10 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-[#60a5fa] text-sm mb-4">7. CONTACT US</h2>
+            <h2 className="text-primary text-sm mb-4">7. CONTACT US</h2>
             <p>
               If you have questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:privacy@vibebuff.com" className="text-[#60a5fa] hover:underline">
+              <a href="mailto:privacy@vibebuff.com" className="text-primary hover:underline">
                 privacy@vibebuff.com
               </a>
             </p>
