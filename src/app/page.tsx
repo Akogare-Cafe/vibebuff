@@ -182,7 +182,7 @@ export default function Home() {
         {/* Categories Grid */}
         <section className="mb-16 md:mb-20">
           <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Select Your Class
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Browse Categories
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
             {categories?.map((category) => (
@@ -295,7 +295,7 @@ export default function Home() {
             </div>
             <div className="ornate-divider w-px h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">2025</p>
+              <p className="font-heading text-primary text-2xl md:text-3xl">2026</p>
               <p className="text-muted-foreground text-sm md:text-base">Updated</p>
             </div>
           </div>
@@ -391,7 +391,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link href="/blog/best-react-frameworks-2025">
               <PixelCard className="p-6 h-full hover:border-primary transition-all">
-                <p className="font-heading text-foreground text-base mb-2">Best React Frameworks in 2025</p>
+                <p className="font-heading text-foreground text-base mb-2">Best React Frameworks in 2026</p>
                 <p className="text-muted-foreground text-sm">Compare Next.js, Remix, and Gatsby for your next project.</p>
               </PixelCard>
             </Link>
@@ -403,7 +403,7 @@ export default function Home() {
             </Link>
             <Link href="/blog/tech-stack-for-saas">
               <PixelCard className="p-6 h-full hover:border-primary transition-all">
-                <p className="font-heading text-foreground text-base mb-2">Ultimate Tech Stack for SaaS in 2025</p>
+                <p className="font-heading text-foreground text-base mb-2">Ultimate Tech Stack for SaaS in 2026</p>
                 <p className="text-muted-foreground text-sm">Complete guide from frontend to deployment.</p>
               </PixelCard>
             </Link>

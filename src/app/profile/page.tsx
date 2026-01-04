@@ -498,11 +498,18 @@ export default function ProfilePage() {
                   <Trophy className="w-6 h-6 text-yellow-500" />
                   Achievements
                 </h2>
-                {achievementsData && (
-                  <span className="text-xs bg-card border border-border px-3 py-1 rounded text-muted-foreground">
-                    {achievementsData.stats.unlocked}/{achievementsData.stats.total} unlocked
-                  </span>
-                )}
+                <div className="flex items-center gap-2">
+                  {achievementsData && (
+                    <span className="text-xs bg-card border border-border px-3 py-1 rounded text-muted-foreground">
+                      {achievementsData.stats.unlocked}/{achievementsData.stats.total} unlocked
+                    </span>
+                  )}
+                  <Link href="/profile/achievements">
+                    <button className="text-xs font-bold text-primary border border-primary/30 bg-primary/10 px-3 py-1 rounded hover:bg-primary hover:text-white transition-all">
+                      View All
+                    </button>
+                  </Link>
+                </div>
               </div>
               <div className="bg-card border border-border rounded-xl p-6">
                 <div className="flex flex-wrap gap-4">

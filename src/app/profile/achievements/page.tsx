@@ -106,11 +106,6 @@ export default function AchievementsPage() {
 
   const getOrCreateProfile = useMutation(api.userProfiles.getOrCreateProfile);
 
-  const profile = useQuery(
-    api.userProfiles.getProfile,
-    user?.id ? { clerkId: user.id } : "skip"
-  );
-
   const achievementsData = useQuery(
     api.achievements.getAchievementsWithProgress,
     user?.id ? { userId: user.id } : "skip"
