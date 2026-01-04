@@ -186,7 +186,7 @@ export default function BlogPage() {
           <h1 className="text-primary text-xl mb-4 pixel-glow">
             DEVELOPER BLOG
           </h1>
-          <p className="text-muted-foreground text-[10px] max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
             Expert guides, tutorials, and insights on choosing the right tech
             stack for your projects. Stay ahead with the latest developer tools
             and best practices.
@@ -202,7 +202,7 @@ export default function BlogPage() {
             {featuredPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <article className="border-4 border-border bg-card p-6 h-full hover:border-primary transition-colors cursor-pointer">
-                  <div className="flex items-center gap-4 text-[8px] text-muted-foreground mb-3">
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {new Date(post.date).toLocaleDateString("en-US", {
@@ -216,10 +216,10 @@ export default function BlogPage() {
                       {post.readTime}
                     </span>
                   </div>
-                  <h3 className="text-primary text-[10px] mb-3 leading-relaxed">
+                  <h3 className="text-primary text-sm mb-3 leading-relaxed">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground text-[8px] mb-4 leading-relaxed">
+                  <p className="text-muted-foreground text-xs mb-4 leading-relaxed">
                     {post.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -250,14 +250,14 @@ export default function BlogPage() {
                   <article className="border-4 border-border bg-card p-6 hover:border-primary transition-colors cursor-pointer">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
-                        <h3 className="text-primary text-[10px] mb-2">
+                        <h3 className="text-primary text-sm mb-2">
                           {post.title}
                         </h3>
-                        <p className="text-muted-foreground text-[8px]">
+                        <p className="text-muted-foreground text-xs">
                           {post.description}
                         </p>
                       </div>
-                      <div className="flex items-center gap-4 text-[8px] text-muted-foreground shrink-0">
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground shrink-0">
                         <span>{post.readTime}</span>
                         <span>
                           {new Date(post.date).toLocaleDateString("en-US", {
@@ -279,7 +279,7 @@ export default function BlogPage() {
           <h2 className="text-primary text-sm mb-4">
             STAY UPDATED WITH TECH INSIGHTS
           </h2>
-          <p className="text-muted-foreground text-[8px] mb-6 max-w-xl mx-auto">
+          <p className="text-muted-foreground text-xs mb-6 max-w-xl mx-auto">
             Get weekly updates on the latest developer tools, framework
             comparisons, and tech stack recommendations delivered to your inbox.
           </p>
@@ -287,9 +287,9 @@ export default function BlogPage() {
             <input
               type="email"
               placeholder="ENTER YOUR EMAIL..."
-              className="flex-1 bg-background border-4 border-border text-primary px-4 py-2 text-[10px] focus:border-primary outline-none"
+              className="flex-1 bg-background border-4 border-border text-primary px-4 py-2 text-sm focus:border-primary outline-none"
             />
-            <button className="bg-primary text-background px-6 py-2 text-[10px] hover:bg-primary transition-colors">
+            <button className="bg-primary text-background px-6 py-2 text-sm hover:bg-primary transition-colors">
               SUBSCRIBE
             </button>
           </div>

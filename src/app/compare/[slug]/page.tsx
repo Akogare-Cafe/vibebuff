@@ -71,14 +71,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function ScoreBar({ score, label }: { score: number; label: string }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[8px] text-muted-foreground w-16 truncate">{label}</span>
+      <span className="text-xs text-muted-foreground w-16 truncate">{label}</span>
       <div className="flex-1 h-2 bg-card border border-border">
         <div
           className="h-full bg-primary"
           style={{ width: `${score}%` }}
         />
       </div>
-      <span className="text-[8px] text-primary w-8 text-right">{score}</span>
+      <span className="text-xs text-primary w-8 text-right">{score}</span>
     </div>
   );
 }
@@ -105,7 +105,7 @@ function ComparisonCategory({
   return (
     <div className="border-2 border-border p-4 bg-card">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-primary text-[10px] font-bold">{category.toUpperCase()}</h3>
+        <h3 className="text-primary text-sm font-bold">{category.toUpperCase()}</h3>
         {winner !== "Tie" && (
           <PixelBadge variant="default" className="text-[6px]">
             <Trophy className="w-2 h-2 mr-1" />
@@ -117,8 +117,8 @@ function ComparisonCategory({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-muted-foreground text-[8px]">{tool1Name}</span>
-            <span className="text-primary text-[10px] font-bold">{tool1Score}/100</span>
+            <span className="text-muted-foreground text-xs">{tool1Name}</span>
+            <span className="text-primary text-sm font-bold">{tool1Score}/100</span>
           </div>
           <div className="h-2 bg-[#000] border border-border mb-2">
             <div
@@ -126,13 +126,13 @@ function ComparisonCategory({
               style={{ width: `${tool1Score}%` }}
             />
           </div>
-          <p className="text-muted-foreground text-[8px]">{tool1Reason}</p>
+          <p className="text-muted-foreground text-xs">{tool1Reason}</p>
         </div>
 
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-muted-foreground text-[8px]">{tool2Name}</span>
-            <span className="text-primary text-[10px] font-bold">{tool2Score}/100</span>
+            <span className="text-muted-foreground text-xs">{tool2Name}</span>
+            <span className="text-primary text-sm font-bold">{tool2Score}/100</span>
           </div>
           <div className="h-2 bg-[#000] border border-border mb-2">
             <div
@@ -140,7 +140,7 @@ function ComparisonCategory({
               style={{ width: `${tool2Score}%` }}
             />
           </div>
-          <p className="text-muted-foreground text-[8px]">{tool2Reason}</p>
+          <p className="text-muted-foreground text-xs">{tool2Reason}</p>
         </div>
       </div>
     </div>
@@ -203,7 +203,7 @@ export default async function ComparisonPage({ params }: Props) {
         <section className="max-w-4xl mx-auto px-4 py-8">
           <Link
             href="/compare"
-            className="inline-flex items-center text-muted-foreground hover:text-primary text-[10px] mb-6"
+            className="inline-flex items-center text-muted-foreground hover:text-primary text-sm mb-6"
           >
             <ChevronLeft className="w-3 h-3 mr-1" />
             BACK TO COMPARISONS
@@ -211,7 +211,7 @@ export default async function ComparisonPage({ params }: Props) {
 
           <header className="text-center mb-8">
             <h1 className="text-primary text-lg mb-4">{comparison.title}</h1>
-            <p className="text-muted-foreground text-[10px] max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
               {comparison.introduction}
             </p>
           </header>
@@ -225,8 +225,8 @@ export default async function ComparisonPage({ params }: Props) {
                 </PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <p className="text-muted-foreground text-[10px] mb-4">{tool1.tagline}</p>
-                <p className="text-muted-foreground text-[8px] mb-4">{comparison.tool1Summary}</p>
+                <p className="text-muted-foreground text-sm mb-4">{tool1.tagline}</p>
+                <p className="text-muted-foreground text-xs mb-4">{comparison.tool1Summary}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   <PixelBadge variant={tool1.isOpenSource ? "default" : "outline"}>
@@ -238,21 +238,21 @@ export default async function ComparisonPage({ params }: Props) {
                 </div>
 
                 <div className="space-y-2 mb-4">
-                  <p className="text-primary text-[8px]">STRENGTHS:</p>
+                  <p className="text-primary text-xs">STRENGTHS:</p>
                   {tool1.pros.slice(0, 3).map((pro, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <CheckCircle className="w-3 h-3 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground text-[8px]">{pro}</span>
+                      <span className="text-muted-foreground text-xs">{pro}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-primary text-[8px]">WEAKNESSES:</p>
+                  <p className="text-primary text-xs">WEAKNESSES:</p>
                   {tool1.cons.slice(0, 3).map((con, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <XCircle className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground text-[8px]">{con}</span>
+                      <span className="text-muted-foreground text-xs">{con}</span>
                     </div>
                   ))}
                 </div>
@@ -284,8 +284,8 @@ export default async function ComparisonPage({ params }: Props) {
                 </PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <p className="text-muted-foreground text-[10px] mb-4">{tool2.tagline}</p>
-                <p className="text-muted-foreground text-[8px] mb-4">{comparison.tool2Summary}</p>
+                <p className="text-muted-foreground text-sm mb-4">{tool2.tagline}</p>
+                <p className="text-muted-foreground text-xs mb-4">{comparison.tool2Summary}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   <PixelBadge variant={tool2.isOpenSource ? "default" : "outline"}>
@@ -297,21 +297,21 @@ export default async function ComparisonPage({ params }: Props) {
                 </div>
 
                 <div className="space-y-2 mb-4">
-                  <p className="text-primary text-[8px]">STRENGTHS:</p>
+                  <p className="text-primary text-xs">STRENGTHS:</p>
                   {tool2.pros.slice(0, 3).map((pro, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <CheckCircle className="w-3 h-3 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground text-[8px]">{pro}</span>
+                      <span className="text-muted-foreground text-xs">{pro}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-primary text-[8px]">WEAKNESSES:</p>
+                  <p className="text-primary text-xs">WEAKNESSES:</p>
                   {tool2.cons.slice(0, 3).map((con, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <XCircle className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground text-[8px]">{con}</span>
+                      <span className="text-muted-foreground text-xs">{con}</span>
                     </div>
                   ))}
                 </div>
@@ -369,7 +369,7 @@ export default async function ComparisonPage({ params }: Props) {
               </PixelCardTitle>
             </PixelCardHeader>
             <PixelCardContent>
-              <p className="text-muted-foreground text-[10px]">{comparison.verdict}</p>
+              <p className="text-muted-foreground text-sm">{comparison.verdict}</p>
             </PixelCardContent>
           </PixelCard>
 
@@ -385,10 +385,10 @@ export default async function ComparisonPage({ params }: Props) {
                 {comparison.useCaseRecommendations.map((rec, i) => (
                   <div key={i} className="border-2 border-border p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-primary text-[10px]">{rec.useCase}</h4>
+                      <h4 className="text-primary text-sm">{rec.useCase}</h4>
                       <PixelBadge variant="default">{rec.recommendedTool}</PixelBadge>
                     </div>
-                    <p className="text-muted-foreground text-[8px]">{rec.reason}</p>
+                    <p className="text-muted-foreground text-xs">{rec.reason}</p>
                   </div>
                 ))}
               </div>
@@ -406,8 +406,8 @@ export default async function ComparisonPage({ params }: Props) {
               <div className="space-y-4">
                 {comparison.faqs.map((faq, i) => (
                   <div key={i} className="border-b-2 border-border pb-4 last:border-b-0">
-                    <h4 className="text-primary text-[10px] mb-2">{faq.question}</h4>
-                    <p className="text-muted-foreground text-[8px]">{faq.answer}</p>
+                    <h4 className="text-primary text-sm mb-2">{faq.question}</h4>
+                    <p className="text-muted-foreground text-xs">{faq.answer}</p>
                   </div>
                 ))}
               </div>
@@ -415,7 +415,7 @@ export default async function ComparisonPage({ params }: Props) {
           </PixelCard>
 
           <div className="text-center">
-            <p className="text-muted-foreground text-[8px] mb-4">
+            <p className="text-muted-foreground text-xs mb-4">
               WANT TO COMPARE MORE TOOLS?
             </p>
             <Link href="/compare">

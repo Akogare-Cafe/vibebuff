@@ -24,7 +24,7 @@ export default function AboutPage() {
             <Gamepad2 className="w-8 h-8 text-muted-foreground" />
             <h1 className="text-primary text-xl pixel-glow">ABOUT VIBEBUFF</h1>
           </div>
-          <p className="text-muted-foreground text-[10px] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-sm max-w-2xl mx-auto leading-relaxed">
             Helping developers make better technology decisions with AI-powered recommendations
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function AboutPage() {
             <Target className="w-6 h-6 text-muted-foreground" />
             <h2 className="text-primary text-sm">OUR MISSION</h2>
           </div>
-          <p className="text-muted-foreground text-[10px] leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Technology decisions are hard. With thousands of frameworks, libraries, and tools available,
             choosing the right stack for your project can be overwhelming. VIBEBUFF exists to simplify
             this process by providing AI-powered recommendations tailored to your specific needs.
@@ -48,22 +48,22 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="border-4 border-border bg-card p-6 text-center">
               <Zap className="w-8 h-8 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-primary text-[10px] mb-2">AI RECOMMENDATIONS</h3>
-              <p className="text-muted-foreground text-[8px] leading-relaxed">
+              <h3 className="text-primary text-sm mb-2">AI RECOMMENDATIONS</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Describe your project and get personalized tech stack suggestions powered by AI.
               </p>
             </div>
             <div className="border-4 border-border bg-card p-6 text-center">
               <Users className="w-8 h-8 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-primary text-[10px] mb-2">TOOL COMPARISONS</h3>
-              <p className="text-muted-foreground text-[8px] leading-relaxed">
+              <h3 className="text-primary text-sm mb-2">TOOL COMPARISONS</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Compare frameworks and tools side-by-side to make informed decisions.
               </p>
             </div>
             <div className="border-4 border-border bg-card p-6 text-center">
               <Heart className="w-8 h-8 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-primary text-[10px] mb-2">COMMUNITY DRIVEN</h3>
-              <p className="text-muted-foreground text-[8px] leading-relaxed">
+              <h3 className="text-primary text-sm mb-2">COMMUNITY DRIVEN</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Built by developers, for developers. We continuously update our database.
               </p>
             </div>
@@ -75,19 +75,19 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
               <p className="text-primary text-2xl mb-1">500+</p>
-              <p className="text-muted-foreground text-[8px]">DEVELOPER TOOLS</p>
+              <p className="text-muted-foreground text-xs">DEVELOPER TOOLS</p>
             </div>
             <div>
               <p className="text-primary text-2xl mb-1">15+</p>
-              <p className="text-muted-foreground text-[8px]">CATEGORIES</p>
+              <p className="text-muted-foreground text-xs">CATEGORIES</p>
             </div>
             <div>
               <p className="text-primary text-2xl mb-1">AI</p>
-              <p className="text-muted-foreground text-[8px]">POWERED</p>
+              <p className="text-muted-foreground text-xs">POWERED</p>
             </div>
             <div>
               <p className="text-primary text-2xl mb-1">FREE</p>
-              <p className="text-muted-foreground text-[8px]">TO USE</p>
+              <p className="text-muted-foreground text-xs">TO USE</p>
             </div>
           </div>
         </section>
@@ -98,13 +98,13 @@ export default function AboutPage() {
           <div className="flex gap-4 justify-center flex-wrap">
             <Link
               href="/quest"
-              className="bg-primary text-background px-6 py-3 text-[10px] hover:bg-primary transition-colors"
+              className="bg-primary text-background px-6 py-3 text-sm hover:bg-primary transition-colors"
             >
               START YOUR QUEST
             </Link>
             <Link
               href="/tools"
-              className="border-4 border-primary text-muted-foreground px-6 py-3 text-[10px] hover:bg-primary hover:text-background transition-colors"
+              className="border-4 border-primary text-muted-foreground px-6 py-3 text-sm hover:bg-primary hover:text-background transition-colors"
             >
               BROWSE TOOLS
             </Link>

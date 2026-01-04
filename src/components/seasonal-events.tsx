@@ -64,14 +64,14 @@ export function SeasonalEvents({ userId, className }: SeasonalEventsProps) {
       ) : (
         <PixelCard className="p-8 text-center">
           <Calendar className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-muted-foreground text-[10px]">NO ACTIVE EVENTS</p>
-          <p className="text-muted-foreground text-[8px]">Check back soon for seasonal events!</p>
+          <p className="text-muted-foreground text-sm">NO ACTIVE EVENTS</p>
+          <p className="text-muted-foreground text-xs">Check back soon for seasonal events!</p>
         </PixelCard>
       )}
 
       {userParticipation && userParticipation.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Flag className="w-4 h-4" /> YOUR EVENTS
           </h3>
           <div className="space-y-2">
@@ -117,25 +117,25 @@ function EventCard({ event, userId, isJoined }: EventCardProps) {
         <div className="flex items-center gap-2">
           <EventIcon className={cn("w-8 h-8", config?.color.split(" ")[0])} />
           <div>
-            <h3 className="text-primary text-[12px]">{event.name}</h3>
+            <h3 className="text-primary text-base">{event.name}</h3>
             <PixelBadge variant="outline" className={cn("text-[6px]", config?.color)}>
               {config?.label}
             </PixelBadge>
           </div>
         </div>
         <div className="text-right">
-          <div className="flex items-center gap-1 text-muted-foreground text-[8px]">
+          <div className="flex items-center gap-1 text-muted-foreground text-xs">
             <Clock className="w-3 h-3" />
             {daysLeft}d {hoursLeft}h left
           </div>
         </div>
       </div>
 
-      <p className="text-muted-foreground text-[10px] mb-3">{event.description}</p>
+      <p className="text-muted-foreground text-sm mb-3">{event.description}</p>
 
       {event.rules?.factions && (
         <div className="mb-3">
-          <p className="text-primary text-[8px] mb-2">CHOOSE YOUR FACTION:</p>
+          <p className="text-primary text-xs mb-2">CHOOSE YOUR FACTION:</p>
           <div className="flex flex-wrap gap-2">
             {event.rules.factions.map((faction: string) => (
               <PixelButton
@@ -153,8 +153,8 @@ function EventCard({ event, userId, isJoined }: EventCardProps) {
 
       {event.rules?.customRules && (
         <div className="mb-3 p-2 border border-border bg-[#191022]">
-          <p className="text-primary text-[8px] mb-1">RULES:</p>
-          <ul className="text-muted-foreground text-[8px] space-y-1">
+          <p className="text-primary text-xs mb-1">RULES:</p>
+          <ul className="text-muted-foreground text-xs space-y-1">
             {event.rules.customRules.map((rule: string, i: number) => (
               <li key={i}>- {rule}</li>
             ))}
@@ -178,7 +178,7 @@ function EventCard({ event, userId, isJoined }: EventCardProps) {
         )}
 
         {isJoined && (
-          <PixelBadge variant="default" className="text-[8px] bg-green-400 text-black">
+          <PixelBadge variant="default" className="text-xs bg-green-400 text-black">
             JOINED
           </PixelBadge>
         )}
@@ -199,7 +199,7 @@ function ParticipationCard({ participation }: { participation: any }) {
         <div className="flex items-center gap-3">
           {config && <config.icon className={cn("w-5 h-5", config.color.split(" ")[0])} />}
           <div>
-            <p className="text-primary text-[10px]">{event.name}</p>
+            <p className="text-primary text-sm">{event.name}</p>
             {participation.faction && (
               <PixelBadge variant="outline" className="text-[6px]">
                 {participation.faction}
@@ -209,7 +209,7 @@ function ParticipationCard({ participation }: { participation: any }) {
         </div>
         <div className="text-right">
           <p className="text-primary text-lg">{participation.score}</p>
-          <p className="text-muted-foreground text-[8px]">POINTS</p>
+          <p className="text-muted-foreground text-xs">POINTS</p>
         </div>
       </div>
     </Link>
@@ -224,7 +224,7 @@ export function EventLeaderboard({ eventId }: { eventId: Id<"seasonalEvents"> })
     <div className="space-y-4">
       {factionScores && factionScores.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Flag className="w-4 h-4" /> FACTION STANDINGS
           </h3>
           <div className="space-y-2">
@@ -237,10 +237,10 @@ export function EventLeaderboard({ eventId }: { eventId: Id<"seasonalEvents"> })
                 )}
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-primary text-[10px]">{faction.faction}</span>
-                  <span className="text-muted-foreground text-[8px]">({faction.members} members)</span>
+                  <span className="text-primary text-sm">{faction.faction}</span>
+                  <span className="text-muted-foreground text-xs">({faction.members} members)</span>
                 </div>
-                <span className="text-primary text-[10px]">{faction.score} pts</span>
+                <span className="text-primary text-sm">{faction.score} pts</span>
               </div>
             ))}
           </div>
@@ -249,7 +249,7 @@ export function EventLeaderboard({ eventId }: { eventId: Id<"seasonalEvents"> })
 
       {leaderboard && leaderboard.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> TOP PARTICIPANTS
           </h3>
           <div className="space-y-2">
@@ -266,7 +266,7 @@ export function EventLeaderboard({ eventId }: { eventId: Id<"seasonalEvents"> })
               >
                 <div className="flex items-center gap-2">
                   <span className={cn(
-                    "w-6 text-center text-[10px]",
+                    "w-6 text-center text-sm",
                     entry.rank === 1 && "text-yellow-400",
                     entry.rank === 2 && "text-gray-400",
                     entry.rank === 3 && "text-orange-400",
@@ -274,14 +274,14 @@ export function EventLeaderboard({ eventId }: { eventId: Id<"seasonalEvents"> })
                   )}>
                     #{entry.rank}
                   </span>
-                  <span className="text-primary text-[10px]">{entry.userId.slice(-6)}</span>
+                  <span className="text-primary text-sm">{entry.userId.slice(-6)}</span>
                   {entry.faction && (
                     <PixelBadge variant="outline" className="text-[6px]">
                       {entry.faction}
                     </PixelBadge>
                   )}
                 </div>
-                <span className="text-muted-foreground text-[10px]">{entry.score} pts</span>
+                <span className="text-muted-foreground text-sm">{entry.score} pts</span>
               </div>
             ))}
           </div>
@@ -307,7 +307,7 @@ export function ActiveEventBanner() {
           <div className="flex items-center gap-2">
             <EventIcon className={cn("w-5 h-5", config?.color.split(" ")[0])} />
             <div>
-              <p className="text-primary text-[10px]">{event.name}</p>
+              <p className="text-primary text-sm">{event.name}</p>
               <PixelBadge variant="outline" className={cn("text-[6px]", config?.color)}>
                 LIVE NOW
               </PixelBadge>

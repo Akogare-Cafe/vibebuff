@@ -81,12 +81,12 @@ export function StackSimulator({ userId, deckId, toolIds, className }: StackSimu
               onClick={() => setSelectedScenario(scenario.slug)}
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-primary text-[12px]">{scenario.name}</h3>
+                <h3 className="text-primary text-base">{scenario.name}</h3>
                 <PixelBadge variant="outline" className={cn("text-[6px]", diffConfig.color)}>
                   {diffConfig.label}
                 </PixelBadge>
               </div>
-              <p className="text-muted-foreground text-[8px] mb-3">{scenario.description}</p>
+              <p className="text-muted-foreground text-xs mb-3">{scenario.description}</p>
               <div className="flex flex-wrap gap-1">
                 {scenario.challenges.slice(0, 3).map((c: any, i: number) => (
                   <PixelBadge key={i} variant="outline" className="text-[6px]">
@@ -115,8 +115,8 @@ export function StackSimulator({ userId, deckId, toolIds, className }: StackSimu
       {isRunning && (
         <PixelCard className="p-8 text-center">
           <FlaskConical className="w-16 h-16 mx-auto text-muted-foreground animate-pulse mb-4" />
-          <p className="text-primary text-[12px]">Running simulation...</p>
-          <p className="text-muted-foreground text-[8px]">Testing your stack against challenges</p>
+          <p className="text-primary text-base">Running simulation...</p>
+          <p className="text-muted-foreground text-xs">Testing your stack against challenges</p>
         </PixelCard>
       )}
 
@@ -184,7 +184,7 @@ function StatBar({ icon, label, value }: { icon: React.ReactNode; label: string;
           style={{ height: `${value}%` }}
         />
       </div>
-      <p className="text-primary text-[10px]">{value}</p>
+      <p className="text-primary text-sm">{value}</p>
       <p className="text-muted-foreground text-[6px]">{label}</p>
     </div>
   );
@@ -197,21 +197,21 @@ export function SimulationHistory({ userId }: { userId: string }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <RotateCcw className="w-4 h-4" /> RECENT SIMULATIONS
       </h3>
       <div className="space-y-2">
         {history.map((sim: any) => (
           <div key={sim._id} className="flex items-center justify-between p-2 border border-border">
             <div>
-              <p className="text-primary text-[10px]">{sim.scenario.name}</p>
-              <p className="text-muted-foreground text-[8px]">
+              <p className="text-primary text-sm">{sim.scenario.name}</p>
+              <p className="text-muted-foreground text-xs">
                 {new Date(sim.completedAt).toLocaleDateString()}
               </p>
             </div>
             <div className="text-right">
               <p className="text-primary text-lg">{sim.results.overallScore}</p>
-              <p className="text-muted-foreground text-[8px]">+{sim.xpEarned} XP</p>
+              <p className="text-muted-foreground text-xs">+{sim.xpEarned} XP</p>
             </div>
           </div>
         ))}

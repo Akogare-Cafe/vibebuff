@@ -164,7 +164,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
             </div>
             <div>
               <h3 className="text-white font-bold text-sm tracking-tight">Tool Whispers</h3>
-              <p className="text-[#ad92c9] text-[10px]">Insider tips & secrets</p>
+              <p className="text-[#ad92c9] text-sm">Insider tips & secrets</p>
             </div>
           </div>
           {userId && (
@@ -187,7 +187,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
             </div>
             
             <div className="mb-4">
-              <label className="text-[#ad92c9] text-[10px] block mb-2 uppercase tracking-wider">Type</label>
+              <label className="text-[#ad92c9] text-sm block mb-2 uppercase tracking-wider">Type</label>
               <select
                 value={newWhisper.whisperType}
                 onChange={(e) => setNewWhisper({ ...newWhisper, whisperType: e.target.value as typeof newWhisper.whisperType })}
@@ -203,7 +203,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
             </div>
 
             <div className="mb-4">
-              <label className="text-[#ad92c9] text-[10px] block mb-2 uppercase tracking-wider">Whisper</label>
+              <label className="text-[#ad92c9] text-sm block mb-2 uppercase tracking-wider">Whisper</label>
               <textarea
                 value={newWhisper.content}
                 onChange={(e) => setNewWhisper({ ...newWhisper, content: e.target.value })}
@@ -213,7 +213,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
             </div>
 
             <div className="mb-4">
-              <label className="text-[#ad92c9] text-[10px] block mb-2 uppercase tracking-wider">Source (Optional)</label>
+              <label className="text-[#ad92c9] text-sm block mb-2 uppercase tracking-wider">Source (Optional)</label>
               <PixelInput
                 value={newWhisper.source}
                 onChange={(e) => setNewWhisper({ ...newWhisper, source: e.target.value })}
@@ -277,7 +277,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
                     <PixelBadge
                       variant="outline"
                       className={cn(
-                        "text-[8px] uppercase tracking-wider",
+                        "text-xs uppercase tracking-wider",
                         whisper.isLocked ? "text-[#ad92c9] border-[#362348]" : getWhisperColor(whisper.whisperType)
                       )}
                     >
@@ -286,7 +286,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
                     {whisper.isVerified && (
                       <div className="flex items-center gap-1 mt-1">
                         <CheckCircle className="w-3 h-3 text-green-400" />
-                        <span className="text-[8px] text-green-400 font-medium">Verified</span>
+                        <span className="text-xs text-green-400 font-medium">Verified</span>
                       </div>
                     )}
                   </div>
@@ -331,7 +331,7 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
                       href={whisper.source}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#ad92c9] text-[10px] hover:text-[#9d4dff] underline transition-colors"
+                      className="text-[#ad92c9] text-sm hover:text-[#9d4dff] underline transition-colors"
                     >
                       View Source
                     </a>

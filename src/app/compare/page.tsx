@@ -98,7 +98,7 @@ function ComparePageContent() {
           <h1 className="text-primary text-lg mb-2 flex items-center justify-center gap-2">
             <Scale className="w-5 h-5" /> COMPARE TOOLS
           </h1>
-          <p className="text-muted-foreground text-[10px]">
+          <p className="text-muted-foreground text-sm">
             SELECT UP TO 4 TOOLS TO COMPARE SIDE BY SIDE
           </p>
         </div>
@@ -110,7 +110,7 @@ function ComparePageContent() {
               const tool = compareTools?.find((t) => t && t.slug === slug);
               return (
                 <PixelCard key={slug} className="p-4 flex items-center gap-2">
-                  <span className="text-primary text-[10px]">
+                  <span className="text-primary text-sm">
                     {tool?.name || slug}
                   </span>
                   <button
@@ -155,21 +155,21 @@ function ComparePageContent() {
                       onClick={() => handleAddTool(tool.slug)}
                       className="w-full text-left p-2 border-2 border-border hover:border-primary hover:bg-card transition-colors"
                     >
-                      <p className="text-primary text-[10px]">{tool.name}</p>
-                      <p className="text-muted-foreground text-[8px]">{tool.tagline}</p>
+                      <p className="text-primary text-sm">{tool.name}</p>
+                      <p className="text-muted-foreground text-xs">{tool.tagline}</p>
                     </button>
                   ))}
                 </div>
               )}
 
               {searchQuery.length > 2 && displayedSearchResults?.length === 0 && (
-                <p className="text-muted-foreground text-[10px] text-center">
+                <p className="text-muted-foreground text-sm text-center">
                   NO TOOLS FOUND
                 </p>
               )}
 
               {searchQuery.length <= 2 && (
-                <p className="text-muted-foreground text-[8px] text-center">
+                <p className="text-muted-foreground text-xs text-center">
                   TYPE AT LEAST 3 CHARACTERS TO SEARCH
                 </p>
               )}
@@ -184,14 +184,14 @@ function ComparePageContent() {
               {/* Header Row */}
               <thead>
                 <tr className="bg-card">
-                  <th className="p-4 text-left text-primary text-[10px] border-r-2 border-border w-32">
+                  <th className="p-4 text-left text-primary text-sm border-r-2 border-border w-32">
                     ATTRIBUTE
                   </th>
                   {validCompareTools.map((tool) => (
                     <th key={tool._id} className="p-4 text-center border-r-2 border-border last:border-r-0">
                       <Link href={`/tools/${tool.slug}`} className="hover:text-primary">
-                        <p className="text-primary text-[12px] mb-1">{tool.name}</p>
-                        <p className="text-muted-foreground text-[8px]">{tool.tagline}</p>
+                        <p className="text-primary text-base mb-1">{tool.name}</p>
+                        <p className="text-muted-foreground text-xs">{tool.tagline}</p>
                       </Link>
                     </th>
                   ))}
@@ -201,7 +201,7 @@ function ComparePageContent() {
               <tbody>
                 {/* Pricing */}
                 <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border">
                     <DollarSign className="w-3 h-3 inline mr-1" /> PRICING
                   </td>
                   {validCompareTools.map((tool) => (
@@ -217,7 +217,7 @@ function ComparePageContent() {
 
                 {/* Open Source */}
                 <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border">
                     <Unlock className="w-3 h-3 inline mr-1" /> OPEN SOURCE
                   </td>
                   {validCompareTools.map((tool) => (
@@ -233,11 +233,11 @@ function ComparePageContent() {
 
                 {/* GitHub Stars */}
                 <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border">
                     <Star className="w-3 h-3 inline mr-1" /> GITHUB STARS
                   </td>
                   {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-[10px] border-r-2 border-border last:border-r-0">
+                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-sm border-r-2 border-border last:border-r-0">
                       {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(0)}K` : "N/A"}
                     </td>
                   ))}
@@ -245,11 +245,11 @@ function ComparePageContent() {
 
                 {/* Category */}
                 <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border">
                     CATEGORY
                   </td>
                   {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-[10px] border-r-2 border-border last:border-r-0">
+                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-sm border-r-2 border-border last:border-r-0">
                       {tool.category?.icon} {tool.category?.name}
                     </td>
                   ))}
@@ -257,14 +257,14 @@ function ComparePageContent() {
 
                 {/* Strengths */}
                 <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border align-top">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
                     <CheckCircle className="w-3 h-3 inline mr-1" /> STRENGTHS
                   </td>
                   {validCompareTools.map((tool) => (
                     <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
                       <ul className="space-y-1">
                         {tool.pros.slice(0, 3).map((pro, i) => (
-                          <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
+                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
                             <span className="text-primary">+</span> {pro}
                           </li>
                         ))}
@@ -275,14 +275,14 @@ function ComparePageContent() {
 
                 {/* Weaknesses */}
                 <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border align-top">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
                     <AlertTriangle className="w-3 h-3 inline mr-1" /> WEAKNESSES
                   </td>
                   {validCompareTools.map((tool) => (
                     <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
                       <ul className="space-y-1">
                         {tool.cons.slice(0, 3).map((con, i) => (
-                          <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
+                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
                             <span className="text-muted-foreground">-</span> {con}
                           </li>
                         ))}
@@ -293,14 +293,14 @@ function ComparePageContent() {
 
                 {/* Best For */}
                 <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border align-top">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
                     BEST FOR
                   </td>
                   {validCompareTools.map((tool) => (
                     <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
                       <ul className="space-y-1">
                         {tool.bestFor.slice(0, 3).map((item, i) => (
-                          <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
+                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
                             <ChevronRight className="w-2 h-2 mt-0.5 shrink-0" /> {item}
                           </li>
                         ))}
@@ -311,7 +311,7 @@ function ComparePageContent() {
 
                 {/* Features */}
                 <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border align-top">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
                     FEATURES
                   </td>
                   {validCompareTools.map((tool) => (
@@ -329,7 +329,7 @@ function ComparePageContent() {
 
                 {/* Links */}
                 <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-[10px] border-r-2 border-border">
+                  <td className="p-4 text-primary text-sm border-r-2 border-border">
                     LINKS
                   </td>
                   {validCompareTools.map((tool) => (
@@ -359,7 +359,7 @@ function ComparePageContent() {
           <PixelCard className="text-center p-8">
             <Scale className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
             <p className="text-primary text-sm mb-2">SELECT TOOLS TO COMPARE</p>
-            <p className="text-muted-foreground text-[10px] mb-4">
+            <p className="text-muted-foreground text-sm mb-4">
               ADD AT LEAST 2 TOOLS TO START COMPARING
             </p>
             <Link href="/tools">
@@ -377,7 +377,7 @@ function ComparePageContent() {
               <h2 className="text-primary text-sm mb-2 flex items-center justify-center gap-2">
                 <Sparkles className="w-4 h-4" /> AI-GENERATED COMPARISONS
               </h2>
-              <p className="text-muted-foreground text-[10px]">
+              <p className="text-muted-foreground text-sm">
                 IN-DEPTH TOOL COMPARISONS POWERED BY AI
               </p>
             </div>
@@ -398,13 +398,13 @@ function ComparePageContent() {
                         </PixelBadge>
                         <TrendingUp className="w-3 h-3 text-primary" />
                       </div>
-                      <p className="text-primary text-[10px] mb-1">
+                      <p className="text-primary text-sm mb-1">
                         {comparison.tool1?.name} vs {comparison.tool2?.name}
                       </p>
-                      <p className="text-muted-foreground text-[8px] line-clamp-2">
+                      <p className="text-muted-foreground text-xs line-clamp-2">
                         {comparison.metaDescription}
                       </p>
-                      <div className="mt-2 flex items-center text-muted-foreground text-[8px]">
+                      <div className="mt-2 flex items-center text-muted-foreground text-xs">
                         <span>READ COMPARISON</span>
                         <ChevronRight className="w-2 h-2 ml-1" />
                       </div>

@@ -140,7 +140,7 @@ export default function ProfilePage() {
                     <span className="text-muted-foreground text-sm">Level {userLevel}</span>
                   </div>
                   <div className="mt-4">
-                    <div className="flex justify-between text-[10px] uppercase font-bold text-muted-foreground mb-1">
+                    <div className="flex justify-between text-sm uppercase font-bold text-muted-foreground mb-1">
                       <span>Experience</span>
                       <span>{xpPercent}%</span>
                     </div>
@@ -153,11 +153,11 @@ export default function ProfilePage() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 mt-6">
                     <div className="bg-background p-3 rounded border border-border">
-                      <div className="text-[10px] text-muted-foreground uppercase">Rank</div>
+                      <div className="text-sm text-muted-foreground uppercase">Rank</div>
                       <div className="text-lg font-bold text-foreground">#4,201</div>
                     </div>
                     <div className="bg-background p-3 rounded border border-border">
-                      <div className="text-[10px] text-muted-foreground uppercase">Quests</div>
+                      <div className="text-sm text-muted-foreground uppercase">Quests</div>
                       <div className="text-lg font-bold text-foreground">42</div>
                     </div>
                   </div>
@@ -230,7 +230,7 @@ export default function ProfilePage() {
                             <div
                               className={`absolute -bottom-1 -right-1 ${
                                 node.maxed ? 'bg-primary' : 'bg-yellow-600'
-                              } text-white text-[10px] px-1.5 py-0.5 rounded-full border border-card font-bold`}
+                              } text-white text-sm px-1.5 py-0.5 rounded-full border border-card font-bold`}
                             >
                               {node.maxed ? 'MAX' : `LVL ${node.level}`}
                             </div>
@@ -285,7 +285,7 @@ export default function ProfilePage() {
                     } rounded-lg p-3 relative overflow-hidden group hover:bg-secondary transition-colors cursor-pointer`}
                   >
                     {item.equipped && (
-                      <div className="absolute top-0 right-0 bg-primary/20 px-2 py-0.5 rounded-bl text-[10px] text-primary uppercase font-bold">
+                      <div className="absolute top-0 right-0 bg-primary/20 px-2 py-0.5 rounded-bl text-sm text-primary uppercase font-bold">
                         Equipped
                       </div>
                     )}
@@ -296,8 +296,8 @@ export default function ProfilePage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-foreground font-bold text-sm truncate">{item.name}</h4>
-                      <p className="text-[10px] text-muted-foreground">{item.type}</p>
-                      <div className={`text-[10px] mt-1 ${item.stat.includes('+') ? 'text-green-400' : 'text-gray-400'}`}>
+                      <p className="text-sm text-muted-foreground">{item.type}</p>
+                      <div className={`text-sm mt-1 ${item.stat.includes('+') ? 'text-green-400' : 'text-gray-400'}`}>
                         {item.stat}
                       </div>
                     </div>
@@ -322,7 +322,7 @@ export default function ProfilePage() {
                       <div className={`size-12 rounded-full bg-gradient-to-br ${badge.gradient} border-2 ${badge.border} flex items-center justify-center shadow-lg group-hover:-translate-y-1 transition-transform`}>
                         <badge.icon className="w-5 h-5 text-white" />
                       </div>
-                      <span className="text-[10px] text-muted-foreground group-hover:text-foreground transition-colors">
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                         {badge.name}
                       </span>
                     </div>
@@ -332,7 +332,7 @@ export default function ProfilePage() {
                       <div className="size-12 rounded-full bg-secondary border-2 border-white/10 flex items-center justify-center shadow-inner">
                         <Lock className="w-5 h-5 text-white/50" />
                       </div>
-                      <span className="text-[10px] text-muted-foreground">Locked</span>
+                      <span className="text-sm text-muted-foreground">Locked</span>
                     </div>
                   ))}
                 </div>
@@ -347,28 +347,28 @@ export default function ProfilePage() {
           <Link href="/">
             <button className="skill-btn">
               <Home className="w-5 h-5" />
-              <span className="absolute -bottom-2 bg-black text-[10px] text-gray-400 px-1 rounded border border-gray-800">1</span>
+              <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">1</span>
             </button>
           </Link>
           <Link href="/tools">
             <button className="skill-btn">
               <Backpack className="w-5 h-5" />
-              <span className="absolute -bottom-2 bg-black text-[10px] text-gray-400 px-1 rounded border border-gray-800">2</span>
+              <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">2</span>
             </button>
           </Link>
           <div className="w-px h-8 bg-border mx-1" />
           <button className="skill-btn skill-btn-primary">
             <Play className="w-8 h-8" />
-            <span className="absolute -bottom-2.5 bg-black text-[10px] text-primary font-bold px-1.5 rounded border border-primary/50">SPACE</span>
+            <span className="absolute -bottom-2.5 bg-black text-sm text-primary font-bold px-1.5 rounded border border-primary/50">SPACE</span>
           </button>
           <div className="w-px h-8 bg-border mx-1" />
           <button className="skill-btn">
             <MessageSquare className="w-5 h-5" />
-            <span className="absolute -bottom-2 bg-black text-[10px] text-gray-400 px-1 rounded border border-gray-800">3</span>
+            <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">3</span>
           </button>
           <button className="skill-btn border-primary shadow-[0_0_15px_rgba(127,19,236,0.4)] -translate-y-1">
             <User className="w-5 h-5 text-primary" />
-            <span className="absolute -bottom-2 bg-black text-[10px] text-primary px-1 rounded border border-primary/50">4</span>
+            <span className="absolute -bottom-2 bg-black text-sm text-primary px-1 rounded border border-primary/50">4</span>
             <div className="absolute inset-0 bg-primary/10 rounded-lg" />
           </button>
         </div>

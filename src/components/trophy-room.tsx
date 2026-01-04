@@ -36,7 +36,7 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
     return (
       <PixelCard className="p-8 text-center">
         <Trophy className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-        <p className="text-muted-foreground text-[10px]">NO TROPHY ROOM YET</p>
+        <p className="text-muted-foreground text-sm">NO TROPHY ROOM YET</p>
         {isOwner && (
           <PixelButton className="mt-4" onClick={() => setIsEditing(true)}>
             CREATE TROPHY ROOM
@@ -55,7 +55,7 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
             {room.customTitle || "TROPHY ROOM"}
           </h2>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-muted-foreground text-[8px] flex items-center gap-1">
+            <span className="text-muted-foreground text-xs flex items-center gap-1">
               <Eye className="w-3 h-3" /> {room.views} views
             </span>
           </div>
@@ -69,7 +69,7 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
 
       {room.displayedAchievements.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Award className="w-4 h-4" /> ACHIEVEMENTS
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
@@ -82,12 +82,12 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
 
       {room.displayedBadges.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Star className="w-4 h-4" /> BADGES
           </h3>
           <div className="flex flex-wrap gap-2">
             {room.displayedBadges.map((badge: string, index: number) => (
-              <PixelBadge key={index} variant="outline" className="text-[8px]">
+              <PixelBadge key={index} variant="outline" className="text-xs">
                 {badge}
               </PixelBadge>
             ))}
@@ -98,11 +98,11 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {room.featuredDeck && (
           <PixelCard className="p-4">
-            <h4 className="text-primary text-[10px] uppercase mb-2 flex items-center gap-2">
+            <h4 className="text-primary text-sm uppercase mb-2 flex items-center gap-2">
               <Layers className="w-4 h-4" /> FEATURED DECK
             </h4>
-            <p className="text-muted-foreground text-[10px]">{room.featuredDeck.name}</p>
-            <p className="text-muted-foreground text-[8px]">
+            <p className="text-muted-foreground text-sm">{room.featuredDeck.name}</p>
+            <p className="text-muted-foreground text-xs">
               {room.featuredDeck.toolIds?.length || 0} tools
             </p>
           </PixelCard>
@@ -110,11 +110,11 @@ export function TrophyRoom({ userId, isOwner, className }: TrophyRoomProps) {
 
         {room.featuredBattle && (
           <PixelCard className="p-4">
-            <h4 className="text-primary text-[10px] uppercase mb-2 flex items-center gap-2">
+            <h4 className="text-primary text-sm uppercase mb-2 flex items-center gap-2">
               <Swords className="w-4 h-4" /> FEATURED BATTLE
             </h4>
             <p className={cn(
-              "text-[10px]",
+              "text-sm",
               room.featuredBattle.winnerId === userId ? "text-green-400" : "text-red-400"
             )}>
               {room.featuredBattle.winnerId === userId ? "VICTORY" : "DEFEAT"}
@@ -155,7 +155,7 @@ export function TopTrophyRooms() {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <Crown className="w-4 h-4" /> POPULAR TROPHY ROOMS
       </h3>
       <div className="space-y-2">
@@ -164,7 +164,7 @@ export function TopTrophyRooms() {
             <div className="flex items-center justify-between p-2 border border-border hover:border-primary">
               <div className="flex items-center gap-2">
                 <span className={cn(
-                  "w-6 text-center text-[10px]",
+                  "w-6 text-center text-sm",
                   index === 0 && "text-yellow-400",
                   index === 1 && "text-gray-400",
                   index === 2 && "text-orange-400",
@@ -173,11 +173,11 @@ export function TopTrophyRooms() {
                   #{index + 1}
                 </span>
                 <Trophy className="w-4 h-4 text-muted-foreground" />
-                <span className="text-primary text-[10px]">
+                <span className="text-primary text-sm">
                   {room.username || "Anonymous"}
                 </span>
               </div>
-              <span className="text-muted-foreground text-[8px] flex items-center gap-1">
+              <span className="text-muted-foreground text-xs flex items-center gap-1">
                 <Eye className="w-3 h-3" /> {room.views}
               </span>
             </div>
@@ -195,7 +195,7 @@ export function ProfileFrameSelector({ userId }: { userId: string }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <Frame className="w-4 h-4" /> PROFILE FRAMES
       </h3>
       <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
@@ -218,7 +218,7 @@ export function ProfileFrameSelector({ userId }: { userId: string }) {
                 "w-8 h-8 mx-auto mb-1",
                 rarityColors[frame.rarity as keyof typeof rarityColors].replace("border-", "text-")
               )} />
-              <p className="text-primary text-[8px]">{frame.name}</p>
+              <p className="text-primary text-xs">{frame.name}</p>
               <PixelBadge variant="outline" className="text-[6px] mt-1">
                 {frame.rarity.toUpperCase()}
               </PixelBadge>

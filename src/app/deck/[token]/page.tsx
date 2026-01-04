@@ -45,7 +45,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
           <PixelCard className="text-center p-8">
             <Package className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
             <h1 className="text-primary text-lg mb-4">DECK NOT FOUND</h1>
-            <p className="text-muted-foreground text-[10px] mb-6">
+            <p className="text-muted-foreground text-sm mb-6">
               THIS DECK MAY HAVE BEEN DELETED OR MADE PRIVATE.
             </p>
             <Link href="/">
@@ -63,7 +63,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
     <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href="/" className="text-muted-foreground text-[10px] hover:text-primary flex items-center gap-1">
+          <Link href="/" className="text-muted-foreground text-sm hover:text-primary flex items-center gap-1">
             <ArrowLeft className="w-3 h-3" /> BACK TO VIBEBUFF
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
                 <Package className="w-5 h-5" /> {deck.name}
               </h1>
               {deck.description && (
-                <p className="text-muted-foreground text-[10px]">{deck.description}</p>
+                <p className="text-muted-foreground text-sm">{deck.description}</p>
               )}
             </div>
             <PixelButton size="sm" variant="outline" onClick={handleCopyLink}>
@@ -84,7 +84,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
             </PixelButton>
           </div>
 
-          <div className="flex gap-4 text-[8px] text-muted-foreground">
+          <div className="flex gap-4 text-xs text-muted-foreground">
             <span>{deck.tools?.length || 0} TOOLS</span>
             <span>CREATED {new Date(deck.createdAt).toLocaleDateString()}</span>
           </div>
@@ -112,7 +112,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
                   </div>
                 </PixelCardHeader>
                 <PixelCardContent>
-                  <p className="text-muted-foreground text-[8px] mb-2">{tool.tagline}</p>
+                  <p className="text-muted-foreground text-xs mb-2">{tool.tagline}</p>
                   <div className="flex flex-wrap gap-1">
                     {tool.tags?.slice(0, 3).map((tag) => (
                       <PixelBadge key={tag} variant="outline" className="text-[6px]">
@@ -127,7 +127,7 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-muted-foreground text-[10px] mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             WANT TO BUILD YOUR OWN TECH STACK?
           </p>
           <Link href="/quest">

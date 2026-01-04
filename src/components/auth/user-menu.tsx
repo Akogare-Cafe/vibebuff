@@ -78,7 +78,7 @@ export function UserMenu() {
             <User className="w-4 h-4 text-background" />
           </div>
         )}
-        <span className="text-primary text-[8px] hidden sm:block max-w-[80px] truncate">
+        <span className="text-primary text-xs hidden sm:block max-w-[80px] truncate">
           {user?.firstName || user?.username || "PLAYER"}
         </span>
         <ChevronDown className={`w-3 h-3 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
@@ -102,10 +102,10 @@ export function UserMenu() {
                 </div>
               )}
               <div className="flex-1 min-w-0">
-                <p className="text-primary text-[10px] font-bold truncate">
+                <p className="text-primary text-sm font-bold truncate">
                   {user?.firstName || user?.username || "ADVENTURER"}
                 </p>
-                <p className="text-muted-foreground text-[8px] truncate">
+                <p className="text-muted-foreground text-xs truncate">
                   {user?.primaryEmailAddress?.emailAddress}
                 </p>
               </div>
@@ -127,7 +127,7 @@ export function UserMenu() {
             <Link
               href="/profile"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-[8px]"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
             >
               <User className="w-3 h-3" />
               MY PROFILE
@@ -135,7 +135,7 @@ export function UserMenu() {
             <Link
               href="/profile/decks"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-[8px]"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
             >
               <Swords className="w-3 h-3" />
               MY DECKS
@@ -143,7 +143,7 @@ export function UserMenu() {
             <Link
               href="/profile/favorites"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-[8px]"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
             >
               <Heart className="w-3 h-3" />
               FAVORITES
@@ -151,7 +151,7 @@ export function UserMenu() {
             <Link
               href="/profile/achievements"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-[8px]"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
             >
               <Trophy className="w-3 h-3" />
               ACHIEVEMENTS
@@ -159,7 +159,7 @@ export function UserMenu() {
             <Link
               href="/profile/settings"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-[8px]"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
             >
               <Settings className="w-3 h-3" />
               SETTINGS
@@ -170,7 +170,7 @@ export function UserMenu() {
           <div className="border-t-2 border-border py-1">
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-3 px-3 py-2 text-red-400 hover:bg-red-900/20 text-[8px] w-full"
+              className="flex items-center gap-3 px-3 py-2 text-red-400 hover:bg-red-900/20 text-xs w-full"
             >
               <LogOut className="w-3 h-3" />
               SIGN OUT

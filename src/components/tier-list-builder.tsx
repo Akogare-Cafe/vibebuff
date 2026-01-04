@@ -108,7 +108,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
               onChange={(e) => setIsPublic(e.target.checked)}
               className="accent-primary"
             />
-            <span className="text-muted-foreground text-[10px]">PUBLIC</span>
+            <span className="text-muted-foreground text-sm">PUBLIC</span>
           </label>
           <PixelButton onClick={handleSave}>
             <Save className="w-4 h-4 mr-2" /> SAVE
@@ -137,7 +137,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
                     key={toolId}
                     className="group relative border border-border bg-[#191022] px-2 py-1"
                   >
-                    <span className="text-primary text-[10px]">{tool.name}</span>
+                    <span className="text-primary text-sm">{tool.name}</span>
                     <div className="absolute -top-6 right-0 hidden group-hover:flex gap-1">
                       <button
                         onClick={() => moveTier(toolId, tier, "up")}
@@ -169,11 +169,11 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
       </div>
 
       <PixelCard className="p-4">
-        <h3 className="text-primary text-[10px] uppercase mb-3">UNRANKED TOOLS</h3>
+        <h3 className="text-primary text-sm uppercase mb-3">UNRANKED TOOLS</h3>
         <div className="flex flex-wrap gap-2">
           {unrankedTools.map((tool) => (
             <div key={tool._id} className="group relative">
-              <PixelBadge variant="outline" className="text-[8px] cursor-pointer">
+              <PixelBadge variant="outline" className="text-xs cursor-pointer">
                 {tool.name}
               </PixelBadge>
               <div className="absolute -top-8 left-0 hidden group-hover:flex gap-1 z-10">
@@ -182,7 +182,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
                     key={tier}
                     onClick={() => addToTier(tool._id, tier)}
                     className={cn(
-                      "w-6 h-6 text-[10px] font-bold border",
+                      "w-6 h-6 text-sm font-bold border",
                       TIER_CONFIG[tier].color,
                       TIER_CONFIG[tier].textColor
                     )}
@@ -214,7 +214,7 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
   if (!tierList) {
     return (
       <div className="text-center p-4">
-        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING TIER LIST...</div>
+        <div className="text-muted-foreground text-sm pixel-loading">LOADING TIER LIST...</div>
       </div>
     );
   }
@@ -224,10 +224,10 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-primary text-sm">{tierList.name}</h2>
-          <p className="text-muted-foreground text-[8px]">{tierList.category?.name}</p>
+          <p className="text-muted-foreground text-xs">{tierList.category?.name}</p>
         </div>
         <div className="flex items-center gap-2">
-          <PixelBadge variant="outline" className="text-[8px]">
+          <PixelBadge variant="outline" className="text-xs">
             <ThumbsUp className="w-3 h-3 mr-1" /> {tierList.upvotes}
           </PixelBadge>
         </div>
@@ -245,7 +245,7 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
                 if (!tool) return null;
                 return (
                   <Link key={toolId} href={`/tools/${tool.slug}`}>
-                    <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
+                    <PixelBadge variant="outline" className="text-xs hover:border-primary">
                       {tool.name}
                     </PixelBadge>
                   </Link>
@@ -267,7 +267,7 @@ export function CommunityConsensusTierList({ categoryId }: { categoryId: Id<"cat
   return (
     <PixelCard className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase flex items-center gap-2">
           <BarChart3 className="w-4 h-4" /> COMMUNITY CONSENSUS
         </h3>
         <PixelBadge variant="outline" className="text-[6px]">

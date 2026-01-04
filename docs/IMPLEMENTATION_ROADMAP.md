@@ -1,10 +1,10 @@
-# Vibe Anything - Implementation Roadmap
+# VibeBuff - Implementation Roadmap
 
-> Detailed sprint-by-sprint plan for building the AI-powered tech stack recommendation platform.
+> Detailed sprint-by-sprint plan for building the gamified tech stack discovery platform.
 
 ---
 
-## 📅 Timeline Overview
+## Timeline Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐

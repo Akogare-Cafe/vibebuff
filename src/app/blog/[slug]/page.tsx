@@ -1560,7 +1560,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary text-[10px] mb-8"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary text-sm mb-8"
         >
           <ChevronLeft className="w-4 h-4" />
           BACK TO BLOG
@@ -1572,7 +1572,7 @@ export default async function BlogPostPage({ params }: Props) {
             <h1 className="text-primary text-lg mb-4 leading-relaxed pixel-glow">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 text-[8px] text-muted-foreground mb-4">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground mb-4">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3 h-3" />
                 {new Date(post.date).toLocaleDateString("en-US", {
@@ -1597,7 +1597,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </span>
               ))}
             </div>
-            <p className="text-muted-foreground text-[10px] leading-relaxed border-l-4 border-primary pl-4">
+            <p className="text-muted-foreground text-sm leading-relaxed border-l-4 border-primary pl-4">
               {post.description}
             </p>
           </header>
@@ -1605,7 +1605,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Article Content */}
           <div className="prose prose-invert prose-sm max-w-none">
             <div
-              className="text-[#a0aec0] text-[10px] leading-relaxed space-y-4 blog-content"
+              className="text-[#a0aec0] text-sm leading-relaxed space-y-4 blog-content"
               dangerouslySetInnerHTML={{
                 __html: post.content
                   .replace(/## (.*)/g, '<h2 class="text-primary text-sm mt-8 mb-4">$1</h2>')
@@ -1614,10 +1614,10 @@ export default async function BlogPostPage({ params }: Props) {
                   .replace(/- (.*)/g, '<li class="ml-4 text-[#a0aec0]">$1</li>')
                   .replace(/\n\n/g, '</p><p class="mb-4">')
                   .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-muted-foreground hover:text-primary underline">$1</a>')
-                  .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-card border-2 border-border p-4 my-4 overflow-x-auto"><code class="text-primary text-[8px]">$2</code></pre>')
+                  .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-card border-2 border-border p-4 my-4 overflow-x-auto"><code class="text-primary text-xs">$2</code></pre>')
                   .replace(/\|(.+)\|/g, (match) => {
                     const cells = match.split('|').filter(c => c.trim());
-                    return `<tr>${cells.map(c => `<td class="border border-border px-2 py-1 text-[8px]">${c.trim()}</td>`).join('')}</tr>`;
+                    return `<tr>${cells.map(c => `<td class="border border-border px-2 py-1 text-xs">${c.trim()}</td>`).join('')}</tr>`;
                   }),
               }}
             />
@@ -1626,7 +1626,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Share Section */}
           <div className="border-t-4 border-border mt-12 pt-8">
             <div className="flex items-center justify-between">
-              <span className="text-primary text-[10px]">SHARE THIS ARTICLE</span>
+              <span className="text-primary text-sm">SHARE THIS ARTICLE</span>
               <div className="flex gap-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.com/blog/${slug}`)}`}
@@ -1652,12 +1652,12 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Related Posts CTA */}
         <div className="border-4 border-border bg-card p-8 mt-12 text-center">
           <h2 className="text-primary text-sm mb-4">FIND YOUR PERFECT TECH STACK</h2>
-          <p className="text-muted-foreground text-[8px] mb-6">
+          <p className="text-muted-foreground text-xs mb-6">
             Use our AI-powered Quest to get personalized recommendations for your project.
           </p>
           <Link
             href="/quest"
-            className="inline-block bg-primary text-background px-6 py-2 text-[10px] hover:bg-primary transition-colors"
+            className="inline-block bg-primary text-background px-6 py-2 text-sm hover:bg-primary transition-colors"
           >
             START YOUR QUEST
           </Link>

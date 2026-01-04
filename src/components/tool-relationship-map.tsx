@@ -63,7 +63,7 @@ export function ToolRelationshipMap({ toolId, className }: ToolRelationshipMapPr
 
           return (
             <div key={type}>
-              <h3 className={cn("text-[10px] uppercase mb-3 flex items-center gap-2", config?.color)}>
+              <h3 className={cn("text-sm uppercase mb-3 flex items-center gap-2", config?.color)}>
                 <RelIcon className="w-4 h-4" /> {config?.label}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -77,13 +77,13 @@ export function ToolRelationshipMap({ toolId, className }: ToolRelationshipMapPr
       ) : (
         <PixelCard className="p-8 text-center">
           <Network className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-muted-foreground text-[10px]">NO RELATIONSHIPS FOUND</p>
+          <p className="text-muted-foreground text-sm">NO RELATIONSHIPS FOUND</p>
         </PixelCard>
       )}
 
       {migrationPaths && migrationPaths.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <ArrowRight className="w-4 h-4" /> MIGRATION PATHS
           </h3>
           <div className="space-y-3">
@@ -103,7 +103,7 @@ function RelationshipCard({ relationship, config }: { relationship: any; config:
   return (
     <PixelCard className={cn("p-3", config?.color)}>
       <Link href={`/tools/${relationship.relatedTool?.slug}`}>
-        <p className="text-primary text-[10px] mb-2 hover:underline">
+        <p className="text-primary text-sm mb-2 hover:underline">
           {relationship.relatedTool?.name}
         </p>
       </Link>
@@ -116,10 +116,10 @@ function RelationshipCard({ relationship, config }: { relationship: any; config:
       </div>
       
       <div className="flex items-center justify-between">
-        <span className="text-muted-foreground text-[8px]">{relationship.strength}% match</span>
+        <span className="text-muted-foreground text-xs">{relationship.strength}% match</span>
         <button 
           onClick={() => voteOnRelationship({ relationshipId: relationship._id })}
-          className="flex items-center gap-1 text-muted-foreground text-[8px] hover:text-primary"
+          className="flex items-center gap-1 text-muted-foreground text-xs hover:text-primary"
         >
           <ThumbsUp className="w-3 h-3" /> {relationship.communityVotes}
         </button>
@@ -147,7 +147,7 @@ function MigrationPathCard({ path }: { path: any }) {
         <div className="flex items-center gap-2">
           <ArrowRight className="w-5 h-5 text-muted-foreground" />
           <Link href={`/tools/${path.toTool?.slug}`}>
-            <span className="text-primary text-[12px] hover:underline">{path.toTool?.name}</span>
+            <span className="text-primary text-base hover:underline">{path.toTool?.name}</span>
           </Link>
         </div>
         <PixelBadge variant="outline" className={cn("text-[6px]", difficultyColor)}>
@@ -155,7 +155,7 @@ function MigrationPathCard({ path }: { path: any }) {
         </PixelBadge>
       </div>
 
-      <div className="flex items-center gap-4 mb-3 text-[8px] text-muted-foreground">
+      <div className="flex items-center gap-4 mb-3 text-xs text-muted-foreground">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" /> ~{path.estimatedHours}h
         </span>
@@ -172,10 +172,10 @@ function MigrationPathCard({ path }: { path: any }) {
       {expanded && (
         <div className="mt-3 space-y-3">
           <div>
-            <p className="text-primary text-[8px] mb-2">STEPS:</p>
+            <p className="text-primary text-xs mb-2">STEPS:</p>
             <ol className="space-y-1">
               {path.steps.map((step: string, i: number) => (
-                <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-2">
+                <li key={i} className="text-muted-foreground text-xs flex items-start gap-2">
                   <span className="text-muted-foreground">{i + 1}.</span> {step}
                 </li>
               ))}
@@ -184,10 +184,10 @@ function MigrationPathCard({ path }: { path: any }) {
 
           {path.gotchas.length > 0 && (
             <div>
-              <p className="text-orange-400 text-[8px] mb-2">GOTCHAS:</p>
+              <p className="text-orange-400 text-xs mb-2">GOTCHAS:</p>
               <ul className="space-y-1">
                 {path.gotchas.map((gotcha: string, i: number) => (
-                  <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-2">
+                  <li key={i} className="text-muted-foreground text-xs flex items-start gap-2">
                     <AlertTriangle className="w-3 h-3 text-orange-400 flex-shrink-0" /> {gotcha}
                   </li>
                 ))}
@@ -197,7 +197,7 @@ function MigrationPathCard({ path }: { path: any }) {
 
           {path.resources.length > 0 && (
             <div>
-              <p className="text-primary text-[8px] mb-2">RESOURCES:</p>
+              <p className="text-primary text-xs mb-2">RESOURCES:</p>
               <div className="flex flex-wrap gap-2">
                 {path.resources.map((resource: any, i: number) => (
                   <a 
@@ -205,7 +205,7 @@ function MigrationPathCard({ path }: { path: any }) {
                     href={resource.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-muted-foreground text-[8px] underline hover:text-primary"
+                    className="text-muted-foreground text-xs underline hover:text-primary"
                   >
                     {resource.title}
                   </a>
@@ -242,19 +242,19 @@ export function RelationshipGraphWidget({ toolId }: { toolId: Id<"tools"> }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <Network className="w-4 h-4" /> ECOSYSTEM
       </h3>
       <div className="flex flex-wrap gap-2">
         {graph.nodes.slice(1, 7).map((node: any) => (
           <Link key={node.id} href={`/tools/${node.data?.slug}`}>
-            <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
+            <PixelBadge variant="outline" className="text-xs hover:border-primary">
               {node.data?.name}
             </PixelBadge>
           </Link>
         ))}
         {graph.nodes.length > 7 && (
-          <PixelBadge variant="outline" className="text-[8px]">
+          <PixelBadge variant="outline" className="text-xs">
             +{graph.nodes.length - 7} more
           </PixelBadge>
         )}

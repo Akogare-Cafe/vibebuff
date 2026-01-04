@@ -67,7 +67,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
           <h2 className="text-primary text-sm flex items-center gap-2">
             <Heart className="w-5 h-5 text-pink-400" /> TOOL AFFINITIES
           </h2>
-          <PixelBadge variant="outline" className="text-[8px]">
+          <PixelBadge variant="outline" className="text-xs">
             {affinities?.length ?? 0} TOOLS
           </PixelBadge>
         </div>
@@ -85,7 +85,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="text-primary text-[12px] mb-1">
+                  <h3 className="text-primary text-base mb-1">
                     {affinity.tool?.name ?? "Unknown Tool"}
                   </h3>
                   <PixelBadge
@@ -101,7 +101,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
               </div>
 
               <div className="mb-3">
-                <div className="flex justify-between text-[8px] mb-1">
+                <div className="flex justify-between text-xs mb-1">
                   <span className="text-muted-foreground">AFFINITY PROGRESS</span>
                   <span className="text-primary">{affinity.progress}%</span>
                 </div>
@@ -153,7 +153,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
 
               <div className="mt-3 pt-2 border-t border-border">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-muted-foreground text-[8px]">
+                  <span className="text-muted-foreground text-xs">
                     {affinity.affinityPoints} Affinity Points
                   </span>
                   {affinity.perks && affinity.perks.length > 0 && (
@@ -176,7 +176,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
         {(!affinities || affinities.length === 0) && (
           <div className="text-center py-12">
             <Heart className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-            <p className="text-muted-foreground text-[10px]">
+            <p className="text-muted-foreground text-sm">
               No tool affinities yet. Interact with tools to build relationships!
             </p>
           </div>
@@ -184,7 +184,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
       </PixelCard>
 
       <PixelCard className="p-4">
-        <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase mb-4 flex items-center gap-2">
           <TrendingUp className="w-4 h-4" /> AFFINITY LEVELS
         </h3>
         <div className="grid grid-cols-5 gap-2">
@@ -220,7 +220,7 @@ function InteractionStat({
   return (
     <div className="text-center">
       <span className="text-muted-foreground">{icon}</span>
-      <p className="text-primary text-[8px]">{value}</p>
+      <p className="text-primary text-xs">{value}</p>
       <p className="text-muted-foreground text-[4px]">{label}</p>
     </div>
   );

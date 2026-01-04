@@ -48,7 +48,7 @@ export function TimeMachine({ className }: TimeMachineProps) {
           </PixelButton>
           <div className="text-center">
             <p className="text-primary text-2xl">{selectedYear}</p>
-            <p className="text-muted-foreground text-[8px]">TECH LANDSCAPE</p>
+            <p className="text-muted-foreground text-xs">TECH LANDSCAPE</p>
           </div>
           <PixelButton size="sm" onClick={() => setSelectedYear(Math.min(2024, selectedYear + 2))}>
             <FastForward className="w-4 h-4" />
@@ -61,7 +61,7 @@ export function TimeMachine({ className }: TimeMachineProps) {
               key={year}
               onClick={() => setSelectedYear(year)}
               className={cn(
-                "px-2 py-1 text-[8px] border",
+                "px-2 py-1 text-xs border",
                 selectedYear === year
                   ? "border-primary bg-primary/20 text-primary"
                   : "border-border text-muted-foreground hover:border-primary"
@@ -74,7 +74,7 @@ export function TimeMachine({ className }: TimeMachineProps) {
       </PixelCard>
 
       <div>
-        <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
           <Calendar className="w-4 h-4" /> TOP TOOLS IN {selectedYear}
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -84,7 +84,7 @@ export function TimeMachine({ className }: TimeMachineProps) {
           {(!yearSnapshot || yearSnapshot.length === 0) && (
             <PixelCard className="col-span-full p-8 text-center">
               <Clock className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground text-[10px]">NO DATA FOR {selectedYear}</p>
+              <p className="text-muted-foreground text-sm">NO DATA FOR {selectedYear}</p>
             </PixelCard>
           )}
         </div>
@@ -92,7 +92,7 @@ export function TimeMachine({ className }: TimeMachineProps) {
 
       {challenges && challenges.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> NOSTALGIA CHALLENGES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -128,8 +128,8 @@ function ToolSnapshotCard({ snapshot, rank }: { snapshot: any; rank: number }) {
           v{snapshot.majorVersion || "?"}
         </PixelBadge>
       </div>
-      <p className="text-primary text-[10px] mb-1">{snapshot.tool?.name}</p>
-      <div className="flex items-center gap-2 text-[8px] text-muted-foreground">
+      <p className="text-primary text-sm mb-1">{snapshot.tool?.name}</p>
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <Star className="w-3 h-3" />
         {snapshot.githubStars?.toLocaleString() || "N/A"}
       </div>
@@ -152,8 +152,8 @@ function ChallengeCard({ challenge }: { challenge: any }) {
           {challenge.targetYear}
         </PixelBadge>
       </div>
-      <h4 className="text-primary text-[12px] mb-2">{challenge.title}</h4>
-      <p className="text-muted-foreground text-[10px] mb-3">{challenge.description}</p>
+      <h4 className="text-primary text-base mb-2">{challenge.title}</h4>
+      <p className="text-muted-foreground text-sm mb-3">{challenge.description}</p>
       <div className="flex flex-wrap gap-1 mb-3">
         {challenge.requirements.slice(0, 3).map((req: string, i: number) => (
           <PixelBadge key={i} variant="outline" className="text-[6px]">
@@ -181,14 +181,14 @@ export function ToolTimeline({ toolId }: ToolTimelineProps) {
     return (
       <PixelCard className="p-4 text-center">
         <Clock className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
-        <p className="text-muted-foreground text-[10px]">NO HISTORICAL DATA</p>
+        <p className="text-muted-foreground text-sm">NO HISTORICAL DATA</p>
       </PixelCard>
     );
   }
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-4 flex items-center gap-2">
         <Clock className="w-4 h-4" /> {timeline.tool?.name} THROUGH TIME
       </h3>
       <div className="relative">
@@ -205,14 +205,14 @@ export function ToolTimeline({ toolId }: ToolTimelineProps) {
                 <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#191022]" />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-primary text-[12px]">{snapshot.year}</span>
+                    <span className="text-primary text-base">{snapshot.year}</span>
                     {snapshot.majorVersion && (
                       <PixelBadge variant="outline" className="text-[6px]">
                         v{snapshot.majorVersion}
                       </PixelBadge>
                     )}
                   </div>
-                  <div className="flex items-center gap-3 text-[8px]">
+                  <div className="flex items-center gap-3 text-xs">
                     <span className="text-muted-foreground flex items-center gap-1">
                       <Star className="w-3 h-3" /> {snapshot.githubStars?.toLocaleString() || "N/A"}
                     </span>
@@ -229,7 +229,7 @@ export function ToolTimeline({ toolId }: ToolTimelineProps) {
                   {snapshot.notableEvents && snapshot.notableEvents.length > 0 && (
                     <div className="mt-2">
                       {snapshot.notableEvents.map((event: string, i: number) => (
-                        <p key={i} className="text-muted-foreground text-[8px]">{event}</p>
+                        <p key={i} className="text-muted-foreground text-xs">{event}</p>
                       ))}
                     </div>
                   )}

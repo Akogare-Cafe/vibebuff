@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-[10px] uppercase transition-colors"
+        className="flex items-center gap-1 text-sm uppercase transition-colors"
         style={{ color: colors.primary }}
         onMouseEnter={(e) => (e.currentTarget.style.color = colors.foreground)}
         onMouseLeave={(e) => (e.currentTarget.style.color = colors.primary)}
@@ -45,7 +45,7 @@ export function ThemeSwitcher() {
           }}
         >
           <p
-            className="text-[8px] uppercase mb-2 pb-1"
+            className="text-xs uppercase mb-2 pb-1"
             style={{ color: colors.primary, borderBottom: `2px solid ${colors.border}` }}
           >
             Select Theme
@@ -58,7 +58,7 @@ export function ThemeSwitcher() {
                   setTheme(t);
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-2 p-1 text-[8px] uppercase transition-all text-left"
+                className="flex items-center gap-2 p-1 text-xs uppercase transition-all text-left"
                 style={{
                   color: theme === t ? themes[t].foreground : themes[t].primary,
                   backgroundColor: theme === t ? themes[t].border : "transparent",

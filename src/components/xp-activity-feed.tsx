@@ -54,12 +54,12 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
   if (!activities || activities.length === 0) {
     return (
       <PixelCard className={cn("p-4", className)}>
-        <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase mb-4 flex items-center gap-2">
           <Zap className="w-4 h-4" /> XP ACTIVITY
         </h3>
         <div className="text-center py-4">
           <Zap className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
-          <p className="text-muted-foreground text-[8px]">NO RECENT ACTIVITY</p>
+          <p className="text-muted-foreground text-xs">NO RECENT ACTIVITY</p>
           <p className="text-muted-foreground text-[6px]">Start playing to earn XP!</p>
         </div>
       </PixelCard>
@@ -71,7 +71,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
   return (
     <PixelCard className={cn("p-4", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase flex items-center gap-2">
           <Zap className="w-4 h-4" /> XP ACTIVITY
         </h3>
         <PixelBadge variant="default" className="text-[6px]">
@@ -105,7 +105,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
               </div>
               <div className="text-right">
                 <p className={cn(
-                  "text-[10px]",
+                  "text-sm",
                   activity.amount > 0 ? "text-green-400" : "text-red-400"
                 )}>
                   {activity.amount > 0 ? "+" : ""}{activity.amount} XP
@@ -146,7 +146,7 @@ export function XpActivityWidget({ userId }: { userId: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-primary text-[10px] flex items-center gap-1">
+        <span className="text-primary text-sm flex items-center gap-1">
           <Zap className="w-3 h-3" /> RECENT XP
         </span>
         <PixelBadge variant="default" className="text-[6px] bg-green-400 text-black">
@@ -161,7 +161,7 @@ export function XpActivityWidget({ userId }: { userId: string }) {
             label: activity.source 
           };
           return (
-            <div key={activity._id} className="flex items-center justify-between text-[8px]">
+            <div key={activity._id} className="flex items-center justify-between text-xs">
               <span className="text-muted-foreground truncate flex-1">{config.label}</span>
               <span className="text-green-400 ml-2">+{activity.amount}</span>
             </div>

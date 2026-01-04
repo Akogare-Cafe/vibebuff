@@ -69,7 +69,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
       case 3:
         return <Medal className="w-5 h-5 text-orange-400" />;
       default:
-        return <span className="text-muted-foreground text-[12px]">#{rank}</span>;
+        return <span className="text-muted-foreground text-base">#{rank}</span>;
     }
   };
 
@@ -105,7 +105,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
               key={season._id}
               variant="outline"
               className={cn(
-                "text-[8px] whitespace-nowrap cursor-pointer",
+                "text-xs whitespace-nowrap cursor-pointer",
                 season._id === selectedSeasonId
                   ? "bg-primary/20 border-primary"
                   : "border-border"
@@ -125,12 +125,12 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
               <h2 className="text-primary text-sm flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-yellow-400" /> {activeSeason.name}
               </h2>
-              <p className="text-muted-foreground text-[8px] mt-1">
+              <p className="text-muted-foreground text-xs mt-1">
                 {activeSeason.description}
               </p>
             </div>
             <div className="text-right">
-              <PixelBadge variant="outline" className="text-[8px]">
+              <PixelBadge variant="outline" className="text-xs">
                 <Calendar className="w-3 h-3 mr-1" />
                 {getTimeRemaining(activeSeason.endDate)}
               </PixelBadge>
@@ -143,8 +143,8 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                 <div className="flex items-center gap-3">
                   {getRankIcon(userRank.currentRank)}
                   <div>
-                    <p className="text-primary text-[12px]">YOUR RANK</p>
-                    <p className="text-muted-foreground text-[8px]">
+                    <p className="text-primary text-base">YOUR RANK</p>
+                    <p className="text-muted-foreground text-xs">
                       Score: {userRank.score.toLocaleString()}
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                   {getMovementIcon(userRank.movement)}
                   <span
                     className={cn(
-                      "text-[10px]",
+                      "text-sm",
                       userRank.movement > 0
                         ? "text-green-400"
                         : userRank.movement < 0
@@ -186,10 +186,10 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                 <div className="flex items-center gap-3">
                   <div className="w-8 text-center">{getRankIcon(entry.rank)}</div>
                   <div>
-                    <p className="text-primary text-[10px]">
+                    <p className="text-primary text-sm">
                       {entry.user?.username ?? "Unknown Player"}
                     </p>
-                    <p className="text-muted-foreground text-[8px]">
+                    <p className="text-muted-foreground text-xs">
                       Level {entry.user?.level ?? 1}
                     </p>
                   </div>
@@ -199,7 +199,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                     {getMovementIcon(entry.movement)}
                     <span
                       className={cn(
-                        "text-[8px]",
+                        "text-xs",
                         entry.movement > 0
                           ? "text-green-400"
                           : entry.movement < 0
@@ -210,7 +210,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                       {Math.abs(entry.movement)}
                     </span>
                   </div>
-                  <span className="text-primary text-[12px] w-20 text-right">
+                  <span className="text-primary text-base w-20 text-right">
                     {entry.score.toLocaleString()}
                   </span>
                 </div>
@@ -221,7 +221,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
           {(!leaderboard || leaderboard.length === 0) && (
             <div className="text-center py-12">
               <Trophy className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-              <p className="text-muted-foreground text-[10px]">
+              <p className="text-muted-foreground text-sm">
                 No rankings yet. Be the first to compete!
               </p>
             </div>
@@ -231,7 +231,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
 
       {activeSeason?.rewards && activeSeason.rewards.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-4 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> SEASON REWARDS
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -250,10 +250,10 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
                 )}
               >
                 {getRankIcon(reward.rank)}
-                <p className="text-primary text-[8px] mt-1">
+                <p className="text-primary text-xs mt-1">
                   {reward.rewardType === "title" ? "Title:" : "Reward:"}
                 </p>
-                <p className="text-muted-foreground text-[8px]">{reward.rewardValue}</p>
+                <p className="text-muted-foreground text-xs">{reward.rewardValue}</p>
               </div>
             ))}
           </div>
@@ -264,7 +264,7 @@ export function SeasonalLeaderboard({ userId, className }: SeasonalLeaderboardPr
         <PixelCard className="p-6 text-center">
           <Trophy className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
           <p className="text-primary text-lg mb-2">NO ACTIVE SEASONS</p>
-          <p className="text-muted-foreground text-[10px]">
+          <p className="text-muted-foreground text-sm">
             Check back later for new competitive seasons!
           </p>
         </PixelCard>

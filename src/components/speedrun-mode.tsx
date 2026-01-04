@@ -51,7 +51,7 @@ export function SpeedrunMode({ userId, className }: SpeedrunModeProps) {
 
       {activeRaces && activeRaces.length > 0 && (
         <div>
-          <h3 className="text-red-400 text-[10px] uppercase mb-3 flex items-center gap-2 animate-pulse">
+          <h3 className="text-red-400 text-sm uppercase mb-3 flex items-center gap-2 animate-pulse">
             <Zap className="w-4 h-4" /> LIVE RACES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -64,7 +64,7 @@ export function SpeedrunMode({ userId, className }: SpeedrunModeProps) {
 
       {upcomingRaces && upcomingRaces.length > 0 && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <Calendar className="w-4 h-4" /> UPCOMING RACES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -76,7 +76,7 @@ export function SpeedrunMode({ userId, className }: SpeedrunModeProps) {
       )}
 
       <div>
-        <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
           <Flag className="w-4 h-4" /> CATEGORIES
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -88,7 +88,7 @@ export function SpeedrunMode({ userId, className }: SpeedrunModeProps) {
 
       {worldRecords && worldRecords.length > 0 && (
         <div>
-          <h3 className="text-yellow-400 text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-yellow-400 text-sm uppercase mb-3 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> WORLD RECORDS
           </h3>
           <div className="space-y-2">
@@ -109,7 +109,7 @@ function CategoryCard({ category }: { category: any }) {
     <PixelCard className={cn("p-4", config?.color)}>
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="text-primary text-[12px]">{category.name}</h3>
+          <h3 className="text-primary text-base">{category.name}</h3>
           <PixelBadge variant="outline" className={cn("text-[6px] mt-1", config?.color)}>
             {config?.label}
           </PixelBadge>
@@ -117,12 +117,12 @@ function CategoryCard({ category }: { category: any }) {
         <Timer className="w-5 h-5 text-muted-foreground" />
       </div>
 
-      <p className="text-muted-foreground text-[10px] mb-3">{category.description}</p>
+      <p className="text-muted-foreground text-sm mb-3">{category.description}</p>
 
       <div className="space-y-1 mb-3">
-        <p className="text-primary text-[8px]">REQUIREMENTS:</p>
+        <p className="text-primary text-xs">REQUIREMENTS:</p>
         {category.requirements.map((req: any, i: number) => (
-          <div key={i} className="flex items-center gap-2 text-[8px] text-muted-foreground">
+          <div key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
             <CheckCircle className="w-3 h-3" /> {req.count}x {req.category}
           </div>
         ))}
@@ -131,11 +131,11 @@ function CategoryCard({ category }: { category: any }) {
       {category.worldRecord && (
         <div className="p-2 border border-yellow-400 bg-yellow-400/10 mb-3">
           <div className="flex items-center justify-between">
-            <span className="text-yellow-400 text-[8px]">WORLD RECORD</span>
-            <span className="text-yellow-400 text-[12px]">{formatTime(category.worldRecord)}</span>
+            <span className="text-yellow-400 text-xs">WORLD RECORD</span>
+            <span className="text-yellow-400 text-base">{formatTime(category.worldRecord)}</span>
           </div>
           {category.worldRecordHolder && (
-            <p className="text-muted-foreground text-[8px]">by {category.worldRecordHolder.slice(-6)}</p>
+            <p className="text-muted-foreground text-xs">by {category.worldRecordHolder.slice(-6)}</p>
           )}
         </div>
       )}
@@ -163,17 +163,17 @@ function RaceCard({ race, userId, isLive }: { race: any; userId?: string; isLive
   return (
     <PixelCard className={cn("p-4", isLive && "border-red-400")}>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-primary text-[12px]">{race.category?.name}</h3>
+        <h3 className="text-primary text-base">{race.category?.name}</h3>
         {isLive ? (
           <PixelBadge variant="outline" className="text-[6px] text-red-400 border-red-400 animate-pulse">
             LIVE
           </PixelBadge>
         ) : (
-          <span className="text-muted-foreground text-[8px]">Starts in {startsIn}min</span>
+          <span className="text-muted-foreground text-xs">Starts in {startsIn}min</span>
         )}
       </div>
 
-      <div className="flex items-center gap-3 mb-3 text-[8px] text-muted-foreground">
+      <div className="flex items-center gap-3 mb-3 text-xs text-muted-foreground">
         <span className="flex items-center gap-1">
           <Users className="w-3 h-3" /> {race.participants.length} runners
         </span>
@@ -185,7 +185,7 @@ function RaceCard({ race, userId, isLive }: { race: any; userId?: string; isLive
       {isLive && race.results.length > 0 && (
         <div className="space-y-1 mb-3">
           {race.results.slice(0, 3).map((result: any) => (
-            <div key={result.oderId} className="flex items-center justify-between text-[8px]">
+            <div key={result.oderId} className="flex items-center justify-between text-xs">
               <span className={cn(
                 result.rank === 1 && "text-yellow-400",
                 result.rank === 2 && "text-gray-400",
@@ -224,8 +224,8 @@ function WorldRecordCard({ record }: { record: any }) {
       <div className="flex items-center gap-3">
         <Trophy className="w-5 h-5 text-yellow-400" />
         <div>
-          <p className="text-primary text-[10px]">{record.category?.name}</p>
-          <p className="text-muted-foreground text-[8px]">by {record.userId.slice(-6)}</p>
+          <p className="text-primary text-sm">{record.category?.name}</p>
+          <p className="text-muted-foreground text-xs">by {record.userId.slice(-6)}</p>
         </div>
       </div>
       <div className="text-right">
@@ -296,7 +296,7 @@ export function SpeedrunTimer({ categorySlug, userId }: SpeedrunTimerProps) {
     return (
       <PixelCard className="p-8 text-center">
         <Timer className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-        <p className="text-muted-foreground text-[10px]">LOADING CATEGORY...</p>
+        <p className="text-muted-foreground text-sm">LOADING CATEGORY...</p>
       </PixelCard>
     );
   }
@@ -307,7 +307,7 @@ export function SpeedrunTimer({ categorySlug, userId }: SpeedrunTimerProps) {
     <div className="space-y-6">
       <PixelCard className={cn("p-6 text-center", config?.color)}>
         <h2 className="text-primary text-lg mb-2">{category.name}</h2>
-        <PixelBadge variant="outline" className={cn("text-[8px]", config?.color)}>
+        <PixelBadge variant="outline" className={cn("text-xs", config?.color)}>
           {config?.label}
         </PixelBadge>
 
@@ -346,12 +346,12 @@ export function SpeedrunTimer({ categorySlug, userId }: SpeedrunTimerProps) {
 
       {splits.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-3">SPLITS</h3>
+          <h3 className="text-primary text-sm uppercase mb-3">SPLITS</h3>
           <div className="space-y-2">
             {splits.map((split, i) => (
               <div key={i} className="flex items-center justify-between p-2 border border-border">
-                <span className="text-muted-foreground text-[10px]">{split.name}</span>
-                <span className="text-primary text-[10px]">{formatTime(split.timeMs)}</span>
+                <span className="text-muted-foreground text-sm">{split.name}</span>
+                <span className="text-primary text-sm">{formatTime(split.timeMs)}</span>
               </div>
             ))}
           </div>
@@ -359,10 +359,10 @@ export function SpeedrunTimer({ categorySlug, userId }: SpeedrunTimerProps) {
       )}
 
       <PixelCard className="p-4">
-        <h3 className="text-primary text-[10px] uppercase mb-3">REQUIREMENTS</h3>
+        <h3 className="text-primary text-sm uppercase mb-3">REQUIREMENTS</h3>
         <div className="space-y-2">
           {category.requirements.map((req: any, i: number) => (
-            <div key={i} className="flex items-center gap-2 text-[10px] text-muted-foreground">
+            <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
               <CheckCircle className="w-4 h-4" /> {req.count}x {req.category}
             </div>
           ))}
@@ -386,7 +386,7 @@ export function CategoryLeaderboard({ categoryId }: { categoryId: Id<"speedrunCa
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <Medal className="w-4 h-4" /> LEADERBOARD
       </h3>
       <div className="space-y-2">
@@ -403,7 +403,7 @@ export function CategoryLeaderboard({ categoryId }: { categoryId: Id<"speedrunCa
           >
             <div className="flex items-center gap-2">
               <span className={cn(
-                "w-6 text-center text-[10px]",
+                "w-6 text-center text-sm",
                 entry.rank === 1 && "text-yellow-400",
                 entry.rank === 2 && "text-gray-400",
                 entry.rank === 3 && "text-orange-400",
@@ -411,10 +411,10 @@ export function CategoryLeaderboard({ categoryId }: { categoryId: Id<"speedrunCa
               )}>
                 #{entry.rank}
               </span>
-              <span className="text-primary text-[10px]">{entry.userId.slice(-6)}</span>
+              <span className="text-primary text-sm">{entry.userId.slice(-6)}</span>
               {entry.isVerified && <CheckCircle className="w-3 h-3 text-green-400" />}
             </div>
-            <span className="text-primary text-[12px]">{formatTime(entry.timeMs)}</span>
+            <span className="text-primary text-base">{formatTime(entry.timeMs)}</span>
           </div>
         ))}
       </div>

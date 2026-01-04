@@ -38,7 +38,7 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
 
   return (
     <PixelCard className={cn("p-4", className)}>
-      <h3 className="text-primary text-[10px] uppercase mb-4 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-4 flex items-center gap-2">
         <Zap className="w-4 h-4" /> SYNERGY MATRIX
       </h3>
       
@@ -54,26 +54,26 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 {getSynergyIcon(synergy.synergyType)}
-                <span className="text-primary text-[10px]">
+                <span className="text-primary text-sm">
                   {synergy.otherTool?.name}
                 </span>
               </div>
               <PixelBadge
                 variant={synergy.synergyScore >= 0 ? "default" : "outline"}
-                className="text-[8px]"
+                className="text-xs"
               >
                 {synergy.synergyScore > 0 ? "+" : ""}{synergy.synergyScore}
               </PixelBadge>
             </div>
             
-            <p className="text-muted-foreground text-[8px] mb-2">
+            <p className="text-muted-foreground text-xs mb-2">
               {synergy.description}
             </p>
             
             {synergy.bonusEffect && (
               <div className="bg-[#191022] border border-primary px-2 py-1 inline-flex items-center gap-1">
                 <Zap className="w-3 h-3 text-yellow-400" />
-                <span className="text-primary text-[8px]">
+                <span className="text-primary text-xs">
                   {synergy.bonusEffect}
                 </span>
               </div>
@@ -96,8 +96,8 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
   if (!synergyData || synergyData.synergies.length === 0) {
     return (
       <div className={cn("text-center p-4", className)}>
-        <p className="text-muted-foreground text-[10px]">NO SYNERGIES DETECTED</p>
-        <p className="text-muted-foreground text-[8px]">Add more tools to see combos</p>
+        <p className="text-muted-foreground text-sm">NO SYNERGIES DETECTED</p>
+        <p className="text-muted-foreground text-xs">Add more tools to see combos</p>
       </div>
     );
   }
@@ -113,7 +113,7 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
   return (
     <PixelCard className={cn("p-4", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-primary text-[10px] uppercase flex items-center gap-2">
+        <h3 className="text-primary text-sm uppercase flex items-center gap-2">
           <Sparkles className="w-4 h-4" /> DECK SYNERGY
         </h3>
         <div className={cn("text-lg font-bold", scoreColor)}>
@@ -123,7 +123,7 @@ export function DeckSynergyDisplay({ toolIds, className }: DeckSynergyDisplayPro
 
       <div className="space-y-2">
         {synergyData.synergies.map((syn, i) => (
-          <div key={i} className="flex items-center justify-between text-[8px] border-b border-border pb-2">
+          <div key={i} className="flex items-center justify-between text-xs border-b border-border pb-2">
             <span className="text-muted-foreground">
               {syn.toolA} + {syn.toolB}
             </span>

@@ -91,12 +91,12 @@ export default function ForgotPasswordPage() {
               <CheckCircle className="w-16 h-16 text-green-500" />
             </div>
             <PixelCardTitle>PASSWORD RESET!</PixelCardTitle>
-            <p className="text-muted-foreground text-[8px] mt-2">
+            <p className="text-muted-foreground text-xs mt-2">
               YOUR PASSWORD HAS BEEN SUCCESSFULLY CHANGED
             </p>
           </PixelCardHeader>
           <PixelCardContent>
-            <p className="text-primary text-[10px]">
+            <p className="text-primary text-sm">
               REDIRECTING TO LOGIN...
             </p>
           </PixelCardContent>
@@ -115,7 +115,7 @@ export default function ForgotPasswordPage() {
           <PixelCardTitle>
             {step === "email" ? "FORGOT PASSWORD?" : "ENTER RESET CODE"}
           </PixelCardTitle>
-          <p className="text-muted-foreground text-[8px] mt-2">
+          <p className="text-muted-foreground text-xs mt-2">
             {step === "email"
               ? "ENTER YOUR EMAIL TO RECEIVE A RESET CODE"
               : `WE SENT A CODE TO ${email.toUpperCase()}`}
@@ -126,7 +126,7 @@ export default function ForgotPasswordPage() {
           {step === "email" ? (
             <form onSubmit={handleSendCode} className="space-y-4">
               <div>
-                <label className="text-primary text-[8px] block mb-2">
+                <label className="text-primary text-xs block mb-2">
                   <Mail className="w-3 h-3 inline mr-1" />
                   EMAIL ADDRESS
                 </label>
@@ -140,7 +140,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               {error && (
-                <div className="flex items-center gap-2 text-red-400 text-[8px] bg-red-900/20 p-2 border-2 border-red-500/50">
+                <div className="flex items-center gap-2 text-red-400 text-xs bg-red-900/20 p-2 border-2 border-red-500/50">
                   <AlertTriangle className="w-3 h-3" />
                   {error.toUpperCase()}
                 </div>
@@ -160,7 +160,7 @@ export default function ForgotPasswordPage() {
           ) : (
             <form onSubmit={handleResetPassword} className="space-y-4">
               <div>
-                <label className="text-primary text-[8px] block mb-2">
+                <label className="text-primary text-xs block mb-2">
                   <Shield className="w-3 h-3 inline mr-1" />
                   VERIFICATION CODE
                 </label>
@@ -176,7 +176,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               <div>
-                <label className="text-primary text-[8px] block mb-2">
+                <label className="text-primary text-xs block mb-2">
                   <Lock className="w-3 h-3 inline mr-1" />
                   NEW PASSWORD
                 </label>
@@ -193,7 +193,7 @@ export default function ForgotPasswordPage() {
               </div>
 
               {error && (
-                <div className="flex items-center gap-2 text-red-400 text-[8px] bg-red-900/20 p-2 border-2 border-red-500/50">
+                <div className="flex items-center gap-2 text-red-400 text-xs bg-red-900/20 p-2 border-2 border-red-500/50">
                   <AlertTriangle className="w-3 h-3" />
                   {error.toUpperCase()}
                 </div>
@@ -213,7 +213,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="button"
                 onClick={() => setStep("email")}
-                className="text-muted-foreground hover:text-primary text-[8px] w-full text-center"
+                className="text-muted-foreground hover:text-primary text-xs w-full text-center"
               >
                 <ArrowLeft className="w-3 h-3 inline mr-1" />
                 BACK TO EMAIL
@@ -224,7 +224,7 @@ export default function ForgotPasswordPage() {
           <div className="mt-6 text-center">
             <Link
               href="/sign-in"
-              className="text-muted-foreground hover:text-primary text-[8px] flex items-center justify-center gap-1"
+              className="text-muted-foreground hover:text-primary text-xs flex items-center justify-center gap-1"
             >
               <ArrowLeft className="w-3 h-3" />
               BACK TO LOGIN

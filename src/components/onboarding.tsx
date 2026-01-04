@@ -131,10 +131,10 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
                 <StepIcon className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-primary text-sm mb-2">{step.title}</h2>
-              <p className="text-muted-foreground text-[10px]">{step.description}</p>
+              <p className="text-muted-foreground text-sm">{step.description}</p>
             </div>
 
-            <p className="text-muted-foreground text-[10px] mb-6 leading-relaxed">
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
               {step.content}
             </p>
 
@@ -159,7 +159,7 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
             BACK
           </PixelButton>
 
-          <p className="text-muted-foreground text-[8px]">
+          <p className="text-muted-foreground text-xs">
             {currentStep + 1} / {ONBOARDING_STEPS.length}
           </p>
 

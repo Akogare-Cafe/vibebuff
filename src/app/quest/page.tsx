@@ -233,7 +233,7 @@ export default function QuestPage() {
                 />
               ))}
             </div>
-            <p className="text-muted-foreground text-[8px] text-center">
+            <p className="text-muted-foreground text-xs text-center">
               STAGE {["type", "scale", "budget", "features"].indexOf(step) + 1} OF 4
             </p>
           </div>
@@ -243,7 +243,7 @@ export default function QuestPage() {
         {step === "intro" && (
           <div className="text-center">
             <div className="mb-8">
-              <pre className="text-primary text-[8px] leading-none inline-block mb-4">
+              <pre className="text-primary text-xs leading-none inline-block mb-4">
 {`
  ██████╗ ██╗   ██╗███████╗███████╗████████╗
 ██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝
@@ -254,14 +254,14 @@ export default function QuestPage() {
 `}
               </pre>
               <h1 className="text-primary text-lg mb-4">BEGIN YOUR QUEST</h1>
-              <p className="text-muted-foreground text-[10px] max-w-md mx-auto leading-relaxed">
+              <p className="text-muted-foreground text-sm max-w-md mx-auto leading-relaxed">
                 ANSWER A FEW QUESTIONS AND OUR AI WILL RECOMMEND THE PERFECT TECH STACK FOR YOUR PROJECT.
               </p>
             </div>
 
             <PixelCard className="inline-block p-8 mb-8">
               <Swords className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-primary text-[10px] mb-4">
+              <p className="text-primary text-sm mb-4">
                 READY TO CHOOSE YOUR LOADOUT?
               </p>
               <PixelButton size="lg" onClick={() => setStep("type")}>
@@ -269,7 +269,7 @@ export default function QuestPage() {
               </PixelButton>
             </PixelCard>
 
-            <div className="text-muted-foreground text-[8px]">
+            <div className="text-muted-foreground text-xs">
               <p>ESTIMATED TIME: 2 MINUTES</p>
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function QuestPage() {
             <h2 className="text-primary text-sm mb-2 text-center">
               WHAT ARE YOU BUILDING?
             </h2>
-            <p className="text-muted-foreground text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-sm mb-8 text-center">
               SELECT YOUR PROJECT TYPE
             </p>
 
@@ -297,12 +297,12 @@ export default function QuestPage() {
                   <div className="flex justify-center mb-2 md:mb-3">
                     <type.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.projectType === type.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] md:text-xs mb-1 ${
+                  <p className={`text-sm md:text-xs mb-1 ${
                     answers.projectType === type.id ? "text-background" : "text-primary"
                   }`}>
                     {type.name}
                   </p>
-                  <p className={`text-[8px] ${
+                  <p className={`text-xs ${
                     answers.projectType === type.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {type.description}
@@ -319,7 +319,7 @@ export default function QuestPage() {
             <h2 className="text-primary text-sm mb-2 text-center">
               WHAT&apos;S YOUR SCALE?
             </h2>
-            <p className="text-muted-foreground text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-sm mb-8 text-center">
               SELECT YOUR EXPECTED USER BASE
             </p>
 
@@ -335,12 +335,12 @@ export default function QuestPage() {
                   <div className="flex justify-center mb-2 md:mb-3">
                     <scale.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.scale === scale.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] md:text-xs mb-1 ${
+                  <p className={`text-sm md:text-xs mb-1 ${
                     answers.scale === scale.id ? "text-background" : "text-primary"
                   }`}>
                     {scale.name}
                   </p>
-                  <p className={`text-[8px] ${
+                  <p className={`text-xs ${
                     answers.scale === scale.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {scale.users}
@@ -363,7 +363,7 @@ export default function QuestPage() {
             <h2 className="text-primary text-sm mb-2 text-center">
               WHAT&apos;S YOUR BUDGET?
             </h2>
-            <p className="text-muted-foreground text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-sm mb-8 text-center">
               SELECT YOUR MONTHLY BUDGET FOR TOOLS
             </p>
 
@@ -379,12 +379,12 @@ export default function QuestPage() {
                   <div className="flex justify-center mb-2 md:mb-3">
                     <budget.icon className={`w-8 h-8 md:w-10 md:h-10 ${answers.budget === budget.id ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[10px] md:text-xs mb-1 ${
+                  <p className={`text-sm md:text-xs mb-1 ${
                     answers.budget === budget.id ? "text-background" : "text-primary"
                   }`}>
                     {budget.name}
                   </p>
-                  <p className={`text-[8px] ${
+                  <p className={`text-xs ${
                     answers.budget === budget.id ? "text-[#191022]" : "text-muted-foreground"
                   }`}>
                     {budget.range}
@@ -407,7 +407,7 @@ export default function QuestPage() {
             <h2 className="text-primary text-sm mb-2 text-center">
               WHAT FEATURES DO YOU NEED?
             </h2>
-            <p className="text-muted-foreground text-[10px] mb-8 text-center">
+            <p className="text-muted-foreground text-sm mb-8 text-center">
               SELECT ALL THAT APPLY
             </p>
 
@@ -423,7 +423,7 @@ export default function QuestPage() {
                   <div className="flex justify-center mb-2 md:mb-3">
                     <feature.icon className={`w-6 h-6 md:w-8 md:h-8 ${answers.features.includes(feature.id) ? "text-background" : "text-primary"}`} />
                   </div>
-                  <p className={`text-[8px] ${
+                  <p className={`text-xs ${
                     answers.features.includes(feature.id) ? "text-background" : "text-primary"
                   }`}>
                     {feature.name}
@@ -458,7 +458,7 @@ export default function QuestPage() {
 `}
               </pre>
               <h2 className="text-primary text-sm mb-2">YOUR RECOMMENDED LOADOUT</h2>
-              <p className="text-muted-foreground text-[10px]">
+              <p className="text-muted-foreground text-sm">
                 BASED ON: {PROJECT_TYPES.find(t => t.id === answers.projectType)?.name.toUpperCase()} | {SCALES.find(s => s.id === answers.scale)?.name.toUpperCase()} | {BUDGETS.find(b => b.id === answers.budget)?.name.toUpperCase()}
               </p>
             </div>
@@ -473,7 +473,7 @@ export default function QuestPage() {
                       return ProjectIcon ? <ProjectIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-muted-foreground text-[8px]">PROJECT</p>
+                  <p className="text-muted-foreground text-xs">PROJECT</p>
                 </div>
                 <div>
                   <div className="flex justify-center mb-2">
@@ -482,7 +482,7 @@ export default function QuestPage() {
                       return ScaleIcon ? <ScaleIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-muted-foreground text-[8px]">SCALE</p>
+                  <p className="text-muted-foreground text-xs">SCALE</p>
                 </div>
                 <div>
                   <div className="flex justify-center mb-2">
@@ -491,11 +491,11 @@ export default function QuestPage() {
                       return BudgetIcon ? <BudgetIcon className="w-8 h-8 text-primary" /> : null;
                     })()}
                   </div>
-                  <p className="text-muted-foreground text-[8px]">BUDGET</p>
+                  <p className="text-muted-foreground text-xs">BUDGET</p>
                 </div>
                 <div>
                   <p className="text-primary text-lg mb-2">{answers.features.length}</p>
-                  <p className="text-muted-foreground text-[8px]">FEATURES</p>
+                  <p className="text-muted-foreground text-xs">FEATURES</p>
                 </div>
               </div>
             </PixelCard>
@@ -505,7 +505,7 @@ export default function QuestPage() {
               <div className="text-center py-12">
                 <Bot className="w-12 h-12 mx-auto mb-4 text-muted-foreground animate-pulse" />
                 <p className="text-primary text-sm mb-2">AI IS ANALYZING YOUR REQUIREMENTS...</p>
-                <p className="text-muted-foreground text-[8px]">THIS MAY TAKE A FEW SECONDS</p>
+                <p className="text-muted-foreground text-xs">THIS MAY TAKE A FEW SECONDS</p>
               </div>
             )}
 
@@ -515,9 +515,9 @@ export default function QuestPage() {
                 <div className="flex items-start gap-3">
                   <Bot className="w-6 h-6 text-muted-foreground shrink-0 mt-1" />
                   <div>
-                    <p className="text-primary text-[10px] mb-2">AI ANALYSIS</p>
-                    <p className="text-muted-foreground text-[8px] leading-relaxed">{aiRecommendations.aiReasoning}</p>
-                    <p className="text-primary text-[10px] mt-3">
+                    <p className="text-primary text-sm mb-2">AI ANALYSIS</p>
+                    <p className="text-muted-foreground text-xs leading-relaxed">{aiRecommendations.aiReasoning}</p>
+                    <p className="text-primary text-sm mt-3">
                       ESTIMATED COST: {aiRecommendations.estimatedMonthlyCost}
                     </p>
                   </div>
@@ -528,7 +528,7 @@ export default function QuestPage() {
             {/* Recommendations by Category */}
             {!isGenerating && aiRecommendations && Object.entries(aiRecommendations.recommendations).map(([category, tools]) => (
               <div key={category} className="mb-8">
-                <h3 className="text-primary text-[12px] mb-4 flex items-center gap-2">
+                <h3 className="text-primary text-base mb-4 flex items-center gap-2">
                   <ChevronRight className="w-4 h-4 pixel-cursor" /> {category.toUpperCase()}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
@@ -547,8 +547,8 @@ export default function QuestPage() {
                           </div>
                         </PixelCardHeader>
                         <PixelCardContent>
-                          <p className="text-muted-foreground text-[8px] mb-2">{tool.tagline}</p>
-                          <p className="text-primary text-[8px] italic">{tool.reasoning}</p>
+                          <p className="text-muted-foreground text-xs mb-2">{tool.tagline}</p>
+                          <p className="text-primary text-xs italic">{tool.reasoning}</p>
                         </PixelCardContent>
                       </PixelCard>
                     </Link>

@@ -71,7 +71,7 @@ export function StartupStories({ className }: StartupStoriesProps) {
 
       {topStories && topStories.length > 0 && !filter && (
         <div>
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <ThumbsUp className="w-4 h-4" /> TOP STORIES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -103,19 +103,19 @@ function StoryCard({ story, featured }: { story: any; featured?: boolean }) {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Building2 className="w-5 h-5 text-muted-foreground" />
-            <h3 className="text-primary text-[12px]">{story.companyName}</h3>
+            <h3 className="text-primary text-base">{story.companyName}</h3>
             {story.isVerified && <CheckCircle className="w-3 h-3 text-green-400" />}
           </div>
-          <p className="text-muted-foreground text-[8px]">{story.industry}</p>
+          <p className="text-muted-foreground text-xs">{story.industry}</p>
         </div>
         <PixelBadge variant="outline" className={cn("text-[6px]", config?.color)}>
           {config?.label}
         </PixelBadge>
       </div>
 
-      <p className="text-muted-foreground text-[10px] mb-3 line-clamp-2">{story.description}</p>
+      <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{story.description}</p>
 
-      <div className="flex items-center gap-3 mb-3 text-[8px] text-muted-foreground">
+      <div className="flex items-center gap-3 mb-3 text-xs text-muted-foreground">
         <span className="flex items-center gap-1">
           <Calendar className="w-3 h-3" /> {story.foundedYear}
         </span>
@@ -130,13 +130,13 @@ function StoryCard({ story, featured }: { story: any; featured?: boolean }) {
       </div>
 
       {story.costBreakdown && (
-        <div className="flex items-center gap-1 mb-3 text-[8px] text-muted-foreground">
+        <div className="flex items-center gap-1 mb-3 text-xs text-muted-foreground">
           <DollarSign className="w-3 h-3" /> ${story.costBreakdown.monthly}/mo
         </div>
       )}
 
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3 text-[8px] text-muted-foreground">
+        <div className="flex items-center gap-3 text-xs text-muted-foreground">
           <button 
             onClick={() => upvoteStory({ storyId: story._id })}
             className="flex items-center gap-1 hover:text-primary"
@@ -169,7 +169,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
     return (
       <PixelCard className="p-8 text-center">
         <Building2 className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-        <p className="text-muted-foreground text-[10px]">LOADING STORY...</p>
+        <p className="text-muted-foreground text-sm">LOADING STORY...</p>
       </PixelCard>
     );
   }
@@ -185,7 +185,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
               <Building2 className="w-8 h-8 text-muted-foreground" />
               <div>
                 <h1 className="text-primary text-xl">{story.companyName}</h1>
-                <p className="text-muted-foreground text-[10px]">{story.industry}</p>
+                <p className="text-muted-foreground text-sm">{story.industry}</p>
               </div>
               {story.isVerified && (
                 <PixelBadge variant="outline" className="text-[6px] text-green-400 border-green-400">
@@ -194,14 +194,14 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
               )}
             </div>
           </div>
-          <PixelBadge variant="outline" className={cn("text-[8px]", config?.color)}>
+          <PixelBadge variant="outline" className={cn("text-xs", config?.color)}>
             {config?.label}
           </PixelBadge>
         </div>
 
-        <p className="text-muted-foreground text-[12px] mb-4">{story.description}</p>
+        <p className="text-muted-foreground text-base mb-4">{story.description}</p>
 
-        <div className="flex items-center gap-4 text-[10px] text-muted-foreground">
+        <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar className="w-4 h-4" /> Founded {story.foundedYear}
           </span>
@@ -220,7 +220,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
       </PixelCard>
 
       <div>
-        <h2 className="text-primary text-[12px] uppercase mb-4 flex items-center gap-2">
+        <h2 className="text-primary text-base uppercase mb-4 flex items-center gap-2">
           <Layers className="w-4 h-4" /> STACK EVOLUTION
         </h2>
         <div className="relative">
@@ -231,23 +231,23 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
                 <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#191022]" />
                 <PixelCard className="flex-1 p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-primary text-[12px]">{phase.phase}</h3>
+                    <h3 className="text-primary text-base">{phase.phase}</h3>
                     <PixelBadge variant="outline" className="text-[6px]">
                       {phase.year}
                     </PixelBadge>
                   </div>
-                  <p className="text-muted-foreground text-[10px] mb-3">{phase.reasoning}</p>
+                  <p className="text-muted-foreground text-sm mb-3">{phase.reasoning}</p>
                   <div className="flex flex-wrap gap-2 mb-3">
                     {phase.tools?.map((tool: any) => (
                       <Link key={tool._id} href={`/tools/${tool.slug}`}>
-                        <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
+                        <PixelBadge variant="outline" className="text-xs hover:border-primary">
                           {tool.name}
                         </PixelBadge>
                       </Link>
                     ))}
                   </div>
                   {phase.lessonsLearned && (
-                    <p className="text-muted-foreground text-[8px] italic">
+                    <p className="text-muted-foreground text-xs italic">
                       Lesson: {phase.lessonsLearned}
                     </p>
                   )}
@@ -260,7 +260,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
 
       {story.costBreakdown && (
         <PixelCard className="p-4">
-          <h2 className="text-primary text-[12px] uppercase mb-4 flex items-center gap-2">
+          <h2 className="text-primary text-base uppercase mb-4 flex items-center gap-2">
             <DollarSign className="w-4 h-4" /> COST BREAKDOWN
           </h2>
           <p className="text-primary text-2xl mb-4">${story.costBreakdown.monthly}/month</p>
@@ -268,7 +268,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
             {story.costBreakdown.breakdown.map((item: any, i: number) => (
               <div key={i} className="text-center p-2 border border-border">
                 <p className="text-primary text-lg">${item.amount}</p>
-                <p className="text-muted-foreground text-[8px]">{item.category}</p>
+                <p className="text-muted-foreground text-xs">{item.category}</p>
               </div>
             ))}
           </div>
@@ -277,14 +277,14 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
 
       {story.founderQuotes && story.founderQuotes.length > 0 && (
         <PixelCard className="p-4">
-          <h2 className="text-primary text-[12px] uppercase mb-4 flex items-center gap-2">
+          <h2 className="text-primary text-base uppercase mb-4 flex items-center gap-2">
             <Quote className="w-4 h-4" /> FOUNDER INSIGHTS
           </h2>
           <div className="space-y-4">
             {story.founderQuotes.map((quote: any, i: number) => (
               <div key={i} className="border-l-2 border-primary pl-4">
-                <p className="text-primary text-[12px] italic mb-2">"{quote.quote}"</p>
-                <p className="text-muted-foreground text-[10px]">
+                <p className="text-primary text-base italic mb-2">"{quote.quote}"</p>
+                <p className="text-muted-foreground text-sm">
                   - {quote.author}, {quote.role}
                 </p>
               </div>

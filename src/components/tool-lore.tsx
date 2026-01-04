@@ -43,8 +43,8 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
     return (
       <PixelCard className="p-8 text-center">
         <BookOpen className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-        <p className="text-muted-foreground text-[10px]">NO LORE AVAILABLE</p>
-        <p className="text-muted-foreground text-[8px]">This tool's story is yet to be written...</p>
+        <p className="text-muted-foreground text-sm">NO LORE AVAILABLE</p>
+        <p className="text-muted-foreground text-xs">This tool's story is yet to be written...</p>
       </PixelCard>
     );
   }
@@ -71,7 +71,7 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
         <h2 className="text-primary text-sm flex items-center gap-2">
           <BookOpen className="w-4 h-4" /> TOOL LORE
         </h2>
-        <PixelBadge variant="outline" className="text-[8px]">
+        <PixelBadge variant="outline" className="text-xs">
           <Scroll className="w-3 h-3 mr-1" /> ENCYCLOPEDIA
         </PixelBadge>
       </div>
@@ -83,7 +83,7 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
         isUnlocked={isUnlocked("origin")}
         onToggle={() => toggleSection("origin")}
       >
-        <p className="text-muted-foreground text-[10px] leading-relaxed">{lore.originStory}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">{lore.originStory}</p>
       </LoreSection>
 
       {lore.creatorInfo && (
@@ -95,12 +95,12 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
           onToggle={() => toggleSection("creator")}
         >
           <div className="space-y-2">
-            <p className="text-primary text-[12px]">{lore.creatorInfo.name}</p>
-            <p className="text-muted-foreground text-[10px]">{lore.creatorInfo.bio}</p>
+            <p className="text-primary text-base">{lore.creatorInfo.name}</p>
+            <p className="text-muted-foreground text-sm">{lore.creatorInfo.bio}</p>
             {lore.creatorInfo.quote && (
               <div className="flex items-start gap-2 p-2 border-l-2 border-primary bg-[#191022]">
                 <Quote className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                <p className="text-primary text-[10px] italic">"{lore.creatorInfo.quote}"</p>
+                <p className="text-primary text-sm italic">"{lore.creatorInfo.quote}"</p>
               </div>
             )}
           </div>
@@ -121,9 +121,9 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
                 <PixelBadge variant="outline" className="text-[6px]">
                   v{era.version}
                 </PixelBadge>
-                <span className="text-primary text-[10px]">{era.name}</span>
+                <span className="text-primary text-sm">{era.name}</span>
               </div>
-              <p className="text-muted-foreground text-[8px] mb-1">{era.description}</p>
+              <p className="text-muted-foreground text-xs mb-1">{era.description}</p>
               <div className="flex flex-wrap gap-1">
                 {era.majorChanges.map((change: string, i: number) => (
                   <PixelBadge key={i} variant="outline" className="text-[6px]">
@@ -147,7 +147,7 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
           {lore.funFacts.map((fact: string, index: number) => (
             <li key={index} className="flex items-start gap-2">
               <Lightbulb className="w-3 h-3 text-yellow-400 flex-shrink-0 mt-0.5" />
-              <span className="text-muted-foreground text-[10px]">{fact}</span>
+              <span className="text-muted-foreground text-sm">{fact}</span>
             </li>
           ))}
         </ul>
@@ -164,7 +164,7 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
           <div className="flex flex-wrap gap-2">
             {lore.relatedTools.map((tool: any) => (
               <Link key={tool._id} href={`/tools/${tool.slug}`}>
-                <PixelBadge variant="outline" className="text-[8px] hover:border-primary">
+                <PixelBadge variant="outline" className="text-xs hover:border-primary">
                   {tool.name}
                 </PixelBadge>
               </Link>
@@ -194,7 +194,7 @@ function LoreSection({ title, icon, isExpanded, isUnlocked, onToggle, children }
       >
         <div className="flex items-center gap-2">
           {icon}
-          <span className="text-primary text-[10px] uppercase">{title}</span>
+          <span className="text-primary text-sm uppercase">{title}</span>
         </div>
         <div className="flex items-center gap-2">
           {!isUnlocked && <Lock className="w-3 h-3 text-muted-foreground" />}
@@ -213,7 +213,7 @@ function LoreSection({ title, icon, isExpanded, isUnlocked, onToggle, children }
       {!isUnlocked && isExpanded && (
         <div className="p-3 pt-0 border-t border-border text-center">
           <Lock className="w-8 h-8 mx-auto text-muted-foreground mb-2" />
-          <p className="text-muted-foreground text-[8px]">Use this tool to unlock lore</p>
+          <p className="text-muted-foreground text-xs">Use this tool to unlock lore</p>
         </div>
       )}
     </PixelCard>
@@ -229,12 +229,12 @@ export function EncyclopediaProgress({ userId }: { userId: string }) {
 
   return (
     <PixelCard className="p-4">
-      <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
         <BookOpen className="w-4 h-4" /> ENCYCLOPEDIA PROGRESS
       </h3>
       
       <div className="mb-3">
-        <div className="flex justify-between text-[8px] mb-1">
+        <div className="flex justify-between text-xs mb-1">
           <span className="text-muted-foreground">COMPLETION</span>
           <span className="text-primary">{percent}%</span>
         </div>
@@ -246,7 +246,7 @@ export function EncyclopediaProgress({ userId }: { userId: string }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-[8px]">
+      <div className="grid grid-cols-2 gap-2 text-xs">
         <div className="text-center p-2 border border-border">
           <p className="text-primary text-lg">{progress.toolsDiscovered}</p>
           <p className="text-muted-foreground">/ {progress.totalTools} TOOLS</p>

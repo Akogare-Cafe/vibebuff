@@ -1,23 +1,23 @@
-# Vibe Anything - Product Plan
+# VibeBuff - Product Plan
 
-> **AI-Powered Tech Stack Recommendation Platform**
-> The ultimate planning and recommendation tool for every part of your fullstack development journey.
-
----
-
-## 🎯 Product Vision
-
-**Vibe Anything** is an intelligent web application that helps developers, teams, and organizations choose the right tools for their projects. By leveraging AI and an extensive database of development tools, it provides personalized recommendations based on:
-
-- **Budget constraints**
-- **Project scale and complexity**
-- **Target user base**
-- **Technical requirements**
-- **Team expertise**
+> **Gamified Tech Stack Discovery Platform**
+> Transform choosing development tools into an engaging RPG experience.
 
 ---
 
-## 👥 User Personas
+## Product Vision
+
+**VibeBuff** is a gamified tech stack discovery platform that combines AI-powered recommendations with collection mechanics, competitive gameplay, and social features. It helps developers discover, compare, and build optimal technology stacks through:
+
+- **AI-Powered Quest Mode** - Personalized stack recommendations
+- **RPG Progression** - XP, levels, achievements, and mastery
+- **Collection Mechanics** - Tool cards, decks, and trading
+- **Competitive Gameplay** - Battles, speedruns, and debates
+- **Social Features** - Guilds, parties, and mentorship
+
+---
+
+## User Personas
 
 ### 1. **Solo Developer / Indie Hacker**
 - Building MVPs or side projects
@@ -45,7 +45,7 @@
 
 ---
 
-## 🚀 Core Features
+## Core Features
 
 ### Phase 1: MVP (Weeks 1-4)
 
@@ -148,49 +148,41 @@ Specialized recommendations for AI/LLM integration:
 
 ---
 
-## 🏗️ Technical Architecture
+## Technical Architecture
 
 ### Frontend Stack
 ```
 Framework:      Next.js 15 (App Router)
+UI:             React 19
 Language:       TypeScript
-Styling:        Tailwind CSS + shadcn/ui
-State:          Zustand + React Query
-Forms:          React Hook Form + Zod
+Styling:        Tailwind CSS v4 + shadcn/ui
+Icons:          lucide-react (exclusively)
 Animations:     Framer Motion
+Flow Diagrams:  @xyflow/react
 ```
 
 ### Backend Stack
 ```
-Runtime:        Node.js / Bun
-API:            Next.js API Routes + tRPC
-Database:       PostgreSQL (via Supabase)
-Cache:          Redis (Upstash)
-Search:         Typesense / Meilisearch
-AI:             OpenAI API + Anthropic API
+Backend:        Convex (realtime database + functions)
+Auth:           Clerk
+AI:             Anthropic Claude API
 ```
 
 ### Infrastructure
 ```
 Hosting:        Vercel
-Database:       Supabase
+Backend:        Convex Cloud
 Auth:           Clerk
-Analytics:      PostHog
-Monitoring:     Sentry
-CDN:            Vercel Edge
 ```
 
 ### AI Integration
 ```
-Primary LLM:    Claude 3.5 Sonnet (recommendations)
-Fallback:       GPT-4o (high availability)
-Embeddings:     OpenAI text-embedding-3-small
-Research:       Perplexity API (deep research)
+Primary LLM:    Claude 3.5 Sonnet (quest recommendations)
 ```
 
 ---
 
-## 📊 Database Schema (High-Level)
+## Database Schema (Convex)
 
 ### Core Entities
 
@@ -231,7 +223,7 @@ Research:       Perplexity API (deep research)
 
 ---
 
-## 🎨 UI/UX Design Principles
+## UI/UX Design Principles
 
 ### Design System
 - **Clean, minimal interface** - Focus on content, not chrome
@@ -273,7 +265,7 @@ Research:       Perplexity API (deep research)
 
 ---
 
-## 📈 Success Metrics
+## Success Metrics
 
 ### North Star Metric
 **Recommendations Acted Upon** - Users who adopt at least one recommended tool
@@ -287,7 +279,7 @@ Research:       Perplexity API (deep research)
 
 ---
 
-## 💰 Monetization Strategy
+## Monetization Strategy
 
 ### Freemium Model
 
@@ -305,11 +297,11 @@ Research:       Perplexity API (deep research)
 
 ---
 
-## 🗓️ Implementation Roadmap
+## Implementation Roadmap
 
 ### Week 1-2: Foundation
 - [ ] Project setup (Next.js, TypeScript, Tailwind)
-- [ ] Database schema and Supabase setup
+- [ ] Database schema and Convex setup
 - [ ] Authentication with Clerk
 - [ ] Basic tool database seeding
 - [ ] Landing page
@@ -373,7 +365,7 @@ Research:       Perplexity API (deep research)
 
 ---
 
-## 🎯 Competitive Differentiation
+## Competitive Differentiation
 
 ### vs. StackShare
 - AI-powered recommendations vs. passive browsing

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-primary text-xl mb-8 pixel-glow">PRIVACY POLICY</h1>
         
-        <div className="space-y-8 text-muted-foreground text-[10px] leading-relaxed">
+        <div className="space-y-8 text-muted-foreground text-sm leading-relaxed">
           <p>Last updated: January 2025</p>
 
           <section>

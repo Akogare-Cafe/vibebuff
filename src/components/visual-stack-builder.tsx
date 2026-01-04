@@ -4,19 +4,42 @@ import { useState, useCallback, useMemo } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import {
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const xyflow = require("@xyflow/react");
+const {
   ReactFlow,
-  Node,
-  Edge,
-  Controls,
-  Background,
   useNodesState,
   useEdgesState,
   addEdge,
-  Connection,
   MarkerType,
   Panel,
-} from "@xyflow/react";
+  Controls,
+  Background,
+} = xyflow;
+
+type Node<T = Record<string, unknown>> = {
+  id: string;
+  position: { x: number; y: number };
+  data: T;
+  type?: string;
+};
+
+type Edge = {
+  id: string;
+  source: string;
+  target: string;
+  type?: string;
+  animated?: boolean;
+  markerEnd?: { type: typeof MarkerType };
+  label?: string;
+};
+
+type Connection = {
+  source: string;
+  target: string;
+  sourceHandle?: string | null;
+  targetHandle?: string | null;
+};
 import "@xyflow/react/dist/style.css";
 import {
   PixelCard,
@@ -95,7 +118,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
         <p className="text-muted-foreground text-xs">{data.description}</p>
       )}
       <PixelBadge
-        className="mt-2 text-[8px]"
+        className="mt-2 text-xs"
         style={{ backgroundColor: `${color}20`, color }}
       >
         {data.category}
@@ -139,8 +162,8 @@ function BlueprintCard({
         </p>
         <div className="flex items-center justify-between">
           <div className="flex gap-1">
-            <PixelBadge className="text-[8px]">{blueprint.projectType}</PixelBadge>
-            <PixelBadge className="text-[8px]">{blueprint.difficulty}</PixelBadge>
+            <PixelBadge className="text-xs">{blueprint.projectType}</PixelBadge>
+            <PixelBadge className="text-xs">{blueprint.difficulty}</PixelBadge>
           </div>
           {blueprint.estimatedCost && (
             <span className="text-[#fbbf24] text-xs">{blueprint.estimatedCost}</span>
@@ -156,7 +179,7 @@ function ToolPalette({
 }: {
   onAddNode: (category: string, label: string) => void;
 }) {
-  const tools = useQuery(api.tools.list);
+  const tools = useQuery(api.tools.list, { limit: 100 });
 
   const toolsByCategory = useMemo(() => {
     if (!tools) return {};
@@ -207,7 +230,7 @@ function ToolPalette({
             <button
               key={cat}
               onClick={() => onAddNode(cat, `New ${cat}`)}
-              className="p-2 rounded text-[10px] transition-colors"
+              className="p-2 rounded text-sm transition-colors"
               style={{
                 backgroundColor: `${categoryColors[cat]}20`,
                 color: categoryColors[cat],
@@ -224,8 +247,8 @@ function ToolPalette({
 
 export function VisualStackBuilder() {
   const { user } = useUser();
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node<ToolNodeData>>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [showPalette, setShowPalette] = useState(true);
   const [buildTitle, setBuildTitle] = useState("My Stack");
 
@@ -234,7 +257,7 @@ export function VisualStackBuilder() {
 
   const onConnect = useCallback(
     (params: Connection) =>
-      setEdges((eds) =>
+      setEdges((eds: Edge[]) =>
         addEdge(
           {
             ...params,
@@ -256,7 +279,7 @@ export function VisualStackBuilder() {
         position: { x: 250 + Math.random() * 200, y: 100 + Math.random() * 200 },
         data: { label, category, description: "" },
       };
-      setNodes((nds) => [...nds, newNode]);
+      setNodes((nds: Node[]) => [...nds, newNode]);
     },
     [setNodes]
   );
@@ -276,7 +299,7 @@ export function VisualStackBuilder() {
     await createBuild({
       userId: user.id,
       title: buildTitle,
-      nodes: nodes.map((n) => ({
+      nodes: nodes.map((n: Node) => ({
         id: n.id,
         type: n.type || "tool",
         position: n.position,
@@ -287,7 +310,7 @@ export function VisualStackBuilder() {
           toolId: n.data.toolId,
         },
       })),
-      edges: edges.map((e) => ({
+      edges: edges.map((e: Edge) => ({
         id: e.id,
         source: e.source,
         target: e.target,
@@ -389,12 +412,12 @@ export function VisualStackBuilder() {
           </PixelCardHeader>
           <PixelCardContent>
             <div className="flex flex-wrap gap-2">
-              {nodes.map((node) => (
+              {nodes.map((node: Node<ToolNodeData>) => (
                 <PixelBadge
                   key={node.id}
                   style={{
-                    backgroundColor: `${categoryColors[node.data.category]}20`,
-                    color: categoryColors[node.data.category],
+                    backgroundColor: `${categoryColors[node.data.category as keyof typeof categoryColors]}20`,
+                    color: categoryColors[node.data.category as keyof typeof categoryColors],
                   }}
                 >
                   {node.data.label}

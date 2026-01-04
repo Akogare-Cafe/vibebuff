@@ -97,7 +97,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
           <h2 className="text-primary text-sm flex items-center gap-2">
             <FileText className="w-5 h-5" /> STACK CONTRACTS
           </h2>
-          <PixelBadge variant="outline" className="text-[8px]">
+          <PixelBadge variant="outline" className="text-xs">
             {contracts?.length ?? 0} AVAILABLE
           </PixelBadge>
         </div>
@@ -121,7 +121,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-primary text-[12px] mb-1">
+                    <h3 className="text-primary text-base mb-1">
                       {contract.title}
                     </h3>
                     <div className="flex items-center gap-2">
@@ -143,18 +143,18 @@ export function StackContracts({ userId, className }: StackContractsProps) {
                   )}
                 </div>
 
-                <p className="text-muted-foreground text-[8px] mb-3">
+                <p className="text-muted-foreground text-xs mb-3">
                   {contract.description}
                 </p>
 
                 <div className="flex items-center gap-2 mb-3 p-2 bg-[#191022] border border-border">
                   <User className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-primary text-[10px]">
+                  <span className="text-primary text-sm">
                     {contract.clientName}
                   </span>
                 </div>
 
-                <div className="space-y-1 mb-3 text-[8px]">
+                <div className="space-y-1 mb-3 text-xs">
                   <div className="flex items-center gap-2">
                     <Target className="w-3 h-3 text-muted-foreground" />
                     <span className="text-muted-foreground">
@@ -182,19 +182,19 @@ export function StackContracts({ userId, className }: StackContractsProps) {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-green-400" />
-                    <span className="text-green-400 text-[10px]">
+                    <span className="text-green-400 text-sm">
                       +{contract.rewards.xp} XP
                     </span>
                     {contract.rewards.bonusTitle && (
                       <>
                         <Award className="w-4 h-4 text-yellow-400" />
-                        <span className="text-yellow-400 text-[8px]">
+                        <span className="text-yellow-400 text-xs">
                           {contract.rewards.bonusTitle}
                         </span>
                       </>
                     )}
                   </div>
-                  <div className="flex items-center gap-1 text-muted-foreground text-[8px]">
+                  <div className="flex items-center gap-1 text-muted-foreground text-xs">
                     <Clock className="w-3 h-3" />
                     {getTimeRemaining(contract.expiresAt)}
                   </div>
@@ -207,7 +207,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
         {(!contracts || contracts.length === 0) && (
           <div className="text-center py-12">
             <FileText className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-            <p className="text-muted-foreground text-[10px]">
+            <p className="text-muted-foreground text-sm">
               No active contracts. Check back later!
             </p>
           </div>
@@ -216,7 +216,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
 
       {activeContract && (
         <PixelCard className="p-6">
-          <h3 className="text-primary text-[10px] uppercase mb-4">
+          <h3 className="text-primary text-sm uppercase mb-4">
             BUILD STACK FOR: {activeContract.title}
           </h3>
 
@@ -238,7 +238,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
           </div>
 
           <div className="flex items-center justify-between">
-            <p className="text-muted-foreground text-[10px]">
+            <p className="text-muted-foreground text-sm">
               Selected: {selectedTools.length} tools
             </p>
             <div className="flex gap-2">
@@ -266,7 +266,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
 
       {userSubmissions && userSubmissions.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-4">
+          <h3 className="text-primary text-sm uppercase mb-4">
             YOUR SUBMISSIONS
           </h3>
           <div className="space-y-2">
@@ -283,12 +283,12 @@ export function StackContracts({ userId, className }: StackContractsProps) {
                   ) : (
                     <Clock className="w-4 h-4 text-yellow-400" />
                   )}
-                  <span className="text-primary text-[10px]">
+                  <span className="text-primary text-sm">
                     {submission.contract?.title ?? "Unknown Contract"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground text-[8px]">
+                  <span className="text-muted-foreground text-xs">
                     Score: {submission.score}
                   </span>
                   <PixelBadge

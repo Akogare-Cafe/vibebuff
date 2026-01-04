@@ -1,78 +1,81 @@
-# 🎯 Vibe Anything
+# VibeBuff
 
-> AI-powered tech stack recommendation platform for every part of your fullstack development journey.
+> AI-powered tech stack recommendation platform with a retro gaming/RPG aesthetic.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC)](https://tailwindcss.com/)
+[![Convex](https://img.shields.io/badge/Convex-Backend-orange)](https://convex.dev/)
 
-## 🌟 Overview
+## Overview
 
-**Vibe Anything** helps developers, teams, and organizations choose the right tools for their projects. Using AI and an extensive database of 500+ development tools, it provides personalized recommendations based on:
+**VibeBuff** is a gamified tech stack discovery platform that transforms choosing development tools into an engaging RPG experience. It combines AI-powered recommendations with collection mechanics, competitive gameplay, and social features.
 
-- 💰 **Budget constraints** - From free tiers to enterprise
-- 📈 **Project scale** - Hobby to millions of users
-- 👥 **Team size** - Solo to large organizations
-- ⚡ **Technical requirements** - Performance, realtime, compliance
-- 🤖 **AI/LLM needs** - Right model for your use case
+**Key Features:**
+- **AI-Powered Quest Mode** - Answer questions, get personalized stack recommendations
+- **Tool Collection & Deck Building** - Build and share tool "loadouts"
+- **Boss Battle Mode** - Tool vs tool battles with RPG stats
+- **Visual Stack Builder** - Drag-and-drop architecture diagrams
+- **30+ Gamified Systems** - Achievements, guilds, trading, speedruns, and more
 
-## ✨ Features
+## Features
 
 ### Core Features
-- **Smart Questionnaire** - Guided flow to understand your needs
-- **Natural Language Input** - "I want to build a SaaS like Notion"
-- **AI Recommendations** - Powered by Claude 3.5 Sonnet
-- **Tool Database** - 500+ tools across 15+ categories
-- **Cost Calculator** - Estimate monthly costs at scale
-- **Comparison View** - Side-by-side tool comparisons
+- **Quest Mode** - AI-powered questionnaire for stack recommendations
+- **Tool Browser** - RPG-style inventory view with rarity tiers
+- **Compare Tools** - Side-by-side tool comparisons
+- **Visual Stack Builder** - Drag-and-drop flow diagrams with @xyflow/react
+- **Deck Building** - Create and share tool loadouts with synergy scoring
 
-### Categories Covered
-- 💻 IDEs & Code Editors
-- 🤖 AI Coding Assistants
-- ⚛️ Frontend Frameworks
-- 🏗️ Meta-Frameworks (Next.js, Nuxt, etc.)
-- 🔧 Backend Runtimes
-- 🗄️ Databases & BaaS
-- 🔐 Authentication
-- ☁️ Hosting & Deployment
-- ⚡ Realtime Services
-- 🎨 Styling & Components
-- 🧪 Testing Tools
-- 📊 Observability
-- 🧠 LLMs & AI APIs
+### Gamification
+- **XP & Leveling** - Earn XP for interactions, level up your profile
+- **Achievements & Badges** - Unlock rewards for exploration and mastery
+- **Tool Mastery** - Per-tool progression from novice to grandmaster
+- **Daily Challenges** - Bounty board with XP rewards
+- **Battle Pass** - Seasonal progression with rewards
 
-## 🚀 Quick Start
+### Competitive & Social
+- **Boss Battles** - Tool vs tool battles with RPG stats
+- **Guilds** - Team stacks and guild challenges
+- **Trading Post** - Card trading marketplace
+- **Speedrun Mode** - Timed stack building with leaderboards
+- **Debate Arena** - Structured tool debates
+
+### Content & Discovery
+- **Tool Lore** - Origin stories and version history
+- **Tool Graveyard** - Deprecated tools with obituaries
+- **Startup Stories** - Real company tech stack case studies
+- **Time Machine** - Build stacks with historical tool availability
+
+## Quick Start
 
 ### Prerequisites
 - Node.js 20+
-- pnpm (recommended) or npm
-- Supabase account
+- npm or pnpm
+- Convex account
 - Clerk account
-- Anthropic API key
+- Anthropic API key (for AI features)
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/vibe-anything.git
-cd vibe-anything
+git clone https://github.com/yourusername/vibebuff.git
+cd vibebuff
 
 # Install dependencies
-pnpm install
+npm install
 
 # Set up environment variables
 cp .env.example .env.local
 # Edit .env.local with your keys
 
-# Run database migrations
-pnpm db:migrate
+# Start Convex development server (in separate terminal)
+npx convex dev
 
-# Seed the database
-pnpm db:seed
-
-# Start development server
-pnpm dev
+# Start Next.js development server
+npm run dev
 ```
 
 ### Environment Variables
@@ -82,98 +85,95 @@ pnpm dev
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
 
-# Database (Supabase)
-DATABASE_URL=postgresql://...
-NEXT_PUBLIC_SUPABASE_URL=https://...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+# Convex
+CONVEX_DEPLOYMENT=dev:...
+NEXT_PUBLIC_CONVEX_URL=https://...
 
-# AI (Anthropic)
+# AI (Anthropic) - for Quest mode recommendations
 ANTHROPIC_API_KEY=sk-ant-...
-
-# Optional: Research (Perplexity)
-PERPLEXITY_API_KEY=pplx-...
-
-# Optional: Caching (Upstash)
-UPSTASH_REDIS_REST_URL=...
-UPSTASH_REDIS_REST_TOKEN=...
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-src/
-├── app/                    # Next.js App Router
-│   ├── (auth)/            # Protected routes
-│   ├── (marketing)/       # Public pages
-│   ├── api/               # API routes
-│   ├── tools/             # Tool browser
-│   ├── recommend/         # Recommendation flow
-│   └── compare/           # Comparison views
-├── components/
-│   ├── ui/                # shadcn/ui components
-│   ├── forms/             # Form components
-│   ├── tools/             # Tool-related components
-│   └── recommendations/   # Recommendation components
-├── lib/
-│   ├── ai/                # AI integration
-│   ├── db/                # Database (Drizzle)
-│   ├── services/          # Business logic
-│   └── utils/             # Utilities
-├── hooks/                 # Custom React hooks
-├── stores/                # Zustand stores
-└── types/                 # TypeScript types
+vibebuff/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── page.tsx            # Home
+│   │   ├── tools/              # Tool browser & detail pages
+│   │   ├── quest/              # AI recommendation quest
+│   │   ├── compare/            # Tool comparisons
+│   │   ├── profile/            # User profile (RPG character sheet)
+│   │   ├── stack-builder/      # Visual stack builder
+│   │   ├── deck/               # Shared deck viewing
+│   │   └── blog/               # SEO blog content
+│   ├── components/             # React components (63 files)
+│   │   ├── ui/                 # shadcn/ui base components
+│   │   ├── providers/          # Context providers
+│   │   ├── pixel-*.tsx         # Custom retro-styled components
+│   │   └── [feature].tsx       # Feature components
+│   ├── lib/                    # Utilities
+│   └── middleware.ts           # Auth middleware
+├── convex/                     # Convex backend (77 files)
+│   ├── schema.ts               # Database schema (60+ tables)
+│   ├── _generated/             # Generated types
+│   └── [feature].ts            # Backend functions
+├── docs/                       # Documentation
+└── public/                     # Static assets
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
 | **Framework** | Next.js 15 (App Router) |
+| **UI** | React 19 |
 | **Language** | TypeScript |
-| **Styling** | Tailwind CSS + shadcn/ui |
-| **Database** | PostgreSQL (Supabase) |
-| **ORM** | Drizzle |
+| **Styling** | Tailwind CSS v4 + shadcn/ui |
+| **Backend/DB** | Convex (realtime database) |
 | **Auth** | Clerk |
-| **AI** | Claude 3.5 Sonnet (Anthropic) |
-| **State** | Zustand + React Query |
+| **Icons** | lucide-react (exclusively) |
+| **Animations** | Framer Motion |
+| **Flow Diagrams** | @xyflow/react |
 | **Deployment** | Vercel |
 
-## 📖 Documentation
+## Documentation
 
+- [App Features](./APP_FEATURES.md) - Complete feature list and component reference
 - [Product Plan](./PRODUCT_PLAN.md) - Vision, features, personas
 - [Architecture](./ARCHITECTURE.md) - Technical design
 - [Tech Stack Database](./TECH_STACK_DATABASE.md) - Tool catalog
 - [UI Wireframes](./UI_WIREFRAMES.md) - Design specifications
+- [SEO Strategy](./SEO_STRATEGY.md) - SEO implementation
 - [Implementation Roadmap](./IMPLEMENTATION_ROADMAP.md) - Sprint plan
 
-## 🧪 Development
+## Development
 
 ```bash
-# Run development server
-pnpm dev
+# Run Next.js development server
+npm run dev
 
-# Run tests
-pnpm test
-
-# Run E2E tests
-pnpm test:e2e
+# Run Convex development server (separate terminal)
+npx convex dev
 
 # Lint code
-pnpm lint
+npm run lint
 
-# Type check
-pnpm typecheck
+# Build for production
+npm run build
 
-# Database commands
-pnpm db:generate    # Generate migrations
-pnpm db:migrate     # Run migrations
-pnpm db:seed        # Seed database
-pnpm db:studio      # Open Drizzle Studio
+# Seed database (via Convex dashboard or mutation)
+# Use the seedDatabase mutation in convex/seed.ts
 ```
 
-## 🤝 Contributing
+## Code Guidelines
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) first.
+- **Icons**: Use only `lucide-react` - no emojis or unicode symbols
+- **Components**: Use custom `Pixel*` components for retro aesthetic
+- **Styling**: Follow existing pixel/retro gaming theme
+- **TypeScript**: Strict mode enabled
+
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -181,19 +181,10 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## Acknowledgments
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [shadcn/ui](https://ui.shadcn.com/) for the beautiful components
+- [shadcn/ui](https://ui.shadcn.com/) for base components
+- [Convex](https://convex.dev/) for realtime backend
+- [Clerk](https://clerk.com/) for authentication
 - [Anthropic](https://anthropic.com/) for Claude AI
 - [Vercel](https://vercel.com/) for hosting
-- [Supabase](https://supabase.com/) for the database
-
----
-
-<p align="center">
-  Built with ❤️ for developers who want to ship faster
-</p>

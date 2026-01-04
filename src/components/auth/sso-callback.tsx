@@ -54,7 +54,7 @@ export function SSOCallback() {
           <Loader2 className="w-5 h-5 animate-spin" />
           <span className="text-sm">COMPLETING LOGIN...</span>
         </div>
-        <p className="text-muted-foreground text-[8px] mt-4">
+        <p className="text-muted-foreground text-xs mt-4">
           PLEASE WAIT WHILE WE VERIFY YOUR CREDENTIALS
         </p>
       </div>

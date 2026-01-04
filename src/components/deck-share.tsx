@@ -86,13 +86,13 @@ export function DeckShare({
         )}
       </div>
 
-      <p className="text-muted-foreground text-[10px] mb-4">
+      <p className="text-muted-foreground text-sm mb-4">
         DECK: {deckName.toUpperCase()}
       </p>
 
       {!isPublic ? (
         <div className="text-center py-4">
-          <p className="text-muted-foreground text-[8px] mb-4">
+          <p className="text-muted-foreground text-xs mb-4">
             THIS DECK IS PRIVATE. MAKE IT PUBLIC TO SHARE.
           </p>
           <PixelButton onClick={handleMakePublic} disabled={isUpdating}>
@@ -103,12 +103,12 @@ export function DeckShare({
       ) : (
         <div className="space-y-4">
           <div>
-            <p className="text-primary text-[8px] mb-2">SHARE LINK</p>
+            <p className="text-primary text-xs mb-2">SHARE LINK</p>
             <div className="flex gap-2">
               <PixelInput 
                 value={shareUrl || ""} 
                 readOnly 
-                className="flex-1 text-[8px]"
+                className="flex-1 text-xs"
               />
               <PixelButton size="sm" onClick={handleCopyLink}>
                 {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -117,7 +117,7 @@ export function DeckShare({
           </div>
 
           <div>
-            <p className="text-primary text-[8px] mb-2">SHARE ON</p>
+            <p className="text-primary text-xs mb-2">SHARE ON</p>
             <div className="flex gap-2">
               {twitterUrl && (
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
@@ -137,7 +137,7 @@ export function DeckShare({
           </div>
 
           <div className="border-t border-border pt-4">
-            <p className="text-primary text-[8px] mb-2">EMBED BADGE</p>
+            <p className="text-primary text-xs mb-2">EMBED BADGE</p>
             <div className="bg-[#191022] border-2 border-border p-3">
               <code className="text-muted-foreground text-[6px] break-all">
                 {`[![My Stack](${siteUrl}/api/badge/${shareToken})](${shareUrl})`}

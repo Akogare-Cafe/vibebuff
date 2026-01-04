@@ -42,7 +42,7 @@ export function ToolReviews({ toolId, userId, className }: ToolReviewsProps) {
   if (!reviews || !ratingSummary) {
     return (
       <div className="text-center p-4">
-        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING REVIEWS...</div>
+        <div className="text-muted-foreground text-sm pixel-loading">LOADING REVIEWS...</div>
       </div>
     );
   }
@@ -69,8 +69,8 @@ export function ToolReviews({ toolId, userId, className }: ToolReviewsProps) {
       {reviews.length === 0 ? (
         <PixelCard className="p-8 text-center">
           <MessageSquare className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-muted-foreground text-[10px]">NO REVIEWS YET</p>
-          <p className="text-muted-foreground text-[8px]">Be the first to review this tool!</p>
+          <p className="text-muted-foreground text-sm">NO REVIEWS YET</p>
+          <p className="text-muted-foreground text-xs">Be the first to review this tool!</p>
         </PixelCard>
       ) : (
         <div className="space-y-4">
@@ -100,7 +100,7 @@ function RatingSummary({ summary }: { summary: any }) {
               />
             ))}
           </div>
-          <p className="text-muted-foreground text-[8px]">{summary.totalReviews} reviews</p>
+          <p className="text-muted-foreground text-xs">{summary.totalReviews} reviews</p>
         </div>
 
         <div className="flex-1 space-y-1">
@@ -109,11 +109,11 @@ function RatingSummary({ summary }: { summary: any }) {
             const percent = summary.totalReviews > 0 ? (count / summary.totalReviews) * 100 : 0;
             return (
               <div key={rating} className="flex items-center gap-2">
-                <span className="text-muted-foreground text-[8px] w-3">{rating}</span>
+                <span className="text-muted-foreground text-xs w-3">{rating}</span>
                 <div className="flex-1 h-2 bg-[#191022] border border-border">
                   <div className="h-full bg-yellow-400" style={{ width: `${percent}%` }} />
                 </div>
-                <span className="text-muted-foreground text-[8px] w-6">{count}</span>
+                <span className="text-muted-foreground text-xs w-6">{count}</span>
               </div>
             );
           })}
@@ -182,7 +182,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
   return (
     <PixelCard className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-primary text-[10px] uppercase">WRITE A REVIEW</h3>
+        <h3 className="text-primary text-sm uppercase">WRITE A REVIEW</h3>
         <button onClick={onClose} className="text-muted-foreground hover:text-primary">
           <X className="w-4 h-4" />
         </button>
@@ -190,7 +190,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
 
       <div className="space-y-4">
         <div>
-          <label className="text-muted-foreground text-[8px] block mb-1">RATING</label>
+          <label className="text-muted-foreground text-xs block mb-1">RATING</label>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <button key={star} onClick={() => setRating(star)}>
@@ -204,14 +204,14 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
         </div>
 
         <div>
-          <label className="text-muted-foreground text-[8px] block mb-1">EXPERIENCE LEVEL</label>
+          <label className="text-muted-foreground text-xs block mb-1">EXPERIENCE LEVEL</label>
           <div className="flex flex-wrap gap-2">
             {(Object.entries(EXPERIENCE_LEVELS) as [keyof typeof EXPERIENCE_LEVELS, typeof EXPERIENCE_LEVELS.tried_it][]).map(([key, config]) => (
               <button
                 key={key}
                 onClick={() => setExperienceLevel(key)}
                 className={cn(
-                  "px-2 py-1 border text-[8px]",
+                  "px-2 py-1 border text-xs",
                   experienceLevel === key ? "border-primary text-primary" : "border-border text-muted-foreground"
                 )}
               >
@@ -222,23 +222,23 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
         </div>
 
         <div>
-          <label className="text-muted-foreground text-[8px] block mb-1">TITLE</label>
+          <label className="text-muted-foreground text-xs block mb-1">TITLE</label>
           <PixelInput value={title} onChange={(e) => setTitle(e.target.value)} placeholder="REVIEW TITLE" />
         </div>
 
         <div>
-          <label className="text-muted-foreground text-[8px] block mb-1">REVIEW</label>
+          <label className="text-muted-foreground text-xs block mb-1">REVIEW</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Share your experience..."
-            className="w-full bg-[#191022] border-4 border-border p-2 text-primary text-[10px] h-24 resize-none"
+            className="w-full bg-[#191022] border-4 border-border p-2 text-primary text-sm h-24 resize-none"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-muted-foreground text-[8px] block mb-1">PROS</label>
+            <label className="text-muted-foreground text-xs block mb-1">PROS</label>
             <div className="flex gap-1 mb-2">
               <PixelInput value={newPro} onChange={(e) => setNewPro(e.target.value)} placeholder="ADD PRO" className="flex-1" />
               <PixelButton size="sm" onClick={addPro}><Plus className="w-3 h-3" /></PixelButton>
@@ -256,7 +256,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
           </div>
 
           <div>
-            <label className="text-muted-foreground text-[8px] block mb-1">CONS</label>
+            <label className="text-muted-foreground text-xs block mb-1">CONS</label>
             <div className="flex gap-1 mb-2">
               <PixelInput value={newCon} onChange={(e) => setNewCon(e.target.value)} placeholder="ADD CON" className="flex-1" />
               <PixelButton size="sm" onClick={addCon}><Plus className="w-3 h-3" /></PixelButton>
@@ -276,7 +276,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
 
         <label className="flex items-center gap-2 cursor-pointer">
           <input type="checkbox" checked={shippedWith} onChange={(e) => setShippedWith(e.target.checked)} className="accent-primary" />
-          <span className="text-muted-foreground text-[10px]">I shipped a product with this tool</span>
+          <span className="text-muted-foreground text-sm">I shipped a product with this tool</span>
           <Rocket className="w-3 h-3 text-green-400" />
         </label>
 
@@ -315,18 +315,18 @@ function ReviewCard({ review, userId }: { review: any; userId?: string }) {
             )}
           </div>
         </div>
-        <span className="text-muted-foreground text-[8px]">
+        <span className="text-muted-foreground text-xs">
           {new Date(review.createdAt).toLocaleDateString()}
         </span>
       </div>
 
-      <p className="text-muted-foreground text-[10px] mb-3">{review.content}</p>
+      <p className="text-muted-foreground text-sm mb-3">{review.content}</p>
 
       {(review.pros.length > 0 || review.cons.length > 0) && (
         <div className="grid grid-cols-2 gap-4 mb-3">
           {review.pros.length > 0 && (
             <div>
-              <p className="text-green-400 text-[8px] mb-1">PROS</p>
+              <p className="text-green-400 text-xs mb-1">PROS</p>
               <div className="flex flex-wrap gap-1">
                 {review.pros.map((pro: string, i: number) => (
                   <PixelBadge key={i} variant="outline" className="text-[6px] text-green-400 border-green-400">
@@ -338,7 +338,7 @@ function ReviewCard({ review, userId }: { review: any; userId?: string }) {
           )}
           {review.cons.length > 0 && (
             <div>
-              <p className="text-red-400 text-[8px] mb-1">CONS</p>
+              <p className="text-red-400 text-xs mb-1">CONS</p>
               <div className="flex flex-wrap gap-1">
                 {review.cons.map((con: string, i: number) => (
                   <PixelBadge key={i} variant="outline" className="text-[6px] text-red-400 border-red-400">
@@ -355,20 +355,20 @@ function ReviewCard({ review, userId }: { review: any; userId?: string }) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => userId && voteHelpful({ userId, reviewId: review._id, isHelpful: true })}
-            className="flex items-center gap-1 text-muted-foreground hover:text-primary text-[8px]"
+            className="flex items-center gap-1 text-muted-foreground hover:text-primary text-xs"
             disabled={!userId}
           >
             <ThumbsUp className="w-3 h-3" /> Helpful
           </button>
           <button
             onClick={() => userId && voteHelpful({ userId, reviewId: review._id, isHelpful: false })}
-            className="flex items-center gap-1 text-muted-foreground hover:text-primary text-[8px]"
+            className="flex items-center gap-1 text-muted-foreground hover:text-primary text-xs"
             disabled={!userId}
           >
             <ThumbsDown className="w-3 h-3" />
           </button>
         </div>
-        <span className="text-muted-foreground text-[8px]">{review.helpfulVotes} found helpful</span>
+        <span className="text-muted-foreground text-xs">{review.helpfulVotes} found helpful</span>
       </div>
     </PixelCard>
   );

@@ -39,7 +39,7 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
   if (!masteries) {
     return (
       <div className="text-center p-4">
-        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING MASTERY...</div>
+        <div className="text-muted-foreground text-sm pixel-loading">LOADING MASTERY...</div>
       </div>
     );
   }
@@ -68,7 +68,7 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
 
       {stats && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-3 flex items-center gap-2">
+          <h3 className="text-primary text-sm uppercase mb-3 flex items-center gap-2">
             <BarChart3 className="w-4 h-4" /> INTERACTION STATS
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
@@ -85,8 +85,8 @@ export function ToolMasteryDisplay({ userId, className }: ToolMasteryProps) {
       {masteries.length === 0 ? (
         <PixelCard className="p-8 text-center">
           <Award className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-muted-foreground text-[10px]">NO MASTERY YET</p>
-          <p className="text-muted-foreground text-[8px]">Start exploring tools to build mastery!</p>
+          <p className="text-muted-foreground text-sm">NO MASTERY YET</p>
+          <p className="text-muted-foreground text-xs">Start exploring tools to build mastery!</p>
         </PixelCard>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -140,8 +140,8 @@ function MasteryCard({ mastery }: MasteryCardProps) {
       <PixelCard className={cn("p-3 h-full hover:scale-105 transition-transform", levelConfig.color)}>
         <div className="flex items-start justify-between mb-2">
           <div>
-            <p className="text-primary text-[10px]">{mastery.tool.name}</p>
-            <p className="text-muted-foreground text-[8px] truncate">{mastery.tool.tagline}</p>
+            <p className="text-primary text-sm">{mastery.tool.name}</p>
+            <p className="text-muted-foreground text-xs truncate">{mastery.tool.tagline}</p>
           </div>
           <PixelBadge variant="outline" className={cn("text-[6px]", levelConfig.color)}>
             {levelConfig.label}

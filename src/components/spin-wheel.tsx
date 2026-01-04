@@ -97,7 +97,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
             <RotateCw className="w-5 h-5" /> DAILY SPIN WHEEL
           </h2>
           {!canSpin && (
-            <PixelBadge variant="outline" className="text-[8px]">
+            <PixelBadge variant="outline" className="text-xs">
               <Clock className="w-3 h-3 mr-1" /> COME BACK TOMORROW
             </PixelBadge>
           )}
@@ -183,7 +183,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
                 <p className="text-primary text-lg mb-1">{result.reward.name}</p>
                 <PixelBadge
                   variant="outline"
-                  className={cn("text-[8px]", getRarityColor(result.reward.rarity))}
+                  className={cn("text-xs", getRarityColor(result.reward.rarity))}
                 >
                   {result.reward.rarity.toUpperCase()}
                 </PixelBadge>
@@ -200,7 +200,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
 
       {spinHistory && spinHistory.length > 0 && (
         <PixelCard className="p-4">
-          <h3 className="text-primary text-[10px] uppercase mb-4">
+          <h3 className="text-primary text-sm uppercase mb-4">
             RECENT SPINS
           </h3>
           <div className="space-y-2">
@@ -213,11 +213,11 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
                   <span className={getRarityColor(spin.reward?.rarity ?? "common")}>
                     {getRewardIcon(spin.rewardType)}
                   </span>
-                  <span className="text-primary text-[10px]">
+                  <span className="text-primary text-sm">
                     {spin.reward?.name ?? "Unknown"}
                   </span>
                 </div>
-                <span className="text-muted-foreground text-[8px]">
+                <span className="text-muted-foreground text-xs">
                   {new Date(spin.spunAt).toLocaleDateString()}
                 </span>
               </div>

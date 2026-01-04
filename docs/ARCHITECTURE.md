@@ -1,193 +1,148 @@
-# Vibe Anything - System Architecture
+# VibeBuff - System Architecture
 
-> Technical architecture for the AI-powered tech stack recommendation platform.
+> Technical architecture for the gamified tech stack recommendation platform.
 
 ---
 
-## 🏛️ High-Level Architecture
+## High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                              CLIENT LAYER                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
-│  │   Landing   │  │ Questionnaire│  │  Results    │  │   Tools     │        │
-│  │    Page     │  │    Flow     │  │  Dashboard  │  │   Browser   │        │
+│  │    Home     │  │   Quest     │  │   Tools     │  │  Profile    │        │
+│  │    Page     │  │    Mode     │  │   Browser   │  │  (RPG)      │        │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘        │
 │                                                                              │
-│  Next.js 15 (App Router) + React 19 + TypeScript + Tailwind + shadcn/ui    │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
+│  │   Compare   │  │   Stack     │  │    Deck     │  │    Blog     │        │
+│  │    Tools    │  │   Builder   │  │   Loadout   │  │    (SEO)    │        │
+│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘        │
+│                                                                              │
+│  Next.js 15 (App Router) + React 19 + TypeScript + Tailwind v4 + shadcn/ui │
+│  Framer Motion (animations) + @xyflow/react (flow diagrams)                 │
 └─────────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                              API LAYER                                       │
+│                         CONVEX BACKEND (Realtime)                            │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                        Next.js API Routes                            │   │
+│  │                        Convex Functions (77 files)                   │   │
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │   │
-│  │  │  /api/   │  │  /api/   │  │  /api/   │  │  /api/   │            │   │
-│  │  │recommend │  │  tools   │  │ projects │  │   ai     │            │   │
+│  │  │  tools   │  │   ai     │  │  decks   │  │ battles  │            │   │
+│  │  │ queries  │  │ actions  │  │mutations │  │  voting  │            │   │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘            │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │   │
+│  │  │ guilds   │  │ trading  │  │achievements│ │ events   │            │   │
+│  │  │ parties  │  │ mastery  │  │ challenges │ │ seasons  │            │   │
 │  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘            │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                                                                              │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                           tRPC Router                                │   │
-│  │  Type-safe API calls with automatic TypeScript inference             │   │
+│  │                    Convex Database (60+ tables)                      │   │
+│  │  Tools, Categories, UserProfiles, Decks, Achievements, Guilds,      │   │
+│  │  Battles, Challenges, Seasons, Trading, Mastery, Events, etc.       │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                      │
-                                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           SERVICE LAYER                                      │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
-│  │ Recommendation│  │    Tool      │  │   Project    │  │    User      │    │
-│  │   Service    │  │   Service    │  │   Service    │  │   Service    │    │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘    │
-│                                                                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                      │
-│  │     AI       │  │   Search     │  │    Cost      │                      │
-│  │   Service    │  │   Service    │  │  Calculator  │                      │
-│  └──────────────┘  └──────────────┘  └──────────────┘                      │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                      │
-                                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                            DATA LAYER                                        │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────┐  ┌──────────────────────┐                        │
-│  │      Supabase        │  │       Upstash        │                        │
-│  │    (PostgreSQL)      │  │       (Redis)        │                        │
-│  │  ┌────────────────┐  │  │  ┌────────────────┐  │                        │
-│  │  │ Tools          │  │  │  │ Cache          │  │                        │
-│  │  │ Categories     │  │  │  │ Rate Limits    │  │                        │
-│  │  │ Users          │  │  │  │ Sessions       │  │                        │
-│  │  │ Projects       │  │  │  └────────────────┘  │                        │
-│  │  │ Recommendations│  │  │                      │                        │
-│  │  └────────────────┘  │  │                      │                        │
-│  └──────────────────────┘  └──────────────────────┘                        │
 └─────────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                         EXTERNAL SERVICES                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
-│  │   Anthropic  │  │    OpenAI    │  │    Clerk     │  │   PostHog    │    │
-│  │   (Claude)   │  │  (Embeddings)│  │    (Auth)    │  │  (Analytics) │    │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘    │
-│                                                                              │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                      │
-│  │   Sentry     │  │  Perplexity  │  │   GitHub     │                      │
-│  │   (Errors)   │  │  (Research)  │  │    (API)     │                      │
+│  │   Anthropic  │  │    Clerk     │  │   Vercel     │                      │
+│  │   (Claude)   │  │    (Auth)    │  │  (Hosting)   │                      │
 │  └──────────────┘  └──────────────┘  └──────────────┘                      │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-vibe-anything/
+vibebuff/
 ├── src/
-│   ├── app/                          # Next.js App Router
-│   │   ├── (auth)/                   # Auth-required routes
-│   │   │   ├── dashboard/
-│   │   │   ├── projects/
-│   │   │   └── settings/
-│   │   ├── (marketing)/              # Public routes
-│   │   │   ├── page.tsx              # Landing page
-│   │   │   ├── pricing/
-│   │   │   └── about/
-│   │   ├── api/                      # API routes
-│   │   │   ├── trpc/[trpc]/
-│   │   │   ├── webhooks/
-│   │   │   └── ai/
+│   ├── app/                          # Next.js App Router pages
+│   │   ├── page.tsx                  # Home page
+│   │   ├── layout.tsx                # Root layout
+│   │   ├── globals.css               # Global styles
 │   │   ├── tools/                    # Tool browser
-│   │   │   ├── [category]/
-│   │   │   └── [slug]/
-│   │   ├── recommend/                # Recommendation flow
-│   │   │   ├── page.tsx              # Questionnaire
-│   │   │   └── results/
-│   │   ├── compare/                  # Comparison views
-│   │   ├── layout.tsx
-│   │   └── globals.css
+│   │   │   ├── page.tsx              # Tools list
+│   │   │   └── [slug]/               # Tool detail pages
+│   │   ├── quest/                    # AI recommendation quest
+│   │   │   └── page.tsx              # Multi-step questionnaire
+│   │   ├── compare/                  # Tool comparisons
+│   │   │   ├── page.tsx              # Compare page
+│   │   │   └── [slug]/               # SEO comparison pages
+│   │   ├── profile/                  # User profile (RPG character sheet)
+│   │   │   └── page.tsx
+│   │   ├── stack-builder/            # Visual stack builder
+│   │   │   └── page.tsx
+│   │   ├── deck/                     # Shared deck viewing
+│   │   │   └── [token]/
+│   │   ├── blog/                     # SEO blog content
+│   │   ├── about/
+│   │   ├── contact/
+│   │   ├── privacy/
+│   │   ├── terms/
+│   │   ├── sign-in/
+│   │   ├── sign-up/
+│   │   └── get-started/
 │   │
-│   ├── components/
-│   │   ├── ui/                       # shadcn/ui components
-│   │   ├── forms/                    # Form components
-│   │   │   ├── questionnaire/
-│   │   │   └── search/
-│   │   ├── tools/                    # Tool-related components
-│   │   │   ├── tool-card.tsx
-│   │   │   ├── tool-grid.tsx
-│   │   │   └── comparison-table.tsx
-│   │   ├── recommendations/          # Recommendation components
-│   │   │   ├── stack-view.tsx
-│   │   │   ├── cost-calculator.tsx
-│   │   │   └── reasoning-card.tsx
-│   │   └── layout/                   # Layout components
-│   │       ├── header.tsx
-│   │       ├── footer.tsx
-│   │       └── sidebar.tsx
+│   ├── components/                   # React components (63 files)
+│   │   ├── ui/                       # shadcn/ui base components
+│   │   ├── providers/                # Context providers
+│   │   ├── pixel-button.tsx          # Retro-styled button
+│   │   ├── pixel-card.tsx            # Retro-styled card
+│   │   ├── pixel-badge.tsx           # Retro-styled badge
+│   │   ├── pixel-input.tsx           # Retro-styled input
+│   │   ├── header.tsx                # App header
+│   │   ├── footer.tsx                # App footer
+│   │   ├── visual-stack-builder.tsx  # ReactFlow stack designer
+│   │   ├── deck-loadout.tsx          # Deck management
+│   │   ├── tool-reviews.tsx          # Review system
+│   │   ├── tool-mastery.tsx          # Mastery progression
+│   │   ├── tier-list-builder.tsx     # Tier list creator
+│   │   ├── trading-post.tsx          # Card trading
+│   │   ├── trophy-room.tsx           # Achievement showcase
+│   │   ├── skill-tree.tsx            # User skill progression
+│   │   └── [60+ more feature components]
 │   │
-│   ├── lib/
-│   │   ├── ai/                       # AI integration
-│   │   │   ├── anthropic.ts
-│   │   │   ├── openai.ts
-│   │   │   ├── embeddings.ts
-│   │   │   └── prompts/
-│   │   ├── db/                       # Database
-│   │   │   ├── schema.ts             # Drizzle schema
-│   │   │   ├── queries/
-│   │   │   └── migrations/
-│   │   ├── services/                 # Business logic
-│   │   │   ├── recommendation.ts
-│   │   │   ├── tool.ts
-│   │   │   ├── project.ts
-│   │   │   └── cost-calculator.ts
-│   │   ├── trpc/                     # tRPC setup
-│   │   │   ├── router.ts
-│   │   │   ├── context.ts
-│   │   │   └── procedures/
-│   │   ├── utils/                    # Utilities
-│   │   └── validations/              # Zod schemas
+│   ├── lib/                          # Utilities
+│   │   └── utils.ts
 │   │
-│   ├── hooks/                        # Custom React hooks
-│   │   ├── use-recommendations.ts
-│   │   ├── use-tools.ts
-│   │   └── use-comparison.ts
-│   │
-│   ├── stores/                       # Zustand stores
-│   │   ├── questionnaire.ts
-│   │   └── comparison.ts
-│   │
-│   └── types/                        # TypeScript types
-│       ├── tool.ts
-│       ├── recommendation.ts
-│       └── project.ts
+│   └── middleware.ts                 # Auth middleware (Clerk)
 │
-├── public/
-│   ├── logos/                        # Tool logos
-│   └── images/
+├── convex/                           # Convex backend (77 files)
+│   ├── _generated/                   # Auto-generated types
+│   ├── schema.ts                     # Database schema (60+ tables)
+│   ├── tools.ts                      # Tool CRUD
+│   ├── categories.ts                 # Category management
+│   ├── ai.ts                         # AI recommendations
+│   ├── decks.ts                      # Deck management
+│   ├── achievements.ts               # Achievement system
+│   ├── battles.ts                    # Boss battle mode
+│   ├── guilds.ts                     # Guild system
+│   ├── trading.ts                    # Trading post
+│   ├── mastery.ts                    # Tool mastery
+│   ├── challenges.ts                 # Daily challenges
+│   ├── events.ts                     # Seasonal events
+│   ├── seed.ts                       # Database seeding
+│   └── [60+ more backend files]
 │
-├── prisma/                           # If using Prisma
-│   └── schema.prisma
+├── docs/                             # Documentation
+│   ├── APP_FEATURES.md               # Complete feature reference
+│   ├── ARCHITECTURE.md               # This file
+│   ├── PRODUCT_PLAN.md               # Product vision
+│   ├── SEO_STRATEGY.md               # SEO implementation
+│   └── [other docs]
 │
-├── drizzle/                          # Drizzle migrations
-│
-├── scripts/
-│   ├── seed-tools.ts                 # Database seeding
-│   └── sync-github-stats.ts          # GitHub stats sync
-│
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── e2e/
+├── public/                           # Static assets
 │
 ├── .env.example
-├── .env.local
 ├── next.config.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
@@ -197,203 +152,134 @@ vibe-anything/
 
 ---
 
-## 🗃️ Database Schema (Drizzle ORM)
+## Database Schema (Convex)
+
+The database schema is defined in `convex/schema.ts` using Convex's `defineTable` and `defineSchema`.
+
+### Core Tables
 
 ```typescript
-// src/lib/db/schema.ts
-
-import { pgTable, uuid, text, timestamp, jsonb, integer, boolean, decimal, pgEnum } from 'drizzle-orm/pg-core';
-
-// Enums
-export const pricingModelEnum = pgEnum('pricing_model', [
-  'free',
-  'freemium',
-  'paid',
-  'open_source',
-  'enterprise'
-]);
-
-export const projectScaleEnum = pgEnum('project_scale', [
-  'hobby',
-  'startup',
-  'growth',
-  'enterprise'
-]);
+// convex/schema.ts (excerpt)
 
 // Categories
-export const categories = pgTable('categories', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  name: text('name').notNull(),
-  slug: text('slug').notNull().unique(),
-  description: text('description'),
-  parentId: uuid('parent_id').references(() => categories.id),
-  icon: text('icon'),
-  sortOrder: integer('sort_order').default(0),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-});
+categories: defineTable({
+  name: v.string(),
+  slug: v.string(),
+  description: v.optional(v.string()),
+  icon: v.optional(v.string()),
+  sortOrder: v.optional(v.number()),
+}).index("by_slug", ["slug"]),
 
 // Tools
-export const tools = pgTable('tools', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  name: text('name').notNull(),
-  slug: text('slug').notNull().unique(),
-  tagline: text('tagline'),
-  description: text('description'),
-  longDescription: text('long_description'),
-  logoUrl: text('logo_url'),
-  websiteUrl: text('website_url'),
-  docsUrl: text('docs_url'),
-  githubUrl: text('github_url'),
-  categoryId: uuid('category_id').references(() => categories.id),
-  pricingModel: pricingModelEnum('pricing_model'),
-  
-  // Metrics
-  githubStars: integer('github_stars'),
-  npmDownloadsWeekly: integer('npm_downloads_weekly'),
-  
-  // Flags
-  isOpenSource: boolean('is_open_source').default(false),
-  isActive: boolean('is_active').default(true),
-  isFeatured: boolean('is_featured').default(false),
-  
-  // JSON fields
-  pros: jsonb('pros').$type<string[]>(),
-  cons: jsonb('cons').$type<string[]>(),
-  bestFor: jsonb('best_for').$type<string[]>(),
-  features: jsonb('features').$type<string[]>(),
-  tags: jsonb('tags').$type<string[]>(),
-  
-  // SEO
-  metaTitle: text('meta_title'),
-  metaDescription: text('meta_description'),
-  
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-});
-
-// Tool Pricing Tiers
-export const pricingTiers = pgTable('pricing_tiers', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  toolId: uuid('tool_id').references(() => tools.id).notNull(),
-  name: text('name').notNull(), // e.g., "Free", "Pro", "Enterprise"
-  priceMonthly: decimal('price_monthly', { precision: 10, scale: 2 }),
-  priceYearly: decimal('price_yearly', { precision: 10, scale: 2 }),
-  priceUnit: text('price_unit'), // e.g., "per seat", "per 1M tokens"
-  features: jsonb('features').$type<string[]>(),
-  limits: jsonb('limits').$type<Record<string, string | number>>(),
-  isPopular: boolean('is_popular').default(false),
-  sortOrder: integer('sort_order').default(0),
-  createdAt: timestamp('created_at').defaultNow(),
-});
-
-// Tool Integrations (many-to-many)
-export const toolIntegrations = pgTable('tool_integrations', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  toolAId: uuid('tool_a_id').references(() => tools.id).notNull(),
-  toolBId: uuid('tool_b_id').references(() => tools.id).notNull(),
-  integrationType: text('integration_type'), // "native", "plugin", "api"
-  qualityScore: integer('quality_score'), // 1-10
-  documentationUrl: text('documentation_url'),
-  notes: text('notes'),
-});
-
-// Tool Alternatives
-export const toolAlternatives = pgTable('tool_alternatives', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  toolId: uuid('tool_id').references(() => tools.id).notNull(),
-  alternativeId: uuid('alternative_id').references(() => tools.id).notNull(),
-  similarityScore: integer('similarity_score'), // 1-100
-});
-
-// Users (synced from Clerk)
-export const users = pgTable('users', {
-  id: text('id').primaryKey(), // Clerk user ID
-  email: text('email').notNull(),
-  name: text('name'),
-  avatarUrl: text('avatar_url'),
-  plan: text('plan').default('free'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-});
-
-// Projects
-export const projects = pgTable('projects', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  userId: text('user_id').references(() => users.id),
-  name: text('name').notNull(),
-  description: text('description'),
-  
-  // Requirements (from questionnaire)
-  requirements: jsonb('requirements').$type<{
-    projectType: string;
-    scale: string;
-    budget: string;
-    teamSize: string;
-    timeline: string;
-    features: string[];
-    constraints: string[];
-    existingStack: string[];
-  }>(),
-  
-  // Natural language input
-  prompt: text('prompt'),
-  
-  // Sharing
-  isPublic: boolean('is_public').default(false),
-  shareToken: text('share_token'),
-  
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-});
-
-// Recommendations
-export const recommendations = pgTable('recommendations', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  projectId: uuid('project_id').references(() => projects.id).notNull(),
-  toolId: uuid('tool_id').references(() => tools.id).notNull(),
-  categoryId: uuid('category_id').references(() => categories.id),
-  
-  // AI-generated
-  reasoning: text('reasoning'),
-  confidenceScore: integer('confidence_score'), // 1-100
-  priority: integer('priority'), // 1 = primary, 2 = alternative
-  
-  // Cost projection
-  estimatedMonthlyCost: decimal('estimated_monthly_cost', { precision: 10, scale: 2 }),
-  
-  createdAt: timestamp('created_at').defaultNow(),
-});
-
-// Tool Reviews (user-submitted)
-export const toolReviews = pgTable('tool_reviews', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  toolId: uuid('tool_id').references(() => tools.id).notNull(),
-  userId: text('user_id').references(() => users.id).notNull(),
-  rating: integer('rating').notNull(), // 1-5
-  title: text('title'),
-  content: text('content'),
-  pros: jsonb('pros').$type<string[]>(),
-  cons: jsonb('cons').$type<string[]>(),
-  useCase: text('use_case'),
-  isVerified: boolean('is_verified').default(false),
-  helpfulCount: integer('helpful_count').default(0),
-  createdAt: timestamp('created_at').defaultNow(),
-});
-
-// Embeddings for semantic search
-export const toolEmbeddings = pgTable('tool_embeddings', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  toolId: uuid('tool_id').references(() => tools.id).notNull(),
-  embedding: jsonb('embedding').$type<number[]>(), // Vector stored as JSON
-  embeddingModel: text('embedding_model').default('text-embedding-3-small'),
-  createdAt: timestamp('created_at').defaultNow(),
-});
+tools: defineTable({
+  name: v.string(),
+  slug: v.string(),
+  tagline: v.optional(v.string()),
+  description: v.optional(v.string()),
+  logoUrl: v.optional(v.string()),
+  websiteUrl: v.optional(v.string()),
+  githubUrl: v.optional(v.string()),
+  categoryId: v.optional(v.id("categories")),
+  pricingModel: v.optional(v.string()),
+  rarity: v.optional(v.string()),  // common, uncommon, rare, epic, legendary
+  stats: v.optional(v.object({
+    power: v.number(),
+    speed: v.number(),
+    reliability: v.number(),
+    community: v.number(),
+  })),
+  pros: v.optional(v.array(v.string())),
+  cons: v.optional(v.array(v.string())),
+  features: v.optional(v.array(v.string())),
+  isFeatured: v.optional(v.boolean()),
+})
+  .index("by_slug", ["slug"])
+  .index("by_category", ["categoryId"]),
 ```
+
+### Gamification Tables
+
+```typescript
+// User Profiles with RPG stats
+userProfiles: defineTable({
+  oderId: v.string(),
+  username: v.optional(v.string()),
+  title: v.optional(v.string()),
+  level: v.number(),
+  xp: v.number(),
+  stats: v.object({
+    toolsDiscovered: v.number(),
+    questsCompleted: v.number(),
+    battlesWon: v.number(),
+    // ... more stats
+  }),
+}),
+
+// Achievements
+achievements: defineTable({
+  slug: v.string(),
+  name: v.string(),
+  description: v.string(),
+  category: v.string(),  // exploration, collection, social, mastery
+  xpReward: v.number(),
+  rarity: v.string(),
+}),
+
+// Tool Mastery
+toolMastery: defineTable({
+  userId: v.string(),
+  toolId: v.id("tools"),
+  xp: v.number(),
+  level: v.string(),  // novice, apprentice, journeyman, expert, master, grandmaster
+}),
+```
+
+### Social & Competitive Tables
+
+```typescript
+// Guilds
+guilds: defineTable({
+  name: v.string(),
+  description: v.string(),
+  leaderId: v.string(),
+  memberCount: v.number(),
+  level: v.number(),
+}),
+
+// Battles
+battleHistory: defineTable({
+  oderId: v.string(),
+  opponentId: v.optional(v.string()),
+  userDeckId: v.id("userDecks"),
+  opponentDeckId: v.optional(v.id("userDecks")),
+  result: v.string(),
+  xpEarned: v.number(),
+}),
+
+// Trading
+tradeListings: defineTable({
+  oderId: v.string(),
+  offeredCardId: v.id("tradableCards"),
+  requestedToolId: v.optional(v.id("tools")),
+  status: v.string(),
+}),
+```
+
+### Full Schema Reference
+
+The complete schema contains **60+ tables** covering:
+- Core: tools, categories, pricingTiers
+- Users: userProfiles, userDecks, userCollection, userAchievements
+- Gamification: achievements, challenges, seasons, battlePassRewards
+- Social: guilds, parties, mentorships, globalChatMessages
+- Competitive: battles, debates, speedruns, draftLobbies
+- Content: toolLore, toolGraveyard, startupStories, predictions
+
+See `convex/schema.ts` for the complete schema definition.
 
 ---
 
-## 🤖 AI Recommendation Engine
+## AI Recommendation Engine
 
 ### Architecture
 
@@ -473,221 +359,129 @@ export const toolEmbeddings = pgTable('tool_embeddings', {
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### AI Service Implementation
+### AI Service Implementation (Convex Action)
+
+The AI recommendation engine is implemented as a Convex action in `convex/ai.ts`:
 
 ```typescript
-// src/lib/ai/recommendation-engine.ts
+// convex/ai.ts (simplified)
 
-import Anthropic from '@anthropic-ai/sdk';
-import { generateEmbedding } from './embeddings';
-import { searchSimilarTools } from '../db/queries/tools';
-import { RECOMMENDATION_PROMPT } from './prompts/recommendation';
-
-interface Requirements {
-  projectType: string;
-  scale: 'hobby' | 'startup' | 'growth' | 'enterprise';
-  budget: string;
-  teamSize: string;
-  features: string[];
-  constraints: string[];
-  naturalLanguageInput?: string;
-}
-
-interface Recommendation {
-  category: string;
-  tool: Tool;
-  reasoning: string;
-  confidence: number;
-  alternatives: Tool[];
-  estimatedCost: number;
-}
-
-export async function generateRecommendations(
-  requirements: Requirements
-): Promise<Recommendation[]> {
-  const anthropic = new Anthropic();
-  
-  // Step 1: Extract structured requirements from natural language
-  let structuredReqs = requirements;
-  if (requirements.naturalLanguageInput) {
-    structuredReqs = await extractRequirements(
-      anthropic,
-      requirements.naturalLanguageInput
-    );
-  }
-  
-  // Step 2: Generate embedding for semantic search
-  const queryText = buildQueryText(structuredReqs);
-  const embedding = await generateEmbedding(queryText);
-  
-  // Step 3: Find candidate tools via semantic search
-  const candidates = await searchSimilarTools(embedding, {
-    limit: 50,
-    filters: {
-      pricingModel: getPricingFilter(structuredReqs.budget),
-      scale: structuredReqs.scale,
-    },
-  });
-  
-  // Step 4: Generate recommendations with Claude
-  const recommendations = await generateWithClaude(
-    anthropic,
-    structuredReqs,
-    candidates
-  );
-  
-  // Step 5: Calculate costs
-  const withCosts = await calculateCosts(recommendations, structuredReqs);
-  
-  return withCosts;
-}
-
-async function extractRequirements(
-  anthropic: Anthropic,
-  input: string
-): Promise<Requirements> {
-  const response = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 1024,
-    messages: [{
-      role: 'user',
-      content: `Extract structured requirements from this project description:
-
-"${input}"
-
-Return JSON with:
-- projectType: string (e.g., "saas", "ecommerce", "blog", "dashboard")
-- scale: "hobby" | "startup" | "growth" | "enterprise"
-- budget: string (e.g., "$0", "$50/mo", "$500/mo")
-- teamSize: string (e.g., "solo", "2-5", "5-20", "20+")
-- features: string[] (key features needed)
-- constraints: string[] (any technical constraints mentioned)`
-    }],
-  });
-  
-  return JSON.parse(response.content[0].text);
-}
-
-async function generateWithClaude(
-  anthropic: Anthropic,
-  requirements: Requirements,
-  candidates: Tool[]
-): Promise<Recommendation[]> {
-  const response = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 4096,
-    system: RECOMMENDATION_PROMPT,
-    messages: [{
-      role: 'user',
-      content: `Generate tech stack recommendations.
-
-## Requirements
-${JSON.stringify(requirements, null, 2)}
-
-## Available Tools (by category)
-${formatCandidates(candidates)}
-
-For each category, recommend:
-1. Primary choice with detailed reasoning
-2. 1-2 alternatives
-3. Confidence score (1-100)
-
-Consider:
-- Budget constraints
-- Scale requirements
-- Team size and expertise
-- Integration compatibility between tools
-- Long-term maintainability`
-    }],
-  });
-  
-  return parseRecommendations(response.content[0].text);
-}
-```
-
----
-
-## 🔌 API Design (tRPC)
-
-```typescript
-// src/lib/trpc/routers/recommendation.ts
-
-import { z } from 'zod';
-import { router, publicProcedure, protectedProcedure } from '../trpc';
-import { generateRecommendations } from '@/lib/ai/recommendation-engine';
-
-const requirementsSchema = z.object({
-  projectType: z.string().optional(),
-  scale: z.enum(['hobby', 'startup', 'growth', 'enterprise']),
-  budget: z.string(),
-  teamSize: z.string(),
-  features: z.array(z.string()),
-  constraints: z.array(z.string()),
-  naturalLanguageInput: z.string().optional(),
-});
-
-export const recommendationRouter = router({
-  // Generate recommendations (public, rate-limited)
-  generate: publicProcedure
-    .input(requirementsSchema)
-    .mutation(async ({ input, ctx }) => {
-      // Rate limit check
-      await ctx.rateLimit.check('recommendations', 5, '1h');
-      
-      const recommendations = await generateRecommendations(input);
-      
-      return recommendations;
-    }),
-  
-  // Save recommendations to project (protected)
-  save: protectedProcedure
-    .input(z.object({
-      projectName: z.string(),
-      requirements: requirementsSchema,
-      recommendations: z.array(z.any()),
-    }))
-    .mutation(async ({ input, ctx }) => {
-      const project = await ctx.db.insert(projects).values({
-        userId: ctx.user.id,
-        name: input.projectName,
-        requirements: input.requirements,
-      }).returning();
-      
-      // Save recommendations
-      await ctx.db.insert(recommendations).values(
-        input.recommendations.map(rec => ({
-          projectId: project[0].id,
-          toolId: rec.tool.id,
-          categoryId: rec.category.id,
-          reasoning: rec.reasoning,
-          confidenceScore: rec.confidence,
-        }))
-      );
-      
-      return project[0];
-    }),
-  
-  // Get user's projects
-  getProjects: protectedProcedure
-    .query(async ({ ctx }) => {
-      return ctx.db.query.projects.findMany({
-        where: eq(projects.userId, ctx.user.id),
-        with: {
-          recommendations: {
-            with: {
-              tool: true,
-            },
-          },
-        },
-        orderBy: desc(projects.createdAt),
-      });
-    }),
+export const generateRecommendations = action({
+  args: {
+    projectType: v.string(),
+    scale: v.string(),
+    budget: v.string(),
+    features: v.array(v.string()),
+  },
+  handler: async (ctx, args) => {
+    // Fetch all tools from database
+    const tools = await ctx.runQuery(api.tools.list, {});
+    
+    // Call Claude API with tool context
+    const response = await anthropic.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 4096,
+      messages: [{
+        role: 'user',
+        content: buildPrompt(args, tools),
+      }],
+    });
+    
+    // Parse and return recommendations
+    return parseRecommendations(response.content[0].text);
+  },
 });
 ```
 
 ---
 
-## 🎨 Key UI Components
+## API Design (Convex Functions)
+
+Convex provides type-safe queries, mutations, and actions. All backend logic lives in the `convex/` folder.
+
+### Queries (Read Data)
+
+```typescript
+// convex/tools.ts
+export const list = query({
+  args: { categoryId: v.optional(v.id("categories")) },
+  handler: async (ctx, args) => {
+    if (args.categoryId) {
+      return await ctx.db
+        .query("tools")
+        .withIndex("by_category", (q) => q.eq("categoryId", args.categoryId))
+        .collect();
+    }
+    return await ctx.db.query("tools").collect();
+  },
+});
+
+export const getBySlug = query({
+  args: { slug: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("tools")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+  },
+});
+```
+
+### Mutations (Write Data)
+
+```typescript
+// convex/decks.ts
+export const createDeck = mutation({
+  args: {
+    name: v.string(),
+    toolIds: v.array(v.id("tools")),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+    
+    return await ctx.db.insert("userDecks", {
+      oderId: identity.subject,
+      name: args.name,
+      toolIds: args.toolIds,
+      createdAt: Date.now(),
+    });
+  },
+});
+```
+
+### Actions (External APIs)
+
+```typescript
+// convex/ai.ts
+export const generateRecommendations = action({
+  args: { projectType: v.string(), scale: v.string() },
+  handler: async (ctx, args) => {
+    // Call external AI API
+    const response = await fetch("https://api.anthropic.com/...");
+    return response.json();
+  },
+});
+```
+
+### Client Usage
+
+```typescript
+// In React components
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
+
+function ToolsList() {
+  const tools = useQuery(api.tools.list, {});
+  const createDeck = useMutation(api.decks.createDeck);
+  
+  // tools updates in realtime automatically
+}
+```
+
+---
+
+## Key UI Components
 
 ### Questionnaire Flow
 

@@ -168,14 +168,14 @@ export function AuthForm({ mode }: AuthFormProps) {
             </div>
           </div>
           <PixelCardTitle>CHECK YOUR EMAIL</PixelCardTitle>
-          <p className="text-muted-foreground text-[8px] mt-2">
+          <p className="text-muted-foreground text-xs mt-2">
             WE SENT A VERIFICATION CODE TO {email.toUpperCase()}
           </p>
         </PixelCardHeader>
         <PixelCardContent>
           <form onSubmit={handleVerification} className="space-y-4">
             <div>
-              <label className="text-primary text-[8px] block mb-2">
+              <label className="text-primary text-xs block mb-2">
                 VERIFICATION CODE
               </label>
               <PixelInput
@@ -189,7 +189,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             </div>
 
             {error && (
-              <div className="flex items-center gap-2 text-red-400 text-[8px] bg-red-900/20 p-2 border-2 border-red-500/50">
+              <div className="flex items-center gap-2 text-red-400 text-xs bg-red-900/20 p-2 border-2 border-red-500/50">
                 <AlertTriangle className="w-3 h-3" />
                 {error.toUpperCase()}
               </div>
@@ -213,7 +213,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <button
               type="button"
               onClick={() => setVerificationPending(false)}
-              className="text-muted-foreground hover:text-primary text-[8px] w-full text-center"
+              className="text-muted-foreground hover:text-primary text-xs w-full text-center"
             >
               ← BACK TO SIGN UP
             </button>
@@ -235,7 +235,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <PixelCardTitle>
           {mode === "sign-in" ? "WELCOME BACK" : "JOIN THE QUEST"}
         </PixelCardTitle>
-        <p className="text-muted-foreground text-[8px] mt-2">
+        <p className="text-muted-foreground text-xs mt-2">
           {mode === "sign-in" 
             ? "ENTER YOUR CREDENTIALS TO CONTINUE" 
             : "CREATE YOUR ADVENTURER PROFILE"}
@@ -271,7 +271,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <div className="w-full border-t-2 border-border" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-[#191022] px-4 text-muted-foreground text-[8px]">
+            <span className="bg-[#191022] px-4 text-muted-foreground text-xs">
               OR USE EMAIL
             </span>
           </div>
@@ -282,7 +282,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           {mode === "sign-up" && (
             <>
               <div>
-                <label className="text-primary text-[8px] block mb-2">
+                <label className="text-primary text-xs block mb-2">
                   <User className="w-3 h-3 inline mr-1" />
                   USERNAME
                 </label>
@@ -295,7 +295,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                 />
               </div>
               <div>
-                <label className="text-primary text-[8px] block mb-2">
+                <label className="text-primary text-xs block mb-2">
                   <Sparkles className="w-3 h-3 inline mr-1" />
                   DISPLAY NAME
                 </label>
@@ -310,7 +310,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           )}
 
           <div>
-            <label className="text-primary text-[8px] block mb-2">
+            <label className="text-primary text-xs block mb-2">
               <Mail className="w-3 h-3 inline mr-1" />
               EMAIL ADDRESS
             </label>
@@ -324,7 +324,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           </div>
 
           <div>
-            <label className="text-primary text-[8px] block mb-2">
+            <label className="text-primary text-xs block mb-2">
               <Lock className="w-3 h-3 inline mr-1" />
               PASSWORD
             </label>
@@ -356,7 +356,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <div className="text-right">
               <Link 
                 href="/forgot-password" 
-                className="text-muted-foreground hover:text-primary text-[8px]"
+                className="text-muted-foreground hover:text-primary text-xs"
               >
                 FORGOT PASSWORD?
               </Link>
@@ -364,7 +364,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           )}
 
           {error && (
-            <div className="flex items-center gap-2 text-red-400 text-[8px] bg-red-900/20 p-2 border-2 border-red-500/50">
+            <div className="flex items-center gap-2 text-red-400 text-xs bg-red-900/20 p-2 border-2 border-red-500/50">
               <AlertTriangle className="w-3 h-3" />
               {error.toUpperCase()}
             </div>
@@ -393,12 +393,12 @@ export function AuthForm({ mode }: AuthFormProps) {
 
         {/* Toggle Link */}
         <div className="mt-6 text-center">
-          <p className="text-muted-foreground text-[8px]">
+          <p className="text-muted-foreground text-xs">
             {mode === "sign-in" ? "NEW TO VIBEBUFF?" : "ALREADY HAVE AN ACCOUNT?"}
           </p>
           <Link
             href={mode === "sign-in" ? "/sign-up" : "/sign-in"}
-            className="text-primary hover:text-muted-foreground text-[10px] font-bold"
+            className="text-primary hover:text-muted-foreground text-sm font-bold"
           >
             {mode === "sign-in" ? "CREATE ACCOUNT →" : "← LOGIN HERE"}
           </Link>

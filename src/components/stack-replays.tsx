@@ -94,8 +94,8 @@ export function StackReplays({ userId, className }: StackReplaysProps) {
       ) : (
         <PixelCard className="p-8 text-center">
           <Play className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-muted-foreground text-[10px]">NO REPLAYS YET</p>
-          <p className="text-muted-foreground text-[8px]">Complete battles or runs to create replays!</p>
+          <p className="text-muted-foreground text-sm">NO REPLAYS YET</p>
+          <p className="text-muted-foreground text-xs">Complete battles or runs to create replays!</p>
         </PixelCard>
       )}
     </div>
@@ -157,10 +157,10 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       </div>
 
       {replay.description && (
-        <p className="text-muted-foreground text-[8px] mb-3">{replay.description}</p>
+        <p className="text-muted-foreground text-xs mb-3">{replay.description}</p>
       )}
 
-      <div className="flex items-center gap-3 mb-3 text-[8px] text-muted-foreground">
+      <div className="flex items-center gap-3 mb-3 text-xs text-muted-foreground">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" /> {minutes}:{seconds.toString().padStart(2, "0")}
         </span>
@@ -174,10 +174,10 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
 
       {replay.replayData.keyMoments.length > 0 && (
         <div className="mb-3 p-2 border border-border bg-[#191022]">
-          <p className="text-primary text-[8px] mb-1">KEY MOMENTS:</p>
+          <p className="text-primary text-xs mb-1">KEY MOMENTS:</p>
           <div className="space-y-1">
             {replay.replayData.keyMoments.slice(0, 2).map((moment: any, i: number) => (
-              <div key={i} className="flex items-center gap-2 text-[8px]">
+              <div key={i} className="flex items-center gap-2 text-xs">
                 <span className="text-muted-foreground">
                   {Math.floor(moment.timestamp / 1000)}s
                 </span>
@@ -189,7 +189,7 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       )}
 
       <div className="flex items-center justify-between">
-        <span className="text-muted-foreground text-[8px]">
+        <span className="text-muted-foreground text-xs">
           by {replay.username || "Anonymous"}
         </span>
         <div className="flex gap-2">
@@ -217,7 +217,7 @@ export function WeeklyHighlights() {
 
   return (
     <PixelCard className="p-4 border-yellow-400">
-      <h3 className="text-yellow-400 text-[10px] uppercase mb-3 flex items-center gap-2">
+      <h3 className="text-yellow-400 text-sm uppercase mb-3 flex items-center gap-2">
         <Star className="w-4 h-4" /> WEEKLY TOP PLAYS
       </h3>
       <div className="space-y-2">
@@ -234,7 +234,7 @@ export function WeeklyHighlights() {
             >
               <div className="flex items-center gap-2">
                 <span className={cn(
-                  "w-6 text-center text-[10px]",
+                  "w-6 text-center text-sm",
                   index === 0 && "text-yellow-400",
                   index === 1 && "text-gray-400",
                   index === 2 && "text-orange-400",
@@ -243,9 +243,9 @@ export function WeeklyHighlights() {
                   #{index + 1}
                 </span>
                 {config && <config.icon className={cn("w-4 h-4", config.color)} />}
-                <span className="text-primary text-[10px]">{replay.title}</span>
+                <span className="text-primary text-sm">{replay.title}</span>
               </div>
-              <span className="text-muted-foreground text-[8px] flex items-center gap-1">
+              <span className="text-muted-foreground text-xs flex items-center gap-1">
                 <ThumbsUp className="w-3 h-3" /> {replay.upvotes}
               </span>
             </div>
@@ -264,7 +264,7 @@ export function ReplayWidget({ userId }: { userId: string }) {
   return (
     <PixelCard className="p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-primary text-[10px] flex items-center gap-1">
+        <span className="text-primary text-sm flex items-center gap-1">
           <Play className="w-3 h-3" /> YOUR REPLAYS
         </span>
         <Link href="/replays">
@@ -277,7 +277,7 @@ export function ReplayWidget({ userId }: { userId: string }) {
         {userReplays.map((replay: any) => {
           const config = REPLAY_TYPE_CONFIG[replay.replayType as keyof typeof REPLAY_TYPE_CONFIG];
           return (
-            <div key={replay._id} className="flex items-center justify-between text-[8px]">
+            <div key={replay._id} className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-1">
                 {config && <config.icon className={cn("w-3 h-3", config.color)} />}
                 <span className="text-primary">{replay.title}</span>

@@ -66,7 +66,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
     <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <div className="mb-6 text-[10px] flex items-center gap-1">
+        <div className="mb-6 text-sm flex items-center gap-1">
           <Link href="/tools" className="text-muted-foreground hover:text-primary">
             INVENTORY
           </Link>
@@ -89,8 +89,8 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
-              <h1 className="text-primary text-xl mb-2 pixel-glow">{tool.name}</h1>
-              <p className="text-muted-foreground text-[12px]">{tool.tagline}</p>
+              <h1 className="text-primary text-2xl mb-2 pixel-glow">{tool.name}</h1>
+              <p className="text-muted-foreground text-base">{tool.tagline}</p>
             </div>
             <div className="flex gap-2">
               <PixelBadge variant="default">
@@ -116,20 +116,20 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                   <p className="text-primary text-lg flex items-center justify-center gap-1">
                     <Star className="w-4 h-4" /> {(tool.githubStars / 1000).toFixed(0)}K
                   </p>
-                  <p className="text-muted-foreground text-[8px]">GITHUB STARS</p>
+                  <p className="text-muted-foreground text-xs">GITHUB STARS</p>
                 </div>
               )}
               {tool.category && (
                 <div>
                   <p className="text-primary text-lg">{tool.category.icon}</p>
-                  <p className="text-muted-foreground text-[8px]">{tool.category.name.toUpperCase()}</p>
+                  <p className="text-muted-foreground text-xs">{tool.category.name.toUpperCase()}</p>
                 </div>
               )}
               <div>
                 <p className="text-primary text-lg flex items-center justify-center">
                   {tool.isFeatured ? <Star className="w-5 h-5" /> : <Tag className="w-5 h-5" />}
                 </p>
-                <p className="text-muted-foreground text-[8px]">
+                <p className="text-muted-foreground text-xs">
                   {tool.isFeatured ? "LEGENDARY" : "COMMON"}
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
               </PixelCardTitle>
             </PixelCardHeader>
             <PixelCardContent>
-              <p className="text-muted-foreground text-[10px] leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {tool.description}
               </p>
             </PixelCardContent>
@@ -162,7 +162,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             <PixelCardContent>
               <ul className="space-y-2">
                 {tool.bestFor.map((item, i) => (
-                  <li key={i} className="text-muted-foreground text-[10px] flex items-start gap-2">
+                  <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 mt-0.5 text-primary shrink-0" />
                     {item}
                   </li>
@@ -183,7 +183,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             <PixelCardContent>
               <ul className="space-y-2">
                 {tool.pros.map((pro, i) => (
-                  <li key={i} className="text-muted-foreground text-[10px] flex items-start gap-2">
+                  <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <span className="text-primary">+</span>
                     {pro}
                   </li>
@@ -202,7 +202,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             <PixelCardContent>
               <ul className="space-y-2">
                 {tool.cons.map((con, i) => (
-                  <li key={i} className="text-muted-foreground text-[10px] flex items-start gap-2">
+                  <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <span className="text-muted-foreground">-</span>
                     {con}
                   </li>
@@ -254,13 +254,13 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                         <Star className="w-3 h-3" /> POPULAR
                       </PixelBadge>
                     )}
-                    <h4 className="text-primary text-[12px] mb-2">{tier.name}</h4>
+                    <h4 className="text-primary text-sm mb-2">{tier.name}</h4>
                     <p className="text-primary text-lg mb-3">
                       {tier.priceMonthly === 0 ? "FREE" : `$${tier.priceMonthly}/MO`}
                     </p>
                     <ul className="space-y-1">
                       {tier.features.map((feature, i) => (
-                        <li key={i} className="text-muted-foreground text-[8px] flex items-start gap-1">
+                        <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
                           <ChevronRight className="w-2 h-2 mt-0.5 shrink-0" /> {feature}
                         </li>
                       ))}
@@ -274,7 +274,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
 
         {/* Tags */}
         <div className="mb-8">
-          <p className="text-primary text-[10px] mb-2 flex items-center gap-1">
+          <p className="text-primary text-sm mb-2 flex items-center gap-1">
             <Tag className="w-3 h-3" /> TAGS:
           </p>
           <div className="flex flex-wrap gap-2">

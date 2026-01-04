@@ -134,7 +134,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
   if (!categories || !allTools) {
     return (
       <div className="text-center p-8">
-        <div className="text-muted-foreground text-[10px] pixel-loading">LOADING SKILL TREE...</div>
+        <div className="text-muted-foreground text-sm pixel-loading">LOADING SKILL TREE...</div>
       </div>
     );
   }
@@ -257,10 +257,10 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
               transform: "translateX(-50%)",
             }}
           >
-            <p className="text-primary text-[10px] font-bold">
+            <p className="text-primary text-sm font-bold">
               {SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.name}
             </p>
-            <p className="text-muted-foreground text-[8px]">
+            <p className="text-muted-foreground text-xs">
               {isNodeCompleted(hoveredNode) ? "Completed" : 
                isNodeUnlocked(hoveredNode) ? "Click to select" : "Locked"}
             </p>
@@ -272,15 +272,15 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
       <div className="flex gap-4 mt-4 justify-center">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 border-2 border-primary bg-primary/20" />
-          <span className="text-muted-foreground text-[8px]">COMPLETED</span>
+          <span className="text-muted-foreground text-xs">COMPLETED</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 border-2 border-border" />
-          <span className="text-muted-foreground text-[8px]">AVAILABLE</span>
+          <span className="text-muted-foreground text-xs">AVAILABLE</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 border-2 border-border/50 opacity-50" />
-          <span className="text-muted-foreground text-[8px]">LOCKED</span>
+          <span className="text-muted-foreground text-xs">LOCKED</span>
         </div>
       </div>
     </PixelCard>
