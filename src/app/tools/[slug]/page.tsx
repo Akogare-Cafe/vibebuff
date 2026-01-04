@@ -23,6 +23,7 @@ import {
   DollarSign,
   Tag
 } from "lucide-react";
+import { DynamicIcon } from "@/components/dynamic-icon";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -121,7 +122,9 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
               )}
               {tool.category && (
                 <div>
-                  <p className="text-primary text-lg">{tool.category.icon}</p>
+                  <p className="text-primary text-lg flex items-center justify-center">
+                    <DynamicIcon name={tool.category.icon || "Package"} className="w-5 h-5" />
+                  </p>
                   <p className="text-muted-foreground text-xs">{tool.category.name.toUpperCase()}</p>
                 </div>
               )}

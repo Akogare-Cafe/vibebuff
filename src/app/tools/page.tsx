@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { Id } from "../../../convex/_generated/dataModel";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import {
   Search,
   Star,
@@ -16,12 +18,11 @@ import {
   Wrench,
   Stars,
   Coins,
-  ShoppingBag,
   SlidersHorizontal,
   ArrowUpDown,
   Bot,
   Bookmark,
-  ShoppingCart,
+  Heart,
   ChevronLeft,
   ChevronRight,
   Home,
@@ -30,77 +31,45 @@ import {
   MessageSquare,
   User,
   Lock,
-  Blocks,
-  Palette,
-  Terminal,
+  Globe,
+  Github,
+  ExternalLink,
+  Package,
+  Database,
+  Cpu,
+  Layers,
+  Zap,
   Code,
-  FileCode,
-  Container,
-  GitBranch,
-  FileEdit,
-  Sparkles,
+  Terminal,
 } from "lucide-react";
+import { ToolIcon } from "@/components/dynamic-icon";
 
-type Rarity = "common" | "rare" | "epic" | "legendary";
+type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
-interface ToolItem {
-  id: string;
-  name: string;
-  type: string;
-  rarity: Rarity;
-  icon: React.ComponentType<{ className?: string }>;
-  iconBg: string;
-  iconColor: string;
-  stat1: { label: string; value: string; color: string };
-  stat2: { label: string; value: string; color: string };
-  description: string;
-}
-
-const rarityStyles: Record<Rarity, { border: string; label: string; labelColor: string; hoverBtn: string }> = {
-  common: { border: "border-gray-500", label: "Common Scroll", labelColor: "text-gray-500", hoverBtn: "hover:bg-gray-600" },
-  rare: { border: "border-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]", label: "Rare", labelColor: "text-blue-500", hoverBtn: "hover:bg-blue-600" },
-  epic: { border: "border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]", label: "Epic", labelColor: "text-purple-500", hoverBtn: "hover:bg-purple-600" },
-  legendary: { border: "border-yellow-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]", label: "Legendary", labelColor: "text-yellow-500", hoverBtn: "hover:bg-yellow-600 hover:text-black" },
+const pricingStyles: Record<PricingModel, { border: string; label: string; labelColor: string; hoverBtn: string }> = {
+  free: { border: "border-green-500 shadow-[0_0_8px_rgba(34,197,94,0.3)]", label: "Free", labelColor: "text-green-500", hoverBtn: "hover:bg-green-600" },
+  freemium: { border: "border-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]", label: "Freemium", labelColor: "text-blue-500", hoverBtn: "hover:bg-blue-600" },
+  paid: { border: "border-yellow-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]", label: "Paid", labelColor: "text-yellow-500", hoverBtn: "hover:bg-yellow-600" },
+  open_source: { border: "border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]", label: "Open Source", labelColor: "text-purple-500", hoverBtn: "hover:bg-purple-600" },
+  enterprise: { border: "border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]", label: "Enterprise", labelColor: "text-orange-500", hoverBtn: "hover:bg-orange-600" },
 };
 
-const mockTools: ToolItem[] = [
-  { id: "react", name: "React.js", type: "Legendary Staff", rarity: "legendary", icon: Blocks, iconBg: "bg-[#20232a]", iconColor: "text-[#61dafb]", stat1: { label: "Speed", value: "+15 AGI", color: "text-green-400" }, stat2: { label: "Req", value: "Lvl 5 JS", color: "text-red-400" }, description: "Dominant UI library for building interactive interfaces." },
-  { id: "tailwind", name: "Tailwind CSS", type: "Epic Light Armor", rarity: "epic", icon: Palette, iconBg: "bg-[#0b1120]", iconColor: "text-[#38bdf8]", stat1: { label: "Style", value: "+20 CHA", color: "text-pink-400" }, stat2: { label: "Req", value: "None", color: "text-gray-400" }, description: "Utility-first framework for rapid UI development." },
-  { id: "nodejs", name: "Node.js", type: "Rare Blade", rarity: "rare", icon: Terminal, iconBg: "bg-[#303030]", iconColor: "text-[#68a063]", stat1: { label: "Power", value: "+12 STR", color: "text-red-400" }, stat2: { label: "Req", value: "Lvl 3 JS", color: "text-red-400" }, description: "JavaScript runtime built on Chrome's V8 engine." },
-  { id: "typescript", name: "TypeScript", type: "Legendary Rune", rarity: "legendary", icon: Code, iconBg: "bg-[#007acc]", iconColor: "text-white", stat1: { label: "Intellect", value: "+25 INT", color: "text-blue-300" }, stat2: { label: "Req", value: "Lvl 8 JS", color: "text-red-400" }, description: "Strongly typed programming language that builds on JS." },
-  { id: "docker", name: "Docker", type: "Epic Chest", rarity: "epic", icon: Container, iconBg: "bg-[#0db7ed]", iconColor: "text-white", stat1: { label: "Defense", value: "+18 DEF", color: "text-orange-400" }, stat2: { label: "Req", value: "Lvl 4 OS", color: "text-red-400" }, description: "Platform for developing, shipping, and running applications." },
-  { id: "git", name: "Git", type: "Common Scroll", rarity: "common", icon: GitBranch, iconBg: "bg-[#f05032]", iconColor: "text-white", stat1: { label: "Safety", value: "+100 SAF", color: "text-green-400" }, stat2: { label: "Req", value: "Essential", color: "text-gray-400" }, description: "Distributed version control system." },
-  { id: "vscode", name: "VS Code", type: "Rare Hammer", rarity: "rare", icon: FileEdit, iconBg: "bg-[#0078d7]", iconColor: "text-white", stat1: { label: "Crafting", value: "+50 SPD", color: "text-yellow-400" }, stat2: { label: "Req", value: "None", color: "text-gray-400" }, description: "Code editor redefined and optimized for building." },
-  { id: "python", name: "Python", type: "Epic Flute", rarity: "epic", icon: Sparkles, iconBg: "bg-[#3776ab]", iconColor: "text-[#ffd343]", stat1: { label: "Versatile", value: "+40 WIS", color: "text-cyan-400" }, stat2: { label: "Req", value: "Lvl 1 Logic", color: "text-gray-400" }, description: "Language that lets you work quickly and integrate systems." },
-];
-
-const featuredTool = {
-  name: "OpenAI API",
-  type: "Artificial Intelligence Core",
-  rarity: "mythic" as const,
-  price: "2,500 XP",
-  description: "A powerful artifact that imbues your application with sentient capabilities. Allows for text generation, image creation, and complex reasoning. Warning: Consumes mana (tokens) rapidly.",
-  stats: [
-    { label: "Intelligence", value: "98/100", percent: 98, color: "bg-primary", textColor: "text-primary" },
-    { label: "Latency", value: "High", percent: 75, color: "bg-orange-500", textColor: "text-orange-400" },
-    { label: "Integration", value: "Easy", percent: 90, color: "bg-green-500", textColor: "text-green-400" },
-    { label: "Cost", value: "Expensive", percent: 85, color: "bg-red-500", textColor: "text-red-400" },
-  ],
+const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  frontend: Paintbrush,
+  backend: Server,
+  database: Database,
+  infrastructure: Cloud,
+  devops: Cpu,
+  utilities: Wrench,
+  ai: Bot,
+  default: Package,
 };
-
-const categoryFilters = [
-  { id: "all", name: "All Items", icon: LayoutGrid, count: 124 },
-  { id: "frontend", name: "Frontend", icon: Paintbrush, count: 42 },
-  { id: "backend", name: "Backend", icon: Server, count: 38 },
-  { id: "infrastructure", name: "Infrastructure", icon: Cloud, count: 15 },
-  { id: "utilities", name: "Utilities", icon: Wrench, count: 29 },
-];
 
 const rarityFilters = [
-  { id: "common", label: "Common", color: "border-gray-600", textColor: "text-gray-400" },
-  { id: "rare", label: "Rare", color: "border-blue-500", textColor: "text-blue-400" },
-  { id: "epic", label: "Epic", color: "border-purple-500", textColor: "text-purple-400", checked: true },
-  { id: "legendary", label: "Legendary", color: "border-yellow-500", textColor: "text-yellow-500" },
+  { id: "free", label: "Free", color: "border-green-500", textColor: "text-green-400" },
+  { id: "freemium", label: "Freemium", color: "border-blue-500", textColor: "text-blue-400" },
+  { id: "open_source", label: "Open Source", color: "border-purple-500", textColor: "text-purple-400" },
+  { id: "paid", label: "Paid", color: "border-yellow-500", textColor: "text-yellow-500" },
 ];
 
 export default function ToolsPage() {
@@ -116,24 +85,94 @@ export default function ToolsPage() {
 }
 
 function ToolsPageContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const { user, isLoaded: isUserLoaded } = useUser();
   const categoryFilter = searchParams.get("category");
   const urlSearchQuery = searchParams.get("search");
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery || "");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedTool, setSelectedTool] = useState<ToolItem | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState(categoryFilter || "all");
+  const [selectedPricing, setSelectedPricing] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<"name" | "stars" | "featured">("featured");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const categories = useQuery(api.categories.list);
   const tools = useQuery(api.tools.list, {
-    categorySlug: categoryFilter || undefined,
-    limit: 50
+    categorySlug: selectedCategory !== "all" ? selectedCategory : undefined,
+    limit: 100
   });
+  const featuredTools = useQuery(api.tools.featured);
   const searchResults = useQuery(
     api.tools.search,
     searchQuery.length > 1 ? { query: searchQuery } : "skip"
   );
+  const stats = useQuery(api.tools.getStats);
 
-  const displayTools = searchQuery.length > 1 ? searchResults : tools;
+  const favorites = useQuery(
+    api.toolUsage.getFavorites,
+    user?.id ? { userId: user.id } : "skip"
+  );
+
+  const toggleFavorite = useMutation(api.toolUsage.toggleFavorite);
+  const trackUsage = useMutation(api.toolUsage.trackUsage);
+
+  const favoriteIds = new Set(favorites?.filter((f) => f !== null).map((f) => f._id) ?? []);
+
+  const baseTools = searchQuery.length > 1 ? searchResults : tools;
+  
+  const filteredTools = baseTools?.filter((tool) => {
+    if (selectedPricing.length > 0 && !selectedPricing.includes(tool.pricingModel)) {
+      return false;
+    }
+    return true;
+  });
+
+  const sortedTools = [...(filteredTools ?? [])].sort((a, b) => {
+    if (sortBy === "name") return a.name.localeCompare(b.name);
+    if (sortBy === "stars") return (b.githubStars ?? 0) - (a.githubStars ?? 0);
+    if (sortBy === "featured") return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
+    return 0;
+  });
+
+  const totalPages = Math.ceil((sortedTools?.length ?? 0) / itemsPerPage);
+  const paginatedTools = sortedTools?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const featuredTool = featuredTools?.[0];
+
+  const handleCategoryChange = (categorySlug: string) => {
+    setSelectedCategory(categorySlug);
+    setCurrentPage(1);
+    if (categorySlug === "all") {
+      router.push("/tools");
+    } else {
+      router.push(`/tools?category=${categorySlug}`);
+    }
+  };
+
+  const handleToggleFavorite = async (toolId: Id<"tools">) => {
+    if (!user?.id) return;
+    await toggleFavorite({ userId: user.id, toolId });
+  };
+
+  const handleToolClick = async (toolId: Id<"tools">, slug: string) => {
+    if (user?.id) {
+      await trackUsage({ userId: user.id, toolId });
+    }
+    router.push(`/tools/${slug}`);
+  };
+
+  const togglePricingFilter = (pricing: string) => {
+    setSelectedPricing((prev) =>
+      prev.includes(pricing)
+        ? prev.filter((p) => p !== pricing)
+        : [...prev, pricing]
+    );
+    setCurrentPage(1);
+  };
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -144,20 +183,23 @@ function ToolsPageContent() {
           <div>
             <div className="flex items-center gap-2 text-primary mb-1">
               <Store className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">Merchant Level 5</span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                {stats ? `${stats.toolsCount} Tools Available` : "Loading..."}
+              </span>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">Tech Stack Armory</h1>
             <p className="text-muted-foreground mt-2 max-w-2xl">Equip yourself with legendary frameworks and libraries. Check requirements before acquiring.</p>
           </div>
           <div className="flex gap-2">
-            <button className="px-4 py-2 bg-card border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors flex items-center gap-2">
-              <SlidersHorizontal className="w-4 h-4" />
-              Filters
-            </button>
-            <button className="px-4 py-2 bg-card border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors flex items-center gap-2">
-              <ArrowUpDown className="w-4 h-4" />
-              Sort: Rarity
-            </button>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured")}
+              className="px-4 py-2 bg-card border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
+            >
+              <option value="featured">Sort: Featured</option>
+              <option value="name">Sort: Name</option>
+              <option value="stars">Sort: Stars</option>
+            </select>
           </div>
         </div>
 
@@ -181,47 +223,71 @@ function ToolsPageContent() {
               <div className="bg-secondary px-4 py-3 border-b border-border">
                 <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
                   <LayoutGrid className="w-4 h-4 text-primary" />
-                  Equipment Type
+                  Categories
                 </h3>
               </div>
               <div className="p-2 space-y-1">
-                {categoryFilters.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
-                      selectedCategory === cat.id
-                        ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
-                        : "hover:bg-white/5 text-muted-foreground group"
-                    }`}
-                  >
-                    <span className={`flex items-center gap-2 ${selectedCategory !== cat.id ? "group-hover:text-foreground" : ""}`}>
-                      <cat.icon className="w-4 h-4" />
-                      {cat.name}
-                    </span>
-                    <span className={`text-xs ${selectedCategory === cat.id ? "bg-black/40 px-1.5 rounded text-primary" : "text-gray-600 group-hover:text-gray-400"}`}>
-                      {cat.count}
-                    </span>
-                  </button>
-                ))}
+                <button
+                  onClick={() => handleCategoryChange("all")}
+                  className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
+                    selectedCategory === "all"
+                      ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
+                      : "hover:bg-white/5 text-muted-foreground group"
+                  }`}
+                >
+                  <span className={`flex items-center gap-2 ${selectedCategory !== "all" ? "group-hover:text-foreground" : ""}`}>
+                    <LayoutGrid className="w-4 h-4" />
+                    All Tools
+                  </span>
+                  <span className={`text-xs ${selectedCategory === "all" ? "bg-black/40 px-1.5 rounded text-primary" : "text-gray-600 group-hover:text-gray-400"}`}>
+                    {stats?.toolsCount ?? 0}
+                  </span>
+                </button>
+                {categories?.map((cat) => {
+                  const IconComponent = categoryIcons[cat.slug] || categoryIcons.default;
+                  return (
+                    <button
+                      key={cat._id}
+                      onClick={() => handleCategoryChange(cat.slug)}
+                      className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
+                        selectedCategory === cat.slug
+                          ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
+                          : "hover:bg-white/5 text-muted-foreground group"
+                      }`}
+                    >
+                      <span className={`flex items-center gap-2 ${selectedCategory !== cat.slug ? "group-hover:text-foreground" : ""}`}>
+                        <IconComponent className="w-4 h-4" />
+                        {cat.name}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
               <div className="bg-secondary px-4 py-3 border-b border-border">
                 <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
-                  <Stars className="w-4 h-4 text-yellow-500" />
-                  Rarity
+                  <Coins className="w-4 h-4 text-yellow-500" />
+                  Pricing
                 </h3>
               </div>
               <div className="p-4 space-y-3">
-                {rarityFilters.map((rarity) => (
-                  <label key={rarity.id} className="flex items-center gap-3 cursor-pointer group">
-                    <div className={`size-4 rounded border ${rarity.color} bg-card flex items-center justify-center group-hover:border-white`}>
-                      {rarity.checked && <div className={`size-2 ${rarity.color.replace("border-", "bg-")} rounded-sm`} />}
+                {rarityFilters.map((pricing) => (
+                  <label key={pricing.id} className="flex items-center gap-3 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${pricing.color} bg-card flex items-center justify-center group-hover:border-white`}
+                      onClick={() => togglePricingFilter(pricing.id)}
+                    >
+                      {selectedPricing.includes(pricing.id) && (
+                        <div className={`size-2 ${pricing.color.replace("border-", "bg-")} rounded-sm`} />
+                      )}
                     </div>
-                    <span className={`${rarity.textColor} text-sm group-hover:brightness-125 ${rarity.checked ? "font-bold" : ""}`}>
-                      {rarity.label}
+                    <span 
+                      className={`${pricing.textColor} text-sm group-hover:brightness-125 ${selectedPricing.includes(pricing.id) ? "font-bold" : ""}`}
+                      onClick={() => togglePricingFilter(pricing.id)}
+                    >
+                      {pricing.label}
                     </span>
                   </label>
                 ))}
@@ -249,99 +315,192 @@ function ToolsPageContent() {
           </aside>
 
           <section className="lg:col-span-9 flex flex-col gap-8">
-            <div className="bg-card border border-primary/30 rounded-xl p-1 relative overflow-hidden group shadow-[0_0_40px_rgba(127,19,236,0.1)]">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent opacity-50" />
-              <div className="relative bg-card rounded-lg p-6 lg:p-8 flex flex-col md:flex-row gap-8 items-start">
-                <div className="relative shrink-0">
-                  <div className="size-32 md:size-40 bg-background rounded-xl border border-primary/50 flex items-center justify-center shadow-lg relative z-10">
-                    <Bot className="w-16 h-16 md:w-20 md:h-20 text-primary drop-shadow-[0_0_15px_rgba(127,19,236,0.8)]" />
-                  </div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-48 rounded-full border border-dashed border-primary/20 pointer-events-none z-0" style={{ animation: "spin 20s linear infinite" }} />
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-card border border-primary/50 px-3 py-1 rounded-full text-xs text-primary font-bold whitespace-nowrap z-20 shadow-lg">
-                    SELECTED ITEM
-                  </div>
-                </div>
-                <div className="flex-1 w-full">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h2 className="text-2xl md:text-3xl font-bold text-foreground">{featuredTool.name}</h2>
-                        <span className="px-2 py-0.5 rounded text-sm font-bold bg-purple-500 text-white shadow-[0_0_10px_rgba(168,85,247,0.5)]">MYTHIC</span>
-                      </div>
-                      <p className="text-purple-300 text-sm font-medium">{featuredTool.type}</p>
+            {featuredTool && (
+              <div 
+                className="bg-card border border-primary/30 rounded-xl p-1 relative overflow-hidden group shadow-[0_0_40px_rgba(127,19,236,0.1)] cursor-pointer"
+                onClick={() => handleToolClick(featuredTool._id, featuredTool.slug)}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent opacity-50" />
+                <div className="relative bg-card rounded-lg p-6 lg:p-8 flex flex-col md:flex-row gap-8 items-start">
+                  <div className="relative shrink-0">
+                    <div className="size-32 md:size-40 bg-background rounded-xl border border-primary/50 flex items-center justify-center shadow-lg relative z-10">
+                      {featuredTool.logoUrl ? (
+                        <img src={featuredTool.logoUrl} alt={featuredTool.name} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+                      ) : (
+                        <Package className="w-16 h-16 md:w-20 md:h-20 text-primary drop-shadow-[0_0_15px_rgba(127,19,236,0.8)]" />
+                      )}
                     </div>
-                    <div className="hidden sm:block text-right">
-                      <div className="text-xs text-muted-foreground mb-1">Market Value</div>
-                      <div className="text-xl font-bold text-yellow-400 font-mono">{featuredTool.price}</div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-48 rounded-full border border-dashed border-primary/20 pointer-events-none z-0" style={{ animation: "spin 20s linear infinite" }} />
+                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-card border border-primary/50 px-3 py-1 rounded-full text-xs text-primary font-bold whitespace-nowrap z-20 shadow-lg">
+                      FEATURED
                     </div>
                   </div>
-                  <div className="mt-4 text-muted-foreground text-sm leading-relaxed border-l-2 border-primary/30 pl-4">
-                    {featuredTool.description}
-                  </div>
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-3 mt-6">
-                    {featuredTool.stats.map((stat) => (
-                      <div key={stat.label}>
-                        <div className="flex justify-between text-xs mb-1">
-                          <span className="text-gray-400">{stat.label}</span>
-                          <span className={`${stat.textColor} font-mono font-bold`}>{stat.value}</span>
+                  <div className="flex-1 w-full">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <h2 className="text-2xl md:text-3xl font-bold text-foreground">{featuredTool.name}</h2>
+                          <span className="px-2 py-0.5 rounded text-sm font-bold bg-purple-500 text-white shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                            {featuredTool.pricingModel === "open_source" ? "OSS" : featuredTool.pricingModel.toUpperCase()}
+                          </span>
                         </div>
-                        <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
-                          <div className={`h-full ${stat.color} rounded-sm ${stat.label === "Intelligence" ? "shadow-[0_0_10px_rgba(127,19,236,0.6)]" : ""}`} style={{ width: `${stat.percent}%` }} />
+                        <p className="text-purple-300 text-sm font-medium">{featuredTool.tagline}</p>
+                      </div>
+                      {featuredTool.githubStars && (
+                        <div className="hidden sm:block text-right">
+                          <div className="text-xs text-muted-foreground mb-1">GitHub Stars</div>
+                          <div className="text-xl font-bold text-yellow-400 font-mono flex items-center gap-1">
+                            <Star className="w-4 h-4" />
+                            {(featuredTool.githubStars / 1000).toFixed(1)}K
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className="mt-4 text-muted-foreground text-sm leading-relaxed border-l-2 border-primary/30 pl-4">
+                      {featuredTool.description}
+                    </div>
+                    {featuredTool.stats && (
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-3 mt-6">
+                        <div>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gray-400">HP</span>
+                            <span className="text-red-400 font-mono font-bold">{featuredTool.stats.hp}</span>
+                          </div>
+                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                            <div className="h-full bg-red-500 rounded-sm" style={{ width: `${featuredTool.stats.hp}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gray-400">ATK</span>
+                            <span className="text-orange-400 font-mono font-bold">{featuredTool.stats.attack}</span>
+                          </div>
+                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                            <div className="h-full bg-orange-500 rounded-sm" style={{ width: `${featuredTool.stats.attack}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gray-400">DEF</span>
+                            <span className="text-blue-400 font-mono font-bold">{featuredTool.stats.defense}</span>
+                          </div>
+                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                            <div className="h-full bg-blue-500 rounded-sm" style={{ width: `${featuredTool.stats.defense}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gray-400">SPD</span>
+                            <span className="text-green-400 font-mono font-bold">{featuredTool.stats.speed}</span>
+                          </div>
+                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                            <div className="h-full bg-green-500 rounded-sm" style={{ width: `${featuredTool.stats.speed}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gray-400">MANA</span>
+                            <span className="text-purple-400 font-mono font-bold">{featuredTool.stats.mana}</span>
+                          </div>
+                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                            <div className="h-full bg-purple-500 rounded-sm" style={{ width: `${featuredTool.stats.mana}%` }} />
+                          </div>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-3 mt-6">
-                    <button className="quest-btn py-2 px-6 font-bold flex items-center gap-2">
-                      <ShoppingCart className="w-5 h-5" />
-                      Acquire Artifact
-                    </button>
-                    <button className="bg-card border border-border hover:bg-white/5 text-muted-foreground hover:text-foreground font-bold py-2 px-4 rounded transition-colors flex items-center gap-2">
-                      <Bookmark className="w-5 h-5" />
-                      Wishlist
-                    </button>
+                    )}
+                    <div className="flex flex-wrap gap-3 mt-6">
+                      <Link href={`/tools/${featuredTool.slug}`}>
+                        <button className="quest-btn py-2 px-6 font-bold flex items-center gap-2">
+                          <ExternalLink className="w-5 h-5" />
+                          View Details
+                        </button>
+                      </Link>
+                      {user && (
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleFavorite(featuredTool._id);
+                          }}
+                          className={`bg-card border hover:bg-white/5 font-bold py-2 px-4 rounded transition-colors flex items-center gap-2 ${
+                            favoriteIds.has(featuredTool._id) 
+                              ? "border-red-500 text-red-500" 
+                              : "border-border text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          <Heart className={`w-5 h-5 ${favoriteIds.has(featuredTool._id) ? "fill-current" : ""}`} />
+                          {favoriteIds.has(featuredTool._id) ? "Favorited" : "Favorite"}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-foreground font-bold text-lg flex items-center gap-2">
                   <LayoutGrid className="w-5 h-5 text-muted-foreground" />
-                  Available Loot
+                  Available Tools
                 </h3>
-                <span className="text-xs text-muted-foreground">Showing {mockTools.length} of 124 items</span>
+                <span className="text-xs text-muted-foreground">
+                  Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0} items
+                </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {mockTools.map((tool) => {
-                  const style = rarityStyles[tool.rarity];
+                {paginatedTools?.map((tool) => {
+                  const style = pricingStyles[tool.pricingModel] || pricingStyles.free;
+                  const isFavorited = favoriteIds.has(tool._id);
                   return (
                     <div
-                      key={tool.id}
+                      key={tool._id}
                       className={`bg-card rounded-lg p-4 border ${style.border} hover:bg-secondary transition-all cursor-pointer group flex flex-col gap-3 relative`}
-                      onClick={() => setSelectedTool(tool)}
+                      onClick={() => handleToolClick(tool._id, tool.slug)}
                     >
+                      {user && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleFavorite(tool._id);
+                          }}
+                          className={`absolute top-3 right-3 p-1.5 rounded transition-colors ${
+                            isFavorited 
+                              ? "text-red-500" 
+                              : "text-muted-foreground hover:text-red-500"
+                          }`}
+                        >
+                          <Heart className={`w-4 h-4 ${isFavorited ? "fill-current" : ""}`} />
+                        </button>
+                      )}
                       <div className="flex items-center gap-4">
-                        <div className={`size-14 ${tool.iconBg} rounded-lg border border-white/10 flex items-center justify-center shrink-0`}>
-                          <tool.icon className={`w-8 h-8 ${tool.iconColor}`} />
+                        <div className="size-14 bg-background rounded-lg border border-white/10 flex items-center justify-center shrink-0">
+                          {tool.logoUrl ? (
+                            <img src={tool.logoUrl} alt={tool.name} className="w-8 h-8 object-contain" />
+                          ) : (
+                            <ToolIcon toolSlug={tool.slug} className="w-8 h-8 text-primary" />
+                          )}
                         </div>
-                        <div>
-                          <h4 className={`text-foreground font-bold group-hover:${style.labelColor} transition-colors`}>{tool.name}</h4>
-                          <p className={`text-xs ${style.labelColor} font-bold uppercase tracking-wider`}>{tool.type}</p>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-foreground font-bold transition-colors truncate pr-6">{tool.name}</h4>
+                          <p className={`text-xs ${style.labelColor} font-bold uppercase tracking-wider`}>{style.label}</p>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-1">
                         <div className="bg-black/20 p-1.5 rounded text-center">
-                          <div className="text-sm text-gray-500 uppercase">{tool.stat1.label}</div>
-                          <div className={`${tool.stat1.color} font-bold text-xs`}>{tool.stat1.value}</div>
+                          <div className="text-[10px] text-gray-500 uppercase">Stars</div>
+                          <div className="text-green-400 font-bold text-xs flex items-center justify-center gap-1">
+                            <Star className="w-3 h-3" />
+                            {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(1)}K` : "N/A"}
+                          </div>
                         </div>
                         <div className="bg-black/20 p-1.5 rounded text-center">
-                          <div className="text-sm text-gray-500 uppercase">{tool.stat2.label}</div>
-                          <div className={`${tool.stat2.color} font-bold text-xs`}>{tool.stat2.value}</div>
+                          <div className="text-[10px] text-gray-500 uppercase">Type</div>
+                          <div className="text-blue-400 font-bold text-xs">
+                            {tool.isOpenSource ? "OSS" : "Closed"}
+                          </div>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2 mt-1">{tool.description}</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2 mt-1">{tool.tagline}</p>
                       <button className={`mt-auto w-full py-1.5 rounded bg-secondary text-xs text-foreground font-bold ${style.hoverBtn} transition-colors`}>
                         Inspect
                       </button>
@@ -355,17 +514,49 @@ function ToolsPageContent() {
               </div>
             </div>
 
-            <div className="flex justify-center mt-4 gap-2">
-              <button className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors">
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button className="size-8 rounded bg-primary text-white font-bold text-sm flex items-center justify-center shadow-[0_0_10px_rgba(127,19,236,0.5)]">1</button>
-              <button className="size-8 rounded bg-card border border-border text-muted-foreground text-sm flex items-center justify-center hover:bg-secondary hover:text-foreground transition-colors">2</button>
-              <button className="size-8 rounded bg-card border border-border text-muted-foreground text-sm flex items-center justify-center hover:bg-secondary hover:text-foreground transition-colors">3</button>
-              <button className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors">
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-4 gap-2">
+                <button 
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  let pageNum: number;
+                  if (totalPages <= 5) {
+                    pageNum = i + 1;
+                  } else if (currentPage <= 3) {
+                    pageNum = i + 1;
+                  } else if (currentPage >= totalPages - 2) {
+                    pageNum = totalPages - 4 + i;
+                  } else {
+                    pageNum = currentPage - 2 + i;
+                  }
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => setCurrentPage(pageNum)}
+                      className={`size-8 rounded text-sm flex items-center justify-center transition-colors ${
+                        currentPage === pageNum
+                          ? "bg-primary text-white font-bold shadow-[0_0_10px_rgba(127,19,236,0.5)]"
+                          : "bg-card border border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+                <button 
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </main>

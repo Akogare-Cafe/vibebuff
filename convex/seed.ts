@@ -2,12 +2,6 @@ import { mutation } from "./_generated/server";
 
 export const clearDatabase = mutation({
   handler: async (ctx) => {
-    // Clear all tables in order (respecting foreign key-like relationships)
-    const recommendations = await ctx.db.query("recommendations").collect();
-    for (const rec of recommendations) {
-      await ctx.db.delete(rec._id);
-    }
-    
     const pricingTiers = await ctx.db.query("pricingTiers").collect();
     for (const tier of pricingTiers) {
       await ctx.db.delete(tier._id);
@@ -21,11 +15,6 @@ export const clearDatabase = mutation({
     const categories = await ctx.db.query("categories").collect();
     for (const cat of categories) {
       await ctx.db.delete(cat._id);
-    }
-    
-    const projects = await ctx.db.query("projects").collect();
-    for (const proj of projects) {
-      await ctx.db.delete(proj._id);
     }
     
     return { message: "Database cleared successfully" };

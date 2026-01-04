@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, Suspense } from "react";
-import { useQuery } from "convex/react";
+import { useState, Suspense, useMemo } from "react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
-import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
+import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelInput } from "@/components/pixel-input";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import {
   Wrench,
   Scale,
@@ -25,15 +26,50 @@ import {
   ChevronRight,
   TrendingUp,
   Eye,
-  Sparkles
+  Sparkles,
+  Zap,
+  Shield,
+  Heart,
+  Gauge,
+  Flame,
+  Save,
+  Share2,
+  Trophy,
+  Target,
+  Users,
+  Package,
+  ArrowRight,
+  Swords,
+  Crown,
+  Medal
 } from "lucide-react";
 import { Id } from "../../../convex/_generated/dataModel";
+import { DynamicIcon, ToolIcon } from "@/components/dynamic-icon";
+import { motion, AnimatePresence } from "framer-motion";
+
+type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
+
+const pricingStyles: Record<PricingModel, { bg: string; text: string; label: string }> = {
+  free: { bg: "bg-green-500/20", text: "text-green-400", label: "FREE" },
+  freemium: { bg: "bg-blue-500/20", text: "text-blue-400", label: "FREEMIUM" },
+  paid: { bg: "bg-yellow-500/20", text: "text-yellow-400", label: "PAID" },
+  open_source: { bg: "bg-purple-500/20", text: "text-purple-400", label: "OSS" },
+  enterprise: { bg: "bg-orange-500/20", text: "text-orange-400", label: "ENTERPRISE" },
+};
+
+const statConfig = [
+  { key: "hp", label: "HP", color: "bg-red-500", icon: Heart },
+  { key: "attack", label: "ATK", color: "bg-orange-500", icon: Flame },
+  { key: "defense", label: "DEF", color: "bg-blue-500", icon: Shield },
+  { key: "speed", label: "SPD", color: "bg-green-500", icon: Gauge },
+  { key: "mana", label: "MANA", color: "bg-purple-500", icon: Zap },
+];
 
 export default function ComparePage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-primary text-sm">LOADING...</div>
+        <div className="text-primary text-sm animate-pulse">LOADING ARENA...</div>
       </div>
     }>
       <ComparePageContent />
@@ -43,13 +79,17 @@ export default function ComparePage() {
 
 function ComparePageContent() {
   const searchParams = useSearchParams();
-  const initialSlugs = searchParams.get("tools")?.split(",") || [];
+  const initialSlugs = searchParams.get("tools")?.split(",").filter(Boolean) || [];
+  const { user } = useUser();
   
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>(initialSlugs);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [showQuickPick, setShowQuickPick] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   const allTools = useQuery(api.tools.list, { limit: 100 });
+  const featuredTools = useQuery(api.tools.featured);
   const compareTools = useQuery(
     api.compare.getToolsBySlug,
     selectedSlugs.length > 0 ? { slugs: selectedSlugs } : "skip"
@@ -61,6 +101,8 @@ function ComparePageContent() {
   );
 
   const popularComparisons = useQuery(api.seo.getPopularComparisons, { limit: 8 });
+  
+  const saveComparison = useMutation(api.compare.saveComparison);
 
   const handleAddTool = (slug: string) => {
     if (!selectedSlugs.includes(slug) && selectedSlugs.length < 4) {
@@ -68,7 +110,7 @@ function ComparePageContent() {
       setSelectedSlugs(newSlugs);
       setSearchQuery("");
       setShowSearch(false);
-      // Update URL
+      setShowQuickPick(false);
       window.history.replaceState({}, "", `/compare?tools=${newSlugs.join(",")}`);
     }
   };
@@ -83,345 +125,730 @@ function ComparePageContent() {
     }
   };
 
+  const handleSaveComparison = async () => {
+    if (!user?.id || validCompareTools.length < 2) return;
+    
+    const toolIds = validCompareTools.map(t => t._id);
+    const name = validCompareTools.map(t => t.name).join(" vs ");
+    
+    await saveComparison({
+      userId: user.id,
+      toolIds,
+      name,
+    });
+    
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2000);
+  };
+
+  const handleShare = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+  };
+
   const displayedSearchResults = searchResults?.filter(
     (tool) => !selectedSlugs.includes(tool.slug)
   );
 
-  // Filter out null values and get valid tools for comparison
+  const quickPickTools = useMemo(() => {
+    const featured = featuredTools?.slice(0, 4) || [];
+    const popular = allTools?.filter(t => !featuredTools?.some(f => f._id === t._id)).slice(0, 8) || [];
+    return [...featured, ...popular].filter(t => !selectedSlugs.includes(t.slug)).slice(0, 12);
+  }, [featuredTools, allTools, selectedSlugs]);
+
   const validCompareTools = compareTools?.filter((t): t is NonNullable<typeof t> => t !== null) ?? [];
 
+  const comparisonStats = useMemo(() => {
+    if (validCompareTools.length < 2) return null;
+    
+    const stats = validCompareTools.map(tool => ({
+      tool,
+      totalScore: tool.stats 
+        ? tool.stats.hp + tool.stats.attack + tool.stats.defense + tool.stats.speed + tool.stats.mana 
+        : 0,
+    }));
+    
+    const winner = stats.reduce((a, b) => a.totalScore > b.totalScore ? a : b);
+    const openSourceCount = validCompareTools.filter(t => t.isOpenSource).length;
+    const freeCount = validCompareTools.filter(t => t.pricingModel === "free" || t.pricingModel === "open_source").length;
+    const avgStars = validCompareTools.reduce((sum, t) => sum + (t.githubStars || 0), 0) / validCompareTools.length;
+    
+    return {
+      winner: winner.tool,
+      winnerScore: winner.totalScore,
+      openSourceCount,
+      freeCount,
+      avgStars,
+      totalTools: validCompareTools.length,
+    };
+  }, [validCompareTools]);
+
   return (
-    <div className="min-h-screen bg-background">
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        {/* Page Title */}
+    <div className="min-h-screen bg-background pb-12">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      
+      <section className="relative z-10 max-w-7xl mx-auto px-4 py-8">
+        {/* Page Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-primary text-lg mb-2 flex items-center justify-center gap-2">
-            <Scale className="w-5 h-5" /> COMPARE TOOLS
+          <div className="flex items-center justify-center gap-2 text-primary mb-2">
+            <Swords className="w-5 h-5" />
+            <span className="text-xs font-bold uppercase tracking-widest">Tool Arena</span>
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-2">
+            Compare Tools
           </h1>
-          <p className="text-muted-foreground text-sm">
-            SELECT UP TO 4 TOOLS TO COMPARE SIDE BY SIDE
+          <p className="text-muted-foreground text-sm max-w-md mx-auto">
+            Select up to 4 tools to compare stats, features, and find the best fit for your stack
           </p>
         </div>
 
-        {/* Tool Selection */}
+        {/* Tool Selection Area */}
         <div className="mb-8">
-          <div className="flex flex-wrap gap-4 items-center justify-center mb-4">
-            {selectedSlugs.map((slug) => {
-              const tool = compareTools?.find((t) => t && t.slug === slug);
-              return (
-                <PixelCard key={slug} className="p-4 flex items-center gap-2">
-                  <span className="text-primary text-sm">
-                    {tool?.name || slug}
-                  </span>
-                  <button
-                    onClick={() => handleRemoveTool(slug)}
-                    className="text-muted-foreground hover:text-primary"
+          <div className="flex flex-wrap gap-3 items-center justify-center mb-4">
+            <AnimatePresence mode="popLayout">
+              {selectedSlugs.map((slug, index) => {
+                const tool = compareTools?.find((t) => t && t.slug === slug);
+                const pricing = tool?.pricingModel as PricingModel;
+                const style = pricing ? pricingStyles[pricing] : pricingStyles.free;
+                
+                return (
+                  <motion.div
+                    key={slug}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    layout
                   >
-                    <X className="w-4 h-4" />
-                  </button>
-                </PixelCard>
-              );
-            })}
+                    <div className={`relative bg-card border border-border rounded-lg p-3 pr-8 flex items-center gap-3 group hover:border-primary transition-colors`}>
+                      <div className="size-10 bg-background rounded-lg border border-border flex items-center justify-center shrink-0">
+                        {tool?.logoUrl ? (
+                          <img src={tool.logoUrl} alt={tool.name} className="w-6 h-6 object-contain" />
+                        ) : (
+                          <ToolIcon toolSlug={slug} className="w-6 h-6 text-primary" />
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-foreground font-semibold text-sm truncate">
+                          {tool?.name || slug}
+                        </p>
+                        <span className={`text-[10px] font-bold uppercase ${style.text}`}>
+                          {style.label}
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => handleRemoveTool(slug)}
+                        className="absolute top-1 right-1 p-1 text-muted-foreground hover:text-red-500 transition-colors"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                      {index === 0 && validCompareTools.length >= 2 && comparisonStats?.winner?._id === tool?._id && (
+                        <div className="absolute -top-2 -right-2">
+                          <Crown className="w-5 h-5 text-yellow-500" />
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
             
             {selectedSlugs.length < 4 && (
-              <PixelButton
-                variant="outline"
-                onClick={() => setShowSearch(!showSearch)}
-              >
-                <Plus className="w-4 h-4 mr-1" /> ADD TOOL
-              </PixelButton>
+              <div className="flex gap-2">
+                <PixelButton
+                  variant="outline"
+                  onClick={() => {
+                    setShowSearch(!showSearch);
+                    setShowQuickPick(false);
+                  }}
+                  className="gap-2"
+                >
+                  <Search className="w-4 h-4" /> Search
+                </PixelButton>
+                <PixelButton
+                  variant="ghost"
+                  onClick={() => {
+                    setShowQuickPick(!showQuickPick);
+                    setShowSearch(false);
+                  }}
+                  className="gap-2"
+                >
+                  <Zap className="w-4 h-4" /> Quick Pick
+                </PixelButton>
+              </div>
             )}
           </div>
 
           {/* Search Panel */}
-          {showSearch && (
-            <PixelCard className="p-4 max-w-md mx-auto">
-              <div className="flex items-center gap-2 mb-4">
-                <Search className="w-4 h-4 text-muted-foreground" />
-                <PixelInput
-                  placeholder="SEARCH TOOLS..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1"
-                  autoFocus
-                />
-              </div>
-              
-              {displayedSearchResults && displayedSearchResults.length > 0 && (
-                <div className="space-y-2 max-h-60 overflow-y-auto">
-                  {displayedSearchResults.slice(0, 10).map((tool) => (
-                    <button
-                      key={tool._id}
-                      onClick={() => handleAddTool(tool.slug)}
-                      className="w-full text-left p-2 border-2 border-border hover:border-primary hover:bg-card transition-colors"
-                    >
-                      <p className="text-primary text-sm">{tool.name}</p>
-                      <p className="text-muted-foreground text-xs">{tool.tagline}</p>
-                    </button>
-                  ))}
-                </div>
-              )}
+          <AnimatePresence>
+            {showSearch && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                <PixelCard className="p-4 max-w-lg mx-auto">
+                  <div className="flex items-center gap-2 mb-4 bg-background rounded-lg border border-border px-3">
+                    <Search className="w-4 h-4 text-muted-foreground shrink-0" />
+                    <input
+                      placeholder="Search tools..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="flex-1 bg-transparent py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                      autoFocus
+                    />
+                    {searchQuery && (
+                      <button onClick={() => setSearchQuery("")} className="text-muted-foreground hover:text-foreground">
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {displayedSearchResults && displayedSearchResults.length > 0 && (
+                    <div className="space-y-1 max-h-64 overflow-y-auto">
+                      {displayedSearchResults.slice(0, 10).map((tool) => {
+                        const pricing = tool.pricingModel as PricingModel;
+                        const style = pricingStyles[pricing];
+                        return (
+                          <button
+                            key={tool._id}
+                            onClick={() => handleAddTool(tool.slug)}
+                            className="w-full text-left p-3 rounded-lg border border-border hover:border-primary hover:bg-card/50 transition-all flex items-center gap-3"
+                          >
+                            <div className="size-8 bg-background rounded border border-border flex items-center justify-center shrink-0">
+                              {tool.logoUrl ? (
+                                <img src={tool.logoUrl} alt={tool.name} className="w-5 h-5 object-contain" />
+                              ) : (
+                                <ToolIcon toolSlug={tool.slug} className="w-5 h-5 text-primary" />
+                              )}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-foreground text-sm font-medium truncate">{tool.name}</p>
+                              <p className="text-muted-foreground text-xs truncate">{tool.tagline}</p>
+                            </div>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${style.bg} ${style.text}`}>
+                              {style.label}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
 
-              {searchQuery.length > 2 && displayedSearchResults?.length === 0 && (
-                <p className="text-muted-foreground text-sm text-center">
-                  NO TOOLS FOUND
-                </p>
-              )}
+                  {searchQuery.length > 2 && displayedSearchResults?.length === 0 && (
+                    <p className="text-muted-foreground text-sm text-center py-4">
+                      No tools found for "{searchQuery}"
+                    </p>
+                  )}
 
-              {searchQuery.length <= 2 && (
-                <p className="text-muted-foreground text-xs text-center">
-                  TYPE AT LEAST 3 CHARACTERS TO SEARCH
-                </p>
-              )}
-            </PixelCard>
-          )}
+                  {searchQuery.length <= 2 && (
+                    <p className="text-muted-foreground text-xs text-center py-2">
+                      Type at least 3 characters to search
+                    </p>
+                  )}
+                </PixelCard>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Quick Pick Panel */}
+          <AnimatePresence>
+            {showQuickPick && quickPickTools.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                <PixelCard className="p-4 max-w-3xl mx-auto">
+                  <div className="flex items-center gap-2 mb-3 text-muted-foreground">
+                    <Sparkles className="w-4 h-4" />
+                    <span className="text-xs font-medium uppercase">Popular Tools</span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                    {quickPickTools.map((tool) => {
+                      const pricing = tool.pricingModel as PricingModel;
+                      const style = pricingStyles[pricing];
+                      return (
+                        <button
+                          key={tool._id}
+                          onClick={() => handleAddTool(tool.slug)}
+                          className="p-2 rounded-lg border border-border hover:border-primary hover:bg-card/50 transition-all flex items-center gap-2 text-left"
+                        >
+                          <div className="size-7 bg-background rounded border border-border flex items-center justify-center shrink-0">
+                            {tool.logoUrl ? (
+                              <img src={tool.logoUrl} alt={tool.name} className="w-4 h-4 object-contain" />
+                            ) : (
+                              <ToolIcon toolSlug={tool.slug} className="w-4 h-4 text-primary" />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-foreground text-xs font-medium truncate">{tool.name}</p>
+                            <span className={`text-[8px] font-bold ${style.text}`}>{style.label}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </PixelCard>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Comparison Table */}
+        {/* Comparison Stats Summary */}
+        {comparisonStats && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <div className="bg-gradient-to-r from-primary/10 via-card to-primary/10 border border-primary/30 rounded-xl p-4 md:p-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-14 bg-primary/20 rounded-xl flex items-center justify-center">
+                    <Trophy className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide">Stats Leader</p>
+                    <p className="text-xl font-bold text-foreground">{comparisonStats.winner.name}</p>
+                    <p className="text-xs text-primary">Total Score: {comparisonStats.winnerScore}</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-6 text-center">
+                  <div>
+                    <p className="text-2xl font-bold text-foreground">{comparisonStats.totalTools}</p>
+                    <p className="text-xs text-muted-foreground">Tools</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-green-400">{comparisonStats.openSourceCount}</p>
+                    <p className="text-xs text-muted-foreground">Open Source</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-yellow-400">{(comparisonStats.avgStars / 1000).toFixed(1)}K</p>
+                    <p className="text-xs text-muted-foreground">Avg Stars</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  {user && (
+                    <PixelButton
+                      variant="outline"
+                      size="sm"
+                      onClick={handleSaveComparison}
+                      className="gap-2"
+                    >
+                      {saveSuccess ? <CheckCircle className="w-4 h-4 text-green-500" /> : <Save className="w-4 h-4" />}
+                      {saveSuccess ? "Saved!" : "Save"}
+                    </PixelButton>
+                  )}
+                  <PixelButton
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleShare}
+                    className="gap-2"
+                  >
+                    <Share2 className="w-4 h-4" /> Share
+                  </PixelButton>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Visual Stats Comparison */}
         {validCompareTools.length >= 2 && (
-          <div className="overflow-x-auto">
-            <table className="w-full border-4 border-border">
-              {/* Header Row */}
-              <thead>
-                <tr className="bg-card">
-                  <th className="p-4 text-left text-primary text-sm border-r-2 border-border w-32">
-                    ATTRIBUTE
-                  </th>
-                  {validCompareTools.map((tool) => (
-                    <th key={tool._id} className="p-4 text-center border-r-2 border-border last:border-r-0">
-                      <Link href={`/tools/${tool.slug}`} className="hover:text-primary">
-                        <p className="text-primary text-base mb-1">{tool.name}</p>
-                        <p className="text-muted-foreground text-xs">{tool.tagline}</p>
-                      </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <Target className="w-4 h-4 text-primary" />
+              <h2 className="text-foreground font-bold text-sm uppercase tracking-wide">Battle Stats</h2>
+            </div>
+            
+            <div className="bg-card border border-border rounded-xl p-4 md:p-6">
+              <div className="grid gap-4">
+                {statConfig.map(({ key, label, color, icon: Icon }) => {
+                  const maxValue = Math.max(...validCompareTools.map(t => t.stats?.[key as keyof typeof t.stats] || 0));
+                  
+                  return (
+                    <div key={key} className="space-y-2">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Icon className="w-4 h-4" />
+                        <span className="text-xs font-medium uppercase">{label}</span>
+                      </div>
+                      <div className="grid gap-2">
+                        {validCompareTools.map((tool) => {
+                          const value = tool.stats?.[key as keyof typeof tool.stats] || 0;
+                          const percentage = maxValue > 0 ? (value / 100) * 100 : 0;
+                          const isMax = value === maxValue && maxValue > 0;
+                          
+                          return (
+                            <div key={tool._id} className="flex items-center gap-3">
+                              <div className="w-20 md:w-28 text-xs text-foreground font-medium truncate">
+                                {tool.name}
+                              </div>
+                              <div className="flex-1 h-4 bg-background rounded-full overflow-hidden border border-border">
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${percentage}%` }}
+                                  transition={{ duration: 0.5, delay: 0.2 }}
+                                  className={`h-full ${color} ${isMax ? "shadow-[0_0_10px_rgba(255,255,255,0.3)]" : ""}`}
+                                />
+                              </div>
+                              <div className={`w-10 text-right text-xs font-mono font-bold ${isMax ? "text-primary" : "text-muted-foreground"}`}>
+                                {value}
+                              </div>
+                              {isMax && <Medal className="w-4 h-4 text-yellow-500" />}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Detailed Comparison Table */}
+        {validCompareTools.length >= 2 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <Scale className="w-4 h-4 text-primary" />
+              <h2 className="text-foreground font-bold text-sm uppercase tracking-wide">Detailed Comparison</h2>
+            </div>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full border border-border rounded-xl overflow-hidden">
+                <thead>
+                  <tr className="bg-card">
+                    <th className="p-4 text-left text-muted-foreground text-xs font-medium uppercase border-r border-border w-32">
+                      Attribute
                     </th>
-                  ))}
-                </tr>
-              </thead>
-              
-              <tbody>
-                {/* Pricing */}
-                <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border">
-                    <DollarSign className="w-3 h-3 inline mr-1" /> PRICING
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center border-r-2 border-border last:border-r-0">
-                      <PixelBadge variant="default">
-                        {tool.pricingModel === "free" ? "FREE" : 
-                         tool.pricingModel === "freemium" ? "FREEMIUM" : 
-                         tool.pricingModel === "open_source" ? "OSS" : "PAID"}
-                      </PixelBadge>
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Open Source */}
-                <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border">
-                    <Unlock className="w-3 h-3 inline mr-1" /> OPEN SOURCE
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center border-r-2 border-border last:border-r-0">
-                      {tool.isOpenSource ? (
-                        <CheckCircle className="w-5 h-5 text-primary mx-auto" />
-                      ) : (
-                        <X className="w-5 h-5 text-muted-foreground mx-auto" />
-                      )}
-                    </td>
-                  ))}
-                </tr>
-
-                {/* GitHub Stars */}
-                <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border">
-                    <Star className="w-3 h-3 inline mr-1" /> GITHUB STARS
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-sm border-r-2 border-border last:border-r-0">
-                      {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(0)}K` : "N/A"}
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Category */}
-                <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border">
-                    CATEGORY
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center text-muted-foreground text-sm border-r-2 border-border last:border-r-0">
-                      {tool.category?.icon} {tool.category?.name}
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Strengths */}
-                <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
-                    <CheckCircle className="w-3 h-3 inline mr-1" /> STRENGTHS
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
-                      <ul className="space-y-1">
-                        {tool.pros.slice(0, 3).map((pro, i) => (
-                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
-                            <span className="text-primary">+</span> {pro}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Weaknesses */}
-                <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
-                    <AlertTriangle className="w-3 h-3 inline mr-1" /> WEAKNESSES
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
-                      <ul className="space-y-1">
-                        {tool.cons.slice(0, 3).map((con, i) => (
-                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
-                            <span className="text-muted-foreground">-</span> {con}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Best For */}
-                <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
-                    BEST FOR
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
-                      <ul className="space-y-1">
-                        {tool.bestFor.slice(0, 3).map((item, i) => (
-                          <li key={i} className="text-muted-foreground text-xs flex items-start gap-1">
-                            <ChevronRight className="w-2 h-2 mt-0.5 shrink-0" /> {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                  ))}
-                </tr>
-
-                {/* Features */}
-                <tr className="border-t-2 border-border bg-card">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border align-top">
-                    FEATURES
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 border-r-2 border-border last:border-r-0 align-top">
-                      <div className="flex flex-wrap gap-1">
-                        {tool.features.slice(0, 5).map((feature) => (
-                          <PixelBadge key={feature} variant="outline" className="text-[6px]">
-                            {feature}
-                          </PixelBadge>
-                        ))}
+                    {validCompareTools.map((tool, idx) => (
+                      <th key={tool._id} className={`p-4 text-center border-r border-border last:border-r-0 ${idx === 0 ? "bg-primary/5" : ""}`}>
+                        <Link href={`/tools/${tool.slug}`} className="hover:text-primary transition-colors">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="size-10 bg-background rounded-lg border border-border flex items-center justify-center">
+                              {tool.logoUrl ? (
+                                <img src={tool.logoUrl} alt={tool.name} className="w-6 h-6 object-contain" />
+                              ) : (
+                                <ToolIcon toolSlug={tool.slug} className="w-6 h-6 text-primary" />
+                              )}
+                            </div>
+                            <div>
+                              <p className="text-foreground font-semibold text-sm">{tool.name}</p>
+                              <p className="text-muted-foreground text-[10px] line-clamp-1">{tool.tagline}</p>
+                            </div>
+                          </div>
+                        </Link>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  {/* Pricing */}
+                  <tr className="border-t border-border">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border">
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="w-3 h-3" /> Pricing
                       </div>
                     </td>
-                  ))}
-                </tr>
+                    {validCompareTools.map((tool) => {
+                      const pricing = tool.pricingModel as PricingModel;
+                      const style = pricingStyles[pricing];
+                      return (
+                        <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
+                          <span className={`text-xs font-bold px-3 py-1 rounded-full ${style.bg} ${style.text}`}>
+                            {style.label}
+                          </span>
+                        </td>
+                      );
+                    })}
+                  </tr>
 
-                {/* Links */}
-                <tr className="border-t-2 border-border">
-                  <td className="p-4 text-primary text-sm border-r-2 border-border">
-                    LINKS
-                  </td>
-                  {validCompareTools.map((tool) => (
-                    <td key={tool._id} className="p-4 text-center border-r-2 border-border last:border-r-0">
-                      <div className="flex justify-center gap-2">
-                        {tool.websiteUrl && (
-                          <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer">
-                            <Globe className="w-4 h-4 text-muted-foreground hover:text-primary" />
-                          </a>
-                        )}
-                        {tool.githubUrl && (
-                          <a href={tool.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-4 h-4 text-muted-foreground hover:text-primary" />
-                          </a>
-                        )}
+                  {/* Open Source */}
+                  <tr className="border-t border-border bg-card/50">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border">
+                      <div className="flex items-center gap-2">
+                        <Unlock className="w-3 h-3" /> Open Source
                       </div>
                     </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
+                        {tool.isOpenSource ? (
+                          <CheckCircle className="w-5 h-5 text-green-500 mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-muted-foreground mx-auto" />
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* GitHub Stars */}
+                  <tr className="border-t border-border">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-3 h-3" /> GitHub Stars
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => {
+                      const maxStars = Math.max(...validCompareTools.map(t => t.githubStars || 0));
+                      const isMax = tool.githubStars === maxStars && maxStars > 0;
+                      return (
+                        <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
+                          <span className={`text-sm font-mono font-bold ${isMax ? "text-yellow-400" : "text-muted-foreground"}`}>
+                            {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(1)}K` : "N/A"}
+                          </span>
+                          {isMax && <Star className="w-3 h-3 text-yellow-400 inline ml-1" />}
+                        </td>
+                      );
+                    })}
+                  </tr>
+
+                  {/* Category */}
+                  <tr className="border-t border-border bg-card/50">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border">
+                      <div className="flex items-center gap-2">
+                        <Package className="w-3 h-3" /> Category
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
+                        <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                          <DynamicIcon name={tool.category?.icon || "Package"} className="w-4 h-4" />
+                          {tool.category?.name}
+                        </span>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Strengths */}
+                  <tr className="border-t border-border">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border align-top">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-3 h-3 text-green-500" /> Strengths
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 border-r border-border last:border-r-0 align-top">
+                        <ul className="space-y-1.5">
+                          {tool.pros.slice(0, 3).map((pro, i) => (
+                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                              <Plus className="w-3 h-3 text-green-500 shrink-0 mt-0.5" />
+                              <span>{pro}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Weaknesses */}
+                  <tr className="border-t border-border bg-card/50">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border align-top">
+                      <div className="flex items-center gap-2">
+                        <AlertTriangle className="w-3 h-3 text-yellow-500" /> Weaknesses
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 border-r border-border last:border-r-0 align-top">
+                        <ul className="space-y-1.5">
+                          {tool.cons.slice(0, 3).map((con, i) => (
+                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                              <AlertTriangle className="w-3 h-3 text-yellow-500 shrink-0 mt-0.5" />
+                              <span>{con}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Best For */}
+                  <tr className="border-t border-border">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border align-top">
+                      <div className="flex items-center gap-2">
+                        <Users className="w-3 h-3" /> Best For
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 border-r border-border last:border-r-0 align-top">
+                        <ul className="space-y-1.5">
+                          {tool.bestFor.slice(0, 3).map((item, i) => (
+                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                              <ArrowRight className="w-3 h-3 text-primary shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Features */}
+                  <tr className="border-t border-border bg-card/50">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border align-top">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="w-3 h-3" /> Features
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 border-r border-border last:border-r-0 align-top">
+                        <div className="flex flex-wrap gap-1">
+                          {tool.features.slice(0, 5).map((feature) => (
+                            <span key={feature} className="text-[10px] px-2 py-0.5 bg-background border border-border rounded text-muted-foreground">
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Links */}
+                  <tr className="border-t border-border">
+                    <td className="p-4 text-muted-foreground text-xs font-medium border-r border-border">
+                      <div className="flex items-center gap-2">
+                        <Globe className="w-3 h-3" /> Links
+                      </div>
+                    </td>
+                    {validCompareTools.map((tool) => (
+                      <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
+                        <div className="flex justify-center gap-3">
+                          {tool.websiteUrl && (
+                            <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
+                              <Globe className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                            </a>
+                          )}
+                          {tool.githubUrl && (
+                            <a href={tool.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
+                              <Github className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                            </a>
+                          )}
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
         )}
 
         {/* Empty State */}
         {selectedSlugs.length < 2 && (
-          <PixelCard className="text-center p-8">
-            <Scale className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-primary text-sm mb-2">SELECT TOOLS TO COMPARE</p>
-            <p className="text-muted-foreground text-sm mb-4">
-              ADD AT LEAST 2 TOOLS TO START COMPARING
-            </p>
-            <Link href="/tools">
-              <PixelButton>
-                <Wrench className="w-4 h-4 mr-2" /> BROWSE TOOLS
-              </PixelButton>
-            </Link>
-          </PixelCard>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <PixelCard className="text-center p-8 md:p-12 max-w-2xl mx-auto">
+              <div className="size-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Swords className="w-10 h-10 text-primary" />
+              </div>
+              <h2 className="text-xl font-bold text-foreground mb-2">Enter the Arena</h2>
+              <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
+                Select at least 2 tools to start comparing their stats, features, and find the perfect fit for your tech stack
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <PixelButton onClick={() => setShowQuickPick(true)} className="gap-2">
+                  <Zap className="w-4 h-4" /> Quick Pick Tools
+                </PixelButton>
+                <Link href="/tools">
+                  <PixelButton variant="outline" className="gap-2 w-full sm:w-auto">
+                    <Wrench className="w-4 h-4" /> Browse All Tools
+                  </PixelButton>
+                </Link>
+              </div>
+            </PixelCard>
+          </motion.div>
         )}
 
         {/* Popular AI-Generated Comparisons */}
         {popularComparisons && popularComparisons.length > 0 && (
-          <div className="mt-12">
-            <div className="text-center mb-6">
-              <h2 className="text-primary text-sm mb-2 flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4" /> AI-GENERATED COMPARISONS
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                IN-DEPTH TOOL COMPARISONS POWERED BY AI
-              </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-12"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center gap-2 text-primary mb-1">
+                  <Sparkles className="w-4 h-4" />
+                  <span className="text-xs font-bold uppercase tracking-widest">AI Comparisons</span>
+                </div>
+                <h2 className="text-xl font-bold text-foreground">In-Depth Analysis</h2>
+              </div>
+              <Link href="/blog">
+                <PixelButton variant="ghost" size="sm" className="gap-2">
+                  View All <ChevronRight className="w-4 h-4" />
+                </PixelButton>
+              </Link>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {popularComparisons.map((comparison) => (
                 <Link
                   key={comparison._id}
                   href={`/compare/${comparison.slug}`}
-                  className="block"
+                  className="block group"
                 >
-                  <PixelCard className="h-full hover:border-primary transition-colors">
+                  <PixelCard className="h-full hover:border-primary transition-all hover:-translate-y-1">
                     <PixelCardContent className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <PixelBadge variant="outline" className="text-[6px]">
-                          <Eye className="w-2 h-2 mr-1" />
-                          {comparison.views}
-                        </PixelBadge>
-                        <TrendingUp className="w-3 h-3 text-primary" />
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Eye className="w-3 h-3" />
+                          <span className="text-[10px]">{comparison.views}</span>
+                        </div>
+                        <TrendingUp className="w-3 h-3 text-green-500" />
                       </div>
-                      <p className="text-primary text-sm mb-1">
+                      
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="size-8 bg-background rounded border border-border flex items-center justify-center">
+                          {comparison.tool1?.logoUrl ? (
+                            <img src={comparison.tool1.logoUrl} alt="" className="w-5 h-5 object-contain" />
+                          ) : (
+                            <Package className="w-4 h-4 text-primary" />
+                          )}
+                        </div>
+                        <span className="text-muted-foreground text-xs">vs</span>
+                        <div className="size-8 bg-background rounded border border-border flex items-center justify-center">
+                          {comparison.tool2?.logoUrl ? (
+                            <img src={comparison.tool2.logoUrl} alt="" className="w-5 h-5 object-contain" />
+                          ) : (
+                            <Package className="w-4 h-4 text-primary" />
+                          )}
+                        </div>
+                      </div>
+                      
+                      <p className="text-foreground font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
                         {comparison.tool1?.name} vs {comparison.tool2?.name}
                       </p>
-                      <p className="text-muted-foreground text-xs line-clamp-2">
+                      <p className="text-muted-foreground text-xs line-clamp-2 mb-3">
                         {comparison.metaDescription}
                       </p>
-                      <div className="mt-2 flex items-center text-muted-foreground text-xs">
-                        <span>READ COMPARISON</span>
-                        <ChevronRight className="w-2 h-2 ml-1" />
+                      
+                      <div className="flex items-center text-primary text-xs font-medium">
+                        <span>Read Analysis</span>
+                        <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </PixelCardContent>
                   </PixelCard>
                 </Link>
               ))}
             </div>
-
-            <div className="text-center mt-6">
-              <Link href="/blog">
-                <PixelButton variant="outline">
-                  <Sparkles className="w-4 h-4 mr-2" /> VIEW MORE COMPARISONS
-                </PixelButton>
-              </Link>
-            </div>
-          </div>
+          </motion.div>
         )}
       </section>
     </div>

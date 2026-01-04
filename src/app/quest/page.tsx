@@ -41,8 +41,10 @@ import {
   Search,
   BarChart3,
   FileEdit,
+  Layers,
   type LucideIcon
 } from "lucide-react";
+import { LoadoutStackVisual } from "@/components/loadout-stack-visual";
 
 type Step = "intro" | "type" | "scale" | "budget" | "features" | "results";
 
@@ -523,6 +525,25 @@ export default function QuestPage() {
                   </div>
                 </div>
               </PixelCard>
+            )}
+
+            {/* Visual Stack Builder */}
+            {!isGenerating && aiRecommendations && (
+              <div className="mb-8">
+                <h3 className="text-primary text-base mb-4 flex items-center gap-2">
+                  <Layers className="w-4 h-4" /> YOUR STACK VISUAL
+                </h3>
+                <p className="text-muted-foreground text-xs mb-4">
+                  DRAG NODES TO REARRANGE, ADD MORE TOOLS FROM THE PALETTE, OR CONNECT TOOLS BY DRAGGING BETWEEN NODES
+                </p>
+                <LoadoutStackVisual
+                  recommendations={aiRecommendations.recommendations}
+                  projectType={PROJECT_TYPES.find(t => t.id === answers.projectType)?.name || answers.projectType}
+                  scale={SCALES.find(s => s.id === answers.scale)?.name || answers.scale}
+                  budget={BUDGETS.find(b => b.id === answers.budget)?.name || answers.budget}
+                  estimatedCost={aiRecommendations.estimatedMonthlyCost}
+                />
+              </div>
             )}
 
             {/* Recommendations by Category */}
