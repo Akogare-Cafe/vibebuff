@@ -131,21 +131,21 @@ Respond in this exact JSON format:
 
 Only include categories that are relevant. Each category should have 1-3 tool recommendations sorted by confidence.`;
 
-    const openaiKey = process.env.OPENAI_API_KEY;
+    const aiGatewayKey = process.env.VERCEL_AI_GATEWAY_API_KEY;
     
-    if (!openaiKey) {
+    if (!aiGatewayKey) {
       return generateFallbackRecommendations(tools, args);
     }
 
     try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch("https://gateway.ai.vercel.com/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${openaiKey}`,
+          "Authorization": `Bearer ${aiGatewayKey}`,
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini",
+          model: "openai/gpt-4o-mini",
           messages: [
             {
               role: "system",
@@ -162,7 +162,7 @@ Only include categories that are relevant. Each category should have 1-3 tool re
       });
 
       if (!response.ok) {
-        console.error("OpenAI API error:", response.status);
+        console.error("Vercel AI Gateway error:", response.status);
         return generateFallbackRecommendations(tools, args);
       }
 

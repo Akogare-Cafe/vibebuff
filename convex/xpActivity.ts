@@ -74,17 +74,35 @@ export const logXpGain = mutation({
       else if (newLevel >= 5) newTitle = "Tool Explorer";
       else if (newLevel >= 2) newTitle = "Apprentice Coder";
 
+      const leveledUp = newLevel > profile.level;
+      
       await ctx.db.patch(profile._id, {
         xp: newXp,
         level: newLevel,
         title: newTitle,
       });
 
+      if (leveledUp) {
+        await ctx.db.insert("notifications", {
+          userId: args.userId,
+          type: "level_up",
+          title: "Level Up!",
+          message: `Congratulations! You've reached Level ${newLevel}!`,
+          icon: "TrendingUp",
+          isRead: false,
+          createdAt: Date.now(),
+          metadata: {
+            level: newLevel,
+            link: "/profile",
+          },
+        });
+      }
+
       return { 
         newXp, 
         newLevel, 
-        leveledUp: newLevel > profile.level,
-        newTitle: newLevel > profile.level ? newTitle : undefined,
+        leveledUp,
+        newTitle: leveledUp ? newTitle : undefined,
       };
     }
 

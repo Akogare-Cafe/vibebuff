@@ -38,6 +38,19 @@ export const getOrCreateProfile = mutation({
       votescast: 0,
     });
 
+    await ctx.db.insert("notifications", {
+      userId: args.clerkId,
+      type: "welcome",
+      title: "Welcome to VibeBuff!",
+      message: "Start your quest to discover the perfect tech stack. Explore tools, build decks, and level up!",
+      icon: "Sparkles",
+      isRead: false,
+      createdAt: Date.now(),
+      metadata: {
+        link: "/quest",
+      },
+    });
+
     return await ctx.db.get(profileId);
   },
 });

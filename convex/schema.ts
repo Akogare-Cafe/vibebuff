@@ -117,6 +117,7 @@ export default defineSchema({
       v.literal("common"),
       v.literal("uncommon"),
       v.literal("rare"),
+      v.literal("epic"),
       v.literal("legendary")
     ),
   }).index("by_slug", ["slug"]),
@@ -1764,6 +1765,198 @@ export default defineSchema({
     .index("by_user", ["userId"]),
 
   // ============================================
+  // Social: Friends & Connections
+  // ============================================
+  friendships: defineTable({
+    userId: v.string(),
+    friendId: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("accepted"),
+      v.literal("blocked")
+    ),
+    initiatedBy: v.string(),
+    createdAt: v.number(),
+    acceptedAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"])
+    .index("by_friend", ["friendId"])
+    .index("by_user_friend", ["userId", "friendId"])
+    .index("by_status", ["status"]),
+
+  // ============================================
+  // Social: Groups
+  // ============================================
+  groups: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    description: v.optional(v.string()),
+    avatarUrl: v.optional(v.string()),
+    bannerUrl: v.optional(v.string()),
+    groupType: v.union(
+      v.literal("public"),
+      v.literal("private"),
+      v.literal("invite_only")
+    ),
+    ownerId: v.string(),
+    memberCount: v.number(),
+    tags: v.array(v.string()),
+    isVerified: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_owner", ["ownerId"])
+    .index("by_type", ["groupType"])
+    .index("by_member_count", ["memberCount"]),
+
+  groupMembers: defineTable({
+    groupId: v.id("groups"),
+    userId: v.string(),
+    role: v.union(
+      v.literal("owner"),
+      v.literal("admin"),
+      v.literal("moderator"),
+      v.literal("member")
+    ),
+    joinedAt: v.number(),
+    invitedBy: v.optional(v.string()),
+  })
+    .index("by_group", ["groupId"])
+    .index("by_user", ["userId"])
+    .index("by_group_user", ["groupId", "userId"]),
+
+  groupInvites: defineTable({
+    groupId: v.id("groups"),
+    inviterId: v.string(),
+    inviteeId: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("accepted"),
+      v.literal("declined"),
+      v.literal("expired")
+    ),
+    message: v.optional(v.string()),
+    createdAt: v.number(),
+    expiresAt: v.number(),
+  })
+    .index("by_group", ["groupId"])
+    .index("by_invitee", ["inviteeId"])
+    .index("by_status", ["status"]),
+
+  groupSharedDecks: defineTable({
+    groupId: v.id("groups"),
+    deckId: v.id("userDecks"),
+    sharedBy: v.string(),
+    sharedAt: v.number(),
+    isPinned: v.boolean(),
+  })
+    .index("by_group", ["groupId"])
+    .index("by_deck", ["deckId"]),
+
+  groupSharedStacks: defineTable({
+    groupId: v.id("groups"),
+    stackId: v.id("userStackBuilds"),
+    sharedBy: v.string(),
+    sharedAt: v.number(),
+    isPinned: v.boolean(),
+  })
+    .index("by_group", ["groupId"])
+    .index("by_stack", ["stackId"]),
+
+  // ============================================
+  // Social: Companies/Teams
+  // ============================================
+  companies: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    description: v.optional(v.string()),
+    logoUrl: v.optional(v.string()),
+    bannerUrl: v.optional(v.string()),
+    websiteUrl: v.optional(v.string()),
+    industry: v.optional(v.string()),
+    size: v.optional(v.union(
+      v.literal("1-10"),
+      v.literal("11-50"),
+      v.literal("51-200"),
+      v.literal("201-500"),
+      v.literal("501-1000"),
+      v.literal("1000+")
+    )),
+    location: v.optional(v.string()),
+    ownerId: v.string(),
+    memberCount: v.number(),
+    isVerified: v.boolean(),
+    techStackPublic: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_owner", ["ownerId"])
+    .index("by_industry", ["industry"]),
+
+  companyMembers: defineTable({
+    companyId: v.id("companies"),
+    userId: v.string(),
+    role: v.union(
+      v.literal("owner"),
+      v.literal("admin"),
+      v.literal("member")
+    ),
+    title: v.optional(v.string()),
+    joinedAt: v.number(),
+    invitedBy: v.optional(v.string()),
+  })
+    .index("by_company", ["companyId"])
+    .index("by_user", ["userId"])
+    .index("by_company_user", ["companyId", "userId"]),
+
+  companyInvites: defineTable({
+    companyId: v.id("companies"),
+    inviterId: v.string(),
+    inviteeEmail: v.optional(v.string()),
+    inviteeId: v.optional(v.string()),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("accepted"),
+      v.literal("declined"),
+      v.literal("expired")
+    ),
+    role: v.union(
+      v.literal("admin"),
+      v.literal("member")
+    ),
+    message: v.optional(v.string()),
+    createdAt: v.number(),
+    expiresAt: v.number(),
+  })
+    .index("by_company", ["companyId"])
+    .index("by_invitee", ["inviteeId"])
+    .index("by_email", ["inviteeEmail"])
+    .index("by_status", ["status"]),
+
+  companyTechStack: defineTable({
+    companyId: v.id("companies"),
+    toolId: v.id("tools"),
+    category: v.string(),
+    addedBy: v.string(),
+    addedAt: v.number(),
+    notes: v.optional(v.string()),
+  })
+    .index("by_company", ["companyId"])
+    .index("by_tool", ["toolId"]),
+
+  companySharedDecks: defineTable({
+    companyId: v.id("companies"),
+    deckId: v.id("userDecks"),
+    sharedBy: v.string(),
+    sharedAt: v.number(),
+    isPinned: v.boolean(),
+  })
+    .index("by_company", ["companyId"])
+    .index("by_deck", ["deckId"]),
+
+  // ============================================
   // Notifications
   // ============================================
   notifications: defineTable({
@@ -1779,7 +1972,13 @@ export default defineSchema({
       v.literal("tool_update"),
       v.literal("streak_reminder"),
       v.literal("welcome"),
-      v.literal("quest_completed")
+      v.literal("quest_completed"),
+      v.literal("friend_request"),
+      v.literal("friend_accepted"),
+      v.literal("group_invite"),
+      v.literal("group_joined"),
+      v.literal("company_invite"),
+      v.literal("company_joined")
     ),
     title: v.string(),
     message: v.string(),

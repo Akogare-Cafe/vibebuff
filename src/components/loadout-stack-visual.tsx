@@ -503,7 +503,7 @@ export function LoadoutStackVisual({
         </PixelCardHeader>
         <PixelCardContent>
           <div className="flex gap-4">
-            <div className="w-48 bg-[#0a0f1a] border-2 border-border rounded-lg p-3 max-h-[400px] overflow-y-auto shrink-0">
+            <div className="w-56 bg-[#0a0f1a] border-2 border-border rounded-lg p-3 max-h-[600px] overflow-y-auto shrink-0">
               <h4 className="text-primary font-bold text-xs mb-3 flex items-center gap-2">
                 <Plus className="w-3 h-3" />
                 ADD TOOLS
@@ -536,7 +536,7 @@ export function LoadoutStackVisual({
 
             <div
               ref={flowRef}
-              className="flex-1 h-[400px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden"
+              className="flex-1 h-[600px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden"
             >
               <ReactFlow
                 nodes={nodes}

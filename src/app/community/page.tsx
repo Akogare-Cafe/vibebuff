@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
+import { PixelInput } from "@/components/pixel-input";
 import Link from "next/link";
 import {
   Users,
@@ -21,26 +23,262 @@ import {
   Sparkles,
   Globe,
   Swords,
+  Search,
+  Crown,
+  Building2,
+  UserPlus,
+  Medal,
+  Zap,
 } from "lucide-react";
 
 export default function CommunityPage() {
+  const [userSearchQuery, setUserSearchQuery] = useState("");
+  const [activeTab, setActiveTab] = useState<"discover" | "leaderboards" | "groups">("discover");
+  
   const popularComparisons = useQuery(api.seo.getPopularComparisons, { limit: 6 });
   const featuredTools = useQuery(api.tools.featured);
   const trendingTools = useQuery(api.popularity.getTrendingTools, { limit: 6 });
+  const xpLeaderboard = useQuery(api.leaderboards.getXpLeaderboard, { limit: 10 });
+  const popularGroups = useQuery(api.groups.getPopular, { limit: 6 });
+  const userSearchResults = useQuery(
+    api.friends.searchUsers,
+    userSearchQuery.length > 1 ? { query: userSearchQuery, limit: 8 } : "skip"
+  );
 
   return (
     <div className="min-h-screen bg-background">
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Users className="w-8 h-8 text-muted-foreground" />
-            <h1 className="text-primary text-xl">COMMUNITY HUB</h1>
+            <Users className="w-8 h-8 text-primary" />
+            <h1 className="font-heading text-foreground text-2xl">COMMUNITY HUB</h1>
           </div>
           <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
-            DISCOVER WHAT THE DEVELOPER COMMUNITY IS EXPLORING. SEE TRENDING TOOLS, 
-            POPULAR COMPARISONS, AND JOIN THE CONVERSATION.
+            Connect with developers, join groups, compete on leaderboards, and discover trending tools.
           </p>
         </div>
+
+        <div className="flex justify-center gap-2 mb-8">
+          <PixelButton
+            variant={activeTab === "discover" ? "default" : "outline"}
+            onClick={() => setActiveTab("discover")}
+            size="sm"
+          >
+            <Sparkles className="w-4 h-4 mr-2" />
+            Discover
+          </PixelButton>
+          <PixelButton
+            variant={activeTab === "leaderboards" ? "default" : "outline"}
+            onClick={() => setActiveTab("leaderboards")}
+            size="sm"
+          >
+            <Trophy className="w-4 h-4 mr-2" />
+            Leaderboards
+          </PixelButton>
+          <PixelButton
+            variant={activeTab === "groups" ? "default" : "outline"}
+            onClick={() => setActiveTab("groups")}
+            size="sm"
+          >
+            <Users className="w-4 h-4 mr-2" />
+            Groups
+          </PixelButton>
+        </div>
+
+        <div className="mb-8">
+          <div className="max-w-md mx-auto relative">
+            <PixelInput
+              placeholder="Search users..."
+              value={userSearchQuery}
+              onChange={(e) => setUserSearchQuery(e.target.value)}
+              className="w-full pr-10"
+            />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            {userSearchResults && userSearchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 z-50 border-2 border-border bg-card rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                {userSearchResults.map((user) => (
+                  <Link
+                    key={user.clerkId}
+                    href={`/users/${user.clerkId}`}
+                    onClick={() => setUserSearchQuery("")}
+                    className="flex items-center gap-3 p-3 hover:bg-secondary transition-colors border-b border-border last:border-b-0"
+                  >
+                    <div className="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                      {user.avatarUrl ? (
+                        <img src={user.avatarUrl} alt={user.username || ""} className="w-full h-full object-cover" />
+                      ) : (
+                        <Users className="w-5 h-5 text-primary" />
+                      )}
+                    </div>
+                    <div>
+                      <p className="text-foreground text-sm font-medium">{user.username || "Unknown"}</p>
+                      <p className="text-muted-foreground text-xs">Level {user.level} - {user.title || "Adventurer"}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {activeTab === "leaderboards" && (
+          <section className="mb-12">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-primary text-lg flex items-center gap-2">
+                <Crown className="w-5 h-5" /> TOP ADVENTURERS
+              </h2>
+              <Link href="/leaderboards">
+                <PixelButton variant="outline" size="sm">
+                  View All <ChevronRight className="w-4 h-4 ml-1" />
+                </PixelButton>
+              </Link>
+            </div>
+            <PixelCard>
+              <PixelCardContent className="p-0">
+                <div className="divide-y divide-border">
+                  {xpLeaderboard?.map((user, index) => (
+                    <Link key={user.clerkId} href={`/users/${user.clerkId}`}>
+                      <div className="flex items-center gap-4 p-4 hover:bg-secondary transition-colors">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+                          index === 0 ? "bg-yellow-500 text-black" :
+                          index === 1 ? "bg-gray-400 text-black" :
+                          index === 2 ? "bg-orange-600 text-white" :
+                          "bg-card text-muted-foreground"
+                        }`}>
+                          {index + 1}
+                        </div>
+                        <div className="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                          {user.avatarUrl ? (
+                            <img src={user.avatarUrl} alt={user.username || ""} className="w-full h-full object-cover" />
+                          ) : (
+                            <Users className="w-5 h-5 text-primary" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-foreground font-medium truncate">{user.username || "Unknown"}</p>
+                          <p className="text-muted-foreground text-xs">{user.title || "Adventurer"}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-primary font-bold">{user.xp.toLocaleString()} XP</p>
+                          <p className="text-muted-foreground text-xs">Level {user.level}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                  {!xpLeaderboard && (
+                    <div className="p-8 text-center">
+                      <Trophy className="w-10 h-10 mx-auto mb-3 text-muted-foreground/50" />
+                      <p className="text-muted-foreground">Loading leaderboard...</p>
+                    </div>
+                  )}
+                </div>
+              </PixelCardContent>
+            </PixelCard>
+          </section>
+        )}
+
+        {activeTab === "groups" && (
+          <section className="mb-12">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-primary text-lg flex items-center gap-2">
+                <Users className="w-5 h-5" /> POPULAR GROUPS
+              </h2>
+              <div className="flex gap-2">
+                <Link href="/groups/new">
+                  <PixelButton size="sm">
+                    <UserPlus className="w-4 h-4 mr-2" /> Create Group
+                  </PixelButton>
+                </Link>
+                <Link href="/groups">
+                  <PixelButton variant="outline" size="sm">
+                    Browse All <ChevronRight className="w-4 h-4 ml-1" />
+                  </PixelButton>
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {popularGroups?.map((group) => (
+                <Link key={group._id} href={`/groups/${group.slug}`}>
+                  <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
+                    <PixelCardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="size-12 rounded-lg bg-primary/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                          {group.avatarUrl ? (
+                            <img src={group.avatarUrl} alt={group.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <Users className="w-6 h-6 text-primary" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-foreground font-medium truncate">{group.name}</h3>
+                            {group.isVerified && (
+                              <Medal className="w-4 h-4 text-primary flex-shrink-0" />
+                            )}
+                          </div>
+                          <p className="text-muted-foreground text-xs line-clamp-2 mt-1">
+                            {group.description || "No description"}
+                          </p>
+                          <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Users className="w-3 h-3" /> {group.memberCount}
+                            </span>
+                            <PixelBadge variant="outline" className="text-[8px]">
+                              {group.groupType}
+                            </PixelBadge>
+                          </div>
+                        </div>
+                      </div>
+                    </PixelCardContent>
+                  </PixelCard>
+                </Link>
+              ))}
+              {!popularGroups && (
+                <>
+                  {[1, 2, 3].map((i) => (
+                    <PixelCard key={i} className="h-[120px] animate-pulse">
+                      <PixelCardContent className="p-4">
+                        <div className="h-4 bg-card rounded w-3/4 mb-2" />
+                        <div className="h-3 bg-card rounded w-1/2" />
+                      </PixelCardContent>
+                    </PixelCard>
+                  ))}
+                </>
+              )}
+              {popularGroups?.length === 0 && (
+                <div className="col-span-full text-center py-8">
+                  <Users className="w-10 h-10 mx-auto mb-3 text-muted-foreground/50" />
+                  <p className="text-muted-foreground">No groups yet. Be the first to create one!</p>
+                  <Link href="/groups/new">
+                    <PixelButton className="mt-4" size="sm">
+                      <UserPlus className="w-4 h-4 mr-2" /> Create Group
+                    </PixelButton>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-primary text-sm mb-4 flex items-center gap-2">
+                <Building2 className="w-4 h-4" /> COMPANIES & TEAMS
+              </h3>
+              <PixelCard className="p-6 text-center">
+                <Building2 className="w-10 h-10 mx-auto mb-3 text-muted-foreground" />
+                <p className="text-muted-foreground text-sm mb-4">
+                  Create a company profile to share your tech stack with your team
+                </p>
+                <Link href="/companies/new">
+                  <PixelButton size="sm">
+                    <Building2 className="w-4 h-4 mr-2" /> Create Company
+                  </PixelButton>
+                </Link>
+              </PixelCard>
+            </div>
+          </section>
+        )}
+
+        {activeTab === "discover" && (
+          <>
 
         <section className="mb-12">
           <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
@@ -274,6 +512,8 @@ export default function CommunityPage() {
             </Link>
           </div>
         </section>
+        </>
+        )}
       </main>
     </div>
   );
