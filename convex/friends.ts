@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { query, mutation } from "./_generated/server";
+import { getAuthenticatedUser } from "./lib/auth";
 
 export const searchUsers = query({
   args: {
@@ -32,18 +33,19 @@ export const searchUsers = query({
 
 export const sendFriendRequest = mutation({
   args: {
-    userId: v.string(),
     friendId: v.string(),
   },
   handler: async (ctx, args) => {
-    if (args.userId === args.friendId) {
+    const userId = await getAuthenticatedUser(ctx);
+    
+    if (userId === args.friendId) {
       throw new Error("Cannot send friend request to yourself");
     }
 
     const existingRequest = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.userId).eq("friendId", args.friendId)
+        q.eq("userId", userId).eq("friendId", args.friendId)
       )
       .first();
 
@@ -54,7 +56,7 @@ export const sendFriendRequest = mutation({
     const reverseRequest = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.friendId).eq("friendId", args.userId)
+        q.eq("userId", args.friendId).eq("friendId", userId)
       )
       .first();
 
@@ -66,7 +68,7 @@ export const sendFriendRequest = mutation({
         });
         
         await ctx.db.insert("friendships", {
-          userId: args.userId,
+          userId,
           friendId: args.friendId,
           status: "accepted",
           initiatedBy: args.friendId,
@@ -79,7 +81,7 @@ export const sendFriendRequest = mutation({
           type: "friend_accepted",
           title: "Friend Request Accepted",
           message: "Your friend request was accepted!",
-          metadata: { link: `/users/${args.userId}` },
+          metadata: { link: `/users/${userId}` },
           icon: "UserCheck",
           isRead: false,
           createdAt: Date.now(),
@@ -91,10 +93,10 @@ export const sendFriendRequest = mutation({
     }
 
     await ctx.db.insert("friendships", {
-      userId: args.userId,
+      userId,
       friendId: args.friendId,
       status: "pending",
-      initiatedBy: args.userId,
+      initiatedBy: userId,
       createdAt: Date.now(),
     });
 
@@ -103,7 +105,7 @@ export const sendFriendRequest = mutation({
       type: "friend_request",
       title: "New Friend Request",
       message: "You have a new friend request!",
-      metadata: { link: `/users/${args.userId}` },
+      metadata: { link: `/users/${userId}` },
       icon: "UserPlus",
       isRead: false,
       createdAt: Date.now(),
@@ -115,14 +117,15 @@ export const sendFriendRequest = mutation({
 
 export const acceptFriendRequest = mutation({
   args: {
-    userId: v.string(),
     friendId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const request = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.friendId).eq("friendId", args.userId)
+        q.eq("userId", args.friendId).eq("friendId", userId)
       )
       .first();
 
@@ -136,7 +139,7 @@ export const acceptFriendRequest = mutation({
     });
 
     await ctx.db.insert("friendships", {
-      userId: args.userId,
+      userId,
       friendId: args.friendId,
       status: "accepted",
       initiatedBy: args.friendId,
@@ -149,7 +152,7 @@ export const acceptFriendRequest = mutation({
       type: "friend_accepted",
       title: "Friend Request Accepted",
       message: "Your friend request was accepted!",
-      metadata: { link: `/users/${args.userId}` },
+      metadata: { link: `/users/${userId}` },
       icon: "UserCheck",
       isRead: false,
       createdAt: Date.now(),
@@ -161,14 +164,15 @@ export const acceptFriendRequest = mutation({
 
 export const declineFriendRequest = mutation({
   args: {
-    userId: v.string(),
     friendId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const request = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.friendId).eq("friendId", args.userId)
+        q.eq("userId", args.friendId).eq("friendId", userId)
       )
       .first();
 
@@ -184,21 +188,22 @@ export const declineFriendRequest = mutation({
 
 export const removeFriend = mutation({
   args: {
-    userId: v.string(),
     friendId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const friendship1 = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.userId).eq("friendId", args.friendId)
+        q.eq("userId", userId).eq("friendId", args.friendId)
       )
       .first();
 
     const friendship2 = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.friendId).eq("friendId", args.userId)
+        q.eq("userId", args.friendId).eq("friendId", userId)
       )
       .first();
 
@@ -215,14 +220,15 @@ export const removeFriend = mutation({
 
 export const blockUser = mutation({
   args: {
-    userId: v.string(),
     blockedUserId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const existingFriendship = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.userId).eq("friendId", args.blockedUserId)
+        q.eq("userId", userId).eq("friendId", args.blockedUserId)
       )
       .first();
 
@@ -230,10 +236,10 @@ export const blockUser = mutation({
       await ctx.db.patch(existingFriendship._id, { status: "blocked" });
     } else {
       await ctx.db.insert("friendships", {
-        userId: args.userId,
+        userId,
         friendId: args.blockedUserId,
         status: "blocked",
-        initiatedBy: args.userId,
+        initiatedBy: userId,
         createdAt: Date.now(),
       });
     }
@@ -241,7 +247,7 @@ export const blockUser = mutation({
     const reverseFriendship = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.blockedUserId).eq("friendId", args.userId)
+        q.eq("userId", args.blockedUserId).eq("friendId", userId)
       )
       .first();
 
@@ -255,14 +261,15 @@ export const blockUser = mutation({
 
 export const unblockUser = mutation({
   args: {
-    userId: v.string(),
     blockedUserId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const block = await ctx.db
       .query("friendships")
       .withIndex("by_user_friend", (q) =>
-        q.eq("userId", args.userId).eq("friendId", args.blockedUserId)
+        q.eq("userId", userId).eq("friendId", args.blockedUserId)
       )
       .first();
 

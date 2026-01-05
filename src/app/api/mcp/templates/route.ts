@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validateApiKey, unauthorizedResponse } from "@/lib/api-auth";
 
 const STACK_TEMPLATES: Record<string, {
   name: string;
@@ -155,6 +156,10 @@ const STACK_TEMPLATES: Record<string, {
 };
 
 export async function POST(request: NextRequest) {
+  if (!validateApiKey(request)) {
+    return unauthorizedResponse();
+  }
+  
   try {
     const body = await request.json();
     const { templateType, budget = "medium" } = body;

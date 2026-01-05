@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { query, mutation } from "./_generated/server";
+import { getAuthenticatedUser } from "./lib/auth";
 
 // Get reviews for a tool
 export const getToolReviews = query({
@@ -80,7 +81,6 @@ export const getToolRatingSummary = query({
 // Create review
 export const create = mutation({
   args: {
-    userId: v.string(),
     toolId: v.id("tools"),
     rating: v.number(),
     title: v.string(),
@@ -97,11 +97,13 @@ export const create = mutation({
     ),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     // Check if user already reviewed this tool
     const existing = await ctx.db
       .query("toolReviews")
       .withIndex("by_user_tool", (q) =>
-        q.eq("userId", args.userId).eq("toolId", args.toolId)
+        q.eq("userId", userId).eq("toolId", args.toolId)
       )
       .first();
 
@@ -110,7 +112,7 @@ export const create = mutation({
     }
 
     const reviewId = await ctx.db.insert("toolReviews", {
-      userId: args.userId,
+      userId,
       toolId: args.toolId,
       rating: Math.min(5, Math.max(1, args.rating)),
       title: args.title,
@@ -133,7 +135,6 @@ export const create = mutation({
 export const update = mutation({
   args: {
     reviewId: v.id("toolReviews"),
-    userId: v.string(),
     rating: v.optional(v.number()),
     title: v.optional(v.string()),
     content: v.optional(v.string()),
@@ -149,9 +150,11 @@ export const update = mutation({
     )),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const review = await ctx.db.get(args.reviewId);
     if (!review) throw new Error("Review not found");
-    if (review.userId !== args.userId) throw new Error("Not authorized");
+    if (review.userId !== userId) throw new Error("Not authorized");
 
     await ctx.db.patch(args.reviewId, {
       ...(args.rating !== undefined && { rating: Math.min(5, Math.max(1, args.rating)) }),
@@ -170,14 +173,15 @@ export const update = mutation({
 // Vote on review helpfulness
 export const voteHelpful = mutation({
   args: {
-    userId: v.string(),
     reviewId: v.id("toolReviews"),
     isHelpful: v.boolean(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const existing = await ctx.db
       .query("reviewVotes")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .filter((q) => q.eq(q.field("reviewId"), args.reviewId))
       .first();
 
@@ -196,7 +200,7 @@ export const voteHelpful = mutation({
       }
     } else {
       await ctx.db.insert("reviewVotes", {
-        userId: args.userId,
+        userId,
         reviewId: args.reviewId,
         isHelpful: args.isHelpful,
         votedAt: Date.now(),
@@ -216,12 +220,13 @@ export const voteHelpful = mutation({
 export const deleteReview = mutation({
   args: {
     reviewId: v.id("toolReviews"),
-    userId: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const review = await ctx.db.get(args.reviewId);
     if (!review) throw new Error("Review not found");
-    if (review.userId !== args.userId) throw new Error("Not authorized");
+    if (review.userId !== userId) throw new Error("Not authorized");
 
     await ctx.db.delete(args.reviewId);
   },

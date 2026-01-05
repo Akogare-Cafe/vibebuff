@@ -1,5 +1,6 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { getAuthenticatedUser } from "./lib/auth";
 
 // Get user's decks
 export const getUserDecks = query({
@@ -96,19 +97,20 @@ export const getDeckByShareToken = query({
 // Create a new deck
 export const createDeck = mutation({
   args: {
-    userId: v.string(),
     name: v.string(),
     description: v.optional(v.string()),
     toolIds: v.array(v.id("tools")),
     isPublic: v.boolean(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const shareToken = args.isPublic 
-      ? Math.random().toString(36).substring(2, 15)
+      ? crypto.randomUUID()
       : undefined;
 
     const deckId = await ctx.db.insert("userDecks", {
-      userId: args.userId,
+      userId,
       name: args.name,
       description: args.description,
       toolIds: args.toolIds,
@@ -121,7 +123,7 @@ export const createDeck = mutation({
     // Update user profile stats
     const profile = await ctx.db
       .query("userProfiles")
-      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.userId))
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", userId))
       .first();
 
     if (profile) {
@@ -148,6 +150,12 @@ export const updateDeck = mutation({
     }))),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
+    const deck = await ctx.db.get(args.deckId);
+    if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
+    
     const { deckId, ...updates } = args;
     const filteredUpdates = Object.fromEntries(
       Object.entries(updates).filter(([_, v]) => v !== undefined)
@@ -168,8 +176,11 @@ export const assignToolToSlot = mutation({
     toolId: v.id("tools"),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const deck = await ctx.db.get(args.deckId);
     if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
 
     const currentAssignments = deck.categoryAssignments || [];
     const filteredAssignments = currentAssignments.filter(
@@ -197,8 +208,11 @@ export const removeToolFromSlot = mutation({
     categorySlug: v.string(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const deck = await ctx.db.get(args.deckId);
     if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
 
     const currentAssignments = deck.categoryAssignments || [];
     const newAssignments = currentAssignments.filter(
@@ -256,6 +270,12 @@ export const getDeckWithCategories = query({
 export const deleteDeck = mutation({
   args: { deckId: v.id("userDecks") },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
+    const deck = await ctx.db.get(args.deckId);
+    if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
+    
     await ctx.db.delete(args.deckId);
   },
 });
@@ -267,8 +287,11 @@ export const addToolToDeck = mutation({
     toolId: v.id("tools"),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const deck = await ctx.db.get(args.deckId);
     if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
 
     if (deck.toolIds.includes(args.toolId)) {
       return { message: "Tool already in deck" };
@@ -290,8 +313,11 @@ export const removeToolFromDeck = mutation({
     toolId: v.id("tools"),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const deck = await ctx.db.get(args.deckId);
     if (!deck) throw new Error("Deck not found");
+    if (deck.userId !== userId) throw new Error("Not authorized");
 
     await ctx.db.patch(args.deckId, {
       toolIds: deck.toolIds.filter((id) => id !== args.toolId),

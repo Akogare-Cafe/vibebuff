@@ -154,12 +154,10 @@ export default function SettingsPage() {
     setIsSaving(true);
     try {
       await updateProfile({
-        userId: user.id,
         ...profileForm,
       });
       if (profileForm.displayName) {
         await updateUserProfile({
-          clerkId: user.id,
           username: profileForm.displayName,
         });
       }

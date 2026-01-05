@@ -46,7 +46,7 @@ export default function UserProfilePage() {
   const handleSendRequest = async () => {
     if (!currentUser?.id) return;
     try {
-      await sendFriendRequest({ userId: currentUser.id, friendId: userId });
+      await sendFriendRequest({ friendId: userId });
     } catch (error) {
       console.error("Failed to send friend request:", error);
     }
@@ -55,7 +55,7 @@ export default function UserProfilePage() {
   const handleAcceptRequest = async () => {
     if (!currentUser?.id) return;
     try {
-      await acceptFriendRequest({ userId: currentUser.id, friendId: userId });
+      await acceptFriendRequest({ friendId: userId });
     } catch (error) {
       console.error("Failed to accept friend request:", error);
     }
@@ -64,7 +64,7 @@ export default function UserProfilePage() {
   const handleRemoveFriend = async () => {
     if (!currentUser?.id) return;
     try {
-      await removeFriend({ userId: currentUser.id, friendId: userId });
+      await removeFriend({ friendId: userId });
     } catch (error) {
       console.error("Failed to remove friend:", error);
     }
@@ -74,7 +74,7 @@ export default function UserProfilePage() {
     if (!currentUser?.id) return;
     if (!confirm("Are you sure you want to block this user?")) return;
     try {
-      await blockUser({ userId: currentUser.id, blockedUserId: userId });
+      await blockUser({ blockedUserId: userId });
     } catch (error) {
       console.error("Failed to block user:", error);
     }

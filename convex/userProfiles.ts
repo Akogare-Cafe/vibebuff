@@ -1,17 +1,19 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { getAuthenticatedUser } from "./lib/auth";
 
 // Get or create user profile
 export const getOrCreateProfile = mutation({
   args: {
-    clerkId: v.string(),
     username: v.optional(v.string()),
     avatarUrl: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
+    const clerkId = await getAuthenticatedUser(ctx);
+    
     const existing = await ctx.db
       .query("userProfiles")
-      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
       .first();
 
     if (existing) {
@@ -24,7 +26,7 @@ export const getOrCreateProfile = mutation({
 
     // Create new profile
     const profileId = await ctx.db.insert("userProfiles", {
-      clerkId: args.clerkId,
+      clerkId,
       username: args.username,
       avatarUrl: args.avatarUrl,
       xp: 0,
@@ -39,7 +41,7 @@ export const getOrCreateProfile = mutation({
     });
 
     await ctx.db.insert("notifications", {
-      userId: args.clerkId,
+      userId: clerkId,
       type: "welcome",
       title: "Welcome to VibeBuff!",
       message: "Start your quest to discover the perfect tech stack. Explore tools, build decks, and level up!",
@@ -69,14 +71,15 @@ export const getProfile = query({
 // Update profile
 export const updateProfile = mutation({
   args: {
-    clerkId: v.string(),
     username: v.optional(v.string()),
     title: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
+    const clerkId = await getAuthenticatedUser(ctx);
+    
     const profile = await ctx.db
       .query("userProfiles")
-      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
       .first();
 
     if (!profile) return null;
@@ -93,14 +96,15 @@ export const updateProfile = mutation({
 // Add XP to user
 export const addXp = mutation({
   args: {
-    clerkId: v.string(),
     amount: v.number(),
     reason: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
+    const clerkId = await getAuthenticatedUser(ctx);
+    
     const profile = await ctx.db
       .query("userProfiles")
-      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
       .first();
 
     if (!profile) return null;
@@ -130,7 +134,6 @@ export const addXp = mutation({
 // Increment a stat
 export const incrementStat = mutation({
   args: {
-    clerkId: v.string(),
     stat: v.union(
       v.literal("toolsViewed"),
       v.literal("battlesWon"),
@@ -141,9 +144,11 @@ export const incrementStat = mutation({
     ),
   },
   handler: async (ctx, args) => {
+    const clerkId = await getAuthenticatedUser(ctx);
+    
     const profile = await ctx.db
       .query("userProfiles")
-      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", clerkId))
       .first();
 
     if (!profile) return null;

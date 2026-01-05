@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { query, mutation } from "./_generated/server";
+import { getAuthenticatedUser } from "./lib/auth";
 
 export const getUserCards = query({
   args: { userId: v.string() },
@@ -42,7 +43,6 @@ export const getActiveListings = query({
 
 export const createListing = mutation({
   args: {
-    sellerId: v.string(),
     cardId: v.id("tradableCards"),
     listingType: v.union(v.literal("auction"), v.literal("fixed"), v.literal("trade")),
     price: v.optional(v.number()),
@@ -50,15 +50,17 @@ export const createListing = mutation({
     durationHours: v.number(),
   },
   handler: async (ctx, args) => {
+    const sellerId = await getAuthenticatedUser(ctx);
+    
     const card = await ctx.db.get(args.cardId);
     if (!card) throw new Error("Card not found");
-    if (card.userId !== args.sellerId) throw new Error("Not your card");
+    if (card.userId !== sellerId) throw new Error("Not your card");
     if (card.isListed) throw new Error("Card already listed");
 
     await ctx.db.patch(args.cardId, { isListed: true });
 
     const listingId = await ctx.db.insert("tradeListings", {
-      sellerId: args.sellerId,
+      sellerId,
       cardId: args.cardId,
       listingType: args.listingType,
       price: args.price,
@@ -74,16 +76,17 @@ export const createListing = mutation({
 
 export const placeBid = mutation({
   args: {
-    userId: v.string(),
     listingId: v.id("tradeListings"),
     bidAmount: v.number(),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const listing = await ctx.db.get(args.listingId);
     if (!listing) throw new Error("Listing not found");
     if (listing.status !== "active") throw new Error("Listing not active");
     if (listing.listingType !== "auction") throw new Error("Not an auction");
-    if (listing.sellerId === args.userId) throw new Error("Cannot bid on own listing");
+    if (listing.sellerId === userId) throw new Error("Cannot bid on own listing");
 
     const currentBid = listing.currentBid || 0;
     if (args.bidAmount <= currentBid) {
@@ -92,7 +95,7 @@ export const placeBid = mutation({
 
     await ctx.db.patch(args.listingId, {
       currentBid: args.bidAmount,
-      currentBidderId: args.userId,
+      currentBidderId: userId,
     });
 
     return { success: true };
@@ -101,21 +104,22 @@ export const placeBid = mutation({
 
 export const buyNow = mutation({
   args: {
-    buyerId: v.string(),
     listingId: v.id("tradeListings"),
   },
   handler: async (ctx, args) => {
+    const buyerId = await getAuthenticatedUser(ctx);
+    
     const listing = await ctx.db.get(args.listingId);
     if (!listing) throw new Error("Listing not found");
     if (listing.status !== "active") throw new Error("Listing not active");
     if (listing.listingType !== "fixed") throw new Error("Not a fixed price listing");
-    if (listing.sellerId === args.buyerId) throw new Error("Cannot buy own listing");
+    if (listing.sellerId === buyerId) throw new Error("Cannot buy own listing");
 
     const card = await ctx.db.get(listing.cardId);
     if (!card) throw new Error("Card not found");
 
     await ctx.db.patch(listing.cardId, {
-      userId: args.buyerId,
+      userId: buyerId,
       isListed: false,
       acquiredAt: Date.now(),
       acquiredFrom: "trade",
@@ -126,7 +130,7 @@ export const buyNow = mutation({
     await ctx.db.insert("tradeHistory", {
       listingId: args.listingId,
       sellerId: listing.sellerId,
-      buyerId: args.buyerId,
+      buyerId,
       cardId: listing.cardId,
       price: listing.price || 0,
       completedAt: Date.now(),
@@ -138,13 +142,14 @@ export const buyNow = mutation({
 
 export const cancelListing = mutation({
   args: {
-    userId: v.string(),
     listingId: v.id("tradeListings"),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const listing = await ctx.db.get(args.listingId);
     if (!listing) throw new Error("Listing not found");
-    if (listing.sellerId !== args.userId) throw new Error("Not your listing");
+    if (listing.sellerId !== userId) throw new Error("Not your listing");
     if (listing.status !== "active") throw new Error("Listing not active");
 
     await ctx.db.patch(listing.cardId, { isListed: false });
@@ -186,13 +191,14 @@ export const getUserTradeHistory = query({
 
 export const mintCard = mutation({
   args: {
-    userId: v.string(),
     toolId: v.id("tools"),
     rarity: v.union(v.literal("common"), v.literal("uncommon"), v.literal("rare"), v.literal("legendary"), v.literal("mythic")),
     edition: v.string(),
     acquiredFrom: v.union(v.literal("pack"), v.literal("trade"), v.literal("achievement"), v.literal("event")),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const existingCards = await ctx.db
       .query("tradableCards")
       .withIndex("by_tool", (q) => q.eq("toolId", args.toolId))
@@ -201,7 +207,7 @@ export const mintCard = mutation({
     const serialNumber = existingCards.length + 1;
 
     return ctx.db.insert("tradableCards", {
-      userId: args.userId,
+      userId,
       toolId: args.toolId,
       rarity: args.rarity,
       edition: args.edition,

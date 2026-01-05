@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, Calendar, Clock, Tag, Share2, Twitter, Linkedin } from "lucide-react";
 import { notFound } from "next/navigation";
+import { markdownToSanitizedHtml } from "@/lib/sanitize";
 
 const blogPosts: Record<
   string,
@@ -1607,18 +1608,7 @@ export default async function BlogPostPage({ params }: Props) {
             <div
               className="text-[#a0aec0] text-sm leading-relaxed space-y-4 blog-content"
               dangerouslySetInnerHTML={{
-                __html: post.content
-                  .replace(/## (.*)/g, '<h2 class="text-primary text-sm mt-8 mb-4">$1</h2>')
-                  .replace(/### (.*)/g, '<h3 class="text-muted-foreground text-[11px] mt-6 mb-3">$1</h3>')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>')
-                  .replace(/- (.*)/g, '<li class="ml-4 text-[#a0aec0]">$1</li>')
-                  .replace(/\n\n/g, '</p><p class="mb-4">')
-                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-muted-foreground hover:text-primary underline">$1</a>')
-                  .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-card border-2 border-border p-4 my-4 overflow-x-auto"><code class="text-primary text-xs">$2</code></pre>')
-                  .replace(/\|(.+)\|/g, (match) => {
-                    const cells = match.split('|').filter(c => c.trim());
-                    return `<tr>${cells.map(c => `<td class="border border-border px-2 py-1 text-xs">${c.trim()}</td>`).join('')}</tr>`;
-                  }),
+                __html: markdownToSanitizedHtml(post.content),
               }}
             />
           </div>

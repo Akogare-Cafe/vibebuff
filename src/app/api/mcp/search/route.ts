@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../../../../../convex/_generated/api";
+import { validateApiKey, unauthorizedResponse } from "@/lib/api-auth";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export async function POST(request: NextRequest) {
+  if (!validateApiKey(request)) {
+    return unauthorizedResponse();
+  }
+  
   try {
     const body = await request.json();
     const { query, category, limit = 10 } = body;

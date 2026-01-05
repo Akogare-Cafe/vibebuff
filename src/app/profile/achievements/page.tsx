@@ -188,7 +188,6 @@ export default function AchievementsPage() {
   useEffect(() => {
     if (user?.id && isLoaded) {
       getOrCreateProfile({
-        clerkId: user.id,
         username: user.firstName || user.username || undefined,
         avatarUrl: user.imageUrl || undefined,
       });
