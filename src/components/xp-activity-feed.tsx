@@ -92,7 +92,7 @@ export function XpActivityFeed({ userId, limit = 10, className }: XpActivityFeed
           return (
             <div
               key={activity._id}
-              className="flex items-center justify-between p-2 border border-border bg-[#191022]"
+              className="flex items-center justify-between p-2 border border-border bg-[#0a0f1a]"
             >
               <div className="flex items-center gap-2">
                 <Icon className={cn("w-4 h-4", config.color)} />

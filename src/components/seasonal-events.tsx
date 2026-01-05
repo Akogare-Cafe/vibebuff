@@ -152,7 +152,7 @@ function EventCard({ event, userId, isJoined }: EventCardProps) {
       )}
 
       {event.rules?.customRules && (
-        <div className="mb-3 p-2 border border-border bg-[#191022]">
+        <div className="mb-3 p-2 border border-border bg-[#0a0f1a]">
           <p className="text-primary text-xs mb-1">RULES:</p>
           <ul className="text-muted-foreground text-xs space-y-1">
             {event.rules.customRules.map((rule: string, i: number) => (

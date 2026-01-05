@@ -173,7 +173,7 @@ function ReplayCard({ replay, userId }: ReplayCardProps) {
       </div>
 
       {replay.replayData.keyMoments.length > 0 && (
-        <div className="mb-3 p-2 border border-border bg-[#191022]">
+        <div className="mb-3 p-2 border border-border bg-[#0a0f1a]">
           <p className="text-primary text-xs mb-1">KEY MOMENTS:</p>
           <div className="space-y-1">
             {replay.replayData.keyMoments.slice(0, 2).map((moment: any, i: number) => (

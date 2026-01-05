@@ -152,7 +152,7 @@ export function TierDistribution() {
               <span className={cn("w-20 text-xs", config.color.split(" ")[0])}>
                 {tier.toUpperCase()}
               </span>
-              <div className="flex-1 h-2 bg-[#191022] border border-border">
+              <div className="flex-1 h-2 bg-[#0a0f1a] border border-border">
                 <div 
                   className={cn("h-full", config.bg.replace("/10", ""))}
                   style={{ width: `${percent}%` }}

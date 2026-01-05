@@ -256,7 +256,7 @@ function ListCardForm({ cardId, userId, onClose }: { cardId: Id<"tradableCards">
   };
 
   return (
-    <div className="mt-3 p-2 border border-border bg-[#191022]">
+    <div className="mt-3 p-2 border border-border bg-[#0a0f1a]">
       <div className="flex gap-2 mb-2">
         <PixelButton
           size="sm"
@@ -283,7 +283,7 @@ function ListCardForm({ cardId, userId, onClose }: { cardId: Id<"tradableCards">
       <select
         value={duration}
         onChange={(e) => setDuration(e.target.value)}
-        className="w-full bg-[#191022] border-2 border-border p-1 text-primary text-sm mb-2"
+        className="w-full bg-[#0a0f1a] border-2 border-border p-1 text-primary text-sm mb-2"
       >
         <option value="24">24 hours</option>
         <option value="48">48 hours</option>

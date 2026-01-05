@@ -105,7 +105,7 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
                   <span className="text-muted-foreground">AFFINITY PROGRESS</span>
                   <span className="text-primary">{affinity.progress}%</span>
                 </div>
-                <div className="h-2 bg-[#191022] border border-border">
+                <div className="h-2 bg-[#0a0f1a] border border-border">
                   <motion.div
                     className={cn(
                       "h-full",

@@ -271,7 +271,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <div className="w-full border-t-2 border-border" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-[#191022] px-4 text-muted-foreground text-xs">
+            <span className="bg-[#0a0f1a] px-4 text-muted-foreground text-xs">
               OR USE EMAIL
             </span>
           </div>

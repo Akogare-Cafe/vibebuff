@@ -174,7 +174,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="What does this tool do?"
-                className="w-full bg-[#191022] border-2 border-border text-primary text-sm p-2 min-h-[60px]"
+                className="w-full bg-[#0a0f1a] border-2 border-border text-primary text-sm p-2 min-h-[60px]"
               />
             </div>
 
@@ -184,7 +184,7 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
                 value={formData.whyAdd}
                 onChange={(e) => setFormData({ ...formData, whyAdd: e.target.value })}
                 placeholder="Why should this tool be added to VibeBuff?"
-                className="w-full bg-[#191022] border-2 border-border text-primary text-sm p-2 min-h-[60px]"
+                className="w-full bg-[#0a0f1a] border-2 border-border text-primary text-sm p-2 min-h-[60px]"
               />
             </div>
 

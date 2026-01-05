@@ -52,7 +52,7 @@ const categoryColors: Record<string, string> = {
   backend: "#f59e0b",
   database: "#6366f1",
   deployment: "#14b8a6",
-  tool: "#7f13ec",
+  tool: "#3b82f6",
 };
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -163,8 +163,8 @@ function StackCard({
               key={cat}
               className="flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px]"
               style={{
-                backgroundColor: `${categoryColors[cat] || "#7f13ec"}20`,
-                color: categoryColors[cat] || "#7f13ec",
+                backgroundColor: `${categoryColors[cat] || "#3b82f6"}20`,
+                color: categoryColors[cat] || "#3b82f6",
               }}
             >
               {categoryIcons[cat]}
@@ -283,7 +283,7 @@ function CommentItem({
   };
 
   return (
-    <div className="bg-[#261933] rounded-lg p-3">
+    <div className="bg-[#111827] rounded-lg p-3">
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
@@ -305,7 +305,7 @@ function CommentItem({
               <MoreVertical className="w-4 h-4" />
             </button>
             {showMenu && (
-              <div className="absolute right-0 top-full mt-1 bg-[#191022] border border-border rounded-lg p-1 z-10 min-w-[100px]">
+              <div className="absolute right-0 top-full mt-1 bg-[#0a0f1a] border border-border rounded-lg p-1 z-10 min-w-[100px]">
                 <button
                   onClick={() => {
                     setIsEditing(true);
@@ -335,7 +335,7 @@ function CommentItem({
           <textarea
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
-            className="w-full px-3 py-2 bg-[#191022] border border-border rounded-lg text-primary text-sm resize-none focus:border-primary outline-none"
+            className="w-full px-3 py-2 bg-[#0a0f1a] border border-border rounded-lg text-primary text-sm resize-none focus:border-primary outline-none"
             rows={3}
           />
           <div className="flex gap-2">
@@ -492,7 +492,7 @@ function StackDetailModal({
             ))}
           </div>
 
-          <div className="bg-[#191022] rounded-lg p-4">
+          <div className="bg-[#0a0f1a] rounded-lg p-4">
             <h4 className="text-primary text-sm font-bold mb-3">Tools in this Stack</h4>
             <div className="flex flex-wrap gap-2">
               {stack.nodes.map((node) => (
@@ -500,8 +500,8 @@ function StackDetailModal({
                   key={node.id}
                   className="flex items-center gap-1 px-2 py-1 rounded text-xs"
                   style={{
-                    backgroundColor: `${categoryColors[node.data.category] || "#7f13ec"}20`,
-                    color: categoryColors[node.data.category] || "#7f13ec",
+                    backgroundColor: `${categoryColors[node.data.category] || "#3b82f6"}20`,
+                    color: categoryColors[node.data.category] || "#3b82f6",
                   }}
                 >
                   {categoryIcons[node.data.category]}
@@ -752,7 +752,7 @@ export function StackMarketplace() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
               >
                 <option value="popular">Most Popular</option>
                 <option value="newest">Newest</option>
@@ -779,7 +779,7 @@ export function StackMarketplace() {
                 <select
                   value={projectTypeFilter}
                   onChange={(e) => setProjectTypeFilter(e.target.value)}
-                  className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                  className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
                 >
                   <option value="">All Types</option>
                   <option value="landing-page">Landing Page</option>
@@ -800,7 +800,7 @@ export function StackMarketplace() {
                 <select
                   value={difficultyFilter}
                   onChange={(e) => setDifficultyFilter(e.target.value)}
-                  className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                  className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
                 >
                   <option value="">All Levels</option>
                   <option value="beginner">Beginner</option>

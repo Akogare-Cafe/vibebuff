@@ -228,7 +228,7 @@ export function StoryDetail({ storySlug }: StoryDetailProps) {
           <div className="space-y-6">
             {story.stackEvolution.map((phase: any, index: number) => (
               <div key={index} className="flex items-start gap-4 pl-8 relative">
-                <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#191022]" />
+                <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#0a0f1a]" />
                 <PixelCard className="flex-1 p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-primary text-base">{phase.phase}</h3>

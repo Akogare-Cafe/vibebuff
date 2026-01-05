@@ -98,7 +98,7 @@ export function ToolLore({ toolId, userId, className }: ToolLoreProps) {
             <p className="text-primary text-base">{lore.creatorInfo.name}</p>
             <p className="text-muted-foreground text-sm">{lore.creatorInfo.bio}</p>
             {lore.creatorInfo.quote && (
-              <div className="flex items-start gap-2 p-2 border-l-2 border-primary bg-[#191022]">
+              <div className="flex items-start gap-2 p-2 border-l-2 border-primary bg-[#0a0f1a]">
                 <Quote className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                 <p className="text-primary text-sm italic">"{lore.creatorInfo.quote}"</p>
               </div>
@@ -238,7 +238,7 @@ export function EncyclopediaProgress({ userId }: { userId: string }) {
           <span className="text-muted-foreground">COMPLETION</span>
           <span className="text-primary">{percent}%</span>
         </div>
-        <div className="h-3 bg-[#191022] border border-border">
+        <div className="h-3 bg-[#0a0f1a] border border-border">
           <div 
             className="h-full bg-gradient-to-r from-primary to-blue-400"
             style={{ width: `${percent}%` }}

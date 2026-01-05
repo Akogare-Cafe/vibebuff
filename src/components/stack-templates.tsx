@@ -180,7 +180,7 @@ function TemplateCard({ template, userId }: TemplateCardProps) {
       </div>
 
       {template.caseStudy && (
-        <div className="border border-border p-2 mb-3 bg-[#191022]">
+        <div className="border border-border p-2 mb-3 bg-[#0a0f1a]">
           <p className="text-primary text-xs">{template.caseStudy.projectName}</p>
           <p className="text-muted-foreground text-[6px]">{template.caseStudy.outcome}</p>
         </div>

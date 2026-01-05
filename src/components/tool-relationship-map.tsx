@@ -108,7 +108,7 @@ function RelationshipCard({ relationship, config }: { relationship: any; config:
         </p>
       </Link>
       
-      <div className="h-2 bg-[#191022] border border-border mb-2">
+      <div className="h-2 bg-[#0a0f1a] border border-border mb-2">
         <div 
           className={cn("h-full", config?.color.includes("green") ? "bg-green-400" : "bg-primary")}
           style={{ width: `${relationship.strength}%` }}

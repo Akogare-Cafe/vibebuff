@@ -127,7 +127,7 @@ export function Onboarding({ onComplete, onSkip }: OnboardingProps) {
             className="text-center"
           >
             <div className="mb-6">
-              <div className="w-16 h-16 mx-auto mb-4 border-4 border-primary bg-[#191022] flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 border-4 border-primary bg-[#0a0f1a] flex items-center justify-center">
                 <StepIcon className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-primary text-sm mb-2">{step.title}</h2>

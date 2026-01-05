@@ -48,7 +48,7 @@ const categoryColors: Record<string, string> = {
   backend: "#f59e0b",
   database: "#6366f1",
   deployment: "#14b8a6",
-  tool: "#7f13ec",
+  tool: "#3b82f6",
 };
 
 interface ToolNodeData {
@@ -58,12 +58,12 @@ interface ToolNodeData {
 }
 
 function ToolNode({ data }: { data: ToolNodeData }) {
-  const color = categoryColors[data.category] || "#7f13ec";
+  const color = categoryColors[data.category] || "#3b82f6";
   const icon = categoryIcons[data.category] || <Wrench className="w-4 h-4" />;
 
   return (
     <div
-      className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#261933]"
+      className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
       style={{ borderColor: color }}
     >
       <div className="flex items-center gap-2 mb-1">
@@ -168,7 +168,7 @@ export default function SharedStackPage() {
           </Link>
         </div>
 
-        <div className="h-[500px] bg-[#191022] border-2 border-border rounded-lg overflow-hidden">
+        <div className="h-[500px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden">
           <ReactFlow
             nodes={build.nodes}
             edges={build.edges}
@@ -177,10 +177,10 @@ export default function SharedStackPage() {
             nodesDraggable={false}
             nodesConnectable={false}
             elementsSelectable={false}
-            className="bg-[#191022]"
+            className="bg-[#0a0f1a]"
           >
-            <Background color="#362348" gap={20} />
-            <Controls className="bg-[#261933] border-border" />
+            <Background color="#1e293b" gap={20} />
+            <Controls className="bg-[#111827] border-border" />
           </ReactFlow>
         </div>
 

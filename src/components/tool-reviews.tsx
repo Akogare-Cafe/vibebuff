@@ -110,7 +110,7 @@ function RatingSummary({ summary }: { summary: any }) {
             return (
               <div key={rating} className="flex items-center gap-2">
                 <span className="text-muted-foreground text-xs w-3">{rating}</span>
-                <div className="flex-1 h-2 bg-[#191022] border border-border">
+                <div className="flex-1 h-2 bg-[#0a0f1a] border border-border">
                   <div className="h-full bg-yellow-400" style={{ width: `${percent}%` }} />
                 </div>
                 <span className="text-muted-foreground text-xs w-6">{count}</span>
@@ -232,7 +232,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Share your experience..."
-            className="w-full bg-[#191022] border-4 border-border p-2 text-primary text-sm h-24 resize-none"
+            className="w-full bg-[#0a0f1a] border-4 border-border p-2 text-primary text-sm h-24 resize-none"
           />
         </div>
 

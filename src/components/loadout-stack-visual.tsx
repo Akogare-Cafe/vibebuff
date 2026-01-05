@@ -102,7 +102,7 @@ const categoryColors: Record<string, string> = {
   backend: "#f59e0b",
   database: "#6366f1",
   deployment: "#14b8a6",
-  tool: "#7f13ec",
+  tool: "#3b82f6",
   authentication: "#ef4444",
   auth: "#ef4444",
   realtime: "#eab308",
@@ -125,7 +125,7 @@ interface ToolNodeData {
 
 function ToolNode({ data }: { data: ToolNodeData }) {
   const categoryKey = data.category.toLowerCase().replace(/[^a-z]/g, "");
-  const color = categoryColors[categoryKey] || "#7f13ec";
+  const color = categoryColors[categoryKey] || "#3b82f6";
   const icon = categoryIcons[categoryKey] || <Wrench className="w-4 h-4" />;
 
   return (
@@ -133,10 +133,10 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#261933]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
       />
       <div
-        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#261933]"
+        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
         style={{ borderColor: color }}
       >
         <div className="flex items-center gap-2 mb-1">
@@ -166,7 +166,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#261933]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
       />
     </div>
   );
@@ -276,7 +276,7 @@ export function LoadoutStackVisual({
           source: currentNodes[0],
           target: nextNodes[0],
           animated: true,
-          style: { stroke: "#7f13ec", strokeWidth: 2 },
+          style: { stroke: "#3b82f6", strokeWidth: 2 },
           markerEnd: { type: MarkerType.ArrowClosed },
         });
       }
@@ -294,8 +294,8 @@ export function LoadoutStackVisual({
         addEdge(
           {
             ...params,
-            markerEnd: { type: MarkerType.ArrowClosed, color: "#7f13ec" },
-            style: { stroke: "#7f13ec", strokeWidth: 2 },
+            markerEnd: { type: MarkerType.ArrowClosed, color: "#3b82f6" },
+            style: { stroke: "#3b82f6", strokeWidth: 2 },
             animated: true,
           },
           eds
@@ -411,7 +411,7 @@ export function LoadoutStackVisual({
 
     try {
       const dataUrl = await toPng(flowRef.current, {
-        backgroundColor: "#191022",
+        backgroundColor: "#0a0f1a",
         quality: 1,
       });
       const a = document.createElement("a");
@@ -445,7 +445,7 @@ export function LoadoutStackVisual({
                   type="text"
                   value={stackTitle}
                   onChange={(e) => setStackTitle(e.target.value)}
-                  className="px-2 py-1 bg-[#261933] border-2 border-border rounded text-primary text-sm focus:border-primary outline-none"
+                  className="px-2 py-1 bg-[#111827] border-2 border-border rounded text-primary text-sm focus:border-primary outline-none"
                   autoFocus
                   onBlur={() => setIsEditing(false)}
                   onKeyDown={(e) => e.key === "Enter" && setIsEditing(false)}
@@ -467,7 +467,7 @@ export function LoadoutStackVisual({
                 <PixelButton variant="outline" size="sm">
                   <Download className="w-4 h-4" />
                 </PixelButton>
-                <div className="absolute right-0 top-full mt-1 bg-[#261933] border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
+                <div className="absolute right-0 top-full mt-1 bg-[#111827] border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
                   <button
                     onClick={handleExportJSON}
                     className="w-full text-left px-2 py-1 text-sm text-muted-foreground hover:text-primary flex items-center gap-2"
@@ -503,7 +503,7 @@ export function LoadoutStackVisual({
         </PixelCardHeader>
         <PixelCardContent>
           <div className="flex gap-4">
-            <div className="w-48 bg-[#191022] border-2 border-border rounded-lg p-3 max-h-[400px] overflow-y-auto shrink-0">
+            <div className="w-48 bg-[#0a0f1a] border-2 border-border rounded-lg p-3 max-h-[400px] overflow-y-auto shrink-0">
               <h4 className="text-primary font-bold text-xs mb-3 flex items-center gap-2">
                 <Plus className="w-3 h-3" />
                 ADD TOOLS
@@ -513,7 +513,7 @@ export function LoadoutStackVisual({
                   <div key={category}>
                     <h5
                       className="text-xs font-bold mb-1 flex items-center gap-1"
-                      style={{ color: categoryColors[category] || "#7f13ec" }}
+                      style={{ color: categoryColors[category] || "#3b82f6" }}
                     >
                       {categoryIcons[category] || <Wrench className="w-3 h-3" />}
                       {category}
@@ -536,7 +536,7 @@ export function LoadoutStackVisual({
 
             <div
               ref={flowRef}
-              className="flex-1 h-[400px] bg-[#191022] border-2 border-border rounded-lg overflow-hidden"
+              className="flex-1 h-[400px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden"
             >
               <ReactFlow
                 nodes={nodes}
@@ -546,13 +546,13 @@ export function LoadoutStackVisual({
                 onConnect={onConnect}
                 nodeTypes={nodeTypes}
                 fitView
-                className="bg-[#191022]"
+                className="bg-[#0a0f1a]"
               >
-                <Background color="#362348" gap={20} />
-                <Controls className="bg-[#261933] border-border [&_button]:!bg-[#362348] [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-[#4a3060] [&_svg]:!fill-primary" />
+                <Background color="#1e293b" gap={20} />
+                <Controls className="bg-[#111827] border-border [&_button]:!bg-[#1e293b] [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-[#334155] [&_svg]:!fill-primary" />
                 <Panel
                   position="top-right"
-                  className="bg-[#261933] p-2 rounded-lg border border-border"
+                  className="bg-[#111827] p-2 rounded-lg border border-border"
                 >
                   <div className="text-muted-foreground text-xs">
                     <p>Drag to move nodes</p>
@@ -573,8 +573,8 @@ export function LoadoutStackVisual({
                     <div key={node.id} className="flex items-center gap-1">
                       <PixelBadge
                         style={{
-                          backgroundColor: `${categoryColors[categoryKey] || "#7f13ec"}20`,
-                          color: categoryColors[categoryKey] || "#7f13ec",
+                          backgroundColor: `${categoryColors[categoryKey] || "#3b82f6"}20`,
+                          color: categoryColors[categoryKey] || "#3b82f6",
                         }}
                       >
                         {node.data.label}

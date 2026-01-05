@@ -80,7 +80,7 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
         <span className={cn("text-lg", scoreColor)}>{compatibility.overallScore}</span>
       </div>
 
-      <div className="h-2 bg-[#191022] border border-border mb-3">
+      <div className="h-2 bg-[#0a0f1a] border border-border mb-3">
         <div 
           className={cn("h-full", scoreColor.replace("text-", "bg-"))}
           style={{ width: `${compatibility.overallScore}%` }}
@@ -113,7 +113,7 @@ function CompatibilityCard({ compatibility }: { compatibility: any }) {
       </PixelButton>
 
       {expanded && compatibility.integrationGuide && (
-        <div className="mt-3 p-3 border border-border bg-[#191022]">
+        <div className="mt-3 p-3 border border-border bg-[#0a0f1a]">
           <p className="text-primary text-xs mb-2">INTEGRATION GUIDE:</p>
           <p className="text-muted-foreground text-xs">{compatibility.integrationGuide}</p>
           {compatibility.boilerplateUrl && (

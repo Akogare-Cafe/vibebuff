@@ -133,7 +133,7 @@ function ToolSnapshotCard({ snapshot, rank }: { snapshot: any; rank: number }) {
         <Star className="w-3 h-3" />
         {snapshot.githubStars?.toLocaleString() || "N/A"}
       </div>
-      <div className="mt-2 h-2 bg-[#191022] border border-border">
+      <div className="mt-2 h-2 bg-[#0a0f1a] border border-border">
         <div 
           className="h-full bg-primary"
           style={{ width: `${snapshot.popularity}%` }}
@@ -202,7 +202,7 @@ export function ToolTimeline({ toolId }: ToolTimelineProps) {
 
             return (
               <div key={snapshot._id} className="flex items-start gap-4 pl-8 relative">
-                <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#191022]" />
+                <div className="absolute left-2 w-4 h-4 rounded-full bg-primary border-2 border-[#0a0f1a]" />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-primary text-base">{snapshot.year}</span>

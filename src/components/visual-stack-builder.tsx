@@ -98,12 +98,12 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 const categoryColors: Record<string, string> = {
   ide: "#22c55e",
-  ai: "#a855f7",
-  frontend: "#ec4899",
+  ai: "#3b82f6",
+  frontend: "#ef4444",
   backend: "#f59e0b",
   database: "#6366f1",
   deployment: "#14b8a6",
-  tool: "#7f13ec",
+  tool: "#3b82f6",
 };
 
 interface ToolNodeData {
@@ -115,7 +115,7 @@ interface ToolNodeData {
 }
 
 function ToolNode({ data }: { data: ToolNodeData }) {
-  const color = categoryColors[data.category] || "#7f13ec";
+  const color = categoryColors[data.category] || "#3b82f6";
   const icon = categoryIcons[data.category] || <Wrench className="w-4 h-4" />;
 
   return (
@@ -123,10 +123,10 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#261933]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
       />
       <div
-        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#261933]"
+        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
         style={{ borderColor: color }}
       >
         <div className="flex items-center gap-2 mb-1">
@@ -151,7 +151,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#261933]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
       />
     </div>
   );
@@ -222,7 +222,7 @@ function ToolPalette({
   }, [tools]);
 
   return (
-    <div className="w-64 bg-[#191022] border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
+    <div className="w-64 bg-[#0a0f1a] border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
       <h3 className="text-primary font-bold text-sm mb-4 flex items-center gap-2">
         <Wrench className="w-4 h-4" />
         Tool Palette
@@ -233,7 +233,7 @@ function ToolPalette({
           <div key={category}>
             <h4
               className="text-xs font-bold mb-2 flex items-center gap-1"
-              style={{ color: categoryColors[category] || "#7f13ec" }}
+              style={{ color: categoryColors[category] || "#3b82f6" }}
             >
               {categoryIcons[category] || <Wrench className="w-3 h-3" />}
               {category}
@@ -505,7 +505,7 @@ function PublishToMarketplaceModal({
             <select
               value={projectType}
               onChange={(e) => setProjectType(e.target.value)}
-              className="w-full px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+              className="w-full px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
             >
               <option value="">Select type...</option>
               <option value="landing-page">Landing Page</option>
@@ -524,7 +524,7 @@ function PublishToMarketplaceModal({
             <select
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
-              className="w-full px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+              className="w-full px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
             >
               <option value="">Select difficulty...</option>
               <option value="beginner">Beginner</option>
@@ -864,8 +864,8 @@ export function VisualStackBuilder() {
         addEdge(
           {
             ...params,
-            markerEnd: { type: MarkerType.ArrowClosed, color: "#7f13ec" },
-            style: { stroke: "#7f13ec", strokeWidth: 2 },
+            markerEnd: { type: MarkerType.ArrowClosed, color: "#3b82f6" },
+            style: { stroke: "#3b82f6", strokeWidth: 2 },
             animated: true,
           },
           eds
@@ -1007,7 +1007,7 @@ export function VisualStackBuilder() {
 
     try {
       const dataUrl = await toPng(flowRef.current, {
-        backgroundColor: "#191022",
+        backgroundColor: "#0a0f1a",
         quality: 1,
       });
       const a = document.createElement("a");
@@ -1118,14 +1118,14 @@ export function VisualStackBuilder() {
                 type="text"
                 value={buildTitle}
                 onChange={(e) => setBuildTitle(e.target.value)}
-                className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
                 placeholder="Stack name..."
               />
               <input
                 type="text"
                 value={buildDescription}
                 onChange={(e) => setBuildDescription(e.target.value)}
-                className="px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none flex-1"
+                className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none flex-1"
                 placeholder="Description (optional)..."
               />
             </div>
@@ -1144,7 +1144,7 @@ export function VisualStackBuilder() {
                 <PixelButton variant="outline">
                   <Download className="w-4 h-4" />
                 </PixelButton>
-                <div className="absolute right-0 top-full mt-1 bg-[#261933] border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
+                <div className="absolute right-0 top-full mt-1 bg-[#111827] border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
                   <button
                     onClick={handleExportJSON}
                     className="w-full text-left px-2 py-1 text-sm text-muted-foreground hover:text-primary flex items-center gap-2"
@@ -1201,7 +1201,7 @@ export function VisualStackBuilder() {
 
             <div
               ref={flowRef}
-              className="flex-1 h-[600px] bg-[#191022] border-2 border-border rounded-lg overflow-hidden"
+              className="flex-1 h-[600px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden"
             >
               <ReactFlow
                 nodes={nodes}
@@ -1211,13 +1211,13 @@ export function VisualStackBuilder() {
                 onConnect={onConnect}
                 nodeTypes={nodeTypes}
                 fitView
-                className="bg-[#191022]"
+                className="bg-[#0a0f1a]"
               >
-                <Background color="#362348" gap={20} />
-                <Controls className="bg-[#261933] border-border [&_button]:!bg-[#362348] [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-[#4a3060] [&_svg]:!fill-primary" />
+                <Background color="#1e3a5f" gap={20} />
+                <Controls className="bg-[#111827] border-border [&_button]:!bg-[#1e293b] [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-[#334155] [&_svg]:!fill-primary" />
                 <Panel
                   position="top-right"
-                  className="bg-[#261933] p-2 rounded-lg border border-border"
+                  className="bg-[#111827] p-2 rounded-lg border border-border"
                 >
                   <div className="text-muted-foreground text-xs">
                     <p>Drag to move nodes</p>

@@ -98,7 +98,7 @@ export function DeckLoadout({ deckId, userId, className }: DeckLoadoutProps) {
             <span className="text-muted-foreground">LOADOUT COMPLETION</span>
             <span className="text-primary">{loadoutScore}%</span>
           </div>
-          <div className="h-3 bg-[#191022] border border-border">
+          <div className="h-3 bg-[#0a0f1a] border border-border">
             <div 
               className={cn(
                 "h-full transition-all duration-500",
@@ -196,7 +196,7 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
         <div className="flex items-center gap-3">
           <div className={cn(
             "w-10 h-10 border-2 flex items-center justify-center",
-            hasAssigned ? "border-green-400 bg-green-400/20" : "border-border bg-[#191022]"
+            hasAssigned ? "border-green-400 bg-green-400/20" : "border-border bg-[#0a0f1a]"
           )}>
             <DynamicIcon 
               name={iconName} 
@@ -240,7 +240,7 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
       </button>
 
       {isExpanded && hasOptions && (
-        <div className="border-t border-border p-3 bg-[#191022]">
+        <div className="border-t border-border p-3 bg-[#0a0f1a]">
           <p className="text-muted-foreground text-xs mb-2">SELECT TOOL FOR THIS SLOT:</p>
           <div className="grid grid-cols-1 gap-2 max-h-40 overflow-y-auto">
             {validTools.map((tool) => (

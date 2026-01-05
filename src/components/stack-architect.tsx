@@ -170,7 +170,7 @@ export function PuzzleSolver({ puzzleSlug, userId }: PuzzleSolverProps) {
         </div>
 
         {puzzle.constraints?.customConstraints && (
-          <div className="p-3 border border-border bg-[#191022] mb-4">
+          <div className="p-3 border border-border bg-[#0a0f1a] mb-4">
             <p className="text-primary text-xs mb-2">CONSTRAINTS:</p>
             <ul className="space-y-1">
               {puzzle.constraints.customConstraints.map((c: string, i: number) => (

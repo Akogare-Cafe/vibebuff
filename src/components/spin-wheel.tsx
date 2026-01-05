@@ -106,7 +106,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
         <div className="flex flex-col items-center">
           <div className="relative w-64 h-64 mb-6">
             <motion.div
-              className="w-full h-full rounded-full border-4 border-primary bg-gradient-to-br from-[#191022] to-[#362348] flex items-center justify-center"
+              className="w-full h-full rounded-full border-4 border-primary bg-gradient-to-br from-[#0a0f1a] to-[#1e293b] flex items-center justify-center"
               animate={{ rotate: rotation }}
               transition={{ duration: 3, ease: "easeOut" }}
             >
@@ -120,7 +120,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
                   <div
                     key={reward._id}
                     className={cn(
-                      "absolute w-12 h-12 flex items-center justify-center rounded-full border-2 bg-[#191022]",
+                      "absolute w-12 h-12 flex items-center justify-center rounded-full border-2 bg-[#0a0f1a]",
                       getRarityColor(reward.rarity)
                     )}
                     style={{
@@ -173,7 +173,7 @@ export function SpinWheel({ userId, className }: SpinWheelProps) {
             >
               <div
                 className={cn(
-                  "border-4 p-6 bg-[#191022]",
+                  "border-4 p-6 bg-[#0a0f1a]",
                   getRarityColor(result.reward.rarity)
                 )}
               >

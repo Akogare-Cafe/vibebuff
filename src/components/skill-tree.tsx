@@ -174,7 +174,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
         <PixelBadge variant="default">
           {selectedCategories.size} / {SKILL_TREE_STRUCTURE.length} UNLOCKED
         </PixelBadge>
-        <div className="h-2 flex-1 mx-4 bg-[#191022] border border-border">
+        <div className="h-2 flex-1 mx-4 bg-[#0a0f1a] border border-border">
           <div 
             className="h-full bg-primary transition-all duration-500"
             style={{ width: `${(selectedCategories.size / SKILL_TREE_STRUCTURE.length) * 100}%` }}
@@ -183,7 +183,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
       </div>
 
       {/* Tree Visualization */}
-      <div className="relative h-[500px] border-2 border-border bg-[#191022]/50">
+      <div className="relative h-[500px] border-2 border-border bg-[#0a0f1a]/50">
         {/* Connection Lines */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
           {SKILL_TREE_STRUCTURE.map((node) =>
@@ -200,7 +200,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
                   y1={`${node.y + 3}%`}
                   x2={`${child.x}%`}
                   y2={`${child.y - 3}%`}
-                  stroke={isActive ? "#7f13ec" : "#362348"}
+                  stroke={isActive ? "#3b82f6" : "#1e293b"}
                   strokeWidth="2"
                   strokeDasharray={isActive ? "0" : "4"}
                 />
@@ -221,7 +221,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
               className={cn(
                 "absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300",
                 "w-16 h-16 flex flex-col items-center justify-center",
-                "border-4 bg-[#191022]",
+                "border-4 bg-[#0a0f1a]",
                 completed && "border-primary bg-primary/20 shadow-[0_0_15px_rgba(59,130,246,0.5)]",
                 unlocked && !completed && "border-border hover:border-primary",
                 !unlocked && "border-border/50 opacity-50 cursor-not-allowed",
@@ -238,7 +238,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
                 return <NodeIcon className="w-6 h-6 text-primary" />;
               })()}
               {completed && (
-                <Check className="absolute -top-1 -right-1 w-4 h-4 text-primary bg-[#191022] rounded-full" />
+                <Check className="absolute -top-1 -right-1 w-4 h-4 text-primary bg-[#0a0f1a] rounded-full" />
               )}
               {!unlocked && (
                 <Lock className="absolute -top-1 -right-1 w-4 h-4 text-muted-foreground" />
@@ -250,7 +250,7 @@ export function SkillTree({ selectedToolIds, onSelectCategory, className }: Skil
         {/* Tooltip */}
         {hoveredNode && (
           <div 
-            className="absolute z-20 bg-[#191022] border-2 border-primary p-3 pointer-events-none"
+            className="absolute z-20 bg-[#0a0f1a] border-2 border-primary p-3 pointer-events-none"
             style={{
               left: `${SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.x}%`,
               top: `${(SKILL_TREE_STRUCTURE.find((n) => n.id === hoveredNode)?.y || 0) + 10}%`,

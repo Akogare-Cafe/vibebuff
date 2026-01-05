@@ -8,12 +8,12 @@ export function ClerkClientProvider({ children }: { children: ReactNode }) {
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#7f13ec",
-          colorBackground: "#191022",
-          colorInputBackground: "#191022",
-          colorInputText: "#7f13ec",
-          colorText: "#7f13ec",
-          colorTextSecondary: "#7f13ec",
+          colorPrimary: "#3b82f6",
+          colorBackground: "#0a0f1a",
+          colorInputBackground: "#0a0f1a",
+          colorInputText: "#3b82f6",
+          colorText: "#3b82f6",
+          colorTextSecondary: "#3b82f6",
           borderRadius: "0px",
         },
         elements: {
@@ -21,7 +21,7 @@ export function ClerkClientProvider({ children }: { children: ReactNode }) {
           headerTitle: "text-primary",
           headerSubtitle: "text-muted-foreground",
           formButtonPrimary: "bg-primary hover:bg-primary text-background border-4 border-border",
-          formFieldInput: "border-4 border-border bg-[#191022] text-primary",
+          formFieldInput: "border-4 border-border bg-[#0a0f1a] text-primary",
           footerActionLink: "text-muted-foreground hover:text-primary",
         },
       }}

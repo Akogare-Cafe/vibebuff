@@ -45,7 +45,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
       {/* Profile Header */}
       <PixelCard className="p-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 border-4 border-primary bg-[#191022] flex items-center justify-center">
+          <div className="w-16 h-16 border-4 border-primary bg-[#0a0f1a] flex items-center justify-center">
             {profile.avatarUrl ? (
               <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
             ) : (
@@ -73,7 +73,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
             <span className="text-muted-foreground">LEVEL {profile.level}</span>
             <span className="text-muted-foreground">LEVEL {profile.level + 1}</span>
           </div>
-          <div className="h-4 bg-[#191022] border-2 border-border">
+          <div className="h-4 bg-[#0a0f1a] border-2 border-border">
             <div 
               className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
               style={{ width: `${xpProgress}%` }}
@@ -135,7 +135,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
             {achievements.slice(0, 6).map((ua: any) => (
               <div 
                 key={ua._id}
-                className="flex items-center gap-1 p-2 border border-border bg-[#191022]"
+                className="flex items-center gap-1 p-2 border border-border bg-[#0a0f1a]"
                 title={ua.achievement?.description}
               >
                 <DynamicIcon name={ua.achievement?.icon || "Trophy"} className="w-5 h-5 text-primary" />
@@ -161,7 +161,7 @@ function StatBox({
   color: string;
 }) {
   return (
-    <div className="text-center p-2 border border-border bg-[#191022]">
+    <div className="text-center p-2 border border-border bg-[#0a0f1a]">
       <div className={cn("mb-1", color)}>{icon}</div>
       <p className={cn("text-lg", color)}>{value}</p>
       <p className="text-muted-foreground text-[6px]">{label}</p>
@@ -179,7 +179,7 @@ export function ProfileWidget({ userId }: { userId: string }) {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="w-8 h-8 border-2 border-primary bg-[#191022] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-primary bg-[#0a0f1a] flex items-center justify-center">
         {profile.avatarUrl ? (
           <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
         ) : (
@@ -188,7 +188,7 @@ export function ProfileWidget({ userId }: { userId: string }) {
       </div>
       <div className="hidden md:block">
         <p className="text-primary text-sm">LV.{profile.level}</p>
-        <div className="w-16 h-1 bg-[#191022] border border-border">
+        <div className="w-16 h-1 bg-[#0a0f1a] border border-border">
           <div 
             className="h-full bg-primary"
             style={{ width: `${xpProgress}%` }}

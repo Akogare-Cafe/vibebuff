@@ -250,9 +250,9 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-primary hover:bg-[#261933]/50",
+                        "hover:border-primary hover:bg-[#111827]/50",
                         answers.experienceLevel === level.value
-                          ? "border-primary bg-[#261933]/50"
+                          ? "border-primary bg-[#111827]/50"
                           : "border-border bg-transparent"
                       )}
                     >
@@ -283,9 +283,9 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-primary hover:bg-[#261933]/50",
+                        "hover:border-primary hover:bg-[#111827]/50",
                         answers.goal === goal.value
-                          ? "border-primary bg-[#261933]/50"
+                          ? "border-primary bg-[#111827]/50"
                           : "border-border bg-transparent"
                       )}
                     >
@@ -319,9 +319,9 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "p-4 rounded-lg border-2 transition-all text-center",
-                        "hover:border-primary hover:bg-[#261933]/50",
+                        "hover:border-primary hover:bg-[#111827]/50",
                         answers.projectType === type.value
-                          ? "border-primary bg-[#261933]/50"
+                          ? "border-primary bg-[#111827]/50"
                           : "border-border bg-transparent"
                       )}
                     >
@@ -349,9 +349,9 @@ export function BeginnerOnboarding({ onComplete }: { onComplete?: () => void }) 
                       }
                       className={cn(
                         "w-full p-4 rounded-lg border-2 transition-all text-left",
-                        "hover:border-primary hover:bg-[#261933]/50",
+                        "hover:border-primary hover:bg-[#111827]/50",
                         answers.budget === option.value
-                          ? "border-primary bg-[#261933]/50"
+                          ? "border-primary bg-[#111827]/50"
                           : "border-border bg-transparent"
                       )}
                     >
@@ -443,7 +443,7 @@ export function OnboardingResults() {
               <h3 className="text-primary font-bold mb-2">
                 Recommended Learning Path
               </h3>
-              <div className="p-4 rounded-lg border-2 border-border bg-[#261933]/30">
+              <div className="p-4 rounded-lg border-2 border-border bg-[#111827]/30">
                 <p className="text-primary font-bold">
                   {recommendations.path.title}
                 </p>
@@ -469,7 +469,7 @@ export function OnboardingResults() {
                 {recommendations.tools.filter((tool): tool is NonNullable<typeof tool> => tool !== null).map((tool) => (
                   <div
                     key={tool._id}
-                    className="p-4 rounded-lg border-2 border-border bg-[#261933]/30"
+                    className="p-4 rounded-lg border-2 border-border bg-[#111827]/30"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-card flex items-center justify-center">

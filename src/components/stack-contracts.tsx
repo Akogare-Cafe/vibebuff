@@ -147,7 +147,7 @@ export function StackContracts({ userId, className }: StackContractsProps) {
                   {contract.description}
                 </p>
 
-                <div className="flex items-center gap-2 mb-3 p-2 bg-[#191022] border border-border">
+                <div className="flex items-center gap-2 mb-3 p-2 bg-[#0a0f1a] border border-border">
                   <User className="w-4 h-4 text-muted-foreground" />
                   <span className="text-primary text-sm">
                     {contract.clientName}

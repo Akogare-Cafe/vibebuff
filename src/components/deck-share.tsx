@@ -138,7 +138,7 @@ export function DeckShare({
 
           <div className="border-t border-border pt-4">
             <p className="text-primary text-xs mb-2">EMBED BADGE</p>
-            <div className="bg-[#191022] border-2 border-border p-3">
+            <div className="bg-[#0a0f1a] border-2 border-border p-3">
               <code className="text-muted-foreground text-[6px] break-all">
                 {`[![My Stack](${siteUrl}/api/badge/${shareToken})](${shareUrl})`}
               </code>

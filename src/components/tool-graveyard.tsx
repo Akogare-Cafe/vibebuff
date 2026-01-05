@@ -185,7 +185,7 @@ function ResurrectionWatchCard({ watch }: { watch: any }) {
         </PixelBadge>
       </div>
       
-      <div className="h-2 bg-[#191022] border border-border mb-2">
+      <div className="h-2 bg-[#0a0f1a] border border-border mb-2">
         <div className="h-full bg-yellow-400" style={{ width: `${watch.hopeLevel}%` }} />
       </div>
 
@@ -317,7 +317,7 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
         </h2>
         
         {userId && (
-          <div className="mb-4 p-3 border border-border bg-[#191022]">
+          <div className="mb-4 p-3 border border-border bg-[#0a0f1a]">
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -330,14 +330,14 @@ export function GraveyardDetail({ entryId, userId }: GraveyardDetailProps) {
                 value={yearsUsed || ""}
                 onChange={(e) => setYearsUsed(e.target.value ? parseInt(e.target.value) : undefined)}
                 placeholder="Years used"
-                className="w-24 bg-[#191022] border border-border p-1 text-primary text-xs"
+                className="w-24 bg-[#0a0f1a] border border-border p-1 text-primary text-xs"
               />
               <input
                 type="text"
                 value={fondestMemory}
                 onChange={(e) => setFondestMemory(e.target.value)}
                 placeholder="Fondest memory..."
-                className="flex-1 bg-[#191022] border border-border p-1 text-primary text-xs"
+                className="flex-1 bg-[#0a0f1a] border border-border p-1 text-primary text-xs"
               />
               <PixelButton size="sm" onClick={handleSubmitMemorial} disabled={!message}>
                 <Send className="w-3 h-3" />

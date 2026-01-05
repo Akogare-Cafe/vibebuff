@@ -262,7 +262,7 @@ function QuestCard({ quest }: QuestCardProps) {
                   className={cn(
                     "p-2 border-2 text-center transition-colors",
                     selectedOutcome === key 
-                      ? `${config.color} bg-[#191022]` 
+                      ? `${config.color} bg-[#0a0f1a]` 
                       : "border-border"
                   )}
                 >
@@ -276,7 +276,7 @@ function QuestCard({ quest }: QuestCardProps) {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Add notes about this project..."
-            className="w-full bg-[#191022] border-2 border-border p-2 text-primary text-sm mb-3 h-16 resize-none"
+            className="w-full bg-[#0a0f1a] border-2 border-border p-2 text-primary text-sm mb-3 h-16 resize-none"
           />
           <div className="flex gap-2">
             <PixelButton size="sm" onClick={handleSaveOutcome}>

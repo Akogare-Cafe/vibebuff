@@ -47,7 +47,7 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
           <div
             key={synergy._id}
             className={cn(
-              "border-2 p-3 bg-[#191022]/50",
+              "border-2 p-3 bg-[#0a0f1a]/50",
               getSynergyColor(synergy.synergyType, synergy.synergyScore)
             )}
           >
@@ -71,7 +71,7 @@ export function SynergyMatrix({ toolId, className }: SynergyMatrixProps) {
             </p>
             
             {synergy.bonusEffect && (
-              <div className="bg-[#191022] border border-primary px-2 py-1 inline-flex items-center gap-1">
+              <div className="bg-[#0a0f1a] border border-primary px-2 py-1 inline-flex items-center gap-1">
                 <Zap className="w-3 h-3 text-yellow-400" />
                 <span className="text-primary text-xs">
                   {synergy.bonusEffect}

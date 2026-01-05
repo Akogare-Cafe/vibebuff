@@ -65,7 +65,7 @@ export function UserMenu() {
       {/* User Avatar Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-2 py-1 border-2 border-border bg-[#191022] hover:border-primary transition-colors"
+        className="flex items-center gap-2 px-2 py-1 border-2 border-border bg-[#0a0f1a] hover:border-primary transition-colors"
       >
         {user?.imageUrl ? (
           <img
@@ -116,7 +116,7 @@ export function UserMenu() {
                 <span>LEVEL 1</span>
                 <span>0 / 100 XP</span>
               </div>
-              <div className="h-2 bg-[#191022] border border-border">
+              <div className="h-2 bg-[#0a0f1a] border border-border">
                 <div className="h-full bg-primary w-0" />
               </div>
             </div>
@@ -127,7 +127,7 @@ export function UserMenu() {
             <Link
               href="/profile"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#0a0f1a] text-xs"
             >
               <User className="w-3 h-3" />
               MY PROFILE
@@ -135,7 +135,7 @@ export function UserMenu() {
             <Link
               href="/profile/decks"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#0a0f1a] text-xs"
             >
               <Swords className="w-3 h-3" />
               MY DECKS
@@ -143,7 +143,7 @@ export function UserMenu() {
             <Link
               href="/profile/favorites"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#0a0f1a] text-xs"
             >
               <Heart className="w-3 h-3" />
               FAVORITES
@@ -151,7 +151,7 @@ export function UserMenu() {
             <Link
               href="/profile/achievements"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#0a0f1a] text-xs"
             >
               <Trophy className="w-3 h-3" />
               ACHIEVEMENTS
@@ -159,7 +159,7 @@ export function UserMenu() {
             <Link
               href="/profile/settings"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#191022] text-xs"
+              className="flex items-center gap-3 px-3 py-2 text-primary hover:bg-[#0a0f1a] text-xs"
             >
               <Settings className="w-3 h-3" />
               SETTINGS

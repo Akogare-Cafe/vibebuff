@@ -178,7 +178,7 @@ function StatBar({ icon, label, value }: { icon: React.ReactNode; label: string;
   return (
     <div className="text-center">
       <div className="text-muted-foreground mb-1">{icon}</div>
-      <div className="h-24 w-full bg-[#191022] border border-border relative mb-1">
+      <div className="h-24 w-full bg-[#0a0f1a] border border-border relative mb-1">
         <div 
           className={cn("absolute bottom-0 w-full transition-all duration-1000", getColor(value))}
           style={{ height: `${value}%` }}

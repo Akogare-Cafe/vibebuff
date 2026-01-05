@@ -128,34 +128,34 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
             <div className={cn("w-12 flex items-center justify-center font-bold text-xl", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-2 p-2 bg-[#191022]/50">
+            <div className="flex-1 flex flex-wrap gap-2 p-2 bg-[#0a0f1a]/50">
               {tiers[tier].map((toolId) => {
                 const tool = getToolById(toolId);
                 if (!tool) return null;
                 return (
                   <div
                     key={toolId}
-                    className="group relative border border-border bg-[#191022] px-2 py-1"
+                    className="group relative border border-border bg-[#0a0f1a] px-2 py-1"
                   >
                     <span className="text-primary text-sm">{tool.name}</span>
                     <div className="absolute -top-6 right-0 hidden group-hover:flex gap-1">
                       <button
                         onClick={() => moveTier(toolId, tier, "up")}
-                        className="p-0.5 bg-[#191022] border border-primary text-muted-foreground"
+                        className="p-0.5 bg-[#0a0f1a] border border-primary text-muted-foreground"
                         disabled={tier === "s"}
                       >
                         <ChevronUp className="w-3 h-3" />
                       </button>
                       <button
                         onClick={() => moveTier(toolId, tier, "down")}
-                        className="p-0.5 bg-[#191022] border border-primary text-muted-foreground"
+                        className="p-0.5 bg-[#0a0f1a] border border-primary text-muted-foreground"
                         disabled={tier === "d"}
                       >
                         <ChevronDown className="w-3 h-3" />
                       </button>
                       <button
                         onClick={() => removeFromTier(toolId, tier)}
-                        className="p-0.5 bg-[#191022] border border-red-400 text-red-400"
+                        className="p-0.5 bg-[#0a0f1a] border border-red-400 text-red-400"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -239,7 +239,7 @@ export function TierListDisplay({ tierListId, shareToken, className }: TierListD
             <div className={cn("w-10 flex items-center justify-center font-bold text-lg", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-1 p-2 bg-[#191022]/50">
+            <div className="flex-1 flex flex-wrap gap-1 p-2 bg-[#0a0f1a]/50">
               {tierList.tiers[tier].map((toolId: string) => {
                 const tool = tierList.toolsMap[toolId];
                 if (!tool) return null;
@@ -281,7 +281,7 @@ export function CommunityConsensusTierList({ categoryId }: { categoryId: Id<"cat
             <div className={cn("w-8 flex items-center justify-center font-bold text-sm", config.textColor)}>
               {config.label}
             </div>
-            <div className="flex-1 flex flex-wrap gap-1 p-1 bg-[#191022]/50">
+            <div className="flex-1 flex flex-wrap gap-1 p-1 bg-[#0a0f1a]/50">
               {consensus.consensus[tier].slice(0, 5).map((toolId: string) => (
                 <PixelBadge key={toolId} variant="outline" className="text-[6px]">
                   {toolId.slice(-4)}

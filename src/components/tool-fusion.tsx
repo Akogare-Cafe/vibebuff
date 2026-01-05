@@ -161,7 +161,7 @@ function FusionSlot({ tool, onSelect, onClear, allTools, excludeId }: FusionSlot
   return (
     <div className="relative">
       {tool ? (
-        <div className="w-24 h-24 border-4 border-primary bg-[#191022] p-2 text-center relative">
+        <div className="w-24 h-24 border-4 border-primary bg-[#0a0f1a] p-2 text-center relative">
           <button 
             onClick={onClear}
             className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"
@@ -181,7 +181,7 @@ function FusionSlot({ tool, onSelect, onClear, allTools, excludeId }: FusionSlot
       )}
 
       {isOpen && !tool && (
-        <div className="absolute top-full left-0 mt-2 w-48 max-h-60 overflow-y-auto bg-[#191022] border-2 border-border z-20">
+        <div className="absolute top-full left-0 mt-2 w-48 max-h-60 overflow-y-auto bg-[#0a0f1a] border-2 border-border z-20">
           {availableTools.slice(0, 20).map((t) => (
             <button
               key={t._id}
@@ -257,7 +257,7 @@ function StatBar({ icon, label, value }: { icon: React.ReactNode; label: string;
   return (
     <div className="text-center">
       <div className="text-muted-foreground mb-1">{icon}</div>
-      <div className="h-16 w-full bg-[#191022] border border-border relative">
+      <div className="h-16 w-full bg-[#0a0f1a] border border-border relative">
         <div 
           className="absolute bottom-0 w-full bg-primary"
           style={{ height: `${value}%` }}

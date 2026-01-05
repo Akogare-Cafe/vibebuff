@@ -305,7 +305,7 @@ export default function QuestPage() {
                     {type.name}
                   </p>
                   <p className={`text-xs ${
-                    answers.projectType === type.id ? "text-[#191022]" : "text-muted-foreground"
+                    answers.projectType === type.id ? "text-[#0a0f1a]" : "text-muted-foreground"
                   }`}>
                     {type.description}
                   </p>
@@ -343,7 +343,7 @@ export default function QuestPage() {
                     {scale.name}
                   </p>
                   <p className={`text-xs ${
-                    answers.scale === scale.id ? "text-[#191022]" : "text-muted-foreground"
+                    answers.scale === scale.id ? "text-[#0a0f1a]" : "text-muted-foreground"
                   }`}>
                     {scale.users}
                   </p>
@@ -387,7 +387,7 @@ export default function QuestPage() {
                     {budget.name}
                   </p>
                   <p className={`text-xs ${
-                    answers.budget === budget.id ? "text-[#191022]" : "text-muted-foreground"
+                    answers.budget === budget.id ? "text-[#0a0f1a]" : "text-muted-foreground"
                   }`}>
                     {budget.range}
                   </p>

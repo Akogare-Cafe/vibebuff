@@ -155,7 +155,7 @@ function MasteryCard({ mastery }: MasteryCardProps) {
               <span className="text-muted-foreground">{nextLevelConfig.minXp} XP</span>
             )}
           </div>
-          <div className="h-1 bg-[#191022] border border-border">
+          <div className="h-1 bg-[#0a0f1a] border border-border">
             <div 
               className={cn("h-full", levelConfig.color.includes("yellow") ? "bg-yellow-400" : "bg-primary")}
               style={{ width: `${Math.min(100, progressPercent)}%` }}
