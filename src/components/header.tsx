@@ -21,6 +21,7 @@ import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
 import { NotificationBell } from "@/components/notifications";
 import { useTheme } from "@/components/providers/theme-provider";
+import { Logo } from "@/components/logo";
 
 const navLinks = [
   { href: "/quest", label: "Quest", icon: Swords },
@@ -40,11 +41,9 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-solid border-border bg-background/95 backdrop-blur-sm">
       <div className="flex items-center justify-between whitespace-nowrap px-4 lg:px-10 py-3">
         <div className="flex items-center gap-4 lg:gap-6">
-          <Link href="/" className="flex items-center gap-3 text-foreground">
-            <div className="size-8 text-primary flex items-center justify-center">
-              <Swords className="w-7 h-7" />
-            </div>
-            <h2 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] hidden sm:block">VibeBuff</h2>
+          <Link href="/" className="flex items-center text-foreground">
+            <Logo size="md" showText className="hidden sm:flex" />
+            <Logo size="sm" showText={false} className="sm:hidden" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

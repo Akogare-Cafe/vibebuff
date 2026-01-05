@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Swords, Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin } from "lucide-react";
+import { LogoIcon } from "@/components/logo";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 
@@ -49,8 +50,8 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 text-foreground mb-4">
-              <Swords className="w-5 h-5 text-primary" />
-              <h3 className="font-bold text-lg">VIBEBUFF</h3>
+              <LogoIcon className="w-5 h-5" />
+              <h3 className="font-bold text-lg bg-gradient-to-r from-purple-400 via-primary to-purple-600 bg-clip-text text-transparent">VIBEBUFF</h3>
             </Link>
             <p className="text-muted-foreground text-sm mb-4">AI-powered tech stack builder. Compare 500+ developer tools and build the perfect stack for your project.</p>
             <div className="flex gap-3">
@@ -170,7 +171,7 @@ export function Footer() {
             "@type": "Organization",
             name: "VIBEBUFF",
             url: siteUrl,
-            logo: `${siteUrl}/og-image.png`,
+            logo: `${siteUrl}/logo.svg`,
             description: "AI-powered tech stack recommendations for developers. Compare 500+ developer tools and build the perfect stack.",
             foundingDate: "2024",
             sameAs: [
