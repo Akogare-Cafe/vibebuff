@@ -83,7 +83,7 @@ While Gatsby has evolved, it remains the go-to for static sites:
 
 There's no one-size-fits-all answer. Choose **Next.js** for full-stack applications, **Remix** for web-standards-first development, and **Gatsby** for static content sites. Consider your team's expertise, project requirements, and long-term maintenance needs.
 
-Ready to find your perfect tech stack? Try our [Quest feature](/quest) for AI-powered recommendations tailored to your project.
+Ready to find your perfect tech stack? Try our [AI Stack Builder](/) for AI-powered recommendations tailored to your project.
     `,
   },
   "nextjs-vs-remix-comparison": {
@@ -435,7 +435,7 @@ For more control over infrastructure
 
 ## Getting Started
 
-Use our [Quest feature](/quest) to get personalized recommendations based on your specific SaaS requirements.
+Use our [AI Stack Builder](/) to get personalized recommendations based on your specific SaaS requirements.
     `,
   },
   "vue-vs-react-2025": {
@@ -1127,7 +1127,7 @@ Start with **Svelte**. It's the most enjoyable to write and has excellent tutori
 - **React**: react.dev/learn
 - **Svelte**: learn.svelte.dev
 
-Start your learning journey and use our [Quest feature](/quest) to find the right tools for your first project.
+Start your learning journey and use our [AI Stack Builder](/) to find the right tools for your first project.
     `,
   },
   "typescript-vs-javascript-2025": {
@@ -1643,13 +1643,13 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="border-4 border-border bg-card p-8 mt-12 text-center">
           <h2 className="text-primary text-sm mb-4">FIND YOUR PERFECT TECH STACK</h2>
           <p className="text-muted-foreground text-xs mb-6">
-            Use our AI-powered Quest to get personalized recommendations for your project.
+            Use our AI-powered Stack Builder to get personalized recommendations for your project.
           </p>
           <Link
-            href="/quest"
+            href="/"
             className="inline-block bg-primary text-background px-6 py-2 text-sm hover:bg-primary transition-colors"
           >
-            START YOUR QUEST
+            AI STACK BUILDER
           </Link>
         </div>
       </main>

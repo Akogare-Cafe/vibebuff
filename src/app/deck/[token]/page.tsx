@@ -130,9 +130,9 @@ export default function SharedDeckPage({ params }: { params: Promise<{ token: st
           <p className="text-muted-foreground text-sm mb-4">
             WANT TO BUILD YOUR OWN TECH STACK?
           </p>
-          <Link href="/quest">
+          <Link href="/">
             <PixelButton>
-              START YOUR QUEST
+              AI STACK BUILDER
             </PixelButton>
           </Link>
         </div>

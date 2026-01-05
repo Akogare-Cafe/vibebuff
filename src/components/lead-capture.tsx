@@ -82,7 +82,7 @@ export function CTABanner() {
           Get AI-powered recommendations in seconds.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <a href="/quest">
+          <a href="/">
             <PixelButton size="lg">
               <Zap className="w-4 h-4 mr-2" />
               Start Free - No Signup Required
@@ -187,7 +187,7 @@ export function QuickStartCTA() {
       <p className="text-muted-foreground text-sm mb-5 max-w-md mx-auto">
         No signup required. Just describe your project and get AI-powered recommendations instantly.
       </p>
-      <a href="/quest">
+      <a href="/">
         <PixelButton size="lg">
           Get Started Free
           <ArrowRight className="w-4 h-4 ml-2" />

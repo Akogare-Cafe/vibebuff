@@ -22,7 +22,7 @@ import {
   Globe,
   Layers,
   User,
-  Swords,
+  Sparkles,
 } from "lucide-react";
 import { Id } from "../../../convex/_generated/dataModel";
 
@@ -81,9 +81,9 @@ export default function DeckPage() {
                 <Layers className="w-4 h-4 mr-2" /> STACK BUILDER
               </PixelButton>
             </Link>
-            <Link href="/quest">
+            <Link href="/">
               <PixelButton>
-                <Swords className="w-4 h-4 mr-2" /> NEW QUEST
+                <Sparkles className="w-4 h-4 mr-2" /> AI STACK BUILDER
               </PixelButton>
             </Link>
           </div>
@@ -127,9 +127,9 @@ export default function DeckPage() {
               OR USE THE VISUAL STACK BUILDER TO CREATE YOUR OWN.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/quest">
+              <Link href="/">
                 <PixelButton>
-                  <Swords className="w-4 h-4 mr-2" /> START QUEST
+                  <Sparkles className="w-4 h-4 mr-2" /> AI STACK BUILDER
                 </PixelButton>
               </Link>
               <Link href="/stack-builder">
@@ -228,7 +228,7 @@ export default function DeckPage() {
               </PixelCard>
             ))}
 
-            <Link href="/quest">
+            <Link href="/">
               <PixelCard className="h-full min-h-[200px] border-dashed flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
                 <div className="text-center p-6">
                   <Plus className="w-8 h-8 mx-auto mb-3 text-muted-foreground" />
@@ -244,10 +244,10 @@ export default function DeckPage() {
             <ChevronRight className="w-4 h-4" /> QUICK ACTIONS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/quest">
+            <Link href="/">
               <PixelCard className="p-6 text-center hover:border-primary transition-colors cursor-pointer">
-                <Swords className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="text-primary text-sm mb-2">AI QUEST</h3>
+                <Sparkles className="w-8 h-8 mx-auto mb-3 text-primary" />
+                <h3 className="text-primary text-sm mb-2">AI STACK BUILDER</h3>
                 <p className="text-muted-foreground text-xs">
                   GET PERSONALIZED TECH STACK RECOMMENDATIONS
                 </p>

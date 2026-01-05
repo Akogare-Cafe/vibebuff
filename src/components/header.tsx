@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  Swords, 
+  Sparkles, 
   Package, 
   Scale, 
   Users, 
@@ -24,7 +24,6 @@ import { useTheme } from "@/components/providers/theme-provider";
 import { Logo } from "@/components/logo";
 
 const navLinks = [
-  { href: "/quest", label: "Quest", icon: Swords },
   { href: "/tools", label: "Tools", icon: Package },
   { href: "/compare", label: "Compare", icon: Scale },
   { href: "/stack-builder", label: "Builder", icon: Layers },

@@ -24,7 +24,7 @@ import {
   Globe,
   Layers,
   User,
-  Swords,
+  Sparkles,
   ArrowLeft,
   Edit3,
   X,
@@ -171,9 +171,9 @@ export default function ProfileDecksPage() {
                 <Layers className="w-4 h-4 mr-2" /> STACK BUILDER
               </PixelButton>
             </Link>
-            <Link href="/quest">
+            <Link href="/">
               <PixelButton>
-                <Swords className="w-4 h-4 mr-2" /> NEW QUEST
+                <Sparkles className="w-4 h-4 mr-2" /> AI STACK BUILDER
               </PixelButton>
             </Link>
           </div>
@@ -231,9 +231,9 @@ export default function ProfileDecksPage() {
               OR USE THE VISUAL STACK BUILDER TO CREATE YOUR OWN.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Link href="/quest">
+              <Link href="/">
                 <PixelButton>
-                  <Swords className="w-4 h-4 mr-2" /> START QUEST
+                  <Sparkles className="w-4 h-4 mr-2" /> AI STACK BUILDER
                 </PixelButton>
               </Link>
               <Link href="/stack-builder">
@@ -397,12 +397,12 @@ export default function ProfileDecksPage() {
               </PixelCard>
             ))}
 
-            <Link href="/quest">
+            <Link href="/">
               <PixelCard className="h-full min-h-[280px] border-dashed flex items-center justify-center cursor-pointer hover:border-primary transition-colors">
                 <div className="text-center p-6">
                   <Plus className="w-10 h-10 mx-auto mb-4 text-muted-foreground" />
                   <p className="text-primary text-sm mb-2">CREATE NEW DECK</p>
-                  <p className="text-muted-foreground text-xs">Start a quest or use the stack builder</p>
+                  <p className="text-muted-foreground text-xs">Use the AI Stack Builder</p>
                 </div>
               </PixelCard>
             </Link>
@@ -426,10 +426,10 @@ export default function ProfileDecksPage() {
             <ChevronRight className="w-4 h-4" /> QUICK ACTIONS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/quest">
+            <Link href="/">
               <PixelCard className="p-6 text-center hover:border-primary transition-colors cursor-pointer">
-                <Swords className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h3 className="text-primary text-sm mb-2">AI QUEST</h3>
+                <Sparkles className="w-8 h-8 mx-auto mb-3 text-primary" />
+                <h3 className="text-primary text-sm mb-2">AI STACK BUILDER</h3>
                 <p className="text-muted-foreground text-xs">
                   GET PERSONALIZED TECH STACK RECOMMENDATIONS
                 </p>

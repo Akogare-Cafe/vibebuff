@@ -4,7 +4,7 @@ import {
   ChevronRight,
   BookOpen,
   HelpCircle,
-  Swords,
+  Sparkles,
   Package,
   Scale,
   Layers,
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
 
 const gettingStartedGuides = [
   {
-    title: "Start Your Quest",
+    title: "AI Stack Builder",
     description: "Get AI-powered tech stack recommendations in minutes",
-    href: "/quest",
-    icon: Swords,
+    href: "/",
+    icon: Sparkles,
   },
   {
     title: "Browse Tools",
@@ -274,10 +274,10 @@ export default function DocsPage() {
               CONTACT US
             </Link>
             <Link
-              href="/quest"
+              href="/"
               className="border-4 border-primary text-muted-foreground px-6 py-3 text-sm hover:bg-primary hover:text-background transition-colors"
             >
-              START QUEST
+              AI STACK BUILDER
             </Link>
           </div>
         </section>

@@ -8,7 +8,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 
 const footerLinks = {
   explore: [
-    { name: "AI Stack Builder", href: "/quest" },
+    { name: "AI Stack Builder", href: "/" },
     { name: "Browse 500+ Tools", href: "/tools" },
     { name: "Compare Tools", href: "/compare" },
     { name: "Visual Stack Builder", href: "/stack-builder" },

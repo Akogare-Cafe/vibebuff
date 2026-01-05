@@ -6,7 +6,6 @@ import { PixelButton } from "@/components/pixel-button";
 import { PixelCard } from "@/components/pixel-card";
 import Link from "next/link";
 import {
-  Swords,
   Package,
   Trophy,
   Users,
@@ -15,7 +14,7 @@ import {
   X,
   Gamepad2,
   Target,
-  Layers
+  Layers,
 } from "lucide-react";
 
 interface OnboardingProps {
@@ -33,11 +32,11 @@ const ONBOARDING_STEPS = [
   },
   {
     id: "quest",
-    title: "START A QUEST",
+    title: "AI STACK BUILDER",
     description: "AI-POWERED RECOMMENDATIONS",
-    icon: Swords,
-    content: "Answer a few questions about your project and our AI will recommend the perfect tools for your needs.",
-    action: { label: "TRY QUEST", href: "/quest" },
+    icon: Sparkles,
+    content: "Describe your project and our AI will recommend the perfect tools for your needs.",
+    action: { label: "TRY IT", href: "/" },
   },
   {
     id: "browse",

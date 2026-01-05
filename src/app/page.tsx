@@ -262,12 +262,6 @@ export default function Home() {
 
           {/* Action Buttons */}
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/quest">
-              <PixelButton size="lg" variant="default">
-                <Swords className="w-4 h-4 mr-2" />
-                START QUEST
-              </PixelButton>
-            </Link>
             <Link href="/tools">
               <PixelButton size="lg" variant="secondary">
                 <Package className="w-4 h-4 mr-2" />
@@ -425,12 +419,6 @@ export default function Home() {
 
                     {/* Actions */}
                     <div className="flex flex-wrap gap-3 justify-center pt-4 border-t border-border">
-                      <Link href="/quest">
-                        <PixelButton variant="outline" size="sm">
-                          <Swords className="w-4 h-4 mr-2" />
-                          Detailed Quest
-                        </PixelButton>
-                      </Link>
                       <Link href="/stack-builder">
                         <PixelButton size="sm">
                           <ArrowRight className="w-4 h-4 mr-2" />

@@ -102,9 +102,9 @@ export default function ReferralPage() {
                       </div>
                     )}
                     <div className="flex justify-center gap-4">
-                      <Link href="/quest">
+                      <Link href="/">
                         <PixelButton>
-                          START QUEST <ArrowRight className="w-4 h-4 ml-2" />
+                          AI STACK BUILDER <ArrowRight className="w-4 h-4 ml-2" />
                         </PixelButton>
                       </Link>
                     </div>

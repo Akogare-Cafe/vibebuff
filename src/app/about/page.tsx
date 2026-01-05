@@ -97,10 +97,10 @@ export default function AboutPage() {
           <h2 className="text-primary text-sm mb-4">READY TO FIND YOUR STACK?</h2>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link
-              href="/quest"
+              href="/"
               className="bg-primary text-background px-6 py-3 text-sm hover:bg-primary transition-colors"
             >
-              START YOUR QUEST
+              AI STACK BUILDER
             </Link>
             <Link
               href="/tools"

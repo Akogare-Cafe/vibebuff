@@ -4,7 +4,6 @@ const isPublicRoute = createRouteMatcher([
   "/",
   "/tools(.*)",
   "/compare(.*)",
-  "/quest(.*)",
   "/stack-builder(.*)",
   "/community(.*)",
   "/deck(.*)",

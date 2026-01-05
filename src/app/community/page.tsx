@@ -22,7 +22,6 @@ import {
   ThumbsUp,
   Sparkles,
   Globe,
-  Swords,
   Search,
   Crown,
   Building2,
@@ -464,10 +463,10 @@ export default function CommunityPage() {
             <ChevronRight className="w-4 h-4" /> GET INVOLVED
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/quest">
+            <Link href="/">
               <PixelCard className="p-6 text-center hover:border-primary transition-colors cursor-pointer h-full">
-                <Swords className="w-10 h-10 mx-auto mb-4 text-primary" />
-                <h3 className="text-primary text-sm mb-2">START YOUR QUEST</h3>
+                <Sparkles className="w-10 h-10 mx-auto mb-4 text-primary" />
+                <h3 className="text-primary text-sm mb-2">AI STACK BUILDER</h3>
                 <p className="text-muted-foreground text-xs">
                   Get AI-powered tech stack recommendations tailored to your project needs.
                 </p>
@@ -500,9 +499,9 @@ export default function CommunityPage() {
             Stay updated with the latest developer tools, framework comparisons, and tech stack recommendations.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/quest">
+            <Link href="/">
               <PixelButton>
-                <Swords className="w-4 h-4 mr-2" /> START QUEST
+                <Sparkles className="w-4 h-4 mr-2" /> AI STACK BUILDER
               </PixelButton>
             </Link>
             <Link href="/tools">

@@ -249,14 +249,14 @@ export function HowToSchema() {
         position: 1,
         name: "Describe Your Project",
         text: "Enter a description of your project in plain English. Include details about features, scale, and budget.",
-        url: `${siteUrl}/quest`,
+        url: siteUrl,
       },
       {
         "@type": "HowToStep",
         position: 2,
         name: "Get AI Recommendations",
         text: "Our AI analyzes your requirements and suggests the optimal tech stack based on your needs.",
-        url: `${siteUrl}/quest`,
+        url: siteUrl,
       },
       {
         "@type": "HowToStep",
