@@ -30,7 +30,7 @@ import {
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
 import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
-import { AdDisplay } from "@/components/ad-display";
+import { AdPlaceholder } from "@/components/ad-display";
 
 interface AIRecommendation {
   id: string;
@@ -470,7 +470,7 @@ export default function Home() {
         </section>
 
         {/* In-Feed Ad */}
-        <AdDisplay placement="in_feed" className="mb-16 md:mb-20" />
+        <AdPlaceholder placement="in_feed" className="mb-16 md:mb-20" />
 
         {/* Featured Tools */}
         <section className="mb-16 md:mb-20">

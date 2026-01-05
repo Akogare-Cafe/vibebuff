@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Loader2, Gamepad2 } from "lucide-react";
@@ -9,34 +9,39 @@ export function SSOCallback() {
   const { signIn, setActive: setSignInActive } = useSignIn();
   const { signUp, setActive: setSignUpActive } = useSignUp();
   const router = useRouter();
+  const hasHandled = useRef(false);
 
   useEffect(() => {
+    if (hasHandled.current) return;
+
     async function handleCallback() {
       try {
-        // Check if this is a sign-in callback
         if (signIn?.firstFactorVerification?.status === "transferable") {
-          // User exists, complete sign in
+          hasHandled.current = true;
           const result = await signIn.create({ transfer: true });
           if (result.status === "complete" && setSignInActive) {
             await setSignInActive({ session: result.createdSessionId });
             router.push("/");
           }
         } else if (signUp?.verifications?.externalAccount?.status === "transferable") {
-          // New user from OAuth, complete sign up
+          hasHandled.current = true;
           const result = await signUp.create({ transfer: true });
           if (result.status === "complete" && setSignUpActive) {
             await setSignUpActive({ session: result.createdSessionId });
             router.push("/");
           }
         } else if (signIn?.status === "complete" && setSignInActive) {
+          hasHandled.current = true;
           await setSignInActive({ session: signIn.createdSessionId });
           router.push("/");
         } else if (signUp?.status === "complete" && setSignUpActive) {
+          hasHandled.current = true;
           await setSignUpActive({ session: signUp.createdSessionId });
           router.push("/");
         }
       } catch (err) {
         console.error("SSO callback error:", err);
+        hasHandled.current = true;
         router.push("/sign-in?error=sso_failed");
       }
     }

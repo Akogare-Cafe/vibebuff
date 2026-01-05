@@ -9,7 +9,6 @@ import { Header } from "@/components/header";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
 import { Analytics } from "@vercel/analytics/react";
-import { BotIdClient } from "botid/client";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -124,8 +123,8 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   other: {
-    "msapplication-TileColor": "#7c3aed",
-    "theme-color": "#7c3aed",
+    "msapplication-TileColor": "#3b82f6",
+    "theme-color": "#3b82f6",
   },
 };
 
@@ -137,14 +136,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <BotIdClient
-          protect={[
-            {
-              path: "/api/*",
-              method: "POST",
-            },
-          ]}
-        />
       </head>
       <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col`}>
         <ClerkClientProvider>

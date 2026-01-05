@@ -28,9 +28,9 @@ export function Logo({ className, size = "md", showText = true }: LogoProps) {
       >
         <defs>
           <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#a855f7" />
-            <stop offset="50%" stopColor="#7c3aed" />
-            <stop offset="100%" stopColor="#6d28d9" />
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="50%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#2563eb" />
           </linearGradient>
         </defs>
         <path
@@ -68,7 +68,7 @@ export function Logo({ className, size = "md", showText = true }: LogoProps) {
         <span
           className={cn(
             text,
-            "font-bold leading-tight tracking-[-0.015em] bg-gradient-to-r from-purple-400 via-primary to-purple-600 bg-clip-text text-transparent"
+            "font-bold leading-tight tracking-[-0.015em] bg-gradient-to-r from-blue-400 via-primary to-blue-600 bg-clip-text text-transparent"
           )}
         >
           VibeBuff
@@ -88,9 +88,9 @@ export function LogoIcon({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="logoIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#a855f7" />
-          <stop offset="50%" stopColor="#7c3aed" />
-          <stop offset="100%" stopColor="#6d28d9" />
+          <stop offset="0%" stopColor="#60a5fa" />
+          <stop offset="50%" stopColor="#3b82f6" />
+          <stop offset="100%" stopColor="#2563eb" />
         </linearGradient>
       </defs>
       <path

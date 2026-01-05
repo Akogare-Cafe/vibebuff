@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
+import { useRouter } from "next/navigation";
 import { api } from "../../../convex/_generated/api";
 import { BeginnerOnboarding, OnboardingResults } from "@/components/beginner-onboarding";
-import { redirect } from "next/navigation";
 
 export default function GetStartedPage() {
   const { user, isLoaded } = useUser();
+  const router = useRouter();
   const [showResults, setShowResults] = useState(false);
 
   const onboardingState = useQuery(
@@ -16,7 +17,13 @@ export default function GetStartedPage() {
     user?.id ? { userId: user.id } : "skip"
   );
 
-  if (!isLoaded) {
+  useEffect(() => {
+    if (isLoaded && !user) {
+      router.push("/sign-in");
+    }
+  }, [isLoaded, user, router]);
+
+  if (!isLoaded || !user) {
     return (
       <main className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center min-h-[60vh]">
@@ -24,10 +31,6 @@ export default function GetStartedPage() {
         </div>
       </main>
     );
-  }
-
-  if (!user) {
-    redirect("/sign-in");
   }
 
   if (onboardingState?.isCompleted || showResults) {

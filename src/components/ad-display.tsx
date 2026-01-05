@@ -7,7 +7,7 @@ import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { cn } from "@/lib/utils";
 import { ExternalLink, Megaphone, X } from "lucide-react";
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, Component, ErrorInfo, ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -52,7 +52,7 @@ interface AdData {
   } | null;
 }
 
-export function AdDisplay({
+function AdDisplayInner({
   placement,
   className,
   limit = 1,
@@ -410,6 +410,39 @@ function SponsoredToolAd({
         </div>
       </PixelCardContent>
     </PixelCard>
+  );
+}
+
+class AdErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.debug("AdDisplay error (Convex not connected):", error.message);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+export function AdDisplay(props: AdDisplayProps) {
+  return (
+    <AdErrorBoundary fallback={null}>
+      <AdDisplayInner {...props} />
+    </AdErrorBoundary>
   );
 }
 
