@@ -171,7 +171,7 @@ export const createWelcomeNotification = mutation({
       isRead: false,
       createdAt: Date.now(),
       metadata: {
-        link: "/quest",
+        link: "/",
       },
     });
   },

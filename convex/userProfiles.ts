@@ -5,11 +5,12 @@ import { getAuthenticatedUser } from "./lib/auth";
 // Get or create user profile
 export const getOrCreateProfile = mutation({
   args: {
+    clerkId: v.optional(v.string()),
     username: v.optional(v.string()),
     avatarUrl: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const clerkId = await getAuthenticatedUser(ctx);
+    const clerkId = args.clerkId || await getAuthenticatedUser(ctx);
     
     const existing = await ctx.db
       .query("userProfiles")
@@ -49,7 +50,7 @@ export const getOrCreateProfile = mutation({
       isRead: false,
       createdAt: Date.now(),
       metadata: {
-        link: "/quest",
+        link: "/",
       },
     });
 

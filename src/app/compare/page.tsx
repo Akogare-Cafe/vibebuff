@@ -87,6 +87,7 @@ function ComparePageContent() {
   const [showSearch, setShowSearch] = useState(false);
   const [showQuickPick, setShowQuickPick] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [shareSuccess, setShareSuccess] = useState(false);
 
   const allTools = useQuery(api.tools.list, { limit: 100 });
   const featuredTools = useQuery(api.tools.featured);
@@ -141,9 +142,23 @@ function ComparePageContent() {
     setTimeout(() => setSaveSuccess(false), 2000);
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const url = window.location.href;
-    navigator.clipboard.writeText(url);
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareSuccess(true);
+      setTimeout(() => setShareSuccess(false), 2000);
+    } catch {
+      // Fallback for browsers that don't support clipboard API
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setShareSuccess(true);
+      setTimeout(() => setShareSuccess(false), 2000);
+    }
   };
 
   const displayedSearchResults = searchResults?.filter(
@@ -447,7 +462,8 @@ function ComparePageContent() {
                     onClick={handleShare}
                     className="gap-2"
                   >
-                    <Share2 className="w-4 h-4" /> Share
+                    {shareSuccess ? <CheckCircle className="w-4 h-4 text-green-500" /> : <Share2 className="w-4 h-4" />}
+                    {shareSuccess ? "Copied!" : "Share"}
                   </PixelButton>
                 </div>
               </div>

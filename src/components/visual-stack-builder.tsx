@@ -123,10 +123,10 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="target"
         position={Position.Top}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-background"
       />
       <div
-        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
+        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-card"
         style={{ borderColor: color }}
       >
         <div className="flex items-center gap-2 mb-1">
@@ -151,7 +151,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
+        className="!w-3 !h-3 !bg-primary !border-2 !border-background"
       />
     </div>
   );
@@ -222,7 +222,7 @@ function ToolPalette({
   }, [tools]);
 
   return (
-    <div className="w-64 bg-[#0a0f1a] border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
+    <div className="w-64 bg-card border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
       <h3 className="text-primary font-bold text-sm mb-4 flex items-center gap-2">
         <Wrench className="w-4 h-4" />
         Tool Palette
@@ -505,7 +505,7 @@ function PublishToMarketplaceModal({
             <select
               value={projectType}
               onChange={(e) => setProjectType(e.target.value)}
-              className="w-full px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+              className="w-full px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
             >
               <option value="">Select type...</option>
               <option value="landing-page">Landing Page</option>
@@ -524,7 +524,7 @@ function PublishToMarketplaceModal({
             <select
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
-              className="w-full px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+              className="w-full px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
             >
               <option value="">Select difficulty...</option>
               <option value="beginner">Beginner</option>
@@ -1118,14 +1118,14 @@ export function VisualStackBuilder() {
                 type="text"
                 value={buildTitle}
                 onChange={(e) => setBuildTitle(e.target.value)}
-                className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                className="px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
                 placeholder="Stack name..."
               />
               <input
                 type="text"
                 value={buildDescription}
                 onChange={(e) => setBuildDescription(e.target.value)}
-                className="px-3 py-2 bg-[#111827] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none flex-1"
+                className="px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none flex-1"
                 placeholder="Description (optional)..."
               />
             </div>
@@ -1144,7 +1144,7 @@ export function VisualStackBuilder() {
                 <PixelButton variant="outline">
                   <Download className="w-4 h-4" />
                 </PixelButton>
-                <div className="absolute right-0 top-full mt-1 bg-[#111827] border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
+                <div className="absolute right-0 top-full mt-1 bg-card border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
                   <button
                     onClick={handleExportJSON}
                     className="w-full text-left px-2 py-1 text-sm text-muted-foreground hover:text-primary flex items-center gap-2"
@@ -1201,7 +1201,7 @@ export function VisualStackBuilder() {
 
             <div
               ref={flowRef}
-              className="flex-1 h-[600px] bg-[#0a0f1a] border-2 border-border rounded-lg overflow-hidden"
+              className="flex-1 h-[600px] bg-muted border-2 border-border rounded-lg overflow-hidden"
             >
               <ReactFlow
                 nodes={nodes}
@@ -1211,13 +1211,13 @@ export function VisualStackBuilder() {
                 onConnect={onConnect}
                 nodeTypes={nodeTypes}
                 fitView
-                className="bg-[#0a0f1a]"
+                className="[&_.react-flow__pane]:bg-muted"
               >
                 <Background color="#1e3a5f" gap={20} />
-                <Controls className="bg-[#111827] border-border [&_button]:!bg-[#1e293b] [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-[#334155] [&_svg]:!fill-primary" />
+                <Controls className="!bg-card border-border [&_button]:!bg-muted [&_button]:!border-border [&_button]:!text-primary [&_button:hover]:!bg-accent [&_svg]:!fill-primary" />
                 <Panel
                   position="top-right"
-                  className="bg-[#111827] p-2 rounded-lg border border-border"
+                  className="bg-card p-2 rounded-lg border border-border"
                 >
                   <div className="text-muted-foreground text-xs">
                     <p>Drag to move nodes</p>
