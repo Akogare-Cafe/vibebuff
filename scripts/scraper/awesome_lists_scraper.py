@@ -8,6 +8,7 @@ import httpx
 from typing import Optional
 
 AWESOME_LISTS = [
+    # Vibe Coding specific
     {
         "name": "filipecalegario/awesome-vibe-coding",
         "url": "https://raw.githubusercontent.com/filipecalegario/awesome-vibe-coding/main/README.md",
@@ -19,6 +20,92 @@ AWESOME_LISTS = [
     {
         "name": "no-fluff/awesome-vibe-coding",
         "url": "https://raw.githubusercontent.com/no-fluff/awesome-vibe-coding/main/README.md",
+    },
+    # AI Coding Tools
+    {
+        "name": "sourcegraph/awesome-code-ai",
+        "url": "https://raw.githubusercontent.com/sourcegraph/awesome-code-ai/main/README.md",
+    },
+    {
+        "name": "e2b-dev/awesome-ai-agents",
+        "url": "https://raw.githubusercontent.com/e2b-dev/awesome-ai-agents/main/README.md",
+    },
+    {
+        "name": "steven2358/awesome-generative-ai",
+        "url": "https://raw.githubusercontent.com/steven2358/awesome-generative-ai/main/README.md",
+    },
+    # Developer Tools
+    {
+        "name": "ripienaar/free-for-dev",
+        "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
+    },
+    {
+        "name": "trimstray/the-book-of-secret-knowledge",
+        "url": "https://raw.githubusercontent.com/trimstray/the-book-of-secret-knowledge/master/README.md",
+    },
+    # Frontend & React
+    {
+        "name": "enaqx/awesome-react",
+        "url": "https://raw.githubusercontent.com/enaqx/awesome-react/master/README.md",
+    },
+    {
+        "name": "brillout/awesome-react-components",
+        "url": "https://raw.githubusercontent.com/brillout/awesome-react-components/master/README.md",
+    },
+    {
+        "name": "unicodeveloper/awesome-nextjs",
+        "url": "https://raw.githubusercontent.com/unicodeveloper/awesome-nextjs/master/README.md",
+    },
+    # Vue & Svelte
+    {
+        "name": "vuejs/awesome-vue",
+        "url": "https://raw.githubusercontent.com/vuejs/awesome-vue/master/README.md",
+    },
+    {
+        "name": "TheComputerM/awesome-svelte",
+        "url": "https://raw.githubusercontent.com/TheComputerM/awesome-svelte/main/README.md",
+    },
+    # TypeScript & Node
+    {
+        "name": "dzharii/awesome-typescript",
+        "url": "https://raw.githubusercontent.com/dzharii/awesome-typescript/master/README.md",
+    },
+    {
+        "name": "sindresorhus/awesome-nodejs",
+        "url": "https://raw.githubusercontent.com/sindresorhus/awesome-nodejs/main/readme.md",
+    },
+    # Databases
+    {
+        "name": "numetriclabz/awesome-db",
+        "url": "https://raw.githubusercontent.com/numetriclabz/awesome-db/master/README.md",
+    },
+    # Testing
+    {
+        "name": "TheJambo/awesome-testing",
+        "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
+    },
+    # DevOps & Infrastructure
+    {
+        "name": "bregman-arie/devops-exercises",
+        "url": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/README.md",
+    },
+    {
+        "name": "veggiemonk/awesome-docker",
+        "url": "https://raw.githubusercontent.com/veggiemonk/awesome-docker/master/README.md",
+    },
+    # AI/ML
+    {
+        "name": "josephmisiti/awesome-machine-learning",
+        "url": "https://raw.githubusercontent.com/josephmisiti/awesome-machine-learning/master/README.md",
+    },
+    {
+        "name": "Hannibal046/Awesome-LLM",
+        "url": "https://raw.githubusercontent.com/Hannibal046/Awesome-LLM/main/README.md",
+    },
+    # Self-hosted
+    {
+        "name": "awesome-selfhosted/awesome-selfhosted",
+        "url": "https://raw.githubusercontent.com/awesome-selfhosted/awesome-selfhosted/master/README.md",
     },
 ]
 

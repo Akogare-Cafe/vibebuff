@@ -28,6 +28,8 @@ import {
   X
 } from "lucide-react";
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
+import { HomePageSchemas } from "@/components/seo-structured-data";
+import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
 
 interface AIRecommendation {
   id: string;
@@ -183,6 +185,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background ">
+      <HomePageSchemas />
+      
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20">
         <div className="text-center mb-16">
@@ -741,6 +745,38 @@ export default function Home() {
                 authentication services, payment processors, and more.
               </p>
             </details>
+            <details className="border-2 border-border bg-card rounded-lg p-5">
+              <summary className="font-heading text-foreground text-sm cursor-pointer list-none flex justify-between items-center">
+                How do I compare different developer tools?
+                <span className="text-primary text-lg">+</span>
+              </summary>
+              <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                Use our comparison tool to view side-by-side comparisons of any tools like Next.js vs Remix, 
+                PostgreSQL vs MongoDB, or Vercel vs Netlify. We show pricing, features, pros/cons, GitHub stars, 
+                and compatibility scores to help you make informed decisions.
+              </p>
+            </details>
+            <details className="border-2 border-border bg-card rounded-lg p-5">
+              <summary className="font-heading text-foreground text-sm cursor-pointer list-none flex justify-between items-center">
+                Can I save and share my tech stack?
+                <span className="text-primary text-lg">+</span>
+              </summary>
+              <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                Yes! Create a free account to save your tech stacks, share them with your team via unique links, 
+                and access them from anywhere. You can also export your stack for documentation and planning purposes.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        {/* Trust Badges */}
+        <TrustBadges />
+
+        {/* Newsletter Signup - Lead Capture */}
+        <section className="mb-16 md:mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <NewsletterSignup />
+            <QuickStartCTA />
           </div>
         </section>
       </section>

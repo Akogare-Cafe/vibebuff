@@ -129,7 +129,7 @@ export default function LeaderboardsPage() {
                     index === 1 ? "border-gray-400" : 
                     "border-orange-600"
                   }`}
-                  rarity={index === 0 ? "legendary" : index === 1 ? "epic" : "rare"}
+                  rarity={index === 0 ? "legendary" : index === 1 ? "rare" : "uncommon"}
                 >
                   <PixelCardContent className="p-4 text-center">
                     <div className={`w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center ${

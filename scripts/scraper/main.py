@@ -1,5 +1,6 @@
 """
 Main Scraper - Aggregates data from all sources
+Enhanced with article scraping, Product Hunt discovery, and comprehensive metadata extraction
 """
 import os
 import json
@@ -9,8 +10,10 @@ from datetime import datetime
 from github_scraper import scrape_github_repos, TOOL_GITHUB_URLS
 from npm_scraper import scrape_npm_packages, NPM_PACKAGES
 from rss_feeds import scrape_all_feeds, get_latest_releases, get_latest_blog_posts, RSS_FEEDS
-from web_search import search_multiple_tools, TOOLS_TO_SEARCH
+from web_search import search_multiple_tools, TOOLS_TO_SEARCH, DISCOVERY_SEARCH_QUERIES
 from awesome_lists_scraper import scrape_awesome_lists, deduplicate_tools
+from article_scraper import scrape_articles, aggregate_tool_mentions, filter_articles_with_tools
+from producthunt_scraper import discover_developer_tools, enrich_products
 
 
 async def run_all_scrapers(
@@ -19,6 +22,8 @@ async def run_all_scrapers(
     skip_rss: bool = False,
     skip_web_search: bool = False,
     skip_awesome_lists: bool = False,
+    skip_articles: bool = False,
+    skip_producthunt: bool = False,
 ) -> dict:
     """Run all scrapers and aggregate results."""
     
@@ -105,6 +110,50 @@ async def run_all_scrapers(
             json.dump(unique_tools, f, indent=2)
         print(f"Awesome Lists: {len(unique_tools)} unique tools from {len(awesome_data)} lists")
     
+    # Article scraping
+    if not skip_articles:
+        print("\n=== Scraping Articles for Tool Mentions ===")
+        article_urls = []
+        
+        if "rss" in results.get("sources", {}):
+            posts = get_latest_blog_posts(results.get("_rss_data", {}))
+            article_urls = [p["link"] for p in posts[:50] if p.get("link")]
+        
+        if article_urls:
+            article_data = await scrape_articles(article_urls[:30])
+            tool_mentions = aggregate_tool_mentions(article_data)
+            articles_with_tools = filter_articles_with_tools(article_data)
+            
+            results["sources"]["articles"] = {
+                "count": len(article_data),
+                "with_tool_mentions": len(articles_with_tools),
+                "unique_tools_mentioned": len(tool_mentions),
+            }
+            
+            with open(os.path.join(output_dir, "article_scrapes.json"), "w") as f:
+                json.dump(article_data, f, indent=2)
+            with open(os.path.join(output_dir, "tool_mentions.json"), "w") as f:
+                json.dump(tool_mentions, f, indent=2)
+            
+            print(f"Articles: {len(articles_with_tools)} articles mention tools")
+            print(f"  - {len(tool_mentions)} unique tools mentioned")
+    
+    # Product Hunt discovery
+    if not skip_producthunt:
+        print("\n=== Discovering Tools from Product Hunt ===")
+        ph_data = await discover_developer_tools()
+        
+        results["sources"]["producthunt"] = {
+            "topics_scraped": len(ph_data.get("topics", {})),
+            "searches_performed": len(ph_data.get("searches", {})),
+            "unique_products": ph_data.get("total_unique", 0),
+        }
+        
+        with open(os.path.join(output_dir, "producthunt_tools.json"), "w") as f:
+            json.dump(ph_data, f, indent=2)
+        
+        print(f"Product Hunt: {ph_data.get('total_unique', 0)} unique products discovered")
+    
     # Save summary
     with open(os.path.join(output_dir, "scrape_summary.json"), "w") as f:
         json.dump(results, f, indent=2)
@@ -132,24 +181,28 @@ if __name__ == "__main__":
     parser.add_argument("--skip-rss", action="store_true", help="Skip RSS feed scraping")
     parser.add_argument("--skip-web-search", action="store_true", help="Skip web search")
     parser.add_argument("--skip-awesome", action="store_true", help="Skip awesome lists scraping")
-    parser.add_argument("--only", choices=["github", "npm", "rss", "web", "awesome"], help="Only run specific scraper")
+    parser.add_argument("--skip-articles", action="store_true", help="Skip article scraping")
+    parser.add_argument("--skip-producthunt", action="store_true", help="Skip Product Hunt discovery")
+    parser.add_argument("--only", choices=["github", "npm", "rss", "web", "awesome", "articles", "producthunt"], help="Only run specific scraper")
     
     args = parser.parse_args()
     
-    # Handle --only flag
     if args.only:
-        skip_all = True
         skip_github = args.only != "github"
         skip_npm = args.only != "npm"
         skip_rss = args.only != "rss"
         skip_web_search = args.only != "web"
         skip_awesome_lists = args.only != "awesome"
+        skip_articles = args.only != "articles"
+        skip_producthunt = args.only != "producthunt"
     else:
         skip_github = args.skip_github
         skip_npm = args.skip_npm
         skip_rss = args.skip_rss
         skip_web_search = args.skip_web_search
         skip_awesome_lists = args.skip_awesome
+        skip_articles = args.skip_articles
+        skip_producthunt = args.skip_producthunt
     
     async def main():
         results = await run_all_scrapers(
@@ -158,6 +211,8 @@ if __name__ == "__main__":
             skip_rss=skip_rss,
             skip_web_search=skip_web_search,
             skip_awesome_lists=skip_awesome_lists,
+            skip_articles=skip_articles,
+            skip_producthunt=skip_producthunt,
         )
         print_summary(results)
     

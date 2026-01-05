@@ -1,14 +1,16 @@
-# Vibe Anything - Tool Metadata Scraper
+# VibeBuff - Tool Metadata Scraper
 
-A Python web scraper that fetches up-to-date metadata about development tools from various sources.
+A comprehensive Python web scraper that discovers and fetches metadata about development tools from various sources including RSS feeds, blogs, articles, Product Hunt, and more.
 
 ## Features
 
-- **GitHub Scraper**: Fetches stars, forks, releases, contributors, and metadata from GitHub repos
+- **GitHub Scraper**: Fetches stars, forks, releases, contributors, and metadata from 100+ GitHub repos
 - **NPM Scraper**: Fetches package info, download stats, and version history from npm
-- **RSS Feed Scraper**: Monitors 50+ developer blogs and GitHub releases for updates
-- **Web Search**: Searches DuckDuckGo for tool information and scrapes website metadata
-- **Awesome Lists Scraper**: Parses awesome-vibe-coding lists for new tools
+- **RSS Feed Scraper**: Monitors 150+ developer blogs, YouTube channels, newsletters, and GitHub releases
+- **Web Search**: Searches DuckDuckGo for 100+ tools with comprehensive metadata extraction (pricing, features, integrations)
+- **Awesome Lists Scraper**: Parses 20+ awesome lists for new tools
+- **Article Scraper**: Extracts tool mentions from blog posts and articles with context
+- **Product Hunt Scraper**: Discovers new developer tools from Product Hunt topics and searches
 
 ## Setup
 
@@ -39,16 +41,19 @@ python main.py
 
 ### Run specific scrapers:
 ```bash
-python main.py --only github    # Only GitHub
-python main.py --only npm       # Only NPM
-python main.py --only rss       # Only RSS feeds
-python main.py --only web       # Only web search
-python main.py --only awesome   # Only awesome lists
+python main.py --only github      # Only GitHub
+python main.py --only npm         # Only NPM
+python main.py --only rss         # Only RSS feeds
+python main.py --only web         # Only web search
+python main.py --only awesome     # Only awesome lists
+python main.py --only articles    # Only article scraping
+python main.py --only producthunt # Only Product Hunt discovery
 ```
 
 ### Skip specific scrapers:
 ```bash
 python main.py --skip-github --skip-web-search
+python main.py --skip-articles --skip-producthunt
 ```
 
 ### Run individual scrapers:
@@ -58,46 +63,137 @@ python npm_scraper.py
 python rss_feeds.py
 python web_search.py
 python awesome_lists_scraper.py
+python article_scraper.py
+python producthunt_scraper.py
 ```
 
 ## Output
 
 All data is saved to the `data/` directory:
 
-- `github_metadata.json` - GitHub repository metadata
-- `npm_metadata.json` - NPM package metadata
-- `rss_feeds.json` - Raw RSS feed data
+- `github_metadata.json` - GitHub repository metadata (stars, forks, releases, contributors)
+- `npm_metadata.json` - NPM package metadata (downloads, versions, dependencies)
+- `rss_feeds.json` - Raw RSS feed data from 150+ sources
 - `latest_releases.json` - Recent releases from GitHub
-- `latest_posts.json` - Recent blog posts
-- `web_search.json` - Web search results and website metadata
+- `latest_posts.json` - Recent blog posts from developer blogs
+- `web_search.json` - Web search results with comprehensive metadata (pricing, features, integrations)
 - `awesome_lists.json` - Raw awesome list data
 - `awesome_tools.json` - Deduplicated tools from awesome lists
+- `article_scrapes.json` - Scraped articles with tool mentions
+- `tool_mentions.json` - Aggregated tool mentions across all articles
+- `producthunt_tools.json` - Developer tools discovered from Product Hunt
 - `scrape_summary.json` - Summary of the scraping run
 
-## RSS Feeds Monitored
+## RSS Feeds Monitored (150+ sources)
 
-### Official Blogs
-- Vercel, Next.js, Supabase, Convex, Clerk
-- Tailwind CSS, Astro, Svelte, Remix
-- Deno, Bun, Cloudflare, Railway, Fly.io
-- Neon, Turso, PlanetScale, Auth0
-- Sentry, PostHog, Anthropic, OpenAI
+### Official Blogs - Infrastructure & Platforms
+- Vercel, Next.js, Supabase, Convex, Clerk, Tailwind CSS
+- Astro, Svelte, Remix, Deno, Bun, Cloudflare
+- Railway, Fly.io, Render, Netlify, Neon, Turso
+- PlanetScale, Auth0, Sentry, PostHog, Prisma, Drizzle
+- Stripe, Resend, Upstash, Inngest, Trigger.dev
 
-### Developer News
-- Hacker News (front page)
-- Dev.to (JavaScript, React, Next.js, AI, WebDev)
-- Reddit (r/webdev, r/reactjs, r/nextjs, r/vibecoding, r/ChatGPTCoding)
+### AI/LLM Companies
+- Anthropic, OpenAI, Google AI, Hugging Face
+- LangChain, LlamaIndex, Replicate, Together AI
+- Groq, Mistral, Cohere, Modal, Fireworks
 
-### GitHub Releases
-- React, Next.js, Svelte, Vue, Tailwind
-- Vite, Bun, Deno, Supabase, Playwright
-- Aider, Cline, OpenHands
+### AI Coding Tools
+- Cursor, Codeium, Tabnine, Sourcegraph, Replit
+- GitHub Blog, GitLab Blog
 
-## Awesome Lists Scraped
+### Developer News & Publications
+- Hacker News (front page + AI/LLM/cursor/vibe coding queries)
+- Lobsters, TechCrunch AI, The Verge AI, Ars Technica, Wired AI
 
-- [filipecalegario/awesome-vibe-coding](https://github.com/filipecalegario/awesome-vibe-coding)
-- [roboco-io/awesome-vibecoding](https://github.com/roboco-io/awesome-vibecoding)
-- [no-fluff/awesome-vibe-coding](https://github.com/no-fluff/awesome-vibe-coding)
+### Dev.to & Hashnode Tags
+- JavaScript, React, Next.js, TypeScript, AI, WebDev
+- DevTools, Productivity, LLM, OpenAI, Cursor, Copilot
+
+### Medium Publications
+- Artificial Intelligence, Programming, Web Development, Developer Tools
+
+### Reddit Communities
+- r/webdev, r/reactjs, r/nextjs, r/vibecoding, r/ChatGPTCoding
+- r/cursor, r/LocalLLaMA, r/MachineLearning, r/programming
+- r/devops, r/selfhosted
+
+### YouTube Channels
+- Fireship, Theo, ThePrimeagen, Traversy Media
+- Web Dev Simplified, devaslife
+
+### GitHub Releases (30+ repos)
+- Frameworks: React, Next.js, Svelte, Vue, Tailwind, Vite, Astro, Remix
+- Runtimes: Bun, Deno
+- Data: Prisma, Drizzle, tRPC, TanStack Query, Zustand, shadcn/ui
+- AI Coding: Aider, Cline, OpenHands, Continue, Goose, Roo Code
+- AI Infra: Ollama, llama.cpp, LangChain, LlamaIndex
+
+### Newsletters
+- TLDR, Bytes, JavaScript Weekly, React Newsletter, Node Weekly
+
+## Awesome Lists Scraped (20+ lists)
+
+### Vibe Coding
+- filipecalegario/awesome-vibe-coding
+- roboco-io/awesome-vibecoding
+- no-fluff/awesome-vibe-coding
+
+### AI Coding & Agents
+- sourcegraph/awesome-code-ai
+- e2b-dev/awesome-ai-agents
+- steven2358/awesome-generative-ai
+
+### Developer Tools
+- ripienaar/free-for-dev
+- trimstray/the-book-of-secret-knowledge
+
+### Frontend
+- enaqx/awesome-react
+- brillout/awesome-react-components
+- unicodeveloper/awesome-nextjs
+- vuejs/awesome-vue
+- TheComputerM/awesome-svelte
+
+### Backend & Infrastructure
+- dzharii/awesome-typescript
+- sindresorhus/awesome-nodejs
+- numetriclabz/awesome-db
+- veggiemonk/awesome-docker
+- awesome-selfhosted/awesome-selfhosted
+
+### AI/ML
+- josephmisiti/awesome-machine-learning
+- Hannibal046/Awesome-LLM
+
+## Web Search - Tools Tracked (100+)
+
+### AI Coding Assistants
+- IDE: Cursor, Windsurf, GitHub Copilot, Codeium, Tabnine, Amazon Q, Sourcegraph Cody, Continue, Supermaven
+- CLI: Aider, Claude Code, Cline, OpenHands, Goose, Gemini CLI, Roo Code, Kilocode, Mentat
+
+### AI App Builders
+- Bolt.new, Lovable, v0, Replit, Devin AI, Kiro, Create, Softgen, Marblism
+
+### Databases & BaaS
+- Supabase, Convex, Firebase, Neon, Turso, PlanetScale, Xata, Upstash, MongoDB Atlas
+
+### Authentication
+- Clerk, Auth0, Kinde, Lucia, WorkOS, Stytch, Descope
+
+### Hosting & Deployment
+- Vercel, Netlify, Railway, Fly.io, Render, Cloudflare Pages, Deno Deploy, SST
+
+### AI/LLM Infrastructure
+- OpenAI, Anthropic, Groq, Together AI, Fireworks AI, Replicate, Modal, Ollama, LM Studio
+
+### AI Frameworks
+- LangChain, LlamaIndex, Vercel AI SDK, Instructor, Mastra, CrewAI, AutoGen
+
+### UI & Design
+- shadcn/ui, Tailwind CSS, Radix UI, Chakra UI, Framer Motion, Magic UI, Aceternity UI
+
+### And many more...
 
 ## Scheduling
 
