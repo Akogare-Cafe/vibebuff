@@ -9,6 +9,7 @@
  */
 
 import type * as achievements from "../achievements.js";
+import type * as ads from "../ads.js";
 import type * as ai from "../ai.js";
 import type * as architect from "../architect.js";
 import type * as categories from "../categories.js";
@@ -24,6 +25,7 @@ import type * as graveyard from "../graveyard.js";
 import type * as groups from "../groups.js";
 import type * as leaderboardSeasons from "../leaderboardSeasons.js";
 import type * as leaderboards from "../leaderboards.js";
+import type * as lib_auth from "../lib/auth.js";
 import type * as lore from "../lore.js";
 import type * as mastery from "../mastery.js";
 import type * as nominations from "../nominations.js";
@@ -66,6 +68,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   achievements: typeof achievements;
+  ads: typeof ads;
   ai: typeof ai;
   architect: typeof architect;
   categories: typeof categories;
@@ -81,6 +84,7 @@ declare const fullApi: ApiFromModules<{
   groups: typeof groups;
   leaderboardSeasons: typeof leaderboardSeasons;
   leaderboards: typeof leaderboards;
+  "lib/auth": typeof lib_auth;
   lore: typeof lore;
   mastery: typeof mastery;
   nominations: typeof nominations;

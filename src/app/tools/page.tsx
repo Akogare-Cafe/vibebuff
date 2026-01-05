@@ -43,6 +43,7 @@ import {
   Terminal,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
+import { AdDisplay } from "@/components/ad-display";
 
 type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
@@ -294,24 +295,8 @@ function ToolsPageContent() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-yellow-900/40 to-card border border-yellow-700/30 rounded-xl p-4 relative overflow-hidden group cursor-pointer hover:border-yellow-500/50 transition-colors">
-              <div className="absolute -right-4 -bottom-4 text-yellow-500/10 rotate-12 transition-transform group-hover:scale-110">
-                <Coins className="w-24 h-24" />
-              </div>
-              <div className="flex justify-between items-start mb-2 relative z-10">
-                <h3 className="text-foreground font-bold text-sm uppercase tracking-wide">Daily Deal</h3>
-                <span className="text-xs bg-red-500 text-white px-1.5 rounded font-bold">-50% XP</span>
-              </div>
-              <div className="flex items-center gap-3 relative z-10 mt-2">
-                <div className="size-10 bg-black rounded border border-yellow-500/30 flex items-center justify-center">
-                  <Terminal className="w-5 h-5 text-yellow-500" />
-                </div>
-                <div>
-                  <div className="text-foreground font-bold text-sm">Vim Setup</div>
-                  <div className="text-yellow-500 text-xs">Cost: 150 XP</div>
-                </div>
-              </div>
-            </div>
+            {/* Sidebar Ad */}
+            <AdDisplay placement="sidebar" />
           </aside>
 
           <section className="lg:col-span-9 flex flex-col gap-8">

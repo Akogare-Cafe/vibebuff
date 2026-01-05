@@ -24,6 +24,7 @@ import {
   Tag
 } from "lucide-react";
 import { DynamicIcon } from "@/components/dynamic-icon";
+import { AdDisplay } from "@/components/ad-display";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -328,6 +329,9 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             </a>
           )}
         </div>
+
+        {/* Sponsored Tool Ad */}
+        <AdDisplay placement="tool_page" className="mt-8" />
       </main>
     </div>
   );

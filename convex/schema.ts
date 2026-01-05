@@ -1957,8 +1957,187 @@ export default defineSchema({
     .index("by_deck", ["deckId"]),
 
   // ============================================
-  // Notifications
+  // Advertising System
   // ============================================
+  advertisers: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    email: v.string(),
+    companyName: v.optional(v.string()),
+    websiteUrl: v.optional(v.string()),
+    logoUrl: v.optional(v.string()),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("approved"),
+      v.literal("suspended"),
+      v.literal("rejected")
+    ),
+    balance: v.number(),
+    totalSpent: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_email", ["email"])
+    .index("by_status", ["status"]),
+
+  adCampaigns: defineTable({
+    advertiserId: v.id("advertisers"),
+    name: v.string(),
+    description: v.optional(v.string()),
+    status: v.union(
+      v.literal("draft"),
+      v.literal("pending_review"),
+      v.literal("active"),
+      v.literal("paused"),
+      v.literal("completed"),
+      v.literal("rejected")
+    ),
+    budget: v.number(),
+    dailyBudget: v.optional(v.number()),
+    spent: v.number(),
+    bidType: v.union(
+      v.literal("cpc"),
+      v.literal("cpm"),
+      v.literal("flat_rate")
+    ),
+    bidAmount: v.number(),
+    startDate: v.number(),
+    endDate: v.optional(v.number()),
+    targeting: v.optional(v.object({
+      categories: v.optional(v.array(v.string())),
+      tools: v.optional(v.array(v.id("tools"))),
+      userLevels: v.optional(v.array(v.string())),
+      pages: v.optional(v.array(v.string())),
+    })),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_advertiser", ["advertiserId"])
+    .index("by_status", ["status"])
+    .index("by_dates", ["startDate", "endDate"]),
+
+  ads: defineTable({
+    campaignId: v.id("adCampaigns"),
+    advertiserId: v.id("advertisers"),
+    name: v.string(),
+    adType: v.union(
+      v.literal("banner"),
+      v.literal("sidebar"),
+      v.literal("inline"),
+      v.literal("sponsored_tool"),
+      v.literal("native")
+    ),
+    placement: v.union(
+      v.literal("header"),
+      v.literal("sidebar"),
+      v.literal("footer"),
+      v.literal("in_feed"),
+      v.literal("tool_page"),
+      v.literal("comparison_page"),
+      v.literal("search_results")
+    ),
+    content: v.object({
+      headline: v.string(),
+      description: v.optional(v.string()),
+      imageUrl: v.optional(v.string()),
+      ctaText: v.optional(v.string()),
+      destinationUrl: v.string(),
+      sponsoredToolId: v.optional(v.id("tools")),
+    }),
+    status: v.union(
+      v.literal("draft"),
+      v.literal("pending_review"),
+      v.literal("approved"),
+      v.literal("rejected"),
+      v.literal("paused")
+    ),
+    priority: v.number(),
+    impressions: v.number(),
+    clicks: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_campaign", ["campaignId"])
+    .index("by_advertiser", ["advertiserId"])
+    .index("by_status", ["status"])
+    .index("by_placement", ["placement"])
+    .index("by_type", ["adType"]),
+
+  adImpressions: defineTable({
+    adId: v.id("ads"),
+    campaignId: v.id("adCampaigns"),
+    userId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
+    placement: v.string(),
+    page: v.string(),
+    timestamp: v.number(),
+    cost: v.number(),
+  })
+    .index("by_ad", ["adId"])
+    .index("by_campaign", ["campaignId"])
+    .index("by_timestamp", ["timestamp"])
+    .index("by_user", ["userId"]),
+
+  adClicks: defineTable({
+    adId: v.id("ads"),
+    campaignId: v.id("adCampaigns"),
+    userId: v.optional(v.string()),
+    sessionId: v.optional(v.string()),
+    placement: v.string(),
+    page: v.string(),
+    timestamp: v.number(),
+    cost: v.number(),
+  })
+    .index("by_ad", ["adId"])
+    .index("by_campaign", ["campaignId"])
+    .index("by_timestamp", ["timestamp"])
+    .index("by_user", ["userId"]),
+
+  adSpacePurchases: defineTable({
+    advertiserId: v.id("advertisers"),
+    placement: v.string(),
+    duration: v.union(
+      v.literal("daily"),
+      v.literal("weekly"),
+      v.literal("monthly")
+    ),
+    price: v.number(),
+    startDate: v.number(),
+    endDate: v.number(),
+    adId: v.optional(v.id("ads")),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("active"),
+      v.literal("expired"),
+      v.literal("cancelled")
+    ),
+    createdAt: v.number(),
+  })
+    .index("by_advertiser", ["advertiserId"])
+    .index("by_placement", ["placement"])
+    .index("by_status", ["status"])
+    .index("by_dates", ["startDate", "endDate"]),
+
+  adPricing: defineTable({
+    placement: v.string(),
+    adType: v.string(),
+    pricePerDay: v.number(),
+    pricePerWeek: v.number(),
+    pricePerMonth: v.number(),
+    cpcRate: v.number(),
+    cpmRate: v.number(),
+    isActive: v.boolean(),
+    description: v.optional(v.string()),
+    dimensions: v.optional(v.object({
+      width: v.number(),
+      height: v.number(),
+    })),
+    updatedAt: v.number(),
+  })
+    .index("by_placement", ["placement"])
+    .index("by_active", ["isActive"]),
+
   notifications: defineTable({
     userId: v.string(),
     type: v.union(
