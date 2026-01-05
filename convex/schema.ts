@@ -2138,6 +2138,61 @@ export default defineSchema({
     .index("by_placement", ["placement"])
     .index("by_active", ["isActive"]),
 
+  // ============================================
+  // Referrals & Share System
+  // ============================================
+  referralCodes: defineTable({
+    userId: v.string(),
+    code: v.string(),
+    createdAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_code", ["code"]),
+
+  referrals: defineTable({
+    referrerId: v.string(),
+    referredUserId: v.string(),
+    referralCode: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("completed"),
+      v.literal("rewarded")
+    ),
+    referrerRewardXp: v.number(),
+    referredRewardXp: v.number(),
+    createdAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_referrer", ["referrerId"])
+    .index("by_referred", ["referredUserId"])
+    .index("by_code", ["referralCode"]),
+
+  shareEvents: defineTable({
+    userId: v.optional(v.string()),
+    shareType: v.union(
+      v.literal("tool"),
+      v.literal("deck"),
+      v.literal("profile"),
+      v.literal("comparison"),
+      v.literal("tier_list"),
+      v.literal("stack"),
+      v.literal("referral")
+    ),
+    platform: v.union(
+      v.literal("twitter"),
+      v.literal("linkedin"),
+      v.literal("copy_link"),
+      v.literal("native_share"),
+      v.literal("embed")
+    ),
+    resourceId: v.optional(v.string()),
+    shareUrl: v.string(),
+    createdAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_type", ["shareType"])
+    .index("by_platform", ["platform"]),
+
   notifications: defineTable({
     userId: v.string(),
     type: v.union(
@@ -2157,7 +2212,9 @@ export default defineSchema({
       v.literal("group_invite"),
       v.literal("group_joined"),
       v.literal("company_invite"),
-      v.literal("company_joined")
+      v.literal("company_joined"),
+      v.literal("referral_signup"),
+      v.literal("referral_reward")
     ),
     title: v.string(),
     message: v.string(),

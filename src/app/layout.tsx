@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
+import { ReferralHandler } from "@/components/referral-handler";
 import { Analytics } from "@vercel/analytics/react";
 import { BotIdClient } from "botid/client";
 
@@ -151,6 +152,7 @@ export default function RootLayout({
             <ThemeProvider>
               <Header />
               <OnboardingWrapper />
+              <ReferralHandler />
               <main className="flex-1">{children}</main>
               <Footer />
             </ThemeProvider>

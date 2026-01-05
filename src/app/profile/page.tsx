@@ -33,7 +33,9 @@ import {
   Wrench,
   Heart,
   Zap,
+  Gift,
 } from "lucide-react";
+import { ReferralCard } from "@/components/referral-card";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Trophy,
@@ -313,6 +315,8 @@ export default function ProfilePage() {
                 </div>
               )}
             </div>
+
+            <ReferralCard />
           </aside>
 
           <div className="flex-1 flex flex-col gap-8 min-w-0">

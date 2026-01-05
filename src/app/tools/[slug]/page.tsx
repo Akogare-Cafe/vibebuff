@@ -21,10 +21,12 @@ import {
   AlertTriangle,
   Zap,
   DollarSign,
-  Tag
+  Tag,
+  Share2
 } from "lucide-react";
 import { DynamicIcon } from "@/components/dynamic-icon";
 import { AdDisplay } from "@/components/ad-display";
+import { ShareButton } from "@/components/share-modal";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -105,6 +107,13 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                   <Unlock className="w-3 h-3" /> OPEN SOURCE
                 </PixelBadge>
               )}
+              <ShareButton
+                shareType="tool"
+                resourceId={tool._id}
+                title={tool.name}
+                description={`Check out ${tool.name} - ${tool.tagline}`}
+                shareUrl={`${typeof window !== "undefined" ? window.location.origin : "https://vibebuff.com"}/tools/${slug}`}
+              />
             </div>
           </div>
         </div>

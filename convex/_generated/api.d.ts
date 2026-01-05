@@ -33,6 +33,7 @@ import type * as notifications from "../notifications.js";
 import type * as onboarding from "../onboarding.js";
 import type * as popularity from "../popularity.js";
 import type * as questHistory from "../questHistory.js";
+import type * as referrals from "../referrals.js";
 import type * as relationships from "../relationships.js";
 import type * as replays from "../replays.js";
 import type * as reviews from "../reviews.js";
@@ -92,6 +93,7 @@ declare const fullApi: ApiFromModules<{
   onboarding: typeof onboarding;
   popularity: typeof popularity;
   questHistory: typeof questHistory;
+  referrals: typeof referrals;
   relationships: typeof relationships;
   replays: typeof replays;
   reviews: typeof reviews;

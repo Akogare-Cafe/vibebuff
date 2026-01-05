@@ -41,13 +41,23 @@ python main.py
 
 ### Run specific scrapers:
 ```bash
-python main.py --only github      # Only GitHub
-python main.py --only npm         # Only NPM
-python main.py --only rss         # Only RSS feeds
-python main.py --only web         # Only web search
-python main.py --only awesome     # Only awesome lists
-python main.py --only articles    # Only article scraping
-python main.py --only producthunt # Only Product Hunt discovery
+python main.py --only github        # Only GitHub repos
+python main.py --only npm           # Only NPM packages
+python main.py --only rss           # Only RSS feeds
+python main.py --only web           # Only web search
+python main.py --only awesome       # Only awesome lists
+python main.py --only articles      # Only article scraping
+python main.py --only producthunt   # Only Product Hunt
+python main.py --only trending      # Only GitHub Trending
+python main.py --only alternativeto # Only AlternativeTo
+python main.py --only stackshare    # Only StackShare
+python main.py --only devhunt       # Only DevHunt
+python main.py --only ai-directories # Only AI tool directories
+python main.py --only vscode        # Only VS Code Marketplace
+python main.py --only packages      # Only package registries
+python main.py --only indiehackers  # Only Indie Hackers
+python main.py --only betalist      # Only BetaList
+python main.py --only hackernews    # Only Hacker News
 ```
 
 ### Skip specific scrapers:
@@ -65,6 +75,16 @@ python web_search.py
 python awesome_lists_scraper.py
 python article_scraper.py
 python producthunt_scraper.py
+python github_trending.py
+python alternativeto_scraper.py
+python stackshare_scraper.py
+python devhunt_scraper.py
+python ai_directories_scraper.py
+python vscode_marketplace_scraper.py
+python package_registries_scraper.py
+python indiehackers_scraper.py
+python betalist_scraper.py
+python hackernews_scraper.py
 ```
 
 ## Output
@@ -194,6 +214,69 @@ All data is saved to the `data/` directory:
 - shadcn/ui, Tailwind CSS, Radix UI, Chakra UI, Framer Motion, Magic UI, Aceternity UI
 
 ### And many more...
+
+## New Scrapers (v2)
+
+### GitHub Trending (`github_trending.py`)
+- Daily, weekly, monthly trending repos
+- Language filters: TypeScript, JavaScript, Python, Rust, Go
+- Topic pages: AI, ML, LLM, developer-tools, React, Next.js, etc.
+
+### AlternativeTo (`alternativeto_scraper.py`)
+- Software alternatives database
+- Categories: developer-tools, IDE, code-editor, database, API, hosting
+- Tool comparisons with likes, tags, free/open-source status
+
+### StackShare (`stackshare_scraper.py`)
+- Tech stack decisions from real companies
+- Categories: languages, frameworks, data-stores, DevOps, hosting
+- Tool details: pros, cons, alternatives, integrations, companies using
+
+### DevHunt (`devhunt_scraper.py`)
+- Product Hunt for developers
+- Categories: AI, developer-tools, productivity, API, database, DevOps
+
+### AI Tool Directories (`ai_directories_scraper.py`)
+- theresanaiforthat.com - coding, developer-tools, code-assistant
+- futuretools.io - coding, developer-tools, productivity
+- aitools.fyi - coding, developer tools
+
+### VS Code Marketplace (`vscode_marketplace_scraper.py`)
+- AI coding extensions: Copilot, Codeium, TabNine, Continue, Cody
+- Popular extensions: Prettier, ESLint, Tailwind, Prisma, GitLens
+- Search queries: AI coding, copilot, code completion, productivity
+
+### Package Registries (`package_registries_scraper.py`)
+- **PyPI**: langchain, openai, anthropic, transformers, fastapi, etc.
+- **crates.io**: tokio, serde, axum, sqlx, async-std, etc.
+- **pkg.go.dev**: gin, fiber, gorm, cobra, zap, etc.
+
+### Indie Hackers (`indiehackers_scraper.py`)
+- Developer-built products with revenue data
+- Search: developer tools, coding assistant, AI tools, API, database
+
+### BetaList (`betalist_scraper.py`)
+- Early-stage startups and tools
+- Categories: developer-tools, AI, SaaS, API, automation
+
+### Hacker News (`hackernews_scraper.py`)
+- Show HN and Launch HN posts (tool launches)
+- Search: developer tools, AI coding, code assistant, vibe coding
+- Uses both HN API and Algolia search
+
+## Output Files
+
+All new scrapers output to `data/`:
+- `github_trending.json`
+- `alternativeto.json`
+- `stackshare.json`
+- `devhunt.json`
+- `ai_directories.json`
+- `vscode_marketplace.json`
+- `package_registries.json`
+- `indiehackers.json`
+- `betalist.json`
+- `hackernews.json`
 
 ## Scheduling
 
