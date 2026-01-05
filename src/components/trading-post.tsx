@@ -127,12 +127,12 @@ function ListingCard({ listing, userId }: { listing: any; userId: string }) {
 
   const handleBuy = async () => {
     if (isOwn) return;
-    await buyNow({ buyerId: userId, listingId: listing._id });
+    await buyNow({ listingId: listing._id });
   };
 
   const handleBid = async () => {
     if (isOwn || !bidAmount) return;
-    await placeBid({ userId, listingId: listing._id, bidAmount: parseInt(bidAmount) });
+    await placeBid({ listingId: listing._id, bidAmount: parseInt(bidAmount) });
     setBidAmount("");
   };
 
@@ -246,7 +246,6 @@ function ListCardForm({ cardId, userId, onClose }: { cardId: Id<"tradableCards">
 
   const handleList = async () => {
     await createListing({
-      sellerId: userId,
       cardId,
       listingType,
       price: parseInt(price),

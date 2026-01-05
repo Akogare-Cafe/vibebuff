@@ -174,7 +174,6 @@ export default function SettingsPage() {
     setIsSaving(true);
     try {
       await updateNotifications({
-        userId: user.id,
         notifications: notificationSettings,
       });
       setSaveSuccess(true);
@@ -190,7 +189,6 @@ export default function SettingsPage() {
     setIsSaving(true);
     try {
       await updatePrivacy({
-        userId: user.id,
         privacy: privacySettings,
       });
       setSaveSuccess(true);
@@ -206,7 +204,6 @@ export default function SettingsPage() {
     setIsSaving(true);
     try {
       await updatePreferences({
-        userId: user.id,
         preferences: preferenceSettings,
       });
       setSaveSuccess(true);

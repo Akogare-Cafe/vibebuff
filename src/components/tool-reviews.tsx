@@ -152,7 +152,6 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
 
   const handleSubmit = async () => {
     await createReview({
-      userId,
       toolId,
       rating,
       title,
@@ -354,14 +353,14 @@ function ReviewCard({ review, userId }: { review: any; userId?: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <button
-            onClick={() => userId && voteHelpful({ userId, reviewId: review._id, isHelpful: true })}
+            onClick={() => userId && voteHelpful({ reviewId: review._id, isHelpful: true })}
             className="flex items-center gap-1 text-muted-foreground hover:text-primary text-xs"
             disabled={!userId}
           >
             <ThumbsUp className="w-3 h-3" /> Helpful
           </button>
           <button
-            onClick={() => userId && voteHelpful({ userId, reviewId: review._id, isHelpful: false })}
+            onClick={() => userId && voteHelpful({ reviewId: review._id, isHelpful: false })}
             className="flex items-center gap-1 text-muted-foreground hover:text-primary text-xs"
             disabled={!userId}
           >

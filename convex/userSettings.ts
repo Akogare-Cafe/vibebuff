@@ -1,5 +1,6 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { getAuthenticatedUser } from "./lib/auth";
 
 const DEFAULT_SETTINGS = {
   notifications: {
@@ -76,7 +77,6 @@ export const getOrCreateSettings = mutation({
 
 export const updateProfile = mutation({
   args: {
-    userId: v.string(),
     displayName: v.optional(v.string()),
     bio: v.optional(v.string()),
     location: v.optional(v.string()),
@@ -85,7 +85,8 @@ export const updateProfile = mutation({
     twitterUsername: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const { userId, ...updates } = args;
+    const userId = await getAuthenticatedUser(ctx);
+    const updates = args;
     
     let settings = await ctx.db
       .query("userSettings")
@@ -115,7 +116,6 @@ export const updateProfile = mutation({
 
 export const updateNotifications = mutation({
   args: {
-    userId: v.string(),
     notifications: v.object({
       emailDigest: v.boolean(),
       achievementAlerts: v.boolean(),
@@ -125,15 +125,17 @@ export const updateNotifications = mutation({
     }),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     let settings = await ctx.db
       .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .first();
 
     if (!settings) {
       const now = Date.now();
       const settingsId = await ctx.db.insert("userSettings", {
-        userId: args.userId,
+        userId,
         ...DEFAULT_SETTINGS,
         notifications: args.notifications,
         createdAt: now,
@@ -153,7 +155,6 @@ export const updateNotifications = mutation({
 
 export const updatePrivacy = mutation({
   args: {
-    userId: v.string(),
     privacy: v.object({
       showProfile: v.boolean(),
       showActivity: v.boolean(),
@@ -163,15 +164,17 @@ export const updatePrivacy = mutation({
     }),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     let settings = await ctx.db
       .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .first();
 
     if (!settings) {
       const now = Date.now();
       const settingsId = await ctx.db.insert("userSettings", {
-        userId: args.userId,
+        userId,
         ...DEFAULT_SETTINGS,
         privacy: args.privacy,
         createdAt: now,
@@ -191,7 +194,6 @@ export const updatePrivacy = mutation({
 
 export const updatePreferences = mutation({
   args: {
-    userId: v.string(),
     preferences: v.object({
       theme: v.union(v.literal("dark"), v.literal("light"), v.literal("system")),
       soundEffects: v.boolean(),
@@ -200,15 +202,17 @@ export const updatePreferences = mutation({
     }),
   },
   handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     let settings = await ctx.db
       .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .first();
 
     if (!settings) {
       const now = Date.now();
       const settingsId = await ctx.db.insert("userSettings", {
-        userId: args.userId,
+        userId,
         ...DEFAULT_SETTINGS,
         preferences: args.preferences,
         createdAt: now,
@@ -227,11 +231,13 @@ export const updatePreferences = mutation({
 });
 
 export const deleteAccount = mutation({
-  args: { userId: v.string() },
-  handler: async (ctx, args) => {
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
     const settings = await ctx.db
       .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .first();
 
     if (settings) {
