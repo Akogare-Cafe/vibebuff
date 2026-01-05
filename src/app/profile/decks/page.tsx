@@ -124,16 +124,23 @@ export default function ProfileDecksPage() {
       <div className="min-h-screen bg-background">
         <main className="max-w-4xl mx-auto px-4 py-12">
           <PixelCard className="text-center p-8">
-            <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <h1 className="text-primary text-lg mb-4">LOGIN REQUIRED</h1>
+            <Package className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <h1 className="text-primary text-lg mb-4">SIGN IN TO MANAGE DECKS</h1>
             <p className="text-muted-foreground text-sm mb-6">
-              SIGN IN TO VIEW AND MANAGE YOUR SAVED TECH STACKS
+              CREATE AN ACCOUNT TO SAVE AND MANAGE YOUR TECH STACKS
             </p>
-            <Link href="/sign-in">
-              <PixelButton>
-                <User className="w-4 h-4 mr-2" /> SIGN IN
-              </PixelButton>
-            </Link>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <PixelButton>
+                  <User className="w-4 h-4 mr-2" /> SIGN IN
+                </PixelButton>
+              </Link>
+              <Link href="/stack-builder">
+                <PixelButton variant="outline">
+                  <Layers className="w-4 h-4 mr-2" /> STACK BUILDER
+                </PixelButton>
+              </Link>
+            </div>
           </PixelCard>
         </main>
       </div>

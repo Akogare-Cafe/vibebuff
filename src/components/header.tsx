@@ -8,16 +8,19 @@ import {
   Package, 
   Scale, 
   Users, 
-  Bell, 
   Search, 
   LogIn,
   Menu,
   X,
   Layers,
   BookOpen,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
+import { NotificationBell } from "@/components/notifications";
+import { useTheme } from "@/components/providers/theme-provider";
 
 const navLinks = [
   { href: "/quest", label: "Quest", icon: Swords },
@@ -31,6 +34,7 @@ export function Header() {
   const { user, isLoaded } = useUser();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { mode, toggleMode } = useTheme();
 
   return (
     <header className="sticky top-0 z-50 border-b border-solid border-border bg-background/95 backdrop-blur-sm">
@@ -78,13 +82,17 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleMode}
+            className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors border border-border"
+            aria-label="Toggle theme"
+          >
+            {mode === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
           <Link href="/docs" className="hidden sm:flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors border border-border">
             <BookOpen className="w-5 h-5" />
           </Link>
-          <button className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border relative">
-            <Bell className="w-5 h-5" />
-            <span className="absolute top-2 right-2 size-2 bg-red-500 rounded-full animate-pulse"></span>
-          </button>
+          <NotificationBell />
           
           <button
             className="lg:hidden flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border"

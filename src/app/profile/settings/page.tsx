@@ -229,17 +229,24 @@ export default function SettingsPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <PixelCard className="p-8 text-center max-w-md">
-          <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-bold text-foreground mb-2">Login Required</h2>
-          <p className="text-muted-foreground text-sm mb-6">
-            Please login to access your settings
-          </p>
-          <Link href="/sign-in">
-            <PixelButton>Connect</PixelButton>
-          </Link>
-        </PixelCard>
+      <div className="min-h-screen bg-background">
+        <main className="max-w-4xl mx-auto px-4 py-12">
+          <PixelCard className="p-8 text-center max-w-md mx-auto">
+            <Settings className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <h2 className="text-xl font-bold text-foreground mb-2">Sign In to Access Settings</h2>
+            <p className="text-muted-foreground text-sm mb-6">
+              Create an account to customize your profile, notifications, and preferences.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <PixelButton>Connect</PixelButton>
+              </Link>
+              <Link href="/tools">
+                <PixelButton variant="outline">Browse Tools</PixelButton>
+              </Link>
+            </div>
+          </PixelCard>
+        </main>
       </div>
     );
   }

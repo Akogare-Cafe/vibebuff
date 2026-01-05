@@ -131,17 +131,24 @@ export default function AchievementsPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <PixelCard className="p-8 text-center max-w-md">
-          <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-bold text-foreground mb-2">Login Required</h2>
-          <p className="text-muted-foreground text-sm mb-6">
-            Please login to view your achievements
-          </p>
-          <Link href="/sign-in">
-            <PixelButton>Connect</PixelButton>
-          </Link>
-        </PixelCard>
+      <div className="min-h-screen bg-background">
+        <main className="max-w-4xl mx-auto px-4 py-12">
+          <PixelCard className="p-8 text-center max-w-md mx-auto">
+            <Trophy className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <h2 className="text-xl font-bold text-foreground mb-2">Sign In to Track Achievements</h2>
+            <p className="text-muted-foreground text-sm mb-6">
+              Create an account to unlock achievements, track your progress, and earn XP rewards.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <PixelButton>Connect</PixelButton>
+              </Link>
+              <Link href="/tools">
+                <PixelButton variant="outline">Browse Tools</PixelButton>
+              </Link>
+            </div>
+          </PixelCard>
+        </main>
       </div>
     );
   }
@@ -254,7 +261,7 @@ export default function AchievementsPage() {
           </div>
           <div className="h-3 w-full bg-black/40 rounded-full overflow-hidden border border-white/5">
             <div
-              className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
+              className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
               style={{ width: `${completionPercent}%` }}
             />
           </div>
@@ -386,7 +393,7 @@ export default function AchievementsPage() {
                           </div>
                           <div className="h-1.5 w-full bg-black/30 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
+                              className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
                               style={{ width: `${achievement.progressPercent}%` }}
                             />
                           </div>
@@ -476,7 +483,7 @@ export default function AchievementsPage() {
                       </div>
                       <div className="h-2 w-full bg-black/30 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-gradient-to-r from-primary to-purple-400"
+                          className="h-full bg-gradient-to-r from-primary to-blue-400"
                           style={{ width: `${selectedAchievementData.progressPercent}%` }}
                         />
                       </div>
@@ -552,7 +559,7 @@ export default function AchievementsPage() {
                         </div>
                         <div className="h-1 w-full bg-black/30 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-primary to-purple-400"
+                            className="h-full bg-gradient-to-r from-primary to-blue-400"
                             style={{ width: `${achievement.progressPercent}%` }}
                           />
                         </div>

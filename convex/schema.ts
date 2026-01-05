@@ -1672,4 +1672,131 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_share_token", ["shareToken"]),
+
+  // ============================================
+  // Stack Marketplace
+  // ============================================
+  marketplaceStacks: defineTable({
+    buildId: v.id("userStackBuilds"),
+    userId: v.string(),
+    title: v.string(),
+    description: v.optional(v.string()),
+    tags: v.array(v.string()),
+    projectType: v.optional(v.union(
+      v.literal("landing-page"),
+      v.literal("saas"),
+      v.literal("e-commerce"),
+      v.literal("blog"),
+      v.literal("dashboard"),
+      v.literal("mobile-app"),
+      v.literal("api"),
+      v.literal("other")
+    )),
+    difficulty: v.optional(v.union(
+      v.literal("beginner"),
+      v.literal("intermediate"),
+      v.literal("advanced")
+    )),
+    toolCount: v.number(),
+    upvotes: v.number(),
+    commentCount: v.number(),
+    importCount: v.number(),
+    views: v.number(),
+    isFeatured: v.boolean(),
+    publishedAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_build", ["buildId"])
+    .index("by_upvotes", ["upvotes"])
+    .index("by_published", ["publishedAt"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_project_type", ["projectType"]),
+
+  marketplaceUpvotes: defineTable({
+    stackId: v.id("marketplaceStacks"),
+    userId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_stack", ["stackId"])
+    .index("by_user", ["userId"])
+    .index("by_user_stack", ["userId", "stackId"]),
+
+  marketplaceComments: defineTable({
+    stackId: v.id("marketplaceStacks"),
+    userId: v.string(),
+    content: v.string(),
+    parentId: v.optional(v.id("marketplaceComments")),
+    upvotes: v.number(),
+    isEdited: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_stack", ["stackId"])
+    .index("by_user", ["userId"])
+    .index("by_parent", ["parentId"]),
+
+  marketplaceCommentVotes: defineTable({
+    commentId: v.id("marketplaceComments"),
+    userId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_comment", ["commentId"])
+    .index("by_user", ["userId"])
+    .index("by_user_comment", ["userId", "commentId"]),
+
+  marketplaceFavorites: defineTable({
+    stackId: v.id("marketplaceStacks"),
+    userId: v.string(),
+    savedAt: v.number(),
+  })
+    .index("by_stack", ["stackId"])
+    .index("by_user", ["userId"])
+    .index("by_user_stack", ["userId", "stackId"]),
+
+  marketplaceImports: defineTable({
+    sourceStackId: v.id("marketplaceStacks"),
+    targetBuildId: v.id("userStackBuilds"),
+    userId: v.string(),
+    importedAt: v.number(),
+  })
+    .index("by_source", ["sourceStackId"])
+    .index("by_user", ["userId"]),
+
+  // ============================================
+  // Notifications
+  // ============================================
+  notifications: defineTable({
+    userId: v.string(),
+    type: v.union(
+      v.literal("achievement_unlocked"),
+      v.literal("level_up"),
+      v.literal("xp_earned"),
+      v.literal("deck_shared"),
+      v.literal("battle_result"),
+      v.literal("review_response"),
+      v.literal("system_announcement"),
+      v.literal("tool_update"),
+      v.literal("streak_reminder"),
+      v.literal("welcome"),
+      v.literal("quest_completed")
+    ),
+    title: v.string(),
+    message: v.string(),
+    metadata: v.optional(v.object({
+      toolId: v.optional(v.id("tools")),
+      achievementId: v.optional(v.id("achievements")),
+      deckId: v.optional(v.id("userDecks")),
+      battleId: v.optional(v.id("battleHistory")),
+      xpAmount: v.optional(v.number()),
+      level: v.optional(v.number()),
+      link: v.optional(v.string()),
+    })),
+    icon: v.optional(v.string()),
+    isRead: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_unread", ["userId", "isRead"])
+    .index("by_created", ["createdAt"]),
 });

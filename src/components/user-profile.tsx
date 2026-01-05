@@ -75,7 +75,7 @@ export function UserProfile({ userId, className }: UserProfileProps) {
           </div>
           <div className="h-4 bg-[#191022] border-2 border-border">
             <div 
-              className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
+              className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
               style={{ width: `${xpProgress}%` }}
             />
           </div>

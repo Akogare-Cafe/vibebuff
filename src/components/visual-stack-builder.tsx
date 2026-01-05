@@ -80,6 +80,8 @@ import {
   Edit3,
   FileText,
   Zap,
+  Store,
+  Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Id } from "../../convex/_generated/dataModel";
@@ -414,16 +416,194 @@ function ShareModal({
   );
 }
 
+function PublishToMarketplaceModal({
+  build,
+  onClose,
+  onPublished,
+}: {
+  build: UserBuild;
+  onClose: () => void;
+  onPublished: () => void;
+}) {
+  const { user } = useUser();
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState("");
+  const [projectType, setProjectType] = useState<string>("");
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const publishToMarketplace = useMutation(api.stackMarketplace.publishToMarketplace);
+  const isPublished = useQuery(api.stackMarketplace.isPublishedToMarketplace, {
+    buildId: build._id,
+  });
+
+  const handleAddTag = () => {
+    if (tagInput.trim() && tags.length < 5 && !tags.includes(tagInput.trim().toLowerCase())) {
+      setTags([...tags, tagInput.trim().toLowerCase()]);
+      setTagInput("");
+    }
+  };
+
+  const handleRemoveTag = (tag: string) => {
+    setTags(tags.filter((t) => t !== tag));
+  };
+
+  const handlePublish = async () => {
+    if (!user?.id) return;
+    setIsPublishing(true);
+    setError(null);
+
+    try {
+      await publishToMarketplace({
+        buildId: build._id,
+        userId: user.id,
+        tags,
+        projectType: projectType as "landing-page" | "saas" | "e-commerce" | "blog" | "dashboard" | "mobile-app" | "api" | "other" | undefined,
+        difficulty: difficulty as "beginner" | "intermediate" | "advanced" | undefined,
+      });
+      onPublished();
+      onClose();
+    } catch (err) {
+      setError("Failed to publish. Please try again.");
+      console.error(err);
+    } finally {
+      setIsPublishing(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <PixelCard className="p-6 max-w-md w-full mx-4">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-primary text-sm flex items-center gap-2">
+            <Store className="w-4 h-4" /> PUBLISH TO MARKETPLACE
+          </h3>
+          <button
+            onClick={onClose}
+            className="text-muted-foreground hover:text-primary"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <p className="text-muted-foreground text-sm mb-4">
+          STACK: {build.title.toUpperCase()}
+        </p>
+
+        {isPublished && (
+          <div className="bg-green-500/20 border border-green-500 rounded-lg p-3 mb-4">
+            <p className="text-green-400 text-xs">
+              This stack is already published to the marketplace. Publishing again will update it.
+            </p>
+          </div>
+        )}
+
+        <div className="space-y-4">
+          <div>
+            <label className="text-primary text-xs mb-2 block">PROJECT TYPE</label>
+            <select
+              value={projectType}
+              onChange={(e) => setProjectType(e.target.value)}
+              className="w-full px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+            >
+              <option value="">Select type...</option>
+              <option value="landing-page">Landing Page</option>
+              <option value="saas">SaaS</option>
+              <option value="e-commerce">E-Commerce</option>
+              <option value="blog">Blog</option>
+              <option value="dashboard">Dashboard</option>
+              <option value="mobile-app">Mobile App</option>
+              <option value="api">API</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-primary text-xs mb-2 block">DIFFICULTY</label>
+            <select
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+              className="w-full px-3 py-2 bg-[#261933] border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+            >
+              <option value="">Select difficulty...</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-primary text-xs mb-2 block">
+              TAGS ({tags.length}/5)
+            </label>
+            <div className="flex gap-2 mb-2">
+              <PixelInput
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                placeholder="Add a tag..."
+                className="flex-1"
+                onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddTag())}
+              />
+              <PixelButton
+                size="sm"
+                variant="outline"
+                onClick={handleAddTag}
+                disabled={tags.length >= 5}
+              >
+                <Tag className="w-3 h-3" />
+              </PixelButton>
+            </div>
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-1">
+                {tags.map((tag) => (
+                  <PixelBadge
+                    key={tag}
+                    className="text-xs cursor-pointer hover:bg-red-500/20"
+                    onClick={() => handleRemoveTag(tag)}
+                  >
+                    {tag} <X className="w-2 h-2 ml-1 inline" />
+                  </PixelBadge>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {error && (
+            <p className="text-red-400 text-xs">{error}</p>
+          )}
+
+          <div className="flex gap-2 pt-2">
+            <PixelButton
+              onClick={handlePublish}
+              disabled={isPublishing}
+              className="flex-1"
+            >
+              <Store className="w-3 h-3 mr-2" />
+              {isPublishing ? "PUBLISHING..." : isPublished ? "UPDATE" : "PUBLISH"}
+            </PixelButton>
+            <PixelButton variant="outline" onClick={onClose}>
+              CANCEL
+            </PixelButton>
+          </div>
+        </div>
+      </PixelCard>
+    </div>
+  );
+}
+
 function MyBuildsPanel({
   builds,
   onLoadBuild,
   onDeleteBuild,
   onShareBuild,
+  onPublishBuild,
 }: {
   builds: UserBuild[] | undefined;
   onLoadBuild: (build: UserBuild) => void;
   onDeleteBuild: (buildId: Id<"userStackBuilds">) => void;
   onShareBuild: (build: UserBuild) => void;
+  onPublishBuild: (build: UserBuild) => void;
 }) {
   if (!builds || builds.length === 0) {
     return (
@@ -502,6 +682,14 @@ function MyBuildsPanel({
               onClick={() => onLoadBuild(build)}
             >
               <Edit3 className="w-3 h-3 mr-1" /> EDIT
+            </PixelButton>
+            <PixelButton
+              size="sm"
+              variant="outline"
+              onClick={() => onPublishBuild(build)}
+              title="Publish to Marketplace"
+            >
+              <Store className="w-3 h-3" />
             </PixelButton>
             <PixelButton
               size="sm"
@@ -656,6 +844,7 @@ export function VisualStackBuilder() {
   const [activeTab, setActiveTab] = useState<TabType>("builder");
   const [currentBuildId, setCurrentBuildId] = useState<Id<"userStackBuilds"> | null>(null);
   const [shareModalBuild, setShareModalBuild] = useState<UserBuild | null>(null);
+  const [publishModalBuild, setPublishModalBuild] = useState<UserBuild | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const flowRef = useRef<HTMLDivElement>(null);
@@ -882,6 +1071,12 @@ export function VisualStackBuilder() {
               Contracts
             </PixelButton>
           )}
+          <a href="/stack-marketplace">
+            <PixelButton variant="outline">
+              <Store className="w-4 h-4 mr-1" />
+              Marketplace
+            </PixelButton>
+          </a>
         </div>
       </div>
 
@@ -898,6 +1093,7 @@ export function VisualStackBuilder() {
             onLoadBuild={handleLoadBuild}
             onDeleteBuild={handleDeleteBuild}
             onShareBuild={(build) => setShareModalBuild(build)}
+            onPublishBuild={(build) => setPublishModalBuild(build)}
           />
         </PixelCard>
       )}
@@ -1067,6 +1263,14 @@ export function VisualStackBuilder() {
         <ShareModal
           build={shareModalBuild}
           onClose={() => setShareModalBuild(null)}
+        />
+      )}
+
+      {publishModalBuild && (
+        <PublishToMarketplaceModal
+          build={publishModalBuild}
+          onClose={() => setPublishModalBuild(null)}
+          onPublished={() => {}}
         />
       )}
     </div>

@@ -4,8 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* TECHQUEST GAMING DESIGN SYSTEM */
-/* Dark purple gaming aesthetic with glowing accents */
+/* VIBEBUFF DESIGN SYSTEM - Gundam Freedom Theme */
+/* Blue, White, Red accent color scheme inspired by ZGMF-X10A Freedom Gundam */
 
 @theme inline {
   --color-background: var(--background);
@@ -46,8 +46,8 @@
   --color-text-subtle: var(--text-subtle);
   --color-rarity-common: #6b7280;
   --color-rarity-rare: #3b82f6;
-  --color-rarity-epic: #a855f7;
-  --color-rarity-legendary: #f59e0b;
+  --color-rarity-epic: #dc2626;
+  --color-rarity-legendary: #eab308;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -59,79 +59,79 @@
 
 :root {
   --radius: 8px;
-  /* TechQuest Light Mode */
-  --background: #f7f6f8;
-  --foreground: #1a1a2e;
+  /* Gundam Freedom Light Mode - Clean white with blue accents */
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #1a1a2e;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #1a1a2e;
-  --primary: #7f13ec;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #f0edf4;
-  --secondary-foreground: #4a4a6a;
-  --muted: #f0edf4;
-  --muted-foreground: #6b6b8a;
-  --accent: #7f13ec;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #334155;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #dc2626;
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --border: #e5e0ed;
-  --input: #f7f6f8;
-  --ring: #7f13ec;
-  --surface: #f0edf4;
-  --surface-border: #e5e0ed;
-  --text-subtle: #6b6b8a;
-  --chart-1: #7f13ec;
-  --chart-2: #3b82f6;
-  --chart-3: #f59e0b;
+  --destructive: #dc2626;
+  --border: #e2e8f0;
+  --input: #f8fafc;
+  --ring: #2563eb;
+  --surface: #f1f5f9;
+  --surface-border: #e2e8f0;
+  --text-subtle: #64748b;
+  --chart-1: #2563eb;
+  --chart-2: #dc2626;
+  --chart-3: #eab308;
   --chart-4: #06b6d4;
   --chart-5: #22c55e;
-  --sidebar: #f7f6f8;
-  --sidebar-foreground: #1a1a2e;
-  --sidebar-primary: #7f13ec;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #2563eb;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f0edf4;
-  --sidebar-accent-foreground: #4a4a6a;
-  --sidebar-border: #e5e0ed;
-  --sidebar-ring: #7f13ec;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #334155;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #2563eb;
 }
 
 .dark {
-  /* TechQuest Dark Mode - Primary Theme */
-  --background: #191022;
-  --foreground: #ffffff;
-  --card: #261933;
-  --card-foreground: #ffffff;
-  --popover: #261933;
-  --popover-foreground: #ffffff;
-  --primary: #7f13ec;
+  /* Gundam Freedom Dark Mode - Deep blue with vibrant accents */
+  --background: #0a0f1a;
+  --foreground: #f8fafc;
+  --card: #111827;
+  --card-foreground: #f8fafc;
+  --popover: #111827;
+  --popover-foreground: #f8fafc;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #362348;
-  --secondary-foreground: #e5e5e5;
-  --muted: #261933;
-  --muted-foreground: #ad92c9;
-  --accent: #7f13ec;
+  --secondary: #1e293b;
+  --secondary-foreground: #e2e8f0;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #ef4444;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: #362348;
-  --input: #261933;
-  --ring: #7f13ec;
-  --surface: #261933;
-  --surface-border: #362348;
-  --text-subtle: #ad92c9;
-  --chart-1: #7f13ec;
-  --chart-2: #3b82f6;
-  --chart-3: #f59e0b;
-  --chart-4: #06b6d4;
-  --chart-5: #22c55e;
-  --sidebar: #191022;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #7f13ec;
+  --border: #1e3a5f;
+  --input: #111827;
+  --ring: #3b82f6;
+  --surface: #1e293b;
+  --surface-border: #1e3a5f;
+  --text-subtle: #94a3b8;
+  --chart-1: #3b82f6;
+  --chart-2: #ef4444;
+  --chart-3: #facc15;
+  --chart-4: #22d3ee;
+  --chart-5: #4ade80;
+  --sidebar: #0a0f1a;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #261933;
-  --sidebar-accent-foreground: #e5e5e5;
-  --sidebar-border: #362348;
-  --sidebar-ring: #7f13ec;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #1e3a5f;
+  --sidebar-ring: #3b82f6;
 }
 
 /* TechQuest font system - Space Grotesk for display, Noto Sans for body */
@@ -158,7 +158,7 @@
   }
 }
 
-/* TechQuest UI Components */
+/* VibeBuff UI Components - Gundam Freedom Theme */
 @layer components {
   /* Primary button with glow */
   .quest-btn {
@@ -167,13 +167,13 @@
     color: var(--primary-foreground);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(127, 19, 236, 0.4);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   }
   
   .quest-btn:hover {
-    background: rgba(127, 19, 236, 0.9);
+    background: rgba(59, 130, 246, 0.9);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(127, 19, 236, 0.6);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
   }
   
   .quest-btn:active {
@@ -189,15 +189,15 @@
   }
 
   .quest-card:hover {
-    border-color: rgba(127, 19, 236, 0.5);
+    border-color: rgba(59, 130, 246, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(127, 19, 236, 0.15);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
   }
 
   /* Primary glow accent */
   .primary-glow {
     color: var(--primary);
-    text-shadow: 0 0 10px rgba(127, 19, 236, 0.5);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   }
 
   /* Ambient background glow */
@@ -209,7 +209,7 @@
     width: 100%;
     max-width: 1000px;
     height: 500px;
-    background: rgba(127, 19, 236, 0.1);
+    background: rgba(59, 130, 246, 0.1);
     filter: blur(100px);
     border-radius: 50%;
     pointer-events: none;
@@ -236,7 +236,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Shimmer effect - purple tinted */
+  /* Shimmer effect - blue tinted */
   .shimmer {
     position: relative;
     overflow: hidden;
@@ -252,7 +252,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(127, 19, 236, 0.1),
+      rgba(59, 130, 246, 0.1),
       transparent
     );
     animation: shimmer 3s infinite;
@@ -306,11 +306,11 @@
     color: var(--primary-foreground);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(127, 19, 236, 0.4);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   }
   
   .pixel-btn:hover, .fantasy-btn:hover {
-    background: rgba(127, 19, 236, 0.9);
+    background: rgba(59, 130, 246, 0.9);
     transform: translateY(-2px);
   }
   
@@ -326,7 +326,7 @@
   }
 
   .pixel-card:hover, .fantasy-card:hover {
-    border-color: rgba(127, 19, 236, 0.5);
+    border-color: rgba(59, 130, 246, 0.5);
   }
 
   .pixel-cursor {
@@ -419,8 +419,8 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.25rem 0.75rem;
-    background: rgba(127, 19, 236, 0.1);
-    border: 1px solid rgba(127, 19, 236, 0.2);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
@@ -585,9 +585,9 @@
   .skill-btn-primary {
     width: 3.5rem;
     height: 4rem;
-    background: linear-gradient(to bottom right, var(--primary), #5b0ea8);
-    border-color: #a64aff;
-    box-shadow: 0 0 15px rgba(127, 19, 236, 0.6);
+    background: linear-gradient(to bottom right, var(--primary), #1e40af);
+    border-color: #60a5fa;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
     color: white;
   }
 
@@ -625,8 +625,8 @@
 
   /* Daily reward banner */
   .reward-banner {
-    background: linear-gradient(to bottom right, rgba(127, 19, 236, 0.2), var(--card));
-    border: 1px solid rgba(127, 19, 236, 0.3);
+    background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), var(--card));
+    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 12px;
     padding: 1rem;
     position: relative;
@@ -647,9 +647,9 @@
   }
 
   .class-card:hover {
-    border-color: rgba(127, 19, 236, 0.5);
+    border-color: rgba(59, 130, 246, 0.5);
     transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(127, 19, 236, 0.15);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
   }
 
   .class-card-image {
@@ -717,7 +717,7 @@
     border-radius: 9999px;
     background: var(--card);
     border: 1px solid var(--primary);
-    box-shadow: 0 0 20px rgba(127, 19, 236, 0.5);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -733,7 +733,7 @@
     position: absolute;
     inset: 0;
     border-radius: 9999px;
-    background: rgba(127, 19, 236, 0.2);
+    background: rgba(59, 130, 246, 0.2);
     animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 

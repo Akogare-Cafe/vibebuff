@@ -134,19 +134,28 @@ export default function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="quest-card p-8 text-center max-w-md">
-          <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-bold text-foreground mb-2">Login Required</h2>
-          <p className="text-muted-foreground text-sm mb-6">
-            Please login to view your character profile
-          </p>
-          <Link href="/sign-in">
-            <button className="quest-btn px-6 py-2 font-bold">
-              Connect
-            </button>
-          </Link>
-        </div>
+      <div className="min-h-screen bg-background">
+        <main className="max-w-4xl mx-auto px-4 py-12">
+          <div className="quest-card p-8 text-center max-w-md mx-auto mb-8">
+            <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <h2 className="text-xl font-bold text-foreground mb-2">Sign In to View Profile</h2>
+            <p className="text-muted-foreground text-sm mb-6">
+              Create an account to track your progress, earn achievements, and save your favorite tools.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <button className="quest-btn px-6 py-2 font-bold">
+                  Connect
+                </button>
+              </Link>
+              <Link href="/tools">
+                <button className="quest-btn-outline px-6 py-2 font-bold">
+                  Browse Tools
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
@@ -242,7 +251,7 @@ export default function ProfilePage() {
                     </div>
                     <div className="h-2 w-full bg-black/40 rounded-full overflow-hidden border border-white/5">
                       <div
-                        className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
                         style={{ width: `${xpPercent}%` }}
                       />
                     </div>
@@ -582,7 +591,7 @@ export default function ProfilePage() {
                           <div className="mt-1">
                             <div className="h-1.5 w-full bg-black/30 rounded-full overflow-hidden">
                               <div 
-                                className="h-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-500"
+                                className="h-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-500"
                                 style={{ width: `${affinity.progress}%` }}
                               />
                             </div>

@@ -1,5 +1,6 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { internal } from "./_generated/api";
 
 // Track tool usage when a user views/interacts with a tool
 export const trackUsage = mutation({

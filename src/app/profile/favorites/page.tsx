@@ -91,19 +91,28 @@ export default function FavoritesPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="bg-card border border-border rounded-xl p-8 text-center max-w-md">
-          <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-          <h2 className="text-xl font-bold text-foreground mb-2">Login Required</h2>
-          <p className="text-muted-foreground text-sm mb-6">
-            Please login to view your favorite tools
-          </p>
-          <Link href="/sign-in">
-            <button className="quest-btn px-6 py-2 font-bold">
-              Connect
-            </button>
-          </Link>
-        </div>
+      <div className="min-h-screen bg-background">
+        <main className="max-w-4xl mx-auto px-4 py-12">
+          <div className="bg-card border border-border rounded-xl p-8 text-center max-w-md mx-auto">
+            <Heart className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+            <h2 className="text-xl font-bold text-foreground mb-2">Sign In to Save Favorites</h2>
+            <p className="text-muted-foreground text-sm mb-6">
+              Create an account to save your favorite tools and access them anywhere.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <button className="quest-btn px-6 py-2 font-bold">
+                  Connect
+                </button>
+              </Link>
+              <Link href="/tools">
+                <button className="quest-btn-outline px-6 py-2 font-bold">
+                  Browse Tools
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }

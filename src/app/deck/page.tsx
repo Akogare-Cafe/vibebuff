@@ -63,27 +63,6 @@ export default function DeckPage() {
     );
   }
 
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-background">
-        <main className="max-w-4xl mx-auto px-4 py-12">
-          <PixelCard className="text-center p-8">
-            <User className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <h1 className="text-primary text-lg mb-4">LOGIN REQUIRED</h1>
-            <p className="text-muted-foreground text-sm mb-6">
-              SIGN IN TO VIEW AND MANAGE YOUR SAVED TECH STACKS
-            </p>
-            <Link href="/sign-in">
-              <PixelButton>
-                <User className="w-4 h-4 mr-2" /> SIGN IN
-              </PixelButton>
-            </Link>
-          </PixelCard>
-        </main>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-background">
       <main className="max-w-6xl mx-auto px-4 py-8">
@@ -110,13 +89,36 @@ export default function DeckPage() {
           </div>
         </div>
 
-        {userDecks === undefined && (
+        {!user && (
+          <PixelCard className="text-center p-12 mb-8">
+            <Package className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+            <h2 className="text-primary text-lg mb-4">SIGN IN TO SAVE DECKS</h2>
+            <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
+              CREATE AN ACCOUNT TO SAVE YOUR TECH STACKS AND ACCESS THEM ANYWHERE.
+              YOU CAN STILL EXPLORE TOOLS AND USE THE STACK BUILDER AS A GUEST.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Link href="/sign-in">
+                <PixelButton>
+                  <User className="w-4 h-4 mr-2" /> SIGN IN
+                </PixelButton>
+              </Link>
+              <Link href="/stack-builder">
+                <PixelButton variant="outline">
+                  <Layers className="w-4 h-4 mr-2" /> STACK BUILDER
+                </PixelButton>
+              </Link>
+            </div>
+          </PixelCard>
+        )}
+
+        {user && userDecks === undefined && (
           <div className="text-center py-12">
             <div className="text-primary text-sm animate-pulse">LOADING DECKS...</div>
           </div>
         )}
 
-        {userDecks && userDecks.length === 0 && (
+        {user && userDecks && userDecks.length === 0 && (
           <PixelCard className="text-center p-12">
             <Package className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
             <h2 className="text-primary text-lg mb-4">NO DECKS YET</h2>
@@ -139,7 +141,7 @@ export default function DeckPage() {
           </PixelCard>
         )}
 
-        {userDecks && userDecks.length > 0 && (
+        {user && userDecks && userDecks.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {userDecks.map((deck) => (
               <PixelCard key={deck._id} className="flex flex-col">

@@ -240,7 +240,7 @@ export function EncyclopediaProgress({ userId }: { userId: string }) {
         </div>
         <div className="h-3 bg-[#191022] border border-border">
           <div 
-            className="h-full bg-gradient-to-r from-primary to-purple-400"
+            className="h-full bg-gradient-to-r from-primary to-blue-400"
             style={{ width: `${percent}%` }}
           />
         </div>

@@ -51,10 +51,13 @@ export const getToolsBySlug = query({
           .withIndex("by_tool", (q) => q.eq("toolId", tool._id))
           .collect();
 
+        const calculatedStats = await calculateDynamicStats(ctx, tool);
+
         return {
           ...tool,
           category,
           pricingTiers,
+          stats: calculatedStats,
         };
       })
     );
@@ -62,6 +65,101 @@ export const getToolsBySlug = query({
     return tools.filter(Boolean);
   },
 });
+
+async function calculateDynamicStats(
+  ctx: { db: any },
+  tool: {
+    _id: any;
+    githubStars?: number;
+    npmDownloadsWeekly?: number;
+    isOpenSource: boolean;
+    pricingModel: "free" | "freemium" | "paid" | "open_source" | "enterprise";
+    pros: string[];
+    cons: string[];
+    features: string[];
+    tags: string[];
+    isFeatured: boolean;
+    stats?: { hp: number; attack: number; defense: number; speed: number; mana: number };
+  }
+) {
+  const BASE_STAT = 20;
+  const MAX_STAT = 100;
+  const clamp = (v: number) => Math.min(Math.max(v, BASE_STAT), MAX_STAT);
+
+  let hp = BASE_STAT;
+  if (tool.githubStars) {
+    if (tool.githubStars >= 50000) hp += 35;
+    else if (tool.githubStars >= 20000) hp += 25;
+    else if (tool.githubStars >= 10000) hp += 18;
+    else if (tool.githubStars >= 5000) hp += 12;
+    else if (tool.githubStars >= 1000) hp += 6;
+  }
+  if (tool.isOpenSource) hp += 10;
+  if (tool.isFeatured) hp += 5;
+  hp += Math.min(tool.features.length * 2, 15);
+
+  let attack = BASE_STAT;
+  attack += Math.min(tool.pros.length * 4, 20);
+  if (tool.npmDownloadsWeekly) {
+    if (tool.npmDownloadsWeekly >= 10000000) attack += 25;
+    else if (tool.npmDownloadsWeekly >= 1000000) attack += 18;
+    else if (tool.npmDownloadsWeekly >= 100000) attack += 12;
+    else if (tool.npmDownloadsWeekly >= 10000) attack += 6;
+  }
+  attack += Math.min(tool.features.length, 10);
+
+  let defense = BASE_STAT;
+  if (tool.isOpenSource) defense += 15;
+  defense -= Math.min(tool.cons.length * 3, 15);
+  if (tool.pricingModel === "enterprise") defense += 12;
+  else if (tool.pricingModel === "paid") defense += 8;
+  else if (tool.pricingModel === "freemium") defense += 5;
+  if (tool.githubStars && tool.githubStars >= 10000) defense += 10;
+
+  let speed = BASE_STAT;
+  if (tool.pricingModel === "free" || tool.pricingModel === "open_source") speed += 10;
+  if (tool.npmDownloadsWeekly && tool.npmDownloadsWeekly >= 1000000) speed += 15;
+  speed += Math.min(tool.tags.length * 2, 12);
+  if (tool.features.length <= 5) speed += 8;
+  else if (tool.features.length <= 10) speed += 4;
+
+  let mana = BASE_STAT;
+  mana += Math.min(tool.features.length * 3, 25);
+  if (tool.isOpenSource) mana += 10;
+  if (tool.pricingModel === "enterprise") mana += 15;
+  else if (tool.pricingModel === "paid") mana += 10;
+  else if (tool.pricingModel === "freemium") mana += 5;
+
+  const usageRecords = await ctx.db
+    .query("toolUsage")
+    .filter((q: any) => q.eq(q.field("toolId"), tool._id))
+    .collect();
+
+  const masteryRecords = await ctx.db
+    .query("toolMastery")
+    .withIndex("by_tool", (q: any) => q.eq("toolId", tool._id))
+    .collect();
+
+  const totalViews = usageRecords.reduce((sum: number, r: any) => sum + r.usageCount, 0);
+  const totalFavorites = usageRecords.filter((r: any) => r.isFavorite).length;
+  const totalDeckAdds = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.deckAdds, 0);
+  const totalBattleWins = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.battleWins, 0);
+  const totalComparisons = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.comparisons, 0);
+
+  const viewBonus = Math.min(Math.floor(totalViews / 50), 10);
+  const favoriteBonus = Math.min(Math.floor(totalFavorites / 5), 10);
+  const deckBonus = Math.min(Math.floor(totalDeckAdds / 10), 8);
+  const battleBonus = Math.min(Math.floor(totalBattleWins / 5), 8);
+  const comparisonBonus = Math.min(Math.floor(totalComparisons / 20), 5);
+
+  return {
+    hp: clamp(hp + viewBonus + favoriteBonus),
+    attack: clamp(attack + battleBonus + deckBonus),
+    defense: clamp(defense + favoriteBonus + comparisonBonus),
+    speed: clamp(speed + viewBonus + comparisonBonus),
+    mana: clamp(mana + deckBonus + battleBonus + favoriteBonus),
+  };
+}
 
 // Save a comparison for later
 export const saveComparison = mutation({

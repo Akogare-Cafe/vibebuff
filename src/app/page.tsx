@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardDescription, PixelCardContent } from "@/components/pixel-card";
@@ -21,10 +21,28 @@ import {
   ChevronRight,
   TrendingUp,
   Users,
-  Award
+  Award,
+  Sparkles,
+  ArrowRight,
+  Loader2,
+  X
 } from "lucide-react";
-import { useTheme } from "@/components/providers/theme-provider";
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
+
+interface AIRecommendation {
+  id: string;
+  name: string;
+  slug: string;
+  tagline: string;
+  reasoning: string;
+  confidence: number;
+}
+
+interface AIRecommendations {
+  recommendations: Record<string, AIRecommendation[]>;
+  aiReasoning: string;
+  estimatedMonthlyCost: string;
+}
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,7 +57,12 @@ export default function Home() {
   );
   const seedDatabase = useMutation(api.seed.seedDatabase);
   const [isSeeding, setIsSeeding] = useState(false);
-  const { colors } = useTheme();
+
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [isGeneratingAI, setIsGeneratingAI] = useState(false);
+  const [aiRecommendations, setAiRecommendations] = useState<AIRecommendations | null>(null);
+  const [showAIResults, setShowAIResults] = useState(false);
+  const generateAIRecommendations = useAction(api.ai.generateRecommendations);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -71,6 +94,91 @@ export default function Home() {
       console.error(e);
     }
     setIsSeeding(false);
+  };
+
+  const parsePromptForParams = (prompt: string) => {
+    const lowerPrompt = prompt.toLowerCase();
+    
+    let projectType = "saas";
+    if (lowerPrompt.includes("ecommerce") || lowerPrompt.includes("e-commerce") || lowerPrompt.includes("store") || lowerPrompt.includes("shop")) {
+      projectType = "ecommerce";
+    } else if (lowerPrompt.includes("blog") || lowerPrompt.includes("portfolio") || lowerPrompt.includes("personal")) {
+      projectType = "blog";
+    } else if (lowerPrompt.includes("dashboard") || lowerPrompt.includes("admin") || lowerPrompt.includes("analytics")) {
+      projectType = "dashboard";
+    } else if (lowerPrompt.includes("chat") || lowerPrompt.includes("realtime") || lowerPrompt.includes("real-time") || lowerPrompt.includes("collaboration")) {
+      projectType = "realtime";
+    } else if (lowerPrompt.includes("mobile") || lowerPrompt.includes("ios") || lowerPrompt.includes("android") || lowerPrompt.includes("app")) {
+      projectType = "mobile";
+    } else if (lowerPrompt.includes("api") || lowerPrompt.includes("backend") || lowerPrompt.includes("server")) {
+      projectType = "api";
+    } else if (lowerPrompt.includes("ai") || lowerPrompt.includes("ml") || lowerPrompt.includes("machine learning") || lowerPrompt.includes("llm") || lowerPrompt.includes("gpt")) {
+      projectType = "ai";
+    }
+
+    let scale = "startup";
+    if (lowerPrompt.includes("hobby") || lowerPrompt.includes("personal") || lowerPrompt.includes("small") || lowerPrompt.includes("simple")) {
+      scale = "hobby";
+    } else if (lowerPrompt.includes("enterprise") || lowerPrompt.includes("large") || lowerPrompt.includes("million")) {
+      scale = "enterprise";
+    } else if (lowerPrompt.includes("growth") || lowerPrompt.includes("scaling") || lowerPrompt.includes("growing")) {
+      scale = "growth";
+    }
+
+    let budget = "medium";
+    if (lowerPrompt.includes("free") || lowerPrompt.includes("no cost") || lowerPrompt.includes("$0")) {
+      budget = "free";
+    } else if (lowerPrompt.includes("cheap") || lowerPrompt.includes("budget") || lowerPrompt.includes("low cost")) {
+      budget = "low";
+    } else if (lowerPrompt.includes("premium") || lowerPrompt.includes("expensive") || lowerPrompt.includes("enterprise")) {
+      budget = "high";
+    }
+
+    const features: string[] = [];
+    if (lowerPrompt.includes("auth") || lowerPrompt.includes("login") || lowerPrompt.includes("user")) features.push("auth");
+    if (lowerPrompt.includes("database") || lowerPrompt.includes("data") || lowerPrompt.includes("store")) features.push("database");
+    if (lowerPrompt.includes("realtime") || lowerPrompt.includes("real-time") || lowerPrompt.includes("live") || lowerPrompt.includes("websocket")) features.push("realtime");
+    if (lowerPrompt.includes("storage") || lowerPrompt.includes("file") || lowerPrompt.includes("upload") || lowerPrompt.includes("image")) features.push("storage");
+    if (lowerPrompt.includes("payment") || lowerPrompt.includes("stripe") || lowerPrompt.includes("checkout") || lowerPrompt.includes("subscription")) features.push("payments");
+    if (lowerPrompt.includes("email") || lowerPrompt.includes("notification")) features.push("email");
+    if (lowerPrompt.includes("search")) features.push("search");
+    if (lowerPrompt.includes("analytics") || lowerPrompt.includes("tracking") || lowerPrompt.includes("metrics")) features.push("analytics");
+    if (lowerPrompt.includes("ai") || lowerPrompt.includes("llm") || lowerPrompt.includes("gpt") || lowerPrompt.includes("openai")) features.push("ai");
+    if (lowerPrompt.includes("cms") || lowerPrompt.includes("content")) features.push("cms");
+
+    return { projectType, scale, budget, features };
+  };
+
+  const handleAIPromptSubmit = async () => {
+    if (!aiPrompt.trim()) return;
+    
+    setIsGeneratingAI(true);
+    setShowAIResults(true);
+    
+    try {
+      const params = parsePromptForParams(aiPrompt);
+      const result = await generateAIRecommendations({
+        ...params,
+        freeformPrompt: aiPrompt,
+      });
+      setAiRecommendations(result);
+    } catch (error) {
+      console.error("AI recommendation error:", error);
+    } finally {
+      setIsGeneratingAI(false);
+    }
+  };
+
+  const handleAIPromptKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleAIPromptSubmit();
+    }
+  };
+
+  const closeAIResults = () => {
+    setShowAIResults(false);
+    setAiRecommendations(null);
   };
 
   return (
@@ -164,6 +272,174 @@ export default function Home() {
           </div>
         </div>
 
+        {/* AI Stack Builder Prompt Section */}
+        <section className="mb-16 md:mb-20">
+          <PixelCard className="p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card">
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
+                <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-white" />
+              </div>
+              <h2 className="font-heading text-foreground text-xl md:text-2xl mb-2">
+                AI Stack Builder
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base max-w-lg mx-auto">
+                Describe what you want to build and let AI suggest the perfect tech stack for your project
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <div className="relative">
+                <textarea
+                  value={aiPrompt}
+                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onKeyDown={handleAIPromptKeyDown}
+                  placeholder="e.g., I want to build a SaaS app with user authentication, real-time features, and payment processing..."
+                  className="w-full h-28 md:h-32 px-4 py-3 bg-background border-2 border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none resize-none"
+                  disabled={isGeneratingAI}
+                />
+                <div className="absolute bottom-3 right-3">
+                  <PixelButton 
+                    onClick={handleAIPromptSubmit} 
+                    disabled={!aiPrompt.trim() || isGeneratingAI}
+                    size="sm"
+                  >
+                    {isGeneratingAI ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Analyzing...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        Generate Stack
+                      </>
+                    )}
+                  </PixelButton>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mt-4 justify-center">
+                <button
+                  onClick={() => setAiPrompt("I want to build a SaaS app with user authentication, subscriptions, and a dashboard")}
+                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                >
+                  SaaS with Auth
+                </button>
+                <button
+                  onClick={() => setAiPrompt("Build an e-commerce store with payments, inventory management, and real-time notifications")}
+                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                >
+                  E-Commerce Store
+                </button>
+                <button
+                  onClick={() => setAiPrompt("Create a real-time chat application with AI features and file sharing")}
+                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                >
+                  Real-time Chat
+                </button>
+                <button
+                  onClick={() => setAiPrompt("Build a portfolio website with a blog and CMS, using free tools only")}
+                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                >
+                  Portfolio + Blog
+                </button>
+              </div>
+            </div>
+          </PixelCard>
+
+          {/* AI Results Modal/Section */}
+          {showAIResults && (
+            <div className="mt-6">
+              <PixelCard className="p-6 md:p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-heading text-primary text-lg md:text-xl flex items-center gap-2">
+                    <Bot className="w-5 h-5" />
+                    AI Recommended Stack
+                  </h3>
+                  <button
+                    onClick={closeAIResults}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {isGeneratingAI ? (
+                  <div className="text-center py-12">
+                    <Bot className="w-12 h-12 mx-auto mb-4 text-muted-foreground animate-pulse" />
+                    <p className="text-primary text-sm mb-2">AI is analyzing your requirements...</p>
+                    <p className="text-muted-foreground text-xs">This may take a few seconds</p>
+                  </div>
+                ) : aiRecommendations ? (
+                  <div className="space-y-6">
+                    {/* AI Reasoning */}
+                    <div className="p-4 bg-background border border-border rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <Bot className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-muted-foreground text-sm leading-relaxed">
+                            {aiRecommendations.aiReasoning}
+                          </p>
+                          <p className="text-primary text-sm mt-2 font-medium">
+                            Estimated Cost: {aiRecommendations.estimatedMonthlyCost}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Recommendations by Category */}
+                    <div className="space-y-4">
+                      {Object.entries(aiRecommendations.recommendations).slice(0, 5).map(([category, tools]) => (
+                        <div key={category}>
+                          <h4 className="text-foreground text-sm font-medium mb-3 flex items-center gap-2">
+                            <ChevronRight className="w-4 h-4 text-primary" />
+                            {category}
+                          </h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                            {tools.slice(0, 3).map((tool, index) => (
+                              <Link key={tool.id} href={`/tools/${tool.slug}`}>
+                                <div className={`p-3 border rounded-lg transition-all hover:border-primary ${index === 0 ? "border-primary bg-primary/5" : "border-border"}`}>
+                                  <div className="flex items-start justify-between mb-1">
+                                    <p className="text-foreground text-sm font-medium flex items-center gap-1">
+                                      {index === 0 && <Star className="w-3 h-3 text-primary" />}
+                                      {tool.name}
+                                    </p>
+                                    <PixelBadge variant={index === 0 ? "default" : "outline"} className="text-[10px]">
+                                      {tool.confidence}%
+                                    </PixelBadge>
+                                  </div>
+                                  <p className="text-muted-foreground text-xs line-clamp-1">{tool.tagline}</p>
+                                  <p className="text-primary/80 text-xs mt-1 italic line-clamp-1">{tool.reasoning}</p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex flex-wrap gap-3 justify-center pt-4 border-t border-border">
+                      <Link href="/quest">
+                        <PixelButton variant="outline" size="sm">
+                          <Swords className="w-4 h-4 mr-2" />
+                          Detailed Quest
+                        </PixelButton>
+                      </Link>
+                      <Link href="/stack-builder">
+                        <PixelButton size="sm">
+                          <ArrowRight className="w-4 h-4 mr-2" />
+                          Open in Stack Builder
+                        </PixelButton>
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+              </PixelCard>
+            </div>
+          )}
+        </section>
+
         {/* Seed Button (for development) */}
         {(!categories || categories.length === 0) && (
           <div className="text-center mb-8">
@@ -247,7 +523,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
             <PixelCard className="text-center p-8 md:p-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center">
                 <FileText className="w-8 h-8 md:w-10 md:h-10 text-white" />
               </div>
               <h3 className="font-heading text-primary text-lg md:text-xl mb-2 md:mb-3">Step 1</h3>
@@ -256,7 +532,7 @@ export default function Home() {
               </p>
             </PixelCard>
             <PixelCard className="text-center p-8 md:p-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
                 <Bot className="w-8 h-8 md:w-10 md:h-10 text-white" />
               </div>
               <h3 className="font-heading text-primary text-lg md:text-xl mb-2 md:mb-3">Step 2</h3>
@@ -265,7 +541,7 @@ export default function Home() {
               </p>
             </PixelCard>
             <PixelCard className="text-center p-8 md:p-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center">
                 <Zap className="w-8 h-8 md:w-10 md:h-10 text-white" />
               </div>
               <h3 className="font-heading text-primary text-lg md:text-xl mb-2 md:mb-3">Step 3</h3>
@@ -308,7 +584,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <PixelCard className="p-6 md:p-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center mb-4 md:mb-5">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center mb-4 md:mb-5">
                 <TrendingUp className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <h3 className="font-heading text-foreground text-base md:text-lg mb-3">Stay Ahead of Trends</h3>
@@ -318,7 +594,7 @@ export default function Home() {
               </p>
             </PixelCard>
             <PixelCard className="p-6 md:p-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center mb-4 md:mb-5">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center mb-4 md:mb-5">
                 <Users className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <h3 className="font-heading text-foreground text-base md:text-lg mb-3">Community Insights</h3>
@@ -328,7 +604,7 @@ export default function Home() {
               </p>
             </PixelCard>
             <PixelCard className="p-6 md:p-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center mb-4 md:mb-5">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center mb-4 md:mb-5">
                 <Award className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <h3 className="font-heading text-foreground text-base md:text-lg mb-3">Expert Curation</h3>
@@ -338,7 +614,7 @@ export default function Home() {
               </p>
             </PixelCard>
             <PixelCard className="p-6 md:p-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center mb-4 md:mb-5">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center mb-4 md:mb-5">
                 <Bot className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <h3 className="font-heading text-foreground text-base md:text-lg mb-3">AI-Powered Matching</h3>
