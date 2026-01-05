@@ -59,9 +59,20 @@ Use these pixel-styled components for consistency:
 - `PixelBadge`
 - `PixelInput`
 
+## Convex Backend
+
+When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+
+```bash
+npx convex dev --once
+```
+
+This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+
 ## When Making Changes
 
 1. Check for existing patterns in the codebase
 2. Use lucide-react icons exclusively
 3. Maintain the retro gaming aesthetic
 4. Test that changes don't break existing functionality
+5. If Convex functions were modified, run `npx convex dev --once`

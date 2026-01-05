@@ -69,9 +69,20 @@ convex/            → Backend functions
 docs/              → Documentation
 ```
 
+## Convex Backend
+
+When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+
+```bash
+npx convex dev --once
+```
+
+This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+
 ## Before Committing Changes
 
 1. Verify NO emojis or unicode icons are present
 2. Confirm all icons use lucide-react
 3. Check TypeScript compiles without errors
 4. Ensure pixel aesthetic is maintained
+5. If Convex functions were modified, run `npx convex dev --once`

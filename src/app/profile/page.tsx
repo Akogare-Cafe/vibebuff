@@ -114,11 +114,12 @@ export default function ProfilePage() {
   );
 
   useEffect(() => {
-    if (user?.id && isLoaded) {
+    const clerkId = user?.id;
+    if (clerkId && isLoaded) {
       getOrCreateProfile({
-        clerkId: user.id,
-        username: user.firstName || user.username || undefined,
-        avatarUrl: user.imageUrl || undefined,
+        clerkId,
+        username: user?.firstName || user?.username || undefined,
+        avatarUrl: user?.imageUrl || undefined,
       }).catch(() => {});
     }
   }, [user?.id, isLoaded, getOrCreateProfile, user?.firstName, user?.username, user?.imageUrl]);

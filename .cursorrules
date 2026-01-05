@@ -31,6 +31,16 @@ import { Search, Star, Gamepad2 } from "lucide-react";
 - **Animations**: Framer Motion
 - **Flow Diagrams**: @xyflow/react
 
+## Convex Backend
+
+When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+
+```bash
+npx convex dev --once
+```
+
+This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+
 ## Code Style
 
 - Use TypeScript for all files
