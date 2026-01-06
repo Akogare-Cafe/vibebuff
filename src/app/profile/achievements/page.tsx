@@ -686,24 +686,6 @@ export default function AchievementsPage() {
         </div>
       </main>
 
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
-        <div className="skill-bar">
-          <Link href="/">
-            <button className="skill-btn">
-              <Home className="w-5 h-5" />
-            </button>
-          </Link>
-          <Link href="/profile">
-            <button className="skill-btn">
-              <User className="w-5 h-5" />
-            </button>
-          </Link>
-          <button className="skill-btn border-primary shadow-[0_0_15px_rgba(127,19,236,0.4)] -translate-y-1">
-            <Trophy className="w-5 h-5 text-primary" />
-            <div className="absolute inset-0 bg-primary/10 rounded-lg" />
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

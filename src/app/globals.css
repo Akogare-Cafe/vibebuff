@@ -548,53 +548,6 @@
     }
   }
 
-  /* Skill bar navigation (bottom dock) */
-  .skill-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: rgba(21, 16, 25, 0.9);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  }
-
-  .skill-btn {
-    position: relative;
-    width: 3rem;
-    height: 3rem;
-    background: var(--card);
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .skill-btn:hover {
-    border-color: var(--primary);
-    transform: translateY(-4px);
-    color: var(--primary);
-  }
-
-  .skill-btn-primary {
-    width: 3.5rem;
-    height: 4rem;
-    background: linear-gradient(to bottom right, var(--primary), #1e40af);
-    border-color: #60a5fa;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-    color: white;
-  }
-
-  .skill-btn-primary:hover {
-    transform: translateY(-8px);
-  }
-
   /* Quest log panel */
   .quest-panel {
     background: var(--card);

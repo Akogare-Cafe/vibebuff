@@ -546,36 +546,6 @@ function ToolsPageContent() {
         </div>
       </main>
 
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
-        <div className="skill-bar">
-          <Link href="/">
-            <button className="skill-btn">
-              <Home className="w-5 h-5" />
-              <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">1</span>
-            </button>
-          </Link>
-          <button className="skill-btn border-primary shadow-[0_0_15px_rgba(127,19,236,0.3)] bg-primary/20">
-            <Backpack className="w-5 h-5 text-primary" />
-            <span className="absolute -bottom-2 bg-black text-sm text-primary px-1 rounded border border-primary/30">2</span>
-          </button>
-          <div className="w-px h-8 bg-border mx-1" />
-          <button className="skill-btn skill-btn-primary">
-            <Play className="w-8 h-8" />
-            <span className="absolute -bottom-2.5 bg-black text-sm text-primary font-bold px-1.5 rounded border border-primary/50">SPACE</span>
-          </button>
-          <div className="w-px h-8 bg-border mx-1" />
-          <button className="skill-btn">
-            <MessageSquare className="w-5 h-5" />
-            <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">3</span>
-          </button>
-          <Link href="/profile">
-            <button className="skill-btn">
-              <User className="w-5 h-5" />
-              <span className="absolute -bottom-2 bg-black text-sm text-gray-400 px-1 rounded border border-gray-800">4</span>
-            </button>
-          </Link>
-        </div>
-      </div>
     </div>
   );
 }
