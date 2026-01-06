@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../../convex/_generated/api";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
