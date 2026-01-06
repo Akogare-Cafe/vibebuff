@@ -146,7 +146,10 @@ export default defineSchema({
     decksCreated: v.number(),
     questsCompleted: v.number(),
     votescast: v.number(),
-  }).index("by_clerk_id", ["clerkId"]),
+    isAdmin: v.optional(v.boolean()),
+  })
+    .index("by_clerk_id", ["clerkId"])
+    .index("by_admin", ["isAdmin"]),
 
   // ============================================
   // User Decks
@@ -2233,5 +2236,110 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_user_unread", ["userId", "isRead"])
+    .index("by_created", ["createdAt"]),
+
+  // ============================================
+  // Discovered Packages (from imports)
+  // ============================================
+  discoveredPackages: defineTable({
+    name: v.string(),
+    version: v.optional(v.string()),
+    importCount: v.number(),
+    lastSeenAt: v.number(),
+    firstSeenAt: v.number(),
+    isMatched: v.boolean(),
+    matchedToolId: v.optional(v.id("tools")),
+    suggestedCategory: v.optional(v.string()),
+    npmUrl: v.optional(v.string()),
+    description: v.optional(v.string()),
+    weeklyDownloads: v.optional(v.number()),
+    githubUrl: v.optional(v.string()),
+    isReviewed: v.boolean(),
+  })
+    .index("by_name", ["name"])
+    .index("by_import_count", ["importCount"])
+    .index("by_matched", ["isMatched"])
+    .index("by_reviewed", ["isReviewed"]),
+
+  // ============================================
+  // Package Import Jobs
+  // ============================================
+  packageImportJobs: defineTable({
+    userId: v.string(),
+    packageJsonContent: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("processing"),
+      v.literal("completed"),
+      v.literal("failed")
+    ),
+    result: v.optional(v.object({
+      detectedPackages: v.array(v.object({
+        name: v.string(),
+        version: v.string(),
+        isDev: v.boolean(),
+      })),
+      matchedTools: v.array(v.object({
+        packageName: v.string(),
+        toolId: v.optional(v.string()),
+        toolName: v.string(),
+        toolSlug: v.string(),
+        category: v.string(),
+        confidence: v.number(),
+        tagline: v.string(),
+      })),
+      unmatchedPackages: v.array(v.string()),
+      aiAnalysis: v.string(),
+      suggestedStackName: v.string(),
+    })),
+    error: v.optional(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"]),
+
+  // ============================================
+  // Tool Edit Suggestions
+  // ============================================
+  toolSuggestions: defineTable({
+    toolId: v.id("tools"),
+    userId: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("approved"),
+      v.literal("rejected")
+    ),
+    suggestedChanges: v.object({
+      name: v.optional(v.string()),
+      tagline: v.optional(v.string()),
+      description: v.optional(v.string()),
+      websiteUrl: v.optional(v.string()),
+      githubUrl: v.optional(v.string()),
+      docsUrl: v.optional(v.string()),
+      logoUrl: v.optional(v.string()),
+      pricingModel: v.optional(v.union(
+        v.literal("free"),
+        v.literal("freemium"),
+        v.literal("paid"),
+        v.literal("open_source"),
+        v.literal("enterprise")
+      )),
+      isOpenSource: v.optional(v.boolean()),
+      pros: v.optional(v.array(v.string())),
+      cons: v.optional(v.array(v.string())),
+      bestFor: v.optional(v.array(v.string())),
+      features: v.optional(v.array(v.string())),
+      tags: v.optional(v.array(v.string())),
+    }),
+    reason: v.optional(v.string()),
+    reviewedBy: v.optional(v.string()),
+    reviewedAt: v.optional(v.number()),
+    reviewNote: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_tool", ["toolId"])
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"])
     .index("by_created", ["createdAt"]),
 });

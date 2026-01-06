@@ -471,14 +471,14 @@ function ToolsPageContent() {
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-1">
-                        <div className="bg-black/20 p-1.5 rounded text-center">
+                        <div className="p-1.5 rounded text-center">
                           <div className="text-[10px] text-gray-500 uppercase">Stars</div>
                           <div className="text-green-400 font-bold text-xs flex items-center justify-center gap-1">
                             <Star className="w-3 h-3" />
                             {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(1)}K` : "N/A"}
                           </div>
                         </div>
-                        <div className="bg-black/20 p-1.5 rounded text-center">
+                        <div className="p-1.5 rounded text-center">
                           <div className="text-[10px] text-gray-500 uppercase">Type</div>
                           <div className="text-blue-400 font-bold text-xs">
                             {tool.isOpenSource ? "OSS" : "Closed"}

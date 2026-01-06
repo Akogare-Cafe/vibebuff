@@ -9,6 +9,7 @@
  */
 
 import type * as achievements from "../achievements.js";
+import type * as admin from "../admin.js";
 import type * as ads from "../ads.js";
 import type * as ai from "../ai.js";
 import type * as architect from "../architect.js";
@@ -32,6 +33,7 @@ import type * as mastery from "../mastery.js";
 import type * as nominations from "../nominations.js";
 import type * as notifications from "../notifications.js";
 import type * as onboarding from "../onboarding.js";
+import type * as packageImport from "../packageImport.js";
 import type * as popularity from "../popularity.js";
 import type * as questHistory from "../questHistory.js";
 import type * as referrals from "../referrals.js";
@@ -53,6 +55,7 @@ import type * as tierLists from "../tierLists.js";
 import type * as timeMachine from "../timeMachine.js";
 import type * as toolAffinity from "../toolAffinity.js";
 import type * as toolStats from "../toolStats.js";
+import type * as toolSuggestions from "../toolSuggestions.js";
 import type * as toolUsage from "../toolUsage.js";
 import type * as toolWhispers from "../toolWhispers.js";
 import type * as tools from "../tools.js";
@@ -70,6 +73,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   achievements: typeof achievements;
+  admin: typeof admin;
   ads: typeof ads;
   ai: typeof ai;
   architect: typeof architect;
@@ -93,6 +97,7 @@ declare const fullApi: ApiFromModules<{
   nominations: typeof nominations;
   notifications: typeof notifications;
   onboarding: typeof onboarding;
+  packageImport: typeof packageImport;
   popularity: typeof popularity;
   questHistory: typeof questHistory;
   referrals: typeof referrals;
@@ -114,6 +119,7 @@ declare const fullApi: ApiFromModules<{
   timeMachine: typeof timeMachine;
   toolAffinity: typeof toolAffinity;
   toolStats: typeof toolStats;
+  toolSuggestions: typeof toolSuggestions;
   toolUsage: typeof toolUsage;
   toolWhispers: typeof toolWhispers;
   tools: typeof tools;

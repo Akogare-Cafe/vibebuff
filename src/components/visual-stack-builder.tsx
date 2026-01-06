@@ -82,9 +82,11 @@ import {
   Zap,
   Store,
   Tag,
+  Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Id } from "../../convex/_generated/dataModel";
+import { PackageJsonImportModal } from "./package-json-import";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   ide: <Code className="w-4 h-4" />,
@@ -857,6 +859,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const [publishModalBuild, setPublishModalBuild] = useState<UserBuild | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [showImportModal, setShowImportModal] = useState(false);
   const flowRef = useRef<HTMLDivElement>(null);
 
   const blueprints = useQuery(api.stackBuilder.getFeaturedBlueprints, { limit: 6 });
@@ -869,7 +872,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const deleteBuild = useMutation(api.stackBuilder.deleteBuild);
 
   useEffect(() => {
-    if (initialTools && initialTools.length > 0 && nodes.length === 0) {
+    if (initialTools && initialTools.length > 0) {
       const categoryPositions: Record<string, { x: number; y: number }> = {
         ide: { x: 100, y: 100 },
         ai: { x: 100, y: 280 },
@@ -948,7 +951,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
       setEdges(newEdges);
       setBuildTitle("AI Recommended Stack");
     }
-  }, [initialTools, nodes.length, setNodes, setEdges]);
+  }, [initialTools, setNodes, setEdges]);
 
   const onConnect = useCallback(
     (params: Connection) =>
@@ -1124,6 +1127,98 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
     setActiveTab("builder");
   };
 
+  const handleImportComplete = useCallback(
+    (tools: Array<{ name: string; category: string; tagline: string }>) => {
+      const categoryPositions: Record<string, { x: number; y: number }> = {
+        ide: { x: 100, y: 100 },
+        ai: { x: 100, y: 280 },
+        frontend: { x: 400, y: 100 },
+        backend: { x: 400, y: 280 },
+        database: { x: 400, y: 460 },
+        deployment: { x: 700, y: 190 },
+        tool: { x: 700, y: 370 },
+        auth: { x: 100, y: 460 },
+        payments: { x: 700, y: 460 },
+        analytics: { x: 700, y: 100 },
+        unknown: { x: 250, y: 280 },
+      };
+
+      const categoryConnections: Record<string, string[]> = {
+        ide: ["ai", "frontend", "backend"],
+        ai: ["backend", "frontend"],
+        frontend: ["backend", "deployment"],
+        backend: ["database", "ai", "deployment", "auth", "payments"],
+        database: [],
+        deployment: [],
+        auth: ["backend"],
+        payments: [],
+        analytics: ["frontend", "backend"],
+        tool: ["frontend", "backend"],
+      };
+
+      const timestamp = Date.now();
+      const categoryNodeMap: Record<string, string> = {};
+      const usedPositions: Record<string, number> = {};
+
+      const newNodes: Node<ToolNodeData>[] = tools.map((tool, index) => {
+        const cat = tool.category.toLowerCase();
+        const basePos = categoryPositions[cat] || categoryPositions.unknown;
+        const offset = usedPositions[cat] || 0;
+        usedPositions[cat] = offset + 1;
+        
+        const nodeId = `node-${timestamp}-${index}`;
+        if (!categoryNodeMap[cat]) {
+          categoryNodeMap[cat] = nodeId;
+        }
+
+        return {
+          id: nodeId,
+          type: "tool",
+          position: { x: basePos.x + offset * 30, y: basePos.y + offset * 30 },
+          data: {
+            label: tool.name,
+            category: cat,
+            description: tool.tagline,
+          },
+        };
+      });
+
+      const newEdges: Edge[] = [];
+      const addedEdges = new Set<string>();
+
+      for (const tool of tools) {
+        const sourceCat = tool.category.toLowerCase();
+        const sourceNodeId = categoryNodeMap[sourceCat];
+        if (!sourceNodeId) continue;
+
+        const targets = categoryConnections[sourceCat] || [];
+        for (const targetCat of targets) {
+          const targetNodeId = categoryNodeMap[targetCat];
+          if (!targetNodeId) continue;
+
+          const edgeKey = `${sourceNodeId}-${targetNodeId}`;
+          if (addedEdges.has(edgeKey)) continue;
+          addedEdges.add(edgeKey);
+
+          newEdges.push({
+            id: `edge-${edgeKey}`,
+            source: sourceNodeId,
+            target: targetNodeId,
+            animated: true,
+            markerEnd: { type: MarkerType.ArrowClosed },
+          });
+        }
+      }
+
+      setNodes(newNodes);
+      setEdges(newEdges);
+      setBuildTitle("Imported Stack");
+      setCurrentBuildId(null);
+      setActiveTab("builder");
+    },
+    [setNodes, setEdges]
+  );
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
@@ -1141,6 +1236,10 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           <PixelButton variant="outline" onClick={handleNewStack}>
             <Plus className="w-4 h-4 mr-1" />
             New
+          </PixelButton>
+          <PixelButton variant="outline" onClick={() => setShowImportModal(true)}>
+            <Upload className="w-4 h-4 mr-1" />
+            Import
           </PixelButton>
           {user && (
             <PixelButton
@@ -1365,6 +1464,12 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           onPublished={() => {}}
         />
       )}
+
+      <PackageJsonImportModal
+        isOpen={showImportModal}
+        onClose={() => setShowImportModal(false)}
+        onImportComplete={handleImportComplete}
+      />
     </div>
   );
 }
