@@ -195,7 +195,7 @@ function ToolsPageContent() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured")}
-              className="px-4 py-2 bg-card border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
+              className="px-4 py-2 bg-transparent border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
             >
               <option value="featured">Sort: Featured</option>
               <option value="name">Sort: Name</option>
@@ -205,12 +205,12 @@ function ToolsPageContent() {
         </div>
 
         <div className="flex-1 max-w-lg py-4 hidden sm:block">
-          <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
-            <div className="text-muted-foreground flex border-none bg-card items-center justify-center pl-4 rounded-l-lg">
+          <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all border border-border">
+            <div className="text-muted-foreground flex border-none items-center justify-center pl-4 rounded-l-lg">
               <Search className="w-5 h-5" />
             </div>
             <input
-              className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none text-foreground focus:outline-0 bg-card border-none h-full placeholder:text-muted-foreground/50 px-4 pl-2 text-sm font-normal"
+              className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none text-foreground focus:outline-0 bg-transparent border-none h-full placeholder:text-muted-foreground/50 px-4 pl-2 text-sm font-normal"
               placeholder="Search armory for tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -220,8 +220,8 @@ function ToolsPageContent() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
           <aside className="lg:col-span-3 flex flex-col gap-6 sticky top-24">
-            <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
-              <div className="bg-secondary px-4 py-3 border-b border-border">
+            <div className="border border-border rounded-xl overflow-hidden">
+              <div className="px-4 py-3 border-b border-border">
                 <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
                   <LayoutGrid className="w-4 h-4 text-primary" />
                   Categories
@@ -266,8 +266,8 @@ function ToolsPageContent() {
               </div>
             </div>
 
-            <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
-              <div className="bg-secondary px-4 py-3 border-b border-border">
+            <div className="border border-border rounded-xl overflow-hidden">
+              <div className="px-4 py-3 border-b border-border">
                 <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
                   <Coins className="w-4 h-4 text-yellow-500" />
                   Pricing
@@ -277,7 +277,7 @@ function ToolsPageContent() {
                 {rarityFilters.map((pricing) => (
                   <label key={pricing.id} className="flex items-center gap-3 cursor-pointer group">
                     <div 
-                      className={`size-4 rounded border ${pricing.color} bg-card flex items-center justify-center group-hover:border-white`}
+                      className={`size-4 rounded border ${pricing.color} bg-transparent flex items-center justify-center group-hover:border-white`}
                       onClick={() => togglePricingFilter(pricing.id)}
                     >
                       {selectedPricing.includes(pricing.id) && (

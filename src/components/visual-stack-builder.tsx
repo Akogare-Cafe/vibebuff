@@ -870,33 +870,78 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
 
   useEffect(() => {
     if (initialTools && initialTools.length > 0 && nodes.length === 0) {
-      const categoryOrder = ["ide", "ai", "frontend", "backend", "database", "deployment", "tool"];
-      const sortedTools = [...initialTools].sort((a, b) => {
-        const aIndex = categoryOrder.indexOf(a.category.toLowerCase());
-        const bIndex = categoryOrder.indexOf(b.category.toLowerCase());
-        return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+      const categoryPositions: Record<string, { x: number; y: number }> = {
+        ide: { x: 100, y: 100 },
+        ai: { x: 100, y: 280 },
+        frontend: { x: 400, y: 100 },
+        backend: { x: 400, y: 280 },
+        database: { x: 400, y: 460 },
+        deployment: { x: 700, y: 190 },
+        tool: { x: 700, y: 370 },
+        auth: { x: 100, y: 460 },
+        payments: { x: 700, y: 460 },
+        analytics: { x: 700, y: 100 },
+      };
+
+      const categoryConnections: Record<string, string[]> = {
+        ide: ["ai", "frontend", "backend"],
+        ai: ["backend", "frontend"],
+        frontend: ["backend", "deployment"],
+        backend: ["database", "ai", "deployment", "auth", "payments"],
+        database: [],
+        deployment: [],
+        auth: ["backend"],
+        payments: [],
+        analytics: ["frontend", "backend"],
+        tool: ["frontend", "backend"],
+      };
+
+      const timestamp = Date.now();
+      const categoryNodeMap: Record<string, string> = {};
+      
+      const newNodes: Node<ToolNodeData>[] = initialTools.map((tool, index) => {
+        const cat = tool.category.toLowerCase();
+        const basePos = categoryPositions[cat] || { x: 250 + (index % 3) * 250, y: 100 + Math.floor(index / 3) * 180 };
+        const nodeId = `node-${timestamp}-${index}`;
+        categoryNodeMap[cat] = nodeId;
+        
+        return {
+          id: nodeId,
+          type: "tool",
+          position: { ...basePos },
+          data: {
+            label: tool.name,
+            category: cat,
+            description: tool.tagline,
+          },
+        };
       });
 
-      const newNodes: Node<ToolNodeData>[] = sortedTools.map((tool, index) => ({
-        id: `node-${Date.now()}-${index}`,
-        type: "tool",
-        position: { x: 300, y: 100 + index * 150 },
-        data: {
-          label: tool.name,
-          category: tool.category.toLowerCase(),
-          description: tool.tagline,
-        },
-      }));
-
       const newEdges: Edge[] = [];
-      for (let i = 0; i < newNodes.length - 1; i++) {
-        newEdges.push({
-          id: `edge-${newNodes[i].id}-${newNodes[i + 1].id}`,
-          source: newNodes[i].id,
-          target: newNodes[i + 1].id,
-          animated: true,
-          markerEnd: { type: MarkerType.ArrowClosed },
-        });
+      const addedEdges = new Set<string>();
+
+      for (const tool of initialTools) {
+        const sourceCat = tool.category.toLowerCase();
+        const sourceNodeId = categoryNodeMap[sourceCat];
+        if (!sourceNodeId) continue;
+
+        const targets = categoryConnections[sourceCat] || [];
+        for (const targetCat of targets) {
+          const targetNodeId = categoryNodeMap[targetCat];
+          if (!targetNodeId) continue;
+          
+          const edgeKey = `${sourceNodeId}-${targetNodeId}`;
+          if (addedEdges.has(edgeKey)) continue;
+          addedEdges.add(edgeKey);
+
+          newEdges.push({
+            id: `edge-${edgeKey}`,
+            source: sourceNodeId,
+            target: targetNodeId,
+            animated: true,
+            markerEnd: { type: MarkerType.ArrowClosed },
+          });
+        }
       }
 
       setNodes(newNodes);
