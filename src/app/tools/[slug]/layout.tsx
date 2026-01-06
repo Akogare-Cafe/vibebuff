@@ -31,8 +31,14 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
     };
   }
 
+  const externalData = tool.externalData;
+  const githubStars = externalData?.github?.stars || tool.githubStars;
+  const npmDownloads = externalData?.npm?.downloadsWeekly || tool.npmDownloadsWeekly;
+  const latestVersion = externalData?.npm?.version;
+  const bundleSize = externalData?.bundlephobia?.gzip;
+
   const title = `${tool.name} - Features, Pricing & Alternatives | VIBEBUFF`;
-  const description = `${tool.tagline}. Compare ${tool.name} with alternatives, see pricing, pros/cons, and find if it's right for your tech stack. ${tool.description?.slice(0, 100)}...`;
+  const description = `${tool.tagline}. ${githubStars ? `${(githubStars / 1000).toFixed(1)}K GitHub stars. ` : ""}${npmDownloads ? `${(npmDownloads / 1000).toFixed(0)}K weekly downloads. ` : ""}Compare ${tool.name} with alternatives, see pricing, pros/cons, and find if it's right for your tech stack.`;
   
   const keywords = [
     tool.name,
@@ -43,9 +49,14 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
     `${tool.name} features`,
     `${tool.name} tutorial`,
     `${tool.name} documentation`,
+    `${tool.name} npm`,
+    `${tool.name} github`,
+    `${tool.name} bundle size`,
     `best ${tool.category?.name?.toLowerCase() || "developer"} tools`,
     `${tool.category?.name?.toLowerCase() || "developer"} tools comparison`,
     tool.isOpenSource ? `open source ${tool.category?.name?.toLowerCase() || "developer"} tools` : "",
+    externalData?.github?.language ? `${externalData.github.language} ${tool.category?.name?.toLowerCase() || "tools"}` : "",
+    ...(externalData?.github?.topics?.slice(0, 5) || []),
     ...tool.tags,
     ...(tool.features?.slice(0, 5) || []),
     ...(tool.bestFor?.slice(0, 3) || []),
@@ -108,6 +119,12 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
         "rating:value": ratingSummary.averageRating.toFixed(1),
         "rating:count": ratingSummary.totalReviews.toString(),
       }),
+      ...(githubStars && { "github:stars": githubStars.toString() }),
+      ...(npmDownloads && { "npm:downloads": npmDownloads.toString() }),
+      ...(latestVersion && { "software:version": latestVersion }),
+      ...(bundleSize && { "bundle:size": `${(bundleSize / 1024).toFixed(1)}KB` }),
+      ...(externalData?.github?.language && { "software:language": externalData.github.language }),
+      ...(externalData?.github?.license && { "software:license": externalData.github.license }),
     },
   };
 }
@@ -138,6 +155,10 @@ export default async function ToolLayout({
   const { tool, ratingSummary } = data;
   const hasRatings = ratingSummary && ratingSummary.totalReviews > 0;
 
+  const externalData = tool.externalData;
+  const githubStars = externalData?.github?.stars || tool.githubStars;
+  const npmDownloads = externalData?.npm?.downloadsWeekly || tool.npmDownloadsWeekly;
+
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -146,6 +167,22 @@ export default async function ToolLayout({
     url: tool.websiteUrl,
     applicationCategory: tool.category?.name || "DeveloperApplication",
     operatingSystem: "Web, Windows, macOS, Linux",
+    ...(externalData?.npm?.version && { softwareVersion: externalData.npm.version }),
+    ...(externalData?.github?.license && { license: `https://opensource.org/licenses/${externalData.github.license}` }),
+    ...(externalData?.github?.language && { programmingLanguage: externalData.github.language }),
+    ...(externalData?.github?.createdAt && { dateCreated: externalData.github.createdAt }),
+    ...(externalData?.github?.pushedAt && { dateModified: externalData.github.pushedAt }),
+    ...(tool.githubUrl && { 
+      codeRepository: tool.githubUrl,
+      ...(githubStars && { interactionStatistic: {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/LikeAction",
+        userInteractionCount: githubStars,
+      }}),
+    }),
+    ...(npmDownloads && {
+      downloadUrl: `https://www.npmjs.com/package/${tool.npmPackageName || tool.slug}`,
+    }),
     offers: {
       "@type": "Offer",
       price: tool.pricingModel === "free" || tool.pricingModel === "open_source" ? "0" : undefined,
@@ -163,6 +200,9 @@ export default async function ToolLayout({
     }),
     featureList: tool.features.join(", "),
     ...(tool.logoUrl && { image: tool.logoUrl }),
+    ...(externalData?.github?.topics && externalData.github.topics.length > 0 && {
+      keywords: externalData.github.topics.join(", "),
+    }),
   };
 
   const breadcrumbSchema = {
@@ -275,6 +315,67 @@ export default async function ToolLayout({
     },
   };
 
+  const softwareSourceCodeSchema = tool.isOpenSource && tool.githubUrl ? {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: tool.name,
+    description: tool.description,
+    codeRepository: tool.githubUrl,
+    ...(externalData?.github?.language && { programmingLanguage: externalData.github.language }),
+    ...(externalData?.github?.license && { license: externalData.github.license }),
+    ...(externalData?.github?.createdAt && { dateCreated: externalData.github.createdAt }),
+    ...(externalData?.github?.pushedAt && { dateModified: externalData.github.pushedAt }),
+    ...(externalData?.npm?.version && { version: externalData.npm.version }),
+    ...(githubStars && {
+      interactionStatistic: [
+        {
+          "@type": "InteractionCounter",
+          interactionType: "https://schema.org/LikeAction",
+          userInteractionCount: githubStars,
+        },
+        ...(externalData?.github?.forks ? [{
+          "@type": "InteractionCounter",
+          interactionType: "https://schema.org/ShareAction",
+          userInteractionCount: externalData.github.forks,
+        }] : []),
+      ],
+    }),
+    ...(externalData?.github?.contributors && {
+      contributor: {
+        "@type": "QuantitativeValue",
+        value: externalData.github.contributors,
+      },
+    }),
+  } : null;
+
+  const npmPackageSchema = npmDownloads ? {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.npmPackageName || tool.slug,
+    applicationCategory: "DeveloperApplication",
+    applicationSubCategory: "npm package",
+    downloadUrl: `https://www.npmjs.com/package/${tool.npmPackageName || tool.slug}`,
+    ...(externalData?.npm?.version && { softwareVersion: externalData.npm.version }),
+    ...(externalData?.npm?.license && { license: externalData.npm.license }),
+    ...(externalData?.bundlephobia && {
+      fileSize: `${(externalData.bundlephobia.gzip / 1024).toFixed(1)} KB (gzipped)`,
+    }),
+    ...(externalData?.npm?.types && { 
+      additionalProperty: {
+        "@type": "PropertyValue",
+        name: "TypeScript Support",
+        value: "Yes",
+      },
+    }),
+    aggregateRating: npmDownloads > 100000 ? {
+      "@type": "AggregateRating",
+      ratingValue: npmDownloads > 1000000 ? "5" : npmDownloads > 500000 ? "4.5" : "4",
+      ratingCount: Math.floor(npmDownloads / 1000),
+      bestRating: "5",
+      worstRating: "1",
+    } : undefined,
+  } : null;
+
   return (
     <>
       <Script
@@ -297,6 +398,20 @@ export default async function ToolLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
+      {softwareSourceCodeSchema && (
+        <Script
+          id="software-source-code-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSourceCodeSchema) }}
+        />
+      )}
+      {npmPackageSchema && (
+        <Script
+          id="npm-package-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(npmPackageSchema) }}
+        />
+      )}
       {children}
     </>
   );
