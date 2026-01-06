@@ -323,6 +323,13 @@ TOOLS_TO_SEARCH = [
     {"name": "Mentat", "url": "https://mentat.ai"},
     {"name": "GPT Engineer", "url": "https://gptengineer.app"},
     
+    # AI Coding Workflow & Orchestration
+    {"name": "Vibe Kanban", "url": "https://www.vibekanban.com"},
+    {"name": "Amp", "url": "https://amp.dev"},
+    {"name": "Opencode", "url": "https://opencode.ai"},
+    {"name": "Qwen Code", "url": "https://github.com/QwenLM/Qwen-Agent"},
+    {"name": "Factory Droid", "url": "https://factory.ai"},
+    
     # AI App Builders
     {"name": "Bolt.new", "url": "https://bolt.new"},
     {"name": "Lovable", "url": "https://lovable.dev"},
@@ -450,6 +457,16 @@ DISCOVERY_SEARCH_QUERIES = [
     "AI pair programming tools",
     "code completion AI tools",
     "LLM development frameworks",
+    "AI agent orchestration tools",
+    "parallel coding agents workflow",
+    "claude code alternatives",
+    "gemini cli alternatives",
+    "aider alternatives",
+    "AI coding agent management",
+    "vibe coding workflow tools",
+    "multi-agent coding tools",
+    "AI code review tools",
+    "autonomous coding agents",
 ]
 
 

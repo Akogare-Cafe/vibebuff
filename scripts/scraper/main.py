@@ -24,6 +24,7 @@ from package_registries_scraper import scrape_package_registries
 from indiehackers_scraper import scrape_indiehackers
 from betalist_scraper import scrape_betalist
 from hackernews_scraper import scrape_hackernews
+from vibe_tools_scraper import scrape_vibe_tools
 
 
 async def run_all_scrapers(
@@ -44,6 +45,7 @@ async def run_all_scrapers(
     skip_indiehackers: bool = False,
     skip_betalist: bool = False,
     skip_hackernews: bool = False,
+    skip_vibe_tools: bool = False,
 ) -> dict:
     """Run all scrapers and aggregate results."""
     
@@ -285,6 +287,19 @@ async def run_all_scrapers(
             json.dump(hn_data, f, indent=2)
         print(f"Hacker News: {hn_data.get('total_unique_stories', 0)} stories, {hn_data.get('total_tool_launches', 0)} tool launches")
     
+    # Vibe Tools (AI Coding Workflow & Orchestration)
+    if not skip_vibe_tools:
+        print("\n=== Scraping Vibe Coding Tools ===")
+        vibe_data = await scrape_vibe_tools()
+        results["sources"]["vibe_tools"] = {
+            "known_tools": len(vibe_data.get("known_tools", [])),
+            "discovered_tools": len(vibe_data.get("discovered_tools", [])),
+            "total_unique": vibe_data.get("total_unique_tools", 0),
+        }
+        with open(os.path.join(output_dir, "vibe_tools.json"), "w") as f:
+            json.dump(vibe_data, f, indent=2)
+        print(f"Vibe Tools: {vibe_data.get('total_unique_tools', 0)} unique tools")
+    
     # Save summary
     with open(os.path.join(output_dir, "scrape_summary.json"), "w") as f:
         json.dump(results, f, indent=2)
@@ -324,10 +339,11 @@ if __name__ == "__main__":
     parser.add_argument("--skip-indiehackers", action="store_true", help="Skip Indie Hackers")
     parser.add_argument("--skip-betalist", action="store_true", help="Skip BetaList")
     parser.add_argument("--skip-hackernews", action="store_true", help="Skip Hacker News")
+    parser.add_argument("--skip-vibe-tools", action="store_true", help="Skip Vibe Tools scraping")
     parser.add_argument("--only", choices=[
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
-        "vscode", "packages", "indiehackers", "betalist", "hackernews"
+        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools"
     ], help="Only run specific scraper")
     
     args = parser.parse_args()
@@ -335,7 +351,7 @@ if __name__ == "__main__":
     all_scrapers = [
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
-        "vscode", "packages", "indiehackers", "betalist", "hackernews"
+        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools"
     ]
     
     if args.only:
@@ -356,6 +372,7 @@ if __name__ == "__main__":
         skip_indiehackers = args.only != "indiehackers"
         skip_betalist = args.only != "betalist"
         skip_hackernews = args.only != "hackernews"
+        skip_vibe_tools = args.only != "vibe-tools"
     else:
         skip_github = args.skip_github
         skip_npm = args.skip_npm
@@ -374,6 +391,7 @@ if __name__ == "__main__":
         skip_indiehackers = args.skip_indiehackers
         skip_betalist = args.skip_betalist
         skip_hackernews = args.skip_hackernews
+        skip_vibe_tools = args.skip_vibe_tools
     
     async def main():
         results = await run_all_scrapers(
@@ -394,6 +412,7 @@ if __name__ == "__main__":
             skip_indiehackers=skip_indiehackers,
             skip_betalist=skip_betalist,
             skip_hackernews=skip_hackernews,
+            skip_vibe_tools=skip_vibe_tools,
         )
         print_summary(results)
     

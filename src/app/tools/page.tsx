@@ -179,7 +179,7 @@ function ToolsPageContent() {
     <div className="min-h-screen bg-background pb-24">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
-      <main className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
           <div>
             <div className="flex items-center gap-2 text-primary mb-1">

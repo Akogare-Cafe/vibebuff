@@ -202,7 +202,7 @@ function ComparePageContent() {
     <div className="min-h-screen bg-background pb-12">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
       
-      <section className="relative z-10 max-w-7xl mx-auto px-4 py-8">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Page Header */}
         <div className="mb-8 text-center">
           <div className="flex items-center justify-center gap-2 text-primary mb-2">
