@@ -30,7 +30,7 @@ import {
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
 import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
-import { AdPlaceholder } from "@/components/ad-display";
+import { AnimatedBackground } from "@/components/animated-background";
 
 interface AIRecommendation {
   id: string;
@@ -185,7 +185,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background ">
+    <div className="min-h-screen bg-background relative">
+      <AnimatedBackground />
       <HomePageSchemas />
       
       {/* Hero Section */}
@@ -476,9 +477,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        {/* In-Feed Ad */}
-        <AdPlaceholder placement="in_feed" className="mb-16 md:mb-20" />
 
         {/* Featured Tools */}
         <section className="mb-16 md:mb-20">

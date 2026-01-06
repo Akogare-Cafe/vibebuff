@@ -1614,6 +1614,8 @@ export default defineSchema({
       weeklyProgress: v.boolean(),
       communityUpdates: v.boolean(),
       battleInvites: v.boolean(),
+      newToolAlerts: v.boolean(),
+      desktopNotifications: v.boolean(),
     }),
     privacy: v.object({
       showProfile: v.boolean(),
@@ -2295,7 +2297,8 @@ export default defineSchema({
       v.literal("company_invite"),
       v.literal("company_joined"),
       v.literal("referral_signup"),
-      v.literal("referral_reward")
+      v.literal("referral_reward"),
+      v.literal("new_tool_discovered")
     ),
     title: v.string(),
     message: v.string(),
@@ -2480,4 +2483,136 @@ export default defineSchema({
     .index("by_post", ["postId"])
     .index("by_user", ["oderId"])
     .index("by_user_post", ["oderId", "postId"]),
+
+  // ============================================
+  // MCP Servers Database
+  // ============================================
+  mcpServers: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    description: v.string(),
+    shortDescription: v.optional(v.string()),
+    logoUrl: v.optional(v.string()),
+    websiteUrl: v.optional(v.string()),
+    githubUrl: v.optional(v.string()),
+    docsUrl: v.optional(v.string()),
+    author: v.optional(v.string()),
+    authorUrl: v.optional(v.string()),
+    category: v.union(
+      v.literal("database"),
+      v.literal("api"),
+      v.literal("devtools"),
+      v.literal("productivity"),
+      v.literal("ai"),
+      v.literal("cloud"),
+      v.literal("analytics"),
+      v.literal("security"),
+      v.literal("communication"),
+      v.literal("file_system"),
+      v.literal("version_control"),
+      v.literal("documentation"),
+      v.literal("testing"),
+      v.literal("deployment"),
+      v.literal("other")
+    ),
+    transportTypes: v.array(v.union(
+      v.literal("stdio"),
+      v.literal("http"),
+      v.literal("sse")
+    )),
+    supportsOAuth: v.boolean(),
+    isOfficial: v.boolean(),
+    isVerified: v.boolean(),
+    isFeatured: v.boolean(),
+    tags: v.array(v.string()),
+    installCount: v.number(),
+    upvotes: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_install_count", ["installCount"])
+    .index("by_upvotes", ["upvotes"]),
+
+  mcpServerConfigs: defineTable({
+    mcpServerId: v.id("mcpServers"),
+    ide: v.union(
+      v.literal("cursor"),
+      v.literal("windsurf"),
+      v.literal("claude_code"),
+      v.literal("vscode"),
+      v.literal("jetbrains"),
+      v.literal("claude_desktop"),
+      v.literal("zed"),
+      v.literal("neovim")
+    ),
+    configType: v.union(
+      v.literal("stdio"),
+      v.literal("http"),
+      v.literal("sse")
+    ),
+    configJson: v.string(),
+    envVars: v.optional(v.array(v.object({
+      name: v.string(),
+      description: v.string(),
+      required: v.boolean(),
+      defaultValue: v.optional(v.string()),
+    }))),
+    installCommand: v.optional(v.string()),
+    setupInstructions: v.optional(v.string()),
+  })
+    .index("by_server", ["mcpServerId"])
+    .index("by_ide", ["ide"])
+    .index("by_server_ide", ["mcpServerId", "ide"]),
+
+  mcpServerTools: defineTable({
+    mcpServerId: v.id("mcpServers"),
+    name: v.string(),
+    description: v.string(),
+    inputSchema: v.optional(v.string()),
+  }).index("by_server", ["mcpServerId"]),
+
+  mcpServerUpvotes: defineTable({
+    mcpServerId: v.id("mcpServers"),
+    userId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_server", ["mcpServerId"])
+    .index("by_user", ["userId"])
+    .index("by_user_server", ["userId", "mcpServerId"]),
+
+  mcpServerSubmissions: defineTable({
+    name: v.string(),
+    description: v.string(),
+    websiteUrl: v.optional(v.string()),
+    githubUrl: v.optional(v.string()),
+    category: v.string(),
+    transportTypes: v.array(v.string()),
+    sampleConfig: v.optional(v.string()),
+    submittedBy: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("under_review"),
+      v.literal("approved"),
+      v.literal("rejected")
+    ),
+    reviewNotes: v.optional(v.string()),
+    addedMcpServerId: v.optional(v.id("mcpServers")),
+    createdAt: v.number(),
+    reviewedAt: v.optional(v.number()),
+  })
+    .index("by_status", ["status"])
+    .index("by_user", ["submittedBy"]),
+
+  userMcpInstalls: defineTable({
+    userId: v.string(),
+    mcpServerId: v.id("mcpServers"),
+    ide: v.string(),
+    installedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_server", ["mcpServerId"])
+    .index("by_user_server", ["userId", "mcpServerId"]),
 });

@@ -8,7 +8,6 @@ import {
   Package, 
   Scale, 
   Users, 
-  Search, 
   LogIn,
   Menu,
   X,
@@ -23,6 +22,7 @@ import { useUser } from "@clerk/nextjs";
 import { NotificationBell } from "@/components/notifications";
 import { useTheme } from "@/components/providers/theme-provider";
 import { Logo } from "@/components/logo";
+import { GlobalSearch } from "@/components/global-search";
 
 const navLinks = [
   { href: "/tools", label: "Tools", icon: Package },
@@ -69,16 +69,7 @@ export function Header() {
         </div>
 
         <div className="flex-1 max-w-md px-4 hidden md:block">
-          <Link href="/tools">
-            <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all cursor-pointer">
-              <div className="text-muted-foreground flex border-none bg-card items-center justify-center pl-4 rounded-l-lg">
-                <Search className="w-5 h-5" />
-              </div>
-              <div className="flex w-full min-w-0 flex-1 rounded-lg rounded-l-none bg-card border-none h-full px-4 pl-2 text-sm items-center text-muted-foreground/50">
-                Search tools...
-              </div>
-            </label>
-          </Link>
+          <GlobalSearch />
         </div>
 
         <div className="flex items-center gap-2">

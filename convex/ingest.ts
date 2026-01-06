@@ -68,10 +68,32 @@ export const upsertTool = mutation({
 
     if (existingTool) {
       await ctx.db.patch(existingTool._id, toolData);
-      return { action: "updated", id: existingTool._id };
+      return { action: "updated", id: existingTool._id, categoryName: category.name };
     } else {
       const id = await ctx.db.insert("tools", toolData);
-      return { action: "created", id };
+      
+      const allSettings = await ctx.db.query("userSettings").collect();
+      const usersToNotify = allSettings.filter(
+        (settings) => settings.notifications?.newToolAlerts !== false
+      );
+
+      for (const settings of usersToNotify) {
+        await ctx.db.insert("notifications", {
+          userId: settings.userId,
+          type: "new_tool_discovered",
+          title: "New Tool Discovered!",
+          message: `${args.name} has been added to ${category.name}. Check it out!`,
+          icon: "Sparkles",
+          isRead: false,
+          createdAt: Date.now(),
+          metadata: {
+            toolId: id,
+            link: `/tools/${args.slug}`,
+          },
+        });
+      }
+
+      return { action: "created", id, categoryName: category.name, notifiedUsers: usersToNotify.length };
     }
   },
 });

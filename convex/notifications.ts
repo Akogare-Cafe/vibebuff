@@ -12,7 +12,8 @@ export const notificationTypes = v.union(
   v.literal("tool_update"),
   v.literal("streak_reminder"),
   v.literal("welcome"),
-  v.literal("quest_completed")
+  v.literal("quest_completed"),
+  v.literal("new_tool_discovered")
 );
 
 export const list = query({
@@ -290,5 +291,124 @@ export const createSystemNotification = mutation({
       createdAt: Date.now(),
       metadata: args.link ? { link: args.link } : undefined,
     });
+  },
+});
+
+export const createNewToolNotification = mutation({
+  args: {
+    userId: v.string(),
+    toolId: v.id("tools"),
+    toolName: v.string(),
+    toolSlug: v.string(),
+    categoryName: v.string(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("notifications", {
+      userId: args.userId,
+      type: "new_tool_discovered",
+      title: "New Tool Discovered!",
+      message: `${args.toolName} has been added to ${args.categoryName}. Check it out!`,
+      icon: "Sparkles",
+      isRead: false,
+      createdAt: Date.now(),
+      metadata: {
+        toolId: args.toolId,
+        link: `/tools/${args.toolSlug}`,
+      },
+    });
+  },
+});
+
+export const broadcastNewToolNotification = mutation({
+  args: {
+    toolId: v.id("tools"),
+    toolName: v.string(),
+    toolSlug: v.string(),
+    categoryName: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const allSettings = await ctx.db.query("userSettings").collect();
+    
+    const usersToNotify = allSettings.filter(
+      (settings) => settings.notifications?.newToolAlerts !== false
+    );
+
+    let notificationCount = 0;
+    for (const settings of usersToNotify) {
+      await ctx.db.insert("notifications", {
+        userId: settings.userId,
+        type: "new_tool_discovered",
+        title: "New Tool Discovered!",
+        message: `${args.toolName} has been added to ${args.categoryName}. Check it out!`,
+        icon: "Sparkles",
+        isRead: false,
+        createdAt: Date.now(),
+        metadata: {
+          toolId: args.toolId,
+          link: `/tools/${args.toolSlug}`,
+        },
+      });
+      notificationCount++;
+    }
+
+    return { notifiedUsers: notificationCount };
+  },
+});
+
+export const getLatestNewTools = query({
+  args: {
+    userId: v.string(),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit ?? 5;
+    
+    const notifications = await ctx.db
+      .query("notifications")
+      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .order("desc")
+      .filter((q) => q.eq(q.field("type"), "new_tool_discovered"))
+      .take(limit);
+
+    return notifications;
+  },
+});
+
+export const getUserDesktopNotificationPreference = query({
+  args: {
+    userId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const settings = await ctx.db
+      .query("userSettings")
+      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .first();
+
+    return settings?.notifications?.desktopNotifications ?? false;
+  },
+});
+
+export const updateDesktopNotificationPreference = mutation({
+  args: {
+    userId: v.string(),
+    enabled: v.boolean(),
+  },
+  handler: async (ctx, args) => {
+    const settings = await ctx.db
+      .query("userSettings")
+      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .first();
+
+    if (settings) {
+      await ctx.db.patch(settings._id, {
+        notifications: {
+          ...settings.notifications,
+          desktopNotifications: args.enabled,
+        },
+        updatedAt: Date.now(),
+      });
+    }
+
+    return { success: true };
   },
 });

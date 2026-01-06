@@ -83,10 +83,97 @@ import {
   Store,
   Tag,
   Upload,
+  Sparkles,
+  HelpCircle,
+  MousePointer2,
+  Move,
+  Link2,
+  GripVertical,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Id } from "../../convex/_generated/dataModel";
 import { PackageJsonImportModal } from "./package-json-import";
+
+interface PopularStack {
+  name: string;
+  description: string;
+  tools: Array<{ name: string; category: string; tagline: string }>;
+  tags: string[];
+}
+
+const POPULAR_STACKS: PopularStack[] = [
+  {
+    name: "Next.js + Convex",
+    description: "Modern full-stack with real-time database",
+    tags: ["Full-Stack", "Real-time"],
+    tools: [
+      { name: "Next.js", category: "frontend", tagline: "React framework for production" },
+      { name: "Convex", category: "backend", tagline: "Real-time backend platform" },
+      { name: "Tailwind CSS", category: "frontend", tagline: "Utility-first CSS framework" },
+      { name: "Clerk", category: "backend", tagline: "Authentication and user management" },
+      { name: "Vercel", category: "deployment", tagline: "Frontend cloud platform" },
+    ],
+  },
+  {
+    name: "T3 Stack",
+    description: "Type-safe full-stack with tRPC",
+    tags: ["TypeScript", "Full-Stack"],
+    tools: [
+      { name: "Next.js", category: "frontend", tagline: "React framework for production" },
+      { name: "tRPC", category: "backend", tagline: "End-to-end typesafe APIs" },
+      { name: "Prisma", category: "database", tagline: "Next-gen Node.js ORM" },
+      { name: "Tailwind CSS", category: "frontend", tagline: "Utility-first CSS framework" },
+      { name: "NextAuth.js", category: "backend", tagline: "Authentication for Next.js" },
+    ],
+  },
+  {
+    name: "MERN Stack",
+    description: "Classic JavaScript full-stack",
+    tags: ["JavaScript", "Classic"],
+    tools: [
+      { name: "MongoDB", category: "database", tagline: "NoSQL document database" },
+      { name: "Express.js", category: "backend", tagline: "Fast Node.js web framework" },
+      { name: "React", category: "frontend", tagline: "UI component library" },
+      { name: "Node.js", category: "backend", tagline: "JavaScript runtime" },
+    ],
+  },
+  {
+    name: "AI SaaS Stack",
+    description: "Build AI-powered applications",
+    tags: ["AI", "SaaS"],
+    tools: [
+      { name: "Next.js", category: "frontend", tagline: "React framework for production" },
+      { name: "OpenAI", category: "ai", tagline: "GPT and AI models" },
+      { name: "Vercel AI SDK", category: "ai", tagline: "AI streaming utilities" },
+      { name: "Supabase", category: "database", tagline: "Open source Firebase alternative" },
+      { name: "Stripe", category: "backend", tagline: "Payment processing" },
+    ],
+  },
+  {
+    name: "Indie Hacker Stack",
+    description: "Ship fast with minimal setup",
+    tags: ["Startup", "Fast"],
+    tools: [
+      { name: "Next.js", category: "frontend", tagline: "React framework for production" },
+      { name: "Supabase", category: "database", tagline: "Open source Firebase alternative" },
+      { name: "Tailwind CSS", category: "frontend", tagline: "Utility-first CSS framework" },
+      { name: "Vercel", category: "deployment", tagline: "Frontend cloud platform" },
+      { name: "Resend", category: "backend", tagline: "Email API for developers" },
+    ],
+  },
+  {
+    name: "Mobile-First Stack",
+    description: "Cross-platform mobile development",
+    tags: ["Mobile", "Cross-Platform"],
+    tools: [
+      { name: "React Native", category: "frontend", tagline: "Build native mobile apps" },
+      { name: "Expo", category: "tool", tagline: "React Native development platform" },
+      { name: "Firebase", category: "backend", tagline: "Google's app development platform" },
+      { name: "NativeWind", category: "frontend", tagline: "Tailwind CSS for React Native" },
+    ],
+  },
+];
 
 const categoryIcons: Record<string, React.ReactNode> = {
   ide: <Code className="w-4 h-4" />,
@@ -200,6 +287,56 @@ function BlueprintCard({
           {blueprint.estimatedCost && (
             <span className="text-[#fbbf24] text-xs">{blueprint.estimatedCost}</span>
           )}
+        </div>
+      </PixelCardContent>
+    </PixelCard>
+  );
+}
+
+function PopularStackCard({
+  stack,
+  onSelect,
+}: {
+  stack: PopularStack;
+  onSelect: () => void;
+}) {
+  return (
+    <PixelCard 
+      className="cursor-pointer hover:border-primary/50 transition-colors" 
+      onClick={onSelect}
+    >
+      <PixelCardContent className="p-4">
+        <h3 className="text-primary font-bold text-sm mb-1">
+          {stack.name}
+        </h3>
+        <p className="text-muted-foreground text-xs mb-3">
+          {stack.description}
+        </p>
+        <div className="flex flex-wrap gap-1 mb-3">
+          {stack.tools.slice(0, 4).map((tool) => (
+            <PixelBadge
+              key={tool.name}
+              className="text-[6px]"
+              style={{
+                backgroundColor: `${categoryColors[tool.category]}20`,
+                color: categoryColors[tool.category],
+              }}
+            >
+              {tool.name}
+            </PixelBadge>
+          ))}
+          {stack.tools.length > 4 && (
+            <PixelBadge className="text-[6px]">
+              +{stack.tools.length - 4}
+            </PixelBadge>
+          )}
+        </div>
+        <div className="flex gap-1">
+          {stack.tags.map((tag) => (
+            <PixelBadge key={tag} variant="outline" className="text-[6px]">
+              {tag}
+            </PixelBadge>
+          ))}
         </div>
       </PixelCardContent>
     </PixelCard>
@@ -842,6 +979,167 @@ interface InitialTool {
   tagline: string;
 }
 
+interface HelpStep {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const HELP_STEPS: HelpStep[] = [
+  {
+    icon: <MousePointer2 className="w-6 h-6" />,
+    title: "Add Tools",
+    description: "Click tools from the palette or select a template to get started",
+  },
+  {
+    icon: <Move className="w-6 h-6" />,
+    title: "Drag to Arrange",
+    description: "Drag nodes to position them. Organize by category for clarity",
+  },
+  {
+    icon: <Link2 className="w-6 h-6" />,
+    title: "Connect Tools",
+    description: "Drag from the bottom handle of one node to the top of another",
+  },
+  {
+    icon: <Save className="w-6 h-6" />,
+    title: "Save & Share",
+    description: "Save your stack, export as image, or share with the community",
+  },
+];
+
+function HelpOverlay({ onClose }: { onClose: () => void }) {
+  const [currentStep, setCurrentStep] = useState(0);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-lg w-full"
+      >
+        <PixelCard className="p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-primary text-lg font-bold flex items-center gap-2">
+              <HelpCircle className="w-5 h-5" />
+              How to Use Stack Builder
+            </h3>
+            <button
+              onClick={onClose}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-center py-8"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
+                  className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+                >
+                  {HELP_STEPS[currentStep].icon}
+                </motion.div>
+                <h4 className="text-primary font-bold text-lg mb-2">
+                  {HELP_STEPS[currentStep].title}
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  {HELP_STEPS[currentStep].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 mb-6">
+            {HELP_STEPS.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentStep(index)}
+                className={cn(
+                  "w-2 h-2 rounded-full transition-all",
+                  currentStep === index
+                    ? "bg-primary w-6"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                )}
+              />
+            ))}
+          </div>
+
+          <div className="flex gap-2">
+            <PixelButton
+              variant="outline"
+              onClick={() => setCurrentStep((s) => Math.max(0, s - 1))}
+              disabled={currentStep === 0}
+              className="flex-1"
+            >
+              Previous
+            </PixelButton>
+            {currentStep < HELP_STEPS.length - 1 ? (
+              <PixelButton
+                onClick={() => setCurrentStep((s) => s + 1)}
+                className="flex-1"
+              >
+                Next
+              </PixelButton>
+            ) : (
+              <PixelButton onClick={onClose} className="flex-1">
+                Get Started
+              </PixelButton>
+            )}
+          </div>
+        </PixelCard>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function QuickTips() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+      className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"
+    >
+      {HELP_STEPS.map((step, index) => (
+        <motion.div
+          key={step.title}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 * index }}
+          className="flex items-center gap-2 p-3 bg-card/50 border border-border rounded-lg"
+        >
+          <div className="text-primary/70">{step.icon}</div>
+          <div>
+            <p className="text-primary text-xs font-bold">{step.title}</p>
+            <p className="text-muted-foreground text-[10px] line-clamp-1">
+              {step.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
 interface VisualStackBuilderProps {
   initialTools?: InitialTool[];
 }
@@ -860,6 +1158,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [showImportModal, setShowImportModal] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const flowRef = useRef<HTMLDivElement>(null);
 
   const blueprints = useQuery(api.stackBuilder.getFeaturedBlueprints, { limit: 6 });
@@ -874,16 +1173,19 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   useEffect(() => {
     if (initialTools && initialTools.length > 0) {
       const categoryPositions: Record<string, { x: number; y: number }> = {
-        ide: { x: 100, y: 100 },
-        ai: { x: 100, y: 280 },
-        frontend: { x: 400, y: 100 },
-        backend: { x: 400, y: 280 },
-        database: { x: 400, y: 460 },
-        deployment: { x: 700, y: 190 },
-        tool: { x: 700, y: 370 },
-        auth: { x: 100, y: 460 },
-        payments: { x: 700, y: 460 },
-        analytics: { x: 700, y: 100 },
+        ide: { x: 50, y: 50 },
+        ai: { x: 50, y: 250 },
+        frontend: { x: 350, y: 50 },
+        backend: { x: 350, y: 250 },
+        database: { x: 350, y: 450 },
+        deployment: { x: 650, y: 150 },
+        tool: { x: 650, y: 350 },
+        auth: { x: 50, y: 450 },
+        payments: { x: 650, y: 450 },
+        analytics: { x: 650, y: 50 },
+        testing: { x: 50, y: 350 },
+        monitoring: { x: 850, y: 250 },
+        unknown: { x: 200, y: 300 },
       };
 
       const categoryConnections: Record<string, string[]> = {
@@ -897,21 +1199,29 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         payments: [],
         analytics: ["frontend", "backend"],
         tool: ["frontend", "backend"],
+        testing: ["frontend", "backend"],
+        monitoring: ["backend", "deployment"],
       };
 
       const timestamp = Date.now();
       const categoryNodeMap: Record<string, string> = {};
+      const usedPositions: Record<string, number> = {};
       
       const newNodes: Node<ToolNodeData>[] = initialTools.map((tool, index) => {
         const cat = tool.category.toLowerCase();
-        const basePos = categoryPositions[cat] || { x: 250 + (index % 3) * 250, y: 100 + Math.floor(index / 3) * 180 };
+        const basePos = categoryPositions[cat] || categoryPositions.unknown || { x: 250 + (index % 3) * 250, y: 100 + Math.floor(index / 3) * 180 };
+        const offset = usedPositions[cat] || 0;
+        usedPositions[cat] = offset + 1;
+        
         const nodeId = `node-${timestamp}-${index}`;
-        categoryNodeMap[cat] = nodeId;
+        if (!categoryNodeMap[cat]) {
+          categoryNodeMap[cat] = nodeId;
+        }
         
         return {
           id: nodeId,
           type: "tool",
-          position: { ...basePos },
+          position: { x: basePos.x + offset * 50, y: basePos.y + offset * 50 },
           data: {
             label: tool.name,
             category: cat,
@@ -987,6 +1297,90 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
       setNodes(blueprint.nodes as Node<ToolNodeData>[]);
       setEdges(blueprint.edges);
       setBuildTitle(blueprint.title);
+    },
+    [setNodes, setEdges]
+  );
+
+  const handleLoadPopularStack = useCallback(
+    (stack: PopularStack) => {
+      const categoryPositions: Record<string, { x: number; y: number }> = {
+        ide: { x: 100, y: 100 },
+        ai: { x: 100, y: 280 },
+        frontend: { x: 400, y: 100 },
+        backend: { x: 400, y: 280 },
+        database: { x: 400, y: 460 },
+        deployment: { x: 700, y: 190 },
+        tool: { x: 700, y: 370 },
+      };
+
+      const categoryConnections: Record<string, string[]> = {
+        frontend: ["backend", "deployment"],
+        backend: ["database", "ai", "deployment"],
+        database: [],
+        deployment: [],
+        ai: ["backend", "frontend"],
+        tool: ["frontend", "backend"],
+      };
+
+      const timestamp = Date.now();
+      const categoryNodeMap: Record<string, string> = {};
+      const usedPositions: Record<string, number> = {};
+
+      const newNodes: Node<ToolNodeData>[] = stack.tools.map((tool, index) => {
+        const cat = tool.category.toLowerCase();
+        const basePos = categoryPositions[cat] || { x: 250 + (index % 3) * 250, y: 100 + Math.floor(index / 3) * 180 };
+        const offset = usedPositions[cat] || 0;
+        usedPositions[cat] = offset + 1;
+
+        const nodeId = `node-${timestamp}-${index}`;
+        if (!categoryNodeMap[cat]) {
+          categoryNodeMap[cat] = nodeId;
+        }
+
+        return {
+          id: nodeId,
+          type: "tool",
+          position: { x: basePos.x + offset * 40, y: basePos.y + offset * 40 },
+          data: {
+            label: tool.name,
+            category: cat,
+            description: tool.tagline,
+          },
+        };
+      });
+
+      const newEdges: Edge[] = [];
+      const addedEdges = new Set<string>();
+
+      for (const tool of stack.tools) {
+        const sourceCat = tool.category.toLowerCase();
+        const sourceNodeId = categoryNodeMap[sourceCat];
+        if (!sourceNodeId) continue;
+
+        const targets = categoryConnections[sourceCat] || [];
+        for (const targetCat of targets) {
+          const targetNodeId = categoryNodeMap[targetCat];
+          if (!targetNodeId) continue;
+
+          const edgeKey = `${sourceNodeId}-${targetNodeId}`;
+          if (addedEdges.has(edgeKey)) continue;
+          addedEdges.add(edgeKey);
+
+          newEdges.push({
+            id: `edge-${edgeKey}`,
+            source: sourceNodeId,
+            target: targetNodeId,
+            animated: true,
+            markerEnd: { type: MarkerType.ArrowClosed },
+          });
+        }
+      }
+
+      setNodes(newNodes);
+      setEdges(newEdges);
+      setBuildTitle(stack.name);
+      setBuildDescription(stack.description);
+      setCurrentBuildId(null);
     },
     [setNodes, setEdges]
   );
@@ -1268,6 +1662,9 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
               Marketplace
             </PixelButton>
           </a>
+          <PixelButton variant="outline" onClick={() => setShowHelp(true)}>
+            <HelpCircle className="w-4 h-4" />
+          </PixelButton>
         </div>
       </div>
 
@@ -1303,6 +1700,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
 
       {activeTab === "builder" && (
         <>
+          <QuickTips />
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             <div className="flex-1 flex flex-col md:flex-row gap-2">
               <input
@@ -1369,21 +1767,41 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
             </div>
           </div>
 
-          {blueprints && blueprints.length > 0 && nodes.length === 0 && (
-            <div>
-              <h2 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
-                Start from a Template
-                <ChevronRight className="w-4 h-4" />
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {blueprints.map((blueprint) => (
-                  <BlueprintCard
-                    key={blueprint._id}
-                    blueprint={blueprint as Blueprint}
-                    onSelect={() => handleLoadBlueprint(blueprint as Blueprint)}
-                  />
-                ))}
+          {nodes.length === 0 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5" />
+                  Popular Stacks
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {POPULAR_STACKS.map((stack) => (
+                    <PopularStackCard
+                      key={stack.name}
+                      stack={stack}
+                      onSelect={() => handleLoadPopularStack(stack)}
+                    />
+                  ))}
+                </div>
               </div>
+
+              {blueprints && blueprints.length > 0 && (
+                <div>
+                  <h2 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
+                    Start from a Template
+                    <ChevronRight className="w-4 h-4" />
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {blueprints.map((blueprint) => (
+                      <BlueprintCard
+                        key={blueprint._id}
+                        blueprint={blueprint as Blueprint}
+                        onSelect={() => handleLoadBlueprint(blueprint as Blueprint)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -1470,6 +1888,10 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         onClose={() => setShowImportModal(false)}
         onImportComplete={handleImportComplete}
       />
+
+      <AnimatePresence>
+        {showHelp && <HelpOverlay onClose={() => setShowHelp(false)} />}
+      </AnimatePresence>
     </div>
   );
 }

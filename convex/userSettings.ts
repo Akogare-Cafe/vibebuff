@@ -9,6 +9,8 @@ const DEFAULT_SETTINGS = {
     weeklyProgress: true,
     communityUpdates: false,
     battleInvites: true,
+    newToolAlerts: true,
+    desktopNotifications: false,
   },
   privacy: {
     showProfile: true,
@@ -122,6 +124,8 @@ export const updateNotifications = mutation({
       weeklyProgress: v.boolean(),
       communityUpdates: v.boolean(),
       battleInvites: v.boolean(),
+      newToolAlerts: v.boolean(),
+      desktopNotifications: v.boolean(),
     }),
   },
   handler: async (ctx, args) => {

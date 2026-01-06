@@ -23,10 +23,12 @@ import {
   Megaphone,
   Flame,
   Target,
+  BellRing,
 } from "lucide-react";
 import { PixelButton } from "@/components/pixel-button";
 import { cn } from "@/lib/utils";
 import type { Id } from "../../convex/_generated/dataModel";
+import { useDesktopNotifications } from "@/hooks/use-desktop-notifications";
 
 function formatTimeAgo(timestamp: number): string {
   const now = Date.now();
@@ -54,7 +56,8 @@ type NotificationType =
   | "tool_update"
   | "streak_reminder"
   | "welcome"
-  | "quest_completed";
+  | "quest_completed"
+  | "new_tool_discovered";
 
 interface Notification {
   _id: Id<"notifications">;
@@ -88,6 +91,7 @@ const notificationIcons: Record<NotificationType, React.ReactNode> = {
   streak_reminder: <Flame className="w-4 h-4 text-orange-500" />,
   welcome: <Sparkles className="w-4 h-4 text-primary" />,
   quest_completed: <Target className="w-4 h-4 text-green-500" />,
+  new_tool_discovered: <Sparkles className="w-4 h-4 text-emerald-500" />,
 };
 
 const notificationColors: Record<NotificationType, string> = {
@@ -102,6 +106,7 @@ const notificationColors: Record<NotificationType, string> = {
   streak_reminder: "border-l-orange-500",
   welcome: "border-l-primary",
   quest_completed: "border-l-green-500",
+  new_tool_discovered: "border-l-emerald-500",
 };
 
 function NotificationItem({ 
@@ -193,6 +198,13 @@ export function NotificationBell() {
   const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const {
+    isSupported: desktopSupported,
+    permission: desktopPermission,
+    isEnabled: desktopEnabled,
+    enableDesktopNotifications,
+    disableDesktopNotifications,
+  } = useDesktopNotifications();
 
   const notifications = useQuery(
     api.notifications.list,
@@ -208,6 +220,14 @@ export function NotificationBell() {
   const markAllAsRead = useMutation(api.notifications.markAllAsRead);
   const deleteNotification = useMutation(api.notifications.deleteNotification);
   const clearAll = useMutation(api.notifications.clearAll);
+
+  const handleToggleDesktop = async () => {
+    if (desktopEnabled) {
+      await disableDesktopNotifications();
+    } else {
+      await enableDesktopNotifications();
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -311,6 +331,34 @@ export function NotificationBell() {
               </div>
             )}
           </div>
+
+          {desktopSupported && (
+            <div className="p-2 border-t border-border bg-secondary/30">
+              <button
+                onClick={handleToggleDesktop}
+                disabled={desktopPermission === "denied"}
+                className={cn(
+                  "w-full flex items-center gap-2 px-2 py-1.5 rounded text-xs transition-colors",
+                  desktopEnabled
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary",
+                  desktopPermission === "denied" && "opacity-50 cursor-not-allowed"
+                )}
+              >
+                <BellRing className="w-3.5 h-3.5" />
+                <span className="flex-1 text-left">
+                  {desktopPermission === "denied"
+                    ? "Desktop notifications blocked"
+                    : desktopEnabled
+                      ? "Desktop notifications enabled"
+                      : "Enable desktop notifications"}
+                </span>
+                {desktopEnabled && (
+                  <span className="text-[10px] bg-primary/20 px-1.5 py-0.5 rounded">ON</span>
+                )}
+              </button>
+            </div>
+          )}
 
           {notifications && notifications.length > 0 && (
             <div className="p-2 border-t border-border bg-secondary/30 flex justify-between items-center">
