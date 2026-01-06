@@ -1,0 +1,4444 @@
+{
+  "scraped_at": "2026-01-06T10:33:41.202061",
+  "known_tools": [
+    {
+      "name": "Vibe Kanban",
+      "url": "https://www.vibekanban.com",
+      "category": "orchestration",
+      "metadata": {
+        "url": "https://www.vibekanban.com",
+        "title": "Vibe Kanban - Orchestrate AI Coding Agents",
+        "description": "Get the most out of coding agents like Claude Code, Gemini CLI and Amp. Orchestrate multiple AI coding agents, track tasks, and manage your development workflow efficiently.",
+        "og_title": "Vibe Kanban - Orchestrate AI Coding Agents",
+        "og_image": "https://vibekanban.com/images/new-screenshots/screenshot-task-preview-light.jpeg",
+        "github_url": "https://github.com/BloopAI/vibe-kanban",
+        "features_detected": [
+          "VS Code extension",
+          "AI code review",
+          "Terminal-based",
+          "Context-aware",
+          "Parallel agent execution",
+          "MCP integration",
+          "CLI interface",
+          "Git worktree isolation"
+        ],
+        "supported_agents": [
+          "Gemini Cli",
+          "Opencode",
+          "Cursor",
+          "Copilot",
+          "Claude Code",
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:33:41.602418"
+      }
+    },
+    {
+      "name": "Claude Code",
+      "url": "https://www.anthropic.com/claude-code",
+      "category": "cli_agent",
+      "metadata": {
+        "url": "https://claude.com/product/claude-code",
+        "title": "Claude Code - AI coding agent for terminal & IDE | Claude",
+        "description": "Claude Code is an agentic AI coding tool that understands your entire codebase. Edit files, run commands, debug issues, and ship faster\u2014directly from your terminal, IDE, Slack or on the web.",
+        "og_title": "Claude Code - AI coding agent for terminal & IDE | Claude",
+        "og_image": "https://cdn.prod.website-files.com/6889473510b50328dbb70ae6/68c469d41149ace562bfd24d_og-claude-product-claude-code.jpg",
+        "github_url": null,
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Claude Code",
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:33:43.440206"
+      }
+    },
+    {
+      "name": "Aider",
+      "url": "https://aider.chat",
+      "category": "cli_agent",
+      "metadata": {
+        "url": "https://aider.chat",
+        "title": "Aider - AI Pair Programming in Your Terminal",
+        "description": null,
+        "og_title": null,
+        "og_image": null,
+        "github_url": "https://github.com/Aider-AI/aider",
+        "features_detected": [
+          "Terminal-based",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Aider"
+        ],
+        "scraped_at": "2026-01-06T10:33:44.894700"
+      }
+    },
+    {
+      "name": "Cursor",
+      "url": "https://cursor.com",
+      "category": "ide",
+      "metadata": {
+        "url": "https://cursor.com",
+        "title": "Cursor",
+        "description": "Built to make you extraordinarily productive, Cursor is the best way to code with AI.",
+        "og_title": "Cursor",
+        "og_image": "https://cursor.com/public/opengraph-image.png",
+        "github_url": null,
+        "features_detected": [
+          "AI code review",
+          "CLI interface",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:33:46.153450"
+      }
+    },
+    {
+      "name": "Windsurf",
+      "url": "https://codeium.com/windsurf",
+      "category": "ide",
+      "metadata": {
+        "url": "https://windsurf.com/editor",
+        "title": "Windsurf Editor | Windsurf",
+        "description": "Tomorrow's editor, today. Windsurf Editor is the first AI agent-powered IDE that keeps developers in the flow. Available today on Mac, Windows, and Linux.",
+        "og_title": "Windsurf Editor | Windsurf",
+        "og_image": "https://exafunction.github.io/public/images/website_thumbnails/editor.jpg",
+        "github_url": null,
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Cursor",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:33:48.105963"
+      }
+    },
+    {
+      "name": "Cline",
+      "url": "https://cline.bot",
+      "category": "extension",
+      "metadata": {
+        "url": "https://cline.bot",
+        "title": "Cline - AI Coding, Open Source and Uncompromised",
+        "description": "Cline is a fully open-source, model-agnostic AI coding agent with Plan Mode, MCP integration, terminal-first workflows, and frontier-model access for transparent, end-to-end automation and zero vendor lock-in \u2014 trusted by 4M+ developers worldwide.",
+        "og_title": "Cline - AI Coding, Open Source and Uncompromised",
+        "og_image": "https://cline.bot/cline_og_img.png",
+        "github_url": "https://github.com/cline/cline",
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Cline"
+        ],
+        "scraped_at": "2026-01-06T10:33:49.288909"
+      }
+    },
+    {
+      "name": "Continue",
+      "url": "https://continue.dev",
+      "category": "extension",
+      "metadata": {
+        "url": "https://www.continue.dev/",
+        "title": "Continue - Ship faster with Continuous AI",
+        "description": "The future of coding isn't writing more code. It's delegating the boring parts, so you can build the interesting stuff",
+        "og_title": "Continue - Ship faster with Continuous AI",
+        "og_image": "https://cdn.prod.website-files.com/663e06c56841363663ffbbcf/688c27c869cbd188382d8bca_social%20card%402x.png",
+        "github_url": "https://github.com/continuedev/continue",
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:33:51.225283"
+      }
+    },
+    {
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot",
+      "category": "extension",
+      "metadata": {
+        "url": "https://github.com/features/copilot",
+        "title": "GitHub Copilot \u00b7 Your AI pair programmer \u00b7 GitHub",
+        "description": "GitHub Copilot works alongside you directly in your editor, suggesting whole lines or entire functions for you.",
+        "og_title": "GitHub Copilot \u00b7 Your AI pair programmer",
+        "og_image": "https://images.ctfassets.net/8aevphvgewt8/5IdZ8KizWhMOGixAmVSw0g/f81f5f263a88eabe5d3e102300d44a88/github-copilot-social-img.png",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Ffeatures%2Fcopilot",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Cursor",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:33:53.000496"
+      }
+    },
+    {
+      "name": "Gemini CLI",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "category": "cli_agent",
+      "metadata": {
+        "url": "https://github.com/google-gemini/gemini-cli",
+        "title": "GitHub - google-gemini/gemini-cli: An open-source AI agent that brings the power of Gemini directly into your terminal.",
+        "description": "An open-source AI agent that brings the power of Gemini directly into your terminal. - google-gemini/gemini-cli",
+        "og_title": "GitHub - google-gemini/gemini-cli: An open-source AI agent that brings the power of Gemini directly into your terminal.",
+        "og_image": "https://repository-images.githubusercontent.com/968197216/8522a757-5632-4fa4-8d01-fcc121390cb1",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fgoogle-gemini%2Fgemini-cli",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Gemini Cli",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:33:54.595415"
+      }
+    },
+    {
+      "name": "OpenHands",
+      "url": "https://www.all-hands.dev",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://openhands.dev/",
+        "title": "OpenHands | The Open Platform for Cloud Coding Agents",
+        "description": "Meet OpenHands, the open-source, model-agnostic platform for cloud coding agents. Automate real engineering work securely and transparently. Build faster with full control.",
+        "og_title": "OpenHands | The Open Platform for Cloud Coding Agents",
+        "og_image": "https://cdn.prod.website-files.com/68ff4057b35616cdd47d5ac7/69161b32abf448a2df921a73_openhands_opengraph_01.png",
+        "github_url": "https://github.com/OpenHands/OpenHands",
+        "features_detected": [
+          "AI code review",
+          "Terminal-based",
+          "CLI interface",
+          "Autonomous operation"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:33:56.336827"
+      }
+    },
+    {
+      "name": "Devin",
+      "url": "https://devin.ai",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://devin.ai",
+        "title": "Devin | The AI Software Engineer",
+        "description": "Devin is an AI coding agent and software engineer that helps developers build better software faster. Parallel cloud agents for serious engineering teams.",
+        "og_title": "Devin",
+        "og_image": "https://devin.ai/cover.png",
+        "github_url": null,
+        "features_detected": [
+          "Autonomous operation",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:33:57.576369"
+      }
+    },
+    {
+      "name": "Goose",
+      "url": "https://block.github.io/goose/",
+      "category": "cli_agent",
+      "metadata": {
+        "url": "https://block.github.io/goose/",
+        "title": "goose",
+        "description": "your open source AI agent, automating engineering tasks seamlessly",
+        "og_title": "goose",
+        "og_image": "https://block.github.io/goose/img/home-banner.png",
+        "github_url": "https://github.com/block/goose",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:33:58.984987"
+      }
+    },
+    {
+      "name": "Roo Code",
+      "url": "https://roocode.com",
+      "category": "extension",
+      "metadata": {
+        "url": "https://roocode.com",
+        "title": "Roo Code \u2013 The AI dev team that gets things done",
+        "description": "Roo Code puts an entire AI dev team right in your editor, outpacing closed tools with deep project-wide context, multi-step agentic coding, and unmatched developer-centric flexibility.",
+        "og_title": "Roo Code \u2013 The AI dev team that gets things done",
+        "og_image": "https://roocode.com/api/og?title=Meet+Roo+Code&description=Your+AI+Software+Engineering+Team+in+the+IDE+and+the+Cloud.",
+        "github_url": "https://github.com/RooCodeInc/Roo-Code",
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Cursor",
+          "Cline",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:34:00.212031"
+      }
+    },
+    {
+      "name": "Amp",
+      "url": "https://amp.dev",
+      "category": "cli_agent",
+      "metadata": {
+        "url": "https://amp.dev",
+        "title": "AMP - a web component framework to easily create user-first web experiences - amp.dev",
+        "description": "Whether you are a publisher, e-commerce company, storyteller, advertiser or email sender, AMP makes it easy to create great experiences on the web. Use AMP to build websites, stories, ads and emails.",
+        "og_title": "AMP - a web component framework to easily create user-first web experiences",
+        "og_image": "https://amp.dev/static/img/sharing/default-600x314.png",
+        "github_url": "https://github.com/ampproject",
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:01.593822"
+      }
+    },
+    {
+      "name": "Bolt.new",
+      "url": "https://bolt.new",
+      "category": "app_builder",
+      "metadata": {
+        "url": "https://bolt.new",
+        "title": "Bolt AI builder: Websites, apps & prototypes",
+        "description": null,
+        "og_title": "Bolt AI builder: Websites, apps & prototypes",
+        "og_image": "https://bolt.new/static/social_preview_index.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:02.914198"
+      }
+    },
+    {
+      "name": "Lovable",
+      "url": "https://lovable.dev",
+      "category": "app_builder",
+      "metadata": {
+        "url": "https://lovable.dev",
+        "title": "Lovable - Build Apps & Websites with AI, Fast | No Code App Builder",
+        "description": "Lovable is an AI app and website builder that turns ideas into production-ready software without coding. Launch faster with AI.",
+        "og_title": "Lovable - Build Apps & Websites with AI, Fast | No Code App Builder",
+        "og_image": "https://lovable.dev/opengraph-image.png?e7ae4aa2faea9aea",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:04.858747"
+      }
+    },
+    {
+      "name": "v0",
+      "url": "https://v0.dev",
+      "category": "app_builder",
+      "metadata": {
+        "url": "https://v0.app/",
+        "title": "v0 by Vercel",
+        "description": "Your collaborative AI assistant to design, iterate, and scale full-stack applications for the web.",
+        "og_title": "v0 by Vercel",
+        "og_image": "https://v0.app/chat/api/og",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:06.863638"
+      }
+    },
+    {
+      "name": "Replit Agent",
+      "url": "https://replit.com",
+      "category": "app_builder",
+      "metadata": {
+        "url": "https://replit.com",
+        "title": "Replit \u2013 Build apps and sites with AI - Replit",
+        "description": "Build and deploy software collaboratively with the power of AI without spending a second on setup.",
+        "og_title": "Replit \u2013 Build apps and sites with AI",
+        "og_image": "https://replit.com/public/images/opengraph.png",
+        "github_url": null,
+        "features_detected": [
+          "Autonomous operation"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:11.184228"
+      }
+    },
+    {
+      "name": "Kiro",
+      "url": "https://kiro.dev",
+      "category": "ide",
+      "metadata": {
+        "url": "https://kiro.dev",
+        "title": "Kiro: Agentic AI development from prototype to production",
+        "description": "Kiro helps you do your best work by bringing structure to AI coding with spec-driven development.",
+        "og_title": "Kiro: Agentic AI development from prototype to production",
+        "og_image": "https://kiro.dev/opengraph-image.png?5c641cacbd716e07",
+        "github_url": "https://github.com/igorsasovets",
+        "features_detected": [
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:12.360228"
+      }
+    },
+    {
+      "name": "Codium AI",
+      "url": "https://www.codium.ai",
+      "category": "extension",
+      "metadata": {
+        "url": "https://www.qodo.ai/",
+        "title": "AI Code Review for Teams \u2013 IDE, GitHub, GitLab & CLI",
+        "description": "Qodo is the AI code review platform that gives engineering teams deep codebase context to move faster without sacrificing code quality. Its 15+ agentic workflows automate reviews in your IDE and pull requests, and also help keep security and compliance on track across the SDLC.",
+        "og_title": "Qodo | AI Agents for Code, Review & Workflows",
+        "og_image": "https://www.qodo.ai/wp-content/uploads/2025/06/social-share-new.webp",
+        "github_url": "https://github.com/marketplace/qodo-merge-pro",
+        "features_detected": [
+          "AI code review",
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:34:13.892478"
+      }
+    },
+    {
+      "name": "Supermaven",
+      "url": "https://supermaven.com",
+      "category": "extension",
+      "metadata": {
+        "url": "https://supermaven.com",
+        "title": "Supermaven: Free AI Code Completion",
+        "description": "The fastest copilot. Supermaven uses a 1 million token context window to provide the highest quality code completions.",
+        "og_title": "Supermaven: Free AI Code Completion",
+        "og_image": "https://supermaven.com/desc-image.png",
+        "github_url": null,
+        "features_detected": [
+          "VS Code extension",
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:34:15.146171"
+      }
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com",
+      "category": "extension",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://www.tabnine.com"
+      }
+    },
+    {
+      "name": "Amazon Q Developer",
+      "url": "https://aws.amazon.com/q/developer/",
+      "category": "extension",
+      "metadata": {
+        "url": "https://aws.amazon.com/q/developer/",
+        "title": "Generative AI Assistant for Software Development \u2013 Amazon Q Developer \u2013 AWS",
+        "description": "Amazon Q Developer is the most capable generative AI\u2013powered assistant for building, operating, and transforming software, with advanced capabilities for managing data and AI/ML.",
+        "og_title": "Amazon Q Developer",
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Terminal-based",
+          "Autonomous operation",
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:17.915871"
+      }
+    },
+    {
+      "name": "Sourcegraph Cody",
+      "url": "https://sourcegraph.com/cody",
+      "category": "extension",
+      "metadata": {
+        "url": "https://sourcegraph.com/cody",
+        "title": "Cody | AI coding assistant from Sourcegraph",
+        "description": "Cody is the most powerful and accurate AI coding assistant for writing, fixing, and maintaining code",
+        "og_title": "Cody | AI coding assistant from Sourcegraph",
+        "og_image": "https://2762526.fs1.hubspotusercontent-na1.net/hubfs/2762526/CleanShot%202025-01-28%20at%2012.05.20@2x.png",
+        "github_url": "https://github.com/sourcegraph",
+        "features_detected": [
+          "Terminal-based",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:19.306696"
+      }
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chat.openai.com",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://chat.openai.com"
+      }
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://claude.ai"
+      }
+    },
+    {
+      "name": "Gemini",
+      "url": "https://gemini.google.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://gemini.google.com",
+        "title": "\u200eGoogle Gemini",
+        "description": "Meet Gemini, Google\u2019s AI assistant. Get help with writing, planning, brainstorming, and more. Experience the power of generative AI.",
+        "og_title": "\u200eGoogle Gemini",
+        "og_image": "https://www.gstatic.com/lamda/images/gemini_aurora_thumbnail_4g_e74822ff0ca4259beb718.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:23.392150"
+      }
+    },
+    {
+      "name": "Perplexity",
+      "url": "https://perplexity.ai",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://perplexity.ai"
+      }
+    },
+    {
+      "name": "Mistral AI",
+      "url": "https://mistral.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://mistral.ai",
+        "title": "Frontier AI LLMs, assistants, agents, services | Mistral AI",
+        "description": "The most powerful AI platform for enterprises. Customize, fine-tune, and deploy AI assistants, autonomous agents, and multimodal AI with open models.",
+        "og_title": "Frontier AI LLMs, assistants, agents, services | Mistral AI",
+        "og_image": "https://cms.mistral.ai/assets/060bdeb1-fbff-419c-b2ae-b32b5e441864",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:26.720747"
+      }
+    },
+    {
+      "name": "Cohere",
+      "url": "https://cohere.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://cohere.com",
+        "title": "Enterprise AI: Private, Secure, Customizable | Cohere",
+        "description": "Cohere builds powerful models and AI solutions enabling enterprises to automate processes, empower employees, and turn fragmented data into actionable insights.",
+        "og_title": "Enterprise AI: Private, Secure, Customizable | Cohere",
+        "og_image": "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/b966213f9f46bb9cec6ec5a3406e893530b8b292-1200x630.png?w=1200&h=630",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:28.029122"
+      }
+    },
+    {
+      "name": "Groq",
+      "url": "https://groq.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://groq.com",
+        "title": "Groq is fast, low cost inference.",
+        "description": "The Groq LPU delivers inference with the speed and cost developers need.",
+        "og_title": "Groq is fast, low cost inference.",
+        "og_image": "https://cdn.sanity.io/images/chol0sk5/production/ce0b2266373b3c9722b0bccb9a98441c26c89696-1200x630.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:29.316813"
+      }
+    },
+    {
+      "name": "Together AI",
+      "url": "https://together.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://www.together.ai/",
+        "title": "Together AI | The AI Native Cloud",
+        "description": "Reliably build, deploy, and scale AI native apps \u2014 benefit from cutting-edge research, complete developer experience, and unmatched price-performance.",
+        "og_title": "Together AI | The AI Native Cloud",
+        "og_image": "https://cdn.prod.website-files.com/64f6f2c0e3f4c5a91c1e823a/691f405c9f510ed701778037_og-homepage_20251029.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:30.909531"
+      }
+    },
+    {
+      "name": "Fireworks AI",
+      "url": "https://fireworks.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://fireworks.ai",
+        "title": "Fireworks AI - Fastest Inference for Generative AI",
+        "description": "Use state-of-the-art, open-source LLMs and image models at blazing fast speed, or fine-tune and deploy your own at no additional cost with Fireworks AI!",
+        "og_title": "Fireworks AI - Fastest Inference for Generative AI",
+        "og_image": "https://cdn.sanity.io/images/pv37i0yn/production/c33db052f8afd1af58bc0342cf8ce06cbeb84467-600x314.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Cursor",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:34:32.555626"
+      }
+    },
+    {
+      "name": "Replicate",
+      "url": "https://replicate.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://replicate.com",
+        "title": "Replicate - Run AI with an API",
+        "description": "Run open-source machine learning models with a cloud API",
+        "og_title": null,
+        "og_image": null,
+        "github_url": "https://github.com/replicate/replicate-javascript",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:34.299031"
+      }
+    },
+    {
+      "name": "Hugging Face",
+      "url": "https://huggingface.co",
+      "category": "llm",
+      "metadata": {
+        "url": "https://huggingface.co",
+        "title": "Hugging Face \u2013 The AI community building the future.",
+        "description": "We\u2019re on a journey to advance and democratize artificial intelligence through open source and open science.",
+        "og_title": "Hugging Face \u2013 The AI community building the future.",
+        "og_image": "https://huggingface.co/front/thumbnails/v2-2.png",
+        "github_url": "https://github.com/huggingface",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:35.569239"
+      }
+    },
+    {
+      "name": "OpenRouter",
+      "url": "https://openrouter.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://openrouter.ai",
+        "title": "OpenRouter",
+        "description": "A router for LLMs and other AI models",
+        "og_title": "OpenRouter",
+        "og_image": "https://openrouter.ai/dynamic-og?pathname=default&title=OpenRouter&description=A+router+for+LLMs+and+other+AI+models",
+        "github_url": "https://github.com/OpenRouterTeam",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:37.161129"
+      }
+    },
+    {
+      "name": "Anyscale",
+      "url": "https://anyscale.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://www.anyscale.com/",
+        "title": "Anyscale | Production-Ready AI with Ray",
+        "description": "Powered by Ray, Anyscale empowers AI builders to run and scale all ML and AI workloads on any cloud and on-prem.",
+        "og_title": "Anyscale | Production-Ready AI with Ray",
+        "og_image": "https://images.ctfassets.net/xjan103pcp94/cpKmR4XdiqNwmVIPyso3s/e1bc752af85081e70d1b51982c85758f/anyscale_link_preview_2x.png",
+        "github_url": "https://github.com/anyscale",
+        "features_detected": [
+          "VS Code extension"
+        ],
+        "supported_agents": [
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:34:38.991070"
+      }
+    },
+    {
+      "name": "DeepSeek",
+      "url": "https://deepseek.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://www.deepseek.com/",
+        "title": "DeepSeek | \u6df1\u5ea6\u6c42\u7d22",
+        "description": "\u6df1\u5ea6\u6c42\u7d22\uff08DeepSeek\uff09\uff0c\u6210\u7acb\u4e8e2023\u5e74\uff0c\u4e13\u6ce8\u4e8e\u7814\u7a76\u4e16\u754c\u9886\u5148\u7684\u901a\u7528\u4eba\u5de5\u667a\u80fd\u5e95\u5c42\u6a21\u578b\u4e0e\u6280\u672f\uff0c\u6311\u6218\u4eba\u5de5\u667a\u80fd\u524d\u6cbf\u6027\u96be\u9898\u3002\u57fa\u4e8e\u81ea\u7814\u8bad\u7ec3\u6846\u67b6\u3001\u81ea\u5efa\u667a\u7b97\u96c6\u7fa4\u548c\u4e07\u5361\u7b97\u529b\u7b49\u8d44\u6e90\uff0c\u6df1\u5ea6\u6c42\u7d22\u56e2\u961f\u4ec5\u7528\u534a\u5e74\u65f6\u95f4\u4fbf\u5df2\u53d1\u5e03\u5e76\u5f00\u6e90\u591a\u4e2a\u767e\u4ebf\u7ea7\u53c2\u6570\u5927\u6a21\u578b\uff0c\u5982DeepSeek-LLM\u901a\u7528\u5927\u8bed\u8a00\u6a21\u578b\u3001DeepSeek-Coder\u4ee3\u7801\u5927\u6a21\u578b\uff0c\u5e76\u57282024\u5e741\u6708\u7387\u5148\u5f00\u6e90\u56fd\u5185\u9996\u4e2aMoE\u5927\u6a21\u578b\uff08DeepSeek-MoE\uff09\uff0c\u5404\u5927\u6a21\u578b\u5728\u516c\u5f00\u8bc4\u6d4b\u699c\u5355\u53ca\u771f\u5b9e\u6837\u672c\u5916\u7684\u6cdb\u5316\u6548\u679c\u5747\u6709\u8d85\u8d8a\u540c\u7ea7\u522b\u6a21\u578b\u7684\u51fa\u8272\u8868\u73b0\u3002\u548c DeepSeek AI \u5bf9\u8bdd\uff0c\u8f7b\u677e\u63a5\u5165 API\u3002",
+        "og_title": "DeepSeek | \u6df1\u5ea6\u6c42\u7d22",
+        "og_image": "https://cdn.deepseek.com/images/deepseek-chat-open-graph-image.jpeg",
+        "github_url": "https://github.com/deepseek-ai",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:41.336047"
+      }
+    },
+    {
+      "name": "Qwen",
+      "url": "https://qwenlm.github.io",
+      "category": "llm",
+      "metadata": {
+        "url": "https://qwenlm.github.io",
+        "title": "Qwen",
+        "description": "Qwickly forging AGI, enhancing intelligence.",
+        "og_title": "Qwen",
+        "og_image": "https://qwenlm.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:42.919543"
+      }
+    },
+    {
+      "name": "Yi",
+      "url": "https://01.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://www.01.ai/",
+        "title": "\u96f6\u4e00\u4e07\u7269-AI2.0\u5927\u6a21\u578b\u6280\u672f\u548c\u5e94\u7528\u7684\u5168\u7403\u516c\u53f8\uff0801.AI\uff09",
+        "description": "\u96f6\u4e00\u4e07\u7269\u81f4\u529b\u4e8e\u6210\u4e3a\u4e00\u5bb6\u7531\u6280\u672f\u613f\u666f\u9a71\u52a8\u3001\u62e5\u6709\u5353\u8d8a\u4e2d\u56fd\u5de5\u7a0b\u5e95\u8574\u7684\u521b\u65b0\u4f01\u4e1a\uff0c\u63a8\u52a8\u4ee5\u57fa\u5ea7\u5927\u6a21\u578b\u4e3a\u7a81\u7834\u7684AI 2.0\u6380\u8d77\u6280\u672f\u3001\u5e73\u53f0\u5230\u5e94\u7528\u591a\u4e2a\u5c42\u9762\u7684\u9769\u547d\u3002",
+        "og_title": "\u96f6\u4e00\u4e07\u7269-AI2.0\u5927\u6a21\u578b\u6280\u672f\u548c\u5e94\u7528\u7684\u5168\u7403\u516c\u53f8\uff0801.AI\uff09",
+        "og_image": "https://user-assets.sxlcdn.com/images/987821/FrlX5hBJzYiI62PNP5FUKt8y5n4Y.png?imageMogr2/strip/auto-orient/thumbnail/1200x630>/format/png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:34:47.451819"
+      }
+    },
+    {
+      "name": "Llama",
+      "url": "https://llama.meta.com",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 400",
+        "url": "https://llama.meta.com"
+      }
+    },
+    {
+      "name": "Grok",
+      "url": "https://x.ai",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://x.ai"
+      }
+    },
+    {
+      "name": "Pi",
+      "url": "https://pi.ai",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://pi.ai"
+      }
+    },
+    {
+      "name": "Poe",
+      "url": "https://poe.com",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://poe.com"
+      }
+    },
+    {
+      "name": "Character.AI",
+      "url": "https://character.ai",
+      "category": "llm",
+      "metadata": {
+        "url": "https://character.ai",
+        "title": "character.ai | AI Chat, Reimagined\u2013Your Words. Your World.",
+        "description": "Chat with millions of AI Characters on the #1 AI chat app. Where will your next adventure take you?",
+        "og_title": "character.ai | AI Chat, Reimagined\u2013Your Words. Your World.",
+        "og_image": "https://character.ai/character-ai.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:34:57.602657"
+      }
+    },
+    {
+      "name": "Phind",
+      "url": "https://phind.com",
+      "category": "llm",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://phind.com"
+      }
+    },
+    {
+      "name": "You.com",
+      "url": "https://you.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://you.com/home",
+        "title": "You.com | AI Search Infrastructure for Enterprise Teams",
+        "description": "Skip the groundwork with our AI-ready API platform and ultra-specific vertical indexes, delivering advanced search capabilities to power your next product.",
+        "og_title": "You.com | AI Search Infrastructure for Enterprise Teams",
+        "og_image": "https://cdn.prod.website-files.com/687f2dca0cbe61df74670d33/688bc5610abc4729ca564d93_32499e9023e9c1fe2750b141956c28a2_OGP%202.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:00.826279"
+      }
+    },
+    {
+      "name": "Kagi",
+      "url": "https://kagi.com",
+      "category": "llm",
+      "metadata": {
+        "url": "https://kagi.com",
+        "title": "Kagi Search - A Premium Search Engine",
+        "description": "Better search results with no ads. Welcome to Kagi (pronounced kah-gee), a paid search engine that gives power back to the user.",
+        "og_title": null,
+        "og_image": "https://kagi.com/og-image.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:02.339908"
+      }
+    },
+    {
+      "name": "LangChain",
+      "url": "https://langchain.com",
+      "category": "framework",
+      "metadata": {
+        "url": "https://www.langchain.com/",
+        "title": "LangChain",
+        "description": "LangChain provides the engineering platform and open source frameworks developers use to build, test, and deploy reliable AI agents.",
+        "og_title": "LangChain",
+        "og_image": "https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/65c69af1f3035ff97de2cc38_HomePage-metaImage.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:04.137932"
+      }
+    },
+    {
+      "name": "LlamaIndex",
+      "url": "https://llamaindex.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://www.llamaindex.ai/",
+        "title": "LlamaIndex - Redefine Document Workflows with AI Agents",
+        "description": "LlamaIndex brings together VLM-powered and an enterprise\u2011grade framework for building, serving, and deploying agents.",
+        "og_title": "LlamaIndex - Redefine Document Workflows with AI Agents",
+        "og_image": "https://www.llamaindex.ai/og-image.png",
+        "github_url": "https://github.com/run-llama/",
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:05.732290"
+      }
+    },
+    {
+      "name": "Haystack",
+      "url": "https://haystack.deepset.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://haystack.deepset.ai",
+        "title": "Haystack | Haystack",
+        "description": "Create agentic, compound AI systems using Haystack\u2019s modular and customizable building blocks, built for real-world, production-ready applications.",
+        "og_title": "Haystack | Haystack",
+        "og_image": "https://haystack.deepset.ai/images/haystack-ogimage.png",
+        "github_url": "https://github.com/deepset-ai/haystack-experimental",
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:07.055219"
+      }
+    },
+    {
+      "name": "Semantic Kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "category": "framework",
+      "metadata": {
+        "url": "https://github.com/microsoft/semantic-kernel",
+        "title": "GitHub - microsoft/semantic-kernel: Integrate cutting-edge LLM technology quickly and easily into your apps",
+        "description": "Integrate cutting-edge LLM technology quickly and easily into your apps - microsoft/semantic-kernel",
+        "og_title": "GitHub - microsoft/semantic-kernel: Integrate cutting-edge LLM technology quickly and easily into your apps",
+        "og_image": "https://repository-images.githubusercontent.com/607289185/402ae401-d650-438a-bc04-780afb58b560",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fmicrosoft%2Fsemantic-kernel",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Context-aware",
+          "Multi-agent support",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Opencode",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:08.966015"
+      }
+    },
+    {
+      "name": "AutoGen",
+      "url": "https://microsoft.github.io/autogen/",
+      "category": "framework",
+      "metadata": {
+        "url": "https://microsoft.github.io/autogen/",
+        "title": "Redirecting...",
+        "description": null,
+        "og_title": null,
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:11.461524"
+      }
+    },
+    {
+      "name": "CrewAI",
+      "url": "https://crewai.com",
+      "category": "framework",
+      "metadata": {
+        "url": "https://www.crewai.com/",
+        "title": "The Leading Multi-Agent Platform",
+        "description": null,
+        "og_title": null,
+        "og_image": null,
+        "github_url": "https://github.com/crewaiinc/crewai",
+        "features_detected": [
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:13.072724"
+      }
+    },
+    {
+      "name": "Dify",
+      "url": "https://dify.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://dify.ai",
+        "title": "Dify: Leading Agentic Workflow Builder",
+        "description": "Unlock agentic workflow with Dify. Develop, deploy, and manage autonomous agents, RAG pipelines, and more for teams at any scale, effortlessly.",
+        "og_title": "Dify: Leading Agentic Workflow Builder",
+        "og_image": "https://framerusercontent.com/assets/wuOqS9XwiT7WjyMd0HAinp7aWo.png",
+        "github_url": "https://github.com/langgenius/dify/",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:14.847649"
+      }
+    },
+    {
+      "name": "Flowise",
+      "url": "https://flowiseai.com",
+      "category": "framework",
+      "metadata": {
+        "url": "https://flowiseai.com",
+        "title": "Flowise - Build AI Agents, Visually",
+        "description": "Open source generative AI development platform for building AI agents, LLM orchestration, and more",
+        "og_title": "Flowise - Build AI Agents, Visually",
+        "og_image": "https://remarkable-smakager-ddb2b7.netlify.app/opengraph-image.png?9ccfc0cd89ea0cda",
+        "github_url": "https://github.com/FlowiseAI/Flowise",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:16.344075"
+      }
+    },
+    {
+      "name": "Langflow",
+      "url": "https://langflow.org",
+      "category": "framework",
+      "metadata": {
+        "url": "https://www.langflow.org/",
+        "title": "Langflow | Low-code AI builder for agentic and RAG applications",
+        "description": "Welcome to Langflow - Build AI applications with ease",
+        "og_title": "Langflow | Low-code AI builder for agentic and RAG applications",
+        "og_image": "https://www.langflow.org/images/og-image.png",
+        "github_url": "https://github.com/langflow-ai/langflow/releases",
+        "features_detected": [
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:18.122099"
+      }
+    },
+    {
+      "name": "Vercel AI SDK",
+      "url": "https://sdk.vercel.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://ai-sdk.dev/",
+        "title": "AI SDK",
+        "description": "The AI Toolkit for TypeScript, from the creators of Next.js.",
+        "og_title": "AI SDK",
+        "og_image": "https://ai-sdk.dev/og/home?title=AI%20SDK&description=The%20AI%20Toolkit%20for%20TypeScript%2C%20from%20the%20creators%20of%20Next.js.",
+        "github_url": "https://github.com/vercel/ai",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:19.623232"
+      }
+    },
+    {
+      "name": "Instructor",
+      "url": "https://python.useinstructor.com",
+      "category": "framework",
+      "metadata": {
+        "url": "https://python.useinstructor.com",
+        "title": "Instructor - Multi-Language Library for Structured LLM Outputs | Python, TypeScript, Go, Ruby - Instructor",
+        "description": "Get structured, validated data from any LLM with Instructor - the #1 library for LLM data extraction. Supports 15+ providers (OpenAI, Anthropic, Google, Ollama, DeepSeek) in 6 languages. Built on type-safe schemas with automatic retries, streaming, and nested object support.",
+        "og_title": "Instructor - Multi-Language Library for Structured LLM Outputs | Python, TypeScript, Go, Ruby - Instructor",
+        "og_image": "https://python.useinstructor.com/assets/images/social/index.png",
+        "github_url": "https://github.com/567-labs/kura",
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:21.284519"
+      }
+    },
+    {
+      "name": "Outlines",
+      "url": "https://github.com/outlines-dev/outlines",
+      "category": "framework",
+      "metadata": {
+        "url": "https://github.com/dottxt-ai/outlines",
+        "title": "GitHub - dottxt-ai/outlines: Structured Outputs",
+        "description": "Structured Outputs. Contribute to dottxt-ai/outlines development by creating an account on GitHub.",
+        "og_title": "GitHub - dottxt-ai/outlines: Structured Outputs",
+        "og_image": "https://opengraph.githubassets.com/46b8a3bd79cdc60876d1b2cb797faa98c7683fd36807094d8990169b40d137b4/dottxt-ai/outlines",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fdottxt-ai%2Foutlines",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:23.410773"
+      }
+    },
+    {
+      "name": "Guidance",
+      "url": "https://github.com/guidance-ai/guidance",
+      "category": "framework",
+      "metadata": {
+        "url": "https://github.com/guidance-ai/guidance",
+        "title": "GitHub - guidance-ai/guidance: A guidance language for controlling large language models.",
+        "description": "A guidance language for controlling large language models. - guidance-ai/guidance",
+        "og_title": "GitHub - guidance-ai/guidance: A guidance language for controlling large language models.",
+        "og_image": "https://opengraph.githubassets.com/7d62aafd56faf3473dac9a88073642a1804bc6a416f35bb47bcced134bcb6f54/guidance-ai/guidance",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fguidance-ai%2Fguidance",
+        "features_detected": [
+          "AI code review",
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:25.080274"
+      }
+    },
+    {
+      "name": "DSPy",
+      "url": "https://dspy-docs.vercel.app",
+      "category": "framework",
+      "metadata": {
+        "url": "https://dspy.ai/",
+        "title": "DSPy",
+        "description": "The framework for programming\u2014rather than prompting\u2014language models.",
+        "og_title": "DSPy",
+        "og_image": "https://dspy.ai/assets/images/social/index.png",
+        "github_url": "https://github.com/stanfordnlp/dspy",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:26.573990"
+      }
+    },
+    {
+      "name": "Marvin",
+      "url": "https://askmarvin.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://askmarvin.ai/welcome",
+        "title": "Marvin - Marvin",
+        "description": "A powerful framework for building AI applications",
+        "og_title": "Marvin - Marvin",
+        "og_image": "https://marvin.mintlify.app/mintlify-assets/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdivision%3DGet%2BStarted%26title%3DMarvin%26description%3DA%2Bpowerful%2Bframework%2Bfor%2Bbuilding%2BAI%2Bapplications%26logoLight%3Dhttps%253A%252F%252Fmintlify.s3.us-west-1.amazonaws.com%252Fmarvin%252Fassets%252Fbrand%252Fmarvin_mascot.jpeg%26logoDark%3Dhttps%253A%252F%252Fmintlify.s3.us-west-1.amazonaws.com%252Fmarvin%252Fassets%252Fbrand%252Fmarvin_mascot.jpeg%26primaryColor%3D%25232D6DF6%26backgroundLight%3D%2523ffffff%26backgroundDark%3D%25230a0d0d&w=1200&q=100",
+        "github_url": "https://github.com/PrefectHQ/marvin",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:28.122108"
+      }
+    },
+    {
+      "name": "Mirascope",
+      "url": "https://mirascope.io",
+      "category": "framework",
+      "metadata": {
+        "url": "https://mirascope.com/",
+        "title": "Home | Mirascope",
+        "description": "The AI Engineer's Developer Stack",
+        "og_title": "Home | Mirascope",
+        "og_image": "https://mirascope.com/social-cards/index.webp",
+        "github_url": "https://github.com/Mirascope/mirascope",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:29.616491"
+      }
+    },
+    {
+      "name": "Pydantic AI",
+      "url": "https://ai.pydantic.dev",
+      "category": "framework",
+      "metadata": {
+        "url": "https://ai.pydantic.dev",
+        "title": "Pydantic AI - Pydantic AI",
+        "description": "GenAI Agent Framework, the Pydantic way",
+        "og_title": "Pydantic AI",
+        "og_image": "https://ai.pydantic.dev/assets/images/social/index.png",
+        "github_url": "https://github.com/pydantic/pydantic-ai",
+        "features_detected": [
+          "Context-aware",
+          "Multi-agent support",
+          "Parallel agent execution",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:30.837935"
+      }
+    },
+    {
+      "name": "Magentic",
+      "url": "https://github.com/jackmpcollins/magentic",
+      "category": "framework",
+      "metadata": {
+        "url": "https://github.com/jackmpcollins/magentic",
+        "title": "GitHub - jackmpcollins/magentic: Seamlessly integrate LLMs as Python functions",
+        "description": "Seamlessly integrate LLMs as Python functions. Contribute to jackmpcollins/magentic development by creating an account on GitHub.",
+        "og_title": "GitHub - jackmpcollins/magentic: Seamlessly integrate LLMs as Python functions",
+        "og_image": "https://opengraph.githubassets.com/69794977f2f88c9c12142975edf35541436878ad5ef55e74be4c370c41bed982/jackmpcollins/magentic",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fjackmpcollins%2Fmagentic",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:32.724957"
+      }
+    },
+    {
+      "name": "LMQL",
+      "url": "https://lmql.ai",
+      "category": "framework",
+      "metadata": {
+        "url": "https://lmql.ai",
+        "title": "LMQL is a programming language for LLM interaction. | LMQL",
+        "description": "Language Model Query Language",
+        "og_title": null,
+        "og_image": null,
+        "github_url": "https://github.com/eth-sri/lmql",
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:34.112892"
+      }
+    },
+    {
+      "name": "Guardrails AI",
+      "url": "https://guardrailsai.com",
+      "category": "framework",
+      "metadata": {
+        "url": "https://guardrailsai.com",
+        "title": "Guardrails AI",
+        "description": "Enforce assurance for LLM applications",
+        "og_title": "Guardrails AI",
+        "og_image": "/ogImages/home.png",
+        "github_url": "https://github.com/guardrails-ai/guardrails",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:35.474294"
+      }
+    },
+    {
+      "name": "NeMo Guardrails",
+      "url": "https://github.com/NVIDIA/NeMo-Guardrails",
+      "category": "framework",
+      "metadata": {
+        "url": "https://github.com/NVIDIA-NeMo/Guardrails",
+        "title": "GitHub - NVIDIA-NeMo/Guardrails: NeMo Guardrails is an open-source toolkit for easily adding programmable guardrails to LLM-based conversational systems.",
+        "description": "NeMo Guardrails is an open-source toolkit for easily adding programmable guardrails to LLM-based conversational systems. - NVIDIA-NeMo/Guardrails",
+        "og_title": "GitHub - NVIDIA-NeMo/Guardrails: NeMo Guardrails is an open-source toolkit for easily adding programmable guardrails to LLM-based conversational systems.",
+        "og_image": "https://opengraph.githubassets.com/285b04a9c41effd6fdcccbbcc05b9a89e63fffb6ed60537021a5eb4b6d6f1ae5/NVIDIA-NeMo/Guardrails",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2FNVIDIA-NeMo%2FGuardrails",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:37.316048"
+      }
+    },
+    {
+      "name": "Ollama",
+      "url": "https://ollama.ai",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://ollama.com/",
+        "title": "Ollama",
+        "description": "Get up and running with large language models.",
+        "og_title": "Ollama",
+        "og_image": "https://ollama.com/public/og.png",
+        "github_url": "https://github.com/ollama/ollama",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:38.812995"
+      }
+    },
+    {
+      "name": "LM Studio",
+      "url": "https://lmstudio.ai",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://lmstudio.ai",
+        "title": "LM Studio - Local AI on your computer",
+        "description": "Run local AI models like gpt-oss, Llama, Gemma, Qwen, and DeepSeek privately on your computer.",
+        "og_title": "LM Studio - Local AI on your computer",
+        "og_image": "https://files.lmstudio.ai/6-model-link-og.png",
+        "github_url": "https://github.com/lmstudio-ai",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:40.109849"
+      }
+    },
+    {
+      "name": "GPT4All",
+      "url": "https://gpt4all.io",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://www.nomic.ai/gpt4all",
+        "title": "GPT4All - Run Large Language Models Locally and Privately",
+        "description": "Nomic - operationalize AI that learns and acts over your knowledge.",
+        "og_title": "GPT4All - Run Large Language Models Locally and Privately",
+        "og_image": "https://cdn.prod.website-files.com/68e3cde3af1711044d58aba7/6904e4dcdf3e06f9fe7f3fb5_Glass.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:41.623274"
+      }
+    },
+    {
+      "name": "Jan",
+      "url": "https://jan.ai",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://www.jan.ai/",
+        "title": "Jan - Open-Source ChatGPT Replacement",
+        "description": "Jan is an open-source alternative to ChatGPT. Run open-source AI models locally or connect to cloud models like GPT, Claude and others.",
+        "og_title": "Jan - Open-Source ChatGPT Replacement - Jan",
+        "og_image": "https://jan.ai/assets/images/general/og-image.png",
+        "github_url": "https://github.com/janhq/jan/releases/latest",
+        "features_detected": [
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:43.260198"
+      }
+    },
+    {
+      "name": "Msty",
+      "url": "https://msty.app",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://msty.ai/",
+        "title": "Simple. Powerful. Private. | Msty",
+        "description": "Unleash the power of AI with Msty.",
+        "og_title": "AI your way. Simple. Powerful. Private.",
+        "og_image": "https://msty.ai/msty-cube.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:35:44.894141"
+      }
+    },
+    {
+      "name": "LocalAI",
+      "url": "https://localai.io",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://localai.io",
+        "title": "LocalAI",
+        "description": "The free, OpenAI, Anthropic alternative. Your All-in-One Complete AI Stack",
+        "og_title": "LocalAI",
+        "og_image": null,
+        "github_url": "https://github.com/mudler/LocalAI/edit/master/docs/content/_index.md",
+        "features_detected": [
+          "Autonomous operation"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:46.118183"
+      }
+    },
+    {
+      "name": "Text Generation WebUI",
+      "url": "https://github.com/oobabooga/text-generation-webui",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://github.com/oobabooga/text-generation-webui",
+        "title": "GitHub - oobabooga/text-generation-webui: The definitive Web UI for local AI, with powerful features and easy setup.",
+        "description": "The definitive Web UI for local AI, with powerful features and easy setup. - oobabooga/text-generation-webui",
+        "og_title": "GitHub - oobabooga/text-generation-webui: The definitive Web UI for local AI, with powerful features and easy setup.",
+        "og_image": "https://opengraph.githubassets.com/c8dd5ea3de696e003a6373fcbde06208904dab7adb2c19d574f0b55ddeb9b04b/oobabooga/text-generation-webui",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Foobabooga%2Ftext-generation-webui",
+        "features_detected": [
+          "AI code review",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:48.041852"
+      }
+    },
+    {
+      "name": "vLLM",
+      "url": "https://vllm.ai",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://vllm.ai",
+        "title": "vLLM",
+        "description": "vLLM is a high-throughput and memory-efficient inference and serving engine for Large Language Models (LLMs). Deploy AI models faster with state-of-the-art performance. Easy, fast, and cost-efficient LLM serving for everyone.",
+        "og_title": "vLLM",
+        "og_image": "https://vllm.ai/vLLM-Logo.png",
+        "github_url": "https://github.com/vllm-project/vllm",
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:35:49.252825"
+      }
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggerganov/llama.cpp",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://github.com/ggml-org/llama.cpp",
+        "title": "GitHub - ggml-org/llama.cpp: LLM inference in C/C++",
+        "description": "LLM inference in C/C++. Contribute to ggml-org/llama.cpp development by creating an account on GitHub.",
+        "og_title": "GitHub - ggml-org/llama.cpp: LLM inference in C/C++",
+        "og_image": "https://repository-images.githubusercontent.com/612354784/c59e3320-a236-4182-941f-ea3f1a0f50e7",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fggml-org%2Fllama.cpp",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:51.225572"
+      }
+    },
+    {
+      "name": "Kobold.cpp",
+      "url": "https://github.com/LostRuins/koboldcpp",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://github.com/LostRuins/koboldcpp",
+        "title": "GitHub - LostRuins/koboldcpp: Run GGUF models easily with a KoboldAI UI. One File. Zero Install.",
+        "description": "Run GGUF models easily with a KoboldAI UI. One File. Zero Install. - LostRuins/koboldcpp",
+        "og_title": "GitHub - LostRuins/koboldcpp: Run GGUF models easily with a KoboldAI UI. One File. Zero Install.",
+        "og_image": "https://opengraph.githubassets.com/60f714252ba4e3981609790e2cc60620fec41a4998c47999fefa9a1bb7909537/LostRuins/koboldcpp",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2FLostRuins%2Fkoboldcpp",
+        "features_detected": [
+          "AI code review",
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:52.739395"
+      }
+    },
+    {
+      "name": "ExLlamaV2",
+      "url": "https://github.com/turboderp/exllamav2",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://github.com/turboderp-org/exllamav2",
+        "title": "GitHub - turboderp-org/exllamav2: A fast inference library for running LLMs locally on modern consumer-class GPUs",
+        "description": "A fast inference library for running LLMs locally on modern consumer-class GPUs - turboderp-org/exllamav2",
+        "og_title": "GitHub - turboderp-org/exllamav2: A fast inference library for running LLMs locally on modern consumer-class GPUs",
+        "og_image": "https://opengraph.githubassets.com/cb0544b9d8f8f994d783b6788cb7a3c350c1ad7d2a395a8df20dcc41eb1f1b71/turboderp-org/exllamav2",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fturboderp-org%2Fexllamav2",
+        "features_detected": [
+          "AI code review",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:54.655499"
+      }
+    },
+    {
+      "name": "MLX",
+      "url": "https://github.com/ml-explore/mlx",
+      "category": "local_llm",
+      "metadata": {
+        "url": "https://github.com/ml-explore/mlx",
+        "title": "GitHub - ml-explore/mlx: MLX: An array framework for Apple silicon",
+        "description": "MLX: An array framework for Apple silicon. Contribute to ml-explore/mlx development by creating an account on GitHub.",
+        "og_title": "GitHub - ml-explore/mlx: MLX: An array framework for Apple silicon",
+        "og_image": "https://opengraph.githubassets.com/b4b2d1043a6637a90763eb0f871d92e38c4857a7f6efea9bb13eefa736149039/ml-explore/mlx",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fml-explore%2Fmlx",
+        "features_detected": [
+          "AI code review",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:35:56.632335"
+      }
+    },
+    {
+      "name": "OpenAI API",
+      "url": "https://platform.openai.com",
+      "category": "api",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://platform.openai.com"
+      }
+    },
+    {
+      "name": "Anthropic API",
+      "url": "https://console.anthropic.com",
+      "category": "api",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://console.anthropic.com"
+      }
+    },
+    {
+      "name": "Google AI Studio",
+      "url": "https://aistudio.google.com",
+      "category": "api",
+      "metadata": {
+        "url": "https://aistudio.google.com/welcome",
+        "title": "Google AI Studio",
+        "description": "The fastest path from prompt to production with Gemini",
+        "og_title": "Google AI Studio",
+        "og_image": "https://ai.google.dev/static/site-assets/images/share-ais-03.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:00.579977"
+      }
+    },
+    {
+      "name": "Azure OpenAI",
+      "url": "https://azure.microsoft.com/en-us/products/ai-services/openai-service",
+      "category": "api",
+      "metadata": {
+        "url": "https://azure.microsoft.com/en-us/products/ai-foundry/models/openai/",
+        "title": "Azure OpenAI in Foundry Models | Microsoft Azure",
+        "description": "Access and fine-tune the latest AI reasoning and multimodal models, integrate AI agents, and deploy secure, enterprise-ready generative AI solutions.",
+        "og_title": "Azure OpenAI in Foundry Models | Microsoft Azure",
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:36:21.568474"
+      }
+    },
+    {
+      "name": "AWS Bedrock",
+      "url": "https://aws.amazon.com/bedrock/",
+      "category": "api",
+      "metadata": {
+        "url": "https://aws.amazon.com/bedrock/",
+        "title": "Amazon Bedrock \u2013 Build genAI applications and agents at production scale \u2013 AWS",
+        "description": "Amazon Bedrock: The platform for building generative AI applications and agents at production scale",
+        "og_title": "Amazon Bedrock \u2013 Build genAI applications and agents at production scale \u2013 AWS",
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:22.845068"
+      }
+    },
+    {
+      "name": "Vertex AI",
+      "url": "https://cloud.google.com/vertex-ai",
+      "category": "api",
+      "metadata": {
+        "url": "https://cloud.google.com/vertex-ai",
+        "title": "Vertex AI Platform | Google Cloud",
+        "description": "Enterprise ready, fully-managed, unified AI development platform. Access and utilize Vertex AI Studio, Agent Builder, and 200+ foundation models.",
+        "og_title": "Vertex AI Platform",
+        "og_image": "https://cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
+        "github_url": "https://github.com/GoogleCloudPlatform/vertex-ai-samples/",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:24.446127"
+      }
+    },
+    {
+      "name": "Weights & Biases",
+      "url": "https://wandb.ai",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://wandb.ai",
+        "title": "Weights & Biases",
+        "description": "Weights & Biases, developer tools for machine learning",
+        "og_title": "Weights & Biases",
+        "og_image": "https://wandb.ai/logo.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:25.797876"
+      }
+    },
+    {
+      "name": "LangSmith",
+      "url": "https://smith.langchain.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://smith.langchain.com",
+        "title": "LangSmith",
+        "description": null,
+        "og_title": null,
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:27.054878"
+      }
+    },
+    {
+      "name": "Helicone",
+      "url": "https://helicone.ai",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://www.helicone.ai/",
+        "title": "Helicone / AI Gateway & LLM Observability",
+        "description": "Routing and monitoring for reliable AI apps - the LLMOps platform behind the fastest-growing AI companies.",
+        "og_title": "Helicone",
+        "og_image": "https://www.helicone.ai/static/new-open-graph.png",
+        "github_url": "https://github.com/helicone/helicone",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:28.804197"
+      }
+    },
+    {
+      "name": "Braintrust",
+      "url": "https://braintrustdata.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://www.braintrust.dev/",
+        "title": "Braintrust - The AI observability platform for building quality AI products",
+        "description": null,
+        "og_title": "Braintrust - The AI observability platform for building quality AI products",
+        "og_image": "https://www.braintrust.dev/og?title=Braintrust+-+The+AI+observability+platform+for+building+quality+AI+products",
+        "github_url": "https://github.com/braintrustdata/",
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:30.421933"
+      }
+    },
+    {
+      "name": "Portkey",
+      "url": "https://portkey.ai",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://portkey.ai",
+        "title": "Production Stack for Gen AI Builders|Portkey",
+        "description": "Democratize and productionize Gen AI across your entire org with Portkey's suite of AI gateway, observability, guardrails, and prompt management modules.",
+        "og_title": "Production Stack for Gen AI Builders|Portkey",
+        "og_image": "https://framerusercontent.com/assets/eUOFPrbMAOXfElIu1wQFjPESlk.png",
+        "github_url": "https://github.com/portkey-ai",
+        "features_detected": [
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Claude Code"
+        ],
+        "scraped_at": "2026-01-06T10:36:31.894654"
+      }
+    },
+    {
+      "name": "Arize",
+      "url": "https://arize.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://arize.com",
+        "title": "LLM Observability & Evaluation Platform",
+        "description": "Unified LLM Observability and Agent Evaluation Platform for AI Applications\u2014from development to production.",
+        "og_title": "Home",
+        "og_image": "https://arize.com/wp-content/uploads/2025/02/General-featured.jpg",
+        "github_url": "https://github.com/Arize-ai/phoenix",
+        "features_detected": [
+          "CLI interface",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:33.215915"
+      }
+    },
+    {
+      "name": "Langfuse",
+      "url": "https://langfuse.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://langfuse.com",
+        "title": "Langfuse",
+        "description": "Traces, evals, prompt management and metrics to debug and improve your LLM application. Integrates with Langchain, OpenAI, LlamaIndex, LiteLLM, and more.",
+        "og_title": null,
+        "og_image": "https://langfuse.com/api/og?title=Langfuse%20-%20Open%20Source%20LLM%20Engineering%20Platform&description=Traces%2C%20evals%2C%20prompt%20management%20and%20metrics%20to%20debug%20and%20improve%20your%20LLM%20application.%20Integrates%20with%20Langchain%2C%20OpenAI%2C%20LlamaIndex%2C%20LiteLLM%2C%20and%20more.&section=",
+        "github_url": "https://github.com/langfuse/langfuse",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:34.426210"
+      }
+    },
+    {
+      "name": "Promptlayer",
+      "url": "https://promptlayer.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://www.promptlayer.com/",
+        "title": "PromptLayer - Your workbench for AI engineering. Platform for prompt management, prompt evaluations, and LLM observability",
+        "description": "Advanced prompt management and prompt engineering. Powerful prompt engineering tools for evaluation, deployment, observability, and analytics. Enable team collaboration, get help writing prompts, monitor AI agents, and improve prompt quality.",
+        "og_title": "PromptLayer - Your workbench for AI engineering. Platform for prompt management, prompt evaluations, and LLM observability",
+        "og_image": "https://cdn.prod.website-files.com/66d5ba3a2306c1a43443cc69/68712de273300b783c0afaff_Frame%202147223919%20(1).png",
+        "github_url": "https://github.com/MagnivOrg/prompt-layer-library",
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "Context-aware",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:36.318767"
+      }
+    },
+    {
+      "name": "Humanloop",
+      "url": "https://humanloop.com",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://humanloop.com",
+        "title": "Humanloop joins Anthropic",
+        "description": "Humanloop is joining Anthropic to accelerate the adoption of AI, safely.",
+        "og_title": "Humanloop joins Anthropic",
+        "og_image": "https://humanloop.com/assets/acquisition/humanloop-anthropic-green-white@3x.png",
+        "github_url": "https://github.com/humanloop",
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:37.601910"
+      }
+    },
+    {
+      "name": "Log10",
+      "url": "https://log10.io",
+      "category": "mlops",
+      "metadata": {
+        "url": "https://everest.log10.io/",
+        "title": "Everest \u2013 Agentic AI Workflows for Life Sciences",
+        "description": "Everest is the agentic AI platform for life science services\u2014turn expertise into compliant workflows you can deploy internally or white-label into new products.",
+        "og_title": "Everest \u2013 Agentic AI Workflows for Life Sciences",
+        "og_image": "https://framerusercontent.com/images/seiQrLjge7LnCJTlrwDpwftcdsE.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:39.313630"
+      }
+    },
+    {
+      "name": "Pinecone",
+      "url": "https://pinecone.io",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://www.pinecone.io/",
+        "title": "The vector database to build knowledgeable AI | Pinecone",
+        "description": "Search through billions of items for similar matches to any object, in milliseconds. It\u2019s the next generation of search, an API call away.",
+        "og_title": "The vector database to build knowledgeable AI | Pinecone",
+        "og_image": "https://www.pinecone.io/images/ogimage-general.jpg",
+        "github_url": "https://github.com/pinecone-io",
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:40.893620"
+      }
+    },
+    {
+      "name": "Weaviate",
+      "url": "https://weaviate.io",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://weaviate.io",
+        "title": "The AI database developers love | Weaviate",
+        "description": "Bring AI-native applications to life with less hallucination, data leakage, and vendor lock-in",
+        "og_title": "The AI database developers love | Weaviate",
+        "og_image": "https://weaviate.io/og/website/home.jpg",
+        "github_url": "https://github.com/weaviate/weaviate",
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:42.134699"
+      }
+    },
+    {
+      "name": "Qdrant",
+      "url": "https://qdrant.tech",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://qdrant.tech",
+        "title": "Qdrant - Vector Database - Qdrant",
+        "description": "Qdrant is an Open-Source Vector Database and Vector Search Engine written in Rust. It provides fast and scalable vector similarity search service with convenient API.",
+        "og_title": "Qdrant - Vector Database",
+        "og_image": "https://qdrant.tech/images/previews/social-preview-H.png",
+        "github_url": "https://github.com/qdrant/qdrant",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:43.740568"
+      }
+    },
+    {
+      "name": "Milvus",
+      "url": "https://milvus.io",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://milvus.io/",
+        "title": "Milvus | High-Performance Vector Database Built for Scale",
+        "description": "Milvus is an open-source vector database built for GenAI applications. Install with pip, perform high-speed searches, and scale to tens of billions of vectors.",
+        "og_title": null,
+        "og_image": "https://assets.zilliz.com/meta_image_milvus_d6510e10e0.png",
+        "github_url": "https://github.com/zilliztech/attu",
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:45.108097"
+      }
+    },
+    {
+      "name": "Chroma",
+      "url": "https://trychroma.com",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://www.trychroma.com/",
+        "title": "Chroma",
+        "description": "Open-source search and retrieval database for AI applications",
+        "og_title": "Chroma",
+        "og_image": "https://www.trychroma.com/card.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:46.931854"
+      }
+    },
+    {
+      "name": "Zilliz",
+      "url": "https://zilliz.com",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://zilliz.com",
+        "title": "Zilliz: Vector Database built for enterprise-grade AI applications",
+        "description": "Zilliz vector database management system - fully managed Milvus - supports billion-scale vector search and is trusted by over 10000 enterprise users.",
+        "og_title": "Zilliz: Vector Database built for enterprise-grade AI applications",
+        "og_image": "https://assets.zilliz.com/meta_image_zilliz_2788e63781.png",
+        "github_url": "https://github.com/zilliztech/cloud-vectordb-examples/tree/master/python",
+        "features_detected": [
+          "CLI interface",
+          "Context-aware",
+          "Multi-agent support"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:48.253216"
+      }
+    },
+    {
+      "name": "Supabase Vector",
+      "url": "https://supabase.com/vector",
+      "category": "vector_db",
+      "metadata": {
+        "error": "HTTP 404",
+        "url": "https://supabase.com/vector"
+      }
+    },
+    {
+      "name": "pgvector",
+      "url": "https://github.com/pgvector/pgvector",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://github.com/pgvector/pgvector",
+        "title": "GitHub - pgvector/pgvector: Open-source vector similarity search for Postgres",
+        "description": "Open-source vector similarity search for Postgres. Contribute to pgvector/pgvector development by creating an account on GitHub.",
+        "og_title": "GitHub - pgvector/pgvector: Open-source vector similarity search for Postgres",
+        "og_image": "https://opengraph.githubassets.com/91b00e236dd6f43da2bc876beb28388bea17d76ab3afe2758dbf1c49e276b203/pgvector/pgvector",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fpgvector%2Fpgvector",
+        "features_detected": [
+          "AI code review",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:36:51.539637"
+      }
+    },
+    {
+      "name": "LanceDB",
+      "url": "https://lancedb.com",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://lancedb.com",
+        "title": "LanceDB | Vector Database for RAG, Agents & Hybrid Search",
+        "description": "Build fast, reliable RAG, agents, and search engines with LanceDB\u2014 a multimodal vector database with native versioning and S3-compatible object storage.",
+        "og_title": "Designed for Multimodal.  Built for Scale.",
+        "og_image": "https://lancedb.com/assets/blog/preview.png",
+        "github_url": "https://github.com/lancedb",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:36:52.797674"
+      }
+    },
+    {
+      "name": "Vespa",
+      "url": "https://vespa.ai",
+      "category": "vector_db",
+      "metadata": {
+        "url": "https://vespa.ai",
+        "title": "Vespa.ai - Vespa.ai",
+        "description": "Vespa is the AI Search Platform for fast, accurate and large scale RAG, personalization, and recommendation.",
+        "og_title": "Vespa.ai",
+        "og_image": null,
+        "github_url": "https://github.com/vespa-engine/vespa/",
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:54.500722"
+      }
+    },
+    {
+      "name": "Midjourney",
+      "url": "https://midjourney.com",
+      "category": "image_gen",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://midjourney.com"
+      }
+    },
+    {
+      "name": "DALL-E",
+      "url": "https://openai.com/dall-e-3",
+      "category": "image_gen",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://openai.com/dall-e-3"
+      }
+    },
+    {
+      "name": "Stable Diffusion",
+      "url": "https://stability.ai",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://stability.ai",
+        "title": "Stability AI",
+        "description": "Multimodal media generation and editing tools designed for the best in the \nbusiness. No creative challenge too big, no timeline too tight. Get to \nproduction with Stability AI, your enterprise-ready creative partner.",
+        "og_title": "Stability AI",
+        "og_image": "http://static1.squarespace.com/static/6213c340453c3f502425776e/t/6876a077511f8354c8382c6b/1765262478217/Homepage+Meta+Image+v4.png?format=1500w",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:36:58.444867"
+      }
+    },
+    {
+      "name": "Leonardo AI",
+      "url": "https://leonardo.ai",
+      "category": "image_gen",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://leonardo.ai"
+      }
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai",
+      "category": "image_gen",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://ideogram.ai"
+      }
+    },
+    {
+      "name": "Flux",
+      "url": "https://blackforestlabs.ai",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://bfl.ai/",
+        "title": "Black Forest Labs - Frontier AI Lab",
+        "description": "Cutting-edge generative AI models from Black Forest Labs.",
+        "og_title": "Black Forest Labs - Frontier AI Lab",
+        "og_image": "https://bfl.ai/opengraph-image-j8qpfc.png?47e2121a0eb4d5b0",
+        "github_url": "https://github.com/black-forest-labs/flux",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:02.467485"
+      }
+    },
+    {
+      "name": "Recraft",
+      "url": "https://recraft.ai",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://www.recraft.ai/",
+        "title": "Recraft | AI for designers, creatives, sellers, and teams",
+        "description": "Recraft is a top-ranked text-to-image model and design platform for photorealism, vector generation, custom styles, mockups, and more",
+        "og_title": "Recraft | AI for designers, creatives, sellers, and teams",
+        "og_image": "https://framerusercontent.com/images/RrfYxkLegZC6nGQt2WUTg2EoFM.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:03.961197"
+      }
+    },
+    {
+      "name": "Playground AI",
+      "url": "https://playground.com",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://playground.com",
+        "title": "Free AI Design Tool: Logos, T-Shirts, Social Media - Playground",
+        "description": "Create custom designs and graphics with Playground",
+        "og_title": "Free AI Design Tool: Logos, T-Shirts, Social Media - Playground",
+        "og_image": "/og/default.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:05.295316"
+      }
+    },
+    {
+      "name": "Krea AI",
+      "url": "https://krea.ai",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://www.krea.ai/",
+        "title": "Krea",
+        "description": "Generate, edit, and enhance images, videos, and 3D assets with Krea's creative AI suite. Start for free with real-time tools, powerful models, and collaborative workflows.",
+        "og_title": "Krea: AI Creative Suite for Images, Video & 3D",
+        "og_image": "https://s.krea.ai/opengraph.webp",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:07.090117"
+      }
+    },
+    {
+      "name": "Magnific",
+      "url": "https://magnific.ai",
+      "category": "image_gen",
+      "metadata": {
+        "url": "https://magnific.ai",
+        "title": "Magnific AI \u2014 The magic image Upscaler & Enhancer",
+        "description": "The most advanced AI upscaler & enhancer. Magnific can reimagine as many details in your image or photo as you wish, guided by your prompt and parameters!",
+        "og_title": "Magnific AI",
+        "og_image": "https://magnific.ai/back_socialnetworks.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:08.302652"
+      }
+    },
+    {
+      "name": "ElevenLabs",
+      "url": "https://elevenlabs.io",
+      "category": "audio",
+      "metadata": {
+        "url": "https://elevenlabs.io",
+        "title": "Free AI Voice Generator & Voice Agents Platform | ElevenLabs",
+        "description": "Create lifelike speech with our AI voice generator and voice agents platform. Access 5,000+ voices in 70+ languages with secure APIs and SDKs.",
+        "og_title": "Free AI Voice Generator & Voice Agents Platform | ElevenLabs",
+        "og_image": "https://elevenlabs.io/cover.png",
+        "github_url": "https://github.com/elevenlabs",
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:09.779485"
+      }
+    },
+    {
+      "name": "Suno",
+      "url": "https://suno.ai",
+      "category": "audio",
+      "metadata": {
+        "url": "https://suno.com/home",
+        "title": "Suno | AI Music",
+        "description": "Create stunning original music for free in seconds using AI. Make your own masterpieces, share with friends, and discover music from artists worldwide.",
+        "og_title": "Suno | AI Music",
+        "og_image": "https://cdn-o.suno.com/meta-preview.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:11.365033"
+      }
+    },
+    {
+      "name": "Udio",
+      "url": "https://udio.com",
+      "category": "audio",
+      "metadata": {
+        "url": "https://www.udio.com/",
+        "title": "Udio | AI Music Generator - Official Website",
+        "description": "Discover, create, and share music with the world. Use the latest technology to create AI music in seconds.",
+        "og_title": "Udio | AI Music Generator - Official Website",
+        "og_image": "https://imagedelivery.net/C9yUr1FL21Q6JwfYYh2ozQ/1647e9a2-47d6-4d95-5ae0-02bae7a44000/public",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:14.641204"
+      }
+    },
+    {
+      "name": "Whisper",
+      "url": "https://openai.com/research/whisper",
+      "category": "audio",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://openai.com/research/whisper"
+      }
+    },
+    {
+      "name": "AssemblyAI",
+      "url": "https://assemblyai.com",
+      "category": "audio",
+      "metadata": {
+        "url": "https://www.assemblyai.com/",
+        "title": "AssemblyAI | AI models to transcribe and understand speech",
+        "description": "With AssemblyAI's industry-leading Speech AI models, transcribe speech to text and extract insights from your voice data.",
+        "og_title": "AssemblyAI | AI models to transcribe and understand speech",
+        "og_image": "https://cdn.prod.website-files.com/67a08d9d7d19f8fb63692894/67e5a4788594c44228a2ed1a_AAI.com%20-%20Meta%20image.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:17.361824"
+      }
+    },
+    {
+      "name": "Deepgram",
+      "url": "https://deepgram.com",
+      "category": "audio",
+      "metadata": {
+        "url": "https://deepgram.com",
+        "title": "Enterprise Voice AI: STT, TTS & Agent APIs | Deepgram",
+        "description": "Power enterprise voice solutions with Deepgram\u2019s Speech-to-Text, Text-to-Speech, and Voice Agent APIs. Real-time, accurate, and built for scale.",
+        "og_title": "Enterprise Voice AI: STT, TTS & Agent APIs | Deepgram",
+        "og_image": "https://www.datocms-assets.com/96965/1756218394-open-graph-deepgram-homepage.jpg",
+        "github_url": "https://github.com/orgs/deepgram/discussions/categories/general-help",
+        "features_detected": [
+          "Context-aware",
+          "Multi-agent support"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:18.722739"
+      }
+    },
+    {
+      "name": "PlayHT",
+      "url": "https://play.ht",
+      "category": "audio",
+      "metadata": {
+        "error": "",
+        "url": "https://play.ht"
+      }
+    },
+    {
+      "name": "Resemble AI",
+      "url": "https://resemble.ai",
+      "category": "audio",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://resemble.ai"
+      }
+    },
+    {
+      "name": "Runway",
+      "url": "https://runwayml.com",
+      "category": "video",
+      "metadata": {
+        "url": "https://runwayml.com",
+        "title": "Runway | Building AI to Simulate the World",
+        "description": "We are building foundational General World Models that will be capable of simulating all possible worlds and experiences. The next frontier of intelligence will come from models that can understand, perceive, generate and act in the world.",
+        "og_title": "Runway | Building AI to Simulate the World",
+        "og_image": "https://runwayml.com/opengraph-image.png?opengraph-image.e277c978.png",
+        "github_url": null,
+        "features_detected": [
+          "Autonomous operation",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:37.569792"
+      }
+    },
+    {
+      "name": "Pika",
+      "url": "https://pika.art",
+      "category": "video",
+      "metadata": {
+        "url": "https://pika.art/login",
+        "title": "Pika",
+        "description": "The idea-to-video platform that sets your creativity in motion.",
+        "og_title": "Pika",
+        "og_image": "https://pika-jgl3nd7r8-pika-labs.vercel.app/images/og.jpeg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:39.051278"
+      }
+    },
+    {
+      "name": "Luma AI",
+      "url": "https://lumalabs.ai",
+      "category": "video",
+      "metadata": {
+        "url": "https://lumalabs.ai",
+        "title": "Luma AI | AI Video Generation with Ray3 & Dream Machine | Luma AI",
+        "description": "Create, animate & innovate with Luma\u2019s AI. Use text, images, or video to generate realistic motion content with Ray3 and Dream Machine for next-gen storytelling.",
+        "og_title": "Luma AI | AI Video Generation with Ray3 & Dream Machine | Luma AI",
+        "og_image": "https://cdn.sanity.io/images/2ylxvaa2/production/11d351bfd55301e9caebb0e4ca1bdb30068126af-1200x630.jpg?w=1200&h=630&fm=jpg",
+        "github_url": null,
+        "features_detected": [
+          "Terminal-based"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:40.383565"
+      }
+    },
+    {
+      "name": "Kling AI",
+      "url": "https://klingai.com",
+      "category": "video",
+      "metadata": {
+        "url": "https://klingai.com/global/",
+        "title": "Kling AI",
+        "description": "Kling AI, tools for creating imaginative images and videos, based on state-of-art generative AI methods.",
+        "og_title": null,
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:42.308172"
+      }
+    },
+    {
+      "name": "HeyGen",
+      "url": "https://heygen.com",
+      "category": "video",
+      "metadata": {
+        "url": "https://www.heygen.com/",
+        "title": "Free AI Video Generator: Create Stunning Videos with AI",
+        "description": "Create AI videos from your ideas using HeyGen. Input text, image, or audio to create complete videos with narration, captions, visuals, and animations.",
+        "og_title": "Free AI Video Generator: Create Stunning Videos with AI",
+        "og_image": "https://cdn.sanity.io/images/pdhqcmb1/dev/579e83ff34c4c832744efaedb9681d255e58dc13-1200x630.png?fit=max&auto=format",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:43.657528"
+      }
+    },
+    {
+      "name": "Synthesia",
+      "url": "https://synthesia.io",
+      "category": "video",
+      "metadata": {
+        "url": "https://www.synthesia.io/",
+        "title": "Synthesia: #1 AI Video Platform for Business",
+        "description": "Create AI generated videos from text with the most advanced AI avatars and voiceovers in 140+ languages. Try our free AI video generator now!",
+        "og_title": "Synthesia: #1 AI Video Platform for Business",
+        "og_image": "https://cdn.prod.website-files.com/65e89895c5a4b8d764c0d710/67dad5d5c238a51c2327e203_OG-Image_2025.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:45.246006"
+      }
+    },
+    {
+      "name": "D-ID",
+      "url": "https://d-id.com",
+      "category": "video",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://d-id.com"
+      }
+    },
+    {
+      "name": "Sora",
+      "url": "https://openai.com/sora",
+      "category": "video",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://openai.com/sora"
+      }
+    },
+    {
+      "name": "Jasper",
+      "url": "https://jasper.ai",
+      "category": "writing",
+      "metadata": {
+        "url": "https://www.jasper.ai/",
+        "title": "AI content automation built for marketers | Jasper",
+        "description": "Jasper is the AI marketing platform that unifies your brand experience, accelerates content velocity, and automates marketing processes\u2014at scale.",
+        "og_title": "AI content automation built for marketers | Jasper",
+        "og_image": "https://cdn.prod.website-files.com/6807ee8d73c233fb82842313/6846454bda26628fcf51d54c_7691ff456e72b9f4a29accf974053688_OpenGraph%20-%20Home.png",
+        "github_url": null,
+        "features_detected": [
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:49.242294"
+      }
+    },
+    {
+      "name": "Copy.ai",
+      "url": "https://copy.ai",
+      "category": "writing",
+      "metadata": {
+        "url": "https://www.copy.ai/",
+        "title": "Future proof your business with GTM AI",
+        "description": "Introducing the first-ever GTM AI platform. Automate hundreds of tedious, repetitive tasks and empower your team to scale success like never before.",
+        "og_title": "Future proof your business with GTM AI",
+        "og_image": "https://cdn.prod.website-files.com/628288c5cd3e8411b90a36a4/67111b6951504ebf1467be96_6708d064807b31c351b41284_share-og-image%20(1)-min.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:37:50.834803"
+      }
+    },
+    {
+      "name": "Writesonic",
+      "url": "https://writesonic.com",
+      "category": "writing",
+      "metadata": {
+        "url": "https://writesonic.com",
+        "title": "Writesonic - AI Search Visibility Tracking & Optimization Platform",
+        "description": "Track AI visibility across ChatGPT and 10+ AI platforms. Monitor mentions, fix citation gaps, create and refresh content, target Reddit & UGC forums. Complete GEO platform from tracking to action to results.",
+        "og_title": "Writesonic - AI Search Visibility Tracking & Optimization Platform",
+        "og_image": "https://cdn.prod.website-files.com/671f9e6bc06267864b5770e6/68a41085085966cad48a461c_writesonic-og-image.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:52.174981"
+      }
+    },
+    {
+      "name": "Rytr",
+      "url": "https://rytr.me",
+      "category": "writing",
+      "metadata": {
+        "error": "HTTP 500",
+        "url": "https://rytr.me"
+      }
+    },
+    {
+      "name": "Sudowrite",
+      "url": "https://sudowrite.com",
+      "category": "writing",
+      "metadata": {
+        "url": "https://sudowrite.com",
+        "title": "Sudowrite - Best AI Writing Partner for Fiction",
+        "description": "Write your novel faster with the best AI tool for fiction. Start for free today and see why The New Yorker calls it \"a salvation\" for writers and why The New York Times, The Verge, and many more love Sudowrite.",
+        "og_title": "Sudowrite - Best AI Writing Partner for Fiction",
+        "og_image": "https://framerusercontent.com/assets/1k2TYC2YpFUOb9cH9JmDo6QyUp8.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:55.087017"
+      }
+    },
+    {
+      "name": "Grammarly",
+      "url": "https://grammarly.com",
+      "category": "writing",
+      "metadata": {
+        "url": "https://www.grammarly.com/",
+        "title": "Grammarly: Free AI Writing Assistance",
+        "description": "Grammarly makes AI writing convenient. Work smarter with personalized AI guidance and text generation on any app or website.",
+        "og_title": "Grammarly: Free AI Writing Assistance",
+        "og_image": "https://static-web.grammarly.com/cms/master/public/open-graph/social-24.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:37:56.751630"
+      }
+    },
+    {
+      "name": "Wordtune",
+      "url": "https://wordtune.com",
+      "category": "writing",
+      "metadata": {
+        "url": "https://www.wordtune.com/",
+        "title": "Wordtune \u2014 Express yourself with confidence",
+        "description": "Perfect your English with a free AI writer that can paraphrase, rewrite, correct your grammar and more.",
+        "og_title": "Wordtune \u2014 Take your productivity to new heights",
+        "og_image": "https://cdn.prod.website-files.com/5f7e0f9d75fee6f6f546df46/66bc50ae0f2962888d8e06a2_OG%20-%20HOME%20PAGE%20.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:37:58.587542"
+      }
+    },
+    {
+      "name": "QuillBot",
+      "url": "https://quillbot.com",
+      "category": "writing",
+      "metadata": {
+        "url": "https://quillbot.com",
+        "title": "QuillBot: Your complete writing solution",
+        "description": "Write effortlessly and efficiently with QuillBot's suite of AI tools. Paraphrase, check grammar, analyze tone, improve fluency, and more. Start doing your best work.",
+        "og_title": "QuillBot: Your complete writing solution",
+        "og_image": "https://assets.quillbot.com/images/og-quillbot-img.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:00.184890"
+      }
+    },
+    {
+      "name": "Notion AI",
+      "url": "https://notion.so/product/ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://www.notion.com/product/ai",
+        "title": "Meet the new Notion AI | Notion",
+        "description": "One tool that does it all. Search, generate, analyze, and chat\u2014right inside Notion.",
+        "og_title": "Meet the new Notion AI | Notion",
+        "og_image": "https://www.notion.com/front-static/meta/think-it-make-it.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:01.949216"
+      }
+    },
+    {
+      "name": "Mem",
+      "url": "https://mem.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://mem.ai",
+        "title": "Mem",
+        "description": "Let AI organize your team's work\u2014from meeting notes, projects, to knowledge bases. All instantly searchable and readily discoverable.",
+        "og_title": "Mem",
+        "og_image": "https://storage.googleapis.com/mem-public-assets/sq-f.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:03.238257"
+      }
+    },
+    {
+      "name": "Reflect",
+      "url": "https://reflect.app",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://reflect.app",
+        "title": "Reflect Notes",
+        "description": "A beautifully minimalist note-taking app designed to mirror the way you think. Now with a native AI integration.",
+        "og_title": null,
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:04.589501"
+      }
+    },
+    {
+      "name": "Otter.ai",
+      "url": "https://otter.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://otter.ai",
+        "title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+        "description": "Otter AI Meeting Agent supports real-time transcription, live chat, automated summaries, insights, and action items.",
+        "og_title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+        "og_image": "https://cdn.prod.website-files.com/618e9316785b3582a5178502/67dd5a945aeed07e329d4e10_og-image-otter-optim.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:06.094332"
+      }
+    },
+    {
+      "name": "Fireflies.ai",
+      "url": "https://fireflies.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://fireflies.ai",
+        "title": "Fireflies.ai | The #1 AI Notetaker for Your Meetings",
+        "description": "Automatically take notes, transcribe, summarize, search, and analyze all your team conversations in one place. It works across any video conferencing platform.",
+        "og_title": "Fireflies.ai | The #1 AI Notetaker for Your Meetings",
+        "og_image": "https://fireflies.ai/thumbnail.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:07.550173"
+      }
+    },
+    {
+      "name": "Krisp",
+      "url": "https://krisp.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://krisp.ai",
+        "title": "Krisp - AI Meeting Assistant with Built-In Noise Cancellation",
+        "description": "Krisp\u2019s bot-free AI Meeting Assistant combines top-rated noise cancellation, transcription, meeting notes, summaries, and accent conversion\u2014all in one app.",
+        "og_title": "Krisp - AI Meeting Assistant with Built-In Noise Cancellation",
+        "og_image": "https://krisp.ai/wp-content/uploads/2025/08/thumb1.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:08.793264"
+      }
+    },
+    {
+      "name": "Reclaim AI",
+      "url": "https://reclaim.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://reclaim.ai",
+        "title": "Reclaim \u2013 AI Calendar for Work & Life",
+        "description": "Reclaim is an AI-powered app that creates 40% more time for teams \u2014 auto-schedule tasks, habits, meeting & breaks \u2013 free on Google Calendar & Outlook Calendar.",
+        "og_title": "Reclaim \u2013 AI Calendar for Work & Life",
+        "og_image": "https://cdn.prod.website-files.com/5ec848ec2b50b6cfae06f6cc/65e2563b7c0658aed71828ac_open_graph_final.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:10.730900"
+      }
+    },
+    {
+      "name": "Motion",
+      "url": "https://usemotion.com",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://www.usemotion.com/",
+        "title": "The AI Powered SuperApp for Work | Motion",
+        "description": "Motion is the #1 Rated Productivity Platform for the AI Era. AI Projects, AI Tasks, AI Calendar, AI Meetings, AI Docs, AI Notes, AI Reports, AI Workflows, and more.",
+        "og_title": "The AI Powered SuperApp for Work | Motion",
+        "og_image": "https://www-cdn.usemotion.com/default-og-image-1764610536.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:12.249183"
+      }
+    },
+    {
+      "name": "Gamma",
+      "url": "https://gamma.app",
+      "category": "productivity",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://gamma.app"
+      }
+    },
+    {
+      "name": "Beautiful.ai",
+      "url": "https://beautiful.ai",
+      "category": "productivity",
+      "metadata": {
+        "url": "https://www.beautiful.ai",
+        "title": "Best AI Presentation Maker for Professional Decks | Beautiful.ai - Generate High-Quality Slides With the #1 Artificial Intelligence Powered Presentation Tool Available",
+        "description": "The AI presentation maker built for speed and polish. Beautiful.ai helps you create professional, client-ready slide decks in minutes. Try it free for 14 days - Make slides with the #1 AI slide generator on the market for teams and individuals.",
+        "og_title": "Best AI Presentation Maker for Professional Decks | Beautiful.ai - Generate High-Quality Slides With the #1 Artificial Intelligence Powered Presentation Tool Available",
+        "og_image": "https://cdn.prod.website-files.com/59deb588800ae30001ec19c9/679345319c7f2f3d2301228b_Open%20Graph_final.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:38:15.098561"
+      }
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "category": "productivity",
+      "metadata": {
+        "error": "HTTP 404",
+        "url": "https://tome.app"
+      }
+    },
+    {
+      "name": "Zapier AI",
+      "url": "https://zapier.com/ai",
+      "category": "automation",
+      "metadata": {
+        "url": "https://zapier.com/ai",
+        "title": "Transform your operations with Zapier and AI",
+        "description": "Add AI exactly where you need it \u2014 in a workflow, as an  agent, or a customer chatbot \u2014 all in one unified orchestration platform.",
+        "og_title": "Transform your operations with Zapier and AI",
+        "og_image": "https://framerusercontent.com/assets/Ag2xVt96egg2F3eQMfV8jzyqSgc.png",
+        "github_url": null,
+        "features_detected": [
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:17.808954"
+      }
+    },
+    {
+      "name": "Make",
+      "url": "https://make.com",
+      "category": "automation",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://make.com"
+      }
+    },
+    {
+      "name": "n8n",
+      "url": "https://n8n.io",
+      "category": "automation",
+      "metadata": {
+        "url": "https://n8n.io",
+        "title": "AI Workflow Automation Platform & Tools - n8n",
+        "description": "n8n is a workflow automation platform that uniquely combines AI capabilities with business process automation, giving technical teams the flexibility of code with the speed of no-code.",
+        "og_title": "n8n.io - AI workflow automation tool",
+        "og_image": "https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/og_image_website_3_afd66761a9_017b94d87b.png",
+        "github_url": "https://github.com/n8n-io/n8n",
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:21.743442"
+      }
+    },
+    {
+      "name": "Bardeen",
+      "url": "https://bardeen.ai",
+      "category": "automation",
+      "metadata": {
+        "url": "https://www.bardeen.ai/",
+        "title": "Bardeen: Find and reach leads no one else can.",
+        "description": "Source leads with our agentic web scraper, qualify them with AI and reach them with contact enrichment.",
+        "og_title": "Bardeen: Find and reach leads no one else can.",
+        "og_image": "https://cdn.prod.website-files.com/67a4e756231fbcd6386ec06a/691114ccec0d8e60edae6ee4_Meta%20Image%20-%20Home.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:23.378075"
+      }
+    },
+    {
+      "name": "Activepieces",
+      "url": "https://activepieces.com",
+      "category": "automation",
+      "metadata": {
+        "url": "https://www.activepieces.com/",
+        "title": "AI-first automation for every team \u00b7 Activepieces",
+        "description": "Activepieces is the best way to build a self-driven AI culture across HR, finance, marketing, sales and more \u2014 under the supervision of your IT ninjas",
+        "og_title": "AI-first automation for every team",
+        "og_image": "https://www.activepieces.com/meta1.png",
+        "github_url": "https://github.com/activepieces/activepieces",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:38:25.031232"
+      }
+    },
+    {
+      "name": "Zed",
+      "url": "https://zed.dev",
+      "category": "ide",
+      "metadata": {
+        "url": "https://zed.dev",
+        "title": "Zed \u2014 Love your editor again",
+        "description": "Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
+        "og_title": "Zed \u2014 Love your editor again",
+        "og_image": "https://zed.dev/img/home/og.webp",
+        "github_url": "https://github.com/zed-industries/zed",
+        "features_detected": [
+          "VS Code extension",
+          "CLI interface"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:26.657161"
+      }
+    },
+    {
+      "name": "JetBrains AI",
+      "url": "https://jetbrains.com/ai/",
+      "category": "extension",
+      "metadata": {
+        "url": "https://www.jetbrains.com/ai/",
+        "title": "JetBrains AI | Intelligent Coding Assistance, AI Solutions, and More",
+        "description": "Transform your business with JetBrains AI solutions and services, including integrated AI tools and software development expertise.",
+        "og_title": "JetBrains AI | Intelligent Coding Assistance, AI Solutions, and More",
+        "og_image": "https://resources.jetbrains.com/storage/products/ai/img/meta/ai_solutions_preview.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:28.034378"
+      }
+    },
+    {
+      "name": "Pieces",
+      "url": "https://pieces.app",
+      "category": "extension",
+      "metadata": {
+        "url": "https://pieces.app",
+        "title": "Pieces \u2014 Long term memory for your whole workstream",
+        "description": "Pieces is your AI companion that captures live context from browsers to IDEs and collaboration tools, manages snippets and supports multiple llms - all while processing data locally for maximum control.",
+        "og_title": "Pieces \u2014 Long term memory for your whole workstream",
+        "og_image": "https://framerusercontent.com/assets/NuuCyGwhkxALQlh1TKukWAtELH4.png",
+        "github_url": null,
+        "features_detected": [
+          "VS Code extension",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Cursor",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:38:29.560629"
+      }
+    },
+    {
+      "name": "Codeium",
+      "url": "https://codeium.com",
+      "category": "extension",
+      "metadata": {
+        "url": "https://windsurf.com/",
+        "title": "Windsurf - The best AI for Coding",
+        "description": "Windsurf is the world's most advanced AI coding assistant for developers and enterprises. Windsurf Editor \u2014 the first AI-native IDE that keeps developers in flow.",
+        "og_title": "Windsurf - The best AI for Coding",
+        "og_image": "https://exafunction.github.io/public/images/website_thumbnails/home.jpg",
+        "github_url": null,
+        "features_detected": [
+          "Terminal-based",
+          "Context-aware",
+          "CLI interface",
+          "MCP integration",
+          "Git worktree isolation"
+        ],
+        "supported_agents": [
+          "Cursor",
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:38:31.518056"
+      }
+    },
+    {
+      "name": "Blackbox AI",
+      "url": "https://blackbox.ai",
+      "category": "extension",
+      "metadata": {
+        "url": "https://www.blackbox.ai/",
+        "title": "BLACKBOX.AI",
+        "description": "BLACKBOX.AI is the best ai agent, built to transform the way you work and learn and trusted by +10 M users and Fortune 500 companies",
+        "og_title": null,
+        "og_image": "https://https/www.blackbox.ai/opengraph-image.png?49c2c3ea917a06c7",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:33.279618"
+      }
+    },
+    {
+      "name": "AskCodi",
+      "url": "https://askcodi.com",
+      "category": "extension",
+      "metadata": {
+        "url": "https://askcodi.com",
+        "title": "OpenAI-Compatible API with Custom Agents for Continue.dev, Cline, Openai Codex | AskCodi",
+        "description": "Use AI Chat, UI builder, custom AI Agents with baked-in prompts in Continue.dev, Cline, Openai Codex & more. 25+ capabilities: code generation, bug detection, refactoring. OpenAI-compatible API. 2-minute setup.",
+        "og_title": "AI Chat, UI builder, OpenAI-Compatible API with Custom Agents for Continue.dev, Cline, Openai Codex",
+        "og_image": "https://www.askcodi.com/og-image.png",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Cline"
+        ],
+        "scraped_at": "2026-01-06T10:38:34.482405"
+      }
+    },
+    {
+      "name": "Bito",
+      "url": "https://bito.ai",
+      "category": "extension",
+      "metadata": {
+        "url": "https://bito.ai",
+        "title": "AI Code Reviews | Start free | Bito",
+        "description": "AI Code Reviews designed for modern dev teams. Cut review time, improve code quality, and ship with confidence \u2014 with contextual, senior-level feedback.",
+        "og_title": "AI Code Reviews\u00a0| Start free | Bito",
+        "og_image": "https://bito.ai/wp-content/uploads/2025/08/Option-1.webp",
+        "github_url": "https://github.com/gitbito",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:38:36.111347"
+      }
+    },
+    {
+      "name": "Mintlify",
+      "url": "https://mintlify.com",
+      "category": "extension",
+      "metadata": {
+        "url": "https://www.mintlify.com/",
+        "title": "Mintlify - The Intelligent Documentation Platform",
+        "description": "Meet the next generation of documentation. AI-native, beautiful out-of-the-box, and built for developers.",
+        "og_title": "Mintlify - The Intelligent Documentation Platform",
+        "og_image": "https://www.mintlify.com/_next/static/media/og.28576e75.png",
+        "github_url": "https://github.com/mintlify",
+        "features_detected": [
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Claude Code"
+        ],
+        "scraped_at": "2026-01-06T10:38:37.898733"
+      }
+    },
+    {
+      "name": "Swimm",
+      "url": "https://swimm.io",
+      "category": "extension",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://swimm.io"
+      }
+    },
+    {
+      "name": "SWE-agent",
+      "url": "https://swe-agent.com",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://swe-agent.com",
+        "title": "Redirecting",
+        "description": null,
+        "og_title": null,
+        "og_image": null,
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:40.409190"
+      }
+    },
+    {
+      "name": "Sweep",
+      "url": "https://sweep.dev",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://sweep.dev",
+        "title": "AI for JetBrains IDEs",
+        "description": "Sweep is the best AI coding assistant for JetBrains. Cursor alternative in JetBrains IDEs.",
+        "og_title": "Sweep: The Best AI Assistant for JetBrains IDEs",
+        "og_image": "./og_image.png",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:41.728552"
+      }
+    },
+    {
+      "name": "Codegen",
+      "url": "https://codegen.com",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://codegen.com",
+        "title": "Codegen | The OS for Code Agents",
+        "description": "Deploy coding agents that plan, build, and review with full context, robust integrations, and production-ready results. Backed by enterprise-grade support. Ship faster with Codegen.",
+        "og_title": "Codegen | The OS for Code Agents",
+        "og_image": "https://6ejonqs4gjvenqgz.public.blob.vercel-storage.com/ogimages/codegen-og-250904.png",
+        "github_url": "https://github.com/codegen-sh",
+        "features_detected": [
+          "Context-aware",
+          "Parallel agent execution",
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:43.304542"
+      }
+    },
+    {
+      "name": "Factory",
+      "url": "https://factory.ai",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://factory.ai",
+        "title": "Factory | Agent-Native Software Development",
+        "description": "Build faster with AI coding agents. Factory Droids automate coding, testing, and deployment for startups and enterprises.",
+        "og_title": "Factory | Agent-Native Software Development",
+        "og_image": "https://factory.ai/og.png",
+        "github_url": "https://github.com/Factory-AI",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Terminal-based",
+          "Context-aware",
+          "Self-healing code",
+          "CLI interface"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:44.661167"
+      }
+    },
+    {
+      "name": "Poolside",
+      "url": "https://poolside.ai",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://poolside.ai",
+        "title": "Poolside \u2014 Frontier research to operational intelligence",
+        "description": "Poolside is a foundation model company bringing intelligence to everywhere work gets done. Our mission is to drive abundance for humanity by creating artificial general intelligence.",
+        "og_title": "Poolside \u2014 Frontier research to operational intelligence",
+        "og_image": "https://poolside.ai/og/og-home.png",
+        "github_url": null,
+        "features_detected": [
+          "Terminal-based",
+          "Multi-agent support"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:45.938939"
+      }
+    },
+    {
+      "name": "Magic",
+      "url": "https://magic.dev",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://magic.dev",
+        "title": "Magic",
+        "description": "Magic is an AI company that is working toward building safe AGI to accelerate humanity\u2019s progress on the world\u2019s most important problems.",
+        "og_title": "Magic",
+        "og_image": "https://magic.dev/opengraph-image.png?1b6c3858ea92e7c5",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:47.605746"
+      }
+    },
+    {
+      "name": "Cognition",
+      "url": "https://cognition.ai",
+      "category": "autonomous",
+      "metadata": {
+        "url": "https://cognition.ai",
+        "title": "Cognition",
+        "description": "An applied AI lab building the future of software engineering. We\u2019re the makers of Devin, a collaborative AI teammate that helps ambitious engineering teams achieve more.",
+        "og_title": "Cognition",
+        "og_image": "/assets/images/cover.jpg",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Cursor"
+        ],
+        "scraped_at": "2026-01-06T10:38:48.928179"
+      }
+    },
+    {
+      "name": "Glean",
+      "url": "https://glean.com",
+      "category": "enterprise",
+      "metadata": {
+        "url": "https://www.glean.com/",
+        "title": "Glean \u2013 Work AI that Works | Agents, Assistant & Search",
+        "description": "Glean is the Work AI platform connected to your enterprise's data. Find, create, and automate anything. Explore what Work AI can do for you!",
+        "og_title": "Glean \u2013 Work AI that Works | Agents, Assistant & Search",
+        "og_image": "https://cdn.prod.website-files.com/6127a84dfe068e153ef20572/68d4e4b2f311b084a6eb9cef_Glean%5Bdot%5Dcom%20Cover%20Image.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:50.605533"
+      }
+    },
+    {
+      "name": "Moveworks",
+      "url": "https://moveworks.com",
+      "category": "enterprise",
+      "metadata": {
+        "url": "https://www.moveworks.com/",
+        "title": "Moveworks: The AI Assistant Platform That Gets Work Done",
+        "description": "Moveworks is the AI Assistant platform for your entire workforce to find answers instantly and automate tasks end-to-end in seconds across every business app.",
+        "og_title": "Moveworks: The AI Assistant Platform That Gets Work Done",
+        "og_image": "https://www.moveworks.com/content/dam/images/internal/open-graph/moveworks-open-graph-homepage-v2.jpg",
+        "github_url": null,
+        "features_detected": [
+          "Autonomous operation",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:38:52.186445"
+      }
+    },
+    {
+      "name": "Uniphore",
+      "url": "https://uniphore.com",
+      "category": "enterprise",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://uniphore.com"
+      }
+    },
+    {
+      "name": "Forethought",
+      "url": "https://forethought.ai",
+      "category": "enterprise",
+      "metadata": {
+        "url": "https://forethought.ai",
+        "title": "Customer Service AI Platform for Modern Support Teams",
+        "description": "Reduce support costs and elevate customer experience with Forethought\u2019s AI support agent. Automate workflows and boost efficiency.",
+        "og_title": "Customer Service AI Platform for Modern Support Teams",
+        "og_image": "https://cdn.prod.website-files.com/67d3f59af6cbe778200469c9/681a74099404ef925e8b2f96_c91f6d150d01433062a41af94ea0ddee_FT%20OG.jpg",
+        "github_url": null,
+        "features_detected": [
+          "CLI interface",
+          "Context-aware",
+          "Multi-agent support"
+        ],
+        "supported_agents": [
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:38:54.564629"
+      }
+    },
+    {
+      "name": "Ada",
+      "url": "https://ada.cx",
+      "category": "enterprise",
+      "metadata": {
+        "error": "HTTP 403",
+        "url": "https://ada.cx"
+      }
+    },
+    {
+      "name": "Intercom Fin",
+      "url": "https://intercom.com/fin",
+      "category": "enterprise",
+      "metadata": {
+        "url": "https://fin.ai",
+        "title": "Fin. The #1 AI Agent for customer service",
+        "description": "Fin is the highest-performing AI Agent in customer service, delivering higher-quality answers and resolving more complex queries than any other AI Agent.",
+        "og_title": "Fin. The #1 AI Agent for customer service",
+        "og_image": "https://fin.ai/img/social/home.jpg",
+        "github_url": null,
+        "features_detected": [],
+        "supported_agents": [],
+        "scraped_at": "2026-01-06T10:38:58.360722"
+      }
+    },
+    {
+      "name": "Zendesk AI",
+      "url": "https://zendesk.com/ai",
+      "category": "enterprise",
+      "metadata": {
+        "url": "https://www.zendesk.com/service/ai/",
+        "title": "AI for customer service - Zendesk",
+        "description": "Revolutionize your support operations with Zendesk AI for customer service featuring intelligent bots, enhanced self-service options, and agent productivity tools. Begin your free trial today.",
+        "og_title": "AI for customer service - Zendesk",
+        "og_image": "https://d1eipm3vz40hy0.cloudfront.net/images/logos/favicons/zendesk-image.png",
+        "github_url": null,
+        "features_detected": [
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Copilot"
+        ],
+        "scraped_at": "2026-01-06T10:39:00.461496"
+      }
+    },
+    {
+      "name": "Claude MCP",
+      "url": "https://modelcontextprotocol.io",
+      "category": "mcp",
+      "metadata": {
+        "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+        "title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
+        "description": null,
+        "og_title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
+        "og_image": "https://raw.githubusercontent.com/modelcontextprotocol/docs/2eb6171ddbfeefde349dc3b8d5e2b87414c26250/images/og-image.png",
+        "github_url": "https://github.com/modelcontextprotocol",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Claude Code"
+        ],
+        "scraped_at": "2026-01-06T10:39:01.765222"
+      }
+    },
+    {
+      "name": "MCP Hub",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "category": "mcp",
+      "metadata": {
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "title": "GitHub - modelcontextprotocol/servers: Model Context Protocol Servers",
+        "description": "Model Context Protocol Servers. Contribute to modelcontextprotocol/servers development by creating an account on GitHub.",
+        "og_title": "GitHub - modelcontextprotocol/servers: Model Context Protocol Servers",
+        "og_image": "https://opengraph.githubassets.com/953f7699af8578be011853ab54be57f2b56d29a32e3216483bfeb260d667bb45/modelcontextprotocol/servers",
+        "github_url": "/login?return_to=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers",
+        "features_detected": [
+          "AI code review",
+          "VS Code extension",
+          "Terminal-based",
+          "Multi-agent support",
+          "Context-aware",
+          "Autonomous operation",
+          "CLI interface",
+          "MCP integration"
+        ],
+        "supported_agents": [
+          "Cursor",
+          "Copilot",
+          "Claude Code",
+          "Cline",
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:39:03.951152"
+      }
+    },
+    {
+      "name": "Smithery",
+      "url": "https://smithery.ai",
+      "category": "mcp",
+      "metadata": {
+        "url": "https://smithery.ai",
+        "title": "Smithery - Turn scattered context into skills for AI",
+        "description": "Extend your agent's capabilities with Model Context Protocol servers.",
+        "og_title": null,
+        "og_image": null,
+        "github_url": "https://github.com/smithery-ai",
+        "features_detected": [
+          "CLI interface",
+          "MCP integration",
+          "Context-aware"
+        ],
+        "supported_agents": [
+          "Amp"
+        ],
+        "scraped_at": "2026-01-06T10:39:06.119355"
+      }
+    }
+  ],
+  "discovered_tools": [
+    {
+      "name": "Top 5 Agentic AI Coding Assistants April 2025 | APIpie",
+      "url": "https://dev.to/apipie-ai/top-5-agentic-ai-coding-assistants-april-2025-apipie-1139",
+      "description": "AgenticAIcodingassistants are transforming software development. Unlike traditional code completiontools, these advanced IDE-integratedagentscan plan solutions, modify multiple files, run tests, and iterate on code autonomously. They act asAIco-developers that use reasoning and iterative planning to tackle complex, multi-stepcodingtasks with minimal human intervention. As of April ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "5 Best AI Agents for Coding and Programming in 2025",
+      "url": "https://www.index.dev/blog/ai-agents-for-coding",
+      "description": "5 BestAIAgentsforCodingDiscover the top 5AIcodingagentsof2025: CodeGPT, GitHub Copilot, PostmanAI, Replit, and Snyk. Thesetoolshelp developers write, test, debug, and automate code faster, with real-world use cases and pricing insights included.",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "Best AI Coding Agents in 2025 | Top 12 Tools Compared | Robylon",
+      "url": "https://www.robylon.ai/blog/leading-ai-coding-agents-of-2025",
+      "description": "TL;DR: LeadingAICodingAgentsof2025AIcodingassistants have become essentialtoolsfor modern developers, automating repetitive tasks, improving code quality, and accelerating development cycles. This guide compares topAIcodingassistants across enterprise-grade features, pricing per seat, and code review SaaS options so distributed teams can choose fast. It covers open-source vs ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "Top coding agents in 2025: Tools that actually help you build",
+      "url": "https://blog.logto.io/top-coding-agent",
+      "description": "agentcodingTopcodingagentsin2025:Toolsthat actually help you build A detailed comparison of topAIcodingagentslike Cursor, GitHub Copilot, Windsurf, Bolt.new, and Replit. This article breaks down their key features, strengths, and ideal use cases to help developers choose the righttoolfor their workflow.",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "The Top AI Coding Agents of 2025 - officechai.com",
+      "url": "https://officechai.com/ai/the-top-ai-coding-agents-of-2025/",
+      "description": "AsAIcontinues to reshape software development,codingagentshave become indispensabletoolsfor developers. In2025, the race to build the bestcodingagentis fiercer than ever, with platforms blendingAI, automation, and collaborative features. Below, we explore the topcodingagentsdominating the market, their founders, investors, features, and pricing to help you choose the perfect ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "The 8 best vibe coding tools in 2025 - Zapier",
+      "url": "https://zapier.com/blog/best-vibe-coding-tools/",
+      "description": "Memex forvibecodingeverything What makes the best AIvibecodingtool? Before this category came into shape, we had a loosely formed category named AI app builders. Most of the platforms already had app building features, adding AI technology to design a data schema, put together a user interface, or write data display functions for you.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "Top 10 Vibe Coding Tools That Feel Like Magic in 2025",
+      "url": "https://dev.to/therealmrmumba/top-10-vibe-coding-tools-that-feel-like-magic-in-2025-1md",
+      "description": "Top 10VibeCodingToolsThat Feel Like Magic in 2025 # webdev #vibecoding# programming AI is no longer just assisting developers\u2014it's transforming how we build software. Whether you're a solo indie hacker, a startup engineer, or part of an enterprise team, there's now an AItoolthat aligns with yourworkflow.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "Top 25 Vibe Coding Tools That Will Transform Your Development Workflow ...",
+      "url": "https://apidog.com/blog/top-vibe-coding-tools/",
+      "description": "Top 25VibeCodingToolsThat Will Transform Your DevelopmentWorkflowin 2025 Explore the revolutionary world ofvibecodingtoolsthat are changing how we build software in 2025. From AI pair programmers to autonomouscodingagents, these 25toolshelp developers write better code faster by translating natural language into functional applications.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "Top 10 Vibe Coding Tools To Increase Your Productivity in 2025",
+      "url": "https://getmocha.com/blog/best-vibe-coding-tools-2025",
+      "description": "Discover the top 10vibecodingtoolsto increase your productivity in 2025. Compare the besttoolson different criteria to make the best choice.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "10 Best Vibe Coding Tools: LLM-Powered Code Generators to Try",
+      "url": "https://www.digitalocean.com/resources/articles/vibe-coding-tools",
+      "description": "Discover 10 powerfulvibecodingtoolsthat use large language models to generate code from natural language prompts to transform your programming.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "10 Claude Code Alternatives That Every Developer Must Use",
+      "url": "https://dev.to/therealmrmumba/10-claude-code-alternatives-that-every-developer-must-use-4ffd",
+      "description": "Claudeis still cloud-based, proprietary, and not always accessible depending on where you live or work. If you're a developer who prefers more flexibility, open access, or offline support, you've probably looked forClaudecodealternatives.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "10+ Best Open Source Claude Code Alternatives (2025)",
+      "url": "https://openalternative.co/alternatives/claude-code",
+      "description": "The best open sourcealternativetoClaudeCodeis Cline. If that doesn't suit you, we've compiled a ranked list of other open sourceClaudeCodealternativesto help you find a suitable replacement. Other interesting open sourcealternativestoClaudeCodeare: OpenHands, Zed, OpenCode and Aider.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "7 Best Claude Code Alternatives in 2025 - Tembo",
+      "url": "https://www.tembo.io/blog/claude-code-alternatives",
+      "description": "Discover the 7 bestClaudeCodealternativesin 2025. Compare features, pricing, and top tools like Tembo, GitHub Copilot, Cursor, and GeminiCodeAssist to find the right AI coding assistant for your team.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "6 Best Open-Source Claude Code Alternatives in 2025 for Developers ...",
+      "url": "https://cline.bot/blog/6-best-open-source-claude-code-alternatives-in-2025-for-developers-startups-copy",
+      "description": "Explore open-source, affordableClaudeCodealternativeswith local model support, no usage limits, and seamless VSCodecompatibility for true agentic coding.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "Best 5 Alternatives to Claude Code | by Leo Wood | Medium",
+      "url": "https://medium.com/@HeyLeo/best-5-alternatives-to-claude-code-50887c9a6eb4",
+      "description": "Best 5AlternativestoClaudeCodeClaudeCodeis one of the most polished coding assistants available today. It feels conversational, integrates smoothly with the terminal, and understands ...",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "aider Alternatives: Top 12 AI Coding Assistants & Similar Apps",
+      "url": "https://alternativeto.net/software/aider/",
+      "description": "aiderAlternativesAICodingAssistants and other similar apps likeaideraideris described as'Aideris a command line tool that lets you pair program with GPT-3.5/GPT-4, to edit code stored in your local git repository.",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "2025s Best AI Coding Tools: Real Cost, Geeky Value & Honest Comparison",
+      "url": "https://dev.to/stevengonsalvez/2025s-best-ai-coding-tools-real-cost-geeky-value-honest-comparison-4d63",
+      "description": "2025 guide toAIcode assistants-Gemini, Copilot, Claude, Cursor,Aider, and more. In-depth review, honest pros/cons, real cost, and a mega comparison table for devs.",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "Top Aider Alternatives in 2026 - Slashdot",
+      "url": "https://slashdot.org/software/p/Aider-AI/alternatives",
+      "description": "JetBrains Junie is an innovativeAIcodingassistant that works inside many JetBrains IDEs to streamline programming efforts and boost efficiency. This agent leverages advancedAIto help developers write, test, and inspect code without leaving their familiar development environment. Junie offers both code execution and interactive collaboration, allowing programmers to switch between ...",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "Best Aider Alternatives: AI Code Assistants for Devs in 2025 - Replit",
+      "url": "https://replit.com/discover/aider-alternative",
+      "description": "Discover the bestAideralternativesfor 2025:AIcode assistants enhancing IDEs, codebases, and workflows with open-source tools, real-time code completion and more.",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "8 Best Open Source Aider Alternatives (2025)",
+      "url": "https://openalternative.co/alternatives/aider",
+      "description": "Other interesting open sourcealternativestoAiderare: Tabby, Void, Roo Code and Kilocode.Aideralternativesare mainlyAICodingAssistants but may also beAI-Powered Editors or IDEs & Code Editors. Browse these if you want a narrower list ofalternativesor looking for a specific functionality ofAider.",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "Parallelizing AI Coding Agents | AI Native Dev",
+      "url": "https://ainativedev.io/news/how-to-parallelize-ai-coding-agents",
+      "description": "Discover a newAIdev workflow: how to parallelizecodingagentsfor faster builds, deeper exploration, and smarter reviews using tools like Claude Code.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "10x Coding with Parallel AI Agents: Zerg, Toad, and the Future of ...",
+      "url": "https://blog.laurentcharignon.com/post/2025-12-28-10x-coding-with-parallel-ai-agents/",
+      "description": "Zerg: TheParallelAgentOrchestrator Named after StarCraft's Zerg rush strategy (overwhelm with many units attacking inparallel), Zerg is the orchestration layer. It launches multipleAIcodingagents, each in its own tmux window, and coordinates them using barriers.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Embracing the parallel coding agent lifestyle",
+      "url": "https://simonwillison.net/2025/Oct/5/parallel-coding-agents/",
+      "description": "Embracing theparallelcodingagentlifestyle For a while now I've been hearing from engineers who run multiplecodingagentsat once\u2014firing up several Claude Code or Codex CLI instances at the same time, sometimes in the same repo, sometimes against multiple checkouts or git worktrees. I was pretty skeptical about this at first.AI-generated code needs to be reviewed, which means the ...",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Parallel AI Agents: The Next Wave Transforming Software ... - Medium",
+      "url": "https://medium.com/aimonks/parallel-ai-agents-the-next-wave-transforming-software-development-4e16caf058dd",
+      "description": "ParallelAIagentsare redefining the entire workflow for modern software development. For the first time, engineers can say with confidence: this technology changes not just how we write code ...",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Managing parallel coding agents (without going insane)",
+      "url": "https://metacircuits.substack.com/p/managing-parallel-coding-agents-without",
+      "description": "This is an excellent breakdown of managingparallelAIcodingagents. The emphasis on design-first workflows, Git worktrees, and TDD really highlights how to scale agenticcodingwithout descending into merge chaos.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Top 5 Agentic AI Coding Assistants April 2025 - APIpie",
+      "url": "https://apipie.ai/docs/blog/top-5-agentic-ai-coding-assistants",
+      "description": "Discover the leading agentic AIcodingassistants of 2025, including GitHub CopilotAgent, Cline, Cursor, QodoAI, and Devin AI, with detailed comparisons and use case recommendations.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "16 Best AI Agents for Coding To Use Right Now in 2026",
+      "url": "https://visionvix.com/best-ai-agents-for-coding/",
+      "description": "An AIagentforcodingis quickly becoming every developer's go-to partner for smarter and faster programming. Thesetoolsunderstand context, suggest real-time improvements, and even automate complex tasks. They help reducecodingerrors while boosting overall efficiency and creativity. In this guide, we highlight the top AIagentsthat are redefining thecodingexperience. Key Takeaways ...",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best AI Coding Agents for Developers in 2026 (Real-World Reviews)",
+      "url": "https://www.faros.ai/blog/best-ai-coding-agents-2026",
+      "description": "More recently, AIcodingassistants are no longer limited to autocomplete or chat-based assistance. AItoolslike Claude Code, Codex, Cursor, and GitHub Copilot are increasingly capable of acting asautonomousagentsthat understand repositories, make multi-file changes, run tests, and iterate on tasks with minimal human input.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Top coding agents in 2025: Tools that actually help you build",
+      "url": "https://blog.logto.io/top-coding-agent",
+      "description": "agentcodingTopcodingagentsin 2025:Toolsthat actually help you build A detailed comparison of top AIcodingagentslike Cursor, GitHub Copilot, Windsurf, Bolt.new, and Replit. This article breaks down their key features, strengths, and ideal use cases to help developers choose the righttoolfor their workflow.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best 10 AI Tools for Coding: A Developer's Ultimate Toolkit for 2026",
+      "url": "https://manus.im/blog/best-ai-coding-assistant-tools",
+      "description": "Toolslike Manus, ReplitAgent, and Claude Code can take a natural language description and generate a complete, functional application. For developers looking to automate the entire process from idea to deployment, Manus is particularly powerful, as it can handle research,coding, and deployment in a single,autonomousworkflow.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best Orchestration Tools for AI Projects - prompts.ai",
+      "url": "https://www.prompts.ai/blog/best-orchestration-tools-ai-projects",
+      "description": "AIorchestrationtoolssimplify managing workflows across data ingestion, preprocessing, training, deployment, and monitoring. They automate tasks, reduce errors, and help scale operations efficiently. This guide compares eighttoolsforAIorchestration, focusing on deployment options, integrations, governance, and costs. Key Highlights:",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "The 10 Best AI Orchestration Platforms in 2025 - domo.com",
+      "url": "https://www.domo.com/learn/article/best-ai-orchestration-platforms",
+      "description": "No-codetoolsempower business users, while developer-friendly frameworks give technical teams the flexibility to build complex workflows. 10 bestAIorchestrationplatforms in 2025",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "What is AI Orchestration? 21+ Tools to Consider in 2025",
+      "url": "https://akka.io/blog/ai-orchestration-tools",
+      "description": "Discover topAIorchestrationtoolsthat streamline workflows and optimize performance across your tech stack in this comprehensive guide.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "Top 10 AI Orchestration Tools for 2025: A Comparison of Features and ...",
+      "url": "https://superagi.com/top-10-ai-orchestration-tools-for-2025-a-comparison-of-features-and-benefits/",
+      "description": "According to recent research, the benefits ofAIorchestrationinclude improved performance, increased efficiency, and enhanced productivity. Key takeaways from our analysis include the importance of feature comparison and use case analysis when selecting anAIorchestrationtool, as well as the need to consider implementation and future trends.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "The best LLM & AI orchestration toolkits for your stack",
+      "url": "https://www.cudocompute.com/blog/llms-ai-orchestration-toolkits-comparison",
+      "description": "Compare top LLMs andAIorchestrationtoolsto pick the best stack for performance, scalability, cost, and enterprise needs.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "Multi-agent AI workflows: The next evolution of AI coding",
+      "url": "https://www.infoworld.com/article/4035926/multi-agent-ai-workflows-the-next-evolution-of-ai-coding.html",
+      "description": "As AI-assistedcodingbecomes more common, a new pattern is emerging:multi-agentworkflows. Amulti-agentworkflowrefers to using various AIagentsin parallel for specific software development ...",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Multi-Agent Workflows: A Practical Guide to Design, Tools, and ...",
+      "url": "https://medium.com/@kanerika/multi-agent-workflows-a-practical-guide-to-design-tools-and-deployment-3b0a2c46e389",
+      "description": "Multi-agentsystems adapt to changing requirements by rerouting tasks, adding specializedagentsfor new functions, and modifyingworkflowswithout rebuilding the entire system architecture.",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Build a multiple-agent workflow automation solution by using Microsoft ...",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
+      "description": "Learn how to design and deploy scalablemulti\u2011agentautomation infrastructure by using MicrosoftAgentFramework, Azure Container Apps, and Azure AI services.",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Mastering the Multi-Agent Workflow: A Guide to Agentic AI",
+      "url": "https://www.analyticsvidhya.com/blog/2025/10/multi-agent-workflow/",
+      "description": "Discover the power of themulti-agentworkflow. Our guide explains Agentic AI, its challenges, and compares top platforms like LangGraph.",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Multi-Agent Coding: Parallel Development Guide",
+      "url": "https://www.digitalapplied.com/blog/multi-agent-coding-parallel-development",
+      "description": "Mastermulti-agentparallelcodingwith Cursor's 8-agent system. Git worktrees, isolated environments. Complete productivity guide.",
+      "source": "search:multi-agent coding workflow"
+    }
+  ],
+  "awesome_list_tools": [],
+  "total_unique_tools": 196,
+  "all_unique_tools": [
+    {
+      "name": "Vibe Kanban",
+      "url": "https://www.vibekanban.com"
+    },
+    {
+      "name": "Claude Code",
+      "url": "https://www.anthropic.com/claude-code"
+    },
+    {
+      "name": "Aider",
+      "url": "https://aider.chat"
+    },
+    {
+      "name": "Cursor",
+      "url": "https://cursor.com"
+    },
+    {
+      "name": "Windsurf",
+      "url": "https://codeium.com/windsurf"
+    },
+    {
+      "name": "Cline",
+      "url": "https://cline.bot"
+    },
+    {
+      "name": "Continue",
+      "url": "https://continue.dev"
+    },
+    {
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot"
+    },
+    {
+      "name": "OpenHands",
+      "url": "https://www.all-hands.dev"
+    },
+    {
+      "name": "Devin",
+      "url": "https://devin.ai"
+    },
+    {
+      "name": "Goose",
+      "url": "https://block.github.io/goose/"
+    },
+    {
+      "name": "Roo Code",
+      "url": "https://roocode.com"
+    },
+    {
+      "name": "Amp",
+      "url": "https://amp.dev"
+    },
+    {
+      "name": "Bolt.new",
+      "url": "https://bolt.new"
+    },
+    {
+      "name": "Lovable",
+      "url": "https://lovable.dev"
+    },
+    {
+      "name": "v0",
+      "url": "https://v0.dev"
+    },
+    {
+      "name": "Replit Agent",
+      "url": "https://replit.com"
+    },
+    {
+      "name": "Kiro",
+      "url": "https://kiro.dev"
+    },
+    {
+      "name": "Codium AI",
+      "url": "https://www.codium.ai"
+    },
+    {
+      "name": "Supermaven",
+      "url": "https://supermaven.com"
+    },
+    {
+      "name": "Tabnine",
+      "url": "https://www.tabnine.com"
+    },
+    {
+      "name": "Amazon Q Developer",
+      "url": "https://aws.amazon.com/q/developer/"
+    },
+    {
+      "name": "Sourcegraph Cody",
+      "url": "https://sourcegraph.com/cody"
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chat.openai.com"
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai"
+    },
+    {
+      "name": "Gemini",
+      "url": "https://gemini.google.com"
+    },
+    {
+      "name": "Perplexity",
+      "url": "https://perplexity.ai"
+    },
+    {
+      "name": "Mistral AI",
+      "url": "https://mistral.ai"
+    },
+    {
+      "name": "Cohere",
+      "url": "https://cohere.com"
+    },
+    {
+      "name": "Groq",
+      "url": "https://groq.com"
+    },
+    {
+      "name": "Together AI",
+      "url": "https://together.ai"
+    },
+    {
+      "name": "Fireworks AI",
+      "url": "https://fireworks.ai"
+    },
+    {
+      "name": "Replicate",
+      "url": "https://replicate.com"
+    },
+    {
+      "name": "Hugging Face",
+      "url": "https://huggingface.co"
+    },
+    {
+      "name": "OpenRouter",
+      "url": "https://openrouter.ai"
+    },
+    {
+      "name": "Anyscale",
+      "url": "https://anyscale.com"
+    },
+    {
+      "name": "DeepSeek",
+      "url": "https://deepseek.com"
+    },
+    {
+      "name": "Qwen",
+      "url": "https://qwenlm.github.io"
+    },
+    {
+      "name": "Yi",
+      "url": "https://01.ai"
+    },
+    {
+      "name": "Llama",
+      "url": "https://llama.meta.com"
+    },
+    {
+      "name": "Grok",
+      "url": "https://x.ai"
+    },
+    {
+      "name": "Pi",
+      "url": "https://pi.ai"
+    },
+    {
+      "name": "Poe",
+      "url": "https://poe.com"
+    },
+    {
+      "name": "Character.AI",
+      "url": "https://character.ai"
+    },
+    {
+      "name": "Phind",
+      "url": "https://phind.com"
+    },
+    {
+      "name": "You.com",
+      "url": "https://you.com"
+    },
+    {
+      "name": "Kagi",
+      "url": "https://kagi.com"
+    },
+    {
+      "name": "LangChain",
+      "url": "https://langchain.com"
+    },
+    {
+      "name": "LlamaIndex",
+      "url": "https://llamaindex.ai"
+    },
+    {
+      "name": "Haystack",
+      "url": "https://haystack.deepset.ai"
+    },
+    {
+      "name": "AutoGen",
+      "url": "https://microsoft.github.io/autogen/"
+    },
+    {
+      "name": "CrewAI",
+      "url": "https://crewai.com"
+    },
+    {
+      "name": "Dify",
+      "url": "https://dify.ai"
+    },
+    {
+      "name": "Flowise",
+      "url": "https://flowiseai.com"
+    },
+    {
+      "name": "Langflow",
+      "url": "https://langflow.org"
+    },
+    {
+      "name": "Vercel AI SDK",
+      "url": "https://sdk.vercel.ai"
+    },
+    {
+      "name": "Instructor",
+      "url": "https://python.useinstructor.com"
+    },
+    {
+      "name": "DSPy",
+      "url": "https://dspy-docs.vercel.app"
+    },
+    {
+      "name": "Marvin",
+      "url": "https://askmarvin.ai"
+    },
+    {
+      "name": "Mirascope",
+      "url": "https://mirascope.io"
+    },
+    {
+      "name": "Pydantic AI",
+      "url": "https://ai.pydantic.dev"
+    },
+    {
+      "name": "LMQL",
+      "url": "https://lmql.ai"
+    },
+    {
+      "name": "Guardrails AI",
+      "url": "https://guardrailsai.com"
+    },
+    {
+      "name": "Ollama",
+      "url": "https://ollama.ai"
+    },
+    {
+      "name": "LM Studio",
+      "url": "https://lmstudio.ai"
+    },
+    {
+      "name": "GPT4All",
+      "url": "https://gpt4all.io"
+    },
+    {
+      "name": "Jan",
+      "url": "https://jan.ai"
+    },
+    {
+      "name": "Msty",
+      "url": "https://msty.app"
+    },
+    {
+      "name": "LocalAI",
+      "url": "https://localai.io"
+    },
+    {
+      "name": "vLLM",
+      "url": "https://vllm.ai"
+    },
+    {
+      "name": "OpenAI API",
+      "url": "https://platform.openai.com"
+    },
+    {
+      "name": "Anthropic API",
+      "url": "https://console.anthropic.com"
+    },
+    {
+      "name": "Google AI Studio",
+      "url": "https://aistudio.google.com"
+    },
+    {
+      "name": "Azure OpenAI",
+      "url": "https://azure.microsoft.com/en-us/products/ai-services/openai-service"
+    },
+    {
+      "name": "Vertex AI",
+      "url": "https://cloud.google.com/vertex-ai"
+    },
+    {
+      "name": "Weights & Biases",
+      "url": "https://wandb.ai"
+    },
+    {
+      "name": "LangSmith",
+      "url": "https://smith.langchain.com"
+    },
+    {
+      "name": "Helicone",
+      "url": "https://helicone.ai"
+    },
+    {
+      "name": "Braintrust",
+      "url": "https://braintrustdata.com"
+    },
+    {
+      "name": "Portkey",
+      "url": "https://portkey.ai"
+    },
+    {
+      "name": "Arize",
+      "url": "https://arize.com"
+    },
+    {
+      "name": "Langfuse",
+      "url": "https://langfuse.com"
+    },
+    {
+      "name": "Promptlayer",
+      "url": "https://promptlayer.com"
+    },
+    {
+      "name": "Humanloop",
+      "url": "https://humanloop.com"
+    },
+    {
+      "name": "Log10",
+      "url": "https://log10.io"
+    },
+    {
+      "name": "Pinecone",
+      "url": "https://pinecone.io"
+    },
+    {
+      "name": "Weaviate",
+      "url": "https://weaviate.io"
+    },
+    {
+      "name": "Qdrant",
+      "url": "https://qdrant.tech"
+    },
+    {
+      "name": "Milvus",
+      "url": "https://milvus.io"
+    },
+    {
+      "name": "Chroma",
+      "url": "https://trychroma.com"
+    },
+    {
+      "name": "Zilliz",
+      "url": "https://zilliz.com"
+    },
+    {
+      "name": "Supabase Vector",
+      "url": "https://supabase.com/vector"
+    },
+    {
+      "name": "LanceDB",
+      "url": "https://lancedb.com"
+    },
+    {
+      "name": "Vespa",
+      "url": "https://vespa.ai"
+    },
+    {
+      "name": "Midjourney",
+      "url": "https://midjourney.com"
+    },
+    {
+      "name": "DALL-E",
+      "url": "https://openai.com/dall-e-3"
+    },
+    {
+      "name": "Stable Diffusion",
+      "url": "https://stability.ai"
+    },
+    {
+      "name": "Leonardo AI",
+      "url": "https://leonardo.ai"
+    },
+    {
+      "name": "Ideogram",
+      "url": "https://ideogram.ai"
+    },
+    {
+      "name": "Flux",
+      "url": "https://blackforestlabs.ai"
+    },
+    {
+      "name": "Recraft",
+      "url": "https://recraft.ai"
+    },
+    {
+      "name": "Playground AI",
+      "url": "https://playground.com"
+    },
+    {
+      "name": "Krea AI",
+      "url": "https://krea.ai"
+    },
+    {
+      "name": "Magnific",
+      "url": "https://magnific.ai"
+    },
+    {
+      "name": "ElevenLabs",
+      "url": "https://elevenlabs.io"
+    },
+    {
+      "name": "Suno",
+      "url": "https://suno.ai"
+    },
+    {
+      "name": "Udio",
+      "url": "https://udio.com"
+    },
+    {
+      "name": "AssemblyAI",
+      "url": "https://assemblyai.com"
+    },
+    {
+      "name": "Deepgram",
+      "url": "https://deepgram.com"
+    },
+    {
+      "name": "PlayHT",
+      "url": "https://play.ht"
+    },
+    {
+      "name": "Resemble AI",
+      "url": "https://resemble.ai"
+    },
+    {
+      "name": "Runway",
+      "url": "https://runwayml.com"
+    },
+    {
+      "name": "Pika",
+      "url": "https://pika.art"
+    },
+    {
+      "name": "Luma AI",
+      "url": "https://lumalabs.ai"
+    },
+    {
+      "name": "Kling AI",
+      "url": "https://klingai.com"
+    },
+    {
+      "name": "HeyGen",
+      "url": "https://heygen.com"
+    },
+    {
+      "name": "Synthesia",
+      "url": "https://synthesia.io"
+    },
+    {
+      "name": "D-ID",
+      "url": "https://d-id.com"
+    },
+    {
+      "name": "Jasper",
+      "url": "https://jasper.ai"
+    },
+    {
+      "name": "Copy.ai",
+      "url": "https://copy.ai"
+    },
+    {
+      "name": "Writesonic",
+      "url": "https://writesonic.com"
+    },
+    {
+      "name": "Rytr",
+      "url": "https://rytr.me"
+    },
+    {
+      "name": "Sudowrite",
+      "url": "https://sudowrite.com"
+    },
+    {
+      "name": "Grammarly",
+      "url": "https://grammarly.com"
+    },
+    {
+      "name": "Wordtune",
+      "url": "https://wordtune.com"
+    },
+    {
+      "name": "QuillBot",
+      "url": "https://quillbot.com"
+    },
+    {
+      "name": "Notion AI",
+      "url": "https://notion.so/product/ai"
+    },
+    {
+      "name": "Mem",
+      "url": "https://mem.ai"
+    },
+    {
+      "name": "Reflect",
+      "url": "https://reflect.app"
+    },
+    {
+      "name": "Otter.ai",
+      "url": "https://otter.ai"
+    },
+    {
+      "name": "Fireflies.ai",
+      "url": "https://fireflies.ai"
+    },
+    {
+      "name": "Krisp",
+      "url": "https://krisp.ai"
+    },
+    {
+      "name": "Reclaim AI",
+      "url": "https://reclaim.ai"
+    },
+    {
+      "name": "Motion",
+      "url": "https://usemotion.com"
+    },
+    {
+      "name": "Gamma",
+      "url": "https://gamma.app"
+    },
+    {
+      "name": "Beautiful.ai",
+      "url": "https://beautiful.ai"
+    },
+    {
+      "name": "Tome",
+      "url": "https://tome.app"
+    },
+    {
+      "name": "Zapier AI",
+      "url": "https://zapier.com/ai"
+    },
+    {
+      "name": "Make",
+      "url": "https://make.com"
+    },
+    {
+      "name": "n8n",
+      "url": "https://n8n.io"
+    },
+    {
+      "name": "Bardeen",
+      "url": "https://bardeen.ai"
+    },
+    {
+      "name": "Activepieces",
+      "url": "https://activepieces.com"
+    },
+    {
+      "name": "Zed",
+      "url": "https://zed.dev"
+    },
+    {
+      "name": "JetBrains AI",
+      "url": "https://jetbrains.com/ai/"
+    },
+    {
+      "name": "Pieces",
+      "url": "https://pieces.app"
+    },
+    {
+      "name": "Blackbox AI",
+      "url": "https://blackbox.ai"
+    },
+    {
+      "name": "AskCodi",
+      "url": "https://askcodi.com"
+    },
+    {
+      "name": "Bito",
+      "url": "https://bito.ai"
+    },
+    {
+      "name": "Mintlify",
+      "url": "https://mintlify.com"
+    },
+    {
+      "name": "Swimm",
+      "url": "https://swimm.io"
+    },
+    {
+      "name": "SWE-agent",
+      "url": "https://swe-agent.com"
+    },
+    {
+      "name": "Sweep",
+      "url": "https://sweep.dev"
+    },
+    {
+      "name": "Codegen",
+      "url": "https://codegen.com"
+    },
+    {
+      "name": "Factory",
+      "url": "https://factory.ai"
+    },
+    {
+      "name": "Poolside",
+      "url": "https://poolside.ai"
+    },
+    {
+      "name": "Magic",
+      "url": "https://magic.dev"
+    },
+    {
+      "name": "Cognition",
+      "url": "https://cognition.ai"
+    },
+    {
+      "name": "Glean",
+      "url": "https://glean.com"
+    },
+    {
+      "name": "Moveworks",
+      "url": "https://moveworks.com"
+    },
+    {
+      "name": "Uniphore",
+      "url": "https://uniphore.com"
+    },
+    {
+      "name": "Forethought",
+      "url": "https://forethought.ai"
+    },
+    {
+      "name": "Ada",
+      "url": "https://ada.cx"
+    },
+    {
+      "name": "Intercom Fin",
+      "url": "https://intercom.com/fin"
+    },
+    {
+      "name": "Zendesk AI",
+      "url": "https://zendesk.com/ai"
+    },
+    {
+      "name": "Claude MCP",
+      "url": "https://modelcontextprotocol.io"
+    },
+    {
+      "name": "Smithery",
+      "url": "https://smithery.ai"
+    },
+    {
+      "name": "Top 5 Agentic AI Coding Assistants April 2025 | APIpie",
+      "url": "https://dev.to/apipie-ai/top-5-agentic-ai-coding-assistants-april-2025-apipie-1139",
+      "description": "AgenticAIcodingassistants are transforming software development. Unlike traditional code completiontools, these advanced IDE-integratedagentscan plan solutions, modify multiple files, run tests, and iterate on code autonomously. They act asAIco-developers that use reasoning and iterative planning to tackle complex, multi-stepcodingtasks with minimal human intervention. As of April ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "5 Best AI Agents for Coding and Programming in 2025",
+      "url": "https://www.index.dev/blog/ai-agents-for-coding",
+      "description": "5 BestAIAgentsforCodingDiscover the top 5AIcodingagentsof2025: CodeGPT, GitHub Copilot, PostmanAI, Replit, and Snyk. Thesetoolshelp developers write, test, debug, and automate code faster, with real-world use cases and pricing insights included.",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "Best AI Coding Agents in 2025 | Top 12 Tools Compared | Robylon",
+      "url": "https://www.robylon.ai/blog/leading-ai-coding-agents-of-2025",
+      "description": "TL;DR: LeadingAICodingAgentsof2025AIcodingassistants have become essentialtoolsfor modern developers, automating repetitive tasks, improving code quality, and accelerating development cycles. This guide compares topAIcodingassistants across enterprise-grade features, pricing per seat, and code review SaaS options so distributed teams can choose fast. It covers open-source vs ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "Top coding agents in 2025: Tools that actually help you build",
+      "url": "https://blog.logto.io/top-coding-agent",
+      "description": "agentcodingTopcodingagentsin2025:Toolsthat actually help you build A detailed comparison of topAIcodingagentslike Cursor, GitHub Copilot, Windsurf, Bolt.new, and Replit. This article breaks down their key features, strengths, and ideal use cases to help developers choose the righttoolfor their workflow.",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "The Top AI Coding Agents of 2025 - officechai.com",
+      "url": "https://officechai.com/ai/the-top-ai-coding-agents-of-2025/",
+      "description": "AsAIcontinues to reshape software development,codingagentshave become indispensabletoolsfor developers. In2025, the race to build the bestcodingagentis fiercer than ever, with platforms blendingAI, automation, and collaborative features. Below, we explore the topcodingagentsdominating the market, their founders, investors, features, and pricing to help you choose the perfect ...",
+      "source": "search:AI coding agent tools 2025"
+    },
+    {
+      "name": "Top 25 Vibe Coding Tools That Will Transform Your Development Workflow ...",
+      "url": "https://apidog.com/blog/top-vibe-coding-tools/",
+      "description": "Top 25VibeCodingToolsThat Will Transform Your DevelopmentWorkflowin 2025 Explore the revolutionary world ofvibecodingtoolsthat are changing how we build software in 2025. From AI pair programmers to autonomouscodingagents, these 25toolshelp developers write better code faster by translating natural language into functional applications.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "Top 10 Vibe Coding Tools To Increase Your Productivity in 2025",
+      "url": "https://getmocha.com/blog/best-vibe-coding-tools-2025",
+      "description": "Discover the top 10vibecodingtoolsto increase your productivity in 2025. Compare the besttoolson different criteria to make the best choice.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "10 Best Vibe Coding Tools: LLM-Powered Code Generators to Try",
+      "url": "https://www.digitalocean.com/resources/articles/vibe-coding-tools",
+      "description": "Discover 10 powerfulvibecodingtoolsthat use large language models to generate code from natural language prompts to transform your programming.",
+      "source": "search:vibe coding workflow tools"
+    },
+    {
+      "name": "10+ Best Open Source Claude Code Alternatives (2025)",
+      "url": "https://openalternative.co/alternatives/claude-code",
+      "description": "The best open sourcealternativetoClaudeCodeis Cline. If that doesn't suit you, we've compiled a ranked list of other open sourceClaudeCodealternativesto help you find a suitable replacement. Other interesting open sourcealternativestoClaudeCodeare: OpenHands, Zed, OpenCode and Aider.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "7 Best Claude Code Alternatives in 2025 - Tembo",
+      "url": "https://www.tembo.io/blog/claude-code-alternatives",
+      "description": "Discover the 7 bestClaudeCodealternativesin 2025. Compare features, pricing, and top tools like Tembo, GitHub Copilot, Cursor, and GeminiCodeAssist to find the right AI coding assistant for your team.",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "Best 5 Alternatives to Claude Code | by Leo Wood | Medium",
+      "url": "https://medium.com/@HeyLeo/best-5-alternatives-to-claude-code-50887c9a6eb4",
+      "description": "Best 5AlternativestoClaudeCodeClaudeCodeis one of the most polished coding assistants available today. It feels conversational, integrates smoothly with the terminal, and understands ...",
+      "source": "search:claude code alternatives"
+    },
+    {
+      "name": "aider Alternatives: Top 12 AI Coding Assistants & Similar Apps",
+      "url": "https://alternativeto.net/software/aider/",
+      "description": "aiderAlternativesAICodingAssistants and other similar apps likeaideraideris described as'Aideris a command line tool that lets you pair program with GPT-3.5/GPT-4, to edit code stored in your local git repository.",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "Top Aider Alternatives in 2026 - Slashdot",
+      "url": "https://slashdot.org/software/p/Aider-AI/alternatives",
+      "description": "JetBrains Junie is an innovativeAIcodingassistant that works inside many JetBrains IDEs to streamline programming efforts and boost efficiency. This agent leverages advancedAIto help developers write, test, and inspect code without leaving their familiar development environment. Junie offers both code execution and interactive collaboration, allowing programmers to switch between ...",
+      "source": "search:aider alternatives AI coding"
+    },
+    {
+      "name": "Parallelizing AI Coding Agents | AI Native Dev",
+      "url": "https://ainativedev.io/news/how-to-parallelize-ai-coding-agents",
+      "description": "Discover a newAIdev workflow: how to parallelizecodingagentsfor faster builds, deeper exploration, and smarter reviews using tools like Claude Code.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "10x Coding with Parallel AI Agents: Zerg, Toad, and the Future of ...",
+      "url": "https://blog.laurentcharignon.com/post/2025-12-28-10x-coding-with-parallel-ai-agents/",
+      "description": "Zerg: TheParallelAgentOrchestrator Named after StarCraft's Zerg rush strategy (overwhelm with many units attacking inparallel), Zerg is the orchestration layer. It launches multipleAIcodingagents, each in its own tmux window, and coordinates them using barriers.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Embracing the parallel coding agent lifestyle",
+      "url": "https://simonwillison.net/2025/Oct/5/parallel-coding-agents/",
+      "description": "Embracing theparallelcodingagentlifestyle For a while now I've been hearing from engineers who run multiplecodingagentsat once\u2014firing up several Claude Code or Codex CLI instances at the same time, sometimes in the same repo, sometimes against multiple checkouts or git worktrees. I was pretty skeptical about this at first.AI-generated code needs to be reviewed, which means the ...",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Managing parallel coding agents (without going insane)",
+      "url": "https://metacircuits.substack.com/p/managing-parallel-coding-agents-without",
+      "description": "This is an excellent breakdown of managingparallelAIcodingagents. The emphasis on design-first workflows, Git worktrees, and TDD really highlights how to scale agenticcodingwithout descending into merge chaos.",
+      "source": "search:parallel AI coding agents"
+    },
+    {
+      "name": "Top 5 Agentic AI Coding Assistants April 2025 - APIpie",
+      "url": "https://apipie.ai/docs/blog/top-5-agentic-ai-coding-assistants",
+      "description": "Discover the leading agentic AIcodingassistants of 2025, including GitHub CopilotAgent, Cline, Cursor, QodoAI, and Devin AI, with detailed comparisons and use case recommendations.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "16 Best AI Agents for Coding To Use Right Now in 2026",
+      "url": "https://visionvix.com/best-ai-agents-for-coding/",
+      "description": "An AIagentforcodingis quickly becoming every developer's go-to partner for smarter and faster programming. Thesetoolsunderstand context, suggest real-time improvements, and even automate complex tasks. They help reducecodingerrors while boosting overall efficiency and creativity. In this guide, we highlight the top AIagentsthat are redefining thecodingexperience. Key Takeaways ...",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best AI Coding Agents for Developers in 2026 (Real-World Reviews)",
+      "url": "https://www.faros.ai/blog/best-ai-coding-agents-2026",
+      "description": "More recently, AIcodingassistants are no longer limited to autocomplete or chat-based assistance. AItoolslike Claude Code, Codex, Cursor, and GitHub Copilot are increasingly capable of acting asautonomousagentsthat understand repositories, make multi-file changes, run tests, and iterate on tasks with minimal human input.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best 10 AI Tools for Coding: A Developer's Ultimate Toolkit for 2026",
+      "url": "https://manus.im/blog/best-ai-coding-assistant-tools",
+      "description": "Toolslike Manus, ReplitAgent, and Claude Code can take a natural language description and generate a complete, functional application. For developers looking to automate the entire process from idea to deployment, Manus is particularly powerful, as it can handle research,coding, and deployment in a single,autonomousworkflow.",
+      "source": "search:autonomous coding agent tools"
+    },
+    {
+      "name": "Best Orchestration Tools for AI Projects - prompts.ai",
+      "url": "https://www.prompts.ai/blog/best-orchestration-tools-ai-projects",
+      "description": "AIorchestrationtoolssimplify managing workflows across data ingestion, preprocessing, training, deployment, and monitoring. They automate tasks, reduce errors, and help scale operations efficiently. This guide compares eighttoolsforAIorchestration, focusing on deployment options, integrations, governance, and costs. Key Highlights:",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "The 10 Best AI Orchestration Platforms in 2025 - domo.com",
+      "url": "https://www.domo.com/learn/article/best-ai-orchestration-platforms",
+      "description": "No-codetoolsempower business users, while developer-friendly frameworks give technical teams the flexibility to build complex workflows. 10 bestAIorchestrationplatforms in 2025",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "What is AI Orchestration? 21+ Tools to Consider in 2025",
+      "url": "https://akka.io/blog/ai-orchestration-tools",
+      "description": "Discover topAIorchestrationtoolsthat streamline workflows and optimize performance across your tech stack in this comprehensive guide.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "Top 10 AI Orchestration Tools for 2025: A Comparison of Features and ...",
+      "url": "https://superagi.com/top-10-ai-orchestration-tools-for-2025-a-comparison-of-features-and-benefits/",
+      "description": "According to recent research, the benefits ofAIorchestrationinclude improved performance, increased efficiency, and enhanced productivity. Key takeaways from our analysis include the importance of feature comparison and use case analysis when selecting anAIorchestrationtool, as well as the need to consider implementation and future trends.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "The best LLM & AI orchestration toolkits for your stack",
+      "url": "https://www.cudocompute.com/blog/llms-ai-orchestration-toolkits-comparison",
+      "description": "Compare top LLMs andAIorchestrationtoolsto pick the best stack for performance, scalability, cost, and enterprise needs.",
+      "source": "search:AI code orchestration tools"
+    },
+    {
+      "name": "Multi-agent AI workflows: The next evolution of AI coding",
+      "url": "https://www.infoworld.com/article/4035926/multi-agent-ai-workflows-the-next-evolution-of-ai-coding.html",
+      "description": "As AI-assistedcodingbecomes more common, a new pattern is emerging:multi-agentworkflows. Amulti-agentworkflowrefers to using various AIagentsin parallel for specific software development ...",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Build a multiple-agent workflow automation solution by using Microsoft ...",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
+      "description": "Learn how to design and deploy scalablemulti\u2011agentautomation infrastructure by using MicrosoftAgentFramework, Azure Container Apps, and Azure AI services.",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Mastering the Multi-Agent Workflow: A Guide to Agentic AI",
+      "url": "https://www.analyticsvidhya.com/blog/2025/10/multi-agent-workflow/",
+      "description": "Discover the power of themulti-agentworkflow. Our guide explains Agentic AI, its challenges, and compares top platforms like LangGraph.",
+      "source": "search:multi-agent coding workflow"
+    },
+    {
+      "name": "Multi-Agent Coding: Parallel Development Guide",
+      "url": "https://www.digitalapplied.com/blog/multi-agent-coding-parallel-development",
+      "description": "Mastermulti-agentparallelcodingwith Cursor's 8-agent system. Git worktrees, isolated environments. Complete productivity guide.",
+      "source": "search:multi-agent coding workflow"
+    }
+  ]
+}

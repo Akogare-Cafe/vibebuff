@@ -23,6 +23,18 @@ CATEGORY_MAPPING = {
     "app_builder": "vibe-coding",
     "framework": "backend",
     "mcp": "cli-agents",
+    "llm": "llms",
+    "local_llm": "llms",
+    "api": "backend",
+    "mlops": "observability",
+    "vector_db": "databases",
+    "image_gen": "ai-assistants",
+    "audio": "ai-assistants",
+    "video": "ai-assistants",
+    "writing": "ai-assistants",
+    "productivity": "ai-assistants",
+    "automation": "ai-assistants",
+    "enterprise": "ai-assistants",
 }
 
 DEFAULT_CATEGORY = "ai-assistants"

@@ -492,10 +492,6 @@ function ToolsPageContent() {
                     </div>
                   );
                 })}
-                <div className="bg-background rounded-lg p-4 border border-dashed border-border flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 hover:border-primary transition-all cursor-pointer min-h-[180px]">
-                  <Lock className="w-10 h-10 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground font-medium">Unlock Slot Lvl 10</span>
-                </div>
               </div>
             </div>
 
