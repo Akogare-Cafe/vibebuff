@@ -150,7 +150,7 @@ export default function FavoritesPage() {
     <div className="min-h-screen bg-background pb-24">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
-      <main className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex items-center gap-4 mb-8">
           <Link href="/profile">
             <button className="p-2 bg-card border border-border rounded-lg hover:bg-secondary hover:border-primary/30 transition-colors">

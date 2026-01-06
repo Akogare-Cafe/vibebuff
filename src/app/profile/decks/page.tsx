@@ -149,7 +149,7 @@ export default function ProfileDecksPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-6">
           <Link href="/profile" className="text-muted-foreground text-sm hover:text-primary flex items-center gap-1 w-fit">
             <ArrowLeft className="w-3 h-3" /> BACK TO PROFILE

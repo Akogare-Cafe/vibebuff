@@ -257,7 +257,7 @@ export default function SettingsPage() {
     <div className="min-h-screen bg-background pb-24">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
-      <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex items-center gap-4 mb-8">
           <Link href="/profile">
             <button className="p-2 rounded-lg bg-card border border-border hover:bg-secondary transition-colors">
@@ -324,17 +324,10 @@ export default function SettingsPage() {
                       )}
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Profile picture is managed through your Clerk account
+                      <p className="text-sm font-medium text-foreground mb-1">Profile Picture</p>
+                      <p className="text-xs text-muted-foreground">
+                        Upload a new avatar to personalize your profile
                       </p>
-                      <a
-                        href="https://accounts.clerk.dev/user"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-primary hover:underline"
-                      >
-                        Manage on Clerk
-                      </a>
                     </div>
                   </div>
 
