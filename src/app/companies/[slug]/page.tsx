@@ -28,6 +28,7 @@ import {
   Cloud,
   Zap,
 } from "lucide-react";
+import { CompanySchema, BreadcrumbSchema } from "@/components/seo-structured-data";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   "LLM Provider": <Brain className="w-4 h-4" />,
@@ -148,8 +149,33 @@ export default function CompanyProfilePage() {
       {} as Record<string, typeof aiTechStack.aiTools>
     ) || {};
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+
   return (
     <div className="min-h-screen bg-background">
+      <CompanySchema
+        company={{
+          name: company.name,
+          description: company.description,
+          url: `${siteUrl}/companies/${company.slug}`,
+          logoUrl: company.logoUrl,
+          websiteUrl: company.websiteUrl,
+          industry: company.industry,
+          location: company.location,
+          memberCount: company.memberCount,
+          aiTools: aiTechStack?.aiTools?.map((t) => ({
+            name: t.name,
+            category: t.category,
+          })),
+        }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: siteUrl },
+          { name: "Companies", url: `${siteUrl}/companies` },
+          { name: company.name, url: `${siteUrl}/companies/${company.slug}` },
+        ]}
+      />
       <main className="max-w-6xl mx-auto px-4 py-8">
         <Link
           href="/companies"

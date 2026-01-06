@@ -1148,3 +1148,22 @@ export const listAll = query({
     return companiesWithAiStack;
   },
 });
+
+export const listForSitemap = query({
+  args: {
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 200;
+
+    const companies = await ctx.db
+      .query("companies")
+      .filter((q) => q.eq(q.field("techStackPublic"), true))
+      .take(limit);
+
+    return companies.map((company) => ({
+      slug: company.slug,
+      updatedAt: company.updatedAt,
+    }));
+  },
+});

@@ -7,10 +7,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.com";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
   let tools: Array<{ slug: string }> = [];
+  let companies: Array<{ slug: string; updatedAt: number }> = [];
 
   try {
     comparisons = await fetchQuery(api.seo.listComparisons, { limit: 100 });
     tools = await fetchQuery(api.tools.list, { limit: 200 });
+    companies = await fetchQuery(api.companies.listForSitemap, { limit: 200 });
   } catch (error) {
     console.error("Failed to fetch dynamic sitemap data:", error);
   }
@@ -284,6 +286,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  const companyPages: MetadataRoute.Sitemap = companies.map((company) => ({
+    url: `${siteUrl}/companies/${company.slug}`,
+    lastModified: new Date(company.updatedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
   return [
     ...staticPages, 
     ...blogPosts, 
@@ -293,5 +302,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...toolPages,
     ...alternativesPages,
     ...bestForPages,
+    ...companyPages,
   ];
 }

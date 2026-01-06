@@ -283,6 +283,85 @@ export function HowToSchema() {
   );
 }
 
+interface CompanySchemaProps {
+  name: string;
+  description?: string;
+  url: string;
+  logoUrl?: string;
+  websiteUrl?: string;
+  industry?: string;
+  location?: string;
+  memberCount: number;
+  aiTools?: Array<{
+    name: string;
+    category: string;
+  }>;
+}
+
+export function CompanySchema({ company }: { company: CompanySchemaProps }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: company.name,
+    description: company.description || `${company.name}'s technology stack and AI tools`,
+    url: company.url,
+    ...(company.logoUrl && { logo: company.logoUrl }),
+    ...(company.websiteUrl && { sameAs: [company.websiteUrl] }),
+    ...(company.industry && { industry: company.industry }),
+    ...(company.location && {
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: company.location,
+      },
+    }),
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      value: company.memberCount,
+    },
+    ...(company.aiTools && company.aiTools.length > 0 && {
+      knowsAbout: company.aiTools.map((tool) => ({
+        "@type": "Thing",
+        name: tool.name,
+        description: `${tool.category} tool used by ${company.name}`,
+      })),
+    }),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function CompanyListSchema({ companies }: { companies: Array<{ name: string; url: string; description?: string }> }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Company Tech Stacks",
+    description: "Discover what AI tools and technology stacks companies are using",
+    numberOfItems: companies.length,
+    itemListElement: companies.map((company, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Organization",
+        name: company.name,
+        url: company.url,
+        description: company.description,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function HomePageSchemas() {
   const homeFaqs: FAQItem[] = [
     {
