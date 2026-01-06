@@ -465,10 +465,10 @@ export default function Home() {
             {categories?.map((category) => (
               <Link key={category._id} href={`/tools?category=${category.slug}`}>
                 <PixelCard className="text-center p-5 md:p-6 cursor-pointer hover:border-primary transition-all group min-h-[120px] md:min-h-[140px] flex flex-col items-center justify-center">
-                  <div className="text-3xl md:text-4xl mb-3 group-hover:scale-110 transition-transform">
+                  <div className="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <DynamicIcon name={category.icon || "Package"} className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                   </div>
-                  <p className="text-sm md:text-base text-foreground group-hover:text-primary font-medium">
+                  <p className="text-sm md:text-base text-foreground group-hover:text-primary font-medium text-center">
                     {category.name}
                   </p>
                 </PixelCard>
