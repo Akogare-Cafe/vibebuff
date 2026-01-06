@@ -419,7 +419,15 @@ export default function Home() {
 
                     {/* Actions */}
                     <div className="flex flex-wrap gap-3 justify-center pt-4 border-t border-border">
-                      <Link href="/stack-builder">
+                      <Link href={`/stack-builder?tools=${encodeURIComponent(JSON.stringify(
+                        Object.entries(aiRecommendations.recommendations).flatMap(([category, tools]) =>
+                          tools.slice(0, 1).map(tool => ({
+                            name: tool.name,
+                            category,
+                            tagline: tool.tagline,
+                          }))
+                        )
+                      ))}`}>
                         <PixelButton size="sm">
                           <ArrowRight className="w-4 h-4 mr-2" />
                           Open in Stack Builder

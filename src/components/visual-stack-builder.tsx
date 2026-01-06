@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
@@ -834,7 +834,17 @@ function ContractsPanel({ userId }: { userId: string }) {
   );
 }
 
-export function VisualStackBuilder() {
+interface InitialTool {
+  name: string;
+  category: string;
+  tagline: string;
+}
+
+interface VisualStackBuilderProps {
+  initialTools?: InitialTool[];
+}
+
+export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const { user } = useUser();
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -857,6 +867,43 @@ export function VisualStackBuilder() {
   const createBuild = useMutation(api.stackBuilder.createBuild);
   const updateBuild = useMutation(api.stackBuilder.updateBuild);
   const deleteBuild = useMutation(api.stackBuilder.deleteBuild);
+
+  useEffect(() => {
+    if (initialTools && initialTools.length > 0 && nodes.length === 0) {
+      const categoryOrder = ["ide", "ai", "frontend", "backend", "database", "deployment", "tool"];
+      const sortedTools = [...initialTools].sort((a, b) => {
+        const aIndex = categoryOrder.indexOf(a.category.toLowerCase());
+        const bIndex = categoryOrder.indexOf(b.category.toLowerCase());
+        return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+      });
+
+      const newNodes: Node<ToolNodeData>[] = sortedTools.map((tool, index) => ({
+        id: `node-${Date.now()}-${index}`,
+        type: "tool",
+        position: { x: 300, y: 100 + index * 150 },
+        data: {
+          label: tool.name,
+          category: tool.category.toLowerCase(),
+          description: tool.tagline,
+        },
+      }));
+
+      const newEdges: Edge[] = [];
+      for (let i = 0; i < newNodes.length - 1; i++) {
+        newEdges.push({
+          id: `edge-${newNodes[i].id}-${newNodes[i + 1].id}`,
+          source: newNodes[i].id,
+          target: newNodes[i + 1].id,
+          animated: true,
+          markerEnd: { type: MarkerType.ArrowClosed },
+        });
+      }
+
+      setNodes(newNodes);
+      setEdges(newEdges);
+      setBuildTitle("AI Recommended Stack");
+    }
+  }, [initialTools, nodes.length, setNodes, setEdges]);
 
   const onConnect = useCallback(
     (params: Connection) =>
