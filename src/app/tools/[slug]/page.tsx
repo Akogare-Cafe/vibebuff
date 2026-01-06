@@ -1,12 +1,13 @@
 "use client";
 
 import { useQuery, useMutation } from "convex/react";
+import { useAuth } from "@clerk/nextjs";
 import { api } from "../../../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import Link from "next/link";
-import { use, useEffect, useRef } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ChevronRight,
@@ -22,32 +23,55 @@ import {
   Zap,
   DollarSign,
   Tag,
-  Share2,
   Download,
   ExternalLink,
   Calendar,
-  GitFork,
-  Users,
   Code,
   Link as LinkIcon,
   Sparkles,
   ArrowRight,
-  Package
+  Package,
+  TrendingUp,
+  Users,
+  Clock,
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
+  MessageSquare,
+  Scale,
+  Layers,
+  Award,
+  Shield,
+  Cpu
 } from "lucide-react";
 import { DynamicIcon } from "@/components/dynamic-icon";
 import { AdDisplay } from "@/components/ad-display";
 import { ShareButton } from "@/components/share-modal";
 import { SuggestEditModal } from "@/components/suggest-edit-modal";
 import { AutoLinkTools } from "@/components/auto-link-tools";
+import { ToolStatsRadar, PopularityChart, RatingDisplay } from "@/components/tool-stats-chart";
+import { ToolReviews } from "@/components/tool-reviews";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
+  const { userId } = useAuth();
   const tool = useQuery(api.tools.getBySlug, { slug });
   const trackEvent = useMutation(api.popularity.trackEvent);
   const hasTrackedView = useRef(false);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   
   const relatedTools = useQuery(
     api.synergies.getToolSynergies,
+    tool?._id ? { toolId: tool._id } : "skip"
+  );
+
+  const popularity = useQuery(
+    api.popularity.getToolPopularity,
+    tool?._id ? { toolId: tool._id } : "skip"
+  );
+
+  const ratingSummary = useQuery(
+    api.reviews.getToolRatingSummary,
     tool?._id ? { toolId: tool._id } : "skip"
   );
 
@@ -504,6 +528,167 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             </PixelCardContent>
           </PixelCard>
         )}
+
+        {/* Analytics & Stats Section */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {tool.stats && <ToolStatsRadar stats={tool.stats} />}
+          {popularity && <PopularityChart popularity={popularity} />}
+        </div>
+
+        {/* Community Rating */}
+        {ratingSummary && ratingSummary.totalReviews > 0 && (
+          <RatingDisplay rating={ratingSummary} className="mb-8" />
+        )}
+
+        {/* Tool Metadata Grid */}
+        <PixelCard className="mb-8">
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-2">
+              <Layers className="w-4 h-4" /> TOOL METADATA
+            </PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                <Code className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-muted-foreground text-[10px]">LICENSE</p>
+                <p className="text-primary text-sm">{tool.isOpenSource ? "OPEN SOURCE" : "PROPRIETARY"}</p>
+              </div>
+              <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                <DollarSign className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-muted-foreground text-[10px]">PRICING</p>
+                <p className="text-primary text-sm">{tool.pricingModel.toUpperCase().replace("_", " ")}</p>
+              </div>
+              <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                <Award className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-muted-foreground text-[10px]">RARITY</p>
+                <p className="text-primary text-sm">{tool.isFeatured ? "LEGENDARY" : "COMMON"}</p>
+              </div>
+              <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                <Shield className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-muted-foreground text-[10px]">STATUS</p>
+                <p className="text-green-400 text-sm">ACTIVE</p>
+              </div>
+              {tool.githubStars && (
+                <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                  <Star className="w-5 h-5 mx-auto mb-1 text-yellow-400" />
+                  <p className="text-muted-foreground text-[10px]">GITHUB STARS</p>
+                  <p className="text-primary text-sm font-mono">
+                    {tool.githubStars >= 1000 ? `${(tool.githubStars / 1000).toFixed(1)}K` : tool.githubStars}
+                  </p>
+                </div>
+              )}
+              {tool.npmDownloadsWeekly && (
+                <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                  <Download className="w-5 h-5 mx-auto mb-1 text-green-400" />
+                  <p className="text-muted-foreground text-[10px]">NPM WEEKLY</p>
+                  <p className="text-primary text-sm font-mono">
+                    {tool.npmDownloadsWeekly >= 1000000 
+                      ? `${(tool.npmDownloadsWeekly / 1000000).toFixed(1)}M` 
+                      : tool.npmDownloadsWeekly >= 1000 
+                      ? `${(tool.npmDownloadsWeekly / 1000).toFixed(0)}K` 
+                      : tool.npmDownloadsWeekly}
+                  </p>
+                </div>
+              )}
+              {tool.category && (
+                <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                  <DynamicIcon name={tool.category.icon || "Package"} className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                  <p className="text-muted-foreground text-[10px]">CATEGORY</p>
+                  <p className="text-primary text-sm">{tool.category.name.toUpperCase()}</p>
+                </div>
+              )}
+              <div className="p-3 bg-[#0a0f1a] border border-border text-center">
+                <Cpu className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-muted-foreground text-[10px]">FEATURES</p>
+                <p className="text-primary text-sm font-mono">{tool.features.length}</p>
+              </div>
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+
+        {/* FAQ Section for SEO */}
+        <PixelCard className="mb-8">
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-2">
+              <HelpCircle className="w-4 h-4" /> FREQUENTLY ASKED QUESTIONS
+            </PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="space-y-2">
+              {[
+                {
+                  q: `What is ${tool.name}?`,
+                  a: tool.description,
+                },
+                {
+                  q: `Is ${tool.name} free to use?`,
+                  a: tool.pricingModel === "free" || tool.pricingModel === "open_source"
+                    ? `Yes, ${tool.name} is completely free to use.`
+                    : tool.pricingModel === "freemium"
+                    ? `${tool.name} offers a free tier with optional paid upgrades for additional features.`
+                    : `${tool.name} is a paid tool. Check their website for current pricing.`,
+                },
+                {
+                  q: `What are the main features of ${tool.name}?`,
+                  a: `Key features include: ${tool.features.slice(0, 5).join(", ")}${tool.features.length > 5 ? ", and more." : "."}`,
+                },
+                {
+                  q: `Who should use ${tool.name}?`,
+                  a: `${tool.name} is best for: ${tool.bestFor.join(", ")}.`,
+                },
+                {
+                  q: `What are the pros and cons of ${tool.name}?`,
+                  a: `Pros: ${tool.pros.slice(0, 3).join(", ")}. Cons: ${tool.cons.slice(0, 3).join(", ")}.`,
+                },
+              ].map((faq, i) => (
+                <div key={i} className="border border-border">
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-[#0a0f1a] transition-colors"
+                  >
+                    <span className="text-primary text-sm">{faq.q}</span>
+                    {expandedFaq === i ? (
+                      <ChevronUp className="w-4 h-4 text-muted-foreground shrink-0" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0" />
+                    )}
+                  </button>
+                  {expandedFaq === i && (
+                    <div className="px-3 pb-3">
+                      <p className="text-muted-foreground text-sm">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+
+        {/* Compare CTA */}
+        <PixelCard className="mb-8 border-primary">
+          <PixelCardContent className="py-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Scale className="w-8 h-8 text-primary" />
+                <div>
+                  <p className="text-primary text-sm">COMPARE {tool.name.toUpperCase()}</p>
+                  <p className="text-muted-foreground text-xs">See how it stacks up against alternatives</p>
+                </div>
+              </div>
+              <Link href={`/compare?tools=${tool.slug}`}>
+                <PixelButton>
+                  <Scale className="w-4 h-4 mr-2" /> COMPARE TOOLS
+                </PixelButton>
+              </Link>
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+
+        {/* User Reviews Section */}
+        <div className="mb-8">
+          <ToolReviews toolId={tool._id} userId={userId || undefined} />
+        </div>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
