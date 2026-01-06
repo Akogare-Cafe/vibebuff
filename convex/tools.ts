@@ -97,6 +97,24 @@ export const byCategory = query({
   },
 });
 
+export const listByCategory = query({
+  args: { categorySlug: v.string() },
+  handler: async (ctx, args) => {
+    const category = await ctx.db
+      .query("categories")
+      .withIndex("by_slug", (q) => q.eq("slug", args.categorySlug))
+      .first();
+
+    if (!category) return [];
+
+    return await ctx.db
+      .query("tools")
+      .withIndex("by_category", (q) => q.eq("categoryId", category._id))
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+  },
+});
+
 // Get database stats including last update time
 export const getStats = query({
   handler: async (ctx) => {

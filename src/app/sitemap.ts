@@ -237,5 +237,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPosts, ...categoryPages, ...popularComparisons, ...comparisonPages, ...toolPages];
+  const alternativesPages: MetadataRoute.Sitemap = tools.map((tool) => ({
+    url: `${siteUrl}/alternatives/${tool.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  const categories = [
+    "database",
+    "frontend", 
+    "backend",
+    "authentication",
+    "hosting",
+    "devops",
+    "ai-ml",
+    "testing",
+    "analytics",
+    "payments",
+    "cms",
+    "monitoring",
+  ];
+
+  const useCases = [
+    "startups",
+    "enterprise",
+    "side-projects",
+    "beginners",
+    "production",
+    "nextjs",
+    "typescript",
+    "serverless",
+    "realtime",
+    "mobile",
+  ];
+
+  const bestForPages: MetadataRoute.Sitemap = [];
+  for (const category of categories) {
+    for (const useCase of useCases) {
+      bestForPages.push({
+        url: `${siteUrl}/best/${category}/for/${useCase}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      });
+    }
+  }
+
+  return [
+    ...staticPages, 
+    ...blogPosts, 
+    ...categoryPages, 
+    ...popularComparisons, 
+    ...comparisonPages, 
+    ...toolPages,
+    ...alternativesPages,
+    ...bestForPages,
+  ];
 }
