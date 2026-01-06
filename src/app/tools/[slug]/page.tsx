@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { useAuth } from "@clerk/nextjs";
 import { api } from "../../../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
@@ -51,6 +51,7 @@ import { SuggestEditModal } from "@/components/suggest-edit-modal";
 import { AutoLinkTools } from "@/components/auto-link-tools";
 import { ToolStatsRadar, PopularityChart, RatingDisplay } from "@/components/tool-stats-chart";
 import { ToolReviews } from "@/components/tool-reviews";
+import { ToolExternalData } from "@/components/tool-external-data";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -59,6 +60,8 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
   const trackEvent = useMutation(api.popularity.trackEvent);
   const hasTrackedView = useRef(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [isRefreshingData, setIsRefreshingData] = useState(false);
+  const fetchExternalData = useAction(api.externalData.fetchToolExternalData);
   
   const relatedTools = useQuery(
     api.synergies.getToolSynergies,
@@ -74,6 +77,18 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
     api.reviews.getToolRatingSummary,
     tool?._id ? { toolId: tool._id } : "skip"
   );
+
+  const handleRefreshExternalData = async () => {
+    if (!tool?._id) return;
+    setIsRefreshingData(true);
+    try {
+      await fetchExternalData({ toolId: tool._id });
+    } catch (error) {
+      console.error("Failed to fetch external data:", error);
+    } finally {
+      setIsRefreshingData(false);
+    }
+  };
 
   useEffect(() => {
     if (tool && tool._id && !hasTrackedView.current) {
@@ -539,6 +554,16 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         {ratingSummary && ratingSummary.totalReviews > 0 && (
           <RatingDisplay rating={ratingSummary} className="mb-8" />
         )}
+
+        {/* External Data (GitHub, NPM, Bundle Size) */}
+        <div className="mb-8">
+          <ToolExternalData
+            externalData={tool.externalData}
+            githubUrl={tool.githubUrl}
+            onRefresh={handleRefreshExternalData}
+            isRefreshing={isRefreshingData}
+          />
+        </div>
 
         {/* Tool Metadata Grid */}
         <PixelCard className="mb-8">
