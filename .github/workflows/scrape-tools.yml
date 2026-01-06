@@ -17,6 +17,12 @@ on:
           - npm
           - rss
           - awesome
+          - vibe-tools
+      sync_to_db:
+        description: 'Sync scraped data to Convex database'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   scrape:
@@ -48,6 +54,15 @@ jobs:
           else
             python main.py --only ${{ github.event.inputs.scraper }}
           fi
+      
+      - name: Sync to Convex database
+        if: ${{ github.event.inputs.sync_to_db != 'false' }}
+        env:
+          CONVEX_URL: ${{ secrets.CONVEX_URL }}
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+        run: |
+          cd scripts/scraper
+          python sync_to_convex.py
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

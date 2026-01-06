@@ -23,6 +23,7 @@ import type * as friends from "../friends.js";
 import type * as fusions from "../fusions.js";
 import type * as graveyard from "../graveyard.js";
 import type * as groups from "../groups.js";
+import type * as ingest from "../ingest.js";
 import type * as leaderboardSeasons from "../leaderboardSeasons.js";
 import type * as leaderboards from "../leaderboards.js";
 import type * as lib_auth from "../lib/auth.js";
@@ -83,6 +84,7 @@ declare const fullApi: ApiFromModules<{
   fusions: typeof fusions;
   graveyard: typeof graveyard;
   groups: typeof groups;
+  ingest: typeof ingest;
   leaderboardSeasons: typeof leaderboardSeasons;
   leaderboards: typeof leaderboards;
   "lib/auth": typeof lib_auth;
