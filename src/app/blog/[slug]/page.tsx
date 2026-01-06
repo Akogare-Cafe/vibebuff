@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, Calendar, Clock, Tag, Share2, Twitter, Linkedin } from "lucide-react";
 import { notFound } from "next/navigation";
-import { markdownToSanitizedHtml } from "@/lib/sanitize";
+import { BlogContent } from "@/components/blog-content";
 
 const blogPosts: Record<
   string,
@@ -1605,11 +1605,9 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Article Content */}
           <div className="prose prose-invert prose-sm max-w-none">
-            <div
+            <BlogContent
+              content={post.content}
               className="text-[#a0aec0] text-sm leading-relaxed space-y-4 blog-content"
-              dangerouslySetInnerHTML={{
-                __html: markdownToSanitizedHtml(post.content),
-              }}
             />
           </div>
 

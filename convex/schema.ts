@@ -1959,6 +1959,30 @@ export default defineSchema({
     .index("by_company", ["companyId"])
     .index("by_deck", ["deckId"]),
 
+  companyAiTechStack: defineTable({
+    companyId: v.id("companies"),
+    scrapedAt: v.number(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("scraping"),
+      v.literal("completed"),
+      v.literal("failed")
+    ),
+    sourceUrl: v.optional(v.string()),
+    aiTools: v.array(v.object({
+      name: v.string(),
+      category: v.string(),
+      confidence: v.number(),
+      description: v.optional(v.string()),
+      matchedToolId: v.optional(v.id("tools")),
+    })),
+    rawData: v.optional(v.string()),
+    error: v.optional(v.string()),
+    scrapedBy: v.string(),
+  })
+    .index("by_company", ["companyId"])
+    .index("by_status", ["status"]),
+
   // ============================================
   // Advertising System
   // ============================================
@@ -2342,4 +2366,64 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_status", ["status"])
     .index("by_created", ["createdAt"]),
+
+  // ============================================
+  // Forum System
+  // ============================================
+  forumCategories: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    description: v.string(),
+    icon: v.string(),
+    color: v.string(),
+    sortOrder: v.number(),
+    threadCount: v.number(),
+    postCount: v.number(),
+    lastActivityAt: v.optional(v.number()),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_sort_order", ["sortOrder"]),
+
+  forumThreads: defineTable({
+    categoryId: v.id("forumCategories"),
+    title: v.string(),
+    slug: v.string(),
+    content: v.string(),
+    authorId: v.string(),
+    isPinned: v.boolean(),
+    isLocked: v.boolean(),
+    viewCount: v.number(),
+    replyCount: v.number(),
+    lastReplyAt: v.optional(v.number()),
+    lastReplyById: v.optional(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_category", ["categoryId"])
+    .index("by_slug", ["slug"])
+    .index("by_author", ["authorId"])
+    .index("by_pinned", ["isPinned"])
+    .index("by_last_reply", ["lastReplyAt"]),
+
+  forumPosts: defineTable({
+    threadId: v.id("forumThreads"),
+    authorId: v.string(),
+    content: v.string(),
+    isEdited: v.boolean(),
+    upvotes: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_thread", ["threadId"])
+    .index("by_author", ["authorId"])
+    .index("by_created", ["createdAt"]),
+
+  forumPostVotes: defineTable({
+    postId: v.id("forumPosts"),
+    oderId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_post", ["postId"])
+    .index("by_user", ["oderId"])
+    .index("by_user_post", ["oderId", "postId"]),
 });

@@ -1,5 +1,6 @@
 import { v } from "convex/values";
-import { query, mutation } from "./_generated/server";
+import { query, mutation, action, internalMutation, internalQuery } from "./_generated/server";
+import { internal } from "./_generated/api";
 
 function generateSlug(name: string): string {
   return name
@@ -810,5 +811,340 @@ export const search = query({
       .slice(0, limit);
 
     return matchingCompanies;
+  },
+});
+
+export const getToolsForMatching = internalQuery({
+  handler: async (ctx) => {
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+
+    return tools.map((tool) => ({
+      id: tool._id,
+      name: tool.name,
+      slug: tool.slug,
+      tags: tool.tags,
+    }));
+  },
+});
+
+export const createAiTechStackRecord = internalMutation({
+  args: {
+    companyId: v.id("companies"),
+    scrapedBy: v.string(),
+    sourceUrl: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const existing = await ctx.db
+      .query("companyAiTechStack")
+      .withIndex("by_company", (q) => q.eq("companyId", args.companyId))
+      .first();
+
+    if (existing) {
+      await ctx.db.patch(existing._id, {
+        status: "scraping",
+        scrapedAt: Date.now(),
+        sourceUrl: args.sourceUrl,
+        error: undefined,
+      });
+      return existing._id;
+    }
+
+    return await ctx.db.insert("companyAiTechStack", {
+      companyId: args.companyId,
+      scrapedAt: Date.now(),
+      status: "scraping",
+      sourceUrl: args.sourceUrl,
+      aiTools: [],
+      scrapedBy: args.scrapedBy,
+    });
+  },
+});
+
+export const updateAiTechStackResult = internalMutation({
+  args: {
+    recordId: v.id("companyAiTechStack"),
+    status: v.union(
+      v.literal("completed"),
+      v.literal("failed")
+    ),
+    aiTools: v.optional(v.array(v.object({
+      name: v.string(),
+      category: v.string(),
+      confidence: v.number(),
+      description: v.optional(v.string()),
+      matchedToolId: v.optional(v.id("tools")),
+    }))),
+    rawData: v.optional(v.string()),
+    error: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.recordId, {
+      status: args.status,
+      aiTools: args.aiTools || [],
+      rawData: args.rawData,
+      error: args.error,
+    });
+  },
+});
+
+export const scrapeAiTechStack = action({
+  args: {
+    companyId: v.id("companies"),
+    userId: v.string(),
+    websiteUrl: v.optional(v.string()),
+    companyName: v.string(),
+  },
+  handler: async (ctx, args): Promise<{
+    success: boolean;
+    message: string;
+    aiTools?: Array<{
+      name: string;
+      category: string;
+      confidence: number;
+      description?: string;
+    }>;
+  }> => {
+    const recordId = await ctx.runMutation(internal.companies.createAiTechStackRecord, {
+      companyId: args.companyId,
+      scrapedBy: args.userId,
+      sourceUrl: args.websiteUrl,
+    });
+
+    const tools = await ctx.runQuery(internal.companies.getToolsForMatching);
+
+    const aiGatewayKey = process.env.VERCEL_AI_GATEWAY_API_KEY;
+
+    if (!aiGatewayKey) {
+      await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+        recordId,
+        status: "failed",
+        error: "AI Gateway not configured",
+      });
+      return {
+        success: false,
+        message: "AI Gateway not configured. Please set VERCEL_AI_GATEWAY_API_KEY.",
+      };
+    }
+
+    const prompt = `You are a tech stack researcher. Research and identify the AI/ML technology stack used by the company "${args.companyName}"${args.websiteUrl ? ` (website: ${args.websiteUrl})` : ""}.
+
+Based on your knowledge, identify what AI tools, frameworks, and services this company likely uses or has publicly mentioned using.
+
+Focus on:
+1. LLM providers (OpenAI, Anthropic, Google AI, etc.)
+2. ML frameworks (TensorFlow, PyTorch, etc.)
+3. Vector databases (Pinecone, Weaviate, etc.)
+4. AI development platforms (Hugging Face, Replicate, etc.)
+5. AI coding assistants (GitHub Copilot, Cursor, etc.)
+6. AI infrastructure (AWS SageMaker, Google Vertex AI, etc.)
+7. AI APIs and services (Stability AI, ElevenLabs, etc.)
+
+AVAILABLE TOOLS IN OUR DATABASE (try to match to these when possible):
+${JSON.stringify(tools.slice(0, 100).map(t => ({ name: t.name, slug: t.slug })), null, 2)}
+
+Respond in this exact JSON format:
+{
+  "aiTools": [
+    {
+      "name": "Tool Name",
+      "category": "LLM Provider|ML Framework|Vector Database|AI Platform|AI Assistant|AI Infrastructure|AI API",
+      "confidence": 85,
+      "description": "Brief description of how they use it",
+      "matchedSlug": "tool-slug-if-matched"
+    }
+  ],
+  "reasoning": "Brief explanation of how you determined this stack"
+}
+
+If you cannot find any information about their AI stack, return an empty aiTools array with a reasoning explaining why.
+Only include tools you have reasonable confidence they actually use (confidence > 50).`;
+
+    try {
+      const response = await fetch("https://gateway.ai.vercel.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${aiGatewayKey}`,
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-4o-mini",
+          messages: [
+            {
+              role: "system",
+              content: "You are a helpful tech stack researcher. Always respond with valid JSON. Base your answers on publicly available information about companies.",
+            },
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          temperature: 0.7,
+          max_tokens: 2000,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+          recordId,
+          status: "failed",
+          error: `API error: ${response.status} - ${errorText}`,
+        });
+        return {
+          success: false,
+          message: `Failed to scrape: API error ${response.status}`,
+        };
+      }
+
+      const data = await response.json();
+      const content = data.choices?.[0]?.message?.content;
+
+      if (!content) {
+        await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+          recordId,
+          status: "failed",
+          error: "No content in AI response",
+        });
+        return {
+          success: false,
+          message: "Failed to get AI response",
+        };
+      }
+
+      const jsonMatch = content.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+          recordId,
+          status: "failed",
+          error: "Could not parse AI response as JSON",
+          rawData: content,
+        });
+        return {
+          success: false,
+          message: "Failed to parse AI response",
+        };
+      }
+
+      const parsed = JSON.parse(jsonMatch[0]);
+      const aiTools = (parsed.aiTools || []).map((tool: {
+        name: string;
+        category: string;
+        confidence: number;
+        description?: string;
+        matchedSlug?: string;
+      }) => {
+        const matchedTool = tool.matchedSlug
+          ? tools.find((t) => t.slug === tool.matchedSlug)
+          : tools.find((t) => t.name.toLowerCase() === tool.name.toLowerCase());
+
+        return {
+          name: tool.name,
+          category: tool.category,
+          confidence: tool.confidence,
+          description: tool.description,
+          matchedToolId: matchedTool?.id,
+        };
+      });
+
+      await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+        recordId,
+        status: "completed",
+        aiTools,
+        rawData: parsed.reasoning,
+      });
+
+      return {
+        success: true,
+        message: `Found ${aiTools.length} AI tools in tech stack`,
+        aiTools,
+      };
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      await ctx.runMutation(internal.companies.updateAiTechStackResult, {
+        recordId,
+        status: "failed",
+        error: errorMessage,
+      });
+      return {
+        success: false,
+        message: `Scraping failed: ${errorMessage}`,
+      };
+    }
+  },
+});
+
+export const getAiTechStack = query({
+  args: {
+    companyId: v.id("companies"),
+  },
+  handler: async (ctx, args) => {
+    const record = await ctx.db
+      .query("companyAiTechStack")
+      .withIndex("by_company", (q) => q.eq("companyId", args.companyId))
+      .first();
+
+    if (!record) return null;
+
+    const toolsWithDetails = await Promise.all(
+      record.aiTools.map(async (aiTool) => {
+        let matchedTool = null;
+        if (aiTool.matchedToolId) {
+          const tool = await ctx.db.get(aiTool.matchedToolId);
+          if (tool) {
+            matchedTool = {
+              _id: tool._id,
+              name: tool.name,
+              slug: tool.slug,
+              logoUrl: tool.logoUrl,
+              tagline: tool.tagline,
+            };
+          }
+        }
+        return {
+          ...aiTool,
+          matchedTool,
+        };
+      })
+    );
+
+    return {
+      ...record,
+      aiTools: toolsWithDetails,
+    };
+  },
+});
+
+export const listAll = query({
+  args: {
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 50;
+
+    const companies = await ctx.db
+      .query("companies")
+      .filter((q) => q.eq(q.field("techStackPublic"), true))
+      .order("desc")
+      .take(limit);
+
+    const companiesWithAiStack = await Promise.all(
+      companies.map(async (company) => {
+        const aiStack = await ctx.db
+          .query("companyAiTechStack")
+          .withIndex("by_company", (q) => q.eq("companyId", company._id))
+          .first();
+
+        return {
+          ...company,
+          hasAiStack: !!aiStack && aiStack.status === "completed",
+          aiToolCount: aiStack?.aiTools?.length || 0,
+        };
+      })
+    );
+
+    return companiesWithAiStack;
   },
 });

@@ -44,6 +44,7 @@ import {
   Heart,
   Share2,
 } from "lucide-react";
+import { AutoLinkTools } from "./auto-link-tools";
 
 const categoryColors: Record<string, string> = {
   ide: "#22c55e",
@@ -355,7 +356,9 @@ function CommentItem({
           </div>
         </div>
       ) : (
-        <p className="text-primary text-sm mb-2">{comment.content}</p>
+        <p className="text-primary text-sm mb-2">
+          <AutoLinkTools text={comment.content} />
+        </p>
       )}
 
       <div className="flex items-center gap-2">
@@ -464,7 +467,9 @@ function StackDetailModal({
 
         <PixelCardContent className="flex-1 overflow-y-auto p-4 space-y-4">
           {stack.description && (
-            <p className="text-muted-foreground text-sm">{stack.description}</p>
+            <p className="text-muted-foreground text-sm">
+              <AutoLinkTools text={stack.description} />
+            </p>
           )}
 
           <div className="flex flex-wrap gap-2">

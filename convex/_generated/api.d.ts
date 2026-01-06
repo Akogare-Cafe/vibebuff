@@ -20,6 +20,8 @@ import type * as compatibility from "../compatibility.js";
 import type * as decks from "../decks.js";
 import type * as events from "../events.js";
 import type * as evolution from "../evolution.js";
+import type * as forum from "../forum.js";
+import type * as forumSeed from "../forumSeed.js";
 import type * as friends from "../friends.js";
 import type * as fusions from "../fusions.js";
 import type * as graveyard from "../graveyard.js";
@@ -84,6 +86,8 @@ declare const fullApi: ApiFromModules<{
   decks: typeof decks;
   events: typeof events;
   evolution: typeof evolution;
+  forum: typeof forum;
+  forumSeed: typeof forumSeed;
   friends: typeof friends;
   fusions: typeof fusions;
   graveyard: typeof graveyard;

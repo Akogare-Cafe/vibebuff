@@ -16,6 +16,7 @@ import {
   BookOpen,
   Sun,
   Moon,
+  MessagesSquare,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
@@ -27,6 +28,7 @@ const navLinks = [
   { href: "/tools", label: "Tools", icon: Package },
   { href: "/compare", label: "Compare", icon: Scale },
   { href: "/stack-builder", label: "Builder", icon: Layers },
+  { href: "/forum", label: "Forum", icon: MessagesSquare },
   { href: "/community", label: "Community", icon: Users },
 ];
 

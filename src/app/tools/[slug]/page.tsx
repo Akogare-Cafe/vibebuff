@@ -38,6 +38,7 @@ import { DynamicIcon } from "@/components/dynamic-icon";
 import { AdDisplay } from "@/components/ad-display";
 import { ShareButton } from "@/components/share-modal";
 import { SuggestEditModal } from "@/components/suggest-edit-modal";
+import { AutoLinkTools } from "@/components/auto-link-tools";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -268,7 +269,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             </PixelCardHeader>
             <PixelCardContent>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                {tool.description}
+                <AutoLinkTools text={tool.description} />
               </p>
             </PixelCardContent>
           </PixelCard>
@@ -285,7 +286,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 {tool.bestFor.map((item, i) => (
                   <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 mt-0.5 text-primary shrink-0" />
-                    {item}
+                    <AutoLinkTools text={item} />
                   </li>
                 ))}
               </ul>
@@ -306,7 +307,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 {tool.pros.map((pro, i) => (
                   <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <span className="text-primary">+</span>
-                    {pro}
+                    <AutoLinkTools text={pro} />
                   </li>
                 ))}
               </ul>
@@ -325,7 +326,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 {tool.cons.map((con, i) => (
                   <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
                     <span className="text-muted-foreground">-</span>
-                    {con}
+                    <AutoLinkTools text={con} />
                   </li>
                 ))}
               </ul>

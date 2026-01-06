@@ -17,6 +17,8 @@ import {
   Users,
   Globe,
   MapPin,
+  Brain,
+  Sparkles,
 } from "lucide-react";
 
 export default function CompaniesPage() {
@@ -25,6 +27,11 @@ export default function CompaniesPage() {
   const searchResults = useQuery(
     api.companies.search,
     searchQuery.length > 1 ? { query: searchQuery, limit: 20 } : "skip"
+  );
+
+  const allCompanies = useQuery(
+    api.companies.listAll,
+    searchQuery.length <= 1 ? { limit: 30 } : "skip"
   );
 
   return (
@@ -114,12 +121,66 @@ export default function CompaniesPage() {
               </div>
             )}
           </div>
+        ) : allCompanies && allCompanies.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {allCompanies.map((company) => (
+              <Link key={company._id} href={`/companies/${company.slug}`}>
+                <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
+                  <PixelCardContent className="p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="size-14 rounded-lg bg-primary/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        {company.logoUrl ? (
+                          <img src={company.logoUrl} alt={company.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <Building2 className="w-7 h-7 text-primary" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-foreground font-bold truncate">{company.name}</h3>
+                          {company.isVerified && (
+                            <Medal className="w-4 h-4 text-primary flex-shrink-0" />
+                          )}
+                          {company.hasAiStack && (
+                            <Brain className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                          )}
+                        </div>
+                        <p className="text-muted-foreground text-xs line-clamp-2 mt-1">
+                          {company.description || "No description"}
+                        </p>
+                        <div className="flex items-center gap-3 mt-3 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Users className="w-3 h-3" /> {company.memberCount}
+                          </span>
+                          {company.aiToolCount > 0 && (
+                            <PixelBadge variant="secondary" className="text-[8px] bg-purple-500/20 text-purple-400">
+                              <Sparkles className="w-2 h-2 mr-1" /> {company.aiToolCount} AI tools
+                            </PixelBadge>
+                          )}
+                          {company.industry && (
+                            <PixelBadge variant="outline" className="text-[8px]">
+                              {company.industry}
+                            </PixelBadge>
+                          )}
+                        </div>
+                        {company.location && (
+                          <div className="flex items-center gap-1 mt-2 text-xs text-muted-foreground">
+                            <MapPin className="w-3 h-3" /> {company.location}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </PixelCardContent>
+                </PixelCard>
+              </Link>
+            ))}
+          </div>
         ) : (
           <div className="text-center py-12">
             <Building2 className="w-16 h-16 mx-auto mb-4 text-muted-foreground/30" />
-            <h2 className="text-xl font-bold text-foreground mb-2">Discover Company Tech Stacks</h2>
+            <h2 className="text-xl font-bold text-foreground mb-2">Discover Company AI Tech Stacks</h2>
             <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
-              Search for companies to see their tech stacks, or create your own company profile to share your stack with your team.
+              Create your company profile and discover what AI tools companies are using. Our AI-powered scanner identifies the AI/ML stack from public information.
             </p>
             <div className="flex gap-3 justify-center">
               <Link href="/companies/new">

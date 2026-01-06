@@ -135,3 +135,17 @@ export const getStats = query({
     };
   },
 });
+
+export const getAllNamesAndSlugs = query({
+  handler: async (ctx) => {
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+    
+    return tools.map((tool) => ({
+      name: tool.name,
+      slug: tool.slug,
+    }));
+  },
+});
