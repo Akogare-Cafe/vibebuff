@@ -80,7 +80,7 @@ export function Header() {
           >
             {mode === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
-          <Link href="/docs" className="hidden sm:flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors border border-border">
+          <Link href="/docs" className="hidden sm:flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors border border-border" aria-label="Documentation">
             <BookOpen className="w-5 h-5" />
           </Link>
           <NotificationBell />
@@ -88,6 +88,7 @@ export function Header() {
           <button
             className="lg:hidden flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

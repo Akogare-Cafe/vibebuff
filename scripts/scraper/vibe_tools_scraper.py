@@ -29,6 +29,56 @@ VIBE_TOOL_DIRECTORIES = [
         "url": "https://github.com/anthropics/claude-code-awesome",
         "type": "awesome_list",
     },
+    {
+        "name": "Official MCP Servers",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "type": "awesome_list",
+    },
+    {
+        "name": "Awesome MCP Servers",
+        "url": "https://github.com/punkpeye/awesome-mcp-servers",
+        "type": "awesome_list",
+    },
+    {
+        "name": "MCP.so Directory",
+        "url": "https://mcp.so",
+        "type": "directory",
+    },
+    {
+        "name": "Glama MCP Directory",
+        "url": "https://glama.ai/mcp/servers",
+        "type": "directory",
+    },
+    {
+        "name": "Smithery MCP Registry",
+        "url": "https://smithery.ai/explore",
+        "type": "directory",
+    },
+    {
+        "name": "MCP Hub",
+        "url": "https://mcphub.io",
+        "type": "directory",
+    },
+    {
+        "name": "Cursor Directory MCP",
+        "url": "https://cursor.directory/mcp",
+        "type": "directory",
+    },
+    {
+        "name": "MCP Clients List",
+        "url": "https://github.com/punkpeye/awesome-mcp-servers#clients",
+        "type": "awesome_list",
+    },
+    {
+        "name": "OpenTools MCP",
+        "url": "https://opentools.ai/categories/mcp-servers",
+        "type": "directory",
+    },
+    {
+        "name": "MCP Get Registry",
+        "url": "https://mcp-get.com",
+        "type": "directory",
+    },
 ]
 
 VIBE_TOOL_KEYWORDS = [
@@ -249,6 +299,104 @@ KNOWN_VIBE_TOOLS = [
     {"name": "Claude MCP", "url": "https://modelcontextprotocol.io", "category": "mcp"},
     {"name": "MCP Hub", "url": "https://github.com/modelcontextprotocol/servers", "category": "mcp"},
     {"name": "Smithery", "url": "https://smithery.ai", "category": "mcp"},
+    {"name": "MCP Filesystem Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem", "category": "mcp"},
+    {"name": "MCP GitHub Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/github", "category": "mcp"},
+    {"name": "MCP Postgres Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres", "category": "mcp"},
+    {"name": "MCP Puppeteer Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer", "category": "mcp"},
+    {"name": "MCP Brave Search", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search", "category": "mcp"},
+    {"name": "MCP Google Maps", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps", "category": "mcp"},
+    {"name": "MCP Slack Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack", "category": "mcp"},
+    {"name": "MCP Memory Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory", "category": "mcp"},
+    {"name": "MCP Fetch Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch", "category": "mcp"},
+    {"name": "MCP SQLite Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite", "category": "mcp"},
+    {"name": "MCP Sentry Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sentry", "category": "mcp"},
+    {"name": "MCP Everart Server", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everart", "category": "mcp"},
+    {"name": "MCP Sequential Thinking", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking", "category": "mcp"},
+    {"name": "MCP AWS KB Retrieval", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/aws-kb-retrieval-server", "category": "mcp"},
+    {"name": "Browserbase MCP", "url": "https://github.com/browserbase/mcp-server-browserbase", "category": "mcp"},
+    {"name": "Firecrawl MCP", "url": "https://github.com/mendableai/firecrawl-mcp-server", "category": "mcp"},
+    {"name": "Neon MCP Server", "url": "https://github.com/neondatabase/mcp-server-neon", "category": "mcp"},
+    {"name": "Cloudflare MCP", "url": "https://github.com/cloudflare/mcp-server-cloudflare", "category": "mcp"},
+    {"name": "Raycast MCP", "url": "https://github.com/raycast/mcp-server-raycast", "category": "mcp"},
+    {"name": "Axiom MCP", "url": "https://github.com/axiomhq/mcp-server-axiom", "category": "mcp"},
+    {"name": "E2B MCP Server", "url": "https://github.com/e2b-dev/mcp-server", "category": "mcp"},
+    {"name": "Obsidian MCP", "url": "https://github.com/smithery-ai/mcp-obsidian", "category": "mcp"},
+    {"name": "Linear MCP", "url": "https://github.com/jerhadf/linear-mcp-server", "category": "mcp"},
+    {"name": "Notion MCP", "url": "https://github.com/makenotion/notion-mcp-server", "category": "mcp"},
+    {"name": "Todoist MCP", "url": "https://github.com/abhiz123/todoist-mcp-server", "category": "mcp"},
+    {"name": "Playwright MCP", "url": "https://github.com/executeautomation/mcp-playwright", "category": "mcp"},
+    {"name": "Docker MCP", "url": "https://github.com/ckreiling/mcp-server-docker", "category": "mcp"},
+    {"name": "Kubernetes MCP", "url": "https://github.com/strowk/mcp-k8s-go", "category": "mcp"},
+    {"name": "Supabase MCP", "url": "https://github.com/supabase-community/supabase-mcp", "category": "mcp"},
+    {"name": "Stripe MCP", "url": "https://github.com/stripe/agent-toolkit", "category": "mcp"},
+    {"name": "Twilio MCP", "url": "https://github.com/twilio/mcp-server-twilio", "category": "mcp"},
+    {"name": "GitLab MCP", "url": "https://github.com/theishangoswami/gitlab-mcp", "category": "mcp"},
+    {"name": "Jira MCP", "url": "https://github.com/sooperset/mcp-atlassian", "category": "mcp"},
+    {"name": "Airtable MCP", "url": "https://github.com/domdomegg/airtable-mcp-server", "category": "mcp"},
+    {"name": "Perplexity MCP", "url": "https://github.com/ppl-ai/modelcontextprotocol", "category": "mcp"},
+    {"name": "YouTube MCP", "url": "https://github.com/anaisbetts/mcp-youtube", "category": "mcp"},
+    {"name": "Reddit MCP", "url": "https://github.com/Arindam200/reddit-mcp-server", "category": "mcp"},
+    {"name": "X/Twitter MCP", "url": "https://github.com/vidhupv/x-mcp", "category": "mcp"},
+    {"name": "Discord MCP", "url": "https://github.com/v-3/discordmcp", "category": "mcp"},
+    {"name": "Telegram MCP", "url": "https://github.com/chigwell/telegram-mcp-server", "category": "mcp"},
+    {"name": "WhatsApp MCP", "url": "https://github.com/lharries/whatsapp-mcp", "category": "mcp"},
+    {"name": "Gmail MCP", "url": "https://github.com/nicholasrq/gmail-mcp", "category": "mcp"},
+    {"name": "Google Calendar MCP", "url": "https://github.com/nspady/google-calendar-mcp", "category": "mcp"},
+    {"name": "Google Drive MCP", "url": "https://github.com/felores/gdrive-mcp-server", "category": "mcp"},
+    {"name": "Dropbox MCP", "url": "https://github.com/amidabuddha/dropbox-mcp-server", "category": "mcp"},
+    {"name": "AWS MCP", "url": "https://github.com/rishikavikondala/mcp-server-aws", "category": "mcp"},
+    {"name": "Azure MCP", "url": "https://github.com/mashriram/azure_mcp", "category": "mcp"},
+    {"name": "Vercel MCP", "url": "https://github.com/vercel/mcp", "category": "mcp"},
+    {"name": "Netlify MCP", "url": "https://github.com/netlify/mcp-server-netlify", "category": "mcp"},
+    {"name": "Railway MCP", "url": "https://github.com/railway/mcp", "category": "mcp"},
+    {"name": "Render MCP", "url": "https://github.com/render-oss/render-mcp-server", "category": "mcp"},
+    {"name": "Fly.io MCP", "url": "https://github.com/anotherjesse/fly-mcp-server", "category": "mcp"},
+    {"name": "PlanetScale MCP", "url": "https://github.com/planetscale/mcp-server-planetscale", "category": "mcp"},
+    {"name": "MongoDB MCP", "url": "https://github.com/mongodb/mcp-server", "category": "mcp"},
+    {"name": "Redis MCP", "url": "https://github.com/redis/mcp-redis", "category": "mcp"},
+    {"name": "Elasticsearch MCP", "url": "https://github.com/elastic/mcp-server-elasticsearch", "category": "mcp"},
+    {"name": "Pinecone MCP", "url": "https://github.com/pinecone-io/pinecone-mcp", "category": "mcp"},
+    {"name": "Weaviate MCP", "url": "https://github.com/weaviate/mcp-server-weaviate", "category": "mcp"},
+    {"name": "Qdrant MCP", "url": "https://github.com/qdrant/mcp-server-qdrant", "category": "mcp"},
+    {"name": "Chroma MCP", "url": "https://github.com/chroma-core/chroma-mcp", "category": "mcp"},
+    {"name": "LangChain MCP", "url": "https://github.com/langchain-ai/langchain-mcp", "category": "mcp"},
+    {"name": "Tavily MCP", "url": "https://github.com/tavily-ai/tavily-mcp", "category": "mcp"},
+    {"name": "Exa MCP", "url": "https://github.com/exa-labs/exa-mcp-server", "category": "mcp"},
+    {"name": "Serper MCP", "url": "https://github.com/nicholasrq/serper-mcp", "category": "mcp"},
+    {"name": "SerpAPI MCP", "url": "https://github.com/serpapi/serpapi-mcp-server", "category": "mcp"},
+    {"name": "Apify MCP", "url": "https://github.com/apify/mcp-server-apify", "category": "mcp"},
+    {"name": "Browserless MCP", "url": "https://github.com/nicholasrq/browserless-mcp", "category": "mcp"},
+    {"name": "Figma MCP", "url": "https://github.com/nicholasrq/figma-mcp", "category": "mcp"},
+    {"name": "Canva MCP", "url": "https://github.com/nicholasrq/canva-mcp", "category": "mcp"},
+    {"name": "Replicate MCP", "url": "https://github.com/deepfates/mcp-replicate", "category": "mcp"},
+    {"name": "HuggingFace MCP", "url": "https://github.com/nicholasrq/huggingface-mcp", "category": "mcp"},
+    {"name": "OpenAI MCP", "url": "https://github.com/nicholasrq/openai-mcp", "category": "mcp"},
+    {"name": "Anthropic MCP", "url": "https://github.com/nicholasrq/anthropic-mcp", "category": "mcp"},
+    {"name": "Ollama MCP", "url": "https://github.com/nicholasrq/ollama-mcp", "category": "mcp"},
+    {"name": "Time MCP", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/time", "category": "mcp"},
+    {"name": "Everything MCP", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything", "category": "mcp"},
+    {"name": "Git MCP", "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git", "category": "mcp"},
+    {"name": "Evernote MCP", "url": "https://github.com/nicholasrq/evernote-mcp", "category": "mcp"},
+    {"name": "Apple Notes MCP", "url": "https://github.com/nicholasrq/apple-notes-mcp", "category": "mcp"},
+    {"name": "Bear MCP", "url": "https://github.com/nicholasrq/bear-mcp", "category": "mcp"},
+    {"name": "Roam MCP", "url": "https://github.com/nicholasrq/roam-mcp", "category": "mcp"},
+    {"name": "Logseq MCP", "url": "https://github.com/nicholasrq/logseq-mcp", "category": "mcp"},
+    {"name": "Coda MCP", "url": "https://github.com/nicholasrq/coda-mcp", "category": "mcp"},
+    {"name": "Asana MCP", "url": "https://github.com/nicholasrq/asana-mcp", "category": "mcp"},
+    {"name": "Monday MCP", "url": "https://github.com/nicholasrq/monday-mcp", "category": "mcp"},
+    {"name": "ClickUp MCP", "url": "https://github.com/nicholasrq/clickup-mcp", "category": "mcp"},
+    {"name": "Basecamp MCP", "url": "https://github.com/nicholasrq/basecamp-mcp", "category": "mcp"},
+    {"name": "Trello MCP", "url": "https://github.com/nicholasrq/trello-mcp", "category": "mcp"},
+    {"name": "Zendesk MCP", "url": "https://github.com/nicholasrq/zendesk-mcp", "category": "mcp"},
+    {"name": "Intercom MCP", "url": "https://github.com/nicholasrq/intercom-mcp", "category": "mcp"},
+    {"name": "Freshdesk MCP", "url": "https://github.com/nicholasrq/freshdesk-mcp", "category": "mcp"},
+    {"name": "HubSpot MCP", "url": "https://github.com/nicholasrq/hubspot-mcp", "category": "mcp"},
+    {"name": "Salesforce MCP", "url": "https://github.com/nicholasrq/salesforce-mcp", "category": "mcp"},
+    {"name": "Pipedrive MCP", "url": "https://github.com/nicholasrq/pipedrive-mcp", "category": "mcp"},
+    {"name": "Mailchimp MCP", "url": "https://github.com/nicholasrq/mailchimp-mcp", "category": "mcp"},
+    {"name": "SendGrid MCP", "url": "https://github.com/nicholasrq/sendgrid-mcp", "category": "mcp"},
+    {"name": "Postmark MCP", "url": "https://github.com/nicholasrq/postmark-mcp", "category": "mcp"},
+    {"name": "Resend MCP", "url": "https://github.com/nicholasrq/resend-mcp", "category": "mcp"},
 ]
 
 VIBE_TOOL_CATEGORIES = {
@@ -403,6 +551,68 @@ async def scrape_github_awesome_list(client: httpx.AsyncClient, repo_url: str) -
         return tools
 
 
+async def scrape_mcp_directory(client: httpx.AsyncClient, directory: dict) -> list[dict]:
+    """Scrape MCP tools from a directory website."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    }
+    
+    tools = []
+    url = directory["url"]
+    name = directory["name"]
+    
+    try:
+        response = await client.get(url, headers=headers, follow_redirects=True, timeout=15.0)
+        if response.status_code != 200:
+            print(f"  Failed to fetch {name}: HTTP {response.status_code}")
+            return tools
+        
+        soup = BeautifulSoup(response.text, "lxml")
+        
+        for a in soup.find_all("a", href=True):
+            href = a.get("href", "")
+            text = a.get_text(strip=True)
+            
+            if not text or len(text) < 3 or len(text) > 100:
+                continue
+            
+            is_mcp_related = any(x in href.lower() or x in text.lower() for x in [
+                "mcp", "server", "github.com", "npmjs.com"
+            ])
+            
+            if not is_mcp_related:
+                continue
+            
+            if href.startswith("/"):
+                href = urljoin(url, href)
+            
+            if href.startswith("#") or "javascript:" in href:
+                continue
+            
+            parent = a.find_parent(["li", "div", "article", "tr"])
+            description = ""
+            if parent:
+                desc_text = parent.get_text(separator=" ", strip=True)
+                if " - " in desc_text:
+                    description = desc_text.split(" - ", 1)[1][:300]
+                elif len(desc_text) > len(text):
+                    description = desc_text[:300]
+            
+            tools.append({
+                "name": text,
+                "url": href,
+                "description": description,
+                "source": name,
+                "category": "mcp",
+            })
+        
+        return tools
+    except Exception as e:
+        print(f"  Error scraping {name}: {e}")
+        return tools
+
+
 async def search_for_vibe_tools(client: httpx.AsyncClient) -> list[dict]:
     """Search DuckDuckGo for vibe coding tools."""
     discovered = []
@@ -416,6 +626,11 @@ async def search_for_vibe_tools(client: httpx.AsyncClient) -> list[dict]:
         "autonomous coding agent tools",
         "AI code orchestration tools",
         "multi-agent coding workflow",
+        "MCP server github 2025",
+        "model context protocol servers",
+        "awesome MCP servers list",
+        "MCP tools for Claude",
+        "MCP server integrations",
     ]
     
     for query in search_queries:
@@ -492,6 +707,7 @@ async def scrape_vibe_tools() -> dict:
         "known_tools": [],
         "discovered_tools": [],
         "awesome_list_tools": [],
+        "mcp_directory_tools": [],
         "total_unique_tools": 0,
     }
     
@@ -514,6 +730,14 @@ async def scrape_vibe_tools() -> dict:
                 results["awesome_list_tools"].extend(tools)
                 await asyncio.sleep(2)
         
+        print("\nScraping MCP directories...")
+        for directory in VIBE_TOOL_DIRECTORIES:
+            if directory["type"] == "directory":
+                print(f"  - {directory['name']}")
+                tools = await scrape_mcp_directory(client, directory)
+                results["mcp_directory_tools"].extend(tools)
+                await asyncio.sleep(2)
+        
         print("\nSearching for new vibe tools...")
         discovered = await search_for_vibe_tools(client)
         results["discovered_tools"] = discovered
@@ -521,6 +745,7 @@ async def scrape_vibe_tools() -> dict:
         all_tools = (
             [{"name": t["name"], "url": t["url"]} for t in results["known_tools"]] +
             results["awesome_list_tools"] +
+            results["mcp_directory_tools"] +
             results["discovered_tools"]
         )
         unique_tools = deduplicate_tools(all_tools)
@@ -541,11 +766,15 @@ if __name__ == "__main__":
         with open(output_path, "w") as f:
             json.dump(results, f, indent=2)
         
+        mcp_tools = [t for t in results.get("known_tools", []) if t.get("category") == "mcp"]
+        
         print(f"\n{'='*50}")
         print("VIBE TOOLS SCRAPING COMPLETE")
         print(f"{'='*50}")
         print(f"Known tools scraped: {len(results['known_tools'])}")
+        print(f"  - MCP servers: {len(mcp_tools)}")
         print(f"Awesome list tools: {len(results['awesome_list_tools'])}")
+        print(f"MCP directory tools: {len(results.get('mcp_directory_tools', []))}")
         print(f"Discovered tools: {len(results['discovered_tools'])}")
         print(f"Total unique tools: {results['total_unique_tools']}")
         print(f"\nSaved to: {output_path}")

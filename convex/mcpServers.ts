@@ -258,6 +258,97 @@ export const getUserSubmissions = query({
   },
 });
 
+export const upsertMcpServer = mutation({
+  args: {
+    name: v.string(),
+    slug: v.string(),
+    description: v.string(),
+    shortDescription: v.optional(v.string()),
+    websiteUrl: v.optional(v.string()),
+    githubUrl: v.optional(v.string()),
+    docsUrl: v.optional(v.string()),
+    author: v.optional(v.string()),
+    category: v.union(
+      v.literal("database"),
+      v.literal("api"),
+      v.literal("devtools"),
+      v.literal("productivity"),
+      v.literal("ai"),
+      v.literal("cloud"),
+      v.literal("analytics"),
+      v.literal("security"),
+      v.literal("communication"),
+      v.literal("file_system"),
+      v.literal("version_control"),
+      v.literal("documentation"),
+      v.literal("testing"),
+      v.literal("deployment"),
+      v.literal("other")
+    ),
+    transportTypes: v.array(v.union(
+      v.literal("stdio"),
+      v.literal("http"),
+      v.literal("sse")
+    )),
+    tags: v.array(v.string()),
+    isOfficial: v.optional(v.boolean()),
+    isVerified: v.optional(v.boolean()),
+    isFeatured: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const existing = await ctx.db
+      .query("mcpServers")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+
+    const now = Date.now();
+
+    if (existing) {
+      await ctx.db.patch(existing._id, {
+        name: args.name,
+        description: args.description,
+        shortDescription: args.shortDescription,
+        websiteUrl: args.websiteUrl,
+        githubUrl: args.githubUrl,
+        docsUrl: args.docsUrl,
+        author: args.author,
+        category: args.category,
+        transportTypes: args.transportTypes,
+        tags: args.tags,
+        isOfficial: args.isOfficial ?? false,
+        isVerified: args.isVerified ?? false,
+        isFeatured: args.isFeatured ?? false,
+        updatedAt: now,
+      });
+      return { action: "updated", id: existing._id };
+    }
+
+    const id = await ctx.db.insert("mcpServers", {
+      name: args.name,
+      slug: args.slug,
+      description: args.description,
+      shortDescription: args.shortDescription,
+      websiteUrl: args.websiteUrl,
+      githubUrl: args.githubUrl,
+      docsUrl: args.docsUrl,
+      author: args.author,
+      category: args.category,
+      transportTypes: args.transportTypes,
+      supportsOAuth: false,
+      isOfficial: args.isOfficial ?? false,
+      isVerified: args.isVerified ?? false,
+      isFeatured: args.isFeatured ?? false,
+      tags: args.tags,
+      installCount: 0,
+      upvotes: 0,
+      createdAt: now,
+      updatedAt: now,
+    });
+
+    return { action: "created", id };
+  },
+});
+
 export const seedMcpServers = mutation({
   handler: async (ctx) => {
     const existing = await ctx.db.query("mcpServers").first();

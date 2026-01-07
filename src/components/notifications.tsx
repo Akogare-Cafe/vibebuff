@@ -265,6 +265,7 @@ export function NotificationBell() {
       <button 
         className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground transition-colors border border-border"
         disabled
+        aria-label="Notifications"
       >
         <Bell className="w-5 h-5" />
       </button>
@@ -276,6 +277,7 @@ export function NotificationBell() {
       <button 
         className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border relative"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Open notifications"
       >
         <Bell className="w-5 h-5" />
         {(unreadCount ?? 0) > 0 && (
@@ -302,6 +304,7 @@ export function NotificationBell() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 hover:bg-secondary rounded text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Close notifications"
               >
                 <X className="w-4 h-4" />
               </button>
