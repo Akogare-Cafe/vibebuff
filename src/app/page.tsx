@@ -423,11 +423,37 @@ export default function Home() {
                     <div className="flex flex-wrap gap-3 justify-center pt-4 border-t border-border">
                       <Link href={`/stack-builder?tools=${encodeURIComponent(JSON.stringify(
                         Object.entries(aiRecommendations.recommendations).flatMap(([category, tools]) =>
-                          tools.slice(0, 1).map(tool => ({
-                            name: tool.name,
-                            category,
-                            tagline: tool.tagline,
-                          }))
+                          tools.slice(0, 1).map(tool => {
+                            // Map category names to slugs for the stack builder
+                            const categoryMap: Record<string, string> = {
+                              "Frontend Framework": "frontend",
+                              "Backend": "backend", 
+                              "Backend/Database": "backend",
+                              "Database": "database",
+                              "Hosting": "deployment",
+                              "Deployment": "deployment",
+                              "Authentication": "backend",
+                              "Auth": "backend",
+                              "AI": "ai",
+                              "Tool": "tool",
+                              "IDE": "ide",
+                              "Frontend": "frontend",
+                              "Storage": "backend",
+                              "Payments": "backend",
+                              "Email": "backend",
+                              "Analytics": "backend",
+                              "CMS": "backend",
+                              "Search": "backend",
+                              "Real-time": "backend",
+                              "Mobile": "frontend"
+                            };
+                            
+                            return {
+                              name: tool.name,
+                              category: categoryMap[category] || category.toLowerCase().replace(/[^a-z0-9]/g, ''),
+                              tagline: tool.tagline,
+                            };
+                          })
                         )
                       ))}`}>
                         <PixelButton size="sm">
