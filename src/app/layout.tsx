@@ -27,14 +27,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "VIBEBUFF | Best Tech Stack Builder 2026 - AI-Powered Developer Tool Recommendations",
+    default: "VIBEBUFF | Best Tech Stack Builder 2025 - AI-Powered Developer Tool Recommendations",
     template: "%s | VIBEBUFF - Tech Stack Builder",
   },
   description:
     "Build the perfect tech stack with AI-powered recommendations. Compare 500+ developer tools including React, Next.js, Vue, databases, and APIs. Free tech stack builder trusted by 10,000+ developers.",
   keywords: [
     "tech stack builder",
-    "best tech stack 2026",
+    "best tech stack 2025",
     "developer tools comparison",
     "AI tech stack recommendations",
     "React vs Vue",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "web development tools",
     "software development stack",
     "full stack development",
-    "frontend frameworks 2026",
+    "frontend frameworks 2025",
     "backend frameworks comparison",
     "SaaS tech stack",
     "startup tech stack",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     "technology stack builder",
     "framework comparison tool",
     "best programming tools",
-    "developer resources 2026",
+    "developer resources 2025",
     "AI coding tools",
     "GitHub Copilot alternatives",
     "DevOps tools comparison",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "VIBEBUFF",
-    title: "VIBEBUFF | Best Tech Stack Builder 2026 - AI-Powered Recommendations",
+    title: "VIBEBUFF | Best Tech Stack Builder 2025 - AI-Powered Recommendations",
     description:
       "Build the perfect tech stack with AI. Compare 500+ developer tools, get personalized recommendations, and discover the best frameworks for your project. Free forever.",
     images: [
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@vibebuff",
-    title: "VIBEBUFF | Best Tech Stack Builder 2026",
+    title: "VIBEBUFF | Best Tech Stack Builder 2025",
     description:
       "Build the perfect tech stack with AI. Compare 500+ developer tools and get personalized recommendations. Free forever.",
     images: ["/og-image.png"],

@@ -586,6 +586,154 @@ export const getToolsForComparison = internalQuery({
   },
 });
 
+function calculateCommunityScore(tool: { 
+  githubStars?: number; 
+  externalData?: { 
+    github?: { stars: number; forks: number; contributors?: number; openIssues: number }; 
+    npm?: { downloadsWeekly: number; downloadsMonthly?: number } 
+  } 
+}): number {
+  const github = tool.externalData?.github;
+  const npm = tool.externalData?.npm;
+  const stars = github?.stars || tool.githubStars || 0;
+  const forks = github?.forks || 0;
+  const contributors = github?.contributors || 0;
+  const weeklyDownloads = npm?.downloadsWeekly || 0;
+
+  let score = 0;
+  if (stars > 100000) score += 40;
+  else if (stars > 50000) score += 35;
+  else if (stars > 20000) score += 30;
+  else if (stars > 10000) score += 25;
+  else if (stars > 5000) score += 20;
+  else if (stars > 1000) score += 15;
+  else if (stars > 100) score += 10;
+  else score += 5;
+
+  if (forks > 10000) score += 15;
+  else if (forks > 5000) score += 12;
+  else if (forks > 1000) score += 9;
+  else if (forks > 500) score += 6;
+  else score += 3;
+
+  if (contributors > 500) score += 15;
+  else if (contributors > 100) score += 12;
+  else if (contributors > 50) score += 9;
+  else if (contributors > 10) score += 6;
+  else score += 3;
+
+  if (weeklyDownloads > 10000000) score += 30;
+  else if (weeklyDownloads > 1000000) score += 25;
+  else if (weeklyDownloads > 100000) score += 20;
+  else if (weeklyDownloads > 10000) score += 15;
+  else if (weeklyDownloads > 1000) score += 10;
+  else score += 5;
+
+  return Math.min(100, score);
+}
+
+function calculateMaturityScore(tool: { 
+  externalData?: { 
+    github?: { createdAt?: string; releases?: number; pushedAt?: string }; 
+    npm?: { firstPublished?: string; lastPublished?: string; version?: string } 
+  };
+  majorVersions?: Array<{ version: string; releasedAt: number }>;
+}): number {
+  const github = tool.externalData?.github;
+  const npm = tool.externalData?.npm;
+  
+  let score = 50;
+  
+  const createdAt = github?.createdAt || npm?.firstPublished;
+  if (createdAt) {
+    const ageYears = (Date.now() - new Date(createdAt).getTime()) / (1000 * 60 * 60 * 24 * 365);
+    if (ageYears > 10) score += 20;
+    else if (ageYears > 5) score += 15;
+    else if (ageYears > 2) score += 10;
+    else if (ageYears > 1) score += 5;
+  }
+
+  const releases = github?.releases || 0;
+  if (releases > 100) score += 15;
+  else if (releases > 50) score += 12;
+  else if (releases > 20) score += 9;
+  else if (releases > 5) score += 6;
+
+  const lastUpdate = github?.pushedAt || npm?.lastPublished;
+  if (lastUpdate) {
+    const daysSinceUpdate = (Date.now() - new Date(lastUpdate).getTime()) / (1000 * 60 * 60 * 24);
+    if (daysSinceUpdate < 7) score += 15;
+    else if (daysSinceUpdate < 30) score += 12;
+    else if (daysSinceUpdate < 90) score += 8;
+    else if (daysSinceUpdate < 180) score += 4;
+  }
+
+  return Math.min(100, score);
+}
+
+function calculateBundleSizeScore(tool: { 
+  externalData?: { bundlephobia?: { gzip: number; dependencyCount?: number } } 
+}): number {
+  const bundle = tool.externalData?.bundlephobia;
+  if (!bundle) return 50;
+  
+  const gzipKb = bundle.gzip / 1024;
+  let score = 50;
+  
+  if (gzipKb < 5) score = 95;
+  else if (gzipKb < 10) score = 85;
+  else if (gzipKb < 25) score = 75;
+  else if (gzipKb < 50) score = 65;
+  else if (gzipKb < 100) score = 55;
+  else if (gzipKb < 200) score = 45;
+  else score = 35;
+
+  const deps = bundle.dependencyCount || 0;
+  if (deps === 0) score += 5;
+  else if (deps < 3) score += 3;
+  else if (deps > 10) score -= 5;
+
+  return Math.min(100, Math.max(0, score));
+}
+
+function calculateDXScore(tool: { 
+  externalData?: { npm?: { types?: boolean } };
+  docsUrl?: string;
+  features: string[];
+  pros: string[];
+}): number {
+  let score = 50;
+  
+  if (tool.externalData?.npm?.types) score += 15;
+  if (tool.docsUrl) score += 10;
+
+  const dxKeywords = ["typescript", "type-safe", "developer experience", "dx", "intuitive", "easy to use", "simple api", "well documented"];
+  const allText = [...tool.features, ...tool.pros].join(" ").toLowerCase();
+  const matches = dxKeywords.filter(kw => allText.includes(kw)).length;
+  score += Math.min(25, matches * 5);
+
+  return Math.min(100, score);
+}
+
+function calculateCostScore(tool: { 
+  pricingModel: string; 
+  isOpenSource: boolean 
+}): number {
+  if (tool.isOpenSource) return 100;
+  if (tool.pricingModel === "free") return 95;
+  if (tool.pricingModel === "open_source") return 100;
+  if (tool.pricingModel === "freemium") return 70;
+  if (tool.pricingModel === "paid") return 40;
+  if (tool.pricingModel === "enterprise") return 30;
+  return 50;
+}
+
+function formatNumber(num: number): string {
+  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
+  if (num >= 1000) return `${(num / 1000).toFixed(0)}K`;
+  return num.toString();
+}
+
 export const generateAIComparison = internalAction({
   args: { tool1Slug: v.string(), tool2Slug: v.string() },
   handler: async (ctx, args): Promise<string> => {
@@ -600,34 +748,75 @@ export const generateAIComparison = internalAction({
 
     const { tool1, tool2 } = tools;
 
+    const t1Community = calculateCommunityScore(tool1);
+    const t2Community = calculateCommunityScore(tool2);
+    const t1Maturity = calculateMaturityScore(tool1);
+    const t2Maturity = calculateMaturityScore(tool2);
+    const t1Bundle = calculateBundleSizeScore(tool1);
+    const t2Bundle = calculateBundleSizeScore(tool2);
+    const t1DX = calculateDXScore(tool1);
+    const t2DX = calculateDXScore(tool2);
+    const t1Cost = calculateCostScore(tool1);
+    const t2Cost = calculateCostScore(tool2);
+
+    const t1Stars = tool1.externalData?.github?.stars || tool1.githubStars || 0;
+    const t2Stars = tool2.externalData?.github?.stars || tool2.githubStars || 0;
+    const t1Downloads = tool1.externalData?.npm?.downloadsWeekly || 0;
+    const t2Downloads = tool2.externalData?.npm?.downloadsWeekly || 0;
+    const t1Gzip = tool1.externalData?.bundlephobia?.gzip;
+    const t2Gzip = tool2.externalData?.bundlephobia?.gzip;
+
     const comparisonPoints = [
       {
-        category: "Performance",
-        tool1Score: tool1.stats?.speed || 70,
-        tool2Score: tool2.stats?.speed || 70,
-        tool1Reason: `${tool1.name} offers ${tool1.pros[0]?.toLowerCase() || "solid performance"}`,
-        tool2Reason: `${tool2.name} provides ${tool2.pros[0]?.toLowerCase() || "reliable performance"}`,
+        category: "Community & Adoption",
+        tool1Score: t1Community,
+        tool2Score: t2Community,
+        tool1Reason: t1Stars > 0 || t1Downloads > 0 
+          ? `${t1Stars > 0 ? `${formatNumber(t1Stars)} GitHub stars` : ""}${t1Stars > 0 && t1Downloads > 0 ? ", " : ""}${t1Downloads > 0 ? `${formatNumber(t1Downloads)} weekly npm downloads` : ""}`
+          : `${tool1.name} has a growing community`,
+        tool2Reason: t2Stars > 0 || t2Downloads > 0
+          ? `${t2Stars > 0 ? `${formatNumber(t2Stars)} GitHub stars` : ""}${t2Stars > 0 && t2Downloads > 0 ? ", " : ""}${t2Downloads > 0 ? `${formatNumber(t2Downloads)} weekly npm downloads` : ""}`
+          : `${tool2.name} has a growing community`,
       },
       {
-        category: "Learning Curve",
-        tool1Score: tool1.stats?.speed || 65,
-        tool2Score: tool2.stats?.speed || 65,
-        tool1Reason: `${tool1.name} ${tool1.bestFor[0]?.toLowerCase() || "is suitable for various skill levels"}`,
-        tool2Reason: `${tool2.name} ${tool2.bestFor[0]?.toLowerCase() || "accommodates different experience levels"}`,
+        category: "Maturity & Stability",
+        tool1Score: t1Maturity,
+        tool2Score: t2Maturity,
+        tool1Reason: tool1.externalData?.github?.releases 
+          ? `${tool1.externalData.github.releases} releases, actively maintained`
+          : tool1.majorVersions?.length 
+            ? `${tool1.majorVersions.length} major versions released`
+            : `${tool1.name} is ${tool1.externalData?.github?.createdAt ? "established since " + new Date(tool1.externalData.github.createdAt).getFullYear() : "actively developed"}`,
+        tool2Reason: tool2.externalData?.github?.releases
+          ? `${tool2.externalData.github.releases} releases, actively maintained`
+          : tool2.majorVersions?.length
+            ? `${tool2.majorVersions.length} major versions released`
+            : `${tool2.name} is ${tool2.externalData?.github?.createdAt ? "established since " + new Date(tool2.externalData.github.createdAt).getFullYear() : "actively developed"}`,
       },
       {
-        category: "Community & Ecosystem",
-        tool1Score: tool1.githubStars ? Math.min(100, Math.floor(tool1.githubStars / 1000)) : 50,
-        tool2Score: tool2.githubStars ? Math.min(100, Math.floor(tool2.githubStars / 1000)) : 50,
-        tool1Reason: `${tool1.githubStars ? `${(tool1.githubStars / 1000).toFixed(0)}K GitHub stars` : "Growing community"}`,
-        tool2Reason: `${tool2.githubStars ? `${(tool2.githubStars / 1000).toFixed(0)}K GitHub stars` : "Active community"}`,
+        category: "Bundle Size & Performance",
+        tool1Score: t1Bundle,
+        tool2Score: t2Bundle,
+        tool1Reason: t1Gzip 
+          ? `${(t1Gzip / 1024).toFixed(1)}KB gzipped${tool1.externalData?.bundlephobia?.dependencyCount !== undefined ? `, ${tool1.externalData.bundlephobia.dependencyCount} dependencies` : ""}`
+          : `${tool1.name} ${tool1.pros.find(p => p.toLowerCase().includes("lightweight") || p.toLowerCase().includes("fast") || p.toLowerCase().includes("performance")) || "offers solid performance"}`,
+        tool2Reason: t2Gzip
+          ? `${(t2Gzip / 1024).toFixed(1)}KB gzipped${tool2.externalData?.bundlephobia?.dependencyCount !== undefined ? `, ${tool2.externalData.bundlephobia.dependencyCount} dependencies` : ""}`
+          : `${tool2.name} ${tool2.pros.find(p => p.toLowerCase().includes("lightweight") || p.toLowerCase().includes("fast") || p.toLowerCase().includes("performance")) || "offers solid performance"}`,
       },
       {
-        category: "Cost",
-        tool1Score: tool1.pricingModel === "free" || tool1.pricingModel === "open_source" ? 100 : 60,
-        tool2Score: tool2.pricingModel === "free" || tool2.pricingModel === "open_source" ? 100 : 60,
-        tool1Reason: `${tool1.name} is ${tool1.pricingModel.replace("_", " ")}`,
-        tool2Reason: `${tool2.name} is ${tool2.pricingModel.replace("_", " ")}`,
+        category: "Developer Experience",
+        tool1Score: t1DX,
+        tool2Score: t2DX,
+        tool1Reason: `${tool1.externalData?.npm?.types ? "TypeScript support" : ""}${tool1.externalData?.npm?.types && tool1.docsUrl ? ", " : ""}${tool1.docsUrl ? "comprehensive docs" : ""}${!tool1.externalData?.npm?.types && !tool1.docsUrl ? tool1.pros[0] || "good developer experience" : ""}`,
+        tool2Reason: `${tool2.externalData?.npm?.types ? "TypeScript support" : ""}${tool2.externalData?.npm?.types && tool2.docsUrl ? ", " : ""}${tool2.docsUrl ? "comprehensive docs" : ""}${!tool2.externalData?.npm?.types && !tool2.docsUrl ? tool2.pros[0] || "good developer experience" : ""}`,
+      },
+      {
+        category: "Cost & Licensing",
+        tool1Score: t1Cost,
+        tool2Score: t2Cost,
+        tool1Reason: `${tool1.isOpenSource ? "Open source" : tool1.pricingModel.replace("_", " ")}${tool1.externalData?.github?.license ? ` (${tool1.externalData.github.license})` : ""}`,
+        tool2Reason: `${tool2.isOpenSource ? "Open source" : tool2.pricingModel.replace("_", " ")}${tool2.externalData?.github?.license ? ` (${tool2.externalData.github.license})` : ""}`,
       },
     ];
 
@@ -646,44 +835,67 @@ export const generateAIComparison = internalAction({
     const winner = tool1TotalScore > tool2TotalScore ? tool1 : tool2;
     const verdict = `Based on our analysis, ${winner.name} edges ahead for most use cases due to its ${winner.pros[0]?.toLowerCase() || "overall capabilities"}. However, ${tool1TotalScore === tool2TotalScore ? "both tools are excellent choices" : `${tool1TotalScore > tool2TotalScore ? tool2.name : tool1.name} remains a strong contender`} depending on your specific requirements.`;
 
+    const costWinner = t1Cost > t2Cost ? tool1 : tool2;
+    const communityWinner = t1Community > t2Community ? tool1 : tool2;
+    const dxWinner = t1DX > t2DX ? tool1 : tool2;
+    const bundleWinner = t1Bundle > t2Bundle ? tool1 : tool2;
+    const maturityWinner = t1Maturity > t2Maturity ? tool1 : tool2;
+
     const useCaseRecommendations = [
       {
         useCase: "Startups & MVPs",
-        recommendedTool: tool1.pricingModel === "free" || tool1.pricingModel === "open_source" ? tool1.name : tool2.name,
-        reason: "Better cost efficiency for early-stage projects",
+        recommendedTool: costWinner.name,
+        reason: `${costWinner.name} offers better cost efficiency${costWinner.isOpenSource ? " as an open source solution" : ` with ${costWinner.pricingModel.replace("_", " ")} pricing`}`,
       },
       {
         useCase: "Enterprise Applications",
-        recommendedTool: (tool1.githubStars || 0) > (tool2.githubStars || 0) ? tool1.name : tool2.name,
-        reason: "Larger community and more mature ecosystem",
+        recommendedTool: maturityWinner.name,
+        reason: `${maturityWinner.name} has ${maturityWinner.externalData?.github?.releases ? `${maturityWinner.externalData.github.releases} releases and` : ""} proven stability for production use`,
       },
       {
         useCase: "Learning & Side Projects",
-        recommendedTool: tool1.name,
-        reason: `${tool1.name} offers a great developer experience for learning`,
+        recommendedTool: dxWinner.name,
+        reason: `${dxWinner.name} offers ${dxWinner.externalData?.npm?.types ? "TypeScript support and " : ""}${dxWinner.docsUrl ? "comprehensive documentation" : "a great developer experience"}`,
+      },
+      {
+        useCase: "Performance-Critical Apps",
+        recommendedTool: bundleWinner.name,
+        reason: bundleWinner.externalData?.bundlephobia?.gzip 
+          ? `${bundleWinner.name} has a smaller footprint at ${(bundleWinner.externalData.bundlephobia.gzip / 1024).toFixed(1)}KB gzipped`
+          : `${bundleWinner.name} is optimized for performance`,
+      },
+      {
+        useCase: "Long-term Projects",
+        recommendedTool: communityWinner.name,
+        reason: `${communityWinner.name} has ${communityWinner.externalData?.github?.stars ? `${formatNumber(communityWinner.externalData.github.stars)} stars and` : ""} strong community support`,
       },
     ];
+
+    const t1BundleStr = t1Gzip ? `${(t1Gzip / 1024).toFixed(1)}KB gzipped` : "optimized bundle size";
+    const t2BundleStr = t2Gzip ? `${(t2Gzip / 1024).toFixed(1)}KB gzipped` : "optimized bundle size";
 
     const faqs = [
       {
         question: `Is ${tool1.name} better than ${tool2.name}?`,
-        answer: `It depends on your use case. ${tool1.name} excels at ${tool1.bestFor[0] || "certain scenarios"}, while ${tool2.name} is better for ${tool2.bestFor[0] || "other use cases"}. Consider your project requirements when choosing.`,
+        answer: `It depends on your priorities. ${tool1.name} scores higher in ${t1Community > t2Community ? "community adoption" : t1Bundle > t2Bundle ? "bundle size" : t1DX > t2DX ? "developer experience" : "cost efficiency"}, while ${tool2.name} excels in ${t2Community > t1Community ? "community adoption" : t2Bundle > t1Bundle ? "bundle size" : t2DX > t1DX ? "developer experience" : "cost efficiency"}. Consider your project requirements when choosing.`,
       },
       {
         question: `Can I migrate from ${tool1.name} to ${tool2.name}?`,
-        answer: `Yes, migration is possible though the complexity depends on your project size. Both tools have documentation and community resources to help with migration.`,
+        answer: `Yes, migration is possible though the complexity depends on your project size. Both tools have ${tool1.docsUrl && tool2.docsUrl ? "documentation" : "community resources"} to help with migration.`,
       },
       {
         question: `Which has better performance: ${tool1.name} or ${tool2.name}?`,
-        answer: `Performance varies by use case. ${tool1.name} ${tool1.pros.find(p => p.toLowerCase().includes("performance") || p.toLowerCase().includes("fast")) || "offers solid performance"}, while ${tool2.name} ${tool2.pros.find(p => p.toLowerCase().includes("performance") || p.toLowerCase().includes("fast")) || "provides reliable performance"}.`,
+        answer: t1Gzip && t2Gzip 
+          ? `${tool1.name} is ${t1BundleStr} while ${tool2.name} is ${t2BundleStr}. ${t1Gzip < t2Gzip ? tool1.name : tool2.name} has the smaller bundle size.`
+          : `Performance varies by use case. ${tool1.name} ${tool1.pros.find(p => p.toLowerCase().includes("performance") || p.toLowerCase().includes("fast")) || "offers solid performance"}, while ${tool2.name} ${tool2.pros.find(p => p.toLowerCase().includes("performance") || p.toLowerCase().includes("fast")) || "provides reliable performance"}.`,
       },
       {
         question: `Is ${tool1.name} free to use?`,
-        answer: `${tool1.name} is ${tool1.pricingModel.replace("_", " ")}. ${tool1.isOpenSource ? "It's open source, so you can use it freely for any project." : "Check their pricing page for the latest plans."}`,
+        answer: `${tool1.name} is ${tool1.pricingModel.replace("_", " ")}${tool1.externalData?.github?.license ? ` under the ${tool1.externalData.github.license} license` : ""}. ${tool1.isOpenSource ? "It's open source, so you can use it freely for any project." : "Check their pricing page for the latest plans."}`,
       },
       {
         question: `Which should I learn first: ${tool1.name} or ${tool2.name}?`,
-        answer: `For beginners, we recommend starting with ${(tool1.stats?.speed || 50) > (tool2.stats?.speed || 50) ? tool1.name : tool2.name} due to its learning curve. However, both are valuable skills in the job market.`,
+        answer: `For beginners, we recommend ${dxWinner.name} due to its ${dxWinner.externalData?.npm?.types ? "TypeScript support and " : ""}${dxWinner.docsUrl ? "comprehensive documentation" : "developer-friendly API"}. ${t1Community > t2Community ? tool1.name : tool2.name} has more community resources with ${formatNumber(Math.max(t1Stars, t2Stars))} GitHub stars.`,
       },
     ];
 

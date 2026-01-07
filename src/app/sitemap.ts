@@ -106,7 +106,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogPosts: MetadataRoute.Sitemap = [
     {
-      url: `${siteUrl}/blog/best-react-frameworks-2026`,
+      url: `${siteUrl}/blog/best-react-frameworks-2025`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -136,7 +136,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/blog/best-frontend-frameworks-2026`,
+      url: `${siteUrl}/blog/best-frontend-frameworks-2025`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -160,7 +160,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/blog/best-orm-nodejs-2026`,
+      url: `${siteUrl}/blog/best-orm-nodejs-2025`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

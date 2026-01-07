@@ -600,7 +600,7 @@ export default function Home() {
             </div>
             <div className="ornate-divider w-px h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">2026</p>
+              <p className="font-heading text-primary text-2xl md:text-3xl">2025</p>
               <p className="text-muted-foreground text-sm md:text-base">Updated</p>
             </div>
           </div>
@@ -696,7 +696,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link href="/blog/best-react-frameworks-2025">
               <PixelCard className="p-6 h-full hover:border-primary transition-all">
-                <p className="font-heading text-foreground text-base mb-2">Best React Frameworks in 2026</p>
+                <p className="font-heading text-foreground text-base mb-2">Best React Frameworks in 2025</p>
                 <p className="text-muted-foreground text-sm">Compare Next.js, Remix, and Gatsby for your next project.</p>
               </PixelCard>
             </Link>
@@ -708,7 +708,7 @@ export default function Home() {
             </Link>
             <Link href="/blog/tech-stack-for-saas">
               <PixelCard className="p-6 h-full hover:border-primary transition-all">
-                <p className="font-heading text-foreground text-base mb-2">Ultimate Tech Stack for SaaS in 2026</p>
+                <p className="font-heading text-foreground text-base mb-2">Ultimate Tech Stack for SaaS in 2025</p>
                 <p className="text-muted-foreground text-sm">Complete guide from frontend to deployment.</p>
               </PixelCard>
             </Link>

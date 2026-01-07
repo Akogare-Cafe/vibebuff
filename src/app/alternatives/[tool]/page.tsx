@@ -47,7 +47,7 @@ export default function AlternativesPage() {
   });
 
   const toolName = tool?.name || formatSlug(toolSlug);
-  const pageTitle = `Best ${toolName} Alternatives in 2026`;
+  const pageTitle = `Best ${toolName} Alternatives in 2025`;
 
   if (!tool) {
     return (
