@@ -28,6 +28,7 @@ const navLinks = [
   { href: "/tools", label: "Tools", icon: Package },
   { href: "/compare", label: "Compare", icon: Scale },
   { href: "/stack-builder", label: "Builder", icon: Layers },
+  { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/forum", label: "Forum", icon: MessagesSquare },
   { href: "/community", label: "Community", icon: Users },
 ];

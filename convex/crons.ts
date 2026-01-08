@@ -9,4 +9,10 @@ crons.interval(
   internal.feeds.fetchAllDueFeeds
 );
 
+crons.weekly(
+  "send-weekly-digest",
+  { dayOfWeek: "monday", hourUTC: 14, minuteUTC: 0 },
+  internal.email.sendWeeklyDigest
+);
+
 export default crons;

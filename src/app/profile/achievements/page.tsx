@@ -191,9 +191,10 @@ export default function AchievementsPage() {
         clerkId: user.id,
         username: user.firstName || user.username || undefined,
         avatarUrl: user.imageUrl || undefined,
+        email: user.primaryEmailAddress?.emailAddress || undefined,
       }).catch(() => {});
     }
-  }, [user?.id, isLoaded, getOrCreateProfile, user?.firstName, user?.username, user?.imageUrl]);
+  }, [user?.id, isLoaded, getOrCreateProfile, user?.firstName, user?.username, user?.imageUrl, user?.primaryEmailAddress?.emailAddress]);
 
   if (!isLoaded) {
     return (

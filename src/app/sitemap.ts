@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../../convex/_generated/api";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
@@ -105,6 +105,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const blogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteUrl}/blog/state-management-react-2025`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog/edge-functions-vs-serverless-2025`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog/ai-coding-assistants-2025`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog/convex-vs-supabase-vs-firebase`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog/deployment-platforms-2025`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     {
       url: `${siteUrl}/blog/best-react-frameworks-2025`,
       lastModified: new Date(),

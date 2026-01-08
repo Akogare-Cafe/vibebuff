@@ -186,19 +186,29 @@ export const getAllForScreenshots = query({
 export const getLatestTools = query({
   args: {
     limit: v.optional(v.number()),
+    excludeCategories: v.optional(v.array(v.string())),
   },
   handler: async (ctx, args) => {
     const limit = args.limit || 20;
-    const tools = await ctx.db
-      .query("tools")
-      .filter((q) => q.eq(q.field("isActive"), true))
-      .order("desc")
-      .take(limit);
+    const excludeSlugs = args.excludeCategories || [];
     
     const categories = await ctx.db.query("categories").collect();
     const categoryMap = new Map(categories.map((c) => [c._id, c]));
+    const excludeCategoryIds = new Set(
+      categories.filter((c) => excludeSlugs.includes(c.slug)).map((c) => c._id)
+    );
     
-    return tools.map((tool) => ({
+    const allTools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .order("desc")
+      .collect();
+    
+    const filteredTools = allTools
+      .filter((tool) => !excludeCategoryIds.has(tool.categoryId))
+      .slice(0, limit);
+    
+    return filteredTools.map((tool) => ({
       _id: tool._id,
       name: tool.name,
       slug: tool.slug,
@@ -211,6 +221,7 @@ export const getLatestTools = query({
       category: categoryMap.get(tool.categoryId),
       websiteUrl: tool.websiteUrl,
       githubUrl: tool.githubUrl,
+      releaseDate: tool.externalData?.github?.createdAt || tool.externalData?.npm?.firstPublished || null,
       _creationTime: tool._creationTime,
     }));
   },

@@ -1,6 +1,7 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { getAuthenticatedUser } from "./lib/auth";
+import { internal } from "./_generated/api";
 
 // Get or create user profile
 export const getOrCreateProfile = mutation({
@@ -8,6 +9,7 @@ export const getOrCreateProfile = mutation({
     clerkId: v.optional(v.string()),
     username: v.optional(v.string()),
     avatarUrl: v.optional(v.string()),
+    email: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const clerkId = args.clerkId || await getAuthenticatedUser(ctx);
@@ -53,6 +55,13 @@ export const getOrCreateProfile = mutation({
         link: "/",
       },
     });
+
+    if (args.email) {
+      await ctx.scheduler.runAfter(0, internal.email.sendUserWelcomeEmail, {
+        email: args.email,
+        username: args.username,
+      });
+    }
 
     return await ctx.db.get(profileId);
   },

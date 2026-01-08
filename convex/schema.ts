@@ -2846,4 +2846,17 @@ export default defineSchema({
     .index("by_status", ["status"])
     .index("by_fetch_status", ["fetchStatus"])
     .index("by_name", ["name"]),
+
+  // ============================================
+  // Newsletter Subscribers
+  // ============================================
+  newsletterSubscribers: defineTable({
+    email: v.string(),
+    source: v.optional(v.string()),
+    subscribedAt: v.number(),
+    unsubscribedAt: v.optional(v.number()),
+    isActive: v.boolean(),
+  })
+    .index("by_email", ["email"])
+    .index("by_active", ["isActive"]),
 });

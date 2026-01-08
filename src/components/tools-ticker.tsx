@@ -3,9 +3,16 @@
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Link from "next/link";
-import { Star, Download, TrendingUp, Package, ExternalLink, Github, Globe, Calendar } from "lucide-react";
+import { Star, Download, TrendingUp, Package, Github, Globe, Calendar, Settings2 } from "lucide-react";
 import { PixelBadge } from "@/components/pixel-badge";
 import { useEffect, useRef, useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ToolTickerItem {
   _id: string;
@@ -24,8 +31,11 @@ interface ToolTickerItem {
   };
   websiteUrl: string;
   githubUrl?: string;
+  releaseDate?: string | null;
   _creationTime: number;
 }
+
+type TickerDisplay = "stars" | "downloads" | "category" | "date";
 
 function formatNumber(num: number): string {
   if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
@@ -33,16 +43,16 @@ function formatNumber(num: number): string {
   return num.toString();
 }
 
-function formatDate(timestamp: number): string {
-  const date = new Date(timestamp);
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+function formatDate(dateStr: string | number): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-function TickerItem({ tool }: { tool: ToolTickerItem }) {
+function TickerItem({ tool, display }: { tool: ToolTickerItem; display: TickerDisplay[] }) {
   const isNew = Date.now() - tool._creationTime < 7 * 24 * 60 * 60 * 1000;
 
   return (
-    <div className="flex-shrink-0 flex items-center gap-3 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-lg hover:border-primary hover:bg-card transition-all group min-w-[320px]">
+    <div className="flex-shrink-0 flex items-center gap-3 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-lg hover:border-primary hover:bg-card transition-all group min-w-[280px]">
       <div className="w-8 h-8 rounded-md bg-muted flex items-center justify-center overflow-hidden flex-shrink-0">
         {tool.logoUrl ? (
           <img
@@ -70,13 +80,15 @@ function TickerItem({ tool }: { tool: ToolTickerItem }) {
           )}
         </div>
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
-            {formatDate(tool._creationTime)}
-          </span>
-          {tool.category && (
+          {display.includes("date") && tool.releaseDate && (
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              {formatDate(tool.releaseDate)}
+            </span>
+          )}
+          {display.includes("category") && tool.category && (
             <>
-              <span className="text-border">|</span>
+              {display.includes("date") && tool.releaseDate && <span className="text-border">|</span>}
               <span className="truncate">{tool.category.name}</span>
             </>
           )}
@@ -84,10 +96,16 @@ function TickerItem({ tool }: { tool: ToolTickerItem }) {
       </div>
 
       <div className="flex items-center gap-2 text-xs flex-shrink-0">
-        {tool.githubStars && tool.githubStars > 0 && (
+        {display.includes("stars") && tool.githubStars && tool.githubStars > 0 && (
           <span className="flex items-center gap-1 text-primary">
             <Star className="w-3 h-3" />
             {formatNumber(tool.githubStars)}
+          </span>
+        )}
+        {display.includes("downloads") && tool.npmDownloadsWeekly && tool.npmDownloadsWeekly > 0 && (
+          <span className="flex items-center gap-1 text-muted-foreground">
+            <Download className="w-3 h-3" />
+            {formatNumber(tool.npmDownloadsWeekly)}
           </span>
         )}
         {tool.githubUrl && (
@@ -118,9 +136,14 @@ function TickerItem({ tool }: { tool: ToolTickerItem }) {
 }
 
 export function ToolsTicker() {
-  const tools = useQuery(api.tools.getLatestTools, { limit: 20 });
+  const tools = useQuery(api.tools.getLatestTools, { 
+    limit: 20,
+    excludeCategories: ["mcp-servers"],
+  });
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState<TickerDisplay[]>(["stars", "date", "category"]);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -155,9 +178,17 @@ export function ToolsTicker() {
 
   const duplicatedTools = [...tools, ...tools];
 
+  const toggleDisplay = (option: TickerDisplay) => {
+    setDisplayOptions((prev) =>
+      prev.includes(option)
+        ? prev.filter((o) => o !== option)
+        : [...prev, option]
+    );
+  };
+
   return (
     <div className="relative overflow-hidden">
-      <div className="flex items-center gap-3 mb-3">
+      <div className="flex items-center gap-3 mb-3 px-4">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">
@@ -169,7 +200,31 @@ export function ToolsTicker() {
           <span>Latest Tools</span>
         </div>
         <div className="flex-1 h-px bg-gradient-to-r from-border via-primary/30 to-transparent" />
+        <button
+          onClick={() => setShowSettings(!showSettings)}
+          className="p-1.5 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+          title="Configure display"
+        >
+          <Settings2 className="w-4 h-4" />
+        </button>
       </div>
+
+      {showSettings && (
+        <div className="flex items-center gap-4 mb-3 px-4 py-2 bg-muted/50 rounded-lg mx-4">
+          <span className="text-xs text-muted-foreground">Show:</span>
+          {(["stars", "downloads", "date", "category"] as TickerDisplay[]).map((option) => (
+            <label key={option} className="flex items-center gap-1.5 text-xs cursor-pointer">
+              <input
+                type="checkbox"
+                checked={displayOptions.includes(option)}
+                onChange={() => toggleDisplay(option)}
+                className="w-3 h-3 rounded border-border accent-primary"
+              />
+              <span className="text-muted-foreground capitalize">{option}</span>
+            </label>
+          ))}
+        </div>
+      )}
 
       <div
         ref={scrollRef}
@@ -178,7 +233,7 @@ export function ToolsTicker() {
         onMouseLeave={() => setIsPaused(false)}
       >
         {duplicatedTools.map((tool, index) => (
-          <TickerItem key={`${tool._id}-${index}`} tool={tool} />
+          <TickerItem key={`${tool._id}-${index}`} tool={tool} display={displayOptions} />
         ))}
       </div>
 

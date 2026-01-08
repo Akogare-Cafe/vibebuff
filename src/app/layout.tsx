@@ -28,11 +28,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "VIBEBUFF | Best Tech Stack Builder 2025 - AI-Powered Developer Tool Recommendations",
-    template: "%s | VIBEBUFF - Tech Stack Builder",
+    default: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
+    template: "%s | VIBEBUFF",
   },
   description:
-    "Build the perfect tech stack with AI-powered recommendations. Compare 500+ developer tools including React, Next.js, Vue, databases, and APIs. Free tech stack builder trusted by 10,000+ developers.",
+    "Stop guessing. Start building. VIBEBUFF helps developers discover, compare, and choose the right tools for any project. 500+ tools. AI-powered recommendations. 100% free.",
   keywords: [
     "tech stack builder",
     "best tech stack 2025",
@@ -84,9 +84,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "VIBEBUFF",
-    title: "VIBEBUFF | Best Tech Stack Builder 2025 - AI-Powered Recommendations",
+    title: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
     description:
-      "Build the perfect tech stack with AI. Compare 500+ developer tools, get personalized recommendations, and discover the best frameworks for your project. Free forever.",
+      "Stop guessing. Start building. Compare 500+ developer tools, get AI-powered recommendations, and build the perfect stack for your project. Free forever.",
     images: [
       {
         url: "/og-image.png",
@@ -100,9 +100,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@vibebuff",
-    title: "VIBEBUFF | Best Tech Stack Builder 2025",
+    title: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
     description:
-      "Build the perfect tech stack with AI. Compare 500+ developer tools and get personalized recommendations. Free forever.",
+      "Stop guessing. Start building. Compare 500+ dev tools and get AI-powered recommendations. Free forever.",
     images: ["/og-image.png"],
     creator: "@vibebuff",
   },
@@ -120,9 +120,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  // verification: {
+  //   google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
+  // },
   other: {
     "msapplication-TileColor": "#3b82f6",
     "theme-color": "#3b82f6",

@@ -23,6 +23,56 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    slug: "state-management-react-2025",
+    title: "React State Management in 2025: Zustand vs Redux vs Jotai vs Context",
+    description:
+      "A comprehensive guide to choosing the right state management solution for your React app. Compare Zustand, Redux Toolkit, Jotai, and Context API with real benchmarks.",
+    date: "2025-01-25",
+    readTime: "14 min read",
+    tags: ["React", "State Management", "Zustand", "Redux"],
+    featured: true,
+  },
+  {
+    slug: "edge-functions-vs-serverless-2025",
+    title: "Edge Functions vs Serverless in 2025: The Performance Battle",
+    description:
+      "Edge functions are 9x faster during cold starts. Compare Cloudflare Workers, Vercel Edge, and AWS Lambda with real benchmarks and cost analysis.",
+    date: "2025-01-24",
+    readTime: "12 min read",
+    tags: ["Edge Computing", "Serverless", "Cloudflare", "Vercel"],
+    featured: true,
+  },
+  {
+    slug: "ai-coding-assistants-2025",
+    title: "Best AI Coding Assistants in 2025: Complete Comparison Guide",
+    description:
+      "From GitHub Copilot to Cursor to Claude - compare 15+ AI coding tools with features, pricing, and real-world performance benchmarks.",
+    date: "2025-01-23",
+    readTime: "15 min read",
+    tags: ["AI", "Coding Assistants", "GitHub Copilot", "Cursor"],
+    featured: true,
+  },
+  {
+    slug: "convex-vs-supabase-vs-firebase",
+    title: "Convex vs Supabase vs Firebase: Real-Time Backend Showdown 2025",
+    description:
+      "Compare the top real-time backend platforms. Detailed analysis of Convex, Supabase, and Firebase for modern web applications.",
+    date: "2025-01-22",
+    readTime: "13 min read",
+    tags: ["Backend", "Convex", "Supabase", "Firebase"],
+    featured: true,
+  },
+  {
+    slug: "deployment-platforms-2025",
+    title: "Best Deployment Platforms in 2025: Vercel vs Netlify vs Railway vs Render",
+    description:
+      "Compare modern deployment platforms for your web apps. From Vercel's edge network to Railway's simplicity - find the right platform for your project.",
+    date: "2025-01-21",
+    readTime: "11 min read",
+    tags: ["Deployment", "Vercel", "Netlify", "Railway"],
+    featured: true,
+  },
+  {
     slug: "vue-vs-react-2025",
     title: "Vue vs React in 2025: Which Frontend Framework Should You Choose?",
     description:
@@ -30,7 +80,7 @@ const blogPosts = [
     date: "2025-01-20",
     readTime: "11 min read",
     tags: ["Vue", "React", "Frontend", "Frameworks"],
-    featured: true,
+    featured: false,
   },
   {
     slug: "best-orms-nodejs-2025",

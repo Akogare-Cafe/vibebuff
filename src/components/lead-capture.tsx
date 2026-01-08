@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard } from "@/components/pixel-card";
 import { PixelInput } from "@/components/pixel-input";
@@ -10,15 +12,25 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const subscribe = useMutation(api.newsletter.subscribe);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
     
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
-    setIsLoading(false);
+    setError(null);
+    
+    try {
+      await subscribe({ email, source: "weekly-digest-widget" });
+      setIsSubmitted(true);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -62,6 +74,10 @@ export function NewsletterSignup() {
           {isLoading ? "Joining..." : "Subscribe"}
         </PixelButton>
       </form>
+
+      {error && (
+        <p className="text-destructive text-xs mt-2">{error}</p>
+      )}
 
       <p className="text-muted-foreground text-xs mt-3">
         No spam. Unsubscribe anytime. Free forever.
