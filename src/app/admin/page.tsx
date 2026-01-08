@@ -60,7 +60,7 @@ import {
 type Tab = "overview" | "users" | "tools" | "suggestions" | "ads" | "crons" | "scrape" | "add-tool";
 
 export default function AdminDashboardPage() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, isLoaded } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [userSearch, setUserSearch] = useState("");
   const [toolSearch, setToolSearch] = useState("");
@@ -94,6 +94,14 @@ export default function AdminDashboardPage() {
   const updateTool = useMutation(api.admin.updateTool);
   const approveSuggestion = useMutation(api.toolSuggestions.approve);
   const rejectSuggestion = useMutation(api.toolSuggestions.reject);
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
+      </div>
+    );
+  }
 
   if (!isSignedIn) {
     return (

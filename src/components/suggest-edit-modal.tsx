@@ -59,11 +59,11 @@ export function SuggestEditModal({ tool, trigger }: SuggestEditModalProps) {
   const [websiteUrl, setWebsiteUrl] = useState(tool.websiteUrl);
   const [githubUrl, setGithubUrl] = useState(tool.githubUrl || "");
   const [docsUrl, setDocsUrl] = useState(tool.docsUrl || "");
-  const [pros, setPros] = useState<string[]>(tool.pros);
-  const [cons, setCons] = useState<string[]>(tool.cons);
-  const [bestFor, setBestFor] = useState<string[]>(tool.bestFor);
-  const [features, setFeatures] = useState<string[]>(tool.features);
-  const [tags, setTags] = useState<string[]>(tool.tags);
+  const [pros, setPros] = useState<string[]>([...tool.pros]);
+  const [cons, setCons] = useState<string[]>([...tool.cons]);
+  const [bestFor, setBestFor] = useState<string[]>([...tool.bestFor]);
+  const [features, setFeatures] = useState<string[]>([...tool.features]);
+  const [tags, setTags] = useState<string[]>([...tool.tags]);
   const [reason, setReason] = useState("");
 
   const submitSuggestion = useMutation(api.toolSuggestions.submit);
@@ -117,23 +117,25 @@ export function SuggestEditModal({ tool, trigger }: SuggestEditModalProps) {
     }
   };
 
+  const resetForm = () => {
+    setName(tool.name);
+    setTagline(tool.tagline);
+    setDescription(tool.description);
+    setWebsiteUrl(tool.websiteUrl);
+    setGithubUrl(tool.githubUrl || "");
+    setDocsUrl(tool.docsUrl || "");
+    setPros([...tool.pros]);
+    setCons([...tool.cons]);
+    setBestFor([...tool.bestFor]);
+    setFeatures([...tool.features]);
+    setTags([...tool.tags]);
+    setReason("");
+  };
+
   const handleClose = () => {
     setOpen(false);
-    if (submitted) {
-      setSubmitted(false);
-      setName(tool.name);
-      setTagline(tool.tagline);
-      setDescription(tool.description);
-      setWebsiteUrl(tool.websiteUrl);
-      setGithubUrl(tool.githubUrl || "");
-      setDocsUrl(tool.docsUrl || "");
-      setPros(tool.pros);
-      setCons(tool.cons);
-      setBestFor(tool.bestFor);
-      setFeatures(tool.features);
-      setTags(tool.tags);
-      setReason("");
-    }
+    setSubmitted(false);
+    resetForm();
   };
 
   const addToArray = (setter: React.Dispatch<React.SetStateAction<string[]>>) => {

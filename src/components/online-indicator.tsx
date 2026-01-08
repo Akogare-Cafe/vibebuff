@@ -1,37 +1,51 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Users } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 
 const HEARTBEAT_INTERVAL = 60 * 1000;
+const SESSION_KEY = "vibebuff_session_id";
+
+function getOrCreateSessionId(): string {
+  if (typeof window === "undefined") return "";
+  
+  let sessionId = localStorage.getItem(SESSION_KEY);
+  if (!sessionId) {
+    sessionId = `${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+    localStorage.setItem(SESSION_KEY, sessionId);
+  }
+  return sessionId;
+}
 
 export function OnlineIndicator() {
   const { isSignedIn } = useUser();
   const onlineData = useQuery(api.presence.getOnlineCount);
   const heartbeat = useMutation(api.presence.heartbeat);
   const setOffline = useMutation(api.presence.setOffline);
+  const sessionIdRef = useRef<string>("");
 
   useEffect(() => {
-    if (!isSignedIn) return;
+    sessionIdRef.current = getOrCreateSessionId();
+    const sessionId = sessionIdRef.current;
 
-    heartbeat();
+    heartbeat({ sessionId: isSignedIn ? undefined : sessionId });
 
     const interval = setInterval(() => {
-      heartbeat();
+      heartbeat({ sessionId: isSignedIn ? undefined : sessionId });
     }, HEARTBEAT_INTERVAL);
 
     const handleBeforeUnload = () => {
-      setOffline();
+      setOffline({ sessionId: isSignedIn ? undefined : sessionId });
     };
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
-        setOffline();
+        setOffline({ sessionId: isSignedIn ? undefined : sessionId });
       } else {
-        heartbeat();
+        heartbeat({ sessionId: isSignedIn ? undefined : sessionId });
       }
     };
 

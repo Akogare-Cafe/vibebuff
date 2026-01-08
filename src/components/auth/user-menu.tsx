@@ -16,8 +16,11 @@ import {
   Loader2,
   Star,
   Zap,
-  Sparkles
+  Sparkles,
+  Shield,
 } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const menuItems = [
   { href: "/profile", icon: User, label: "My Profile" },
@@ -33,6 +36,7 @@ export function UserMenu() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const isAdmin = useQuery(api.admin.isAdmin);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -165,6 +169,18 @@ export function UserMenu() {
                 {item.label}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                onClick={() => setIsOpen(false)}
+                className="group/item flex items-center gap-3 px-4 py-3 rounded-xl text-foreground hover:bg-primary/10 hover:text-primary text-sm font-medium transition-all duration-200"
+              >
+                <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center group-hover/item:bg-primary/30 group-hover/item:scale-110 transition-all duration-200">
+                  <Shield className="w-4 h-4 text-primary" />
+                </div>
+                Admin Dashboard
+              </Link>
+            )}
           </div>
 
           {/* Sign Out */}

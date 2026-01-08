@@ -4,56 +4,101 @@ import { mutation, query } from "./_generated/server";
 const ONLINE_THRESHOLD_MS = 5 * 60 * 1000;
 
 export const heartbeat = mutation({
-  args: {},
-  handler: async (ctx) => {
+  args: {
+    sessionId: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return null;
-
-    const userId = identity.subject;
     const now = Date.now();
 
-    const existing = await ctx.db
-      .query("userPresence")
-      .withIndex("by_user", (q) => q.eq("oderId", userId))
-      .first();
+    if (identity) {
+      const userId = identity.subject;
+      const existing = await ctx.db
+        .query("userPresence")
+        .withIndex("by_user", (q) => q.eq("oderId", userId))
+        .first();
 
-    if (existing) {
-      await ctx.db.patch(existing._id, {
-        lastSeen: now,
-        isOnline: true,
-      });
-    } else {
-      await ctx.db.insert("userPresence", {
-        oderId: userId,
-        lastSeen: now,
-        isOnline: true,
-      });
+      if (existing) {
+        await ctx.db.patch(existing._id, {
+          lastSeen: now,
+          isOnline: true,
+          isAuthenticated: true,
+        });
+      } else {
+        await ctx.db.insert("userPresence", {
+          oderId: userId,
+          lastSeen: now,
+          isOnline: true,
+          isAuthenticated: true,
+        });
+      }
+      return { success: true, type: "authenticated" };
     }
 
-    return { success: true };
+    if (args.sessionId) {
+      const existing = await ctx.db
+        .query("userPresence")
+        .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
+        .first();
+
+      if (existing) {
+        await ctx.db.patch(existing._id, {
+          lastSeen: now,
+          isOnline: true,
+        });
+      } else {
+        await ctx.db.insert("userPresence", {
+          oderId: `anon_${args.sessionId}`,
+          sessionId: args.sessionId,
+          lastSeen: now,
+          isOnline: true,
+          isAuthenticated: false,
+        });
+      }
+      return { success: true, type: "anonymous" };
+    }
+
+    return { success: false };
   },
 });
 
 export const setOffline = mutation({
-  args: {},
-  handler: async (ctx) => {
+  args: {
+    sessionId: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return null;
 
-    const userId = identity.subject;
+    if (identity) {
+      const userId = identity.subject;
+      const existing = await ctx.db
+        .query("userPresence")
+        .withIndex("by_user", (q) => q.eq("oderId", userId))
+        .first();
 
-    const existing = await ctx.db
-      .query("userPresence")
-      .withIndex("by_user", (q) => q.eq("oderId", userId))
-      .first();
-
-    if (existing) {
-      await ctx.db.patch(existing._id, {
-        isOnline: false,
-      });
+      if (existing) {
+        await ctx.db.patch(existing._id, {
+          isOnline: false,
+        });
+      }
+      return { success: true };
     }
 
-    return { success: true };
+    if (args.sessionId) {
+      const existing = await ctx.db
+        .query("userPresence")
+        .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
+        .first();
+
+      if (existing) {
+        await ctx.db.patch(existing._id, {
+          isOnline: false,
+        });
+      }
+      return { success: true };
+    }
+
+    return { success: false };
   },
 });
 

@@ -2852,10 +2852,13 @@ export default defineSchema({
   // ============================================
   userPresence: defineTable({
     oderId: v.string(),
+    sessionId: v.optional(v.string()),
     lastSeen: v.number(),
     isOnline: v.boolean(),
+    isAuthenticated: v.optional(v.boolean()),
   })
     .index("by_user", ["oderId"])
+    .index("by_session", ["sessionId"])
     .index("by_online", ["isOnline"])
     .index("by_last_seen", ["lastSeen"]),
 

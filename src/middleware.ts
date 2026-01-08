@@ -22,6 +22,7 @@ const isPublicRoute = createRouteMatcher([
   "/groups(.*)",
   "/companies(.*)",
   "/users(.*)",
+  "/timeline(.*)",
   "/sitemap.xml",
   "/robots.txt",
 ]);

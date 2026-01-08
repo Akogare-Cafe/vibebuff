@@ -38,7 +38,7 @@ export function AddToDeckButton({ toolId, toolName, onAddedToDeck }: AddToDeckBu
 
   const userDecks = useQuery(
     api.decks.getUserDecks,
-    user?.id ? { userId: user.id } : "skip"
+    user?.id ? {} : "skip"
   );
 
   const addToolToDeck = useMutation(api.decks.addToolToDeck);

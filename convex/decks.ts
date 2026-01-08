@@ -4,11 +4,18 @@ import { getAuthenticatedUser } from "./lib/auth";
 
 // Get user's decks
 export const getUserDecks = query({
-  args: { userId: v.string() },
+  args: { userId: v.optional(v.string()) },
   handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    const userId = identity?.subject ?? args.userId;
+    
+    if (!userId) {
+      return [];
+    }
+    
     const decks = await ctx.db
       .query("userDecks")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .collect();
 
     const decksWithTools = await Promise.all(
