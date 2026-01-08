@@ -718,4 +718,58 @@
     border-radius: 9999px;
     animation: pulse 2s infinite;
   }
+
+  /* Performance-optimized background animations */
+  .animate-float-slow {
+    animation: floatSlow 40s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-float-slower {
+    animation: floatSlower 50s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-particle {
+    animation: particleFloat 20s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(50px, -30px); }
+    50% { transform: translate(20px, 40px); }
+    75% { transform: translate(-30px, 20px); }
+  }
+
+  @keyframes floatSlower {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-40px, 30px); }
+    66% { transform: translate(30px, -20px); }
+  }
+
+  @keyframes particleFloat {
+    0%, 100% { 
+      transform: translateY(0) scale(1);
+      opacity: 0.4;
+    }
+    50% { 
+      transform: translateY(-30px) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  /* CSS-based ticker animation */
+  .animate-ticker {
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-ticker:hover {
+    animation-play-state: paused;
+  }
 }

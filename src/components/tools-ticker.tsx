@@ -5,14 +5,7 @@ import { api } from "../../convex/_generated/api";
 import Link from "next/link";
 import { Star, Download, TrendingUp, Package, Github, Globe, Calendar, Settings2 } from "lucide-react";
 import { PixelBadge } from "@/components/pixel-badge";
-import { useEffect, useRef, useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { useState } from "react";
 
 interface ToolTickerItem {
   _id: string;
@@ -59,6 +52,7 @@ function TickerItem({ tool, display }: { tool: ToolTickerItem; display: TickerDi
             src={tool.logoUrl}
             alt={tool.name}
             className="w-full h-full object-contain"
+            loading="lazy"
           />
         ) : (
           <Package className="w-4 h-4 text-muted-foreground" />
@@ -137,43 +131,21 @@ function TickerItem({ tool, display }: { tool: ToolTickerItem; display: TickerDi
 
 export function ToolsTicker() {
   const tools = useQuery(api.tools.getLatestTools, { 
-    limit: 20,
+    limit: 12,
     excludeCategories: ["mcp-servers"],
   });
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [displayOptions, setDisplayOptions] = useState<TickerDisplay[]>(["stars", "date", "category"]);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer || !tools || tools.length === 0) return;
-
-    let animationId: number;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5;
-
-    const animate = () => {
-      if (!isPaused && scrollContainer) {
-        scrollPosition += scrollSpeed;
-        const maxScroll = scrollContainer.scrollWidth / 2;
-        if (scrollPosition >= maxScroll) {
-          scrollPosition = 0;
-        }
-        scrollContainer.scrollLeft = scrollPosition;
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
-  }, [tools, isPaused]);
+  const [displayOptions, setDisplayOptions] = useState<TickerDisplay[]>(["stars", "category"]);
 
   if (!tools || tools.length === 0) {
-    return null;
+    return (
+      <div className="h-[72px] flex items-center justify-center">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-xs text-muted-foreground">Loading tools...</span>
+        </div>
+      </div>
+    );
   }
 
   const duplicatedTools = [...tools, ...tools];
@@ -226,17 +198,13 @@ export function ToolsTicker() {
         </div>
       )}
 
-      <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-x-hidden"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {duplicatedTools.map((tool, index) => (
-          <TickerItem key={`${tool._id}-${index}`} tool={tool} display={displayOptions} />
-        ))}
+      <div className="overflow-hidden">
+        <div className="flex gap-3 animate-ticker hover:[animation-play-state:paused]">
+          {duplicatedTools.map((tool, index) => (
+            <TickerItem key={`${tool._id}-${index}`} tool={tool} display={displayOptions} />
+          ))}
+        </div>
       </div>
-
     </div>
   );
 }

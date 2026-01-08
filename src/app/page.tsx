@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense, lazy } from "react";
 import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
@@ -30,8 +30,27 @@ import {
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
 import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
-import { AnimatedBackground } from "@/components/animated-background";
-import { ToolsTicker } from "@/components/tools-ticker";
+import dynamic from "next/dynamic";
+
+const AnimatedBackground = dynamic(
+  () => import("@/components/animated-background").then(mod => ({ default: mod.AnimatedBackground })),
+  { ssr: false }
+);
+
+const ToolsTicker = dynamic(
+  () => import("@/components/tools-ticker").then(mod => ({ default: mod.ToolsTicker })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="h-[72px] flex items-center justify-center">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-xs text-muted-foreground">Loading tools...</span>
+        </div>
+      </div>
+    )
+  }
+);
 
 interface AIRecommendation {
   id: string;
@@ -74,7 +93,7 @@ export default function Home() {
         setShowSearchResults(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside, { passive: true });
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
