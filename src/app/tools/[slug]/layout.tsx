@@ -115,7 +115,7 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
       "article:modified_time": new Date().toISOString(),
       "article:section": tool.category?.name || "Developer Tools",
       "article:tag": tool.tags.join(", "),
-      ...(hasRatings && {
+      ...(hasRatings && ratingSummary && {
         "rating:value": ratingSummary.averageRating.toFixed(1),
         "rating:count": ratingSummary.totalReviews.toString(),
       }),

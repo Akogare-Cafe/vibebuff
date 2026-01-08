@@ -472,7 +472,7 @@ function McpPageContent() {
                                     >
                                       <code className="text-primary">{env.name}</code>
                                       {env.required && (
-                                        <PixelBadge variant="destructive" className="text-xs">
+                                        <PixelBadge variant="secondary" className="text-xs bg-red-500/20 text-red-400">
                                           Required
                                         </PixelBadge>
                                       )}

@@ -116,6 +116,8 @@ export default function SettingsPage() {
     weeklyProgress: true,
     communityUpdates: false,
     battleInvites: true,
+    newToolAlerts: true,
+    desktopNotifications: false,
   });
 
   const [privacySettings, setPrivacySettings] = useState({
