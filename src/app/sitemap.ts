@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../../convex/_generated/api";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
@@ -88,6 +88,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${siteUrl}/get-started`,
       lastModified: new Date(),
       changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/forum`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/mcp`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/advertise`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${siteUrl}/companies`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/groups`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
       priority: 0.6,
     },
     {

@@ -226,3 +226,47 @@ export const getLatestTools = query({
     }));
   },
 });
+
+export const getToolsForTimeline = query({
+  handler: async (ctx) => {
+    const categories = await ctx.db.query("categories").collect();
+    const categoryMap = new Map(categories.map((c) => [c._id, c]));
+    
+    const allTools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+    
+    const toolsWithDates = allTools
+      .map((tool) => {
+        const releaseDate = tool.externalData?.github?.createdAt || tool.externalData?.npm?.firstPublished || null;
+        return {
+          _id: tool._id,
+          name: tool.name,
+          slug: tool.slug,
+          tagline: tool.tagline,
+          description: tool.description,
+          logoUrl: tool.logoUrl,
+          pricingModel: tool.pricingModel,
+          githubStars: tool.externalData?.github?.stars || tool.githubStars,
+          npmDownloadsWeekly: tool.externalData?.npm?.downloadsWeekly || tool.npmDownloadsWeekly,
+          isOpenSource: tool.isOpenSource,
+          isFeatured: tool.isFeatured,
+          category: categoryMap.get(tool.categoryId),
+          websiteUrl: tool.websiteUrl,
+          githubUrl: tool.githubUrl,
+          releaseDate,
+          releaseDateTimestamp: releaseDate ? new Date(releaseDate).getTime() : null,
+          latestRelease: tool.externalData?.github?.latestRelease,
+          license: tool.externalData?.github?.license,
+          language: tool.externalData?.github?.language,
+          forks: tool.externalData?.github?.forks,
+          contributors: tool.externalData?.github?.contributors,
+        };
+      })
+      .filter((tool) => tool.releaseDateTimestamp !== null)
+      .sort((a, b) => (b.releaseDateTimestamp || 0) - (a.releaseDateTimestamp || 0));
+    
+    return toolsWithDates;
+  },
+});

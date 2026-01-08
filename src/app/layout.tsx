@@ -23,7 +23,7 @@ const notoSans = Noto_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -16,17 +16,9 @@ import {
   Moon,
   MessagesSquare,
   ChevronDown,
-  Gamepad2,
   Trophy,
-  Zap,
-  Sparkles,
   Store,
-  ScrollText,
-  Swords,
-  Timer,
-  HelpCircle,
   FileText,
-  Lightbulb,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
@@ -52,19 +44,9 @@ const navItems: NavItem[] = [
       { href: "/stack-builder", label: "Stack Builder", icon: Layers, description: "Build your perfect tech stack" },
       { href: "/compare", label: "Compare Tools", icon: Scale, description: "Side-by-side tool comparison" },
       { href: "/stack-marketplace", label: "Marketplace", icon: Store, description: "Community-built stacks" },
-      { href: "/stack-contracts", label: "Contracts", icon: ScrollText, description: "Complete stack challenges" },
     ],
   },
-  {
-    label: "Play",
-    icon: Gamepad2,
-    children: [
-      { href: "/battle", label: "Tool Battles", icon: Swords, description: "Battle tools head-to-head" },
-      { href: "/speedrun", label: "Speedruns", icon: Timer, description: "Race to build stacks" },
-      { href: "/spin-wheel", label: "Spin Wheel", icon: Sparkles, description: "Win daily rewards" },
-      { href: "/leaderboards", label: "Leaderboards", icon: Trophy, description: "Top builders & players" },
-    ],
-  },
+  { href: "/leaderboards", label: "Leaderboards", icon: Trophy },
   {
     label: "Community",
     icon: Users,
@@ -74,15 +56,7 @@ const navItems: NavItem[] = [
       { href: "/blog", label: "Blog", icon: BookOpen, description: "Latest articles & guides" },
     ],
   },
-  {
-    label: "Resources",
-    icon: Zap,
-    children: [
-      { href: "/docs", label: "Documentation", icon: FileText, description: "Learn how to use VIBEBUFF" },
-      { href: "/startup-stories", label: "Startup Stories", icon: Lightbulb, description: "Real stack case studies" },
-      { href: "/help", label: "Help Center", icon: HelpCircle, description: "FAQs & support" },
-    ],
-  },
+  { href: "/docs", label: "Docs", icon: FileText },
 ];
 
 function NavDropdown({ item, pathname }: { item: NavItem; pathname: string }) {
