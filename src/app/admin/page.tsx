@@ -80,7 +80,7 @@ export default function AdminDashboardPage() {
   const initializeAdmin = useMutation(api.admin.initializeAdminByEmail);
   const createTool = useMutation(api.admin.createTool);
   const updateFeedSource = useMutation(api.admin.updateFeedSource);
-  const scrapeAndParse = useAction(api.admin.scrapeAndParseUrl);
+  const scrapeAndParse = useAction(api.adminActions.scrapeAndParseUrl);
   const approveScrapeJob = useMutation(api.admin.approveScrapeJob);
   const stats = useQuery(api.admin.getDashboardStats);
   const users = useQuery(api.admin.getAllUsers, { search: userSearch || undefined, limit: 50 });
