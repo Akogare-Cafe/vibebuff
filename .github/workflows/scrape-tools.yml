@@ -80,6 +80,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add scripts/scraper/data/
           git diff --staged --quiet || git commit -m "chore: update tool metadata [skip ci]"
+          git pull --rebase origin main
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
