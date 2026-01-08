@@ -350,10 +350,10 @@ export default function AdvertisePage() {
           <p className="text-muted-foreground mb-6">
             Contact our advertising team for custom packages and enterprise solutions.
           </p>
-          <a href="mailto:ads@vibebuff.com">
+          <a href="mailto:ads@vibebuff.dev">
             <PixelButton variant="outline">
               <Mail className="w-4 h-4 mr-2" />
-              ads@vibebuff.com
+              ads@vibebuff.dev
             </PixelButton>
           </a>
         </div>

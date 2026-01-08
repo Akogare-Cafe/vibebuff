@@ -1,6 +1,6 @@
 "use client";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
 interface FAQItem {
   question: string;

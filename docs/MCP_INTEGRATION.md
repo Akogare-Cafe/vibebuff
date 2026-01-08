@@ -48,7 +48,7 @@ Edit `~/.cursor/mcp.json`:
       "command": "npx",
       "args": ["@vibebuff/mcp-server"],
       "env": {
-        "VIBEBUFF_API_URL": "https://vibebuff.com/api"
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
       }
     }
   }
@@ -321,7 +321,7 @@ The MCP server communicates with these VibeBuff API endpoints:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VIBEBUFF_API_URL` | API endpoint | `https://vibebuff.com/api` |
+| `VIBEBUFF_API_URL` | API endpoint | `https://vibebuff.dev/api` |
 | `VIBEBUFF_API_KEY` | API key for authenticated requests | (optional) |
 
 ---
@@ -330,7 +330,7 @@ The MCP server communicates with these VibeBuff API endpoints:
 
 For enhanced features and higher rate limits:
 
-1. Sign up at [vibebuff.com](https://vibebuff.com)
+1. Sign up at [vibebuff.dev](https://vibebuff.dev)
 2. Go to Profile > Settings > API Keys
 3. Generate a new MCP API key
 4. Add to your MCP configuration

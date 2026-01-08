@@ -10,9 +10,9 @@
 
 - [ ] **Submit sitemap to Google Search Console**
   - Go to https://search.google.com/search-console
-  - Add property: `https://vibebuff.com`
+  - Add property: `https://vibebuff.dev`
   - Verify ownership via DNS or HTML tag
-  - Submit sitemap: `https://vibebuff.com/sitemap.xml`
+  - Submit sitemap: `https://vibebuff.dev/sitemap.xml`
   - Update `verification.google` in `src/app/layout.tsx` with your code
 
 - [ ] **Set up Google Analytics 4**
@@ -164,7 +164,7 @@ project needs and recommends the perfect stack in 60 seconds.
 
 Free to use. No sign-up required.
 
-Get your stack: vibebuff.com/quest
+Get your stack: vibebuff.dev/quest
 ```
 
 ---

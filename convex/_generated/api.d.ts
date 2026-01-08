@@ -50,6 +50,7 @@ import type * as notifications from "../notifications.js";
 import type * as onboarding from "../onboarding.js";
 import type * as packageImport from "../packageImport.js";
 import type * as popularity from "../popularity.js";
+import type * as presence from "../presence.js";
 import type * as questHistory from "../questHistory.js";
 import type * as referrals from "../referrals.js";
 import type * as relationships from "../relationships.js";
@@ -129,6 +130,7 @@ declare const fullApi: ApiFromModules<{
   onboarding: typeof onboarding;
   packageImport: typeof packageImport;
   popularity: typeof popularity;
+  presence: typeof presence;
   questHistory: typeof questHistory;
   referrals: typeof referrals;
   relationships: typeof relationships;

@@ -185,15 +185,15 @@ Next.js built-in optimizations:
 
 Add to `.env.local`:
 ```
-NEXT_PUBLIC_SITE_URL=https://vibebuff.com
+NEXT_PUBLIC_SITE_URL=https://vibebuff.dev
 ```
 
 ## Google Search Console Setup
 
 1. Go to https://search.google.com/search-console
-2. Add property: `https://vibebuff.com`
+2. Add property: `https://vibebuff.dev`
 3. Verify ownership via DNS or HTML tag
-4. Submit sitemap: `https://vibebuff.com/sitemap.xml`
+4. Submit sitemap: `https://vibebuff.dev/sitemap.xml`
 5. Update `verification.google` in layout.tsx with your code
 
 ## AI SEO System (NEW)

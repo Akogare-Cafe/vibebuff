@@ -89,9 +89,15 @@ import {
   Move,
   Link2,
   GripVertical,
+  Search,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Id } from "../../convex/_generated/dataModel";
 import { PackageJsonImportModal } from "./package-json-import";
 
@@ -208,41 +214,73 @@ function ToolNode({ data }: { data: ToolNodeData }) {
   const icon = categoryIcons[data.category] || <Wrench className="w-4 h-4" />;
 
   return (
-    <div className="relative">
-      <Handle
-        type="target"
-        position={Position.Top}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-background"
-      />
-      <div
-        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-card"
-        style={{ borderColor: color }}
-      >
-        <div className="flex items-center gap-2 mb-1">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="relative">
+          <Handle
+            type="target"
+            position={Position.Top}
+            className="!w-3 !h-3 !bg-primary !border-2 !border-background"
+          />
           <div
-            className="w-6 h-6 rounded flex items-center justify-center"
-            style={{ backgroundColor: `${color}20` }}
+            className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-card"
+            style={{ borderColor: color }}
           >
-            <span style={{ color }}>{icon}</span>
+            <div className="flex items-center gap-2 mb-1">
+              <div
+                className="w-6 h-6 rounded flex items-center justify-center"
+                style={{ backgroundColor: `${color}20` }}
+              >
+                <span style={{ color }}>{icon}</span>
+              </div>
+              <span className="text-primary font-bold text-sm">{data.label}</span>
+            </div>
+            {data.description && (
+              <p className="text-muted-foreground text-xs line-clamp-1">{data.description}</p>
+            )}
+            <PixelBadge
+              className="mt-2 text-xs"
+              style={{ backgroundColor: `${color}20`, color }}
+            >
+              {data.category}
+            </PixelBadge>
           </div>
-          <span className="text-primary font-bold text-sm">{data.label}</span>
+          <Handle
+            type="source"
+            position={Position.Bottom}
+            className="!w-3 !h-3 !bg-primary !border-2 !border-background"
+          />
         </div>
-        {data.description && (
-          <p className="text-muted-foreground text-xs">{data.description}</p>
-        )}
-        <PixelBadge
-          className="mt-2 text-xs"
-          style={{ backgroundColor: `${color}20`, color }}
-        >
-          {data.category}
-        </PixelBadge>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-background"
-      />
-    </div>
+      </TooltipTrigger>
+      <TooltipContent
+        side="right"
+        sideOffset={8}
+        className="bg-card border-2 border-border p-3 max-w-[250px]"
+      >
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-5 h-5 rounded flex items-center justify-center"
+              style={{ backgroundColor: `${color}20` }}
+            >
+              <span style={{ color }}>{icon}</span>
+            </div>
+            <span className="text-primary font-bold text-sm">{data.label}</span>
+          </div>
+          {data.description && (
+            <p className="text-muted-foreground text-xs">{data.description}</p>
+          )}
+          <div className="flex items-center gap-2 pt-1 border-t border-border">
+            <PixelBadge
+              className="text-[10px]"
+              style={{ backgroundColor: `${color}20`, color }}
+            >
+              {data.category}
+            </PixelBadge>
+          </div>
+        </div>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -346,67 +384,224 @@ function PopularStackCard({
 function ToolPalette({
   onAddNode,
 }: {
-  onAddNode: (category: string, label: string) => void;
+  onAddNode: (category: string, label: string, description?: string) => void;
 }) {
-  const tools = useQuery(api.tools.list, { limit: 100 });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const tools = useQuery(api.tools.list, { limit: 500 });
 
-  const toolsByCategory = useMemo(() => {
+  const allCategories = useMemo(() => {
+    if (!tools) return [];
+    const cats = new Set<string>();
+    tools.forEach((tool) => {
+      const category = tool.tags?.[0] || "tool";
+      cats.add(category);
+    });
+    return Array.from(cats).sort();
+  }, [tools]);
+
+  const filteredToolsByCategory = useMemo(() => {
     if (!tools) return {};
-    return tools.reduce((acc, tool) => {
+    
+    const filtered = tools.filter((tool) => {
+      const matchesSearch = searchQuery === "" || 
+        tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.tagline?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      
+      const category = tool.tags?.[0] || "tool";
+      const matchesCategory = selectedCategory === null || category === selectedCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+
+    return filtered.reduce((acc, tool) => {
       const category = tool.tags?.[0] || "tool";
       if (!acc[category]) acc[category] = [];
       acc[category].push(tool);
       return acc;
     }, {} as Record<string, typeof tools>);
-  }, [tools]);
+  }, [tools, searchQuery, selectedCategory]);
+
+  const toggleCategory = (category: string) => {
+    setExpandedCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(category)) {
+        next.delete(category);
+      } else {
+        next.add(category);
+      }
+      return next;
+    });
+  };
+
+  const totalResults = Object.values(filteredToolsByCategory).reduce(
+    (sum, arr) => sum + arr.length,
+    0
+  );
 
   return (
-    <div className="w-64 bg-card border-2 border-border rounded-lg p-4 max-h-[500px] overflow-y-auto">
-      <h3 className="text-primary font-bold text-sm mb-4 flex items-center gap-2">
+    <div className="w-72 bg-card border-2 border-border rounded-lg p-4 max-h-[600px] flex flex-col">
+      <h3 className="text-primary font-bold text-sm mb-3 flex items-center gap-2">
         <Wrench className="w-4 h-4" />
         Tool Palette
       </h3>
 
-      <div className="space-y-4">
-        {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
-          <div key={category}>
-            <h4
-              className="text-xs font-bold mb-2 flex items-center gap-1"
-              style={{ color: categoryColors[category] || "#3b82f6" }}
+      <div className="space-y-3 mb-3">
+        <div className="relative">
+          <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-muted-foreground" />
+          <PixelInput
+            placeholder="Search tools..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-7 h-8 text-xs"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
             >
-              {categoryIcons[category] || <Wrench className="w-3 h-3" />}
-              {category}
-            </h4>
-            <div className="space-y-1">
-              {categoryTools.slice(0, 5).map((tool) => (
-                <button
-                  key={tool._id}
-                  onClick={() => onAddNode(category, tool.name)}
-                  className="w-full text-left px-2 py-1 rounded text-xs text-muted-foreground hover:bg-card hover:text-primary transition-colors"
-                >
-                  {tool.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+              <X className="w-3 h-3" />
+            </button>
+          )}
+        </div>
 
-      <div className="mt-4 pt-4 border-t border-border">
-        <h4 className="text-primary text-xs font-bold mb-2">Custom Node</h4>
-        <div className="grid grid-cols-3 gap-1">
-          {Object.keys(categoryColors).map((cat) => (
+        <div className="flex flex-wrap gap-1">
+          <button
+            onClick={() => setSelectedCategory(null)}
+            className={cn(
+              "px-2 py-0.5 rounded text-[10px] transition-colors",
+              selectedCategory === null
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:text-primary"
+            )}
+          >
+            All
+          </button>
+          {allCategories.slice(0, 6).map((cat) => (
             <button
               key={cat}
-              onClick={() => onAddNode(cat, `New ${cat}`)}
-              className="p-2 rounded text-sm transition-colors"
+              onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+              className={cn(
+                "px-2 py-0.5 rounded text-[10px] transition-colors",
+                selectedCategory === cat
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-primary"
+              )}
               style={{
-                backgroundColor: `${categoryColors[cat]}20`,
-                color: categoryColors[cat],
+                backgroundColor: selectedCategory === cat 
+                  ? categoryColors[cat] || "#3b82f6"
+                  : `${categoryColors[cat] || "#3b82f6"}20`,
+                color: selectedCategory === cat ? "white" : categoryColors[cat] || "#3b82f6",
               }}
             >
-              <Plus className="w-3 h-3 mx-auto" />
+              {cat}
             </button>
+          ))}
+        </div>
+
+        {searchQuery && (
+          <p className="text-[10px] text-muted-foreground">
+            {totalResults} tool{totalResults !== 1 ? "s" : ""} found
+          </p>
+        )}
+      </div>
+
+      <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+        {Object.entries(filteredToolsByCategory).length === 0 ? (
+          <div className="text-center py-8">
+            <Search className="w-8 h-8 mx-auto text-muted-foreground/50 mb-2" />
+            <p className="text-xs text-muted-foreground">No tools found</p>
+            <p className="text-[10px] text-muted-foreground/70">Try a different search term</p>
+          </div>
+        ) : (
+          Object.entries(filteredToolsByCategory).map(([category, categoryTools]) => {
+            const isExpanded = expandedCategories.has(category) || searchQuery !== "";
+            const displayTools = isExpanded ? categoryTools : categoryTools.slice(0, 5);
+            const hasMore = categoryTools.length > 5;
+
+            return (
+              <div key={category} className="border border-border/50 rounded-lg p-2">
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="w-full flex items-center justify-between mb-1"
+                >
+                  <h4
+                    className="text-xs font-bold flex items-center gap-1"
+                    style={{ color: categoryColors[category] || "#3b82f6" }}
+                  >
+                    {categoryIcons[category] || <Wrench className="w-3 h-3" />}
+                    {category}
+                    <span className="text-muted-foreground font-normal ml-1">
+                      ({categoryTools.length})
+                    </span>
+                  </h4>
+                  {hasMore && !searchQuery && (
+                    <ChevronRight
+                      className={cn(
+                        "w-3 h-3 text-muted-foreground transition-transform",
+                        isExpanded && "rotate-90"
+                      )}
+                    />
+                  )}
+                </button>
+                <div className="space-y-0.5">
+                  {displayTools.map((tool) => (
+                    <Tooltip key={tool._id}>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={() => onAddNode(category, tool.name, tool.tagline)}
+                          className="w-full text-left px-2 py-1.5 rounded text-xs text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-2"
+                        >
+                          <Plus className="w-3 h-3 opacity-0 group-hover:opacity-100" />
+                          <span className="truncate">{tool.name}</span>
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent side="right" sideOffset={8} className="max-w-[200px]">
+                        <p className="font-bold text-xs">{tool.name}</p>
+                        {tool.tagline && (
+                          <p className="text-[10px] text-muted-foreground mt-1">{tool.tagline}</p>
+                        )}
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
+                  {hasMore && !isExpanded && !searchQuery && (
+                    <button
+                      onClick={() => toggleCategory(category)}
+                      className="w-full text-left px-2 py-1 text-[10px] text-primary/70 hover:text-primary"
+                    >
+                      +{categoryTools.length - 5} more...
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      <div className="mt-3 pt-3 border-t border-border">
+        <h4 className="text-primary text-xs font-bold mb-2">Add Custom Node</h4>
+        <div className="grid grid-cols-4 gap-1">
+          {Object.keys(categoryColors).slice(0, 8).map((cat) => (
+            <Tooltip key={cat}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => onAddNode(cat, `New ${cat}`, "")}
+                  className="p-2 rounded text-sm transition-colors hover:scale-105"
+                  style={{
+                    backgroundColor: `${categoryColors[cat]}20`,
+                    color: categoryColors[cat],
+                  }}
+                >
+                  <Plus className="w-3 h-3 mx-auto" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="top" sideOffset={4}>
+                <p className="text-xs">Add {cat} node</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </div>
       </div>
@@ -439,7 +634,7 @@ function ShareModal({
   const updateBuild = useMutation(api.stackBuilder.updateBuild);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
   const shareUrl = build.shareToken
     ? `${siteUrl}/stack-builder/share/${build.shareToken}`
     : null;
@@ -1221,7 +1416,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         return {
           id: nodeId,
           type: "tool",
-          position: { x: basePos.x + offset * 50, y: basePos.y + offset * 50 },
+          position: { x: basePos.x + offset * 200, y: basePos.y + offset * 30 },
           data: {
             label: tool.name,
             category: cat,
@@ -1280,12 +1475,12 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   );
 
   const handleAddNode = useCallback(
-    (category: string, label: string) => {
+    (category: string, label: string, description?: string) => {
       const newNode: Node<ToolNodeData> = {
         id: `node-${Date.now()}`,
         type: "tool",
         position: { x: 250 + Math.random() * 200, y: 100 + Math.random() * 200 },
-        data: { label, category, description: "" },
+        data: { label, category, description: description || "" },
       };
       setNodes((nds: Node[]) => [...nds, newNode]);
     },

@@ -144,7 +144,7 @@ export default async function Image() {
             color: "#64748b",
           }}
         >
-          vibebuff.com
+          vibebuff.dev
         </div>
       </div>
     ),

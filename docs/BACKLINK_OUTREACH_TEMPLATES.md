@@ -100,7 +100,7 @@ Would you be open to sharing a quick quote (2-3 sentences) on:
 
 I'll link back to [their site/profile] in the article.
 
-The piece will be published at vibebuff.com/blog/[slug] and promoted to our [X] subscribers.
+The piece will be published at vibebuff.dev/blog/[slug] and promoted to our [X] subscribers.
 
 No worries if you're too busy - I know your time is valuable.
 
@@ -136,7 +136,7 @@ Would this be a good fit for your show?
 
 Best,
 [Your Name]
-VibeBuff.com
+VibeBuff.dev
 ```
 
 ---
@@ -152,7 +152,7 @@ I'd like to suggest VibeBuff for inclusion in [awesome-list-name].
 
 **VibeBuff** - AI-powered developer tools discovery and comparison platform
 
-- Website: https://vibebuff.com
+- Website: https://vibebuff.dev
 - Features: Tool comparisons, AI recommendations, stack builder
 - Why it fits: [Explain relevance to the list's theme]
 
@@ -186,7 +186,7 @@ Key points:
 
 I'm happy to provide additional context or data if needed.
 
-Bio: [Your Name] is [title] at VibeBuff (vibebuff.com), an AI-powered platform helping developers discover and compare tools. [Additional credentials if relevant].
+Bio: [Your Name] is [title] at VibeBuff (vibebuff.dev), an AI-powered platform helping developers discover and compare tools. [Additional credentials if relevant].
 
 Best,
 [Your Name]
@@ -246,7 +246,7 @@ We'd also appreciate if you could mention VibeBuff to your community - we're hel
 
 Best,
 [Your Name]
-VibeBuff.com
+VibeBuff.dev
 ```
 
 ---
@@ -275,7 +275,7 @@ Looking forward to hearing from you.
 
 Best,
 [Your Name]
-VibeBuff.com
+VibeBuff.dev
 ```
 
 ---

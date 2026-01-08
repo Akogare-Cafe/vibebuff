@@ -330,7 +330,7 @@ perfect stack in 60 seconds.
 
 Free to use. No sign-up required.
 
-→ Get your stack: vibebuff.com/quest
+→ Get your stack: vibebuff.dev/quest
 ```
 
 ---

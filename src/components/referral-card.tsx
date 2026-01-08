@@ -30,7 +30,7 @@ export function ReferralCard({ compact = false }: ReferralCardProps) {
   const trackShare = useMutation(api.referrals.trackShareEvent);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
   const referralUrl = referralStats?.code
     ? `${siteUrl}/r/${referralStats.code}`
     : null;
@@ -205,7 +205,7 @@ export function ReferralBanner() {
   const getOrCreateCode = useMutation(api.referrals.getOrCreateReferralCode);
   const [copied, setCopied] = useState(false);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
   const referralUrl = referralStats?.code
     ? `${siteUrl}/r/${referralStats.code}`
     : null;

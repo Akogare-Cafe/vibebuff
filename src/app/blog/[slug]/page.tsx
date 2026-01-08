@@ -2772,7 +2772,7 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="text-primary text-sm">SHARE THIS ARTICLE</span>
               <div className="flex gap-4">
                 <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.com/blog/${slug}`)}`}
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary"
@@ -2780,7 +2780,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <Twitter className="w-4 h-4" />
                 </a>
                 <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://vibebuff.com/blog/${slug}`)}`}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary"
@@ -2826,12 +2826,12 @@ export default async function BlogPostPage({ params }: Props) {
               name: "VIBEBUFF",
               logo: {
                 "@type": "ImageObject",
-                url: "https://vibebuff.com/logo.png",
+                url: "https://vibebuff.dev/logo.png",
               },
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://vibebuff.com/blog/${slug}`,
+              "@id": `https://vibebuff.dev/blog/${slug}`,
             },
           }),
         }}

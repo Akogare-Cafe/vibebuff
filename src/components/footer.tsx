@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
 import { LogoIcon } from "@/components/logo";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
 const footerLinks = {
   explore: [
@@ -54,17 +53,6 @@ export function Footer() {
               <h3 className="font-bold text-lg bg-gradient-to-r from-purple-400 via-primary to-purple-600 bg-clip-text text-transparent">VIBEBUFF</h3>
             </Link>
             <p className="text-muted-foreground text-sm mb-4">AI-powered tech stack builder. Compare 500+ developer tools and build the perfect stack for your project.</p>
-            <div className="flex gap-3">
-              <a href="https://twitter.com/vibebuff" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://github.com/vibebuff" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="https://linkedin.com/company/vibebuff" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
           </div>
           <div>
             <h4 className="text-foreground font-bold mb-4 uppercase text-xs tracking-wider">Explore</h4>
@@ -174,11 +162,7 @@ export function Footer() {
             logo: `${siteUrl}/logo.svg`,
             description: "AI-powered tech stack recommendations for developers. Compare 500+ developer tools and build the perfect stack.",
             foundingDate: "2024",
-            sameAs: [
-              "https://twitter.com/vibebuff",
-              "https://github.com/vibebuff",
-              "https://linkedin.com/company/vibebuff",
-            ],
+            sameAs: [],
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "customer support",

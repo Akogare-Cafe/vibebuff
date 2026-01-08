@@ -47,7 +47,7 @@ Add to your Cursor settings (`~/.cursor/mcp.json`):
       "command": "npx",
       "args": ["@vibebuff/mcp-server"],
       "env": {
-        "VIBEBUFF_API_URL": "https://vibebuff.com/api",
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api",
         "VIBEBUFF_API_KEY": "your-api-key-optional"
       }
     }
@@ -66,7 +66,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
       "command": "npx",
       "args": ["@vibebuff/mcp-server"],
       "env": {
-        "VIBEBUFF_API_URL": "https://vibebuff.com/api"
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
       }
     }
   }
@@ -194,14 +194,14 @@ Once configured, you can ask your AI assistant:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VIBEBUFF_API_URL` | VibeBuff API endpoint | `https://vibebuff.com/api` |
+| `VIBEBUFF_API_URL` | VibeBuff API endpoint | `https://vibebuff.dev/api` |
 | `VIBEBUFF_API_KEY` | API key for authenticated requests | (optional) |
 
 ## API Key (Optional)
 
 For enhanced features and higher rate limits, get an API key from your VibeBuff profile:
 
-1. Sign up at [vibebuff.com](https://vibebuff.com)
+1. Sign up at [vibebuff.dev](https://vibebuff.dev)
 2. Go to Profile > Settings > API Keys
 3. Generate a new MCP API key
 4. Add it to your MCP configuration

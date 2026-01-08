@@ -141,3 +141,84 @@ export const getXpStats = query({
     };
   },
 });
+
+export const getGlobalActivity = query({
+  args: { 
+    limit: v.optional(v.number()),
+    cursor: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 50;
+    
+    const activities = await ctx.db
+      .query("xpActivityLog")
+      .order("desc")
+      .take(limit + 1);
+
+    const hasMore = activities.length > limit;
+    const items = hasMore ? activities.slice(0, limit) : activities;
+
+    const userIds = [...new Set(items.map(a => a.userId))];
+    const profiles = await Promise.all(
+      userIds.map(async (userId) => {
+        const profile = await ctx.db
+          .query("userProfiles")
+          .withIndex("by_clerk_id", (q) => q.eq("clerkId", userId))
+          .first();
+        return { userId, profile };
+      })
+    );
+
+    const profileMap = new Map(profiles.map(p => [p.userId, p.profile]));
+
+    const activitiesWithUsers = items.map(activity => ({
+      ...activity,
+      user: profileMap.get(activity.userId) || null,
+    }));
+
+    return {
+      activities: activitiesWithUsers,
+      hasMore,
+    };
+  },
+});
+
+export const getGlobalActivityStats = query({
+  handler: async (ctx) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayStart = today.getTime();
+    const weekStart = todayStart - 7 * 24 * 60 * 60 * 1000;
+
+    const allActivities = await ctx.db
+      .query("xpActivityLog")
+      .order("desc")
+      .take(10000);
+
+    const todayActivities = allActivities.filter(a => a.timestamp >= todayStart);
+    const weekActivities = allActivities.filter(a => a.timestamp >= weekStart);
+
+    const uniqueUsersToday = new Set(todayActivities.map(a => a.userId)).size;
+    const uniqueUsersWeek = new Set(weekActivities.map(a => a.userId)).size;
+
+    const bySource: Record<string, { count: number; xp: number }> = {};
+    for (const activity of allActivities) {
+      if (!bySource[activity.source]) {
+        bySource[activity.source] = { count: 0, xp: 0 };
+      }
+      bySource[activity.source].count++;
+      bySource[activity.source].xp += activity.amount;
+    }
+
+    return {
+      totalActivities: allActivities.length,
+      todayActivities: todayActivities.length,
+      weekActivities: weekActivities.length,
+      todayXp: todayActivities.reduce((sum, a) => sum + a.amount, 0),
+      weekXp: weekActivities.reduce((sum, a) => sum + a.amount, 0),
+      uniqueUsersToday,
+      uniqueUsersWeek,
+      bySource,
+    };
+  },
+});

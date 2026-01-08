@@ -100,8 +100,8 @@ export default function TermsPage() {
             <h2 className="text-primary text-sm mb-4">9. CONTACT</h2>
             <p>
               For questions about these Terms of Service, contact us at{" "}
-              <a href="mailto:legal@vibebuff.com" className="text-primary hover:underline">
-                legal@vibebuff.com
+              <a href="mailto:legal@vibebuff.dev" className="text-primary hover:underline">
+                legal@vibebuff.dev
               </a>
             </p>
           </section>

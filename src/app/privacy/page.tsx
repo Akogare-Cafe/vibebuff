@@ -88,8 +88,8 @@ export default function PrivacyPage() {
             <h2 className="text-primary text-sm mb-4">7. CONTACT US</h2>
             <p>
               If you have questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:privacy@vibebuff.com" className="text-primary hover:underline">
-                privacy@vibebuff.com
+              <a href="mailto:privacy@vibebuff.dev" className="text-primary hover:underline">
+                privacy@vibebuff.dev
               </a>
             </p>
           </section>

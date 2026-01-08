@@ -149,7 +149,7 @@ export default function CompanyProfilePage() {
       {} as Record<string, typeof aiTechStack.aiTools>
     ) || {};
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
   return (
     <div className="min-h-screen bg-background">

@@ -13,7 +13,7 @@ export const sendEmail = internalAction({
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: "VIBEBUFF <digest@vibebuff.com>",
+      from: "VIBEBUFF <digest@vibebuff.dev>",
       to: args.to,
       subject: args.subject,
       html: args.html,
@@ -36,7 +36,7 @@ export const sendWelcomeEmail = internalAction({
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: "VIBEBUFF <digest@vibebuff.com>",
+      from: "VIBEBUFF <digest@vibebuff.dev>",
       to: args.email,
       subject: "Welcome to the Weekly Tech Stack Digest!",
       html: `
@@ -66,14 +66,14 @@ export const sendWelcomeEmail = internalAction({
               <p style="color: #a3a3a3; line-height: 1.6; margin: 0 0 24px 0;">
                 In the meantime, explore our tool database and build your perfect stack:
               </p>
-              <a href="https://vibebuff.com/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600;">
+              <a href="https://vibebuff.dev/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600;">
                 Browse 500+ Tools
               </a>
             </div>
             <div style="padding: 24px 32px; border-top: 1px solid #262626; text-align: center;">
               <p style="color: #737373; font-size: 12px; margin: 0;">
-                You're receiving this because you subscribed at vibebuff.com<br>
-                <a href="https://vibebuff.com/unsubscribe" style="color: #7c3aed;">Unsubscribe</a>
+                You're receiving this because you subscribed at vibebuff.dev<br>
+                <a href="https://vibebuff.dev/unsubscribe" style="color: #7c3aed;">Unsubscribe</a>
               </p>
             </div>
           </div>
@@ -101,7 +101,7 @@ export const sendUserWelcomeEmail = internalAction({
     const displayName = args.username || "Developer";
 
     const { data, error } = await resend.emails.send({
-      from: "VIBEBUFF <hello@vibebuff.com>",
+      from: "VIBEBUFF <hello@vibebuff.dev>",
       to: args.email,
       subject: "Welcome to VIBEBUFF - Your Tech Stack Journey Begins!",
       html: `
@@ -145,14 +145,14 @@ export const sendUserWelcomeEmail = internalAction({
                 </tr>
               </table>
               <div style="text-align: center;">
-                <a href="https://vibebuff.com/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 16px;">
+                <a href="https://vibebuff.dev/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 16px;">
                   Start Exploring
                 </a>
               </div>
             </div>
             <div style="padding: 24px 32px; border-top: 1px solid #262626; text-align: center;">
               <p style="color: #737373; font-size: 12px; margin: 0;">
-                Questions? Reply to this email or visit <a href="https://vibebuff.com" style="color: #7c3aed;">vibebuff.com</a>
+                Questions? Reply to this email or visit <a href="https://vibebuff.dev" style="color: #7c3aed;">vibebuff.dev</a>
               </p>
             </div>
           </div>
@@ -189,7 +189,7 @@ export const sendWeeklyDigest = internalAction({
     const toolsHtml = trendingTools.map((tool: { name: string; slug: string; tagline: string }) => `
       <tr>
         <td style="padding: 12px 0; border-bottom: 1px solid #262626;">
-          <a href="https://vibebuff.com/tools/${tool.slug}" style="color: #7c3aed; text-decoration: none; font-weight: 600;">${tool.name}</a>
+          <a href="https://vibebuff.dev/tools/${tool.slug}" style="color: #7c3aed; text-decoration: none; font-weight: 600;">${tool.name}</a>
           <p style="color: #a3a3a3; margin: 4px 0 0 0; font-size: 13px;">${tool.tagline}</p>
         </td>
       </tr>
@@ -198,7 +198,7 @@ export const sendWeeklyDigest = internalAction({
     const recentHtml = recentTools.map((tool: { name: string; slug: string; tagline: string }) => `
       <tr>
         <td style="padding: 12px 0; border-bottom: 1px solid #262626;">
-          <a href="https://vibebuff.com/tools/${tool.slug}" style="color: #7c3aed; text-decoration: none; font-weight: 600;">${tool.name}</a>
+          <a href="https://vibebuff.dev/tools/${tool.slug}" style="color: #7c3aed; text-decoration: none; font-weight: 600;">${tool.name}</a>
           <p style="color: #a3a3a3; margin: 4px 0 0 0; font-size: 13px;">${tool.tagline}</p>
         </td>
       </tr>
@@ -229,15 +229,15 @@ export const sendWeeklyDigest = internalAction({
             </table>
             
             <div style="margin-top: 32px; text-align: center;">
-              <a href="https://vibebuff.com/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600;">
+              <a href="https://vibebuff.dev/tools" style="display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600;">
                 Explore All Tools
               </a>
             </div>
           </div>
           <div style="padding: 24px 32px; border-top: 1px solid #262626; text-align: center;">
             <p style="color: #737373; font-size: 12px; margin: 0;">
-              You're receiving this because you subscribed at vibebuff.com<br>
-              <a href="https://vibebuff.com/unsubscribe" style="color: #7c3aed;">Unsubscribe</a>
+              You're receiving this because you subscribed at vibebuff.dev<br>
+              <a href="https://vibebuff.dev/unsubscribe" style="color: #7c3aed;">Unsubscribe</a>
             </p>
           </div>
         </div>
@@ -251,7 +251,7 @@ export const sendWeeklyDigest = internalAction({
     for (const subscriber of subscribers) {
       try {
         await resend.emails.send({
-          from: "VIBEBUFF <digest@vibebuff.com>",
+          from: "VIBEBUFF <digest@vibebuff.dev>",
           to: subscriber.email,
           subject: "Your Weekly Tech Stack Digest",
           html: digestHtml,

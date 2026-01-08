@@ -38,7 +38,7 @@ export function DeckShare({
   const [isUpdating, setIsUpdating] = useState(false);
   const updateDeck = useMutation(api.decks.updateDeck);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
   const shareUrl = shareToken ? `${siteUrl}/deck/${shareToken}` : null;
 
   const handleMakePublic = async () => {

@@ -23,33 +23,33 @@ const notoSans = Noto_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
+    default: "VIBEBUFF - Build Your Perfect Tech Stack | Compare 500+ Developer Tools",
     template: "%s | VIBEBUFF",
   },
   description:
-    "Stop guessing. Start building. VIBEBUFF helps developers discover, compare, and choose the right tools for any project. 500+ tools. AI-powered recommendations. 100% free.",
+    "The ultimate tech stack builder for developers. Compare 500+ tools, get AI-powered recommendations, battle frameworks head-to-head, and discover what top startups use. Free forever.",
   keywords: [
     "tech stack builder",
-    "best tech stack 2025",
+    "best tech stack 2026",
     "developer tools comparison",
     "AI tech stack recommendations",
-    "React vs Vue",
-    "Next.js vs Remix",
+    "React vs Vue vs Svelte",
+    "Next.js vs Remix vs Astro",
     "best database for startup",
-    "PostgreSQL vs MongoDB",
-    "Prisma vs Drizzle",
-    "Tailwind vs Bootstrap",
-    "Vercel vs Netlify",
-    "Supabase vs Firebase",
-    "web development tools",
+    "PostgreSQL vs MongoDB vs PlanetScale",
+    "Prisma vs Drizzle ORM",
+    "Tailwind CSS vs Bootstrap",
+    "Vercel vs Netlify vs Railway",
+    "Supabase vs Firebase vs Convex",
+    "web development tools 2026",
     "software development stack",
     "full stack development",
-    "frontend frameworks 2025",
+    "frontend frameworks 2026",
     "backend frameworks comparison",
     "SaaS tech stack",
     "startup tech stack",
@@ -58,12 +58,17 @@ export const metadata: Metadata = {
     "free developer tools",
     "technology stack builder",
     "framework comparison tool",
-    "best programming tools",
-    "developer resources 2025",
+    "best programming tools 2026",
+    "developer resources",
     "AI coding tools",
-    "GitHub Copilot alternatives",
+    "Cursor vs GitHub Copilot",
     "DevOps tools comparison",
     "cloud platform comparison",
+    "indie hacker tech stack",
+    "vibe coding tools",
+    "developer tool battles",
+    "tech stack marketplace",
+    "stack builder game",
   ],
   authors: [{ name: "VIBEBUFF Team", url: siteUrl }],
   creator: "VIBEBUFF",
@@ -84,15 +89,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "VIBEBUFF",
-    title: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
+    title: "VIBEBUFF - Build Your Perfect Tech Stack | 500+ Developer Tools",
     description:
-      "Stop guessing. Start building. Compare 500+ developer tools, get AI-powered recommendations, and build the perfect stack for your project. Free forever.",
+      "The gamified tech stack builder. Compare tools, battle frameworks, discover startup stacks, and build with AI-powered recommendations. Join thousands of developers. Free forever.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VIBEBUFF - AI-Powered Tech Stack Builder for Developers",
+        alt: "VIBEBUFF - The Gamified Tech Stack Builder for Developers",
         type: "image/png",
       },
     ],
@@ -100,9 +105,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@vibebuff",
-    title: "VIBEBUFF - Find Your Perfect Tech Stack in Seconds",
+    title: "VIBEBUFF - Build Your Perfect Tech Stack",
     description:
-      "Stop guessing. Start building. Compare 500+ dev tools and get AI-powered recommendations. Free forever.",
+      "The gamified tech stack builder. Compare 500+ tools, battle frameworks, and get AI recommendations. Free forever.",
     images: ["/og-image.png"],
     creator: "@vibebuff",
   },
@@ -124,8 +129,10 @@ export const metadata: Metadata = {
   //   google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
   // },
   other: {
-    "msapplication-TileColor": "#3b82f6",
-    "theme-color": "#3b82f6",
+    "msapplication-TileColor": "#7f13ec",
+    "theme-color": "#7f13ec",
+    "apple-mobile-web-app-title": "VIBEBUFF",
+    "application-name": "VIBEBUFF",
   },
 };
 

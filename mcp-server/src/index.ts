@@ -12,7 +12,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 
-const VIBEBUFF_API_URL = process.env.VIBEBUFF_API_URL || "https://vibebuff.com/api";
+const VIBEBUFF_API_URL = process.env.VIBEBUFF_API_URL || "https://vibebuff.dev/api";
 const VIBEBUFF_API_KEY = process.env.VIBEBUFF_API_KEY || "";
 
 const server = new Server(

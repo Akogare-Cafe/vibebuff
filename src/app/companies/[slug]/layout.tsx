@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../../../../convex/_generated/api";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
 interface CompanyPageProps {
   params: Promise<{ slug: string }>;

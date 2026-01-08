@@ -220,7 +220,7 @@ Would you be open to a 5-minute demo?
 [0-3s] Hook: "Still Googling 'best React framework 2025'?"
 [3-8s] Problem: "Stop wasting hours on research."
 [8-12s] Solution: "VIBEBUFF - AI picks your perfect stack in 60 seconds."
-[12-15s] CTA: "Free at vibebuff.com"
+[12-15s] CTA: "Free at vibebuff.dev"
 ```
 
 **Ad Creative (6-second bumper):**
@@ -320,7 +320,7 @@ Answer: "Depends on your needs:
 For startups, I'd lean PostgreSQL via Supabase or Neon - you get 
 managed hosting, auth, and real-time out of the box.
 
-I actually built a tool (vibebuff.com) that helps with these decisions 
+I actually built a tool (vibebuff.dev) that helps with these decisions 
 if you want personalized recommendations based on your specific project."
 ```
 
@@ -359,7 +359,7 @@ Would love feedback, especially on the recommendation accuracy.
 #### Dev.to / Hashnode Strategy
 
 **Cross-post blog content with:**
-- Canonical URL pointing to vibebuff.com/blog
+- Canonical URL pointing to vibebuff.dev/blog
 - Author bio with link
 - Relevant tags for discoverability
 

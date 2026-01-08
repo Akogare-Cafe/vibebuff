@@ -183,7 +183,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 resourceId={tool._id}
                 title={tool.name}
                 description={`Check out ${tool.name} - ${tool.tagline}`}
-                shareUrl={`${typeof window !== "undefined" ? window.location.origin : "https://vibebuff.com"}/tools/${slug}`}
+                shareUrl={`${typeof window !== "undefined" ? window.location.origin : "https://vibebuff.dev"}/tools/${slug}`}
               />
               <SuggestEditModal tool={tool} />
               {userId && <AddToDeckButton toolId={tool._id} toolName={tool.name} />}

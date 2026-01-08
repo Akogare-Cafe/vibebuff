@@ -2848,6 +2848,18 @@ export default defineSchema({
     .index("by_name", ["name"]),
 
   // ============================================
+  // User Presence (Online Status)
+  // ============================================
+  userPresence: defineTable({
+    oderId: v.string(),
+    lastSeen: v.number(),
+    isOnline: v.boolean(),
+  })
+    .index("by_user", ["oderId"])
+    .index("by_online", ["isOnline"])
+    .index("by_last_seen", ["lastSeen"]),
+
+  // ============================================
   // Newsletter Subscribers
   // ============================================
   newsletterSubscribers: defineTable({

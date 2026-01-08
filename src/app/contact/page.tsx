@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Mail, MessageSquare, Github, Twitter } from "lucide-react";
+import { Mail, MessageSquare } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -85,56 +85,33 @@ export default function ContactPage() {
                 <div>
                   <p className="text-muted-foreground text-xs mb-1">GENERAL INQUIRIES</p>
                   <a
-                    href="mailto:hello@vibebuff.com"
+                    href="mailto:hello@vibebuff.dev"
                     className="text-primary text-sm hover:underline"
                   >
-                    hello@vibebuff.com
+                    hello@vibebuff.dev
                   </a>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-xs mb-1">SUPPORT</p>
                   <a
-                    href="mailto:support@vibebuff.com"
+                    href="mailto:support@vibebuff.dev"
                     className="text-primary text-sm hover:underline"
                   >
-                    support@vibebuff.com
+                    support@vibebuff.dev
                   </a>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-xs mb-1">PARTNERSHIPS</p>
                   <a
-                    href="mailto:partners@vibebuff.com"
+                    href="mailto:partners@vibebuff.dev"
                     className="text-primary text-sm hover:underline"
                   >
-                    partners@vibebuff.com
+                    partners@vibebuff.dev
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="border-4 border-border bg-card p-8">
-              <h2 className="text-primary text-sm mb-6">CONNECT WITH US</h2>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/vibebuff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary text-sm"
-                >
-                  <Github className="w-5 h-5" />
-                  GITHUB
-                </a>
-                <a
-                  href="https://twitter.com/vibebuff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary text-sm"
-                >
-                  <Twitter className="w-5 h-5" />
-                  TWITTER
-                </a>
-              </div>
-            </div>
 
             <div className="border-4 border-primary bg-card p-8 text-center">
               <p className="text-primary text-sm mb-2">RESPONSE TIME</p>

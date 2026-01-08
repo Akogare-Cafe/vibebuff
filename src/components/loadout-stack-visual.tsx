@@ -75,6 +75,11 @@ import {
   FileEdit,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   ide: <Code className="w-4 h-4" />,
@@ -129,46 +134,81 @@ function ToolNode({ data }: { data: ToolNodeData }) {
   const icon = categoryIcons[categoryKey] || <Wrench className="w-4 h-4" />;
 
   return (
-    <div className="relative">
-      <Handle
-        type="target"
-        position={Position.Top}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
-      />
-      <div
-        className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
-        style={{ borderColor: color }}
-      >
-        <div className="flex items-center gap-2 mb-1">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="relative">
+          <Handle
+            type="target"
+            position={Position.Top}
+            className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
+          />
           <div
-            className="w-6 h-6 rounded flex items-center justify-center"
-            style={{ backgroundColor: `${color}20` }}
+            className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-[#111827]"
+            style={{ borderColor: color }}
           >
-            <span style={{ color }}>{icon}</span>
+            <div className="flex items-center gap-2 mb-1">
+              <div
+                className="w-6 h-6 rounded flex items-center justify-center"
+                style={{ backgroundColor: `${color}20` }}
+              >
+                <span style={{ color }}>{icon}</span>
+              </div>
+              <span className="text-primary font-bold text-sm">{data.label}</span>
+            </div>
+            {data.description && (
+              <p className="text-muted-foreground text-xs line-clamp-1">{data.description}</p>
+            )}
+            <div className="flex items-center gap-2 mt-2">
+              <PixelBadge
+                className="text-xs"
+                style={{ backgroundColor: `${color}20`, color }}
+              >
+                {data.category}
+              </PixelBadge>
+              {data.confidence && (
+                <span className="text-xs text-muted-foreground">{data.confidence}%</span>
+              )}
+            </div>
           </div>
-          <span className="text-primary font-bold text-sm">{data.label}</span>
+          <Handle
+            type="source"
+            position={Position.Bottom}
+            className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
+          />
         </div>
-        {data.description && (
-          <p className="text-muted-foreground text-xs line-clamp-2">{data.description}</p>
-        )}
-        <div className="flex items-center gap-2 mt-2">
-          <PixelBadge
-            className="text-xs"
-            style={{ backgroundColor: `${color}20`, color }}
-          >
-            {data.category}
-          </PixelBadge>
-          {data.confidence && (
-            <span className="text-xs text-muted-foreground">{data.confidence}%</span>
+      </TooltipTrigger>
+      <TooltipContent
+        side="right"
+        sideOffset={8}
+        className="bg-[#111827] border-2 border-border p-3 max-w-[250px]"
+      >
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-5 h-5 rounded flex items-center justify-center"
+              style={{ backgroundColor: `${color}20` }}
+            >
+              <span style={{ color }}>{icon}</span>
+            </div>
+            <span className="text-primary font-bold text-sm">{data.label}</span>
+          </div>
+          {data.description && (
+            <p className="text-muted-foreground text-xs">{data.description}</p>
           )}
+          <div className="flex items-center gap-2 pt-1 border-t border-border">
+            <PixelBadge
+              className="text-[10px]"
+              style={{ backgroundColor: `${color}20`, color }}
+            >
+              {data.category}
+            </PixelBadge>
+            {data.confidence && (
+              <span className="text-[10px] text-muted-foreground">{data.confidence}% match</span>
+            )}
+          </div>
         </div>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        className="!w-3 !h-3 !bg-primary !border-2 !border-[#111827]"
-      />
-    </div>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 

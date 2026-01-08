@@ -115,6 +115,27 @@ export const recordInteraction = mutation({
     const now = Date.now();
     const xpGained = XP_REWARDS[args.interactionType];
 
+    const profile = await ctx.db
+      .query("userProfiles")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.userId))
+      .first();
+
+    if (profile) {
+      if (args.interactionType === "view") {
+        await ctx.db.patch(profile._id, {
+          toolsViewed: profile.toolsViewed + 1,
+        });
+      } else if (args.interactionType === "battleWin") {
+        await ctx.db.patch(profile._id, {
+          battlesWon: profile.battlesWon + 1,
+        });
+      } else if (args.interactionType === "battleLoss") {
+        await ctx.db.patch(profile._id, {
+          battlesLost: profile.battlesLost + 1,
+        });
+      }
+    }
+
     const existing = await ctx.db
       .query("toolMastery")
       .withIndex("by_user_tool", (q) =>
