@@ -149,3 +149,69 @@ export const getAllNamesAndSlugs = query({
     }));
   },
 });
+
+export const updateScreenshots = mutation({
+  args: {
+    toolId: v.id("tools"),
+    screenshots: v.array(v.object({
+      url: v.string(),
+      alt: v.optional(v.string()),
+      caption: v.optional(v.string()),
+    })),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.toolId, {
+      screenshots: args.screenshots,
+    });
+  },
+});
+
+export const getAllForScreenshots = query({
+  handler: async (ctx) => {
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+    
+    return tools.map((tool) => ({
+      _id: tool._id,
+      name: tool.name,
+      slug: tool.slug,
+      websiteUrl: tool.websiteUrl,
+      screenshots: tool.screenshots,
+    }));
+  },
+});
+
+export const getLatestTools = query({
+  args: {
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 20;
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .order("desc")
+      .take(limit);
+    
+    const categories = await ctx.db.query("categories").collect();
+    const categoryMap = new Map(categories.map((c) => [c._id, c]));
+    
+    return tools.map((tool) => ({
+      _id: tool._id,
+      name: tool.name,
+      slug: tool.slug,
+      tagline: tool.tagline,
+      logoUrl: tool.logoUrl,
+      pricingModel: tool.pricingModel,
+      githubStars: tool.githubStars,
+      npmDownloadsWeekly: tool.npmDownloadsWeekly,
+      isOpenSource: tool.isOpenSource,
+      category: categoryMap.get(tool.categoryId),
+      websiteUrl: tool.websiteUrl,
+      githubUrl: tool.githubUrl,
+      _creationTime: tool._creationTime,
+    }));
+  },
+});

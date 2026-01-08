@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -150,6 +151,7 @@ export default function RootLayout({
           </ConvexClientProvider>
         </ClerkClientProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

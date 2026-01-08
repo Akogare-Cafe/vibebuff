@@ -107,6 +107,30 @@ async function fetchGithubData(owner: string, repo: string) {
       // Releases count unavailable
     }
 
+    let commits = undefined;
+    try {
+      const commitsResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`,
+        {
+          headers: {
+            Accept: "application/vnd.github.v3+json",
+            "User-Agent": "VibeBuff-Tool-Fetcher",
+          },
+        }
+      );
+      if (commitsResponse.ok) {
+        const linkHeader = commitsResponse.headers.get("Link");
+        if (linkHeader) {
+          const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+          if (match) {
+            commits = parseInt(match[1], 10);
+          }
+        }
+      }
+    } catch {
+      // Commits count unavailable
+    }
+
     return {
       stars: repoData.stargazers_count,
       forks: repoData.forks_count,
@@ -126,11 +150,99 @@ async function fetchGithubData(owner: string, repo: string) {
       hasIssues: repoData.has_issues || undefined,
       archived: repoData.archived || undefined,
       contributors,
+      commits,
       releases,
       latestRelease,
     };
   } catch (error) {
     console.error("Error fetching GitHub data:", error);
+    return null;
+  }
+}
+
+async function fetchGithubReadme(owner: string, repo: string) {
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/readme`,
+      {
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+          "User-Agent": "VibeBuff-Tool-Fetcher",
+        },
+      }
+    );
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    const content = Buffer.from(data.content, "base64").toString("utf-8");
+    
+    const excerpt = content
+      .replace(/^#[^\n]+\n/, "")
+      .replace(/!\[.*?\]\(.*?\)/g, "")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/`[^`]+`/g, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim()
+      .slice(0, 500);
+
+    const badges = (content.match(/\[!\[.*?\]\(.*?\)\]\(.*?\)/g) || []).slice(0, 10);
+    const hasQuickStart = /quick\s*start|getting\s*started|installation/i.test(content);
+    const hasContributing = /contributing|contribute/i.test(content);
+    const hasChangelog = /changelog|release\s*notes/i.test(content);
+
+    return {
+      excerpt: excerpt || undefined,
+      badges: badges.length > 0 ? badges : undefined,
+      hasQuickStart,
+      hasContributing,
+      hasChangelog,
+    };
+  } catch (error) {
+    console.error("Error fetching README:", error);
+    return null;
+  }
+}
+
+async function fetchGithubReleases(owner: string, repo: string, limit = 5) {
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/releases?per_page=${limit}`,
+      {
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+          "User-Agent": "VibeBuff-Tool-Fetcher",
+        },
+      }
+    );
+    if (!response.ok) return null;
+
+    const releases = await response.json();
+    return releases.map((release: {
+      tag_name: string;
+      published_at?: string;
+      body?: string;
+      prerelease?: boolean;
+    }) => {
+      const changes = (release.body || "")
+        .split("\n")
+        .filter((line: string) => line.trim().startsWith("-") || line.trim().startsWith("*"))
+        .map((line: string) => line.replace(/^[\s\-\*]+/, "").trim())
+        .filter((line: string) => line.length > 0)
+        .slice(0, 5);
+
+      const isBreaking = /breaking|major/i.test(release.body || "") || 
+        /^v?\d+\.0\.0/.test(release.tag_name);
+
+      return {
+        version: release.tag_name,
+        date: release.published_at || undefined,
+        changes: changes.length > 0 ? changes : ["Release " + release.tag_name],
+        isBreaking: isBreaking || undefined,
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching releases:", error);
     return null;
   }
 }
@@ -247,9 +359,9 @@ async function fetchBundlephobiaData(packageName: string) {
       size: data.size,
       gzip: data.gzip,
       dependencyCount: data.dependencyCount || undefined,
-      hasJSModule: data.hasJSModule || undefined,
-      hasJSNext: data.hasJSNext || undefined,
-      hasSideEffects: data.hasSideEffects ?? undefined,
+      hasJSModule: typeof data.hasJSModule === 'boolean' ? data.hasJSModule : undefined,
+      hasJSNext: typeof data.hasJSNext === 'boolean' ? data.hasJSNext : undefined,
+      hasSideEffects: typeof data.hasSideEffects === 'boolean' ? data.hasSideEffects : undefined,
     };
   } catch (error) {
     console.error("Error fetching Bundlephobia data:", error);
@@ -261,20 +373,37 @@ export const fetchToolExternalData = action({
   args: {
     toolId: v.id("tools"),
   },
-  handler: async (ctx, args) => {
-    const tool = await ctx.runQuery(internal.externalDataInternal.getToolForFetch, { toolId: args.toolId });
+  handler: async (ctx, args): Promise<{
+    success: boolean;
+    toolName: string;
+    hasGithub: boolean;
+    hasNpm: boolean;
+    hasBundlephobia: boolean;
+    hasReadme: boolean;
+    hasChangelog: boolean;
+  }> => {
+    const tool = await ctx.runQuery(internal.externalDataInternal.getToolForFetch, { toolId: args.toolId }) as {
+      name: string;
+      slug: string;
+      githubUrl?: string;
+      npmPackageName?: string;
+    } | null;
     if (!tool) {
       throw new Error("Tool not found");
     }
 
-    let githubData = undefined;
-    let npmData = undefined;
-    let bundlephobiaData = undefined;
+    let githubData: Awaited<ReturnType<typeof fetchGithubData>> = null;
+    let npmData: Awaited<ReturnType<typeof fetchNpmData>> = null;
+    let bundlephobiaData: Awaited<ReturnType<typeof fetchBundlephobiaData>> = null;
+    let readmeData: Awaited<ReturnType<typeof fetchGithubReadme>> = null;
+    let changelogData: Awaited<ReturnType<typeof fetchGithubReleases>> = null;
 
     if (tool.githubUrl) {
       const parsed = extractGithubOwnerRepo(tool.githubUrl);
       if (parsed) {
         githubData = await fetchGithubData(parsed.owner, parsed.repo);
+        readmeData = await fetchGithubReadme(parsed.owner, parsed.repo);
+        changelogData = await fetchGithubReleases(parsed.owner, parsed.repo, 5);
       }
     }
 
@@ -297,6 +426,8 @@ export const fetchToolExternalData = action({
       externalData,
       githubStars: githubData?.stars,
       npmDownloadsWeekly: npmData?.downloadsWeekly,
+      readme: readmeData || undefined,
+      changelog: changelogData || undefined,
     });
 
     return {
@@ -305,41 +436,63 @@ export const fetchToolExternalData = action({
       hasGithub: !!githubData,
       hasNpm: !!npmData,
       hasBundlephobia: !!bundlephobiaData,
+      hasReadme: !!readmeData,
+      hasChangelog: !!changelogData,
     };
   },
 });
+
+interface ToolForFetch {
+  _id: string;
+  name: string;
+  slug: string;
+  githubUrl?: string;
+  npmPackageName?: string;
+}
+
+interface FetchResults {
+  total: number;
+  success: number;
+  failed: number;
+  skipped: number;
+  details: { name: string; status: string; error?: string }[];
+}
 
 export const fetchAllToolsExternalData = action({
   args: {
     limit: v.optional(v.number()),
     skipRecent: v.optional(v.boolean()),
   },
-  handler: async (ctx, args) => {
+  handler: async (ctx, args): Promise<FetchResults> => {
     const tools = await ctx.runQuery(internal.externalDataInternal.getAllToolsForFetch, {
       limit: args.limit,
       skipRecent: args.skipRecent,
-    });
+    }) as ToolForFetch[];
 
-    const results = {
+    const results: FetchResults = {
       total: tools.length,
       success: 0,
       failed: 0,
       skipped: 0,
-      details: [] as { name: string; status: string; error?: string }[],
+      details: [],
     };
 
     for (const tool of tools) {
       try {
         await new Promise((resolve) => setTimeout(resolve, 500));
 
-        let githubData = undefined;
-        let npmData = undefined;
-        let bundlephobiaData = undefined;
+        let githubData: Awaited<ReturnType<typeof fetchGithubData>> = null;
+        let npmData: Awaited<ReturnType<typeof fetchNpmData>> = null;
+        let bundlephobiaData: Awaited<ReturnType<typeof fetchBundlephobiaData>> = null;
+        let readmeData: Awaited<ReturnType<typeof fetchGithubReadme>> = null;
+        let changelogData: Awaited<ReturnType<typeof fetchGithubReleases>> = null;
 
         if (tool.githubUrl) {
           const parsed = extractGithubOwnerRepo(tool.githubUrl);
           if (parsed) {
             githubData = await fetchGithubData(parsed.owner, parsed.repo);
+            readmeData = await fetchGithubReadme(parsed.owner, parsed.repo);
+            changelogData = await fetchGithubReleases(parsed.owner, parsed.repo, 5);
           }
         }
 
@@ -364,10 +517,12 @@ export const fetchAllToolsExternalData = action({
         };
 
         await ctx.runMutation(internal.externalDataInternal.updateToolExternalData, {
-          toolId: tool._id,
+          toolId: tool._id as any,
           externalData,
           githubStars: githubData?.stars,
           npmDownloadsWeekly: npmData?.downloadsWeekly,
+          readme: readmeData || undefined,
+          changelog: changelogData || undefined,
         });
 
         results.success++;

@@ -52,13 +52,17 @@ import { AutoLinkTools } from "@/components/auto-link-tools";
 import { ToolStatsRadar, PopularityChart, RatingDisplay } from "@/components/tool-stats-chart";
 import { ToolReviews } from "@/components/tool-reviews";
 import { ToolExternalData } from "@/components/tool-external-data";
+import { ToolInstallCommands, ToolSocialLinks, ToolReadmeInfo, ToolChangelog } from "@/components/tool-expanded-metadata";
+import { AddToDeckButton } from "@/components/add-to-deck-button";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const { userId } = useAuth();
   const tool = useQuery(api.tools.getBySlug, { slug });
   const trackEvent = useMutation(api.popularity.trackEvent);
+  const recordMasteryInteraction = useMutation(api.mastery.recordInteraction);
   const hasTrackedView = useRef(false);
+  const hasTrackedMastery = useRef(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isRefreshingData, setIsRefreshingData] = useState(false);
   const fetchExternalData = useAction(api.externalData.fetchToolExternalData);
@@ -100,6 +104,17 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
       });
     }
   }, [tool, trackEvent]);
+
+  useEffect(() => {
+    if (tool && tool._id && userId && !hasTrackedMastery.current) {
+      hasTrackedMastery.current = true;
+      recordMasteryInteraction({
+        userId,
+        toolId: tool._id,
+        interactionType: "view",
+      });
+    }
+  }, [tool, userId, recordMasteryInteraction]);
 
   if (tool === undefined) {
     return (
@@ -171,6 +186,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 shareUrl={`${typeof window !== "undefined" ? window.location.origin : "https://vibebuff.com"}/tools/${slug}`}
               />
               <SuggestEditModal tool={tool} />
+              {userId && <AddToDeckButton toolId={tool._id} toolName={tool.name} />}
             </div>
           </div>
         </div>
@@ -554,6 +570,33 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         {ratingSummary && ratingSummary.totalReviews > 0 && (
           <RatingDisplay rating={ratingSummary} className="mb-8" />
         )}
+
+        {/* Install Commands */}
+        <ToolInstallCommands
+          installCommands={tool.installCommands}
+          npmPackageName={tool.npmPackageName}
+          className="mb-8"
+        />
+
+        {/* Social Links */}
+        {tool.socialLinks && (
+          <PixelCard className="mb-8">
+            <PixelCardHeader>
+              <PixelCardTitle className="flex items-center gap-2">
+                <Users className="w-4 h-4" /> COMMUNITY
+              </PixelCardTitle>
+            </PixelCardHeader>
+            <PixelCardContent>
+              <ToolSocialLinks socialLinks={tool.socialLinks} />
+            </PixelCardContent>
+          </PixelCard>
+        )}
+
+        {/* README Info */}
+        <ToolReadmeInfo readme={tool.readme} className="mb-8" />
+
+        {/* Changelog */}
+        <ToolChangelog changelog={tool.changelog} className="mb-8" />
 
         {/* External Data (GitHub, NPM, Bundle Size) */}
         <div className="mb-8">

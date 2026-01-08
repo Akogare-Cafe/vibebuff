@@ -1772,3 +1772,284 @@ export const seedDatabase = mutation({
     return { message: "Database seeded successfully!", categoriesCount: categories.length, toolsCount: tools.length };
   },
 });
+
+export const seedSEOComparisons = mutation({
+  handler: async (ctx) => {
+    const existingComparisons = await ctx.db.query("seoComparisons").collect();
+    if (existingComparisons.length > 0) {
+      return { message: "SEO comparisons already seeded", count: existingComparisons.length };
+    }
+
+    const highPriorityComparisons = [
+      {
+        tool1Slug: "nextjs",
+        tool2Slug: "remix",
+        title: "Next.js vs Remix: Which React Framework Should You Choose in 2025?",
+        metaDescription: "Compare Next.js and Remix side by side. Discover which React meta-framework is best for your project based on performance, DX, and features.",
+        introduction: "Choosing between Next.js and Remix is one of the most common decisions React developers face in 2025. Both are powerful full-stack frameworks with their own philosophies. This comprehensive comparison will help you make the right choice.",
+        tool1Summary: "Next.js is the most popular React meta-framework, backed by Vercel. It offers App Router with Server Components, excellent DX, and seamless Vercel deployment.",
+        tool2Summary: "Remix focuses on web standards and progressive enhancement. It emphasizes nested routing, loaders/actions, and excellent UX patterns out of the box.",
+        comparisonPoints: [
+          { category: "Community & Adoption", tool1Score: 95, tool2Score: 70, tool1Reason: "128K GitHub stars, massive ecosystem, most tutorials", tool2Reason: "30K GitHub stars, growing community, Shopify backing" },
+          { category: "Developer Experience", tool1Score: 90, tool2Score: 88, tool1Reason: "Excellent docs, huge ecosystem, many examples", tool2Reason: "Great DX, web standards focus, intuitive patterns" },
+          { category: "Performance", tool1Score: 85, tool2Score: 90, tool1Reason: "Server Components, ISR, edge runtime support", tool2Reason: "Progressive enhancement, smaller bundles, faster TTFB" },
+          { category: "Learning Curve", tool1Score: 75, tool2Score: 85, tool1Reason: "Complex with App Router, many concepts to learn", tool2Reason: "Simpler mental model, web standards knowledge transfers" },
+          { category: "Deployment Flexibility", tool1Score: 80, tool2Score: 90, tool1Reason: "Best on Vercel, works elsewhere with effort", tool2Reason: "Deploys anywhere easily, adapter system" },
+        ],
+        verdict: "Next.js is the safer choice for most projects due to its massive ecosystem and Vercel integration. However, Remix excels for teams prioritizing web standards, progressive enhancement, and deployment flexibility.",
+        useCaseRecommendations: [
+          { useCase: "Startups & MVPs", recommendedTool: "Next.js", reason: "Larger ecosystem, more tutorials, faster to find help" },
+          { useCase: "Enterprise Applications", recommendedTool: "Next.js", reason: "More mature, better enterprise support, larger talent pool" },
+          { useCase: "E-commerce", recommendedTool: "Remix", reason: "Better UX patterns, progressive enhancement, Shopify backing" },
+          { useCase: "Content Sites", recommendedTool: "Next.js", reason: "ISR, excellent static generation, image optimization" },
+          { useCase: "Web Standards Focus", recommendedTool: "Remix", reason: "Built on web standards, knowledge transfers to any platform" },
+        ],
+        faqs: [
+          { question: "Is Next.js better than Remix?", answer: "It depends on your priorities. Next.js has a larger ecosystem and better Vercel integration, while Remix offers better web standards compliance and deployment flexibility." },
+          { question: "Can I migrate from Next.js to Remix?", answer: "Yes, migration is possible. Both use React, so components transfer easily. The main work is adapting routing and data fetching patterns." },
+          { question: "Which has better performance?", answer: "Remix typically has faster Time to First Byte (TTFB) and smaller bundles due to progressive enhancement. Next.js excels with Server Components and ISR for content-heavy sites." },
+          { question: "Which should I learn first?", answer: "Next.js has more learning resources and job opportunities. However, Remix teaches web fundamentals that transfer to any framework." },
+        ],
+      },
+      {
+        tool1Slug: "supabase",
+        tool2Slug: "firebase",
+        title: "Supabase vs Firebase: Which Backend Should You Choose in 2025?",
+        metaDescription: "Compare Supabase and Firebase for your next project. Discover which BaaS platform offers better features, pricing, and developer experience.",
+        introduction: "Supabase and Firebase are the two most popular Backend-as-a-Service platforms in 2025. Both offer authentication, databases, and realtime features, but with very different approaches.",
+        tool1Summary: "Supabase is an open-source Firebase alternative built on PostgreSQL. It offers SQL databases, Row Level Security, and excellent developer experience.",
+        tool2Summary: "Firebase is Google's comprehensive BaaS platform with NoSQL databases, excellent mobile SDKs, and deep Google Cloud integration.",
+        comparisonPoints: [
+          { category: "Database Model", tool1Score: 90, tool2Score: 75, tool1Reason: "PostgreSQL with full SQL, relations, and RLS", tool2Reason: "NoSQL (Firestore), flexible but no relations" },
+          { category: "Realtime Features", tool1Score: 85, tool2Score: 95, tool1Reason: "Realtime subscriptions via Postgres changes", tool2Reason: "Best-in-class realtime, built for it" },
+          { category: "Authentication", tool1Score: 88, tool2Score: 92, tool1Reason: "GoTrue auth, social providers, magic links", tool2Reason: "Firebase Auth is industry standard, phone auth" },
+          { category: "Pricing", tool1Score: 90, tool2Score: 70, tool1Reason: "Generous free tier, predictable pricing", tool2Reason: "Can get expensive at scale, complex pricing" },
+          { category: "Open Source", tool1Score: 100, tool2Score: 20, tool1Reason: "Fully open source, self-hostable", tool2Reason: "Proprietary, vendor lock-in" },
+        ],
+        verdict: "Supabase is the better choice for most web applications due to PostgreSQL, open source nature, and predictable pricing. Firebase excels for mobile apps and projects needing best-in-class realtime features.",
+        useCaseRecommendations: [
+          { useCase: "Web Applications", recommendedTool: "Supabase", reason: "PostgreSQL is better for complex queries and relations" },
+          { useCase: "Mobile Apps", recommendedTool: "Firebase", reason: "Superior mobile SDKs and offline support" },
+          { useCase: "Startups", recommendedTool: "Supabase", reason: "Better free tier, predictable costs, no vendor lock-in" },
+          { useCase: "Realtime Apps", recommendedTool: "Firebase", reason: "Built specifically for realtime, more mature" },
+          { useCase: "Enterprise", recommendedTool: "Supabase", reason: "Self-hostable, PostgreSQL compliance, data ownership" },
+        ],
+        faqs: [
+          { question: "Is Supabase better than Firebase?", answer: "For web apps with complex data relationships, yes. Supabase offers PostgreSQL with full SQL support. Firebase is better for mobile apps and simple realtime needs." },
+          { question: "Can I migrate from Firebase to Supabase?", answer: "Yes, Supabase provides migration tools. The main challenge is converting Firestore's NoSQL structure to PostgreSQL's relational model." },
+          { question: "Which is cheaper?", answer: "Supabase generally offers better value with its generous free tier and predictable pricing. Firebase can become expensive at scale due to read/write pricing." },
+          { question: "Is Supabase production-ready?", answer: "Yes, Supabase is used by thousands of production applications. It's built on battle-tested PostgreSQL and has enterprise support options." },
+        ],
+      },
+      {
+        tool1Slug: "convex",
+        tool2Slug: "supabase",
+        title: "Convex vs Supabase: Which Backend Platform Should You Choose in 2025?",
+        metaDescription: "Compare Convex and Supabase for your next project. Discover which backend platform offers better realtime, developer experience, and features.",
+        introduction: "Convex and Supabase represent two different approaches to backend development. Convex offers a TypeScript-first reactive backend, while Supabase provides PostgreSQL with a REST/GraphQL layer.",
+        tool1Summary: "Convex is a reactive backend platform with TypeScript functions, automatic caching, and real-time sync. It eliminates the need for REST APIs and manual cache invalidation.",
+        tool2Summary: "Supabase is an open-source Firebase alternative built on PostgreSQL. It offers SQL databases, Row Level Security, and auto-generated APIs.",
+        comparisonPoints: [
+          { category: "Developer Experience", tool1Score: 95, tool2Score: 85, tool1Reason: "TypeScript end-to-end, no API layer needed, automatic reactivity", tool2Reason: "Great DX, but requires more boilerplate for realtime" },
+          { category: "Realtime", tool1Score: 98, tool2Score: 80, tool1Reason: "Built-in reactivity, automatic cache invalidation", tool2Reason: "Realtime via Postgres changes, requires setup" },
+          { category: "Database Flexibility", tool1Score: 70, tool2Score: 95, tool1Reason: "Document-based, limited query flexibility", tool2Reason: "Full PostgreSQL with SQL, relations, extensions" },
+          { category: "Self-Hosting", tool1Score: 30, tool2Score: 100, tool1Reason: "Cloud-only, no self-hosting option", tool2Reason: "Fully open source, self-hostable" },
+          { category: "Learning Curve", tool1Score: 90, tool2Score: 75, tool1Reason: "Simple mental model, TypeScript knowledge sufficient", tool2Reason: "Requires SQL knowledge, more concepts" },
+        ],
+        verdict: "Convex is ideal for real-time applications where you want the best DX and automatic reactivity. Supabase is better when you need PostgreSQL features, self-hosting, or complex SQL queries.",
+        useCaseRecommendations: [
+          { useCase: "Real-time Apps", recommendedTool: "Convex", reason: "Built-in reactivity, no manual cache invalidation" },
+          { useCase: "Complex Queries", recommendedTool: "Supabase", reason: "Full PostgreSQL with SQL, joins, and extensions" },
+          { useCase: "TypeScript Projects", recommendedTool: "Convex", reason: "End-to-end type safety, no API layer" },
+          { useCase: "Self-Hosted", recommendedTool: "Supabase", reason: "Convex is cloud-only, Supabase is self-hostable" },
+          { useCase: "Rapid Prototyping", recommendedTool: "Convex", reason: "Less boilerplate, faster iteration" },
+        ],
+        faqs: [
+          { question: "Is Convex better than Supabase?", answer: "For real-time apps with TypeScript, Convex offers superior DX. For complex SQL queries or self-hosting needs, Supabase is better." },
+          { question: "Can I use Convex with PostgreSQL?", answer: "No, Convex uses its own document-based database. If you need PostgreSQL specifically, choose Supabase." },
+          { question: "Which has better free tier?", answer: "Both have generous free tiers. Convex offers 1M function calls, Supabase offers 500MB database and 50K MAU." },
+          { question: "Is Convex production-ready?", answer: "Yes, Convex is used by production applications and offers enterprise support. However, it's cloud-only with no self-hosting option." },
+        ],
+      },
+      {
+        tool1Slug: "react",
+        tool2Slug: "vuejs",
+        title: "React vs Vue: Which Frontend Framework Should You Choose in 2025?",
+        metaDescription: "Compare React and Vue.js for your next project. Discover which frontend framework offers better DX, performance, and ecosystem.",
+        introduction: "React and Vue are the two most popular frontend frameworks in 2025. Both are excellent choices, but they have different philosophies and trade-offs.",
+        tool1Summary: "React is a JavaScript library for building UIs, created by Meta. It has the largest ecosystem, most job opportunities, and powers millions of applications.",
+        tool2Summary: "Vue.js is a progressive JavaScript framework with excellent documentation and a gentler learning curve. It's known for its approachable design and great DX.",
+        comparisonPoints: [
+          { category: "Ecosystem & Jobs", tool1Score: 98, tool2Score: 70, tool1Reason: "230K stars, largest ecosystem, most job opportunities", tool2Reason: "208K stars, good ecosystem, fewer jobs in US" },
+          { category: "Learning Curve", tool1Score: 70, tool2Score: 90, tool1Reason: "JSX, hooks, and ecosystem complexity", tool2Reason: "Gentle learning curve, excellent docs" },
+          { category: "Developer Experience", tool1Score: 85, tool2Score: 92, tool1Reason: "Flexible but requires decisions", tool2Reason: "Batteries-included, great DX out of box" },
+          { category: "Performance", tool1Score: 88, tool2Score: 90, tool1Reason: "Virtual DOM, Server Components in Next.js", tool2Reason: "Optimized reactivity, smaller bundles" },
+          { category: "Enterprise Adoption", tool1Score: 95, tool2Score: 75, tool1Reason: "Meta, Netflix, Airbnb, most Fortune 500", tool2Reason: "Alibaba, GitLab, growing enterprise use" },
+        ],
+        verdict: "React is the safer career choice with more jobs and larger ecosystem. Vue offers better DX and is easier to learn. Both are excellent for building modern web applications.",
+        useCaseRecommendations: [
+          { useCase: "Career Growth", recommendedTool: "React", reason: "More job opportunities, especially in US market" },
+          { useCase: "Beginners", recommendedTool: "Vue", reason: "Gentler learning curve, better documentation" },
+          { useCase: "Enterprise", recommendedTool: "React", reason: "Larger talent pool, more enterprise adoption" },
+          { useCase: "Solo Developers", recommendedTool: "Vue", reason: "Better DX, less decision fatigue" },
+          { useCase: "Large Teams", recommendedTool: "React", reason: "More standardized patterns, easier hiring" },
+        ],
+        faqs: [
+          { question: "Is React better than Vue?", answer: "Neither is objectively better. React has a larger ecosystem and more jobs, while Vue offers better DX and easier learning curve." },
+          { question: "Should I learn React or Vue first?", answer: "If job opportunities are your priority, learn React. If you want an easier learning experience, start with Vue." },
+          { question: "Which is faster?", answer: "Vue is slightly faster in benchmarks due to its optimized reactivity system. However, real-world performance depends more on how you write your code." },
+          { question: "Can I use both?", answer: "Yes, many developers know both. The concepts transfer well between frameworks, and knowing both makes you more versatile." },
+        ],
+      },
+      {
+        tool1Slug: "vercel",
+        tool2Slug: "netlify",
+        title: "Vercel vs Netlify: Which Hosting Platform Should You Choose in 2025?",
+        metaDescription: "Compare Vercel and Netlify for deploying your web applications. Discover which platform offers better features, pricing, and developer experience.",
+        introduction: "Vercel and Netlify are the two leading platforms for deploying modern web applications. Both offer excellent DX, but with different strengths and pricing models.",
+        tool1Summary: "Vercel is the company behind Next.js, offering seamless deployment for React applications with edge functions, analytics, and excellent performance.",
+        tool2Summary: "Netlify pioneered the Jamstack movement, offering great static site hosting, serverless functions, and a comprehensive platform for web development.",
+        comparisonPoints: [
+          { category: "Next.js Support", tool1Score: 100, tool2Score: 75, tool1Reason: "Created by Vercel, best-in-class support", tool2Reason: "Good support but some features lag behind" },
+          { category: "Static Sites", tool1Score: 85, tool2Score: 95, tool1Reason: "Excellent but focused on dynamic apps", tool2Reason: "Pioneer of Jamstack, excellent static hosting" },
+          { category: "Edge Functions", tool1Score: 95, tool2Score: 85, tool1Reason: "Excellent edge runtime, fast cold starts", tool2Reason: "Good edge functions, improving rapidly" },
+          { category: "Pricing", tool1Score: 75, tool2Score: 85, tool1Reason: "Can get expensive, bandwidth costs", tool2Reason: "More generous free tier, predictable pricing" },
+          { category: "Developer Experience", tool1Score: 95, tool2Score: 90, tool1Reason: "Seamless Git integration, instant previews", tool2Reason: "Great DX, excellent build plugins" },
+        ],
+        verdict: "Vercel is the best choice for Next.js applications and dynamic web apps. Netlify excels for static sites, Jamstack projects, and teams wanting more predictable pricing.",
+        useCaseRecommendations: [
+          { useCase: "Next.js Apps", recommendedTool: "Vercel", reason: "Created by Vercel, best support and features" },
+          { useCase: "Static Sites", recommendedTool: "Netlify", reason: "Pioneer of Jamstack, excellent static hosting" },
+          { useCase: "Budget-Conscious", recommendedTool: "Netlify", reason: "More generous free tier, predictable pricing" },
+          { useCase: "Edge Computing", recommendedTool: "Vercel", reason: "Better edge runtime and cold start times" },
+          { useCase: "Enterprise", recommendedTool: "Vercel", reason: "Better enterprise features and support" },
+        ],
+        faqs: [
+          { question: "Is Vercel better than Netlify?", answer: "For Next.js apps, yes. For static sites and Jamstack projects, Netlify is often the better choice." },
+          { question: "Which is cheaper?", answer: "Netlify generally offers better value with its free tier. Vercel can get expensive with bandwidth and function usage." },
+          { question: "Can I use Netlify with Next.js?", answer: "Yes, Netlify supports Next.js, though some advanced features may not work as well as on Vercel." },
+          { question: "Which has better performance?", answer: "Both offer excellent performance. Vercel has slightly better edge function cold starts, while Netlify excels at static asset delivery." },
+        ],
+      },
+      {
+        tool1Slug: "clerk",
+        tool2Slug: "auth0",
+        title: "Clerk vs Auth0: Which Authentication Provider Should You Choose in 2025?",
+        metaDescription: "Compare Clerk and Auth0 for your authentication needs. Discover which auth provider offers better DX, features, and pricing.",
+        introduction: "Authentication is critical for any application. Clerk and Auth0 are two popular choices with different approaches - Clerk focuses on modern DX while Auth0 offers enterprise features.",
+        tool1Summary: "Clerk is a modern authentication platform with beautiful pre-built components, excellent React integration, and developer-first approach.",
+        tool2Summary: "Auth0 is an enterprise-grade identity platform with comprehensive features, extensive customization, and strong compliance certifications.",
+        comparisonPoints: [
+          { category: "Developer Experience", tool1Score: 95, tool2Score: 75, tool1Reason: "Beautiful components, simple API, great docs", tool2Reason: "Powerful but complex, steeper learning curve" },
+          { category: "Pre-built UI", tool1Score: 98, tool2Score: 70, tool1Reason: "Beautiful, customizable components out of box", tool2Reason: "Universal Login, less customizable" },
+          { category: "Enterprise Features", tool1Score: 75, tool2Score: 95, tool1Reason: "Growing enterprise features", tool2Reason: "Comprehensive enterprise features, compliance" },
+          { category: "Pricing", tool1Score: 85, tool2Score: 60, tool1Reason: "Generous free tier, predictable pricing", tool2Reason: "Can get expensive, complex pricing" },
+          { category: "Customization", tool1Score: 80, tool2Score: 95, tool1Reason: "Good customization, some limits", tool2Reason: "Highly customizable, Actions and Rules" },
+        ],
+        verdict: "Clerk is the best choice for startups and modern web apps wanting great DX and beautiful UI. Auth0 is better for enterprises needing comprehensive features and compliance.",
+        useCaseRecommendations: [
+          { useCase: "Startups", recommendedTool: "Clerk", reason: "Better DX, faster implementation, beautiful UI" },
+          { useCase: "Enterprise", recommendedTool: "Auth0", reason: "Compliance certifications, enterprise features" },
+          { useCase: "React/Next.js", recommendedTool: "Clerk", reason: "Best-in-class React integration" },
+          { useCase: "Multi-tenant SaaS", recommendedTool: "Clerk", reason: "Built-in organizations feature" },
+          { useCase: "Complex Auth Flows", recommendedTool: "Auth0", reason: "Actions and Rules for custom logic" },
+        ],
+        faqs: [
+          { question: "Is Clerk better than Auth0?", answer: "For modern web apps wanting great DX, yes. For enterprises needing compliance and complex customization, Auth0 may be better." },
+          { question: "Which is cheaper?", answer: "Clerk offers better value for most startups with its generous free tier. Auth0 can get expensive quickly." },
+          { question: "Can I migrate from Auth0 to Clerk?", answer: "Yes, Clerk provides migration tools and guides. The main work is updating your frontend components." },
+          { question: "Which has better security?", answer: "Both are secure and follow best practices. Auth0 has more compliance certifications for regulated industries." },
+        ],
+      },
+      {
+        tool1Slug: "cursor",
+        tool2Slug: "vscode",
+        title: "Cursor vs VS Code: Which Code Editor Should You Choose in 2025?",
+        metaDescription: "Compare Cursor and VS Code for your development workflow. Discover which editor offers better AI features, performance, and developer experience.",
+        introduction: "Cursor and VS Code are both excellent code editors, with Cursor being an AI-first fork of VS Code. The choice depends on how much you value AI assistance in your workflow.",
+        tool1Summary: "Cursor is an AI-native IDE built on VS Code with deep AI integration, multi-file editing, and codebase-aware assistance.",
+        tool2Summary: "VS Code is the most popular code editor with a massive extension ecosystem, great performance, and free access.",
+        comparisonPoints: [
+          { category: "AI Features", tool1Score: 98, tool2Score: 70, tool1Reason: "Best AI integration, Composer, Agent mode", tool2Reason: "Copilot available but less integrated" },
+          { category: "Extension Ecosystem", tool1Score: 85, tool2Score: 100, tool1Reason: "VS Code extensions work, some limitations", tool2Reason: "Largest extension ecosystem" },
+          { category: "Price", tool1Score: 70, tool2Score: 100, tool1Reason: "$20/month for Pro, free tier limited", tool2Reason: "Completely free, open source" },
+          { category: "Performance", tool1Score: 80, tool2Score: 85, tool1Reason: "Slightly heavier due to AI features", tool2Reason: "Well-optimized, lighter" },
+          { category: "Learning Curve", tool1Score: 90, tool2Score: 95, tool1Reason: "Same as VS Code plus AI features", tool2Reason: "Familiar to most developers" },
+        ],
+        verdict: "Cursor is worth the investment if AI assistance significantly boosts your productivity. VS Code remains the best free option with excellent Copilot integration.",
+        useCaseRecommendations: [
+          { useCase: "AI-Heavy Workflow", recommendedTool: "Cursor", reason: "Best AI integration, multi-file editing" },
+          { useCase: "Budget-Conscious", recommendedTool: "VS Code", reason: "Free with optional Copilot subscription" },
+          { useCase: "Extension-Heavy", recommendedTool: "VS Code", reason: "Better extension compatibility" },
+          { useCase: "Rapid Prototyping", recommendedTool: "Cursor", reason: "AI Composer for fast code generation" },
+          { useCase: "Team Standardization", recommendedTool: "VS Code", reason: "Free, widely adopted, easier to standardize" },
+        ],
+        faqs: [
+          { question: "Is Cursor worth $20/month?", answer: "If AI assistance saves you more than an hour per month, yes. Many developers report 2-3x productivity gains." },
+          { question: "Can I use VS Code extensions in Cursor?", answer: "Yes, most VS Code extensions work in Cursor since it's built on VS Code." },
+          { question: "Is Cursor better than Copilot?", answer: "Cursor offers deeper AI integration with features like Composer and Agent mode. Copilot is more basic but works in any editor." },
+          { question: "Should I switch from VS Code to Cursor?", answer: "Try Cursor's free tier first. If the AI features significantly improve your workflow, consider upgrading." },
+        ],
+      },
+      {
+        tool1Slug: "tailwindcss",
+        tool2Slug: "css-modules",
+        title: "Tailwind CSS vs CSS Modules: Which Styling Approach Should You Choose in 2025?",
+        metaDescription: "Compare Tailwind CSS and CSS Modules for styling your applications. Discover which approach offers better DX, performance, and maintainability.",
+        introduction: "Tailwind CSS and CSS Modules represent two different philosophies for styling web applications. Tailwind uses utility classes while CSS Modules provides scoped traditional CSS.",
+        tool1Summary: "Tailwind CSS is a utility-first CSS framework that lets you build designs directly in your markup using pre-defined utility classes.",
+        tool2Summary: "CSS Modules is a CSS file format that automatically scopes class names locally, preventing style conflicts without changing how you write CSS.",
+        comparisonPoints: [
+          { category: "Developer Experience", tool1Score: 90, tool2Score: 75, tool1Reason: "Fast iteration, no context switching", tool2Reason: "Traditional CSS, separate files" },
+          { category: "Bundle Size", tool1Score: 85, tool2Score: 90, tool1Reason: "PurgeCSS removes unused, still larger", tool2Reason: "Only ships what you write" },
+          { category: "Learning Curve", tool1Score: 70, tool2Score: 95, tool1Reason: "New paradigm, many classes to learn", tool2Reason: "Just CSS with scoping" },
+          { category: "Design Consistency", tool1Score: 95, tool2Score: 70, tool1Reason: "Built-in design system, constraints", tool2Reason: "Requires manual design system" },
+          { category: "Customization", tool1Score: 85, tool2Score: 100, tool1Reason: "Config-based, some limits", tool2Reason: "Full CSS power, no limits" },
+        ],
+        verdict: "Tailwind CSS is ideal for rapid development and design consistency. CSS Modules is better when you need full CSS control or prefer traditional styling approaches.",
+        useCaseRecommendations: [
+          { useCase: "Rapid Prototyping", recommendedTool: "Tailwind CSS", reason: "Fastest iteration, no file switching" },
+          { useCase: "Design Systems", recommendedTool: "Tailwind CSS", reason: "Built-in constraints and consistency" },
+          { useCase: "Complex Animations", recommendedTool: "CSS Modules", reason: "Full CSS power for animations" },
+          { useCase: "Small Teams", recommendedTool: "Tailwind CSS", reason: "Consistent styling without guidelines" },
+          { useCase: "CSS Experts", recommendedTool: "CSS Modules", reason: "Leverage existing CSS knowledge" },
+        ],
+        faqs: [
+          { question: "Is Tailwind CSS better than CSS Modules?", answer: "For most projects, Tailwind offers faster development. CSS Modules is better when you need full CSS control." },
+          { question: "Does Tailwind increase bundle size?", answer: "With PurgeCSS (built-in), Tailwind removes unused styles. Final bundles are typically small." },
+          { question: "Can I use both together?", answer: "Yes, many projects use Tailwind for most styling and CSS Modules for complex components." },
+          { question: "Is Tailwind hard to learn?", answer: "There's an initial learning curve for the utility classes, but most developers become productive within a week." },
+        ],
+      },
+    ];
+
+    const now = Date.now();
+    let count = 0;
+
+    for (const comparison of highPriorityComparisons) {
+      const sortedSlugs = [comparison.tool1Slug, comparison.tool2Slug].sort();
+      const slug = `${sortedSlugs[0]}-vs-${sortedSlugs[1]}`;
+
+      await ctx.db.insert("seoComparisons", {
+        tool1Slug: sortedSlugs[0],
+        tool2Slug: sortedSlugs[1],
+        slug,
+        title: comparison.title,
+        metaDescription: comparison.metaDescription,
+        introduction: comparison.introduction,
+        tool1Summary: comparison.tool1Summary,
+        tool2Summary: comparison.tool2Summary,
+        comparisonPoints: comparison.comparisonPoints,
+        verdict: comparison.verdict,
+        useCaseRecommendations: comparison.useCaseRecommendations,
+        faqs: comparison.faqs,
+        generatedAt: now,
+        lastUpdated: now,
+        views: 0,
+      });
+      count++;
+    }
+
+    return { message: "SEO comparisons seeded successfully!", count };
+  },
+});

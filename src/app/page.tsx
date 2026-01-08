@@ -31,6 +31,7 @@ import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
 import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
 import { AnimatedBackground } from "@/components/animated-background";
+import { ToolsTicker } from "@/components/tools-ticker";
 
 interface AIRecommendation {
   id: string;
@@ -188,6 +189,11 @@ export default function Home() {
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
       <HomePageSchemas />
+      
+      {/* Live Tools Ticker */}
+      <div className="border-b border-border bg-card/30 backdrop-blur-sm py-3">
+        <ToolsTicker />
+      </div>
       
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20">

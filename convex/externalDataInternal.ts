@@ -89,12 +89,27 @@ export const updateToolExternalData = internalMutation({
     }),
     githubStars: v.optional(v.number()),
     npmDownloadsWeekly: v.optional(v.number()),
+    readme: v.optional(v.object({
+      excerpt: v.optional(v.string()),
+      badges: v.optional(v.array(v.string())),
+      hasQuickStart: v.optional(v.boolean()),
+      hasContributing: v.optional(v.boolean()),
+      hasChangelog: v.optional(v.boolean()),
+    })),
+    changelog: v.optional(v.array(v.object({
+      version: v.string(),
+      date: v.optional(v.string()),
+      changes: v.array(v.string()),
+      isBreaking: v.optional(v.boolean()),
+    }))),
   },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.toolId, {
       externalData: args.externalData,
       ...(args.githubStars !== undefined && { githubStars: args.githubStars }),
       ...(args.npmDownloadsWeekly !== undefined && { npmDownloadsWeekly: args.npmDownloadsWeekly }),
+      ...(args.readme !== undefined && { readme: args.readme }),
+      ...(args.changelog !== undefined && { changelog: args.changelog }),
     });
   },
 });

@@ -57,6 +57,39 @@ export default defineSchema({
       highlights: v.array(v.string()),
     }))),
     npmPackageName: v.optional(v.string()),
+    screenshots: v.optional(v.array(v.object({
+      url: v.string(),
+      alt: v.optional(v.string()),
+      caption: v.optional(v.string()),
+    }))),
+    socialLinks: v.optional(v.object({
+      twitter: v.optional(v.string()),
+      discord: v.optional(v.string()),
+      slack: v.optional(v.string()),
+      youtube: v.optional(v.string()),
+      reddit: v.optional(v.string()),
+    })),
+    installCommands: v.optional(v.object({
+      npm: v.optional(v.string()),
+      yarn: v.optional(v.string()),
+      pnpm: v.optional(v.string()),
+      bun: v.optional(v.string()),
+      brew: v.optional(v.string()),
+      other: v.optional(v.string()),
+    })),
+    readme: v.optional(v.object({
+      excerpt: v.optional(v.string()),
+      badges: v.optional(v.array(v.string())),
+      hasQuickStart: v.optional(v.boolean()),
+      hasContributing: v.optional(v.boolean()),
+      hasChangelog: v.optional(v.boolean()),
+    })),
+    changelog: v.optional(v.array(v.object({
+      version: v.string(),
+      date: v.optional(v.string()),
+      changes: v.array(v.string()),
+      isBreaking: v.optional(v.boolean()),
+    }))),
     externalData: v.optional(v.object({
       github: v.optional(v.object({
         stars: v.number(),
@@ -2615,4 +2648,202 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_server", ["mcpServerId"])
     .index("by_user_server", ["userId", "mcpServerId"]),
+
+  // ============================================
+  // AI Tooling News Feeds
+  // ============================================
+  feedSources: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    url: v.string(),
+    feedType: v.union(
+      v.literal("rss"),
+      v.literal("atom"),
+      v.literal("json"),
+      v.literal("api")
+    ),
+    category: v.union(
+      v.literal("ai_news"),
+      v.literal("dev_tools"),
+      v.literal("frameworks"),
+      v.literal("releases"),
+      v.literal("tutorials"),
+      v.literal("blogs"),
+      v.literal("podcasts"),
+      v.literal("newsletters")
+    ),
+    description: v.optional(v.string()),
+    logoUrl: v.optional(v.string()),
+    websiteUrl: v.optional(v.string()),
+    isActive: v.boolean(),
+    pollIntervalMinutes: v.number(),
+    lastFetchedAt: v.optional(v.number()),
+    lastFetchStatus: v.optional(v.union(
+      v.literal("success"),
+      v.literal("error"),
+      v.literal("partial")
+    )),
+    lastFetchError: v.optional(v.string()),
+    itemCount: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"])
+    .index("by_active", ["isActive"])
+    .index("by_last_fetched", ["lastFetchedAt"]),
+
+  feedItems: defineTable({
+    sourceId: v.id("feedSources"),
+    externalId: v.string(),
+    title: v.string(),
+    url: v.string(),
+    description: v.optional(v.string()),
+    content: v.optional(v.string()),
+    author: v.optional(v.string()),
+    imageUrl: v.optional(v.string()),
+    publishedAt: v.number(),
+    fetchedAt: v.number(),
+    tags: v.optional(v.array(v.string())),
+    relatedToolIds: v.optional(v.array(v.id("tools"))),
+    sentiment: v.optional(v.union(
+      v.literal("positive"),
+      v.literal("neutral"),
+      v.literal("negative")
+    )),
+    relevanceScore: v.optional(v.number()),
+    isRead: v.optional(v.boolean()),
+    isFeatured: v.boolean(),
+  })
+    .index("by_source", ["sourceId"])
+    .index("by_external_id", ["sourceId", "externalId"])
+    .index("by_published", ["publishedAt"])
+    .index("by_featured", ["isFeatured"])
+    .index("by_relevance", ["relevanceScore"]),
+
+  userFeedPreferences: defineTable({
+    userId: v.string(),
+    subscribedSourceIds: v.array(v.id("feedSources")),
+    mutedSourceIds: v.array(v.id("feedSources")),
+    preferredCategories: v.array(v.string()),
+    lastReadAt: v.optional(v.number()),
+  }).index("by_user", ["userId"]),
+
+  feedItemBookmarks: defineTable({
+    userId: v.string(),
+    feedItemId: v.id("feedItems"),
+    bookmarkedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_item", ["feedItemId"])
+    .index("by_user_item", ["userId", "feedItemId"]),
+
+  // ============================================
+  // Community Stack Submissions
+  // ============================================
+  communityStackSubmissions: defineTable({
+    userId: v.string(),
+    title: v.string(),
+    description: v.string(),
+    projectType: v.union(
+      v.literal("landing-page"),
+      v.literal("saas"),
+      v.literal("e-commerce"),
+      v.literal("blog"),
+      v.literal("dashboard"),
+      v.literal("mobile-app"),
+      v.literal("api"),
+      v.literal("other")
+    ),
+    difficulty: v.union(
+      v.literal("beginner"),
+      v.literal("intermediate"),
+      v.literal("advanced")
+    ),
+    tools: v.array(v.object({
+      toolId: v.optional(v.id("tools")),
+      customToolId: v.optional(v.id("communityToolSuggestions")),
+      category: v.string(),
+      notes: v.optional(v.string()),
+    })),
+    tags: v.array(v.string()),
+    githubUrl: v.optional(v.string()),
+    liveUrl: v.optional(v.string()),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("under_review"),
+      v.literal("approved"),
+      v.literal("rejected"),
+      v.literal("published")
+    ),
+    upvotes: v.number(),
+    views: v.number(),
+    reviewNotes: v.optional(v.string()),
+    reviewedBy: v.optional(v.string()),
+    reviewedAt: v.optional(v.number()),
+    publishedStackId: v.optional(v.id("marketplaceStacks")),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"])
+    .index("by_upvotes", ["upvotes"])
+    .index("by_created", ["createdAt"]),
+
+  communityStackVotes: defineTable({
+    submissionId: v.id("communityStackSubmissions"),
+    userId: v.string(),
+    votedAt: v.number(),
+  })
+    .index("by_submission", ["submissionId"])
+    .index("by_user", ["userId"])
+    .index("by_user_submission", ["userId", "submissionId"]),
+
+  communityToolSuggestions: defineTable({
+    userId: v.string(),
+    name: v.string(),
+    description: v.string(),
+    websiteUrl: v.optional(v.string()),
+    githubUrl: v.optional(v.string()),
+    category: v.string(),
+    pricingModel: v.optional(v.union(
+      v.literal("free"),
+      v.literal("freemium"),
+      v.literal("paid"),
+      v.literal("open_source"),
+      v.literal("enterprise")
+    )),
+    tags: v.array(v.string()),
+    logoUrl: v.optional(v.string()),
+    fetchStatus: v.union(
+      v.literal("pending"),
+      v.literal("fetching"),
+      v.literal("completed"),
+      v.literal("failed")
+    ),
+    fetchedData: v.optional(v.object({
+      stars: v.optional(v.number()),
+      forks: v.optional(v.number()),
+      description: v.optional(v.string()),
+      language: v.optional(v.string()),
+      topics: v.optional(v.array(v.string())),
+      license: v.optional(v.string()),
+      lastUpdated: v.optional(v.string()),
+    })),
+    fetchError: v.optional(v.string()),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("approved"),
+      v.literal("rejected"),
+      v.literal("merged")
+    ),
+    mergedToolId: v.optional(v.id("tools")),
+    reviewNotes: v.optional(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"])
+    .index("by_fetch_status", ["fetchStatus"])
+    .index("by_name", ["name"]),
 });

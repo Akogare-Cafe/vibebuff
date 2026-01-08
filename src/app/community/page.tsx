@@ -7,6 +7,7 @@ import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
+import { CommunityStackSubmission } from "@/components/community-stack-submission";
 import Link from "next/link";
 import {
   Users,
@@ -28,11 +29,12 @@ import {
   UserPlus,
   Medal,
   Zap,
+  Layers,
 } from "lucide-react";
 
 export default function CommunityPage() {
   const [userSearchQuery, setUserSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<"discover" | "leaderboards" | "groups">("discover");
+  const [activeTab, setActiveTab] = useState<"discover" | "leaderboards" | "groups" | "share-stacks">("discover");
   
   const popularComparisons = useQuery(api.seo.getPopularComparisons, { limit: 6 });
   const featuredTools = useQuery(api.tools.featured);
@@ -81,6 +83,14 @@ export default function CommunityPage() {
           >
             <Users className="w-4 h-4 mr-2" />
             Groups
+          </PixelButton>
+          <PixelButton
+            variant={activeTab === "share-stacks" ? "default" : "outline"}
+            onClick={() => setActiveTab("share-stacks")}
+            size="sm"
+          >
+            <Layers className="w-4 h-4 mr-2" />
+            Share Stacks
           </PixelButton>
         </div>
 
@@ -173,6 +183,12 @@ export default function CommunityPage() {
                 </div>
               </PixelCardContent>
             </PixelCard>
+          </section>
+        )}
+
+        {activeTab === "share-stacks" && (
+          <section className="mb-12">
+            <CommunityStackSubmission />
           </section>
         )}
 

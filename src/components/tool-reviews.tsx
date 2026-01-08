@@ -149,6 +149,7 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
   const [experienceLevel, setExperienceLevel] = useState<keyof typeof EXPERIENCE_LEVELS>("tried_it");
 
   const createReview = useMutation(api.reviews.create);
+  const recordMasteryInteraction = useMutation(api.mastery.recordInteraction);
 
   const handleSubmit = async () => {
     await createReview({
@@ -160,6 +161,11 @@ function ReviewForm({ toolId, userId, onClose }: ReviewFormProps) {
       cons,
       shippedWith,
       experienceLevel,
+    });
+    await recordMasteryInteraction({
+      userId,
+      toolId,
+      interactionType: "review",
     });
     onClose();
   };

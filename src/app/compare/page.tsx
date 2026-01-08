@@ -104,6 +104,7 @@ function ComparePageContent() {
   const popularComparisons = useQuery(api.seo.getPopularComparisons, { limit: 8 });
   
   const saveComparison = useMutation(api.compare.saveComparison);
+  const recordMasteryInteraction = useMutation(api.mastery.recordInteraction);
 
   const handleAddTool = (slug: string) => {
     if (!selectedSlugs.includes(slug) && selectedSlugs.length < 4) {
@@ -137,6 +138,14 @@ function ComparePageContent() {
       toolIds,
       name,
     });
+
+    for (const toolId of toolIds) {
+      await recordMasteryInteraction({
+        userId: user.id,
+        toolId,
+        interactionType: "comparison",
+      });
+    }
     
     setSaveSuccess(true);
     setTimeout(() => setSaveSuccess(false), 2000);

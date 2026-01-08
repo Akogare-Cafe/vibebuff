@@ -1148,7 +1148,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const { user } = useUser();
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [showPalette, setShowPalette] = useState(true);
+  const [showPalette, setShowPalette] = useState(!initialTools || initialTools.length === 0);
   const [buildTitle, setBuildTitle] = useState("My Stack");
   const [buildDescription, setBuildDescription] = useState("");
   const [activeTab, setActiveTab] = useState<TabType>("builder");

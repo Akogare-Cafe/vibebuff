@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
 import {
@@ -33,12 +33,31 @@ import {
   ExternalLink,
   Loader2,
   AlertTriangle,
+  Plus,
+  RefreshCw,
+  Timer,
+  Rss,
+  Globe,
+  Github,
+  Play,
+  Pause,
+  Sparkles,
+  Link as LinkIcon,
+  Edit,
+  Trash2,
 } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-type Tab = "overview" | "users" | "tools" | "suggestions" | "ads";
+type Tab = "overview" | "users" | "tools" | "suggestions" | "ads" | "crons" | "scrape" | "add-tool";
 
 export default function AdminDashboardPage() {
   const { isSignedIn } = useAuth();
@@ -47,7 +66,22 @@ export default function AdminDashboardPage() {
   const [toolSearch, setToolSearch] = useState("");
   const [suggestionFilter, setSuggestionFilter] = useState<"all" | "pending" | "approved" | "rejected">("pending");
 
+  const [scrapeUrl, setScrapeUrl] = useState("");
+  const [scrapedTool, setScrapedTool] = useState<any>(null);
+  const [scrapeLoading, setScrapeLoading] = useState(false);
+  const [scrapeError, setScrapeError] = useState("");
+  const [newToolCategory, setNewToolCategory] = useState("");
+
   const isAdmin = useQuery(api.admin.isAdmin);
+  const cronJobs = useQuery(api.admin.getCronJobs);
+  const feedSources = useQuery(api.admin.getFeedSources);
+  const scrapeJobs = useQuery(api.admin.getScrapeJobs);
+  
+  const initializeAdmin = useMutation(api.admin.initializeAdminByEmail);
+  const createTool = useMutation(api.admin.createTool);
+  const updateFeedSource = useMutation(api.admin.updateFeedSource);
+  const scrapeAndParse = useAction(api.admin.scrapeAndParseUrl);
+  const approveScrapeJob = useMutation(api.admin.approveScrapeJob);
   const stats = useQuery(api.admin.getDashboardStats);
   const users = useQuery(api.admin.getAllUsers, { search: userSearch || undefined, limit: 50 });
   const tools = useQuery(api.admin.getAllTools, { search: toolSearch || undefined, includeInactive: true, limit: 50 });
@@ -111,9 +145,61 @@ export default function AdminDashboardPage() {
     { id: "overview", label: "Overview", icon: <LayoutDashboard className="w-4 h-4" /> },
     { id: "users", label: "Users", icon: <Users className="w-4 h-4" />, badge: stats?.totalUsers },
     { id: "tools", label: "Tools", icon: <Package className="w-4 h-4" />, badge: stats?.totalTools },
+    { id: "add-tool", label: "Add Tool", icon: <Plus className="w-4 h-4" /> },
+    { id: "scrape", label: "Scrape", icon: <Globe className="w-4 h-4" /> },
+    { id: "crons", label: "Crons", icon: <Timer className="w-4 h-4" /> },
     { id: "suggestions", label: "Suggestions", icon: <MessageSquarePlus className="w-4 h-4" />, badge: stats?.pendingSuggestions },
     { id: "ads", label: "Ads", icon: <Megaphone className="w-4 h-4" /> },
   ];
+
+  const handleScrapeUrl = async () => {
+    if (!scrapeUrl.trim()) return;
+    setScrapeLoading(true);
+    setScrapeError("");
+    setScrapedTool(null);
+    
+    try {
+      const result = await scrapeAndParse({ url: scrapeUrl });
+      if (result.success && result.tool) {
+        setScrapedTool(result.tool);
+      } else {
+        setScrapeError(result.error || "Failed to scrape URL");
+      }
+    } catch (error) {
+      setScrapeError(`Error: ${error}`);
+    } finally {
+      setScrapeLoading(false);
+    }
+  };
+
+  const handleAddScrapedTool = async () => {
+    if (!scrapedTool || !newToolCategory) return;
+    
+    try {
+      await createTool({
+        name: scrapedTool.name,
+        slug: scrapedTool.slug,
+        tagline: scrapedTool.tagline,
+        description: scrapedTool.description,
+        websiteUrl: scrapedTool.websiteUrl,
+        githubUrl: scrapedTool.githubUrl,
+        categorySlug: newToolCategory,
+        pricingModel: scrapedTool.pricingModel as "free" | "freemium" | "paid" | "open_source" | "enterprise",
+        isOpenSource: scrapedTool.isOpenSource,
+        pros: scrapedTool.pros,
+        cons: scrapedTool.cons,
+        bestFor: scrapedTool.bestFor,
+        features: scrapedTool.features,
+        tags: scrapedTool.tags,
+      });
+      setScrapedTool(null);
+      setScrapeUrl("");
+      setNewToolCategory("");
+      alert("Tool added successfully!");
+    } catch (error) {
+      alert(`Error adding tool: ${error}`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -197,6 +283,30 @@ export default function AdminDashboardPage() {
               </PixelButton>
             </Link>
           </div>
+        )}
+
+        {activeTab === "crons" && (
+          <CronsTab cronJobs={cronJobs} feedSources={feedSources} onUpdateFeedSource={updateFeedSource} />
+        )}
+
+        {activeTab === "scrape" && (
+          <ScrapeTab
+            scrapeUrl={scrapeUrl}
+            setScrapeUrl={setScrapeUrl}
+            scrapeLoading={scrapeLoading}
+            scrapeError={scrapeError}
+            scrapedTool={scrapedTool}
+            setScrapedTool={setScrapedTool}
+            newToolCategory={newToolCategory}
+            setNewToolCategory={setNewToolCategory}
+            categories={categories}
+            onScrape={handleScrapeUrl}
+            onAddTool={handleAddScrapedTool}
+          />
+        )}
+
+        {activeTab === "add-tool" && (
+          <AddToolTab categories={categories} onCreateTool={createTool} />
         )}
       </div>
     </div>
@@ -765,6 +875,589 @@ function SuggestionsTab({
           ))
         )}
       </div>
+    </div>
+  );
+}
+
+function CronsTab({ 
+  cronJobs, 
+  feedSources,
+  onUpdateFeedSource,
+}: { 
+  cronJobs: any; 
+  feedSources: any;
+  onUpdateFeedSource: (args: { sourceId: any; updates: any }) => Promise<any>;
+}) {
+  const [loadingSource, setLoadingSource] = useState<string | null>(null);
+
+  const handleToggleFeedSource = async (sourceId: any, isActive: boolean) => {
+    setLoadingSource(sourceId);
+    try {
+      await onUpdateFeedSource({ sourceId, updates: { isActive: !isActive } });
+    } catch (error) {
+      console.error("Failed to update feed source:", error);
+    } finally {
+      setLoadingSource(null);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <PixelCard>
+        <PixelCardHeader>
+          <PixelCardTitle className="flex items-center gap-2">
+            <Timer className="w-4 h-4" /> CRON JOBS
+          </PixelCardTitle>
+        </PixelCardHeader>
+        <PixelCardContent>
+          {cronJobs ? (
+            <div className="space-y-4">
+              <div className="p-4 bg-muted/50 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Rss className="w-5 h-5 text-primary" />
+                    <div>
+                      <p className="text-foreground font-medium">{cronJobs.feedFetcher.name}</p>
+                      <p className="text-muted-foreground text-xs">Interval: {cronJobs.feedFetcher.interval}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <PixelBadge variant="default">{cronJobs.feedFetcher.status.toUpperCase()}</PixelBadge>
+                    <p className="text-muted-foreground text-xs mt-1">
+                      {cronJobs.feedFetcher.activeSources} active sources
+                    </p>
+                    {cronJobs.feedFetcher.lastRun > 0 && (
+                      <p className="text-muted-foreground text-xs">
+                        Last run: {new Date(cronJobs.feedFetcher.lastRun).toLocaleString()}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+            </div>
+          )}
+        </PixelCardContent>
+      </PixelCard>
+
+      <PixelCard>
+        <PixelCardHeader>
+          <PixelCardTitle className="flex items-center gap-2">
+            <Rss className="w-4 h-4" /> FEED SOURCES
+          </PixelCardTitle>
+        </PixelCardHeader>
+        <PixelCardContent>
+          {feedSources ? (
+            <div className="space-y-2">
+              {feedSources.length === 0 ? (
+                <p className="text-muted-foreground text-center py-4">No feed sources configured</p>
+              ) : (
+                feedSources.map((source: any) => (
+                  <div key={source._id} className={`p-3 bg-muted/30 rounded-lg flex items-center justify-between ${!source.isActive ? "opacity-50" : ""}`}>
+                    <div className="flex items-center gap-3">
+                      {source.logoUrl ? (
+                        <img src={source.logoUrl} alt="" className="w-8 h-8 rounded object-contain" />
+                      ) : (
+                        <Rss className="w-8 h-8 text-muted-foreground" />
+                      )}
+                      <div>
+                        <p className="text-foreground font-medium text-sm">{source.name}</p>
+                        <p className="text-muted-foreground text-xs">{source.category} - {source.feedType}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="text-right text-xs text-muted-foreground">
+                        <p>{source.itemCount} items</p>
+                        {source.lastFetchedAt && (
+                          <p>Last: {new Date(source.lastFetchedAt).toLocaleDateString()}</p>
+                        )}
+                        {source.lastFetchStatus && (
+                          <PixelBadge 
+                            variant={source.lastFetchStatus === "success" ? "default" : "secondary"}
+                            className="text-[10px]"
+                          >
+                            {source.lastFetchStatus.toUpperCase()}
+                          </PixelBadge>
+                        )}
+                      </div>
+                      <PixelButton
+                        size="sm"
+                        variant={source.isActive ? "outline" : "default"}
+                        onClick={() => handleToggleFeedSource(source._id, source.isActive)}
+                        disabled={loadingSource === source._id}
+                      >
+                        {loadingSource === source._id ? (
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                        ) : source.isActive ? (
+                          <Pause className="w-3 h-3" />
+                        ) : (
+                          <Play className="w-3 h-3" />
+                        )}
+                      </PixelButton>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+            </div>
+          )}
+        </PixelCardContent>
+      </PixelCard>
+    </div>
+  );
+}
+
+function ScrapeTab({
+  scrapeUrl,
+  setScrapeUrl,
+  scrapeLoading,
+  scrapeError,
+  scrapedTool,
+  setScrapedTool,
+  newToolCategory,
+  setNewToolCategory,
+  categories,
+  onScrape,
+  onAddTool,
+}: {
+  scrapeUrl: string;
+  setScrapeUrl: (v: string) => void;
+  scrapeLoading: boolean;
+  scrapeError: string;
+  scrapedTool: any;
+  setScrapedTool: (v: any) => void;
+  newToolCategory: string;
+  setNewToolCategory: (v: string) => void;
+  categories: any;
+  onScrape: () => void;
+  onAddTool: () => void;
+}) {
+  return (
+    <div className="space-y-6">
+      <PixelCard>
+        <PixelCardHeader>
+          <PixelCardTitle className="flex items-center gap-2">
+            <Globe className="w-4 h-4" /> SCRAPE URL
+          </PixelCardTitle>
+        </PixelCardHeader>
+        <PixelCardContent>
+          <div className="space-y-4">
+            <div className="flex gap-2">
+              <PixelInput
+                placeholder="Enter GitHub URL or website URL..."
+                value={scrapeUrl}
+                onChange={(e) => setScrapeUrl(e.target.value)}
+                className="flex-1"
+              />
+              <PixelButton onClick={onScrape} disabled={scrapeLoading || !scrapeUrl.trim()}>
+                {scrapeLoading ? (
+                  <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                ) : (
+                  <Sparkles className="w-4 h-4 mr-2" />
+                )}
+                SCRAPE & PARSE
+              </PixelButton>
+            </div>
+            <p className="text-muted-foreground text-xs">
+              Enter a GitHub repository URL or website URL. AI will analyze and extract tool information.
+            </p>
+
+            {scrapeError && (
+              <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <p className="text-red-500 text-sm flex items-center gap-2">
+                  <XCircle className="w-4 h-4" /> {scrapeError}
+                </p>
+              </div>
+            )}
+          </div>
+        </PixelCardContent>
+      </PixelCard>
+
+      {scrapedTool && (
+        <PixelCard>
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-2">
+              <Package className="w-4 h-4" /> SCRAPED TOOL DATA
+            </PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Name</label>
+                  <PixelInput value={scrapedTool.name} onChange={(e) => setScrapedTool({ ...scrapedTool, name: e.target.value })} />
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Slug</label>
+                  <PixelInput value={scrapedTool.slug} onChange={(e) => setScrapedTool({ ...scrapedTool, slug: e.target.value })} />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="text-xs text-muted-foreground block mb-1">Tagline</label>
+                  <PixelInput value={scrapedTool.tagline} onChange={(e) => setScrapedTool({ ...scrapedTool, tagline: e.target.value })} />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="text-xs text-muted-foreground block mb-1">Description</label>
+                  <Textarea 
+                    value={scrapedTool.description} 
+                    onChange={(e) => setScrapedTool({ ...scrapedTool, description: e.target.value })}
+                    className="w-full min-h-[80px] bg-background border border-border text-foreground text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Website URL</label>
+                  <PixelInput value={scrapedTool.websiteUrl} onChange={(e) => setScrapedTool({ ...scrapedTool, websiteUrl: e.target.value })} />
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">GitHub URL</label>
+                  <PixelInput value={scrapedTool.githubUrl || ""} onChange={(e) => setScrapedTool({ ...scrapedTool, githubUrl: e.target.value })} />
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Pricing Model</label>
+                  <Select value={scrapedTool.pricingModel} onValueChange={(v) => setScrapedTool({ ...scrapedTool, pricingModel: v })}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="free">Free</SelectItem>
+                      <SelectItem value="freemium">Freemium</SelectItem>
+                      <SelectItem value="paid">Paid</SelectItem>
+                      <SelectItem value="open_source">Open Source</SelectItem>
+                      <SelectItem value="enterprise">Enterprise</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Category</label>
+                  <Select value={newToolCategory} onValueChange={setNewToolCategory}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select category..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories?.map((cat: any) => (
+                        <SelectItem key={cat.slug} value={cat.slug}>{cat.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Pros</label>
+                  <div className="flex flex-wrap gap-1">
+                    {scrapedTool.pros?.map((pro: string, i: number) => (
+                      <PixelBadge key={i} variant="default" className="text-xs">{pro}</PixelBadge>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Cons</label>
+                  <div className="flex flex-wrap gap-1">
+                    {scrapedTool.cons?.map((con: string, i: number) => (
+                      <PixelBadge key={i} variant="secondary" className="text-xs">{con}</PixelBadge>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Features</label>
+                  <div className="flex flex-wrap gap-1">
+                    {scrapedTool.features?.map((f: string, i: number) => (
+                      <PixelBadge key={i} variant="outline" className="text-xs">{f}</PixelBadge>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground block mb-1">Tags</label>
+                  <div className="flex flex-wrap gap-1">
+                    {scrapedTool.tags?.map((tag: string, i: number) => (
+                      <PixelBadge key={i} variant="outline" className="text-xs">{tag}</PixelBadge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-2 pt-4 border-t border-border">
+                <PixelButton onClick={onAddTool} disabled={!newToolCategory}>
+                  <Plus className="w-4 h-4 mr-2" /> ADD TO DATABASE
+                </PixelButton>
+                <PixelButton variant="outline" onClick={() => setScrapedTool(null)}>
+                  <XCircle className="w-4 h-4 mr-2" /> DISCARD
+                </PixelButton>
+              </div>
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+      )}
+    </div>
+  );
+}
+
+function AddToolTab({
+  categories,
+  onCreateTool,
+}: {
+  categories: any;
+  onCreateTool: (args: any) => Promise<any>;
+}) {
+  const [formData, setFormData] = useState({
+    name: "",
+    slug: "",
+    tagline: "",
+    description: "",
+    websiteUrl: "",
+    githubUrl: "",
+    docsUrl: "",
+    categorySlug: "",
+    pricingModel: "free" as "free" | "freemium" | "paid" | "open_source" | "enterprise",
+    isOpenSource: false,
+    pros: "",
+    cons: "",
+    bestFor: "",
+    features: "",
+    tags: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.slug || !formData.tagline || !formData.description || !formData.websiteUrl || !formData.categorySlug) {
+      setError("Please fill in all required fields");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      await onCreateTool({
+        name: formData.name,
+        slug: formData.slug,
+        tagline: formData.tagline,
+        description: formData.description,
+        websiteUrl: formData.websiteUrl,
+        githubUrl: formData.githubUrl || undefined,
+        docsUrl: formData.docsUrl || undefined,
+        categorySlug: formData.categorySlug,
+        pricingModel: formData.pricingModel,
+        isOpenSource: formData.isOpenSource,
+        pros: formData.pros.split("\n").filter(Boolean),
+        cons: formData.cons.split("\n").filter(Boolean),
+        bestFor: formData.bestFor.split("\n").filter(Boolean),
+        features: formData.features.split("\n").filter(Boolean),
+        tags: formData.tags.split(",").map(t => t.trim()).filter(Boolean),
+      });
+      setFormData({
+        name: "",
+        slug: "",
+        tagline: "",
+        description: "",
+        websiteUrl: "",
+        githubUrl: "",
+        docsUrl: "",
+        categorySlug: "",
+        pricingModel: "free",
+        isOpenSource: false,
+        pros: "",
+        cons: "",
+        bestFor: "",
+        features: "",
+        tags: "",
+      });
+      alert("Tool created successfully!");
+    } catch (err) {
+      setError(`Error: ${err}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const generateSlug = () => {
+    const slug = formData.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    setFormData({ ...formData, slug });
+  };
+
+  return (
+    <div className="space-y-6">
+      <PixelCard>
+        <PixelCardHeader>
+          <PixelCardTitle className="flex items-center gap-2">
+            <Plus className="w-4 h-4" /> ADD NEW TOOL
+          </PixelCardTitle>
+        </PixelCardHeader>
+        <PixelCardContent>
+          <div className="space-y-4">
+            {error && (
+              <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <p className="text-red-500 text-sm flex items-center gap-2">
+                  <XCircle className="w-4 h-4" /> {error}
+                </p>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Name *</label>
+                <PixelInput 
+                  value={formData.name} 
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onBlur={generateSlug}
+                  placeholder="e.g., Next.js"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Slug *</label>
+                <PixelInput 
+                  value={formData.slug} 
+                  onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                  placeholder="e.g., nextjs"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="text-xs text-muted-foreground block mb-1">Tagline *</label>
+                <PixelInput 
+                  value={formData.tagline} 
+                  onChange={(e) => setFormData({ ...formData, tagline: e.target.value })}
+                  placeholder="Short description (max 100 chars)"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="text-xs text-muted-foreground block mb-1">Description *</label>
+                <Textarea 
+                  value={formData.description} 
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Detailed description of the tool..."
+                  className="w-full min-h-[100px] bg-background border border-border text-foreground text-sm"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Website URL *</label>
+                <PixelInput 
+                  value={formData.websiteUrl} 
+                  onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
+                  placeholder="https://..."
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">GitHub URL</label>
+                <PixelInput 
+                  value={formData.githubUrl} 
+                  onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
+                  placeholder="https://github.com/..."
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Docs URL</label>
+                <PixelInput 
+                  value={formData.docsUrl} 
+                  onChange={(e) => setFormData({ ...formData, docsUrl: e.target.value })}
+                  placeholder="https://docs..."
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Category *</label>
+                <Select value={formData.categorySlug} onValueChange={(v) => setFormData({ ...formData, categorySlug: v })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select category..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories?.map((cat: any) => (
+                      <SelectItem key={cat.slug} value={cat.slug}>{cat.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Pricing Model</label>
+                <Select value={formData.pricingModel} onValueChange={(v: any) => setFormData({ ...formData, pricingModel: v })}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="free">Free</SelectItem>
+                    <SelectItem value="freemium">Freemium</SelectItem>
+                    <SelectItem value="paid">Paid</SelectItem>
+                    <SelectItem value="open_source">Open Source</SelectItem>
+                    <SelectItem value="enterprise">Enterprise</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="checkbox" 
+                  checked={formData.isOpenSource}
+                  onChange={(e) => setFormData({ ...formData, isOpenSource: e.target.checked })}
+                  className="w-4 h-4"
+                />
+                <label className="text-sm text-foreground">Is Open Source</label>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Pros (one per line)</label>
+                <Textarea 
+                  value={formData.pros} 
+                  onChange={(e) => setFormData({ ...formData, pros: e.target.value })}
+                  placeholder="Easy to use&#10;Great documentation&#10;Active community"
+                  className="w-full min-h-[80px] bg-background border border-border text-foreground text-sm"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Cons (one per line)</label>
+                <Textarea 
+                  value={formData.cons} 
+                  onChange={(e) => setFormData({ ...formData, cons: e.target.value })}
+                  placeholder="Steep learning curve&#10;Limited customization"
+                  className="w-full min-h-[80px] bg-background border border-border text-foreground text-sm"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Best For (one per line)</label>
+                <Textarea 
+                  value={formData.bestFor} 
+                  onChange={(e) => setFormData({ ...formData, bestFor: e.target.value })}
+                  placeholder="Web applications&#10;Static sites&#10;E-commerce"
+                  className="w-full min-h-[80px] bg-background border border-border text-foreground text-sm"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground block mb-1">Features (one per line)</label>
+                <Textarea 
+                  value={formData.features} 
+                  onChange={(e) => setFormData({ ...formData, features: e.target.value })}
+                  placeholder="Server-side rendering&#10;Static generation&#10;API routes"
+                  className="w-full min-h-[80px] bg-background border border-border text-foreground text-sm"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="text-xs text-muted-foreground block mb-1">Tags (comma separated)</label>
+                <PixelInput 
+                  value={formData.tags} 
+                  onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
+                  placeholder="react, framework, ssr, ssg, typescript"
+                />
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-border">
+              <PixelButton onClick={handleSubmit} disabled={loading}>
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                ) : (
+                  <Plus className="w-4 h-4 mr-2" />
+                )}
+                CREATE TOOL
+              </PixelButton>
+            </div>
+          </div>
+        </PixelCardContent>
+      </PixelCard>
     </div>
   );
 }
