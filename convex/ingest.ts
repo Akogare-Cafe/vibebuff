@@ -210,6 +210,94 @@ export const bulkUpsertTools = internalMutation({
   },
 });
 
+export const bulkUpsertToolsPublic = mutation({
+  args: {
+    tools: v.array(
+      v.object({
+        name: v.string(),
+        slug: v.string(),
+        tagline: v.string(),
+        description: v.string(),
+        logoUrl: v.optional(v.string()),
+        websiteUrl: v.string(),
+        githubUrl: v.optional(v.string()),
+        docsUrl: v.optional(v.string()),
+        categorySlug: v.string(),
+        pricingModel: v.union(
+          v.literal("free"),
+          v.literal("freemium"),
+          v.literal("paid"),
+          v.literal("open_source"),
+          v.literal("enterprise")
+        ),
+        githubStars: v.optional(v.number()),
+        pros: v.array(v.string()),
+        cons: v.array(v.string()),
+        bestFor: v.array(v.string()),
+        features: v.array(v.string()),
+        tags: v.array(v.string()),
+        isOpenSource: v.boolean(),
+      })
+    ),
+  },
+  handler: async (ctx, args) => {
+    const results = { created: 0, updated: 0, skipped: 0, errors: [] as string[] };
+
+    for (const tool of args.tools) {
+      try {
+        const category = await ctx.db
+          .query("categories")
+          .withIndex("by_slug", (q) => q.eq("slug", tool.categorySlug))
+          .first();
+
+        if (!category) {
+          results.skipped++;
+          continue;
+        }
+
+        const existingTool = await ctx.db
+          .query("tools")
+          .withIndex("by_slug", (q) => q.eq("slug", tool.slug))
+          .first();
+
+        const toolData = {
+          name: tool.name,
+          slug: tool.slug,
+          tagline: tool.tagline,
+          description: tool.description,
+          logoUrl: tool.logoUrl,
+          websiteUrl: tool.websiteUrl,
+          githubUrl: tool.githubUrl,
+          docsUrl: tool.docsUrl,
+          categoryId: category._id,
+          pricingModel: tool.pricingModel,
+          githubStars: tool.githubStars,
+          pros: tool.pros,
+          cons: tool.cons,
+          bestFor: tool.bestFor,
+          features: tool.features,
+          tags: tool.tags,
+          isOpenSource: tool.isOpenSource,
+          isActive: true,
+          isFeatured: false,
+        };
+
+        if (existingTool) {
+          await ctx.db.patch(existingTool._id, toolData);
+          results.updated++;
+        } else {
+          await ctx.db.insert("tools", toolData);
+          results.created++;
+        }
+      } catch (error) {
+        results.errors.push(`${tool.name}: ${error}`);
+      }
+    }
+
+    return results;
+  },
+});
+
 export const getIngestionStats = mutation({
   handler: async (ctx) => {
     const tools = await ctx.db.query("tools").collect();

@@ -212,6 +212,61 @@ async def upsert_tool(client: httpx.AsyncClient, tool_data: dict) -> dict:
         return {"error": str(e)}
 
 
+def transform_discovered_tool(tool: dict) -> Optional[dict]:
+    """Transform a discovered tool (from awesome lists, directories, search) into Convex format."""
+    name = tool.get("name", "")
+    url = tool.get("url", "")
+    
+    if not name or not url:
+        return None
+    
+    if len(name) < 2 or len(name) > 100:
+        return None
+    
+    if not url.startswith("http"):
+        return None
+    
+    description = tool.get("description", "") or f"{name} - Developer tool"
+    
+    tagline = description[:100] if description else f"{name} - Developer tool"
+    if len(description) > 100:
+        tagline = description[:97] + "..."
+    
+    category = tool.get("category", "")
+    category_slug = CATEGORY_MAPPING.get(category, DEFAULT_CATEGORY)
+    
+    github_url = None
+    if "github.com" in url:
+        github_url = url
+    
+    is_mcp = "mcp" in name.lower() or "mcp" in url.lower() or category == "mcp"
+    
+    tags = ["ai", "developer-tools"]
+    if is_mcp:
+        tags.append("mcp")
+    if category:
+        tags.append(category.replace("_", "-"))
+    
+    return {
+        "name": name,
+        "slug": slugify(name),
+        "tagline": tagline,
+        "description": description[:1000] if description else f"{name} is a developer tool.",
+        "websiteUrl": url if "github.com" not in url else None,
+        "githubUrl": github_url,
+        "docsUrl": None,
+        "categorySlug": category_slug,
+        "pricingModel": "freemium",
+        "githubStars": None,
+        "pros": [],
+        "cons": [],
+        "bestFor": ["Developers"],
+        "features": [],
+        "tags": tags,
+        "isOpenSource": github_url is not None,
+    }
+
+
 async def sync_vibe_tools():
     """Sync vibe tools from scraped data to Convex."""
     data_dir = os.path.join(os.path.dirname(__file__), "data")
@@ -225,18 +280,31 @@ async def sync_vibe_tools():
         data = json.load(f)
     
     known_tools = data.get("known_tools", [])
+    awesome_list_tools = data.get("awesome_list_tools", [])
+    mcp_directory_tools = data.get("mcp_directory_tools", [])
+    discovered_tools = data.get("discovered_tools", [])
     
     results = {
         "processed": 0,
         "success": 0,
+        "skipped": 0,
         "errors": [],
     }
     
+    seen_slugs = set()
+    
     async with httpx.AsyncClient() as client:
+        print(f"\n--- Syncing {len(known_tools)} known tools ---")
         for tool in known_tools:
             tool_data = transform_vibe_tool(tool)
             if not tool_data:
                 continue
+            
+            slug = tool_data.get("slug", "")
+            if slug in seen_slugs:
+                results["skipped"] += 1
+                continue
+            seen_slugs.add(slug)
             
             results["processed"] += 1
             print(f"Syncing: {tool_data['name']}")
@@ -249,8 +317,81 @@ async def sync_vibe_tools():
                 results["success"] += 1
                 print(f"  -> {result.get('action', 'done')}")
             
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.3)
+        
+        print(f"\n--- Syncing {len(awesome_list_tools)} awesome list tools ---")
+        for tool in awesome_list_tools:
+            tool_data = transform_discovered_tool(tool)
+            if not tool_data:
+                continue
+            
+            slug = tool_data.get("slug", "")
+            if slug in seen_slugs:
+                results["skipped"] += 1
+                continue
+            seen_slugs.add(slug)
+            
+            results["processed"] += 1
+            if results["processed"] % 50 == 0:
+                print(f"Progress: {results['processed']} processed, {results['success']} synced")
+            
+            result = await upsert_tool(client, tool_data)
+            
+            if "error" in result:
+                results["errors"].append(f"{tool_data['name']}: {result['error']}")
+            else:
+                results["success"] += 1
+            
+            await asyncio.sleep(0.1)
+        
+        print(f"\n--- Syncing {len(mcp_directory_tools)} MCP directory tools ---")
+        for tool in mcp_directory_tools:
+            tool["category"] = "mcp"
+            tool_data = transform_discovered_tool(tool)
+            if not tool_data:
+                continue
+            
+            slug = tool_data.get("slug", "")
+            if slug in seen_slugs:
+                results["skipped"] += 1
+                continue
+            seen_slugs.add(slug)
+            
+            results["processed"] += 1
+            
+            result = await upsert_tool(client, tool_data)
+            
+            if "error" in result:
+                results["errors"].append(f"{tool_data['name']}: {result['error']}")
+            else:
+                results["success"] += 1
+            
+            await asyncio.sleep(0.1)
+        
+        print(f"\n--- Syncing {len(discovered_tools)} discovered tools ---")
+        for tool in discovered_tools:
+            tool_data = transform_discovered_tool(tool)
+            if not tool_data:
+                continue
+            
+            slug = tool_data.get("slug", "")
+            if slug in seen_slugs:
+                results["skipped"] += 1
+                continue
+            seen_slugs.add(slug)
+            
+            results["processed"] += 1
+            
+            result = await upsert_tool(client, tool_data)
+            
+            if "error" in result:
+                results["errors"].append(f"{tool_data['name']}: {result['error']}")
+            else:
+                results["success"] += 1
+            
+            await asyncio.sleep(0.1)
     
+    print(f"\nTotal: {results['processed']} processed, {results['success']} synced, {results['skipped']} skipped (duplicates)")
     return results
 
 
