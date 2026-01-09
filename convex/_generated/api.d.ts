@@ -62,6 +62,7 @@ import type * as simulator from "../simulator.js";
 import type * as speedruns from "../speedruns.js";
 import type * as spinWheel from "../spinWheel.js";
 import type * as stackBuilder from "../stackBuilder.js";
+import type * as stackBuilderCollab from "../stackBuilderCollab.js";
 import type * as stackContracts from "../stackContracts.js";
 import type * as stackMarketplace from "../stackMarketplace.js";
 import type * as startupStories from "../startupStories.js";
@@ -142,6 +143,7 @@ declare const fullApi: ApiFromModules<{
   speedruns: typeof speedruns;
   spinWheel: typeof spinWheel;
   stackBuilder: typeof stackBuilder;
+  stackBuilderCollab: typeof stackBuilderCollab;
   stackContracts: typeof stackContracts;
   stackMarketplace: typeof stackMarketplace;
   startupStories: typeof startupStories;

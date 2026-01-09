@@ -27,11 +27,11 @@ import {
   Vote,
   Coins,
   Star,
-  Wrench,
   Heart,
   Zap,
   Gift,
 } from "lucide-react";
+import { ToolIcon } from "@/components/dynamic-icon";
 // import { ReferralCard } from "@/components/referral-card";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -355,7 +355,7 @@ export default function ProfilePage() {
                               {mastery.tool?.logoUrl ? (
                                 <img src={mastery.tool.logoUrl} alt={mastery.tool.name} className="w-10 h-10 object-contain" />
                               ) : (
-                                <Wrench className="w-8 h-8 text-primary" />
+                                <ToolIcon toolSlug={mastery.tool?.slug || ''} className="w-8 h-8 text-primary" />
                               )}
                               <div
                                 className={`absolute -bottom-1 -right-1 ${
@@ -378,7 +378,7 @@ export default function ProfilePage() {
                   </div>
                 ) : (
                   <div className="py-12 text-center relative z-10">
-                    <Wrench className="w-12 h-12 mx-auto mb-4 text-muted-foreground/50" />
+                    <ToolIcon toolSlug="" className="w-12 h-12 mx-auto mb-4 text-muted-foreground/50" />
                     <p className="text-muted-foreground">No tool masteries yet</p>
                     <p className="text-sm text-muted-foreground/70 mt-1">Start exploring tools to build mastery</p>
                     <Link href="/tools">
@@ -421,7 +421,7 @@ export default function ProfilePage() {
                                   {tool.logoUrl ? (
                                     <img src={tool.logoUrl} alt={tool.name} className="w-full h-full object-contain" />
                                   ) : (
-                                    <Wrench className="w-3 h-3 m-1 text-muted-foreground" />
+                                    <ToolIcon toolSlug={tool.slug} className="w-3 h-3 m-1 text-muted-foreground" />
                                   )}
                                 </div>
                               ))}
@@ -468,7 +468,7 @@ export default function ProfilePage() {
                             {tool.logoUrl ? (
                               <img src={tool.logoUrl} alt={tool.name} className="w-10 h-10 object-contain" />
                             ) : (
-                              <Wrench className="w-6 h-6 text-muted-foreground" />
+                              <ToolIcon toolSlug={tool.slug} className="w-6 h-6 text-muted-foreground" />
                             )}
                           </div>
                           <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors truncate max-w-[70px]">
@@ -581,7 +581,7 @@ export default function ProfilePage() {
                           {affinity.tool?.logoUrl ? (
                             <img src={affinity.tool.logoUrl} alt={affinity.tool?.name} className="w-8 h-8 object-contain" />
                           ) : (
-                            <Wrench className="w-6 h-6 text-muted-foreground" />
+                            <ToolIcon toolSlug={affinity.tool?.slug || ''} className="w-6 h-6 text-muted-foreground" />
                           )}
                         </div>
                         <div className="flex-1 min-w-0">

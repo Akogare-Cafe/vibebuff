@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useSyncExternalStore } from "react";
 
 export type ColorMode = "light" | "dark";
 
@@ -12,24 +12,32 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function getInitialMode(): ColorMode {
+  if (typeof window === "undefined") return "dark";
+  const stored = localStorage.getItem("vibebuff-color-mode") as ColorMode | null;
+  if (stored === "light" || stored === "dark") return stored;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function subscribe(callback: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getSnapshot(): ColorMode {
+  return getInitialMode();
+}
+
+function getServerSnapshot(): ColorMode {
+  return "dark";
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<ColorMode>("dark");
-  const [mounted, setMounted] = useState(false);
+  const initialMode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [mode, setMode] = useState<ColorMode>(initialMode);
 
   useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("vibebuff-color-mode") as ColorMode | null;
-    if (stored && (stored === "light" || stored === "dark")) {
-      setMode(stored);
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setMode(prefersDark ? "dark" : "light");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    
     const root = document.documentElement;
     
     if (mode === "dark") {
@@ -39,7 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
     
     localStorage.setItem("vibebuff-color-mode", mode);
-  }, [mode, mounted]);
+  }, [mode]);
 
   const toggleMode = () => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));

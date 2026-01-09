@@ -2874,4 +2874,65 @@ export default defineSchema({
   })
     .index("by_email", ["email"])
     .index("by_active", ["isActive"]),
+
+  // ============================================
+  // Stack Builder Collaboration Sessions
+  // ============================================
+  stackBuilderSessions: defineTable({
+    name: v.string(),
+    hostUserId: v.string(),
+    hostName: v.string(),
+    hostAvatarUrl: v.optional(v.string()),
+    shareCode: v.string(),
+    nodes: v.array(v.object({
+      id: v.string(),
+      type: v.string(),
+      position: v.object({ x: v.number(), y: v.number() }),
+      data: v.object({
+        label: v.string(),
+        toolId: v.optional(v.id("tools")),
+        category: v.string(),
+        description: v.optional(v.string()),
+      }),
+    })),
+    edges: v.array(v.object({
+      id: v.string(),
+      source: v.string(),
+      target: v.string(),
+      label: v.optional(v.string()),
+      animated: v.optional(v.boolean()),
+    })),
+    aiScore: v.optional(v.object({
+      overall: v.number(),
+      completeness: v.number(),
+      coherence: v.number(),
+      scalability: v.number(),
+      costEfficiency: v.number(),
+      feedback: v.array(v.string()),
+      lastUpdated: v.number(),
+    })),
+    isActive: v.boolean(),
+    maxParticipants: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_host", ["hostUserId"])
+    .index("by_share_code", ["shareCode"])
+    .index("by_active", ["isActive"]),
+
+  stackBuilderParticipants: defineTable({
+    sessionId: v.id("stackBuilderSessions"),
+    userId: v.string(),
+    userName: v.string(),
+    userAvatarUrl: v.optional(v.string()),
+    cursorPosition: v.optional(v.object({ x: v.number(), y: v.number() })),
+    cursorColor: v.string(),
+    isActive: v.boolean(),
+    lastSeen: v.number(),
+    joinedAt: v.number(),
+  })
+    .index("by_session", ["sessionId"])
+    .index("by_user", ["userId"])
+    .index("by_session_user", ["sessionId", "userId"])
+    .index("by_active", ["isActive"]),
 });

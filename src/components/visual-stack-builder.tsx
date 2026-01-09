@@ -90,6 +90,7 @@ import {
   Link2,
   GripVertical,
   Search,
+  Users,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -1830,6 +1831,12 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
             <Upload className="w-4 h-4 mr-1" />
             Import
           </PixelButton>
+          <a href="/stack-builder/collab/new">
+            <PixelButton variant="outline" className="bg-primary/10 border-primary/50 hover:bg-primary/20">
+              <Users className="w-4 h-4 mr-1" />
+              Collaborate
+            </PixelButton>
+          </a>
           {user && (
             <PixelButton
               variant={activeTab === "my-builds" ? "default" : "outline"}
