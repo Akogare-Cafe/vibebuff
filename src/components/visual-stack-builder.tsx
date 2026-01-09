@@ -443,7 +443,7 @@ function ToolPalette({
   );
 
   return (
-    <div className="w-72 bg-card border-2 border-border rounded-lg p-4 max-h-[600px] flex flex-col">
+    <div className="w-full sm:w-72 bg-card border-2 border-border rounded-lg p-3 sm:p-4 max-h-[400px] sm:max-h-[600px] flex flex-col">
       <h3 className="text-primary font-bold text-sm mb-3 flex items-center gap-2">
         <Wrench className="w-4 h-4" />
         Tool Palette
@@ -1822,28 +1822,30 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <PixelButton variant="outline" onClick={handleNewStack}>
-            <Plus className="w-4 h-4 mr-1" />
-            New
+        <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+          <PixelButton variant="outline" size="sm" className="sm:size-auto" onClick={handleNewStack}>
+            <Plus className="w-4 h-4 sm:mr-1" />
+            <span className="hidden sm:inline">New</span>
           </PixelButton>
-          <PixelButton variant="outline" onClick={() => setShowImportModal(true)}>
-            <Upload className="w-4 h-4 mr-1" />
-            Import
+          <PixelButton variant="outline" size="sm" className="sm:size-auto" onClick={() => setShowImportModal(true)}>
+            <Upload className="w-4 h-4 sm:mr-1" />
+            <span className="hidden sm:inline">Import</span>
           </PixelButton>
           <a href="/stack-builder/collab/new">
-            <PixelButton variant="outline" className="bg-primary/10 border-primary/50 hover:bg-primary/20">
-              <Users className="w-4 h-4 mr-1" />
-              Collaborate
+            <PixelButton variant="outline" size="sm" className="sm:size-auto bg-primary/10 border-primary/50 hover:bg-primary/20">
+              <Users className="w-4 h-4 sm:mr-1" />
+              <span className="hidden sm:inline">Collaborate</span>
             </PixelButton>
           </a>
           {user && (
             <PixelButton
               variant={activeTab === "my-builds" ? "default" : "outline"}
+              size="sm"
+              className="sm:size-auto"
               onClick={() => setActiveTab(activeTab === "my-builds" ? "builder" : "my-builds")}
             >
-              <FolderOpen className="w-4 h-4 mr-1" />
-              My Stacks
+              <FolderOpen className="w-4 h-4 sm:mr-1" />
+              <span className="hidden sm:inline">My Stacks</span>
               {userBuilds && userBuilds.length > 0 && (
                 <span className="ml-1 text-xs">({userBuilds.length})</span>
               )}
@@ -1852,19 +1854,21 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           {user && (
             <PixelButton
               variant={activeTab === "contracts" ? "default" : "outline"}
+              size="sm"
+              className="hidden sm:flex"
               onClick={() => setActiveTab(activeTab === "contracts" ? "builder" : "contracts")}
             >
               <FileText className="w-4 h-4 mr-1" />
               Contracts
             </PixelButton>
           )}
-          <a href="/stack-marketplace">
-            <PixelButton variant="outline">
+          <a href="/stack-marketplace" className="hidden sm:block">
+            <PixelButton variant="outline" size="sm">
               <Store className="w-4 h-4 mr-1" />
               Marketplace
             </PixelButton>
           </a>
-          <PixelButton variant="outline" onClick={() => setShowHelp(true)}>
+          <PixelButton variant="outline" size="sm" onClick={() => setShowHelp(true)}>
             <HelpCircle className="w-4 h-4" />
           </PixelButton>
         </div>
@@ -1903,13 +1907,13 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
       {activeTab === "builder" && (
         <>
           <QuickTips />
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-            <div className="flex-1 flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={buildTitle}
                 onChange={(e) => setBuildTitle(e.target.value)}
-                className="px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none"
+                className="px-3 py-2 bg-card border-2 border-border rounded-lg text-primary text-sm focus:border-primary outline-none w-full sm:w-auto"
                 placeholder="Stack name..."
               />
               <input
@@ -1921,18 +1925,19 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
               />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
               <PixelButton
                 variant="outline"
+                size="sm"
                 onClick={() => setShowPalette(!showPalette)}
               >
                 <Wrench className="w-4 h-4" />
               </PixelButton>
-              <PixelButton variant="outline" onClick={handleClear}>
+              <PixelButton variant="outline" size="sm" onClick={handleClear}>
                 <Trash2 className="w-4 h-4" />
               </PixelButton>
               <div className="relative group">
-                <PixelButton variant="outline">
+                <PixelButton variant="outline" size="sm">
                   <Download className="w-4 h-4" />
                 </PixelButton>
                 <div className="absolute right-0 top-full mt-1 bg-card border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[120px]">
@@ -1950,9 +1955,9 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
                   </button>
                 </div>
               </div>
-              <PixelButton onClick={handleSave} disabled={isSaving || !user}>
-                <Save className="w-4 h-4 mr-1" />
-                {isSaving ? "Saving..." : currentBuildId ? "Update" : "Save"}
+              <PixelButton size="sm" onClick={handleSave} disabled={isSaving || !user}>
+                <Save className="w-4 h-4 sm:mr-1" />
+                <span className="hidden sm:inline">{isSaving ? "Saving..." : currentBuildId ? "Update" : "Save"}</span>
               </PixelButton>
               {saveMessage && (
                 <span
@@ -1976,7 +1981,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
                   <Sparkles className="w-5 h-5" />
                   Popular Stacks
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {POPULAR_STACKS.map((stack) => (
                     <PopularStackCard
                       key={stack.name}
@@ -1993,7 +1998,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
                     Start from a Template
                     <ChevronRight className="w-4 h-4" />
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {blueprints.map((blueprint) => (
                       <BlueprintCard
                         key={blueprint._id}
@@ -2007,12 +2012,12 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
             </div>
           )}
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             {showPalette && <ToolPalette onAddNode={handleAddNode} />}
 
             <div
               ref={flowRef}
-              className="flex-1 h-[600px] bg-muted border-2 border-border rounded-lg overflow-hidden"
+              className="flex-1 h-[400px] sm:h-[600px] bg-muted border-2 border-border rounded-lg overflow-hidden"
             >
               <ReactFlow
                 nodes={nodes}

@@ -204,7 +204,7 @@ function ToolsPageContent() {
           </div>
         </div>
 
-        <div className="flex-1 max-w-lg py-4 hidden sm:block">
+        <div className="flex-1 max-w-lg py-4">
           <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all border border-border">
             <div className="text-muted-foreground flex border-none items-center justify-center pl-4 rounded-l-lg">
               <Search className="w-5 h-5" />
@@ -218,8 +218,8 @@ function ToolsPageContent() {
           </label>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
-          <aside className="lg:col-span-3 flex flex-col gap-6 sticky top-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start mt-6">
+          <aside className="lg:col-span-3 flex flex-col gap-4 lg:gap-6 lg:sticky lg:top-24">
             <div className="border border-border rounded-xl overflow-hidden">
               <div className="px-4 py-3 border-b border-border">
                 <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
@@ -345,7 +345,7 @@ function ToolsPageContent() {
                       {featuredTool.description}
                     </div>
                     {featuredTool.stats && (
-                      <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-3 mt-6">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-3 gap-y-2 sm:gap-x-4 sm:gap-y-3 mt-4 sm:mt-6">
                         <div>
                           <div className="flex justify-between text-xs mb-1">
                             <span className="text-gray-400">HP</span>
@@ -432,7 +432,7 @@ function ToolsPageContent() {
                   Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0} items
                 </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {paginatedTools?.map((tool) => {
                   const style = pricingStyles[tool.pricingModel] || pricingStyles.free;
                   const isFavorited = favoriteIds.has(tool._id);
@@ -496,7 +496,7 @@ function ToolsPageContent() {
             </div>
 
             {totalPages > 1 && (
-              <div className="flex justify-center mt-4 gap-2">
+              <div className="flex justify-center mt-4 gap-1 sm:gap-2 flex-wrap">
                 <button 
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}

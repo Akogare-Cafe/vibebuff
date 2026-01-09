@@ -500,7 +500,7 @@ function ToolPalette({
   };
 
   return (
-    <div className="w-64 bg-card border-2 border-border rounded-lg p-3 max-h-[500px] flex flex-col">
+    <div className="w-full sm:w-64 bg-card border-2 border-border rounded-lg p-3 max-h-[350px] sm:max-h-[500px] flex flex-col">
       <h3 className="text-primary font-bold text-xs mb-2 flex items-center gap-2">
         <Wrench className="w-3 h-3" />
         TOOL PALETTE
@@ -804,61 +804,63 @@ export function CollaborativeStackBuilder({ sessionId, isHost }: CollaborativeSt
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-primary flex items-center gap-2">
-              <Layers className="w-5 h-5" />
-              {session.name}
-            </h1>
-            <PixelBadge className="text-xs bg-green-500/20 text-green-400">
-              <Circle className="w-2 h-2 mr-1 fill-current" />
-              LIVE
-            </PixelBadge>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-lg sm:text-xl font-bold text-primary flex items-center gap-2">
+                <Layers className="w-5 h-5" />
+                {session.name}
+              </h1>
+              <PixelBadge className="text-xs bg-green-500/20 text-green-400">
+                <Circle className="w-2 h-2 mr-1 fill-current" />
+                LIVE
+              </PixelBadge>
+            </div>
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1">
+              Real-time collaborative stack building
+            </p>
           </div>
-          <p className="text-muted-foreground text-sm mt-1">
-            Real-time collaborative stack building
-          </p>
-        </div>
 
-        <div className="flex items-center gap-3">
-          <ParticipantsList
-            participants={(participants || []) as Participant[]}
-            hostUserId={session.hostUserId}
-          />
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+            <ParticipantsList
+              participants={(participants || []) as Participant[]}
+              hostUserId={session.hostUserId}
+            />
 
-          <div className="h-6 w-px bg-border" />
+            <div className="hidden sm:block h-6 w-px bg-border" />
 
-          <PixelButton variant="outline" size="sm" onClick={() => setShowShareModal(true)}>
-            <UserPlus className="w-4 h-4 mr-1" />
-            Invite
-          </PixelButton>
-
-          <PixelButton variant="outline" size="sm" onClick={handleExportImage}>
-            <Image className="w-4 h-4" />
-          </PixelButton>
-
-          {isHost ? (
-            <PixelButton variant="outline" size="sm" onClick={handleEndSession}>
-              <X className="w-4 h-4 mr-1" />
-              End
+            <PixelButton variant="outline" size="sm" onClick={() => setShowShareModal(true)}>
+              <UserPlus className="w-4 h-4 sm:mr-1" />
+              <span className="hidden sm:inline">Invite</span>
             </PixelButton>
-          ) : (
-            <PixelButton variant="outline" size="sm" onClick={handleLeave}>
-              <LogOut className="w-4 h-4 mr-1" />
-              Leave
+
+            <PixelButton variant="outline" size="sm" onClick={handleExportImage}>
+              <Image className="w-4 h-4" />
             </PixelButton>
-          )}
+
+            {isHost ? (
+              <PixelButton variant="outline" size="sm" onClick={handleEndSession}>
+                <X className="w-4 h-4 sm:mr-1" />
+                <span className="hidden sm:inline">End</span>
+              </PixelButton>
+            ) : (
+              <PixelButton variant="outline" size="sm" onClick={handleLeave}>
+                <LogOut className="w-4 h-4 sm:mr-1" />
+                <span className="hidden sm:inline">Leave</span>
+              </PixelButton>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         {showPalette && <ToolPalette onAddNode={handleAddNode} />}
 
         <div className="flex-1 relative">
           <div
             ref={flowRef}
-            className="h-[600px] bg-muted border-2 border-border rounded-lg overflow-hidden"
+            className="h-[400px] sm:h-[600px] bg-muted border-2 border-border rounded-lg overflow-hidden"
             onMouseMove={handleMouseMove}
           >
             <ReactFlow
@@ -884,7 +886,7 @@ export function CollaborativeStackBuilder({ sessionId, isHost }: CollaborativeSt
                 </PixelButton>
               </Panel>
 
-              <Panel position="top-right" className="!m-2">
+              <Panel position="top-right" className="!m-2 hidden sm:block">
                 <AiScorePanel score={session.aiScore} isCalculating={isCalculatingScore} />
               </Panel>
             </ReactFlow>
