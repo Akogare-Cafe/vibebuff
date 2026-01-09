@@ -127,7 +127,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
   const color = categoryColors[data.category] || "#3b82f6";
   const icon = categoryIcons[data.category] || <Wrench className="w-4 h-4" />;
 
-  return (
+  const nodeContent = (
     <div className="relative">
       <Handle
         type="target"
@@ -138,7 +138,7 @@ function ToolNode({ data }: { data: ToolNodeData }) {
         className="px-4 py-3 rounded-lg border-2 min-w-[150px] bg-card"
         style={{ borderColor: color }}
       >
-        <div className="flex items-center gap-2 mb-1">
+        <div className="flex items-center gap-2">
           <div
             className="w-6 h-6 rounded flex items-center justify-center"
             style={{ backgroundColor: `${color}20` }}
@@ -147,9 +147,6 @@ function ToolNode({ data }: { data: ToolNodeData }) {
           </div>
           <span className="text-primary font-bold text-sm">{data.label}</span>
         </div>
-        {data.description && (
-          <p className="text-muted-foreground text-xs line-clamp-1">{data.description}</p>
-        )}
         <PixelBadge
           className="mt-2 text-xs"
           style={{ backgroundColor: `${color}20`, color }}
@@ -164,6 +161,19 @@ function ToolNode({ data }: { data: ToolNodeData }) {
       />
     </div>
   );
+
+  if (data.description) {
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>{nodeContent}</TooltipTrigger>
+        <TooltipContent side="top" className="max-w-[200px]">
+          <p className="text-xs">{data.description}</p>
+        </TooltipContent>
+      </Tooltip>
+    );
+  }
+
+  return nodeContent;
 }
 
 const nodeTypes = {
