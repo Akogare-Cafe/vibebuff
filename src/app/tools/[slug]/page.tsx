@@ -54,6 +54,8 @@ import { ToolReviews } from "@/components/tool-reviews";
 import { ToolExternalData } from "@/components/tool-external-data";
 import { ToolInstallCommands, ToolSocialLinks, ToolReadmeInfo, ToolChangelog } from "@/components/tool-expanded-metadata";
 import { AddToDeckButton } from "@/components/add-to-deck-button";
+import { RelatedArticles } from "@/components/related-articles";
+import { ToolJsonLd } from "@/components/tool-json-ld";
 
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -139,6 +141,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
 
   return (
     <div className="min-h-screen bg-background">
+      <ToolJsonLd tool={tool} ratingSummary={ratingSummary} />
       <main className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="mb-6 text-sm flex items-center gap-1">
@@ -757,6 +760,9 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         <div className="mb-8">
           <ToolReviews toolId={tool._id} userId={userId || undefined} />
         </div>
+
+        {/* Related Articles */}
+        <RelatedArticles toolId={tool._id} toolName={tool.name} className="mb-8" />
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">

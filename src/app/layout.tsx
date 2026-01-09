@@ -11,6 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { BotIdClient } from "botid/client";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
+import { McpNotificationBanner } from "@/components/mcp-notification-banner";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -170,6 +171,7 @@ export default function RootLayout({
         <ClerkClientProvider>
           <ConvexClientProvider>
             <ThemeProvider>
+              <McpNotificationBanner />
               <Header />
               <OnboardingWrapper />
               <ReferralHandler />

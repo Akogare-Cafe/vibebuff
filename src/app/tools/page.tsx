@@ -41,9 +41,11 @@ import {
   Zap,
   Code,
   Terminal,
+  Trophy,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
 import { AdDisplay } from "@/components/ad-display";
+import { McpPromoCard } from "@/components/mcp-promo-card";
 
 type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
@@ -192,6 +194,13 @@ function ToolsPageContent() {
             <p className="text-muted-foreground mt-2 max-w-2xl">Equip yourself with legendary frameworks and libraries. Check requirements before acquiring.</p>
           </div>
           <div className="flex gap-2">
+            <Link
+              href="/tools/leaderboards"
+              className="px-4 py-2 bg-transparent border border-yellow-500/50 hover:border-yellow-500 text-yellow-400 text-sm font-medium rounded transition-colors flex items-center gap-2"
+            >
+              <Trophy className="w-4 h-4" />
+              <span className="hidden sm:inline">Leaderboards</span>
+            </Link>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured")}
@@ -539,6 +548,8 @@ function ToolsPageContent() {
               </div>
             )}
           </section>
+
+          <McpPromoCard className="mt-8" />
         </div>
       </main>
 

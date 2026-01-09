@@ -6794,53 +6794,6 @@
       "isOpenSource": false
     },
     {
-      "name": "Mixtral",
-      "slug": "mixtral",
-      "tagline": "A high quality Sparse Mixture-of-Experts.",
-      "description": "A high quality Sparse Mixture-of-Experts.",
-      "websiteUrl": "https://mistral.ai/news/mixtral-of-experts",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [
-        "Context-aware"
-      ],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Codestral",
-      "slug": "codestral",
-      "tagline": "Empowering developers and democratising coding with Mistral AI.",
-      "description": "Empowering developers and democratising coding with Mistral AI.",
-      "websiteUrl": "https://mistral.ai/news/codestral",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [
-        "Context-aware",
-        "VS Code extension"
-      ],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "WizardLM",
       "slug": "wizardlm",
       "tagline": "LLMs build upon Evol Insturct: WizardLM, WizardCoder, WizardMath - nlpxucan/WizardLM",
@@ -6864,30 +6817,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "/login?return_to=https%3A%2F%2Fgithub.com%2Fnlpxucan%2FWizardLM"
-    },
-    {
-      "name": "Vicuna",
-      "slug": "vicuna",
-      "tagline": "<p>We introduce Vicuna-13B, an open-source chatbot trained by fine-tuning LLaMA on user-shared co...",
-      "description": "<p>We introduce Vicuna-13B, an open-source chatbot trained by fine-tuning LLaMA on user-shared conversations collected from ShareGPT. Preliminary evaluation ...",
-      "websiteUrl": "https://lmsys.org/blog/2023-03-30-vicuna",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [
-        "Context-aware"
-      ],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/lm-sys"
     },
     {
       "name": "Zephyr",
@@ -7133,29 +7062,6 @@
       "isOpenSource": false
     },
     {
-      "name": "Dolly",
-      "slug": "dolly",
-      "tagline": "Dolly - Developer tool",
-      "description": "Dolly - Developer tool",
-      "websiteUrl": "https://www.databricks.com/blog/dolly-first-open-commercially-viable-instruction-tuned-llm",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
-    }
-  ],
-  [
-    {
       "name": "MPT",
       "slug": "mpt",
       "tagline": "The latest research, blogs and breakthroughs from Mosaic Research \u2014 plus job openings and more",
@@ -7176,31 +7082,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mosaicml/examples/tree/main/examples/benchmarks/bert"
-    },
-    {
-      "name": "RedPajama",
-      "slug": "redpajama",
-      "tagline": "RedPajama, a project to create leading open-source models, starts by reproducing LLaMA training d...",
-      "description": "RedPajama, a project to create leading open-source models, starts by reproducing LLaMA training dataset of over 1.2 trillion tokens",
-      "websiteUrl": "https://www.together.ai/blog/redpajama",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [
-        "Context-aware",
-        "CLI interface"
-      ],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/EleutherAI/pythia"
     },
     {
       "name": "OpenLLaMA",
@@ -7274,7 +7155,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md"
-    },
+    }
+  ],
+  [
     {
       "name": "Nemotron",
       "slug": "nemotron",
@@ -7299,51 +7182,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/NVIDIA-NeMo/Nemotron"
-    },
-    {
-      "name": "Arctic",
-      "slug": "arctic",
-      "tagline": "Snowflake Arctic from the Snowflake AI research team is a top-tier enterprise LLM that pushes the...",
-      "description": "Snowflake Arctic from the Snowflake AI research team is a top-tier enterprise LLM that pushes the frontiers of cost-effective training and openness.",
-      "websiteUrl": "https://www.snowflake.com/blog/arctic-open-efficient-foundation-language-models-snowflake",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "DBRX",
-      "slug": "dbrx",
-      "tagline": "Explore DBRX, the advanced open-source LLM from Databricks redefining model efficiency and qualit...",
-      "description": "Explore DBRX, the advanced open-source LLM from Databricks redefining model efficiency and quality, leading in AI benchmarks.",
-      "websiteUrl": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [
-        "Context-aware"
-      ],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://www.github.com/databricks/dbrx"
     },
     {
       "name": "Jamba",
@@ -7741,27 +7579,6 @@
       "githubUrl": "/login?return_to=https%3A%2F%2Fgithub.com%2FQwenLM%2FQwen3-Coder"
     },
     {
-      "name": "CodeLlama",
-      "slug": "codellama",
-      "tagline": "CodeLlama - Developer tool",
-      "description": "CodeLlama - Developer tool",
-      "websiteUrl": "https://ai.meta.com/blog/code-llama-large-language-model-coding",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "StarCoder",
       "slug": "starcoder",
       "tagline": "We\u2019re on a journey to advance and democratize artificial intelligence through open source and ope...",
@@ -7854,27 +7671,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "/login?return_to=https%3A%2F%2Fgithub.com%2Fnlpxucan%2FWizardLM%2Ftree%2Fmain%2FWizardCoder"
-    },
-    {
-      "name": "Phind CodeLlama",
-      "slug": "phind-codellama",
-      "tagline": "Phind CodeLlama - Developer tool",
-      "description": "Phind CodeLlama - Developer tool",
-      "websiteUrl": "https://www.phind.com/blog/code-llama-beats-gpt4",
-      "categorySlug": "llms",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "llm"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "Magicoder",
@@ -8345,36 +8141,13 @@
         "autonomous"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Operator",
       "slug": "operator",
       "tagline": "Operator - Developer tool",
       "description": "Operator - Developer tool",
       "websiteUrl": "https://openai.com/operator",
-      "categorySlug": "vibe-coding",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "autonomous"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Computer Use",
-      "slug": "computer-use",
-      "tagline": "Computer Use - Developer tool",
-      "description": "Computer Use - Developer tool",
-      "websiteUrl": "https://www.anthropic.com/news/computer-use",
       "categorySlug": "vibe-coding",
       "pricingModel": "freemium",
       "pros": [],
@@ -8570,7 +8343,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/dust-tt/dust"
-    },
+    }
+  ],
+  [
     {
       "name": "Trae",
       "slug": "trae",
@@ -9572,9 +9347,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/danny-avila/LibreChat"
-    }
-  ],
-  [
+    },
     {
       "name": "LobeChat",
       "slug": "lobechat",
@@ -9806,7 +9579,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/basetenlabs"
-    },
+    }
+  ],
+  [
     {
       "name": "Runpod",
       "slug": "runpod",
@@ -10764,9 +10539,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/modelcontextprotocol/csharp-sdk"
-    }
-  ],
-  [
+    },
     {
       "name": "Go MCP SDK",
       "slug": "go-mcp-sdk",
@@ -10985,7 +10758,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/aws-kb-retrieval-server"
-    },
+    }
+  ],
+  [
     {
       "name": "Brave Search",
       "slug": "brave-search",
@@ -11850,9 +11625,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/aquarius-wing/actor-critic-thinking-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "Adobe Commerce",
       "slug": "adobe-commerce",
@@ -12068,7 +11841,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/jbrinkman/valkey-ai-tasks"
-    },
+    }
+  ],
+  [
     {
       "name": "ai-Bible",
       "slug": "ai-bible",
@@ -12944,9 +12719,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/baryhuang/mcp-server-aws-resources-python"
-    }
-  ],
-  [
+    },
     {
       "name": "AWS S3",
       "slug": "aws-s3",
@@ -13165,7 +12938,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/encoreshao/bamboohr-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "Base Free USDC Transfer",
       "slug": "base-free-usdc-transfer",
@@ -14042,9 +13817,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/jalpp/chessagine-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "ChessPal Chess Engine (stockfish)",
       "slug": "chesspal-chess-engine-stockfish",
@@ -14260,7 +14033,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/TaazKareem/clickup-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "Cloudinary",
       "slug": "cloudinary",
@@ -15130,9 +14905,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/dagster-io/dagster/tree/master/python_modules/libraries/dagster-dg-cli"
-    }
-  ],
-  [
+    },
     {
       "name": "Dappier",
       "slug": "dappier",
@@ -15351,7 +15124,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/vignaesh01/DataverseDevToolsMcpServer"
-    },
+    }
+  ],
+  [
     {
       "name": "DataWorks",
       "slug": "dataworks",
@@ -15591,28 +15366,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/alexpota/deploy-mcp"
-    },
-    {
-      "name": "Depyler",
-      "slug": "depyler",
-      "tagline": "Depyler - Developer tool",
-      "description": "Depyler - Developer tool",
-      "websiteUrl": "https://github.com/paiml/depyler/blob/main/docs/mcp-integration.md",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/paiml/depyler/blob/main/docs/mcp-integration.md"
     },
     {
       "name": "Descope",
@@ -15877,26 +15630,6 @@
       "githubUrl": "https://github.com/abhinav-mangla/dispatch-agent"
     },
     {
-      "name": "DocBase",
-      "slug": "docbase",
-      "tagline": "DocBase - Developer tool",
-      "description": "DocBase - Developer tool",
-      "websiteUrl": "https://help.docbase.io/posts/3925317",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "Docker",
       "slug": "docker",
       "tagline": "Docker - Developer tool",
@@ -16139,27 +15872,6 @@
       "githubUrl": "https://github.com/kukapay/dune-analytics-mcp"
     },
     {
-      "name": "DynamoDB-Toolbox",
-      "slug": "dynamodb-toolbox",
-      "tagline": "DynamoDB-Toolbox - Developer tool",
-      "description": "DynamoDB-Toolbox - Developer tool",
-      "websiteUrl": "https://www.dynamodbtoolbox.com/docs/databases/actions/mcp-toolkit",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "eBook-mcp",
       "slug": "ebook-mcp",
       "tagline": "eBook-mcp - Developer tool",
@@ -16224,9 +15936,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/NellyW8/mcp-EDA"
-    }
-  ],
-  [
+    },
     {
       "name": "EdgeOne Pages MCP",
       "slug": "edgeone-pages-mcp",
@@ -16511,7 +16221,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mcpdotdirect/evm-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "Excel",
       "slug": "excel",
@@ -17322,9 +17034,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Horizon-Digital-Engineering/fpe-demo-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "FrankfurterMCP",
       "slug": "frankfurtermcp",
@@ -17609,7 +17319,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/QuentinCody/github-graphql-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "GitHub Projects",
       "slug": "github-projects",
@@ -18421,9 +18133,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/syucream/holaspirit-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "Home Assistant",
       "slug": "home-assistant",
@@ -18706,7 +18416,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/iflytek/ifly-workflow-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "IIIF",
       "slug": "iiif",
@@ -19517,9 +19229,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Seif-Sameh/Kaggle-mcp.git"
-    }
-  ],
-  [
+    },
     {
       "name": "Keycloak",
       "slug": "keycloak",
@@ -19805,7 +19515,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Mrbaeksang/korea-stock-analyzer-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "KRS Poland",
       "slug": "krs-poland",
@@ -20616,9 +20328,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/lunarcrush/mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "mac-messages-mcp",
       "slug": "mac-messages-mcp",
@@ -20903,7 +20613,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/postralai/masquerade"
-    },
+    }
+  ],
+  [
     {
       "name": "MasterGo",
       "slug": "mastergo",
@@ -21714,9 +21426,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/call518/MCP-PostgreSQL-Ops"
-    }
-  ],
-  [
+    },
     {
       "name": "mcp-proxy",
       "slug": "mcp-proxy",
@@ -22002,7 +21712,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mcpfinder/server"
-    },
+    }
+  ],
+  [
     {
       "name": "MCPIgnore Filesytem",
       "slug": "mcpignore-filesytem",
@@ -22813,9 +22525,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/YuChenSSR/multi-ai-advisor-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "Multicluster-MCP-Sever",
       "slug": "multicluster-mcp-sever",
@@ -23101,7 +22811,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/QuentinCody/nci-gdc-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "NCP",
       "slug": "ncp",
@@ -23912,9 +23624,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/hannesj/mcp-openapi-schema"
-    }
-  ],
-  [
+    },
     {
       "name": "OpenAPI Schema Explorer",
       "slug": "openapi-schema-explorer",
@@ -24199,7 +23909,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/shanejonas/openrpc-mpc-server"
-    },
+    }
+  ],
+  [
     {
       "name": "OpenStack",
       "slug": "openstack",
@@ -25009,9 +24721,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/LGDiMaggio/predictive-maintenance-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "Prefect",
       "slug": "prefect",
@@ -25296,7 +25006,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/pydantic/pydantic-ai/tree/main/mcp-run-python"
-    },
+    }
+  ],
+  [
     {
       "name": "Python CLI MCP",
       "slug": "python-cli-mcp",
@@ -26108,9 +25820,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/cyberchitta/scrapling-fetch-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "Screeny",
       "slug": "screeny",
@@ -26395,7 +26105,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Hexix23/shodan-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "Shopify",
       "slug": "shopify",
@@ -27206,9 +26918,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/atharvagupta2003/mcp-stripe"
-    }
-  ],
-  [
+    },
     {
       "name": "Substack/Medium",
       "slug": "substackmedium",
@@ -27492,7 +27202,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/DLHellMe/telegram-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "Template MCP Server",
       "slug": "template-mcp-server",
@@ -28304,9 +28016,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/lioarce01/trello-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "Trino",
       "slug": "trino",
@@ -28592,7 +28302,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/quazaai/UnityMCPIntegration"
-    },
+    }
+  ],
+  [
     {
       "name": "Unity MCP (AI Game Developer)",
       "slug": "unity-mcp-ai-game-developer",
@@ -29402,9 +29114,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/QuentinCody/wikidata-sparql-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "Wikifunctions",
       "slug": "wikifunctions",
@@ -29689,7 +29399,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/r-huijts/xcode-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "Xcode-mcp-server",
       "slug": "xcode-mcp-server",
@@ -30494,9 +30206,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/posit-dev/mcptools"
-    }
-  ],
-  [
+    },
     {
       "name": "SAP ABAP MCP Server SDK",
       "slug": "sap-abap-mcp-server-sdk",
@@ -30778,7 +30488,9 @@
         "mcp"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "A2A-MCP Java Bridge",
       "slug": "a2a-mcp-java-bridge",
@@ -31573,9 +31285,7 @@
         "mcp"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "r/modelcontextprotocol",
       "slug": "rmodelcontextprotocol",
@@ -31743,27 +31453,6 @@
       "githubUrl": "https://github.com/orgs/modelcontextprotocol/discussions"
     },
     {
-      "name": "Model Context Protocol (MCP) Quickstart",
-      "slug": "model-context-protocol-mcp-quickstart",
-      "tagline": "Model Context Protocol (MCP) Quickstart - Developer tool",
-      "description": "Model Context Protocol (MCP) Quickstart - Developer tool",
-      "websiteUrl": "https://glama.ai/blog/2024-11-25-model-context-protocol-quickstart",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "Setup Claude Desktop App to Use a SQLite Database",
       "slug": "setup-claude-desktop-app-to-use-a-sqlite-database",
       "tagline": "Setup Claude Desktop App to Use a SQLite Database - Developer tool",
@@ -31868,7 +31557,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/duaraghav8/MCPJungle"
-    },
+    }
+  ],
+  [
     {
       "name": "glenngillen/mcpmcp-server",
       "slug": "glenngillenmcpmcp-server",
@@ -32652,9 +32343,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/GenWaveLLC/svgmaker-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "mikechao/metmuseum-mcp",
       "slug": "mikechaometmuseum-mcp",
@@ -32962,7 +32651,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/GittyBurstein/mermaid-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "dnaerys/onekgp-mcp",
       "slug": "dnaerysonekgp-mcp",
@@ -33749,9 +33440,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/pskill9/web-search"
-    }
-  ],
-  [
+    },
     {
       "name": "PhungXuanAnh/selenium-mcp-server",
       "slug": "phungxuananhselenium-mcp-server",
@@ -34059,7 +33748,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/bright8192/esxi-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "cloudflare/mcp-server-cloudflare",
       "slug": "cloudflaremcp-server-cloudflare",
@@ -34846,9 +34537,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/elevy99927/devops-mcp-webui"
-    }
-  ],
-  [
+    },
     {
       "name": "alfonsograziano/node-code-sandbox-mcp",
       "slug": "alfonsograzianonode-code-sandbox-mcp",
@@ -35152,7 +34841,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/juehang/vscode-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "micl2e2/code-to-tree",
       "slug": "micl2e2code-to-tree",
@@ -35935,9 +35626,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/arpitbatra123/mcp-googletasks"
-    }
-  ],
-  [
+    },
     {
       "name": "Cactusinhand/mcp_server_notify",
       "slug": "cactusinhandmcpservernotify",
@@ -36245,7 +35934,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/i-am-bee/acp-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "InditexTech/mcp-teams-server",
       "slug": "inditextechmcp-teams-server",
@@ -37034,9 +36725,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/bram2w/baserow"
-    }
-  ],
-  [
+    },
     {
       "name": "c4pt0r/mcp-server-tidb",
       "slug": "c4pt0rmcp-server-tidb",
@@ -37342,7 +37031,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/domdomegg/airtable-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "edwinbernadus/nocodb-mcp-server",
       "slug": "edwinbernadusnocodb-mcp-server",
@@ -38129,9 +37820,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/OpenLinkSoftware/mcp-jdbc-server"
-    }
-  ],
-  [
+    },
     {
       "name": "openlink/mcp-server-odbc",
       "slug": "openlinkmcp-server-odbc",
@@ -38438,7 +38127,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/schemacrawler/SchemaCrawler-MCP-Server-Usage"
-    },
+    }
+  ],
+  [
     {
       "name": "sirmews/mcp-pinecone",
       "slug": "sirmewsmcp-pinecone",
@@ -39230,9 +38921,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/abrinsmead/mindpilot-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "admica/FileScopeMCP",
       "slug": "admicafilescopemcp",
@@ -39540,7 +39229,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/azer/react-analyzer-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "bitrise-io/bitrise-mcp",
       "slug": "bitrise-iobitrise-mcp",
@@ -40329,9 +40020,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/haris-musa/excel-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "sbroenne/mcp-server-excel",
       "slug": "sbroennemcp-server-excel",
@@ -40637,7 +40326,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/InditexTech/mcp-server-simulator-ios-idb"
-    },
+    }
+  ],
+  [
     {
       "name": "InhiblabCore/mcp-image-compression",
       "slug": "inhiblabcoremcp-image-compression",
@@ -41425,9 +41116,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/opslevel/opslevel-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "ooples/token-optimizer-mcp",
       "slug": "ooplestoken-optimizer-mcp",
@@ -41733,7 +41422,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/ReAPI-com/mcp-openapi"
-    },
+    }
+  ],
+  [
     {
       "name": "reflagcom/mcp",
       "slug": "reflagcommcp",
@@ -42521,9 +42212,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/yikakia/godoc-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "yiwenlu66/PiloTY",
       "slug": "yiwenlu66piloty",
@@ -42828,7 +42517,9 @@
         "mcp"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "bbonnin/openapi-to-mcp",
       "slug": "bbonninopenapi-to-mcp",
@@ -43614,9 +43305,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mark3labs/mcp-filesystem-server"
-    }
-  ],
-  [
+    },
     {
       "name": "mickaelkerjean/filestash",
       "slug": "mickaelkerjeanfilestash",
@@ -43923,7 +43612,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/armorwallet/armor-crypto-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "bankless/onchain-mcp",
       "slug": "banklessonchain-mcp",
@@ -44713,9 +44404,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/kukapay/crypto-news-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "kukapay/crypto-orderbook-mcp",
       "slug": "kukapaycrypto-orderbook-mcp",
@@ -45023,7 +44712,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/kukapay/dune-analytics-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "kukapay/etf-flow-mcp",
       "slug": "kukapayetf-flow-mcp",
@@ -45813,9 +45504,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/polygon-io/mcp_polygon"
-    }
-  ],
-  [
+    },
     {
       "name": "pricepertoken/mcp-server",
       "slug": "pricepertokenmcp-server",
@@ -46122,7 +45811,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Trade-Agent/trade-agent-mcp.git"
-    },
+    }
+  ],
+  [
     {
       "name": "trayders/trayd-mcp",
       "slug": "trayderstrayd-mcp",
@@ -46909,9 +46600,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/hannesrudolph/mcp-ragdocs"
-    }
-  ],
-  [
+    },
     {
       "name": "jinzcdev/markmap-mcp-server",
       "slug": "jinzcdevmarkmap-mcp-server",
@@ -47216,7 +46905,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/shinpr/mcp-local-rag"
-    },
+    }
+  ],
+  [
     {
       "name": "Smart-AI-Memory/empathy-framework",
       "slug": "smart-ai-memoryempathy-framework",
@@ -48003,9 +47694,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/gomarble-ai/facebook-ads-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "gomarble-ai/google-ads-mcp-server",
       "slug": "gomarble-aigoogle-ads-mcp-server",
@@ -48311,7 +48000,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/metoro-io/metoro-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "MindscapeHQ/server-raygun",
       "slug": "mindscapehqserver-raygun",
@@ -49099,9 +48790,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/ChanMeng666/server-google-news"
-    }
-  ],
-  [
+    },
     {
       "name": "chasesaurabh/mcp-page-capture",
       "slug": "chasesaurabhmcp-page-capture",
@@ -49408,7 +49097,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/hbg/mcp-paperswithcode"
-    },
+    }
+  ],
+  [
     {
       "name": "hellokaton/unsplash-mcp-server",
       "slug": "hellokatonunsplash-mcp-server",
@@ -50195,9 +49886,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/serpapi/serpapi-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "searchcraft-inc/searchcraft-mcp-server",
       "slug": "searchcraft-incsearchcraft-mcp-server",
@@ -50505,7 +50194,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/webscraping-ai/webscraping-ai-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "yamanoku/baseline-mcp-server",
       "slug": "yamanokubaseline-mcp-server",
@@ -51295,9 +50986,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mrexodia/ida-pro-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "nickpending/mcp-recon",
       "slug": "nickpendingmcp-recon",
@@ -51453,28 +51142,6 @@
       "githubUrl": "https://github.com/roadwy/cve-search_mcp"
     },
     {
-      "name": "safedep/vet",
-      "slug": "safedepvet",
-      "tagline": "vet-mcp checks open source packages\u2014like those suggested by AI coding tools\u2014for vulnerabilities a...",
-      "description": "vet-mcp checks open source packages\u2014like those suggested by AI coding tools\u2014for vulnerabilities and malicious code. It supports npm and PyPI, and runs locally via Docker or as a standalone binary for fast, automated vetting.",
-      "websiteUrl": "https://github.com/safedep/vet/blob/main/docs/mcp.md",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/safedep/vet/blob/main/docs/mcp.md"
-    },
-    {
       "name": "samvas-codes/dawshund_mcp",
       "slug": "samvas-codesdawshundmcp",
       "tagline": "An MCP server based on dAWShund to enumerate AWS IAM data, analyze effective permissions, and vis...",
@@ -51627,7 +51294,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/slouchd/cyberchef-api-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "StacklokLabs/osv-mcp",
       "slug": "stackloklabsosv-mcp",
@@ -52396,9 +52065,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/transcribe-app/mcp-transcribe"
-    }
-  ],
-  [
+    },
     {
       "name": "campertunity/mcp-server",
       "slug": "campertunitymcp-server",
@@ -52727,7 +52394,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/github/github-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "kaiyuanxiaobing/atomgit-mcp-server",
       "slug": "kaiyuanxiaobingatomgit-mcp-server",
@@ -53493,9 +53162,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Azure/azure-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "Badhansen/notion-mcp",
       "slug": "badhansennotion-mcp",
@@ -53825,7 +53492,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/ekkyarmandi/ticktick-mcp"
-    },
+    }
+  ],
+  [
     {
       "name": "emicklei/mcp-log-proxy",
       "slug": "emickleimcp-log-proxy",
@@ -54591,9 +54260,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/KS-GEN-AI/jira-mcp-server"
-    }
-  ],
-  [
+    },
     {
       "name": "kw510/strava-mcp",
       "slug": "kw510strava-mcp",
@@ -54918,7 +54585,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/offorte/offorte-mcp-server"
-    },
+    }
+  ],
+  [
     {
       "name": "olalonde/mcp-human",
       "slug": "olalondemcp-human",
@@ -55687,9 +55356,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/ujisati/anki-mcp"
-    }
-  ],
-  [
+    },
     {
       "name": "UnitVectorY-Labs/mcp-graphql-forge",
       "slug": "unitvectory-labsmcp-graphql-forge",
@@ -55931,26 +55598,6 @@
       "githubUrl": "https://github.com/Epistates/turbomcp"
     },
     {
-      "name": "https://www.reddit.com/r/ClaudeAI/comments/1h3g01r/want_to_ask_claude_about_model_context_protocol/",
-      "slug": "httpswwwredditcomrclaudeaicomments1h3g01rwanttoaskclaudeaboutmodelcontextprotocol",
-      "tagline": "https://www.reddit.com/r/ClaudeAI/comments/1h3g01r/want_to_ask_claude_about_model_context_protoco...",
-      "description": "https://www.reddit.com/r/ClaudeAI/comments/1h3g01r/want_to_ask_claude_about_model_context_protocol/ - Developer tool",
-      "websiteUrl": "https://www.reddit.com/r/ClaudeAI/comments/1h3g01r/want_to_ask_claude_about_model_context_protocol/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "\ud83c\udf99\ufe0f OpenSource Voice Dictation Agent (like Wispr Flow",
       "slug": "opensource-voice-dictation-agent-like-wispr-flow",
       "tagline": "\ud83c\udf99\ufe0f OpenSource Voice Dictation Agent (like Wispr Flow - Developer tool",
@@ -55993,26 +55640,6 @@
       "githubUrl": "https://github.com/hwchase17/langchainjs"
     },
     {
-      "name": "Concepts",
-      "slug": "concepts",
-      "tagline": "Langchain concepts doc",
-      "description": "Langchain concepts doc",
-      "websiteUrl": "https://docs.langchain.com/docs/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "Twitter account",
       "slug": "twitter-account",
       "tagline": "follow to get fresh updates",
@@ -56051,7 +55678,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Langchain Blog",
       "slug": "langchain-blog",
@@ -56743,9 +56372,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/imartinez/privateGPT"
-    }
-  ],
-  [
+    },
     {
       "name": "CollosalAI Chat",
       "slug": "collosalai-chat",
@@ -57102,7 +56729,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/agi-merge/waggle-dance"
-    },
+    }
+  ],
+  [
     {
       "name": "create-t3-turbo-ai",
       "slug": "create-t3-turbo-ai",
@@ -57207,27 +56836,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/hwchase17/langchain-gradio-template"
-    },
-    {
-      "name": "AI Getting Started",
-      "slug": "ai-getting-started",
-      "tagline": "A Javascript AI getting started stack for weekend projects, including image/text models, vector s...",
-      "description": "A Javascript AI getting started stack for weekend projects, including image/text models, vector stores, auth, and deployment configs",
-      "websiteUrl": "https://github.com/a16z-infra/ai-getting-started",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/a16z-infra/ai-getting-started"
     },
     {
       "name": "Embedchain",
@@ -57795,9 +57403,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/alphasecio/langchain-text-summarizer"
-    }
-  ],
-  [
+    },
     {
       "name": "Langchain Chat Websocket",
       "slug": "langchain-chat-websocket",
@@ -58171,7 +57777,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/blob42/Instrukt"
-    },
+    }
+  ],
+  [
     {
       "name": "GPT Migrate",
       "slug": "gpt-migrate",
@@ -58318,48 +57926,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/memfreeme/memfree"
-    },
-    {
-      "name": "Langchain Tutorials",
-      "slug": "langchain-tutorials",
-      "tagline": "overview and tutorial of the LangChain Library",
-      "description": "overview and tutorial of the LangChain Library",
-      "websiteUrl": "https://github.com/gkamradt/langchain-tutorials",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/gkamradt/langchain-tutorials"
-    },
-    {
-      "name": "LangChain Chinese Getting Started Guide",
-      "slug": "langchain-chinese-getting-started-guide",
-      "tagline": "Chinese LangChain Tutorial for Beginners",
-      "description": "Chinese LangChain Tutorial for Beginners",
-      "websiteUrl": "https://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/liaokongVFX/LangChain-Chinese-Getting-Started-Guide"
     },
     {
       "name": "Flan5 LLM",
@@ -58546,27 +58112,6 @@
       "isOpenSource": false
     },
     {
-      "name": "BYO Knowledge Graph",
-      "slug": "byo-knowledge-graph",
-      "tagline": "BYO Knowledge Graph - Developer tool",
-      "description": "BYO Knowledge Graph - Developer tool",
-      "websiteUrl": "https://github.com/prof-frink-lab/slangchain/blob/main/docs/modules/knowledge_graph/examples/byo_knowledge_graph.ipynb",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/prof-frink-lab/slangchain/blob/main/docs/modules/knowledge_graph/examples/byo_knowledge_graph.ipynb"
-    },
-    {
       "name": "Large Language Models Course",
       "slug": "large-language-models-course",
       "tagline": "Large Language Models Course - Developer tool",
@@ -58629,26 +58174,6 @@
       "isOpenSource": false
     },
     {
-      "name": "LangChain Tutorials Playlist",
-      "slug": "langchain-tutorials-playlist",
-      "tagline": "LangChain Tutorials Playlist - Developer tool",
-      "description": "LangChain Tutorials Playlist - Developer tool",
-      "websiteUrl": "https://www.youtube.com/playlist?list=PL611FKPtL866MnlDPHvI3KwVGqCB-QJAx",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "LangChain James Briggs' Playlist",
       "slug": "langchain-james-briggs-playlist",
       "tagline": "LangChain James Briggs' Playlist - Developer tool",
@@ -58674,26 +58199,6 @@
       "tagline": "Greg Kamradt Playlist - Developer tool",
       "description": "Greg Kamradt Playlist - Developer tool",
       "websiteUrl": "https://www.youtube.com/watch?v=_v_fgW2SkkQ&list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Transformers Agents",
-      "slug": "transformers-agents",
-      "tagline": "Provides a natural language API on top of transformers",
-      "description": "Provides a natural language API on top of transformers",
-      "websiteUrl": "https://huggingface.co/docs/transformers/transformers_agents",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -58833,9 +58338,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/srush/MiniChain"
-    }
-  ],
-  [
+    },
     {
       "name": "Griptape",
       "slug": "griptape",
@@ -59318,7 +58821,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/Ironclad/rivet"
-    },
+    }
+  ],
+  [
     {
       "name": "RestGPT",
       "slug": "restgpt",
@@ -59885,9 +59390,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/llmware-ai/llmware"
-    }
-  ],
-  [
+    },
     {
       "name": "Pipecat",
       "slug": "pipecat",
@@ -60361,7 +59864,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Cyber Security Career Mentor",
       "slug": "cyber-security-career-mentor",
@@ -60901,9 +60406,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Threat Modeling Companion",
       "slug": "threat-modeling-companion",
@@ -61363,7 +60866,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Cyber Scraper: Seraphina (Web Crawler)",
       "slug": "cyber-scraper-seraphina-web-crawler",
@@ -61903,9 +61408,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "API Guardian",
       "slug": "api-guardian",
@@ -62365,7 +61868,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Cyber Test & CareerPrep",
       "slug": "cyber-test-careerprep",
@@ -62906,9 +62411,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Refact.ai",
       "slug": "refactai",
@@ -63031,26 +62534,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/salesforce/CodeGen"
-    },
-    {
-      "name": "OpenAI Codex",
-      "slug": "openai-codex",
-      "tagline": "OpenAI Codex - Developer tool",
-      "description": "OpenAI Codex - Developer tool",
-      "websiteUrl": "https://openai.com/blog/openai-codex/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "OpenAI Codex CLI",
@@ -63396,7 +62879,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Memex",
       "slug": "memex",
@@ -63463,26 +62948,6 @@
       "tagline": "Berrry - Developer tool",
       "description": "Berrry - Developer tool",
       "websiteUrl": "https://berrry.app",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Atlassian Rovo",
-      "slug": "atlassian-rovo",
-      "tagline": "Atlassian Rovo - Developer tool",
-      "description": "Atlassian Rovo - Developer tool",
-      "websiteUrl": "https://www.atlassian.com/blog/announcements/rovo-dev-command-line-interface",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -63924,9 +63389,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Vibe Compiler (vibec)",
       "slug": "vibe-compiler-vibec",
@@ -64154,91 +63617,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Apache 2.0",
-      "slug": "apache-20",
-      "tagline": "Allows users to use the software for any purpose, to distribute it, to modify it, and to distribu...",
-      "description": "Allows users to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions of the software under the terms of the license, without concern for royalties.",
-      "websiteUrl": "https://en.wikipedia.org/wiki/Apache_License",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "MIT",
-      "slug": "mit",
-      "tagline": "Similar to Apache 2.0 but shorter and simpler. Also, in contrast to Apache 2.0, does not require ...",
-      "description": "Similar to Apache 2.0 but shorter and simpler. Also, in contrast to Apache 2.0, does not require stating any significant changes to the original code.",
-      "websiteUrl": "https://en.wikipedia.org/wiki/MIT_License",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "CC BY-SA-4.0",
       "slug": "cc-by-sa-40",
       "tagline": "Allows (i) copying and redistributing the material and (ii) remixing, transforming, and building ...",
       "description": "Allows (i) copying and redistributing the material and (ii) remixing, transforming, and building upon the material\nfor any purpose, even commercially. But if you do the latter, youmust distribute your contributions under the same license as the original.(Thus, may not be viable for internal teams.)",
       "websiteUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "OpenRAIL-M v1",
-      "slug": "openrail-m-v1",
-      "tagline": "Allows royalty-free access and flexible downstream use and sharing of the model and modifications...",
-      "description": "Allows royalty-free access and flexible downstream use and sharing of the model and modifications of it, and comes with a set of use restrictions (seeAttachment A)",
-      "websiteUrl": "https://www.bigcode-project.org/docs/pages/model-license/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "BSD-3-Clause",
-      "slug": "bsd-3-clause",
-      "tagline": "This version allows unlimited redistribution for any purpose as long as its copyright notices and...",
-      "description": "This version allows unlimited redistribution for any purpose as long as its copyright notices and the license's disclaimers of warranty are maintained.",
-      "websiteUrl": "https://en.wikipedia.org/wiki/BSD_licenses",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -64300,26 +63683,6 @@
       "tagline": "OpenAI API Documentation - Developer tool",
       "description": "OpenAI API Documentation - Developer tool",
       "websiteUrl": "https://beta.openai.com/docs",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "chatGPT launch blog",
-      "slug": "chatgpt-launch-blog",
-      "tagline": "chatGPT launch blog - Developer tool",
-      "description": "chatGPT launch blog - Developer tool",
-      "websiteUrl": "https://openai.com/blog/chatgpt/",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -64541,28 +63904,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
-    {
-      "name": "ChassistantGPT - embeds ChatGPT as a hands-free voice assistant in the background",
-      "slug": "chassistantgpt-embeds-chatgpt-as-a-hands-free-voice-assistant-in-the-background",
-      "tagline": "embeds ChatGPT as a hands-free voice assistant in the background",
-      "description": "embeds ChatGPT as a hands-free voice assistant in the background",
-      "websiteUrl": "https://github.com/idosal/assistant-chat-gpt",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/idosal/assistant-chat-gpt"
-    },
+    }
+  ],
+  [
     {
       "name": "WebChatGPT - augment your prompts to ChatGPT with web search results",
       "slug": "webchatgpt-augment-your-prompts-to-chatgpt-with-web-search-results",
@@ -64960,28 +64304,6 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
-    {
-      "name": "Create your first app using ChatGPT",
-      "slug": "create-your-first-app-using-chatgpt",
-      "tagline": "Create your first app using ChatGPT - Developer tool",
-      "description": "Create your first app using ChatGPT - Developer tool",
-      "websiteUrl": "https://genez.io/blog/create-your-first-app-using-chatgpt/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "shareGPT - permenent links to your conversations",
@@ -65026,27 +64348,6 @@
       "githubUrl": "https://github.com/shobrook/adrenaline/"
     },
     {
-      "name": "ChatARKit: Using ChatGPT to Create AR Experiences with Natural Language",
-      "slug": "chatarkit-using-chatgpt-to-create-ar-experiences-with-natural-language",
-      "tagline": "Using ChatGPT to Create AR Experiences with Natural Language",
-      "description": "Using ChatGPT to Create AR Experiences with Natural Language",
-      "websiteUrl": "https://github.com/trzy/ChatARKit",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/trzy/ChatARKit"
-    },
-    {
       "name": "GPT3 Blog Post Generator",
       "slug": "gpt3-blog-post-generator",
       "tagline": "GPT3 Blog Post Generator - Developer tool",
@@ -65066,26 +64367,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/simplysabir/AI-Writing-Assistant"
-    },
-    {
-      "name": "GitBrain: Native git client for Mac powered by OpenAI API - provides suggestions for git operations",
-      "slug": "gitbrain-native-git-client-for-mac-powered-by-openai-api-provides-suggestions-for-git-operations",
-      "tagline": "provides suggestions for git operations",
-      "description": "provides suggestions for git operations",
-      "websiteUrl": "https://gitbrain.dev",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "Voice-based chatGPT",
@@ -65382,46 +64663,6 @@
       "githubUrl": "https://github.com/f/awesome-chatgpt-prompts"
     },
     {
-      "name": "How Large Language Models Will Transform Science, Society, and AI",
-      "slug": "how-large-language-models-will-transform-science-society-and-ai",
-      "tagline": "How Large Language Models Will Transform Science, Society, and AI - Developer tool",
-      "description": "How Large Language Models Will Transform Science, Society, and AI - Developer tool",
-      "websiteUrl": "https://hai.stanford.edu/news/how-large-language-models-will-transform-science-society-and-ai",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Generative AI: A Creative New World",
-      "slug": "generative-ai-a-creative-new-world",
-      "tagline": "A Creative New World- A comprehensive examination of the generative AI industry, offering a histo...",
-      "description": "A Creative New World- A comprehensive examination of the generative AI industry, offering a historical perspective and in-depth analysis of the industry ecosystem. By Sonya Huang, Pat Grady and GPT-3, September 19, 2022.",
-      "websiteUrl": "https://www.sequoiacap.com/article/generative-ai-a-creative-new-world/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "A Coming-Out Party for Generative A.I., Silicon Valley's New Craze",
       "slug": "a-coming-out-party-for-generative-ai-silicon-valleys-new-craze",
       "tagline": "A Coming-Out Party for Generative A.I., Silicon Valley's New Craze - Developer tool",
@@ -65482,66 +64723,6 @@
       "isOpenSource": false
     },
     {
-      "name": "DALL\u00b7E 2",
-      "slug": "dalle-2",
-      "tagline": "DALL\u00b7E 2 - Developer tool",
-      "description": "DALL\u00b7E 2 - Developer tool",
-      "websiteUrl": "https://openai.com/blog/dall-e-2/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Stable Diffusion Public Release",
-      "slug": "stable-diffusion-public-release",
-      "tagline": "Stable Diffusion Public Release - Developer tool",
-      "description": "Stable Diffusion Public Release - Developer tool",
-      "websiteUrl": "https://stability.ai/blog/stable-diffusion-public-release",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Bing Search",
-      "slug": "bing-search",
-      "tagline": "Bing Search - Developer tool",
-      "description": "Bing Search - Developer tool",
-      "websiteUrl": "https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "GPT-4",
       "slug": "gpt-4",
       "tagline": "GPT-4 - Developer tool",
@@ -65582,51 +64763,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Gopher",
-      "slug": "gopher",
-      "tagline": "Gopher - Developer tool",
-      "description": "Gopher - Developer tool",
-      "websiteUrl": "https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "OPT",
       "slug": "opt",
       "tagline": "OPT - Developer tool",
       "description": "OPT - Developer tool",
       "websiteUrl": "https://huggingface.co/facebook/opt-350m",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Vicuna-13B",
-      "slug": "vicuna-13b",
-      "tagline": "Vicuna-13B - Developer tool",
-      "description": "Vicuna-13B - Developer tool",
-      "websiteUrl": "https://lmsys.org/blog/2023-03-30-vicuna/",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -65800,7 +64941,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "privateGPT",
       "slug": "privategpt",
@@ -65982,9 +65125,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Lex",
       "slug": "lex",
@@ -66805,7 +65946,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Amazon Q",
       "slug": "amazon-q",
@@ -66989,9 +66132,7 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/jupyterlab/jupyter-ai"
-    }
-  ],
-  [
+    },
     {
       "name": "DataLine",
       "slug": "dataline",
@@ -67465,11 +66606,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Imagen",
-      "slug": "imagen",
-      "tagline": "Imagen - Developer tool",
-      "description": "Imagen - Developer tool",
-      "websiteUrl": "https://imagen.research.google/",
+      "name": "DALL\u00b7E 2",
+      "slug": "dalle-2",
+      "tagline": "DALL\u00b7E 2 - Developer tool",
+      "description": "DALL\u00b7E 2 - Developer tool",
+      "websiteUrl": "https://openai.com/dall-e-2/",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -67485,11 +66626,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Make-A-Scene",
-      "slug": "make-a-scene",
-      "tagline": "Make-A-Scene - Developer tool",
-      "description": "Make-A-Scene - Developer tool",
-      "websiteUrl": "https://ai.facebook.com/blog/greater-creative-control-for-ai-image-generation/",
+      "name": "Imagen",
+      "slug": "imagen",
+      "tagline": "Imagen - Developer tool",
+      "description": "Imagen - Developer tool",
+      "websiteUrl": "https://imagen.research.google/",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -67824,7 +66965,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "ClipDrop",
       "slug": "clipdrop",
@@ -68004,9 +67147,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Microsoft Designer",
       "slug": "microsoft-designer",
@@ -68830,7 +67971,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Have I Been Trained?",
       "slug": "have-i-been-trained",
@@ -69011,9 +68154,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Selfies with Sama",
       "slug": "selfies-with-sama",
@@ -69117,26 +68258,6 @@
       "githubUrl": "https://github.com/openai/openai-cookbook"
     },
     {
-      "name": "OpenAI Prompt Engineering Guide",
-      "slug": "openai-prompt-engineering-guide",
-      "tagline": "OpenAI Prompt Engineering Guide - Developer tool",
-      "description": "OpenAI Prompt Engineering Guide - Developer tool",
-      "websiteUrl": "https://platform.openai.com/docs/guides/prompt-engineering",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "PromptPerfect",
       "slug": "promptperfect",
       "tagline": "PromptPerfect - Developer tool",
@@ -69176,26 +68297,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/anthropics/courses"
-    },
-    {
-      "name": "Build a Large Language Model (From Scratch)",
-      "slug": "build-a-large-language-model-from-scratch",
-      "tagline": "Build a Large Language Model (From Scratch) - Developer tool",
-      "description": "Build a Large Language Model (From Scratch) - Developer tool",
-      "websiteUrl": "https://www.manning.com/books/build-a-large-language-model-from-scratch",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "Prompt Engineering for Vision Models",
@@ -69881,7 +68982,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Nexus AI",
       "slug": "nexus-ai",
@@ -70021,9 +69124,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Dittto.ai",
       "slug": "ditttoai",
@@ -70884,7 +69985,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Magic Potion",
       "slug": "magic-potion",
@@ -71024,9 +70127,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "X-doc AI",
       "slug": "x-doc-ai",
@@ -71893,7 +70994,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "PhotoGuruAI",
       "slug": "photoguruai",
@@ -72033,9 +71136,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "RepublicLabs.AI",
       "slug": "republiclabsai",
@@ -72896,7 +71997,9 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "Clearbit",
       "slug": "clearbit",
@@ -73036,9 +72139,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Chatfuel",
       "slug": "chatfuel",
@@ -73900,7 +73001,9 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/av/harbor"
-    },
+    }
+  ],
+  [
     {
       "name": "LangMagic",
       "slug": "langmagic",
@@ -74040,9 +73143,7 @@
         "developer-tools"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "Bricks",
       "slug": "bricks",
@@ -74183,106 +73284,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/mrdbourke/machine-learning-roadmap"
-    },
-    {
-      "name": "Andrew Ng\u2019s Machine Learning at Stanford University",
-      "slug": "andrew-ngs-machine-learning-at-stanford-university",
-      "tagline": "Andrew Ng\u2019s Machine Learning at Stanford University - Developer tool",
-      "description": "Andrew Ng\u2019s Machine Learning at Stanford University - Developer tool",
-      "websiteUrl": "https://www.coursera.org/learn/machine-learning",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Sebastian Thrun\u2019s Introduction To Machine Learning",
-      "slug": "sebastian-thruns-introduction-to-machine-learning",
-      "tagline": "Sebastian Thrun\u2019s Introduction To Machine Learning - Developer tool",
-      "description": "Sebastian Thrun\u2019s Introduction To Machine Learning - Developer tool",
-      "websiteUrl": "https://www.udacity.com/course/intro-to-machine-learning--ud120",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "AI and Machine Learning Roadmaps",
-      "slug": "ai-and-machine-learning-roadmaps",
-      "tagline": "AI and Machine Learning Roadmaps - Developer tool",
-      "description": "AI and Machine Learning Roadmaps - Developer tool",
-      "websiteUrl": "https://www.scaler.com/blog/category/artificial-intelligence-machine-learning/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "How To Learn Artificial Intelligence (AI)?",
-      "slug": "how-to-learn-artificial-intelligence-ai",
-      "tagline": "How To Learn Artificial Intelligence (AI)? - Developer tool",
-      "description": "How To Learn Artificial Intelligence (AI)? - Developer tool",
-      "websiteUrl": "https://www.appliedaicourse.com/blog/how-to-learn-artificial-intelligence-ai/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Geoffrey Hinton\u2019s Neural Networks For Machine Learning",
-      "slug": "geoffrey-hintons-neural-networks-for-machine-learning",
-      "tagline": "Geoffrey Hinton\u2019s Neural Networks For Machine Learning - Developer tool",
-      "description": "Geoffrey Hinton\u2019s Neural Networks For Machine Learning - Developer tool",
-      "websiteUrl": "https://medium.com/kaggle-blog",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "Jeremy Howard\u2019s Fast.ai & Data Institute Certificates",
@@ -75055,7 +74056,9 @@
         "mcp"
       ],
       "isOpenSource": false
-    },
+    }
+  ],
+  [
     {
       "name": "mcp-server-qdrant",
       "slug": "mcp-server-qdrant",
@@ -75099,9 +74102,7 @@
         "mcp"
       ],
       "isOpenSource": false
-    }
-  ],
-  [
+    },
     {
       "name": "RAG Systems",
       "slug": "rag-systems",
@@ -75521,46 +74522,6 @@
       "isOpenSource": false
     },
     {
-      "name": "Top 5 Agentic AI Coding Assistants April 2025 | APIpie",
-      "slug": "top-5-agentic-ai-coding-assistants-april-2025-apipie",
-      "tagline": "AgenticAIcodingassistants are transforming software development. Unlike traditional code completi...",
-      "description": "AgenticAIcodingassistants are transforming software development. Unlike traditional code completiontools, these advanced IDE-integratedagentscan plan solutions, modify multiple files, run tests, and iterate on code autonomously. They act asAIco-developers that use reasoning and iterative planning to tackle complex, multi-stepcodingtasks with minimal human intervention. As of April ...",
-      "websiteUrl": "https://dev.to/apipie-ai/top-5-agentic-ai-coding-assistants-april-2025-apipie-1139",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "5 Best AI Agents for Coding and Programming in 2025",
-      "slug": "5-best-ai-agents-for-coding-and-programming-in-2025",
-      "tagline": "5 BestAIAgentsforCodingDiscover the top 5AIcodingagentsof2025: CodeGPT, GitHub Copilot, PostmanAI...",
-      "description": "5 BestAIAgentsforCodingDiscover the top 5AIcodingagentsof2025: CodeGPT, GitHub Copilot, PostmanAI, Replit, and Snyk. Thesetoolshelp developers write, test, debug, and automate code faster, with real-world use cases and pricing insights included.",
-      "websiteUrl": "https://www.index.dev/blog/ai-agents-for-coding",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "Top coding agents in 2025: Tools that actually help you build",
       "slug": "top-coding-agents-in-2025-tools-that-actually-help-you-build",
       "tagline": "agentcodingTopcodingagentsin2025:Toolsthat actually help you build A detailed comparison of topAI...",
@@ -75581,371 +74542,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Top 7 AI Coding Agents for 2025: Tested & Ranked - lindy.ai",
-      "slug": "top-7-ai-coding-agents-for-2025-tested-ranked-lindyai",
-      "tagline": "In this article, we'll cover: The 7 bestAIcodingagentsfor2025How I selected my top 7codingagentsC...",
-      "description": "In this article, we'll cover: The 7 bestAIcodingagentsfor2025How I selected my top 7codingagentsCommon pain points that come withAIcodingagentsWhat to look for inagent-style devtoolsLet's glance at my 7 topAIcodingagentsof2025.",
-      "websiteUrl": "https://www.lindy.ai/blog/ai-coding-agents",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top AI Coding Agents in 2025: Performance Analysis & Rankings",
-      "slug": "top-ai-coding-agents-in-2025-performance-analysis-rankings",
-      "tagline": "Discover the leadingAIcodingagentsof2025based on real pull request data, merge rates, and perform...",
-      "description": "Discover the leadingAIcodingagentsof2025based on real pull request data, merge rates, and performance metrics from comprehensive testing.",
-      "websiteUrl": "https://www.tembo.io/blog/top-coding-agent-tools",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top 10 Vibe Coding Tools for 2025 | Ryz Labs | Ryz Labs Learn",
-      "slug": "top-10-vibe-coding-tools-for-2025-ryz-labs-ryz-labs-learn",
-      "tagline": "By leveraging thesevibecodingtools, development teams can significantly enhance their productivit...",
-      "description": "By leveraging thesevibecodingtools, development teams can significantly enhance their productivity and creativity incoding. At Ryz Labs, we have extensive expertise in AI development and can assist you in integrating thesetoolsinto yourworkflowto optimize engineering velocity.",
-      "websiteUrl": "https://learn.ryzlabs.com/tools/top-10-vibe-coding-tools-for-2025",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "The 9 Best Vibe Coding Tools in 2026 - Techjockey",
-      "slug": "the-9-best-vibe-coding-tools-in-2026-techjockey",
-      "tagline": "The right AIcodingtoolacts like a second brain, keeping you in the flow. This blog will explore t...",
-      "description": "The right AIcodingtoolacts like a second brain, keeping you in the flow. This blog will explore the 9 bestvibecodingtoolsfor non-developers!VibeCodingToolsComparison: Features, Use Cases, and Fit This comparison table highlights how eachvibecodingtooldiffers based on who it's built for and how it supports faster app creation.",
-      "websiteUrl": "https://www.techjockey.com/blog/top-vibe-coding-tools",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top 10 Vibe Coding Tools in 2026 (Cursor, Copilot, Claude Code + More)",
-      "slug": "top-10-vibe-coding-tools-in-2026-cursor-copilot-claude-code-more",
-      "tagline": "Vibecodingtools: the top 10 for 2026, ranked by inspectability, maintainability, and learning val...",
-      "description": "Vibecodingtools: the top 10 for 2026, ranked by inspectability, maintainability, and learning value - practical tips to avoid shiny but fragile stacks.",
-      "websiteUrl": "https://www.nucamp.co/blog/top-10-vibe-coding-tools-in-2026-cursor-copilot-claude-code-more",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "10 Best Vibe Coding Tools Every Developer Should Try",
-      "slug": "10-best-vibe-coding-tools-every-developer-should-try",
-      "tagline": "Want to code with more focus and flow? Discover the 10 bestvibecodingtoolsthat help you stay prod...",
-      "description": "Want to code with more focus and flow? Discover the 10 bestvibecodingtoolsthat help you stay productive and makecodingfeel effortless.",
-      "websiteUrl": "https://www.codeitbro.com/blog/best-vibe-coding-tools",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "How to Vibe Code? Best Vibe Coding Tools in 2025",
-      "slug": "how-to-vibe-code-best-vibe-coding-tools-in-2025",
-      "tagline": "The 6 bestvibecodingtoolsin 2025 Below are sixtoolsmany developers and makers are using forvibeco...",
-      "description": "The 6 bestvibecodingtoolsin 2025 Below are sixtoolsmany developers and makers are using forvibecodingin 2025. Each section covers what thetoolis best at, how it fits into avibe-codingworkflow, and its current pricing \u2014 with free tiers and notable limits called out so you can identify freevibecodingtoolsor affordable upgrades.",
-      "websiteUrl": "https://blog.getbind.co/2025/10/30/how-to-vibe-code-best-vibe-coding-tools-in-2025/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "10 Claude Code Alternatives That Every Developer Must Use",
-      "slug": "10-claude-code-alternatives-that-every-developer-must-use",
-      "tagline": "Claudeis still cloud-based, proprietary, and not always accessible depending on where you live or...",
-      "description": "Claudeis still cloud-based, proprietary, and not always accessible depending on where you live or work. If you're a developer who prefers more flexibility, open access, or offline support, you've probably looked forClaudecodealternatives.",
-      "websiteUrl": "https://dev.to/therealmrmumba/10-claude-code-alternatives-that-every-developer-must-use-4ffd",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "10 Best Claude AI Alternatives for 2026 (Full Comparison)",
-      "slug": "10-best-claude-ai-alternatives-for-2026-full-comparison",
-      "tagline": "Looking for the bestClaudeAIalternativesin 2026? Compare top-ranking models like GPT-5.2, Gemini ...",
-      "description": "Looking for the bestClaudeAIalternativesin 2026? Compare top-ranking models like GPT-5.2, Gemini 3, and DeepSeek-V4. Discover the best tools for coding, reasoning, and multimodal tasks on one affordable platform.",
-      "websiteUrl": "https://www.glbgpt.com/hub/10-best-claude-ai-alternatives/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "I tested 5 Claude Opus 4.5 alternatives: Here's the best AI for coding ...",
-      "slug": "i-tested-5-claude-opus-45-alternatives-heres-the-best-ai-for-coding",
-      "tagline": "Explore the topClaudeOpus 4.5alternativesfor AI coding. This guide compares GPT-5.2 Codex, Gemini...",
-      "description": "Explore the topClaudeOpus 4.5alternativesfor AI coding. This guide compares GPT-5.2 Codex, Gemini 3 Pro, and more on performance, cost, and features.",
-      "websiteUrl": "https://www.eesel.ai/blog/claude-opus-45-alternatives",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "7 Best Claude Code Alternatives in 2025 - Tembo",
-      "slug": "7-best-claude-code-alternatives-in-2025-tembo",
-      "tagline": "Discover the 7 bestClaudeCodealternativesin 2025. Compare features, pricing, and top tools like T...",
-      "description": "Discover the 7 bestClaudeCodealternativesin 2025. Compare features, pricing, and top tools like Tembo, GitHub Copilot, Cursor, and GeminiCodeAssist to find the right AI coding assistant for your team.",
-      "websiteUrl": "https://www.tembo.io/blog/claude-code-alternatives",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Claude Code Alternatives: Top 12 AI Coding Assistants & Similar Apps",
-      "slug": "claude-code-alternatives-top-12-ai-coding-assistants-similar-apps",
-      "tagline": "The bestClaudeCodealternativesare Void, Windsurf Editor and Google Antigravity. Our crowd-sourced...",
-      "description": "The bestClaudeCodealternativesare Void, Windsurf Editor and Google Antigravity. Our crowd-sourced lists contains more than 50 apps similar toClaudeCodefor Mac, Windows, Linux, Web-based and more.",
-      "websiteUrl": "https://alternativeto.net/software/claude-code/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "aider Alternatives: Top 12 AI Coding Assistants & Similar Apps",
-      "slug": "aider-alternatives-top-12-ai-coding-assistants-similar-apps",
-      "tagline": "aiderAlternativesAICodingAssistants and other similar apps likeaideraideris described as'Aideris ...",
-      "description": "aiderAlternativesAICodingAssistants and other similar apps likeaideraideris described as'Aideris a command line tool that lets you pair program with GPT-3.5/GPT-4, to edit code stored in your local git repository.",
-      "websiteUrl": "https://alternativeto.net/software/aider/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "2025s Best AI Coding Tools: Real Cost, Geeky Value & Honest Comparison",
-      "slug": "2025s-best-ai-coding-tools-real-cost-geeky-value-honest-comparison",
-      "tagline": "2025 guide toAIcode assistants-Gemini, Copilot, Claude, Cursor,Aider, and more. In-depth review, ...",
-      "description": "2025 guide toAIcode assistants-Gemini, Copilot, Claude, Cursor,Aider, and more. In-depth review, honest pros/cons, real cost, and a mega comparison table for devs.",
-      "websiteUrl": "https://dev.to/stevengonsalvez/2025s-best-ai-coding-tools-real-cost-geeky-value-honest-comparison-4d63",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "8 Best Open Source Aider Alternatives (2025)",
-      "slug": "8-best-open-source-aider-alternatives-2025",
-      "tagline": "Other interesting open sourcealternativestoAiderare: Tabby, Void, Roo Code and Kilocode.Aideralte...",
-      "description": "Other interesting open sourcealternativestoAiderare: Tabby, Void, Roo Code and Kilocode.Aideralternativesare mainlyAICodingAssistants but may also beAI-Powered Editors or IDEs & Code Editors. Browse these if you want a narrower list ofalternativesor looking for a specific functionality ofAider.",
-      "websiteUrl": "https://openalternative.co/alternatives/aider",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "GitHub Copilot vs Aider vs Cursor vs Qodo: AI Coding Assistants Buyer's ...",
       "slug": "github-copilot-vs-aider-vs-cursor-vs-qodo-ai-coding-assistants-buyers",
       "tagline": "GitHub Copilot vsAider+ 9 moreAICodingAssistants tools. Real reviews, pricing & API analysis. Dis...",
       "description": "GitHub Copilot vsAider+ 9 moreAICodingAssistants tools. Real reviews, pricing & API analysis. Discover the top pick.",
       "websiteUrl": "https://adtools.org/buyers-guide/github-copilot-vs-aider-vs-cursor-vs-qodo-ai-coding-assistants-buyer-s-guide",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Best Aider Alternatives: AI Code Assistants for Devs in 2025 - Replit",
-      "slug": "best-aider-alternatives-ai-code-assistants-for-devs-in-2025-replit",
-      "tagline": "Discover the bestAideralternativesfor 2025:AIcode assistants enhancing IDEs, codebases, and workf...",
-      "description": "Discover the bestAideralternativesfor 2025:AIcode assistants enhancing IDEs, codebases, and workflows with open-source tools, real-time code completion and more.",
-      "websiteUrl": "https://replit.com/discover/aider-alternative",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "10x Coding with Parallel AI Agents: Zerg, Toad, and the Future of ...",
-      "slug": "10x-coding-with-parallel-ai-agents-zerg-toad-and-the-future-of",
-      "tagline": "ParallelAIagentsaren't science fiction - they're a practical tool I use daily. The combination of...",
-      "description": "ParallelAIagentsaren't science fiction - they're a practical tool I use daily. The combination of Zerg for orchestration, Toad for execution, and toad-history for analysis creates a workflow that feels genuinely different from sequentialAIcoding.",
-      "websiteUrl": "https://blog.laurentcharignon.com/post/2025-12-28-10x-coding-with-parallel-ai-agents/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Parallelizing AI Coding Agents | AI Native Dev",
-      "slug": "parallelizing-ai-coding-agents-ai-native-dev",
-      "tagline": "Discover a newAIdev workflow: how to parallelizecodingagentsfor faster builds, deeper exploration...",
-      "description": "Discover a newAIdev workflow: how to parallelizecodingagentsfor faster builds, deeper exploration, and smarter reviews using tools like Claude Code.",
-      "websiteUrl": "https://ainativedev.io/news/how-to-parallelize-ai-coding-agents",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -76001,193 +74602,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Parallel Coding with AI Agents: What's Hype, What's Real, and How We ...",
-      "slug": "parallel-coding-with-ai-agents-whats-hype-whats-real-and-how-we",
-      "tagline": "Closing thoughtParallelcodingwithAIagentsisn't a magic lever. It's a pattern that works when you ...",
-      "description": "Closing thoughtParallelcodingwithAIagentsisn't a magic lever. It's a pattern that works when you pick the right battles and enforce a few plain rules: limit the strands, source your answers, keep human judgment at the merge. Do that, and you get real speed on the mundane parts without sacrificing the craft that makes software worth ...",
-      "websiteUrl": "https://dev.to/rylko_roman_965498de23cd8/parallel-coding-with-ai-agents-whats-hype-whats-real-and-how-we-run-it-at-pynest-55a8",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Best AI Coding Agents for Developers in 2026 (Real-World Reviews)",
-      "slug": "best-ai-coding-agents-for-developers-in-2026-real-world-reviews",
-      "tagline": "More recently, AIcodingassistants are no longer limited to autocomplete or chat-based assistance....",
-      "description": "More recently, AIcodingassistants are no longer limited to autocomplete or chat-based assistance. AItoolslike Claude Code, Codex, Cursor, and GitHub Copilot are increasingly capable of acting asautonomousagentsthat understand repositories, make multi-file changes, run tests, and iterate on tasks with minimal human input.",
-      "websiteUrl": "https://www.faros.ai/blog/best-ai-coding-agents-2026",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "16 Best AI Agents for Coding To Use Right Now in 2026",
       "slug": "16-best-ai-agents-for-coding-to-use-right-now-in-2026",
       "tagline": "An AIagentforcodingis quickly becoming every developer's go-to partner for smarter and faster pro...",
       "description": "An AIagentforcodingis quickly becoming every developer's go-to partner for smarter and faster programming. Thesetoolsunderstand context, suggest real-time improvements, and even automate complex tasks. They help reducecodingerrors while boosting overall efficiency and creativity. In this guide, we highlight the top AIagentsthat are redefining thecodingexperience. Key Takeaways ...",
       "websiteUrl": "https://visionvix.com/best-ai-agents-for-coding/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Best Orchestration Tools for AI Projects - prompts.ai",
-      "slug": "best-orchestration-tools-for-ai-projects-promptsai",
-      "tagline": "AIorchestrationtoolssimplify managing workflows across data ingestion, preprocessing, training, d...",
-      "description": "AIorchestrationtoolssimplify managing workflows across data ingestion, preprocessing, training, deployment, and monitoring. They automate tasks, reduce errors, and help scale operations efficiently. This guide compares eighttoolsforAIorchestration, focusing on deployment options, integrations, governance, and costs. Key Highlights:",
-      "websiteUrl": "https://www.prompts.ai/blog/best-orchestration-tools-ai-projects",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "The 10 Best AI Orchestration Platforms in 2025 - domo.com",
-      "slug": "the-10-best-ai-orchestration-platforms-in-2025-domocom",
-      "tagline": "No-codetoolsempower business users, while developer-friendly frameworks give technical teams the ...",
-      "description": "No-codetoolsempower business users, while developer-friendly frameworks give technical teams the flexibility to build complex workflows. 10 bestAIorchestrationplatforms in 2025",
-      "websiteUrl": "https://www.domo.com/learn/article/best-ai-orchestration-platforms",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top 10 AI Orchestration Tools for 2025: A Comparison of Features and ...",
-      "slug": "top-10-ai-orchestration-tools-for-2025-a-comparison-of-features-and",
-      "tagline": "According to recent research, the benefits ofAIorchestrationinclude improved performance, increas...",
-      "description": "According to recent research, the benefits ofAIorchestrationinclude improved performance, increased efficiency, and enhanced productivity. Key takeaways from our analysis include the importance of feature comparison and use case analysis when selecting anAIorchestrationtool, as well as the need to consider implementation and future trends.",
-      "websiteUrl": "https://superagi.com/top-10-ai-orchestration-tools-for-2025-a-comparison-of-features-and-benefits/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top 10 AI Orchestration Tools in 2025",
-      "slug": "top-10-ai-orchestration-tools-in-2025",
-      "tagline": "Discover the top 10AIorchestrationtoolsin 2025. Explore features, benefits, and innovations drivi...",
-      "description": "Discover the top 10AIorchestrationtoolsin 2025. Explore features, benefits, and innovations driving seamlessAIworkflow automation and efficiency.",
-      "websiteUrl": "https://www.kubiya.ai/blog/ai-orchestration-tools",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    }
-  ],
-  [
-    {
-      "name": "What is AI Orchestration? 21+ Tools to Consider in 2025",
-      "slug": "what-is-ai-orchestration-21-tools-to-consider-in-2025",
-      "tagline": "Discover topAIorchestrationtoolsthat streamline workflows and optimize performance across your te...",
-      "description": "Discover topAIorchestrationtoolsthat streamline workflows and optimize performance across your tech stack in this comprehensive guide.",
-      "websiteUrl": "https://akka.io/blog/ai-orchestration-tools",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Multi-agent AI workflows: The next evolution of AI coding",
-      "slug": "multi-agent-ai-workflows-the-next-evolution-of-ai-coding",
-      "tagline": "As AI-assistedcodingbecomes more common, a new pattern is emerging:multi-agentworkflows. Amulti-a...",
-      "description": "As AI-assistedcodingbecomes more common, a new pattern is emerging:multi-agentworkflows. Amulti-agentworkflowrefers to using various AIagentsin parallel for specific software development ...",
-      "websiteUrl": "https://www.infoworld.com/article/4035926/multi-agent-ai-workflows-the-next-evolution-of-ai-coding.html",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Multi-Agent Systems: Implementation Best Practices",
-      "slug": "multi-agent-systems-implementation-best-practices",
-      "tagline": "Introduction tomulti-agentsystems (MAS) Amulti-agentsetup is a way of organising several autonomo...",
-      "description": "Introduction tomulti-agentsystems (MAS) Amulti-agentsetup is a way of organising several autonomousagentsto work together on a task orworkflow. SingleagentworkflowA single-agentworkflowuses oneagentto handle the entire task from beginning to end. Thisagentreceives input, decides what to do, calls tools as needed, tracks intermediate information, and produces the final output ...",
-      "websiteUrl": "https://fme.safe.com/guides/ai-agent-architecture/multi-agent-systems/",
       "categorySlug": "ai-assistants",
       "pricingModel": "freemium",
       "pros": [],
@@ -76223,46 +74642,6 @@
       "isOpenSource": false
     },
     {
-      "name": "Build a multiple-agent workflow automation solution by using Microsoft ...",
-      "slug": "build-a-multiple-agent-workflow-automation-solution-by-using-microsoft",
-      "tagline": "Learn how to design and deploy scalablemulti\u2011agentautomation infrastructure by using MicrosoftAge...",
-      "description": "Learn how to design and deploy scalablemulti\u2011agentautomation infrastructure by using MicrosoftAgentFramework, Azure Container Apps, and Azure AI services.",
-      "websiteUrl": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Mastering the Multi-Agent Workflow: A Guide to Agentic AI",
-      "slug": "mastering-the-multi-agent-workflow-a-guide-to-agentic-ai",
-      "tagline": "Discover the power of themulti-agentworkflow. Our guide explains Agentic AI, its challenges, and ...",
-      "description": "Discover the power of themulti-agentworkflow. Our guide explains Agentic AI, its challenges, and compares top platforms like LangGraph.",
-      "websiteUrl": "https://www.analyticsvidhya.com/blog/2025/10/multi-agent-workflow/",
-      "categorySlug": "ai-assistants",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools"
-      ],
-      "isOpenSource": false
-    },
-    {
       "name": "GitHub - djpapzin/top-mcp-servers: A curated collection of top Model ...",
       "slug": "github-djpapzintop-mcp-servers-a-curated-collection-of-top-model",
       "tagline": "A curated collection of top Model Context Protocol (MCP)serversfor enhancing development workflow...",
@@ -76283,111 +74662,6 @@
       ],
       "isOpenSource": true,
       "githubUrl": "https://github.com/djpapzin/top-mcp-servers"
-    },
-    {
-      "name": "github-mcp-server is now available in public preview",
-      "slug": "github-mcp-server-is-now-available-in-public-preview",
-      "tagline": "github-mcp-serveris now available in public preview Today we're releasing a new open source, offi...",
-      "description": "github-mcp-serveris now available in public preview Today we're releasing a new open source, official, localGitHubMCPServer. We've worked with Anthropic to rewrite their referenceserverin Go and improve its usability.",
-      "websiteUrl": "https://github.blog/changelog/2025-04-04-github-mcp-server-public-preview/",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Top 10 MCP Servers for 2025 (Yes, GitHub's Included!)",
-      "slug": "top-10-mcp-servers-for-2025-yes-githubs-included",
-      "tagline": "GitHub'sMCPserverstreamlines repository management, while SlackMCPenhances team communication wit...",
-      "description": "GitHub'sMCPserverstreamlines repository management, while SlackMCPenhances team communication with AI support. Brave Search offers privacy-focused web research, and PostgreSQLMCPsimplifies database interactions through natural language.",
-      "websiteUrl": "https://dev.to/fallon_jimmy/top-10-mcp-servers-for-2025-yes-githubs-included-15jg",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Best Model Context Protocol (MCP) Servers in 2025 | Pomerium",
-      "slug": "best-model-context-protocol-mcp-servers-in-2025-pomerium",
-      "tagline": "That's whereMCPcomes in. But to do anything useful, agents need anMCPserver. Compiled in June2025...",
-      "description": "That's whereMCPcomes in. But to do anything useful, agents need anMCPserver. Compiled in June2025, below are the topMCPserversonGitHub, ranked by stars. New Webinar \u2014 How to SecureMCPServerswith Pomerium Before you spin up your ownMCPserver, make sure it's secure. In this 17-minute technical walkthrough, we cover:",
-      "websiteUrl": "https://www.pomerium.com/blog/best-model-context-protocol-mcp-servers-in-2025",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "GitHub Announces Public Preview of GitHub MCP Server - InfoQ",
-      "slug": "github-announces-public-preview-of-github-mcp-server-infoq",
-      "tagline": "GitHubrecently announced the official release of its Model Context Protocol (MCP)server, which is...",
-      "description": "GitHubrecently announced the official release of its Model Context Protocol (MCP)server, which is in public preview as of April 4th,2025. Engineers can integrate withGitHubAPIs using this ...",
-      "websiteUrl": "https://www.infoq.com/news/2025/04/github-mcp-server-public-preview/",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Understanding MCP servers - Model Context Protocol",
-      "slug": "understanding-mcp-servers-model-context-protocol",
-      "tagline": "MCPserversare programs that expose specific capabilities to AI applications through standardizedp...",
-      "description": "MCPserversare programs that expose specific capabilities to AI applications through standardizedprotocolinterfaces. Common examples include file systemserversfor document access, databaseserversfor data queries, GitHubserversfor code management, Slackserversfor team communication, and calendarserversfor scheduling.",
-      "websiteUrl": "https://modelcontextprotocol.io/docs/learn/server-concepts",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
     },
     {
       "name": "Model Context Protocol servers - GitHub",
@@ -76559,159 +74833,11 @@
       "isOpenSource": false
     },
     {
-      "name": "Connect Claude Code to tools via MCP - Claude Code Docs",
-      "slug": "connect-claude-code-to-tools-via-mcp-claude-code-docs",
-      "tagline": "ClaudeCode can connect to hundreds of externaltoolsand data sources through the Model Context Pro...",
-      "description": "ClaudeCode can connect to hundreds of externaltoolsand data sources through the Model Context Protocol (MCP), an open source standard for AI-toolintegrations.MCPservers giveClaudeCode access to yourtools, databases, and APIs.",
-      "websiteUrl": "https://code.claude.com/docs/en/mcp",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "5 Essential MCP Servers That Give Claude & Cursor Real Superpowers (2025)",
-      "slug": "5-essential-mcp-servers-that-give-claude-cursor-real-superpowers-2025",
-      "tagline": "5 EssentialMCPServers That GiveClaude& Cursor Real Superpowers (2025) TransformClaude& Cursor int...",
-      "description": "5 EssentialMCPServers That GiveClaude& Cursor Real Superpowers (2025) TransformClaude& Cursor into web scraping, browser-controlling automation engines. 5 essential Model Context Protocol servers with complete setup guides.",
-      "websiteUrl": "https://plainenglish.io/blog/5-essential-mcp-servers-that-give-claude-cursor-real-superpowers-2025",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "MCP Tools \u00b7 ruvnet/claude-flow Wiki \u00b7 GitHub",
-      "slug": "mcp-tools-ruvnetclaude-flow-wiki-github",
-      "tagline": "The Model Context Protocol (MCP)toolsprovide a comprehensive suite of 87 specializedtoolsforAI or...",
-      "description": "The Model Context Protocol (MCP)toolsprovide a comprehensive suite of 87 specializedtoolsforAI orchestration, swarm coordination, neural processing, and system management. Thesetoolsare integrated withClaudeCode through the mcp__claude-flow__ namespace.",
-      "websiteUrl": "https://github.com/ruvnet/claude-flow/wiki/MCP-Tools",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": true,
-      "githubUrl": "https://github.com/ruvnet/claude-flow/wiki/MCP-Tools"
-    },
-    {
       "name": "MCP Setup - Essential Tool Integrations | Cursor & Claude Code ...",
       "slug": "mcp-setup-essential-tool-integrations-cursor-claude-code",
       "tagline": "MCPSetup - EssentialToolIntegrations SuperchargeClaudeCode by connecting it to externaltoolsand s...",
       "description": "MCPSetup - EssentialToolIntegrations SuperchargeClaudeCode by connecting it to externaltoolsand services through the Model Context Protocol (MCP). This guide covers setting up essentialMCPservers that transformClaudefrom a code generator into a comprehensive development platform.",
       "websiteUrl": "https://developertoolkit.ai/en/claude-code/quick-start/mcp-setup/",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "7 Claude MCP servers you can set up right now - Zapier",
-      "slug": "7-claude-mcp-servers-you-can-set-up-right-now-zapier",
-      "tagline": "ClaudeMCP(Model Context Protocol) servers let you securely pull in data and interact with externa...",
-      "description": "ClaudeMCP(Model Context Protocol) servers let you securely pull in data and interact with external apps or systems directly fromClaude. In practice, it means you can work directly with services like Zapier while chatting withClaude.MCPservers facilitate the connection between AItoolslikeClaudeand all the other apps you use.",
-      "websiteUrl": "https://zapier.com/blog/claude-mcp-servers/",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "Connect Once, Integrate Anywhere with MCP - Microsoft for Developers",
-      "slug": "connect-once-integrate-anywhere-with-mcp-microsoft-for-developers",
-      "tagline": "TypeSpecMCPserver: build anMCPserverusing TypeSpec. WithMCP, developers can boost their productiv...",
-      "description": "TypeSpecMCPserver: build anMCPserverusing TypeSpec. WithMCP, developers can boost their productivity in GitHub, VS Code, and Visual Studio by leveraging AIintegrationsthat are smarter, faster, and more intuitive than ever before. Get started with theMCPserversandMCPclient shared in this blog to boost your developer experience.",
-      "websiteUrl": "https://developer.microsoft.com/blog/connect-once-integrate-anywhere-with-mcps",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "MCP Server Examples: Building Intelligent Integrations for AI Agents",
-      "slug": "mcp-server-examples-building-intelligent-integrations-for-ai-agents",
-      "tagline": "Explore comprehensiveMCPserverexamples and learn how to build, deploy, and integrate Model Contex...",
-      "description": "Explore comprehensiveMCPserverexamples and learn how to build, deploy, and integrate Model Context Protocolserversto enhance AI agent capabilities across enterprise systems.",
-      "websiteUrl": "https://www.flowhunt.io/blog/mcp-server-examples/",
-      "categorySlug": "mcp-servers",
-      "pricingModel": "freemium",
-      "pros": [],
-      "cons": [],
-      "bestFor": [
-        "Developers"
-      ],
-      "features": [],
-      "tags": [
-        "ai",
-        "developer-tools",
-        "mcp"
-      ],
-      "isOpenSource": false
-    },
-    {
-      "name": "A Comprehensive Guide to MCP Server Integration: Top Web Applications",
-      "slug": "a-comprehensive-guide-to-mcp-server-integration-top-web-applications",
-      "tagline": "Hey developers! \ud83d\udc4b Today, I'm excited to share a comprehensive guide about Model Control Protocol ...",
-      "description": "Hey developers! \ud83d\udc4b Today, I'm excited to share a comprehensive guide about Model Control Protocol (MCP)serverintegrationwith various web applications. Whether you're looking to automate your workflow or build powerfulintegrations, this guide will help you get started.",
-      "websiteUrl": "https://dev.to/rahul_raut_8307dd2ee7f8a2/a-comprehensive-guide-to-mcp-server-integration-top-web-applications-6nc",
       "categorySlug": "mcp-servers",
       "pricingModel": "freemium",
       "pros": [],

@@ -149,6 +149,51 @@ export default defineSchema({
     .index("by_featured", ["isFeatured"]),
 
   // ============================================
+  // CORE: Related Articles
+  // ============================================
+  articles: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    url: v.string(),
+    description: v.optional(v.string()),
+    source: v.optional(v.string()),
+    publishedAt: v.optional(v.number()),
+    imageUrl: v.optional(v.string()),
+    articleType: v.union(
+      v.literal("tutorial"),
+      v.literal("guide"),
+      v.literal("comparison"),
+      v.literal("review"),
+      v.literal("news"),
+      v.literal("blog"),
+      v.literal("documentation"),
+      v.literal("other")
+    ),
+    relatedToolIds: v.array(v.id("tools")),
+    tags: v.array(v.string()),
+    isActive: v.boolean(),
+    scrapedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_url", ["url"])
+    .index("by_type", ["articleType"]),
+
+  toolArticles: defineTable({
+    toolId: v.id("tools"),
+    articleId: v.id("articles"),
+    relevanceScore: v.optional(v.number()),
+    mentionType: v.union(
+      v.literal("primary"),
+      v.literal("mentioned"),
+      v.literal("compared"),
+      v.literal("alternative")
+    ),
+  })
+    .index("by_tool", ["toolId"])
+    .index("by_article", ["articleId"])
+    .index("by_tool_article", ["toolId", "articleId"]),
+
+  // ============================================
   // CORE: Pricing Tiers
   // ============================================
   pricingTiers: defineTable({

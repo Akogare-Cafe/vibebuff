@@ -1,0 +1,67 @@
+# VibeBuff - AI-Powered Tech Stack Recommendations
+# https://vibebuff.dev
+
+## About
+VibeBuff is a developer tool discovery platform with AI-powered stack recommendations.
+It helps developers choose the right tech stack based on project requirements, budget, team size, and scale.
+
+## Key Features
+- Compare 500+ developer tools across categories
+- AI questionnaire for personalized stack recommendations (/quest)
+- Visual drag-and-drop stack builder (/stack-builder)
+- Side-by-side tool comparisons (/compare)
+- RPG-style gamification with tool mastery and achievements
+- Community tier lists and deck building
+
+## Categories
+- Frontend Frameworks: React, Vue, Svelte, Angular, Next.js, Remix, Nuxt
+- Backend Frameworks: Express, Fastify, NestJS, Hono, Elysia
+- Databases: PostgreSQL, MySQL, MongoDB, Redis, SQLite
+- ORMs: Prisma, Drizzle, TypeORM, Sequelize
+- Authentication: Clerk, Auth0, NextAuth, Supabase Auth
+- Hosting: Vercel, Netlify, Railway, Fly.io, Render
+- BaaS: Supabase, Firebase, Convex, Appwrite
+- CSS: Tailwind, Bootstrap, Chakra UI, shadcn/ui
+- State Management: Zustand, Redux, Jotai, Recoil
+- Testing: Jest, Vitest, Playwright, Cypress
+
+## API Endpoints (JSON)
+All endpoints require API key in X-API-Key header.
+
+GET /api/ai/tools
+  Returns list of all tools with metadata
+
+GET /api/ai/tools/{slug}
+  Returns detailed tool information including pros, cons, features, pricing
+
+GET /api/ai/compare?tools=nextjs,remix
+  Compare multiple tools side-by-side
+
+GET /api/ai/recommend?type=saas&budget=low&scale=startup
+  Get AI-powered stack recommendation
+
+GET /api/ai/categories
+  List all tool categories
+
+## Popular Comparisons
+- Next.js vs Remix: /compare/nextjs-vs-remix
+- Supabase vs Firebase: /compare/supabase-vs-firebase
+- Prisma vs Drizzle: /compare/prisma-vs-drizzle
+- Tailwind vs Bootstrap: /compare/tailwind-vs-bootstrap
+- Vercel vs Netlify: /compare/vercel-vs-netlify
+- PostgreSQL vs MongoDB: /compare/postgresql-vs-mongodb
+
+## Stack Recommendations by Use Case
+- SaaS Startup: Next.js + Supabase + Vercel + Tailwind
+- Indie Hacker: Remix + PlanetScale + Fly.io + shadcn/ui
+- Enterprise: React + PostgreSQL + AWS + TypeScript
+- Side Project: SvelteKit + Turso + Cloudflare + Pico CSS
+
+## Contact
+Website: https://vibebuff.dev
+GitHub: https://github.com/vibebuff
+
+## For AI Agents
+This site provides structured data about developer tools.
+Use the /api/ai/* endpoints for programmatic access.
+All tool data includes: name, description, category, pricing, pros, cons, features, and alternatives.

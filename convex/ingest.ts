@@ -298,6 +298,54 @@ export const bulkUpsertToolsPublic = mutation({
   },
 });
 
+export const deleteToolBySlug = mutation({
+  args: {
+    slug: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const tool = await ctx.db
+      .query("tools")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+
+    if (!tool) {
+      return { success: false, error: "Tool not found" };
+    }
+
+    await ctx.db.delete(tool._id);
+    return { success: true, deletedId: tool._id, name: tool.name };
+  },
+});
+
+export const cleanupInvalidTools = mutation({
+  handler: async (ctx) => {
+    const tools = await ctx.db.query("tools").collect();
+    
+    const excludedUrlPatterns = ["/blog/", "/article/", "/post/", "/news/", "/guide/", "/tutorial/", "/docs/", "/wiki/", "/alternatives/", "/vs/", "/comparison/", "medium.com/", "dev.to/", "hashnode.com/", "substack.com/", "wikipedia.org/", "youtube.com/", "reddit.com/"];
+    const excludedNamePatterns = ["how to", "how-to", "guide to", "tutorial", "introduction to", "getting started", "best practices", "tips and tricks", "top 10", "top 5", "top 7", "i tested", "we tested", "review:", "comparison:", "vs.", "versus", "alternatives", "alternative to", "best ai", "5 best", "7 best", "10 best"];
+    
+    let deleted = 0;
+    const deletedTools: string[] = [];
+    
+    for (const tool of tools) {
+      const url = (tool.websiteUrl || "").toLowerCase();
+      const name = (tool.name || "").toLowerCase();
+      
+      const hasExcludedUrl = excludedUrlPatterns.some(p => url.includes(p));
+      const hasExcludedName = excludedNamePatterns.some(p => name.includes(p));
+      const nameTooLong = tool.name && tool.name.length > 80;
+      
+      if (hasExcludedUrl || hasExcludedName || nameTooLong) {
+        deletedTools.push(tool.name);
+        await ctx.db.delete(tool._id);
+        deleted++;
+      }
+    }
+    
+    return { deleted, deletedTools: deletedTools.slice(0, 20) };
+  },
+});
+
 export const getIngestionStats = mutation({
   handler: async (ctx) => {
     const tools = await ctx.db.query("tools").collect();

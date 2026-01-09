@@ -39,6 +39,100 @@ CATEGORY_MAPPING = {
 
 DEFAULT_CATEGORY = "ai-assistants"
 
+EXCLUDED_URL_PATTERNS = [
+    "/blog/",
+    "/article/",
+    "/post/",
+    "/posts/",
+    "/news/",
+    "/guide/",
+    "/guides/",
+    "/tutorial/",
+    "/tutorials/",
+    "/learn/",
+    "/docs/",
+    "/documentation/",
+    "/wiki/",
+    "/help/",
+    "/faq/",
+    "/about/",
+    "/pricing/",
+    "/contact/",
+    "/terms/",
+    "/privacy/",
+    "/legal/",
+    "/careers/",
+    "/jobs/",
+    "/press/",
+    "/media/",
+    "/events/",
+    "/webinar/",
+    "/podcast/",
+    "/video/",
+    "/changelog/",
+    "/release-notes/",
+    "/updates/",
+    "/announcements/",
+    "/case-study/",
+    "/case-studies/",
+    "/customer-stories/",
+    "/testimonials/",
+    "/reviews/",
+    "/comparison/",
+    "/vs/",
+    "/alternatives/",
+    "medium.com/",
+    "dev.to/",
+    "hashnode.com/",
+    "substack.com/",
+    "wordpress.com/",
+    "blogger.com/",
+    "tumblr.com/",
+]
+
+EXCLUDED_NAME_PATTERNS = [
+    "how to",
+    "how-to",
+    "guide to",
+    "tutorial",
+    "introduction to",
+    "getting started",
+    "best practices",
+    "tips and tricks",
+    "top 10",
+    "top 5",
+    "i tested",
+    "we tested",
+    "review:",
+    "comparison:",
+    "vs.",
+    "versus",
+    "alternatives",
+    "alternative to",
+    "build a",
+    "create a",
+    "make a",
+    "develop a",
+    "implement a",
+    "design a",
+]
+
+def is_excluded_url(url: str) -> bool:
+    url_lower = url.lower()
+    for pattern in EXCLUDED_URL_PATTERNS:
+        if pattern in url_lower:
+            return True
+    return False
+
+def is_excluded_name(name: str) -> bool:
+    name_lower = name.lower()
+    for pattern in EXCLUDED_NAME_PATTERNS:
+        if pattern in name_lower:
+            return True
+    if len(name) > 80:
+        return True
+    return False
+
 MCP_CATEGORY_MAPPING = {
     "database": "database",
     "api": "api",
@@ -144,6 +238,9 @@ def transform_vibe_tool(tool: dict) -> Optional[dict]:
     if not name or not url:
         return None
     
+    if is_excluded_url(url) or is_excluded_name(name):
+        return None
+    
     metadata = tool.get("metadata", {})
     category = tool.get("category", "")
     
@@ -224,6 +321,9 @@ def transform_discovered_tool(tool: dict) -> Optional[dict]:
         return None
     
     if not url.startswith("http"):
+        return None
+    
+    if is_excluded_url(url) or is_excluded_name(name):
         return None
     
     description = tool.get("description", "") or f"{name} - Developer tool"
