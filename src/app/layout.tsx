@@ -10,6 +10,7 @@ import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { BotIdClient } from "botid/client";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -144,6 +145,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <BotIdClient
+          protect={[
+            {
+              path: "/api/*",
+              method: "POST",
+            },
+          ]}
+        />
       </head>
       <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col`}>
         <ClerkClientProvider>
