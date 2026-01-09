@@ -117,7 +117,7 @@ export async function GET(request: NextRequest) {
     for (const [layer, toolSlugs] of Object.entries(template.tools)) {
       const matchedTools = toolSlugs
         .map((slug) => allTools.find((t: { slug: string }) => t.slug === slug))
-        .filter(Boolean);
+        .filter((t): t is NonNullable<typeof t> => t !== undefined);
 
       if (matchedTools.length > 0) {
         const primary = matchedTools[0];
@@ -128,7 +128,7 @@ export async function GET(request: NextRequest) {
             tagline: primary.tagline,
             pricing: primary.pricingModel,
           },
-          alternatives: matchedTools.slice(1, 3).map((t: { name: string; slug: string }) => ({
+          alternatives: matchedTools.slice(1, 3).map((t) => ({
             name: t.name,
             slug: t.slug,
           })),

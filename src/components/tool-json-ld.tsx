@@ -16,7 +16,7 @@ interface ToolJsonLdProps {
     category?: {
       name: string;
       slug: string;
-    };
+    } | null;
     externalData?: {
       github?: {
         stars: number;
