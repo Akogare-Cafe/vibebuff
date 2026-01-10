@@ -185,7 +185,7 @@ export default function QuestsPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {questHistory.map((quest) => {
-                  const outcomeStyle = OUTCOME_STYLES[quest.outcome] || OUTCOME_STYLES.pending;
+                    const outcomeStyle = OUTCOME_STYLES[quest.outcome ?? "pending"] || OUTCOME_STYLES.pending;
                   const projectTypeLabel = PROJECT_TYPE_LABELS[quest.answers.projectType] || quest.answers.projectType;
 
                   return (

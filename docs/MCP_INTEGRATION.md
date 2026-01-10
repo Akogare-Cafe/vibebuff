@@ -20,7 +20,58 @@ This enables your AI assistant to give you architecture-first guidance when star
 
 ## Quick Start
 
-### 1. Install the MCP Server
+### Option A: Remote MCP Server (Recommended)
+
+The easiest way to use VibeBuff MCP - no installation required! Just add a URL to your IDE config.
+
+#### Cursor IDE / Windsurf
+
+Edit your MCP configuration file:
+
+```json
+{
+  "mcpServers": {
+    "vibebuff": {
+      "url": "https://vibebuff.dev/api/mcp-server/mcp"
+    }
+  }
+}
+```
+
+#### Claude Desktop
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
+
+```json
+{
+  "mcpServers": {
+    "vibebuff": {
+      "url": "https://vibebuff.dev/api/mcp-server/mcp"
+    }
+  }
+}
+```
+
+#### For stdio-only clients
+
+If your client doesn't support Streamable HTTP, use mcp-remote:
+
+```json
+{
+  "mcpServers": {
+    "vibebuff": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://vibebuff.dev/api/mcp-server/mcp"]
+    }
+  }
+}
+```
+
+---
+
+### Option B: Local MCP Server (npm package)
+
+If you prefer running the MCP server locally:
 
 ```bash
 # Option 1: Use directly with npx (recommended)
@@ -35,11 +86,7 @@ npm install
 npm run build
 ```
 
-### 2. Configure Your IDE
-
-#### Cursor IDE
-
-Edit `~/.cursor/mcp.json`:
+Then configure your IDE:
 
 ```json
 {
@@ -55,37 +102,7 @@ Edit `~/.cursor/mcp.json`:
 }
 ```
 
-#### Claude Desktop
-
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
-
-```json
-{
-  "mcpServers": {
-    "vibebuff": {
-      "command": "npx",
-      "args": ["@vibebuff/mcp-server"]
-    }
-  }
-}
-```
-
-#### Windsurf
-
-Add to your Windsurf MCP configuration:
-
-```json
-{
-  "mcpServers": {
-    "vibebuff": {
-      "command": "npx",
-      "args": ["@vibebuff/mcp-server"]
-    }
-  }
-}
-```
-
-### 3. Restart Your IDE
+### Restart Your IDE
 
 After configuration, restart your IDE for the MCP server to connect.
 
