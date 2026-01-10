@@ -1,11 +1,12 @@
 "use client";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+
 interface SiteJsonLdProps {
   path?: string;
 }
 
 export function SiteJsonLd({ path = "/" }: SiteJsonLdProps) {
-  const siteUrl = "https://vibebuff.dev";
 
   const websiteSchema = {
     "@context": "https://schema.org",

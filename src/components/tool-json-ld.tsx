@@ -1,5 +1,7 @@
 "use client";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+
 interface ToolJsonLdProps {
   tool: {
     name: string;
@@ -38,7 +40,7 @@ export function ToolJsonLd({ tool, ratingSummary }: ToolJsonLdProps) {
     "@type": "SoftwareApplication",
     name: tool.name,
     description: tool.description,
-    url: `https://vibebuff.dev/tools/${tool.slug}`,
+    url: `${siteUrl}/tools/${tool.slug}`,
     applicationCategory: tool.category?.name || "DeveloperApplication",
     operatingSystem: "Web, Cross-platform",
     offers: {

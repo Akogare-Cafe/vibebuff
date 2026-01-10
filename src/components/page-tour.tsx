@@ -165,28 +165,52 @@ interface TourOverlayProps {
 
 function TourOverlay({ tour, currentStep, onNext, onPrev, onSkip }: TourOverlayProps) {
   const step = tour.steps[currentStep];
-  const [targetRect, setTargetRect] = useState<DOMRect | null>(null);
+  const [targetRect, setTargetRect] = useState<{
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  } | null>(null);
   const isLastStep = currentStep === tour.steps.length - 1;
   const isFirstStep = currentStep === 0;
 
   useEffect(() => {
-    if (step.target) {
-      const element = document.querySelector(step.target);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        setTargetRect(rect);
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
+    const updateTargetRect = () => {
+      if (step.target) {
+        const element = document.querySelector(step.target);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          setTargetRect({
+            top: rect.top,
+            left: rect.left,
+            width: rect.width,
+            height: rect.height,
+          });
+        } else {
+          setTargetRect(null);
+        }
       } else {
         setTargetRect(null);
       }
-    } else {
-      setTargetRect(null);
+    };
+
+    updateTargetRect();
+
+    if (step.target) {
+      const element = document.querySelector(step.target);
+      if (element) {
+        element.scrollIntoView({ behavior: "instant", block: "center" });
+        requestAnimationFrame(() => {
+          updateTargetRect();
+        });
+      }
     }
   }, [step.target, currentStep]);
 
-  const getTooltipPosition = () => {
+  const getTooltipStyle = (): React.CSSProperties => {
     if (!targetRect || step.position === "center") {
       return {
+        position: "fixed",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
@@ -194,41 +218,63 @@ function TourOverlay({ tour, currentStep, onNext, onPrev, onSkip }: TourOverlayP
     }
 
     const padding = 16;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
     const tooltipWidth = 320;
-    const tooltipHeight = 200;
+
+    let top: number;
+    let left: number;
+    let transform = "";
 
     switch (step.position || "bottom") {
       case "top":
-        return {
-          top: `${targetRect.top - tooltipHeight - padding}px`,
-          left: `${targetRect.left + targetRect.width / 2}px`,
-          transform: "translateX(-50%)",
-        };
+        top = targetRect.top - padding;
+        left = targetRect.left + targetRect.width / 2;
+        transform = "translate(-50%, -100%)";
+        break;
       case "bottom":
-        return {
-          top: `${targetRect.bottom + padding}px`,
-          left: `${targetRect.left + targetRect.width / 2}px`,
-          transform: "translateX(-50%)",
-        };
+        top = targetRect.top + targetRect.height + padding;
+        left = targetRect.left + targetRect.width / 2;
+        transform = "translateX(-50%)";
+        break;
       case "left":
-        return {
-          top: `${targetRect.top + targetRect.height / 2}px`,
-          left: `${targetRect.left - tooltipWidth - padding}px`,
-          transform: "translateY(-50%)",
-        };
+        top = targetRect.top + targetRect.height / 2;
+        left = targetRect.left - padding;
+        transform = "translate(-100%, -50%)";
+        break;
       case "right":
-        return {
-          top: `${targetRect.top + targetRect.height / 2}px`,
-          left: `${targetRect.right + padding}px`,
-          transform: "translateY(-50%)",
-        };
+        top = targetRect.top + targetRect.height / 2;
+        left = targetRect.left + targetRect.width + padding;
+        transform = "translateY(-50%)";
+        break;
       default:
-        return {
-          top: `${targetRect.bottom + padding}px`,
-          left: `${targetRect.left + targetRect.width / 2}px`,
-          transform: "translateX(-50%)",
-        };
+        top = targetRect.top + targetRect.height + padding;
+        left = targetRect.left + targetRect.width / 2;
+        transform = "translateX(-50%)";
     }
+
+    if (left - tooltipWidth / 2 < 16) {
+      left = 16;
+      transform = transform.replace("translateX(-50%)", "").replace("translate(-50%,", "translate(0,");
+    } else if (left + tooltipWidth / 2 > viewportWidth - 16) {
+      left = viewportWidth - 16;
+      transform = transform.replace("translateX(-50%)", "translateX(-100%)").replace("translate(-50%,", "translate(-100%,");
+    }
+
+    if (top < 16) {
+      top = targetRect.top + targetRect.height + padding;
+      transform = "translateX(-50%)";
+    } else if (top > viewportHeight - 200) {
+      top = targetRect.top - padding;
+      transform = "translate(-50%, -100%)";
+    }
+
+    return {
+      position: "fixed",
+      top: `${top}px`,
+      left: `${left}px`,
+      transform,
+    };
   };
 
   const StepIcon = step.icon || Sparkles;
@@ -238,35 +284,57 @@ function TourOverlay({ tour, currentStep, onNext, onPrev, onSkip }: TourOverlayP
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100]"
+      transition={{ duration: 0.15 }}
+      className="fixed inset-0 z-[9999] pointer-events-none"
     >
-      <div className="absolute inset-0 bg-black/80" onClick={onSkip} />
+      <svg className="absolute inset-0 w-full h-full pointer-events-auto" onClick={onSkip}>
+        <defs>
+          <mask id="tour-mask">
+            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+            {targetRect && (
+              <rect
+                x={targetRect.left - 8}
+                y={targetRect.top - 8}
+                width={targetRect.width + 16}
+                height={targetRect.height + 16}
+                rx="8"
+                fill="black"
+              />
+            )}
+          </mask>
+        </defs>
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          fill="rgba(0, 0, 0, 0.75)"
+          mask="url(#tour-mask)"
+        />
+      </svg>
 
       {targetRect && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute pointer-events-none"
+        <div
+          className="fixed pointer-events-none rounded-lg border-2 border-primary"
           style={{
-            top: targetRect.top - 4,
-            left: targetRect.left - 4,
-            width: targetRect.width + 8,
-            height: targetRect.height + 8,
-            boxShadow: "0 0 0 9999px rgba(0, 0, 0, 0.8)",
-            borderRadius: "8px",
-            border: "2px solid var(--primary)",
+            top: targetRect.top - 8,
+            left: targetRect.left - 8,
+            width: targetRect.width + 16,
+            height: targetRect.height + 16,
+            boxShadow: "0 0 0 4px rgba(var(--primary-rgb), 0.3), 0 0 20px rgba(var(--primary-rgb), 0.2)",
           }}
         />
       )}
 
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }}
-        className="absolute z-[101] w-[320px] max-w-[calc(100vw-32px)]"
-        style={getTooltipPosition()}
+        key={currentStep}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.15, delay: 0.05 }}
+        className="w-[320px] max-w-[calc(100vw-32px)] pointer-events-auto"
+        style={getTooltipStyle()}
       >
-        <PixelCard className="p-4 relative">
+        <PixelCard className="p-4 relative shadow-xl">
           <button
             onClick={onSkip}
             className="absolute top-3 right-3 text-muted-foreground hover:text-primary transition-colors"
@@ -278,8 +346,8 @@ function TourOverlay({ tour, currentStep, onNext, onPrev, onSkip }: TourOverlayP
             {tour.steps.map((_, index) => (
               <div
                 key={index}
-                className={`h-1 flex-1 rounded-full transition-colors ${
-                  index <= currentStep ? "bg-primary" : "bg-card"
+                className={`h-1 flex-1 rounded-full ${
+                  index <= currentStep ? "bg-primary" : "bg-muted"
                 }`}
               />
             ))}

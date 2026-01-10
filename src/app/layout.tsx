@@ -30,7 +30,7 @@ const notoSans = Noto_Sans({
   preload: true,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.vibebuff.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

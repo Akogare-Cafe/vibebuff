@@ -60,7 +60,7 @@ export const metadata: Metadata = {
       "Complete guide to marketing your vibe coded apps. SEO, GTM, organic growth strategies.",
   },
   alternates: {
-    canonical: "https://www.vibebuff.dev/guides/marketing",
+    canonical: "https://vibebuff.dev/guides/marketing",
   },
 };
 
