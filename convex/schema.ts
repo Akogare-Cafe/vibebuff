@@ -2980,4 +2980,50 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_session_user", ["sessionId", "userId"])
     .index("by_active", ["isActive"]),
+
+  // ============================================
+  // Deck Battles
+  // ============================================
+  deckBattles: defineTable({
+    creatorUserId: v.string(),
+    creatorDeckId: v.id("userDecks"),
+    challengerUserId: v.optional(v.string()),
+    challengerDeckId: v.optional(v.id("userDecks")),
+    prompt: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("active"),
+      v.literal("voting"),
+      v.literal("completed"),
+      v.literal("cancelled")
+    ),
+    winnerId: v.optional(v.id("userDecks")),
+    aiAnalysis: v.optional(v.object({
+      creatorScore: v.number(),
+      challengerScore: v.number(),
+      creatorStrengths: v.array(v.string()),
+      challengerStrengths: v.array(v.string()),
+      verdict: v.string(),
+    })),
+    shareToken: v.string(),
+    votesForCreator: v.number(),
+    votesForChallenger: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+    completedAt: v.optional(v.number()),
+  })
+    .index("by_creator", ["creatorUserId"])
+    .index("by_challenger", ["challengerUserId"])
+    .index("by_status", ["status"])
+    .index("by_share_token", ["shareToken"]),
+
+  deckBattleVotes: defineTable({
+    battleId: v.id("deckBattles"),
+    voterId: v.string(),
+    votedForDeckId: v.id("userDecks"),
+    createdAt: v.number(),
+  })
+    .index("by_battle", ["battleId"])
+    .index("by_voter", ["voterId"])
+    .index("by_battle_voter", ["battleId", "voterId"]),
 });

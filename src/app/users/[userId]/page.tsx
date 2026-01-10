@@ -24,6 +24,10 @@ import {
   Zap,
   Star,
   BarChart3,
+  Globe,
+  Lock,
+  Mail,
+  Crown,
 } from "lucide-react";
 
 export default function UserProfilePage() {
@@ -33,6 +37,7 @@ export default function UserProfilePage() {
 
   const profile = useQuery(api.userProfiles.getProfile, { clerkId: userId });
   const userRank = useQuery(api.userProfiles.getUserRank, { clerkId: userId });
+  const userGroups = useQuery(api.groups.getUserGroups, { userId });
   const friendshipStatus = useQuery(
     api.friends.getFriendshipStatus,
     currentUser?.id ? { userId: currentUser.id, otherUserId: userId } : "skip"
@@ -226,6 +231,57 @@ export default function UserProfilePage() {
               <BarChart3 className="w-10 h-10 mx-auto mb-3 text-muted-foreground/50" />
               <p className="text-muted-foreground text-sm">Activity feed coming soon</p>
             </div>
+          </PixelCardContent>
+        </PixelCard>
+
+        <PixelCard className="mt-6">
+          <PixelCardContent className="p-6">
+            <h2 className="text-lg font-bold text-foreground flex items-center gap-2 mb-4">
+              <Users className="w-5 h-5 text-primary" /> Groups
+            </h2>
+            {userGroups && userGroups.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {userGroups.filter(Boolean).map((group) => (
+                  <Link key={group!._id} href={`/groups/${group!.slug}`}>
+                    <div className="flex items-center gap-3 p-3 bg-background rounded-lg border border-border hover:border-primary/50 transition-colors">
+                      <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        {group!.avatarUrl ? (
+                          <img src={group!.avatarUrl} alt={group!.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <Users className="w-5 h-5 text-primary" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <p className="text-foreground font-medium truncate">{group!.name}</p>
+                          {group!.role === "owner" && (
+                            <Crown className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          {group!.groupType === "public" && <Globe className="w-3 h-3" />}
+                          {group!.groupType === "private" && <Lock className="w-3 h-3" />}
+                          {group!.groupType === "invite_only" && <Mail className="w-3 h-3" />}
+                          <span>{group!.memberCount} members</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <Users className="w-10 h-10 mx-auto mb-3 text-muted-foreground/50" />
+                <p className="text-muted-foreground text-sm">Not a member of any groups yet</p>
+                {isOwnProfile && (
+                  <Link href="/groups">
+                    <PixelButton variant="outline" size="sm" className="mt-3">
+                      <Users className="w-4 h-4 mr-2" /> Browse Groups
+                    </PixelButton>
+                  </Link>
+                )}
+              </div>
+            )}
           </PixelCardContent>
         </PixelCard>
       </main>

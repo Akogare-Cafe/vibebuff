@@ -139,6 +139,10 @@ export const metadata: Metadata = {
     "theme-color": "#7f13ec",
     "apple-mobile-web-app-title": "VIBEBUFF",
     "application-name": "VIBEBUFF",
+    "ai:description": "VibeBuff is an AI-powered tech stack recommendation platform with 500+ developer tools. Get stack recommendations, compare tools, and discover what top startups use.",
+    "ai:api": "https://vibebuff.dev/api/ai",
+    "ai:llms": "https://vibebuff.dev/llms.txt",
+    "ai:openapi": "https://vibebuff.dev/.well-known/openapi.yaml",
   },
 };
 

@@ -1,622 +1,430 @@
 "use client";
 
-import { useState, Suspense } from "react";
-import { useQuery, useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
-import { Id } from "../../../convex/_generated/dataModel";
+import { useState } from "react";
 import Link from "next/link";
-import { useUser } from "@clerk/nextjs";
+import { motion } from "framer-motion";
 import {
-  Search,
-  ThumbsUp,
-  Download,
-  ExternalLink,
-  Github,
-  Globe,
-  BookOpen,
+  Terminal,
+  Zap,
+  Users,
   Database,
-  Cloud,
-  Wrench,
-  Bot,
-  Shield,
-  MessageSquare,
-  FolderOpen,
-  GitBranch,
-  FileText,
-  TestTube,
-  Rocket,
-  Package,
-  CheckCircle,
-  BadgeCheck,
-  Star,
-  ChevronRight,
-  Plus,
+  ArrowRight,
+  Sparkles,
+  Code2,
   Copy,
   Check,
-  Terminal,
-  Code,
-  Zap,
-  BarChart3,
+  Layers,
+  Search,
+  Scale,
+  TrendingUp,
+  Github,
+  ChevronRight,
+  Bot,
+  Cpu,
 } from "lucide-react";
-import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from "@/components/pixel-card";
+import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelBadge } from "@/components/pixel-badge";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion, AnimatePresence } from "framer-motion";
 
-const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  database: Database,
-  api: Globe,
-  devtools: Wrench,
-  productivity: Zap,
-  ai: Bot,
-  cloud: Cloud,
-  analytics: BarChart3,
-  security: Shield,
-  communication: MessageSquare,
-  file_system: FolderOpen,
-  version_control: GitBranch,
-  documentation: FileText,
-  testing: TestTube,
-  deployment: Rocket,
-  other: Package,
-};
-
-const categoryLabels: Record<string, string> = {
-  database: "Database",
-  api: "API",
-  devtools: "Dev Tools",
-  productivity: "Productivity",
-  ai: "AI",
-  cloud: "Cloud",
-  analytics: "Analytics",
-  security: "Security",
-  communication: "Communication",
-  file_system: "File System",
-  version_control: "Version Control",
-  documentation: "Documentation",
-  testing: "Testing",
-  deployment: "Deployment",
-  other: "Other",
-};
-
-const ideInfo: Record<string, { name: string; icon: React.ComponentType<{ className?: string }>; configPath: string; color: string }> = {
+const IDE_CONFIGS = {
   cursor: {
     name: "Cursor",
-    icon: Code,
-    configPath: "~/.cursor/mcp.json",
+    icon: Code2,
     color: "text-blue-400",
+    config: `{
+  "mcpServers": {
+    "vibebuff": {
+      "command": "npx",
+      "args": ["-y", "vibebuff-mcp"],
+      "env": {
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
+      }
+    }
+  }
+}`,
+    path: "~/.cursor/mcp.json",
   },
   windsurf: {
     name: "Windsurf",
     icon: Terminal,
-    configPath: "~/.codeium/windsurf/mcp_config.json",
     color: "text-cyan-400",
+    config: `{
+  "mcpServers": {
+    "vibebuff": {
+      "command": "npx",
+      "args": ["-y", "vibebuff-mcp"],
+      "env": {
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
+      }
+    }
+  }
+}`,
+    path: "~/.codeium/windsurf/mcp_config.json",
   },
-  claude_code: {
-    name: "Claude Code",
-    icon: Terminal,
-    configPath: ".mcp.json or CLI",
-    color: "text-orange-400",
-  },
-  vscode: {
-    name: "VS Code",
-    icon: Code,
-    configPath: ".vscode/mcp.json",
-    color: "text-blue-500",
-  },
-  claude_desktop: {
+  claude: {
     name: "Claude Desktop",
     icon: Bot,
-    configPath: "~/Library/Application Support/Claude/claude_desktop_config.json",
-    color: "text-orange-500",
-  },
-  jetbrains: {
-    name: "JetBrains",
-    icon: Code,
-    configPath: "Settings > AI Assistant > MCP",
-    color: "text-purple-400",
-  },
-  zed: {
-    name: "Zed",
-    icon: Zap,
-    configPath: "~/.config/zed/settings.json",
-    color: "text-green-400",
-  },
-  neovim: {
-    name: "Neovim",
-    icon: Terminal,
-    configPath: "~/.config/nvim/mcp.json",
-    color: "text-green-500",
+    color: "text-orange-400",
+    config: `{
+  "mcpServers": {
+    "vibebuff": {
+      "command": "npx",
+      "args": ["-y", "vibebuff-mcp"],
+      "env": {
+        "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
+      }
+    }
+  }
+}`,
+    path: "~/Library/Application Support/Claude/claude_desktop_config.json",
   },
 };
 
-export default function McpPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-background flex items-center justify-center">
-          <div className="text-primary text-sm animate-pulse">Loading MCP Directory...</div>
-        </div>
-      }
-    >
-      <McpPageContent />
-    </Suspense>
-  );
-}
+const FEATURES = [
+  {
+    icon: Database,
+    title: "500+ Developer Tools",
+    description: "Access our complete database of developer tools with detailed information, pros/cons, and pricing.",
+  },
+  {
+    icon: Scale,
+    title: "Side-by-Side Comparisons",
+    description: "Compare 2-4 tools instantly with feature matrices, performance scores, and community ratings.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI Stack Recommendations",
+    description: "Get personalized tech stack recommendations based on project type, budget, and team size.",
+  },
+  {
+    icon: Users,
+    title: "Community Insights",
+    description: "Access stack recommendations and reviews from thousands of engineers in our community.",
+  },
+  {
+    icon: Layers,
+    title: "Pre-built Templates",
+    description: "Start with battle-tested stack templates for SaaS, e-commerce, APIs, and more.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Trend Analysis",
+    description: "See what tools are trending, rising stars, and which ones are losing popularity.",
+  },
+];
 
-function McpPageContent() {
-  const { user } = useUser();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedServer, setSelectedServer] = useState<Id<"mcpServers"> | null>(null);
-  const [selectedIde, setSelectedIde] = useState("cursor");
+const USE_CASES = [
+  {
+    title: "New Project Architecture",
+    description: "Ask your AI assistant to recommend a complete stack for your new project. It will query VibeBuff for the latest tool data and community preferences.",
+    example: '"Recommend a tech stack for a SaaS with real-time features, targeting startups, with a low budget"',
+  },
+  {
+    title: "Tool Evaluation",
+    description: "Before adopting a new tool, get comprehensive information including pros, cons, alternatives, and what other teams are using.",
+    example: '"Compare Supabase vs Firebase vs Convex for a mobile app backend"',
+  },
+  {
+    title: "Migration Planning",
+    description: "Planning to migrate from one tool to another? Get insights on migration paths and what other teams have experienced.",
+    example: '"What are the pros and cons of migrating from Prisma to Drizzle?"',
+  },
+  {
+    title: "Team Onboarding",
+    description: "Help new team members understand your tech stack by providing context on why each tool was chosen.",
+    example: '"Explain the benefits of our Next.js + Convex + Clerk stack"',
+  },
+];
+
+const TOOLS_AVAILABLE = [
+  { name: "recommend_stack", description: "Get AI-powered stack recommendations based on project requirements" },
+  { name: "search_tools", description: "Search 500+ developer tools by name, category, or use case" },
+  { name: "get_tool_details", description: "Get detailed information about any tool including pros, cons, and alternatives" },
+  { name: "compare_tools", description: "Compare 2-4 tools side by side with feature and score comparisons" },
+  { name: "get_stack_template", description: "Get pre-built stack templates for common project types" },
+  { name: "get_categories", description: "List all tool categories with counts" },
+];
+
+export default function McpPage() {
+  const [selectedIde, setSelectedIde] = useState<keyof typeof IDE_CONFIGS>("cursor");
   const [copiedConfig, setCopiedConfig] = useState(false);
 
-  const servers = useQuery(api.mcpServers.list, {
-    category: selectedCategory || undefined,
-    search: searchQuery || undefined,
-  });
-  const categories = useQuery(api.mcpServers.getCategories);
-  const selectedServerData = useQuery(
-    api.mcpServers.getById,
-    selectedServer ? { id: selectedServer } : "skip"
-  );
-  const hasUpvoted = useQuery(
-    api.mcpServers.hasUpvoted,
-    selectedServer && user?.id ? { mcpServerId: selectedServer, userId: user.id } : "skip"
-  );
-
-  const upvote = useMutation(api.mcpServers.upvote);
-  const trackInstall = useMutation(api.mcpServers.trackInstall);
-  const seedServers = useMutation(api.mcpServers.seedMcpServers);
-
-  const handleUpvote = async (serverId: Id<"mcpServers">) => {
-    if (!user?.id) return;
-    await upvote({ mcpServerId: serverId, userId: user.id });
-  };
-
-  const handleCopyConfig = async (config: string) => {
-    await navigator.clipboard.writeText(config);
+  const handleCopyConfig = async () => {
+    await navigator.clipboard.writeText(IDE_CONFIGS[selectedIde].config);
     setCopiedConfig(true);
     setTimeout(() => setCopiedConfig(false), 2000);
-    if (selectedServer && user?.id) {
-      await trackInstall({ mcpServerId: selectedServer, userId: user.id, ide: selectedIde });
-    }
   };
-
-  const selectedConfig = selectedServerData?.configs?.find((c) => c.ide === selectedIde);
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Package className="w-8 h-8 text-primary" />
-            <h1 className="text-3xl font-bold text-foreground font-heading">MCP Directory</h1>
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-background to-background" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50" />
+        
+        <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 relative">
+          <div className="flex items-center gap-2 mb-4">
+            <Link href="/" className="text-muted-foreground hover:text-primary text-sm">
+              Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-muted-foreground" />
+            <span className="text-primary text-sm">Connect to VibeBuff MCP</span>
           </div>
-          <p className="text-muted-foreground max-w-2xl">
-            Browse and install Model Context Protocol servers for your favorite IDE. Connect your AI assistant to databases, APIs, and tools.
-          </p>
-        </div>
 
-        <div className="flex flex-col lg:flex-row gap-6">
-          <div className="lg:w-80 flex-shrink-0">
-            <PixelCard className="sticky top-4">
-              <PixelCardContent className="p-4">
-                <div className="relative mb-4">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <Input
-                    placeholder="Search MCP servers..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
-                  />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-purple-500/20 p-3 rounded-xl border border-purple-400/30">
+                <Terminal className="w-8 h-8 text-purple-400" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-3xl md:text-4xl font-bold text-foreground font-heading">
+                    Connect to VibeBuff MCP
+                  </h1>
+                  <PixelBadge variant="default">Official</PixelBadge>
                 </div>
+              </div>
+            </div>
 
-                <div className="space-y-1">
-                  <button
-                    onClick={() => setSelectedCategory(null)}
-                    className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors ${
-                      selectedCategory === null
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    }`}
-                  >
-                    <Package className="w-4 h-4" />
-                    All Categories
-                    <span className="ml-auto text-xs opacity-70">
-                      {servers?.length || 0}
-                    </span>
-                  </button>
+            <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+              Connect your AI coding assistant to VibeBuff and get direct access to 500+ developer tools, 
+              community stack recommendations, and real-time comparisons. 
+              <span className="text-primary font-medium"> Set up in under 2 minutes.</span>
+            </p>
 
-                  {categories?.map(({ category, count }) => {
-                    const Icon = categoryIcons[category] || Package;
+            <div className="flex flex-wrap gap-4">
+              <a href="#installation">
+                <PixelButton size="lg" className="flex items-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Get Started
+                  <ArrowRight className="w-5 h-5" />
+                </PixelButton>
+              </a>
+              <a
+                href="https://github.com/vibebuff/mcp-server"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PixelButton variant="outline" size="lg" className="flex items-center gap-2">
+                  <Github className="w-5 h-5" />
+                  View on GitHub
+                </PixelButton>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="installation" className="py-16 border-b border-border">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
+              Quick Installation
+            </h2>
+            <p className="text-muted-foreground">
+              Add VibeBuff to your AI assistant in under 2 minutes
+            </p>
+          </div>
+
+          <PixelCard>
+            <PixelCardContent className="p-6">
+              <Tabs value={selectedIde} onValueChange={(v) => setSelectedIde(v as keyof typeof IDE_CONFIGS)}>
+                <TabsList className="flex flex-wrap gap-1 h-auto bg-muted p-1 rounded-lg mb-6">
+                  {Object.entries(IDE_CONFIGS).map(([key, config]) => {
+                    const Icon = config.icon;
                     return (
-                      <button
-                        key={category}
-                        onClick={() => setSelectedCategory(category)}
-                        className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors ${
-                          selectedCategory === category
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }`}
+                      <TabsTrigger
+                        key={key}
+                        value={key}
+                        className="flex items-center gap-2 px-4 py-2 data-[state=active]:bg-background"
                       >
-                        <Icon className="w-4 h-4" />
-                        {categoryLabels[category] || category}
-                        <span className="ml-auto text-xs opacity-70">{count}</span>
-                      </button>
+                        <Icon className={`w-4 h-4 ${config.color}`} />
+                        {config.name}
+                      </TabsTrigger>
                     );
                   })}
-                </div>
+                </TabsList>
 
-                <div className="mt-6 pt-4 border-t border-border">
-                  <Link href="/mcp/submit">
-                    <PixelButton variant="outline" className="w-full">
-                      <Plus className="w-4 h-4 mr-2" />
-                      Submit MCP Server
-                    </PixelButton>
-                  </Link>
-                </div>
+                {Object.entries(IDE_CONFIGS).map(([key, config]) => (
+                  <TabsContent key={key} value={key} className="space-y-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">
+                        Config path: <code className="text-foreground bg-muted px-2 py-0.5 rounded">{config.path}</code>
+                      </span>
+                    </div>
 
-                {!servers?.length && (
-                  <div className="mt-4">
-                    <PixelButton
-                      variant="secondary"
-                      className="w-full text-xs"
-                      onClick={() => seedServers()}
-                    >
-                      Seed Sample Data
-                    </PixelButton>
-                  </div>
-                )}
-              </PixelCardContent>
-            </PixelCard>
+                    <div className="relative">
+                      <pre className="bg-muted rounded-lg p-4 overflow-x-auto text-sm">
+                        <code className="text-foreground">{config.config}</code>
+                      </pre>
+                      <button
+                        onClick={handleCopyConfig}
+                        className="absolute top-3 right-3 p-2 rounded-md bg-background/80 hover:bg-background transition-colors border border-border"
+                      >
+                        {copiedConfig ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4 text-muted-foreground" />
+                        )}
+                      </button>
+                    </div>
+
+                    <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/20">
+                      <p className="text-sm text-muted-foreground">
+                        <span className="text-purple-400 font-medium">Tip:</span> After adding the config, 
+                        restart your IDE to activate the MCP server. Then ask your AI assistant about any developer tool!
+                      </p>
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </PixelCardContent>
+          </PixelCard>
+        </div>
+      </section>
+
+      <section className="py-16 border-b border-border bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
+              What You Get
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Access the collective knowledge of thousands of developers directly in your AI assistant
+            </p>
           </div>
 
-          <div className="flex-1">
-            {selectedServer && selectedServerData ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {FEATURES.map((feature, index) => (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <button
-                  onClick={() => setSelectedServer(null)}
-                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors"
-                >
-                  <ChevronRight className="w-4 h-4 rotate-180" />
-                  Back to list
-                </button>
-
-                <PixelCard rarity={selectedServerData.isFeatured ? "legendary" : "common"}>
-                  <PixelCardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        {selectedServerData.logoUrl ? (
-                          <img
-                            src={selectedServerData.logoUrl}
-                            alt={selectedServerData.name}
-                            className="w-12 h-12 rounded-lg"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
-                            {(() => {
-                              const Icon = categoryIcons[selectedServerData.category] || Package;
-                              return <Icon className="w-6 h-6 text-muted-foreground" />;
-                            })()}
-                          </div>
-                        )}
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <PixelCardTitle>{selectedServerData.name}</PixelCardTitle>
-                            {selectedServerData.isVerified && (
-                              <BadgeCheck className="w-5 h-5 text-blue-500" />
-                            )}
-                            {selectedServerData.isOfficial && (
-                              <PixelBadge variant="default" className="text-xs">
-                                Official
-                              </PixelBadge>
-                            )}
-                          </div>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {selectedServerData.author && `by ${selectedServerData.author}`}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => handleUpvote(selectedServerData._id)}
-                          className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm transition-colors ${
-                            hasUpvoted
-                              ? "bg-primary text-primary-foreground"
-                              : "bg-muted text-muted-foreground hover:bg-muted/80"
-                          }`}
-                        >
-                          <ThumbsUp className="w-4 h-4" />
-                          {selectedServerData.upvotes}
-                        </button>
-                      </div>
+                <PixelCard className="h-full">
+                  <PixelCardContent className="p-6">
+                    <div className="bg-purple-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                      <feature.icon className="w-6 h-6 text-purple-400" />
                     </div>
-                  </PixelCardHeader>
-
-                  <PixelCardContent>
-                    <p className="text-foreground mb-4">{selectedServerData.description}</p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {selectedServerData.tags.map((tag) => (
-                        <PixelBadge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </PixelBadge>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                      <span className="flex items-center gap-1">
-                        <Download className="w-4 h-4" />
-                        {selectedServerData.installCount.toLocaleString()} installs
-                      </span>
-                      {selectedServerData.transportTypes.map((t) => (
-                        <PixelBadge key={t} variant="secondary" className="text-xs uppercase">
-                          {t}
-                        </PixelBadge>
-                      ))}
-                      {selectedServerData.supportsOAuth && (
-                        <PixelBadge variant="secondary" className="text-xs">
-                          OAuth
-                        </PixelBadge>
-                      )}
-                    </div>
-
-                    <div className="flex gap-3 mb-6">
-                      {selectedServerData.websiteUrl && (
-                        <a
-                          href={selectedServerData.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-sm text-primary hover:underline"
-                        >
-                          <Globe className="w-4 h-4" />
-                          Website
-                        </a>
-                      )}
-                      {selectedServerData.githubUrl && (
-                        <a
-                          href={selectedServerData.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-sm text-primary hover:underline"
-                        >
-                          <Github className="w-4 h-4" />
-                          GitHub
-                        </a>
-                      )}
-                      {selectedServerData.docsUrl && (
-                        <a
-                          href={selectedServerData.docsUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-sm text-primary hover:underline"
-                        >
-                          <BookOpen className="w-4 h-4" />
-                          Docs
-                        </a>
-                      )}
-                    </div>
-
-                    <div className="border-t border-border pt-6">
-                      <h3 className="text-lg font-semibold text-foreground mb-4 font-heading">
-                        Installation
-                      </h3>
-
-                      <Tabs value={selectedIde} onValueChange={setSelectedIde}>
-                        <TabsList className="flex flex-wrap gap-1 h-auto bg-muted p-1 rounded-lg mb-4">
-                          {Object.entries(ideInfo).map(([key, info]) => {
-                            const hasConfig = selectedServerData.configs?.some((c) => c.ide === key);
-                            if (!hasConfig) return null;
-                            const Icon = info.icon;
-                            return (
-                              <TabsTrigger
-                                key={key}
-                                value={key}
-                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs data-[state=active]:bg-background"
-                              >
-                                <Icon className={`w-3.5 h-3.5 ${info.color}`} />
-                                {info.name}
-                              </TabsTrigger>
-                            );
-                          })}
-                        </TabsList>
-
-                        {selectedConfig && (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between text-sm">
-                              <span className="text-muted-foreground">
-                                Config path: <code className="text-foreground">{ideInfo[selectedIde]?.configPath}</code>
-                              </span>
-                            </div>
-
-                            {selectedConfig.setupInstructions && (
-                              <p className="text-sm text-muted-foreground">
-                                {selectedConfig.setupInstructions}
-                              </p>
-                            )}
-
-                            <div className="relative">
-                              <pre className="bg-muted rounded-lg p-4 overflow-x-auto text-sm">
-                                <code className="text-foreground">{selectedConfig.configJson}</code>
-                              </pre>
-                              <button
-                                onClick={() => handleCopyConfig(selectedConfig.configJson)}
-                                className="absolute top-2 right-2 p-2 rounded-md bg-background/80 hover:bg-background transition-colors"
-                              >
-                                {copiedConfig ? (
-                                  <Check className="w-4 h-4 text-green-500" />
-                                ) : (
-                                  <Copy className="w-4 h-4 text-muted-foreground" />
-                                )}
-                              </button>
-                            </div>
-
-                            {selectedConfig.envVars && selectedConfig.envVars.length > 0 && (
-                              <div className="mt-4">
-                                <h4 className="text-sm font-semibold text-foreground mb-2">
-                                  Environment Variables
-                                </h4>
-                                <div className="space-y-2">
-                                  {selectedConfig.envVars.map((env) => (
-                                    <div
-                                      key={env.name}
-                                      className="flex items-start gap-2 text-sm"
-                                    >
-                                      <code className="text-primary">{env.name}</code>
-                                      {env.required && (
-                                        <PixelBadge variant="secondary" className="text-xs bg-red-500/20 text-red-400">
-                                          Required
-                                        </PixelBadge>
-                                      )}
-                                      <span className="text-muted-foreground">
-                                        {env.description}
-                                      </span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </Tabs>
-                    </div>
-
-                    {selectedServerData.tools && selectedServerData.tools.length > 0 && (
-                      <div className="border-t border-border pt-6 mt-6">
-                        <h3 className="text-lg font-semibold text-foreground mb-4 font-heading">
-                          Available Tools ({selectedServerData.tools.length})
-                        </h3>
-                        <div className="grid gap-2">
-                          {selectedServerData.tools.map((tool) => (
-                            <div
-                              key={tool._id}
-                              className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
-                            >
-                              <Wrench className="w-4 h-4 text-primary mt-0.5" />
-                              <div>
-                                <p className="text-sm font-medium text-foreground">
-                                  {tool.name}
-                                </p>
-                                <p className="text-xs text-muted-foreground">
-                                  {tool.description}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
                   </PixelCardContent>
                 </PixelCard>
               </motion.div>
-            ) : (
-              <div className="grid gap-4 sm:grid-cols-2">
-                <AnimatePresence mode="popLayout">
-                  {servers?.map((server, index) => {
-                    const Icon = categoryIcons[server.category] || Package;
-                    return (
-                      <motion.div
-                        key={server._id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ delay: index * 0.05 }}
-                      >
-                        <PixelCard
-                          rarity={server.isFeatured ? "rare" : "common"}
-                          className="cursor-pointer h-full"
-                          onClick={() => setSelectedServer(server._id)}
-                        >
-                          <PixelCardContent className="p-4">
-                            <div className="flex items-start gap-3">
-                              {server.logoUrl ? (
-                                <img
-                                  src={server.logoUrl}
-                                  alt={server.name}
-                                  className="w-10 h-10 rounded-lg"
-                                />
-                              ) : (
-                                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-                                  <Icon className="w-5 h-5 text-muted-foreground" />
-                                </div>
-                              )}
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2">
-                                  <h3 className="font-semibold text-foreground truncate">
-                                    {server.name}
-                                  </h3>
-                                  {server.isVerified && (
-                                    <BadgeCheck className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                                  )}
-                                </div>
-                                <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
-                                  {server.shortDescription || server.description}
-                                </p>
-                              </div>
-                            </div>
-
-                            <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
-                              <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                                <span className="flex items-center gap-1">
-                                  <Download className="w-3.5 h-3.5" />
-                                  {server.installCount.toLocaleString()}
-                                </span>
-                                <span className="flex items-center gap-1">
-                                  <ThumbsUp className="w-3.5 h-3.5" />
-                                  {server.upvotes}
-                                </span>
-                              </div>
-                              <div className="flex gap-1">
-                                {server.transportTypes.slice(0, 2).map((t) => (
-                                  <PixelBadge
-                                    key={t}
-                                    variant="secondary"
-                                    className="text-xs uppercase"
-                                  >
-                                    {t}
-                                  </PixelBadge>
-                                ))}
-                              </div>
-                            </div>
-                          </PixelCardContent>
-                        </PixelCard>
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
-
-                {servers?.length === 0 && (
-                  <div className="col-span-2 text-center py-12">
-                    <Package className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                      No MCP servers found
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {searchQuery
-                        ? "Try a different search term"
-                        : "Be the first to submit an MCP server!"}
-                    </p>
-                    <Link href="/mcp/submit">
-                      <PixelButton>
-                        <Plus className="w-4 h-4 mr-2" />
-                        Submit MCP Server
-                      </PixelButton>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            )}
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-16 border-b border-border">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
+              Available Tools
+            </h2>
+            <p className="text-muted-foreground">
+              These tools become available to your AI assistant after installation
+            </p>
+          </div>
+
+          <div className="grid gap-3">
+            {TOOLS_AVAILABLE.map((tool, index) => (
+              <motion.div
+                key={tool.name}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <PixelCard>
+                  <PixelCardContent className="p-4 flex items-start gap-4">
+                    <div className="bg-purple-500/10 p-2 rounded-lg">
+                      <Cpu className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div>
+                      <code className="text-primary font-mono text-sm">{tool.name}</code>
+                      <p className="text-sm text-muted-foreground mt-1">{tool.description}</p>
+                    </div>
+                  </PixelCardContent>
+                </PixelCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 border-b border-border bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
+              Example Use Cases
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Real scenarios where VibeBuff MCP saves your team hours of research
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {USE_CASES.map((useCase, index) => (
+              <motion.div
+                key={useCase.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <PixelCard className="h-full">
+                  <PixelCardContent className="p-6">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{useCase.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{useCase.description}</p>
+                    <div className="bg-background/50 rounded-lg p-3 border border-border">
+                      <p className="text-xs text-muted-foreground mb-1">Example prompt:</p>
+                      <p className="text-sm text-primary italic">{useCase.example}</p>
+                    </div>
+                  </PixelCardContent>
+                </PixelCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <PixelCard className="bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-background border-purple-500/30">
+            <PixelCardContent className="p-8 text-center">
+              <Terminal className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+              <h2 className="text-2xl font-bold text-foreground font-heading mb-4">
+                Ready to Supercharge Your AI Assistant?
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Join thousands of developers who use VibeBuff MCP to make faster, 
+                better-informed technology decisions without leaving their IDE.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a href="#installation">
+                  <PixelButton size="lg" className="flex items-center gap-2">
+                    <Zap className="w-5 h-5" />
+                    Install Now
+                  </PixelButton>
+                </a>
+                <Link href="/tools">
+                  <PixelButton variant="outline" size="lg" className="flex items-center gap-2">
+                    <Search className="w-5 h-5" />
+                    Browse Tools
+                  </PixelButton>
+                </Link>
+              </div>
+            </PixelCardContent>
+          </PixelCard>
+        </div>
+      </section>
     </div>
   );
 }

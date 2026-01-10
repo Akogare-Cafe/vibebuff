@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
@@ -7,6 +8,7 @@ import { useUser } from "@clerk/nextjs";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
+import { PixelInput } from "@/components/pixel-input";
 import Link from "next/link";
 import {
   Users,
@@ -22,6 +24,10 @@ import {
   Crown,
   Shield,
   User,
+  Search,
+  X,
+  Loader2,
+  Check,
 } from "lucide-react";
 
 export default function GroupDetailPage() {
@@ -41,9 +47,22 @@ export default function GroupDetailPage() {
 
   const joinGroup = useMutation(api.groups.join);
   const leaveGroup = useMutation(api.groups.leave);
+  const inviteMember = useMutation(api.groups.inviteMember);
+
+  const [showInviteModal, setShowInviteModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isInviting, setIsInviting] = useState<string | null>(null);
+  const [inviteSuccess, setInviteSuccess] = useState<string | null>(null);
+
+  const searchResults = useQuery(
+    api.friends.searchUsers,
+    searchQuery.length >= 2 ? { query: searchQuery, limit: 10 } : "skip"
+  );
 
   const currentUserMembership = members?.find((m) => m.userId === user?.id);
   const isOwner = group?.ownerId === user?.id;
+  const isAdmin = currentUserMembership?.role === "admin" || currentUserMembership?.role === "moderator";
+  const canInvite = isOwner || isAdmin;
   const isMember = !!currentUserMembership;
 
   const handleJoin = async () => {
@@ -64,6 +83,29 @@ export default function GroupDetailPage() {
       console.error("Failed to leave group:", error);
     }
   };
+
+  const handleInvite = async (inviteeId: string) => {
+    if (!user?.id || !group?._id) return;
+    setIsInviting(inviteeId);
+    setInviteSuccess(null);
+    try {
+      await inviteMember({
+        groupId: group._id,
+        inviterId: user.id,
+        inviteeId,
+      });
+      setInviteSuccess(inviteeId);
+      setTimeout(() => setInviteSuccess(null), 2000);
+    } catch (error) {
+      console.error("Failed to invite member:", error);
+    } finally {
+      setIsInviting(null);
+    }
+  };
+
+  const filteredSearchResults = searchResults?.filter(
+    (result) => !members?.some((m) => m.userId === result.clerkId)
+  );
 
   const getGroupTypeIcon = (type: string) => {
     switch (type) {
@@ -157,6 +199,11 @@ export default function GroupDetailPage() {
                   {isMember && !isOwner && (
                     <PixelButton variant="outline" size="sm" onClick={handleLeave}>
                       <LogOut className="w-4 h-4 mr-2" /> Leave Group
+                    </PixelButton>
+                  )}
+                  {canInvite && (
+                    <PixelButton variant="outline" size="sm" onClick={() => setShowInviteModal(true)}>
+                      <UserPlus className="w-4 h-4 mr-2" /> Invite Members
                     </PixelButton>
                   )}
                   {isOwner && (
@@ -290,6 +337,90 @@ export default function GroupDetailPage() {
           </div>
         </div>
       </main>
+
+      {showInviteModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <PixelCard className="w-full max-w-md">
+            <PixelCardContent className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+                  <UserPlus className="w-5 h-5 text-primary" /> Invite Members
+                </h2>
+                <button
+                  onClick={() => {
+                    setShowInviteModal(false);
+                    setSearchQuery("");
+                  }}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="relative mb-4">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <PixelInput
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search users by username..."
+                  className="pl-10"
+                />
+              </div>
+
+              <div className="max-h-64 overflow-y-auto space-y-2">
+                {searchQuery.length < 2 ? (
+                  <p className="text-muted-foreground text-sm text-center py-4">
+                    Type at least 2 characters to search
+                  </p>
+                ) : filteredSearchResults && filteredSearchResults.length > 0 ? (
+                  filteredSearchResults.map((result) => (
+                    <div
+                      key={result.clerkId}
+                      className="flex items-center gap-3 p-3 bg-background rounded-lg border border-border"
+                    >
+                      <div className="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                        {result.avatarUrl ? (
+                          <img src={result.avatarUrl} alt={result.username || ""} className="w-full h-full object-cover" />
+                        ) : (
+                          <User className="w-5 h-5 text-primary" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-foreground font-medium truncate">
+                          {result.username || "Unknown"}
+                        </p>
+                        <p className="text-muted-foreground text-xs">Level {result.level}</p>
+                      </div>
+                      <PixelButton
+                        size="sm"
+                        variant={inviteSuccess === result.clerkId ? "default" : "outline"}
+                        onClick={() => handleInvite(result.clerkId)}
+                        disabled={isInviting === result.clerkId || inviteSuccess === result.clerkId}
+                      >
+                        {isInviting === result.clerkId ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : inviteSuccess === result.clerkId ? (
+                          <Check className="w-4 h-4" />
+                        ) : (
+                          <UserPlus className="w-4 h-4" />
+                        )}
+                      </PixelButton>
+                    </div>
+                  ))
+                ) : searchResults && searchResults.length > 0 && filteredSearchResults?.length === 0 ? (
+                  <p className="text-muted-foreground text-sm text-center py-4">
+                    All matching users are already members
+                  </p>
+                ) : (
+                  <p className="text-muted-foreground text-sm text-center py-4">
+                    No users found
+                  </p>
+                )}
+              </div>
+            </PixelCardContent>
+          </PixelCard>
+        </div>
+      )}
     </div>
   );
 }

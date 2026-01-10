@@ -8,6 +8,7 @@ import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelInput } from "@/components/pixel-input";
 import Link from "next/link";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -58,11 +59,11 @@ const pricingStyles: Record<PricingModel, { bg: string; text: string; label: str
 };
 
 const statConfig = [
-  { key: "hp", label: "HP", color: "bg-red-500", icon: Heart },
-  { key: "attack", label: "ATK", color: "bg-orange-500", icon: Flame },
-  { key: "defense", label: "DEF", color: "bg-blue-500", icon: Shield },
-  { key: "speed", label: "SPD", color: "bg-green-500", icon: Gauge },
-  { key: "mana", label: "MANA", color: "bg-purple-500", icon: Zap },
+  { key: "hp", label: "HP", color: "bg-red-500", icon: Heart, description: "Community strength & longevity. Based on GitHub stars, open source status, and features." },
+  { key: "attack", label: "ATK", color: "bg-orange-500", icon: Flame, description: "Capability & power. Based on pros, npm downloads, and feature count." },
+  { key: "defense", label: "DEF", color: "bg-blue-500", icon: Shield, description: "Stability & reliability. Based on open source status, pricing model, and community trust." },
+  { key: "speed", label: "SPD", color: "bg-green-500", icon: Gauge, description: "Ease of adoption. Based on pricing, popularity, and simplicity." },
+  { key: "mana", label: "MANA", color: "bg-purple-500", icon: Zap, description: "Versatility & extensibility. Based on features, open source status, and ecosystem." },
 ];
 
 export default function ComparePage() {
@@ -495,15 +496,22 @@ function ComparePageContent() {
             
             <div className="bg-card border border-border rounded-xl p-4 md:p-6">
               <div className="grid gap-4">
-                {statConfig.map(({ key, label, color, icon: Icon }) => {
+                {statConfig.map(({ key, label, color, icon: Icon, description }) => {
                   const maxValue = Math.max(...validCompareTools.map(t => t.stats?.[key as keyof typeof t.stats] || 0));
                   
                   return (
                     <div key={key} className="space-y-2">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Icon className="w-4 h-4" />
-                        <span className="text-xs font-medium uppercase">{label}</span>
-                      </div>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <div className="flex items-center gap-2 text-muted-foreground cursor-help w-fit">
+                            <Icon className="w-4 h-4" />
+                            <span className="text-xs font-medium uppercase">{label}</span>
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent side="top" className="max-w-[200px]">
+                          <p>{description}</p>
+                        </TooltipContent>
+                      </Tooltip>
                       <div className="grid gap-2">
                         {validCompareTools.map((tool) => {
                           const value = tool.stats?.[key as keyof typeof tool.stats] || 0;

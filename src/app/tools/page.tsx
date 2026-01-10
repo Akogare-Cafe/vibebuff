@@ -547,9 +547,9 @@ function ToolsPageContent() {
                 </button>
               </div>
             )}
-          </section>
 
-          <McpPromoCard className="mt-8" />
+            <McpPromoCard className="mt-8" />
+          </section>
         </div>
       </main>
 

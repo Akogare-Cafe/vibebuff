@@ -1,0 +1,301 @@
+openapi: 3.0.0
+info:
+  title: VibeBuff AI API
+  description: |
+    VibeBuff provides AI-powered tech stack recommendations and a comprehensive database of 500+ developer tools.
+    Use this API to search tools, compare options, and get personalized stack recommendations.
+  version: 1.0.0
+  contact:
+    name: VibeBuff Support
+    url: https://vibebuff.dev
+    email: support@vibebuff.dev
+
+servers:
+  - url: https://vibebuff.dev/api/ai
+    description: Production API
+
+paths:
+  /tools:
+    get:
+      operationId: listTools
+      summary: List all developer tools
+      description: Returns a list of all 500+ developer tools with metadata including name, category, pricing, and description.
+      parameters:
+        - name: category
+          in: query
+          description: Filter by category slug (e.g., frontend, backend, database)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of tools to return
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of tools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ToolSummary'
+                  total:
+                    type: integer
+                  _meta:
+                    $ref: '#/components/schemas/Meta'
+
+  /tools/{slug}:
+    get:
+      operationId: getToolDetails
+      summary: Get detailed tool information
+      description: Returns comprehensive information about a specific tool including pros, cons, features, alternatives, and community ratings.
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          description: Tool slug identifier (e.g., nextjs, supabase, clerk)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tool details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tool:
+                    $ref: '#/components/schemas/ToolDetails'
+                  alternatives:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ToolSummary'
+                  _meta:
+                    $ref: '#/components/schemas/Meta'
+        '404':
+          description: Tool not found
+
+  /compare:
+    get:
+      operationId: compareTools
+      summary: Compare multiple tools
+      description: Compare 2-4 developer tools side by side with feature comparison, pricing analysis, and recommendations.
+      parameters:
+        - name: tools
+          in: query
+          required: true
+          description: Comma-separated list of tool slugs to compare (2-4 tools)
+          schema:
+            type: string
+          example: nextjs,remix,sveltekit
+      responses:
+        '200':
+          description: Tool comparison
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ToolComparison'
+                  summary:
+                    type: string
+                    description: AI-generated comparison summary
+                  _meta:
+                    $ref: '#/components/schemas/Meta'
+
+  /categories:
+    get:
+      operationId: listCategories
+      summary: List tool categories
+      description: Returns all tool categories with tool counts and popular tools in each category.
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+                  _meta:
+                    $ref: '#/components/schemas/Meta'
+
+  /recommend:
+    get:
+      operationId: getStackRecommendation
+      summary: Get AI stack recommendations
+      description: Get personalized tech stack recommendations based on project type, budget, and scale requirements.
+      parameters:
+        - name: type
+          in: query
+          required: true
+          description: Project type
+          schema:
+            type: string
+            enum: [saas, ecommerce, blog, portfolio, api, mobile, ai-app, realtime]
+        - name: budget
+          in: query
+          description: Budget constraint
+          schema:
+            type: string
+            enum: [free, low, medium, high, enterprise]
+        - name: scale
+          in: query
+          description: Expected scale
+          schema:
+            type: string
+            enum: [hobby, startup, growth, enterprise]
+      responses:
+        '200':
+          description: Stack recommendation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommendation:
+                    $ref: '#/components/schemas/StackRecommendation'
+                  _meta:
+                    $ref: '#/components/schemas/Meta'
+
+components:
+  schemas:
+    ToolSummary:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        tagline:
+          type: string
+        category:
+          type: string
+        pricing:
+          type: string
+        isOpenSource:
+          type: boolean
+        url:
+          type: string
+
+    ToolDetails:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        tagline:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        pricing:
+          type: string
+        isOpenSource:
+          type: boolean
+        pros:
+          type: array
+          items:
+            type: string
+        cons:
+          type: array
+          items:
+            type: string
+        features:
+          type: array
+          items:
+            type: string
+        bestFor:
+          type: array
+          items:
+            type: string
+        website:
+          type: string
+        github:
+          type: string
+
+    ToolComparison:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        found:
+          type: boolean
+        category:
+          type: string
+        pricing:
+          type: string
+        isOpenSource:
+          type: boolean
+        pros:
+          type: array
+          items:
+            type: string
+        cons:
+          type: array
+          items:
+            type: string
+
+    Category:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        toolCount:
+          type: integer
+        popularTools:
+          type: array
+          items:
+            type: string
+
+    StackRecommendation:
+      type: object
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        stack:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              primary:
+                $ref: '#/components/schemas/ToolSummary'
+              alternatives:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToolSummary'
+        estimatedCost:
+          type: string
+
+    Meta:
+      type: object
+      properties:
+        source:
+          type: string
+        description:
+          type: string
+        documentation:
+          type: string

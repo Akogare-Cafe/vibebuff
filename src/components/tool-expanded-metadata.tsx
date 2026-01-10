@@ -19,6 +19,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MarkdownRenderer } from "./markdown-renderer";
 import { useState } from "react";
 
 interface SocialLinks {
@@ -176,7 +177,7 @@ export function ToolReadmeInfo({ readme, className }: { readme?: ReadmeInfo; cla
       </PixelCardHeader>
       <PixelCardContent>
         {readme.excerpt && (
-          <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{readme.excerpt}</p>
+          <MarkdownRenderer content={readme.excerpt} className="text-sm leading-relaxed mb-4 [&_p]:mb-2 [&_p:last-child]:mb-0" />
         )}
 
         <div className="flex flex-wrap gap-2">

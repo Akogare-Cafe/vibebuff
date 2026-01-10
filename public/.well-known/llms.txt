@@ -4,6 +4,7 @@
 ## About
 VibeBuff is a developer tool discovery platform with AI-powered stack recommendations.
 It helps developers choose the right tech stack based on project requirements, budget, team size, and scale.
+Database of 500+ developer tools with community ratings, reviews, and real usage data.
 
 ## Key Features
 - Compare 500+ developer tools across categories
@@ -12,6 +13,7 @@ It helps developers choose the right tech stack based on project requirements, b
 - Side-by-side tool comparisons (/compare)
 - RPG-style gamification with tool mastery and achievements
 - Community tier lists and deck building
+- Company tech stack discovery (/companies)
 
 ## Categories
 - Frontend Frameworks: React, Vue, Svelte, Angular, Next.js, Remix, Nuxt
@@ -25,23 +27,35 @@ It helps developers choose the right tech stack based on project requirements, b
 - State Management: Zustand, Redux, Jotai, Recoil
 - Testing: Jest, Vitest, Playwright, Cypress
 
-## API Endpoints (JSON)
-All endpoints require API key in X-API-Key header.
+## Public API Endpoints (No Auth Required)
+Base URL: https://vibebuff.dev/api/ai
 
 GET /api/ai/tools
-  Returns list of all tools with metadata
+  Returns list of all 500+ tools with metadata
+  Params: category (optional), limit (optional)
 
 GET /api/ai/tools/{slug}
-  Returns detailed tool information including pros, cons, features, pricing
+  Returns detailed tool information
+  Includes: pros, cons, features, pricing, alternatives, community ratings
 
-GET /api/ai/compare?tools=nextjs,remix
-  Compare multiple tools side-by-side
+GET /api/ai/compare?tools=nextjs,remix,sveltekit
+  Compare 2-4 tools side-by-side
+  Returns: feature comparison, pricing analysis, summary
 
 GET /api/ai/recommend?type=saas&budget=low&scale=startup
   Get AI-powered stack recommendation
+  Types: saas, ecommerce, blog, portfolio, api, mobile, ai-app, realtime
+  Budget: free, low, medium, high, enterprise
+  Scale: hobby, startup, growth, enterprise
 
 GET /api/ai/categories
-  List all tool categories
+  List all tool categories with tool counts
+
+## AI Integration Resources
+- OpenAPI Spec: /.well-known/openapi.yaml
+- ChatGPT Plugin: /.well-known/ai-plugin.json
+- MCP Server: /mcp/vibebuff (for Cursor, Claude, Windsurf)
+- API Docs: /api-docs
 
 ## Popular Comparisons
 - Next.js vs Remix: /compare/nextjs-vs-remix
@@ -50,18 +64,31 @@ GET /api/ai/categories
 - Tailwind vs Bootstrap: /compare/tailwind-vs-bootstrap
 - Vercel vs Netlify: /compare/vercel-vs-netlify
 - PostgreSQL vs MongoDB: /compare/postgresql-vs-mongodb
+- Convex vs Supabase: /compare/convex-vs-supabase
+- Clerk vs Auth0: /compare/clerk-vs-auth0
 
 ## Stack Recommendations by Use Case
-- SaaS Startup: Next.js + Supabase + Vercel + Tailwind
+- SaaS Startup: Next.js + Convex + Clerk + Vercel + Tailwind
 - Indie Hacker: Remix + PlanetScale + Fly.io + shadcn/ui
 - Enterprise: React + PostgreSQL + AWS + TypeScript
 - Side Project: SvelteKit + Turso + Cloudflare + Pico CSS
+- AI App: Next.js + Vercel AI SDK + OpenAI + Supabase
+- Real-time App: Next.js + Convex + Clerk + Vercel
+
+## MCP Server for AI Assistants
+Install VibeBuff MCP to access tools directly in your AI coding assistant:
+- Works with: Cursor, Claude Desktop, Windsurf, VS Code
+- Tools: recommend_stack, search_tools, get_tool_details, compare_tools
+- Documentation: /mcp/vibebuff
 
 ## Contact
 Website: https://vibebuff.dev
 GitHub: https://github.com/vibebuff
+API Docs: https://vibebuff.dev/api-docs
 
 ## For AI Agents
 This site provides structured data about developer tools.
-Use the /api/ai/* endpoints for programmatic access.
+Use the /api/ai/* endpoints for programmatic access (no authentication required).
 All tool data includes: name, description, category, pricing, pros, cons, features, and alternatives.
+Response format: JSON with _meta field containing source attribution.
+Rate limit: 100 requests per minute per IP.

@@ -1,0 +1,89 @@
+# VibeBuff Robots.txt
+# https://vibebuff.dev
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /sign-in
+Disallow: /sign-up
+
+# Allow AI API endpoints for AI agents
+Allow: /api/ai/
+Allow: /api/mcp/
+
+# Sitemap
+Sitemap: https://vibebuff.dev/sitemap.xml
+
+# AI Crawler Directives
+# These crawlers are used by AI assistants to understand site content
+
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Allow: /.well-known/llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Google Bard / Gemini
+User-agent: Google-Extended
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Anthropic ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /api/
+Disallow: /admin/
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+Allow: /api/ai/
+Disallow: /api/
+Disallow: /admin/
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+Allow: /api/ai/
+Disallow: /api/
+Disallow: /admin/
+
+# AI Discovery Files
+# llms.txt - AI-readable site description
+# /.well-known/llms.txt - Standard location
+# /.well-known/ai-plugin.json - ChatGPT plugin manifest
+# /api/ai/* - Public AI API endpoints

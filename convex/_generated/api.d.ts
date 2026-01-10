@@ -15,6 +15,7 @@ import type * as ads from "../ads.js";
 import type * as ai from "../ai.js";
 import type * as architect from "../architect.js";
 import type * as articles from "../articles.js";
+import type * as battles from "../battles.js";
 import type * as categories from "../categories.js";
 import type * as communityStacks from "../communityStacks.js";
 import type * as companies from "../companies.js";
@@ -98,6 +99,7 @@ declare const fullApi: ApiFromModules<{
   ai: typeof ai;
   architect: typeof architect;
   articles: typeof articles;
+  battles: typeof battles;
   categories: typeof categories;
   communityStacks: typeof communityStacks;
   companies: typeof companies;

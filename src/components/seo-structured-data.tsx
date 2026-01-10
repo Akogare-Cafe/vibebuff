@@ -362,6 +362,31 @@ export function CompanyListSchema({ companies }: { companies: Array<{ name: stri
   );
 }
 
+export function WebAPISchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebAPI",
+    name: "VibeBuff AI API",
+    description:
+      "Public API for accessing 500+ developer tools, side-by-side comparisons, and AI-powered stack recommendations. No authentication required for public endpoints.",
+    url: `${siteUrl}/api/ai`,
+    documentation: `${siteUrl}/api-docs`,
+    termsOfService: `${siteUrl}/terms`,
+    provider: {
+      "@type": "Organization",
+      name: "VibeBuff",
+      url: siteUrl,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function HomePageSchemas() {
   const homeFaqs: FAQItem[] = [
     {
@@ -395,6 +420,7 @@ export function HomePageSchemas() {
       <WebsiteSchema />
       <OrganizationSchema />
       <SoftwareApplicationSchema />
+      <WebAPISchema />
       <HowToSchema />
       <FAQSchema faqs={homeFaqs} />
     </>

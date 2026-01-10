@@ -71,6 +71,7 @@ import {
   Share2,
   Globe,
   Copy,
+  ExternalLink,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -167,6 +168,33 @@ const CATEGORY_INFO: Record<string, { icon: React.ComponentType<{ className?: st
   collection: { icon: Layers, color: "text-green-400", label: "Collection" },
   social: { icon: Users, color: "text-pink-400", label: "Social" },
   mastery: { icon: Crown, color: "text-yellow-400", label: "Mastery" },
+};
+
+const QUEST_LINKS: Record<string, { href: string; label: string }> = {
+  quests_completed: { href: "/quests", label: "Start a Quest" },
+  tools_viewed: { href: "/tools", label: "Browse Tools" },
+  categories_explored: { href: "/tools", label: "Explore Categories" },
+  comparisons_made: { href: "/compare", label: "Compare Tools" },
+  decks_created: { href: "/decks/new", label: "Create a Deck" },
+  tools_collected: { href: "/decks", label: "Add Tools to Decks" },
+  rare_tools_collected: { href: "/tools", label: "Find Rare Tools" },
+  legendary_tools_collected: { href: "/tools", label: "Find Legendary Tools" },
+  favorites_added: { href: "/tools", label: "Favorite Tools" },
+  battles_won: { href: "/battles", label: "Start a Battle" },
+  level_reached: { href: "/profile", label: "Earn More XP" },
+  budget_deck_created: { href: "/decks/new", label: "Build Budget Deck" },
+  free_deck_created: { href: "/decks/new", label: "Build Free Deck" },
+  oss_deck_created: { href: "/decks/new", label: "Build OSS Deck" },
+  enterprise_deck_created: { href: "/decks/new", label: "Build Enterprise Deck" },
+  tool_mastery_apprentice: { href: "/tools", label: "Master a Tool" },
+  tool_mastery_journeyman: { href: "/tools", label: "Master Tools" },
+  tool_mastery_expert: { href: "/tools", label: "Master Tools" },
+  parties_created: { href: "/parties/new", label: "Create a Party" },
+  parties_joined: { href: "/parties", label: "Join a Party" },
+  votes_cast: { href: "/battles", label: "Vote in Battles" },
+  decks_shared: { href: "/decks", label: "Share Your Decks" },
+  deck_views_received: { href: "/decks", label: "Share Your Decks" },
+  deck_copies_received: { href: "/decks", label: "Create Popular Decks" },
 };
 
 type FilterCategory = "all" | "exploration" | "collection" | "social" | "mastery";
@@ -472,6 +500,16 @@ export default function AchievementsPage() {
                               style={{ width: `${achievement.progressPercent}%` }}
                             />
                           </div>
+                          {QUEST_LINKS[achievement.requirement.type] && (
+                            <Link 
+                              href={QUEST_LINKS[achievement.requirement.type].href}
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-2 flex items-center justify-center gap-1.5 w-full py-1.5 px-2 rounded-md bg-primary/10 border border-primary/20 text-primary text-[10px] font-medium hover:bg-primary/20 transition-colors"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              {QUEST_LINKS[achievement.requirement.type].label}
+                            </Link>
+                          )}
                         </div>
                       )}
 
@@ -565,6 +603,15 @@ export default function AchievementsPage() {
                       <p className="text-xs text-muted-foreground mt-2">
                         {selectedAchievementData.remaining} more to unlock
                       </p>
+                      {QUEST_LINKS[selectedAchievementData.requirement.type] && (
+                        <Link 
+                          href={QUEST_LINKS[selectedAchievementData.requirement.type].href}
+                          className="mt-3 flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-primary/10 border border-primary/30 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          {QUEST_LINKS[selectedAchievementData.requirement.type].label}
+                        </Link>
+                      )}
                     </div>
                   )}
                 </div>

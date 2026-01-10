@@ -172,11 +172,11 @@ export default function VibebuffMcpPage() {
         
         <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 relative">
           <div className="flex items-center gap-2 mb-4">
-            <Link href="/mcp" className="text-muted-foreground hover:text-primary text-sm">
-              MCP Directory
+            <Link href="/" className="text-muted-foreground hover:text-primary text-sm">
+              Home
             </Link>
             <ChevronRight className="w-3 h-3 text-muted-foreground" />
-            <span className="text-primary text-sm">VibeBuff MCP</span>
+            <span className="text-primary text-sm">VibeBuff MCP Server</span>
           </div>
 
           <motion.div
