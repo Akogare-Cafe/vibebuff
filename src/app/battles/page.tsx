@@ -34,6 +34,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { TourTrigger } from "@/components/page-tour";
+import { battlesTourConfig } from "@/lib/tour-configs";
 
 type BattleStatus = "pending" | "active" | "voting" | "completed" | "cancelled";
 
@@ -108,6 +110,10 @@ export default function BattlesPage() {
   return (
     <div className="min-h-screen bg-background pb-12">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={battlesTourConfig} />
+      </div>
 
       <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8 text-center">
@@ -123,7 +129,7 @@ export default function BattlesPage() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8" data-tour="battle-card">
           <div className="flex gap-2">
             <PixelButton
               variant={activeTab === "open" ? "default" : "outline"}
@@ -186,7 +192,7 @@ export default function BattlesPage() {
             )}
 
             {pendingBattles && pendingBattles.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-tour="battle-stats">
                 {pendingBattles.map((battle) => (
                   <BattleCard
                     key={battle._id}

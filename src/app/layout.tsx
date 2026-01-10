@@ -12,6 +12,7 @@ import { BotIdClient } from "botid/client";
 import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
 import { McpNotificationBanner } from "@/components/mcp-notification-banner";
+import { PageTourProvider } from "@/components/page-tour";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -175,12 +176,14 @@ export default function RootLayout({
         <ClerkClientProvider>
           <ConvexClientProvider>
             <ThemeProvider>
-              <McpNotificationBanner />
-              <Header />
-              <OnboardingWrapper />
-              <ReferralHandler />
-              <main className="flex-1">{children}</main>
-              <Footer />
+              <PageTourProvider>
+                <McpNotificationBanner />
+                <Header />
+                <OnboardingWrapper />
+                <ReferralHandler />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </PageTourProvider>
             </ThemeProvider>
           </ConvexClientProvider>
         </ClerkClientProvider>

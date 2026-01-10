@@ -23,6 +23,8 @@ import {
   History,
   Target,
 } from "lucide-react";
+import { TourTrigger } from "@/components/page-tour";
+import { questsTourConfig } from "@/lib/tour-configs";
 
 const OUTCOME_STYLES: Record<string, { bg: string; text: string; icon: React.ReactNode; label: string }> = {
   shipped: { 
@@ -81,6 +83,10 @@ export default function QuestsPage() {
   return (
     <div className="min-h-screen bg-background pb-24">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={questsTourConfig} />
+      </div>
 
       <main className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8">
@@ -101,7 +107,7 @@ export default function QuestsPage() {
           </div>
         </div>
 
-        <PixelCard className="p-6 md:p-8 mb-8 border-primary bg-gradient-to-br from-card via-background to-card">
+        <PixelCard className="p-6 md:p-8 mb-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="quest-list">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center flex-shrink-0">
               <Sparkles className="w-10 h-10 text-white" />

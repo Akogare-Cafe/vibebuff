@@ -21,6 +21,8 @@ import {
   Zap,
   MessageSquare,
 } from "lucide-react";
+import { TourTrigger } from "@/components/page-tour";
+import { leaderboardsTourConfig } from "@/lib/tour-configs";
 
 type LeaderboardType = "xp" | "battles" | "decks" | "quests" | "mastery" | "streaks" | "reviews";
 
@@ -91,6 +93,9 @@ export default function LeaderboardsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={leaderboardsTourConfig} />
+      </div>
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
           <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 mb-4">
@@ -105,7 +110,7 @@ export default function LeaderboardsPage() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6" data-tour="leaderboard-tabs">
           {LEADERBOARD_TABS.map((tab) => (
             <PixelButton
               key={tab.id}
@@ -120,7 +125,7 @@ export default function LeaderboardsPage() {
         </div>
 
         {leaderboardData && leaderboardData.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" data-tour="leaderboard-list">
             {leaderboardData.slice(0, 3).map((user, index) => (
               <Link key={user.clerkId} href={`/users/${user.clerkId}`}>
                 <PixelCard 

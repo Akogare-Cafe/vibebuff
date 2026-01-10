@@ -47,6 +47,8 @@ import {
 import { Id } from "../../../convex/_generated/dataModel";
 import { DynamicIcon, ToolIcon } from "@/components/dynamic-icon";
 import { motion, AnimatePresence } from "framer-motion";
+import { TourTrigger } from "@/components/page-tour";
+import { compareTourConfig } from "@/lib/tour-configs";
 
 type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
@@ -212,6 +214,10 @@ function ComparePageContent() {
     <div className="min-h-screen bg-background pb-12">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
       
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={compareTourConfig} />
+      </div>
+      
       <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Page Header */}
         <div className="mb-8 text-center">
@@ -228,7 +234,7 @@ function ComparePageContent() {
         </div>
 
         {/* Tool Selection Area */}
-        <div className="mb-8">
+        <div className="mb-8" data-tour="compare-search">
           <div className="flex flex-wrap gap-3 items-center justify-center mb-4">
             <AnimatePresence mode="popLayout">
               {selectedSlugs.map((slug, index) => {

@@ -32,6 +32,8 @@ import {
   Gift,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
+import { TourTrigger } from "@/components/page-tour";
+import { profileTourConfig } from "@/lib/tour-configs";
 // import { ReferralCard } from "@/components/referral-card";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -209,11 +211,15 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-background pb-24">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={profileTourConfig} />
+      </div>
 
       <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="w-full lg:w-[340px] flex-shrink-0 flex flex-col gap-6">
-            <div className="bg-card border border-border rounded-xl overflow-hidden relative group">
+            <div className="bg-card border border-border rounded-xl overflow-hidden relative group" data-tour="profile-stats">
               <div className="h-32 bg-gradient-to-b from-primary/30 to-card relative">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-overlay" />
               </div>

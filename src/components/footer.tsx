@@ -30,8 +30,8 @@ const footerLinks = {
   resources: [
     { name: "Developer Blog", href: "/blog" },
     { name: "Documentation", href: "/docs" },
+    { name: "Marketing Guide", href: "/guides/marketing" },
     { name: "Community", href: "/community" },
-    { name: "Get Started", href: "/get-started" },
     { name: "Leaderboards", href: "/leaderboards" },
   ],
   company: [

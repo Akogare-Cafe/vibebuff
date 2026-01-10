@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
+import { TourTrigger } from "@/components/page-tour";
+import { forumTourConfig } from "@/lib/tour-configs";
 
 const iconMap: Record<string, React.ElementType> = {
   Flame,
@@ -49,6 +51,9 @@ export function ForumContent() {
 
   return (
     <div className="min-h-screen bg-background">
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={forumTourConfig} />
+      </div>
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">Community Forum</h1>
@@ -57,7 +62,7 @@ export function ForumContent() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" data-tour="forum-categories">
           <PixelCard>
             <PixelCardContent className="flex items-center gap-4">
               <div className="p-3 rounded-lg bg-primary/10">

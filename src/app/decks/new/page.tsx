@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Id } from "../../../../convex/_generated/dataModel";
+import { TourTrigger } from "@/components/page-tour";
+import { decksTourConfig } from "@/lib/tour-configs";
 
 export default function NewDeckPage() {
   const { user, isLoaded } = useUser();
@@ -124,6 +126,10 @@ export default function NewDeckPage() {
   return (
     <div className="min-h-screen bg-background pb-12">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={decksTourConfig} />
+      </div>
 
       <section className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8">
@@ -148,7 +154,7 @@ export default function NewDeckPage() {
                 </PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent className="space-y-4">
-                <div>
+                <div data-tour="deck-name">
                   <label className="text-foreground text-sm mb-2 block">DECK NAME *</label>
                   <PixelInput
                     placeholder="e.g., My Full-Stack Setup"
@@ -166,7 +172,7 @@ export default function NewDeckPage() {
                   />
                 </div>
 
-                <div>
+                <div data-tour="deck-visibility">
                   <label className="text-foreground text-sm mb-2 block">VISIBILITY</label>
                   <div className="flex gap-3">
                     <button
@@ -201,7 +207,7 @@ export default function NewDeckPage() {
               </PixelCardContent>
             </PixelCard>
 
-            <PixelCard>
+            <PixelCard data-tour="deck-tools">
               <PixelCardHeader>
                 <PixelCardTitle className="flex items-center gap-2">
                   <Wrench className="w-4 h-4" /> ADD TOOLS
@@ -306,7 +312,7 @@ export default function NewDeckPage() {
           </div>
 
           <div className="space-y-6">
-            <PixelCard className="sticky top-24">
+            <PixelCard className="sticky top-24" data-tour="deck-preview">
               <PixelCardHeader>
                 <PixelCardTitle className="flex items-center gap-2">
                   <Package className="w-4 h-4" /> YOUR DECK

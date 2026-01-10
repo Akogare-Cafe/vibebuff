@@ -31,6 +31,8 @@ import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
 import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
 import dynamic from "next/dynamic";
+import { TourTrigger } from "@/components/page-tour";
+import { homeTourConfig } from "@/lib/tour-configs";
 
 const AnimatedBackground = dynamic(
   () => import("@/components/animated-background").then(mod => ({ default: mod.AnimatedBackground })),
@@ -209,6 +211,10 @@ export default function Home() {
       <AnimatedBackground />
       <HomePageSchemas />
       
+      <div className="fixed bottom-4 right-4 z-50">
+        <TourTrigger tourConfig={homeTourConfig} />
+      </div>
+      
       {/* Live Tools Ticker */}
       <div className="border-b border-border bg-card/30 backdrop-blur-sm py-3">
         <ToolsTicker />
@@ -235,7 +241,7 @@ export default function Home() {
           </p>
 
           {/* Search Box */}
-          <div className="max-w-2xl mx-auto mb-8" ref={searchRef}>
+          <div className="max-w-2xl mx-auto mb-8" ref={searchRef} data-tour="search">
             <div className="flex gap-4 flex-col sm:flex-row">
               <div className="relative flex-1">
                 <PixelInput
@@ -299,7 +305,7 @@ export default function Home() {
 
         {/* AI Stack Builder Prompt Section */}
         <section className="mb-16 md:mb-20">
-          <PixelCard className="p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card">
+          <PixelCard className="p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="ai-builder">
             <div className="text-center mb-6">
               <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
                 <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-white" />
@@ -514,7 +520,7 @@ export default function Home() {
           <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Browse Categories
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5" data-tour="categories">
             {categories?.map((category) => (
               <Link key={category._id} href={`/tools?category=${category.slug}`}>
                 <PixelCard className="text-center p-5 md:p-6 cursor-pointer hover:border-primary transition-all group min-h-[120px] md:min-h-[140px] flex flex-col items-center justify-center">
@@ -535,7 +541,7 @@ export default function Home() {
           <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Legendary Items
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-tour="featured">
             {featuredTools?.slice(0, 6).map((tool) => (
               <Link key={tool._id} href={`/tools/${tool.slug}`}>
                 <PixelCard className="h-full" rarity="rare">
