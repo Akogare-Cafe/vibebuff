@@ -22,7 +22,9 @@ import {
   ArrowRight,
   Sparkles,
   Users,
+  ChevronLeft,
   ChevronRight,
+  Filter,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Id } from "../../../../convex/_generated/dataModel";
@@ -36,17 +38,32 @@ export default function NewDeckPage() {
   const [isCreating, setIsCreating] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTools, setSelectedTools] = useState<Id<"tools">[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const allTools = useQuery(api.tools.list, { limit: 100 });
   const searchResults = useQuery(
     api.tools.search,
     searchQuery.length > 2 ? { query: searchQuery } : "skip"
   );
-  const featuredTools = useQuery(api.tools.featured);
+  const categories = useQuery(api.categories.list);
 
   const createDeck = useMutation(api.decks.createDeck);
 
-  const displayTools = searchQuery.length > 2 ? searchResults : featuredTools;
+  const baseTools = searchQuery.length > 2 ? searchResults : allTools;
+  const filteredTools = baseTools?.filter((tool) => {
+    if (selectedCategory !== "all") {
+      const category = categories?.find((c) => c.slug === selectedCategory);
+      if (category && tool.categoryId !== category._id) return false;
+    }
+    return true;
+  });
+  const totalPages = Math.ceil((filteredTools?.length ?? 0) / itemsPerPage);
+  const displayTools = filteredTools?.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleToggleTool = (toolId: Id<"tools">) => {
     setSelectedTools((prev) =>
@@ -191,17 +208,40 @@ export default function NewDeckPage() {
                 </PixelCardTitle>
               </PixelCardHeader>
               <PixelCardContent>
-                <div className="relative mb-4">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <PixelInput
-                    placeholder="Search tools..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
-                  />
+                <div className="flex flex-col sm:flex-row gap-2 mb-4">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                    <PixelInput
+                      placeholder="Search tools..."
+                      value={searchQuery}
+                      onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                        setCurrentPage(1);
+                      }}
+                      className="pl-10"
+                    />
+                  </div>
+                  <div className="relative">
+                    <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => {
+                        setSelectedCategory(e.target.value);
+                        setCurrentPage(1);
+                      }}
+                      className="w-full sm:w-40 h-10 pl-10 pr-3 rounded-lg border border-border bg-card text-foreground text-sm appearance-none cursor-pointer focus:outline-none focus:border-primary"
+                    >
+                      <option value="all">All Categories</option>
+                      {categories?.map((cat) => (
+                        <option key={cat._id} value={cat.slug}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-[300px] overflow-y-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[200px]">
                   {displayTools?.map((tool) => {
                     const isSelected = selectedTools.includes(tool._id);
                     return (
@@ -235,8 +275,30 @@ export default function NewDeckPage() {
                 </div>
 
                 {(!displayTools || displayTools.length === 0) && (
-                  <div className="text-center py-8 text-muted-foreground text-sm">
-                    {searchQuery.length > 2 ? "No tools found" : "Loading tools..."}
+                  <div className="col-span-full text-center py-8 text-muted-foreground text-sm">
+                    {searchQuery.length > 2 || selectedCategory !== "all" ? "No tools found" : "Loading tools..."}
+                  </div>
+                )}
+
+                {totalPages > 1 && (
+                  <div className="col-span-full flex items-center justify-center gap-2 pt-4 border-t border-border mt-2">
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      className="p-2 rounded-lg border border-border hover:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <span className="text-sm text-muted-foreground px-2">
+                      {currentPage} / {totalPages}
+                    </span>
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      className="p-2 rounded-lg border border-border hover:border-primary/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
                   </div>
                 )}
               </PixelCardContent>
@@ -323,20 +385,6 @@ export default function NewDeckPage() {
               </PixelCardContent>
             </PixelCard>
 
-            <Link href="/tools" className="block">
-              <PixelCard className="hover:border-primary/50 transition-colors cursor-pointer">
-                <PixelCardContent className="flex items-center justify-between py-4">
-                  <div className="flex items-center gap-3">
-                    <Search className="w-5 h-5 text-primary" />
-                    <div>
-                      <p className="text-foreground text-sm font-medium">Browse All Tools</p>
-                      <p className="text-muted-foreground text-xs">Find more tools to add</p>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                </PixelCardContent>
-              </PixelCard>
-            </Link>
           </div>
         </div>
       </section>
