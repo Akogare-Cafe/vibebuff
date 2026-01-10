@@ -19,6 +19,7 @@ import {
   Trophy,
   Store,
   FileText,
+  Swords,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
@@ -43,6 +44,7 @@ const navItems: NavItem[] = [
     children: [
       { href: "/stack-builder", label: "Stack Builder", icon: Layers, description: "Build your perfect tech stack" },
       { href: "/compare", label: "Compare Tools", icon: Scale, description: "Side-by-side tool comparison" },
+      { href: "/battles", label: "Stack Battles", icon: Swords, description: "Vote on the best tech stack" },
       { href: "/stack-marketplace", label: "Marketplace", icon: Store, description: "Community-built stacks" },
     ],
   },
