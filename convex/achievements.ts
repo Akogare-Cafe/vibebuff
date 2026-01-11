@@ -188,11 +188,11 @@ export const seedAchievements = mutation({
       // ============================================
       // EXPLORATION ACHIEVEMENTS (15)
       // ============================================
-      { slug: "first-quest", name: "First Quest", description: "Complete your first recommendation quest", icon: "Trophy", category: "exploration" as const, requirement: { type: "quests_completed", count: 1 }, xpReward: 100, rarity: "common" as const },
-      { slug: "quest-seeker", name: "Quest Seeker", description: "Complete 5 recommendation quests", icon: "Compass", category: "exploration" as const, requirement: { type: "quests_completed", count: 5 }, xpReward: 300, rarity: "uncommon" as const },
-      { slug: "quest-veteran", name: "Quest Veteran", description: "Complete 15 recommendation quests", icon: "Map", category: "exploration" as const, requirement: { type: "quests_completed", count: 15 }, xpReward: 750, rarity: "rare" as const },
-      { slug: "quest-master", name: "Quest Master", description: "Complete 30 recommendation quests", icon: "Crown", category: "exploration" as const, requirement: { type: "quests_completed", count: 30 }, xpReward: 1500, rarity: "epic" as const },
-      { slug: "legendary-questor", name: "Legendary Questor", description: "Complete 50 recommendation quests", icon: "Sparkles", category: "exploration" as const, requirement: { type: "quests_completed", count: 50 }, xpReward: 3000, rarity: "legendary" as const },
+      { slug: "first-steps", name: "First Steps", description: "View your first tool", icon: "Trophy", category: "exploration" as const, requirement: { type: "tools_viewed", count: 1 }, xpReward: 50, rarity: "common" as const },
+      { slug: "getting-started", name: "Getting Started", description: "View 5 different tools", icon: "Compass", category: "exploration" as const, requirement: { type: "tools_viewed", count: 5 }, xpReward: 100, rarity: "common" as const },
+      { slug: "deck-starter", name: "Deck Starter", description: "Add your first tool to a deck", icon: "Package", category: "exploration" as const, requirement: { type: "tools_collected", count: 1 }, xpReward: 100, rarity: "common" as const },
+      { slug: "first-favorite", name: "First Favorite", description: "Add your first tool to favorites", icon: "Heart", category: "exploration" as const, requirement: { type: "favorites_added", count: 1 }, xpReward: 75, rarity: "common" as const },
+      { slug: "first-comparison", name: "First Comparison", description: "Compare two tools for the first time", icon: "GitCompare", category: "exploration" as const, requirement: { type: "comparisons_made", count: 1 }, xpReward: 100, rarity: "common" as const },
       
       { slug: "tool-scout", name: "Tool Scout", description: "View 10 different tools", icon: "Search", category: "exploration" as const, requirement: { type: "tools_viewed", count: 10 }, xpReward: 150, rarity: "common" as const },
       { slug: "tool-explorer", name: "Tool Explorer", description: "View 50 different tools", icon: "Binoculars", category: "exploration" as const, requirement: { type: "tools_viewed", count: 50 }, xpReward: 500, rarity: "uncommon" as const },
@@ -250,9 +250,9 @@ export const seedAchievements = mutation({
       { slug: "open-source-advocate", name: "Open Source Advocate", description: "Build a deck with only OSS tools", icon: "Github", category: "mastery" as const, requirement: { type: "oss_deck_created", count: 1 }, xpReward: 600, rarity: "rare" as const },
       { slug: "enterprise-architect", name: "Enterprise Architect", description: "Build a deck with enterprise-grade tools", icon: "Building", category: "mastery" as const, requirement: { type: "enterprise_deck_created", count: 1 }, xpReward: 800, rarity: "epic" as const },
       
-      { slug: "mastery-initiate", name: "Mastery Initiate", description: "Reach apprentice mastery with any tool", icon: "Wrench", category: "mastery" as const, requirement: { type: "tool_mastery_apprentice", count: 1 }, xpReward: 300, rarity: "common" as const },
-      { slug: "mastery-journeyman", name: "Mastery Journeyman", description: "Reach journeyman mastery with 3 tools", icon: "Hammer", category: "mastery" as const, requirement: { type: "tool_mastery_journeyman", count: 3 }, xpReward: 800, rarity: "uncommon" as const },
-      { slug: "mastery-expert", name: "Mastery Expert", description: "Reach expert mastery with 5 tools", icon: "Cog", category: "mastery" as const, requirement: { type: "tool_mastery_expert", count: 5 }, xpReward: 2000, rarity: "rare" as const },
+      { slug: "mastery-initiate", name: "Mastery Initiate", description: "Reach apprentice mastery with any tool", icon: "MasteryInitiate", category: "mastery" as const, requirement: { type: "tool_mastery_apprentice", count: 1 }, xpReward: 300, rarity: "common" as const },
+      { slug: "mastery-journeyman", name: "Mastery Journeyman", description: "Reach journeyman mastery with 3 tools", icon: "MasteryJourneyman", category: "mastery" as const, requirement: { type: "tool_mastery_journeyman", count: 3 }, xpReward: 800, rarity: "uncommon" as const },
+      { slug: "mastery-expert", name: "Mastery Expert", description: "Reach expert mastery with 5 tools", icon: "MasteryExpert", category: "mastery" as const, requirement: { type: "tool_mastery_expert", count: 5 }, xpReward: 2000, rarity: "rare" as const },
       
       // ============================================
       // SOCIAL ACHIEVEMENTS (12)

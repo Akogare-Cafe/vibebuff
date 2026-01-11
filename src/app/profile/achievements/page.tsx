@@ -73,6 +73,11 @@ import {
   Copy,
   ExternalLink,
 } from "lucide-react";
+import {
+  MasteryInitiateIcon,
+  MasteryJourneymanIcon,
+  MasteryExpertIcon,
+} from "@/components/icons/tool-mastery-icon";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Trophy,
@@ -128,6 +133,9 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Share2,
   Globe,
   Copy,
+  MasteryInitiate: MasteryInitiateIcon,
+  MasteryJourneyman: MasteryJourneymanIcon,
+  MasteryExpert: MasteryExpertIcon,
 };
 
 const RARITY_STYLES: Record<string, { bg: string; border: string; text: string; glow: string }> = {
@@ -171,7 +179,6 @@ const CATEGORY_INFO: Record<string, { icon: React.ComponentType<{ className?: st
 };
 
 const QUEST_LINKS: Record<string, { href: string; label: string }> = {
-  quests_completed: { href: "/quests", label: "Start a Quest" },
   tools_viewed: { href: "/tools", label: "Browse Tools" },
   categories_explored: { href: "/tools", label: "Explore Categories" },
   comparisons_made: { href: "/compare", label: "Compare Tools" },

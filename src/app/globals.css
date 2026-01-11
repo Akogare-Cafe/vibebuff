@@ -772,4 +772,106 @@
   .animate-ticker:hover {
     animation-play-state: paused;
   }
+
+  /* Tool Mastery Icon Animations */
+  .tool-mastery-swing {
+    animation: toolSwing 2s ease-in-out infinite;
+    transform-origin: bottom right;
+  }
+
+  @keyframes toolSwing {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+  }
+
+  .tool-mastery-hammer {
+    animation: hammerStrike 1.5s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  @keyframes hammerStrike {
+    0%, 100% { transform: rotate(0deg); }
+    40% { transform: rotate(-30deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(-5deg); }
+  }
+
+  .tool-mastery-impact {
+    animation: impactFlash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes impactFlash {
+    0%, 45%, 55%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .tool-mastery-spin {
+    animation: cogSpin 4s linear infinite;
+  }
+
+  @keyframes cogSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .tool-mastery-pulse {
+    animation: masterPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes masterPulse {
+    0%, 100% { transform: scale(0.8); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+  }
+
+  .tool-mastery-orbit {
+    position: absolute;
+    inset: 0;
+    animation: orbitRotate 6s linear infinite;
+  }
+
+  @keyframes orbitRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .tool-mastery-tool-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    animation: toolCounterRotate 6s linear infinite;
+  }
+
+  .tool-mastery-tool-2 {
+    bottom: 10%;
+    left: 10%;
+    animation: toolCounterRotate 6s linear infinite;
+  }
+
+  .tool-mastery-tool-3 {
+    bottom: 10%;
+    right: 10%;
+    animation: toolCounterRotate 6s linear infinite;
+  }
+
+  @keyframes toolCounterRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+
+  .tool-mastery-center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool-mastery-sparkle {
+    animation: sparkleGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes sparkleGlow {
+    0%, 100% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
 }

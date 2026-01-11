@@ -1370,18 +1370,18 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
     if (initialTools && initialTools.length > 0) {
       const categoryPositions: Record<string, { x: number; y: number }> = {
         ide: { x: 50, y: 50 },
-        ai: { x: 50, y: 250 },
-        frontend: { x: 350, y: 50 },
-        backend: { x: 350, y: 250 },
-        database: { x: 350, y: 450 },
-        deployment: { x: 650, y: 150 },
-        tool: { x: 650, y: 350 },
-        auth: { x: 50, y: 450 },
-        payments: { x: 650, y: 450 },
-        analytics: { x: 650, y: 50 },
-        testing: { x: 50, y: 350 },
-        monitoring: { x: 850, y: 250 },
-        unknown: { x: 200, y: 300 },
+        ai: { x: 50, y: 350 },
+        frontend: { x: 500, y: 50 },
+        backend: { x: 500, y: 350 },
+        database: { x: 500, y: 650 },
+        deployment: { x: 950, y: 200 },
+        tool: { x: 950, y: 500 },
+        auth: { x: 50, y: 650 },
+        payments: { x: 950, y: 650 },
+        analytics: { x: 950, y: 50 },
+        testing: { x: 50, y: 500 },
+        monitoring: { x: 1200, y: 350 },
+        unknown: { x: 300, y: 400 },
       };
 
       const categoryConnections: Record<string, string[]> = {
@@ -1417,7 +1417,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         return {
           id: nodeId,
           type: "tool",
-          position: { x: basePos.x + offset * 200, y: basePos.y + offset * 30 },
+          position: { x: basePos.x + offset * 280, y: basePos.y + offset * 120 },
           data: {
             label: tool.name,
             category: cat,
