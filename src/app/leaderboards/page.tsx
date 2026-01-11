@@ -43,7 +43,7 @@ export default function LeaderboardsPage() {
   const streaksLeaderboard = useQuery(api.leaderboards.getStreakLeaderboard, { limit: 10 });
   const reviewsLeaderboard = useQuery(api.leaderboards.getReviewsLeaderboard, { limit: 10 });
 
-  const leaderboardDataMap: Record<LeaderboardType, typeof xpLeaderboard> = {
+  const leaderboardDataMap: Record<LeaderboardType, Array<{ rank: number; clerkId: string; username: string | undefined; avatarUrl: string | undefined; level: number; title: string | undefined; [key: string]: unknown }> | undefined> = {
     xp: xpLeaderboard,
     battles: battlesLeaderboard,
     decks: decksLeaderboard,
