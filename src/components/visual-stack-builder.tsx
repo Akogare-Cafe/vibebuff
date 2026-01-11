@@ -236,9 +236,6 @@ function ToolNode({ data }: { data: ToolNodeData }) {
               </div>
               <span className="text-primary font-bold text-sm">{data.label}</span>
             </div>
-            {data.description && (
-              <p className="text-muted-foreground text-xs line-clamp-1">{data.description}</p>
-            )}
             <PixelBadge
               className="mt-2 text-xs"
               style={{ backgroundColor: `${color}20`, color }}

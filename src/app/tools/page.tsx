@@ -42,6 +42,14 @@ import {
   Code,
   Terminal,
   Trophy,
+  TrendingUp,
+  Sparkles,
+  Filter,
+  X,
+  ChevronDown,
+  ChevronUp,
+  Unlock,
+  Clock,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
 import { AdDisplay } from "@/components/ad-display";
@@ -96,14 +104,18 @@ function ToolsPageContent() {
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery || "");
   const [selectedCategory, setSelectedCategory] = useState(categoryFilter || "all");
   const [selectedPricing, setSelectedPricing] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<"name" | "stars" | "featured">("featured");
+  const [sortBy, setSortBy] = useState<"name" | "stars" | "featured" | "trending" | "newest">("featured");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [openSourceOnly, setOpenSourceOnly] = useState(false);
+  const [hasGithub, setHasGithub] = useState(false);
+  const [minStars, setMinStars] = useState<number | null>(null);
   const itemsPerPage = 12;
 
   const categories = useQuery(api.categories.list);
   const tools = useQuery(api.tools.list, {
     categorySlug: selectedCategory !== "all" ? selectedCategory : undefined,
-    limit: 100
+    limit: 200
   });
   const featuredTools = useQuery(api.tools.featured);
   const searchResults = useQuery(
@@ -111,6 +123,8 @@ function ToolsPageContent() {
     searchQuery.length > 1 ? { query: searchQuery } : "skip"
   );
   const stats = useQuery(api.tools.getStats);
+  const trendingTools = useQuery(api.popularity.getTrendingTools, { limit: 6 });
+  const newTools = useQuery(api.tools.getLatestTools, { limit: 6 });
 
   const favorites = useQuery(
     api.toolUsage.getFavorites,
@@ -128,6 +142,15 @@ function ToolsPageContent() {
     if (selectedPricing.length > 0 && !selectedPricing.includes(tool.pricingModel)) {
       return false;
     }
+    if (openSourceOnly && !tool.isOpenSource) {
+      return false;
+    }
+    if (hasGithub && !tool.githubUrl) {
+      return false;
+    }
+    if (minStars !== null && (tool.githubStars ?? 0) < minStars) {
+      return false;
+    }
     return true;
   });
 
@@ -135,8 +158,26 @@ function ToolsPageContent() {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     if (sortBy === "stars") return (b.githubStars ?? 0) - (a.githubStars ?? 0);
     if (sortBy === "featured") return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
+    if (sortBy === "newest") return b._creationTime - a._creationTime;
     return 0;
   });
+
+  const activeFilterCount = [
+    selectedPricing.length > 0,
+    openSourceOnly,
+    hasGithub,
+    minStars !== null,
+  ].filter(Boolean).length;
+
+  const clearAllFilters = () => {
+    setSelectedPricing([]);
+    setOpenSourceOnly(false);
+    setHasGithub(false);
+    setMinStars(null);
+    setSelectedCategory("all");
+    setCurrentPage(1);
+    router.push("/tools");
+  };
 
   const totalPages = Math.ceil((sortedTools?.length ?? 0) / itemsPerPage);
   const paginatedTools = sortedTools?.slice(
@@ -201,14 +242,30 @@ function ToolsPageContent() {
               <Trophy className="w-4 h-4" />
               <span className="hidden sm:inline">Leaderboards</span>
             </Link>
+            <button
+              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+              className={`px-4 py-2 border text-sm font-medium rounded transition-colors flex items-center gap-2 ${
+                showAdvancedFilters || activeFilterCount > 0
+                  ? "bg-primary/20 border-primary text-primary"
+                  : "bg-transparent border-border hover:border-primary text-foreground"
+              }`}
+            >
+              <Filter className="w-4 h-4" />
+              <span className="hidden sm:inline">Filters</span>
+              {activeFilterCount > 0 && (
+                <span className="bg-primary text-white text-xs px-1.5 py-0.5 rounded-full">{activeFilterCount}</span>
+              )}
+            </button>
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured")}
+              onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured" | "trending" | "newest")}
               className="px-4 py-2 bg-transparent border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
             >
               <option value="featured">Sort: Featured</option>
-              <option value="name">Sort: Name</option>
+              <option value="trending">Sort: Trending</option>
+              <option value="newest">Sort: Newest</option>
               <option value="stars">Sort: Stars</option>
+              <option value="name">Sort: Name</option>
             </select>
           </div>
         </div>
@@ -226,6 +283,191 @@ function ToolsPageContent() {
             />
           </label>
         </div>
+
+        {showAdvancedFilters && (
+          <div className="border border-border rounded-xl p-4 mb-6 bg-card/50">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-foreground font-bold text-sm flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-primary" />
+                Advanced Filters
+              </h3>
+              {activeFilterCount > 0 && (
+                <button
+                  onClick={clearAllFilters}
+                  className="text-xs text-muted-foreground hover:text-red-400 flex items-center gap-1 transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                  Clear all
+                </button>
+              )}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label className="text-xs text-muted-foreground mb-2 block">Source Type</label>
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${openSourceOnly ? "border-purple-500 bg-purple-500" : "border-border"} flex items-center justify-center group-hover:border-purple-400`}
+                      onClick={() => setOpenSourceOnly(!openSourceOnly)}
+                    >
+                      {openSourceOnly && <Unlock className="w-2.5 h-2.5 text-white" />}
+                    </div>
+                    <span className={`text-sm ${openSourceOnly ? "text-purple-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                      Open Source Only
+                    </span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${hasGithub ? "border-gray-500 bg-gray-500" : "border-border"} flex items-center justify-center group-hover:border-gray-400`}
+                      onClick={() => setHasGithub(!hasGithub)}
+                    >
+                      {hasGithub && <Github className="w-2.5 h-2.5 text-white" />}
+                    </div>
+                    <span className={`text-sm ${hasGithub ? "text-gray-300 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                      Has GitHub Repo
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground mb-2 block">Minimum Stars</label>
+                <div className="flex gap-2">
+                  {[null, 1000, 5000, 10000, 50000].map((stars) => (
+                    <button
+                      key={stars ?? "any"}
+                      onClick={() => setMinStars(stars)}
+                      className={`px-2 py-1 text-xs rounded border transition-colors ${
+                        minStars === stars
+                          ? "bg-yellow-500/20 border-yellow-500 text-yellow-400"
+                          : "border-border text-muted-foreground hover:border-yellow-500/50 hover:text-yellow-400"
+                      }`}
+                    >
+                      {stars === null ? "Any" : stars >= 1000 ? `${stars / 1000}K+` : stars}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label className="text-xs text-muted-foreground mb-2 block">Quick Filters</label>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => {
+                      setOpenSourceOnly(true);
+                      setMinStars(10000);
+                    }}
+                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                  >
+                    Popular OSS (10K+ stars)
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedPricing(["free", "open_source"]);
+                    }}
+                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-colors"
+                  >
+                    Free Tools
+                  </button>
+                  <button
+                    onClick={() => {
+                      setHasGithub(true);
+                      setMinStars(1000);
+                    }}
+                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-yellow-500 hover:text-yellow-400 transition-colors"
+                  >
+                    Battle-Tested (1K+ stars)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!searchQuery && selectedCategory === "all" && !showAdvancedFilters && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            {trendingTools && trendingTools.length > 0 && (
+              <div className="border border-border rounded-xl overflow-hidden">
+                <div className="px-4 py-3 border-b border-border bg-gradient-to-r from-orange-500/10 to-transparent">
+                  <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
+                    <TrendingUp className="w-4 h-4 text-orange-500" />
+                    Trending This Week
+                  </h3>
+                </div>
+                <div className="p-3 space-y-2">
+                  {trendingTools.filter(Boolean).slice(0, 5).map((tool, index) => {
+                    if (!tool) return null;
+                    const style = pricingStyles[tool.pricingModel as PricingModel] || pricingStyles.free;
+                    return (
+                      <div
+                        key={tool._id}
+                        onClick={() => handleToolClick(tool._id, tool.slug)}
+                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
+                      >
+                        <span className="text-orange-500 font-bold text-sm w-5">{index + 1}</span>
+                        <div className="size-8 bg-background rounded border border-white/10 flex items-center justify-center shrink-0">
+                          {tool.logoUrl ? (
+                            <img src={tool.logoUrl} alt={tool.name} className="w-5 h-5 object-contain" />
+                          ) : (
+                            <Package className="w-4 h-4 text-primary" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-foreground text-sm font-medium truncate group-hover:text-primary transition-colors">{tool.name}</p>
+                          <p className={`text-xs ${style.labelColor}`}>{style.label}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-orange-400 font-mono">{tool.weeklyViews ?? 0} views</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {newTools && newTools.length > 0 && (
+              <div className="border border-border rounded-xl overflow-hidden">
+                <div className="px-4 py-3 border-b border-border bg-gradient-to-r from-green-500/10 to-transparent">
+                  <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
+                    <Sparkles className="w-4 h-4 text-green-500" />
+                    Recently Added
+                  </h3>
+                </div>
+                <div className="p-3 space-y-2">
+                  {newTools.slice(0, 5).map((tool) => {
+                    const style = pricingStyles[tool.pricingModel as PricingModel] || pricingStyles.free;
+                    const addedDate = new Date(tool._creationTime);
+                    const daysAgo = Math.floor((Date.now() - tool._creationTime) / (1000 * 60 * 60 * 24));
+                    return (
+                      <div
+                        key={tool._id}
+                        onClick={() => handleToolClick(tool._id, tool.slug)}
+                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
+                      >
+                        <div className="size-8 bg-background rounded border border-white/10 flex items-center justify-center shrink-0">
+                          {tool.logoUrl ? (
+                            <img src={tool.logoUrl} alt={tool.name} className="w-5 h-5 object-contain" />
+                          ) : (
+                            <Package className="w-4 h-4 text-primary" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-foreground text-sm font-medium truncate group-hover:text-primary transition-colors">{tool.name}</p>
+                          <p className={`text-xs ${style.labelColor}`}>{style.label}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-green-400 flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {daysAgo === 0 ? "Today" : daysAgo === 1 ? "Yesterday" : `${daysAgo}d ago`}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start mt-6">
           <aside className="lg:col-span-3 flex flex-col gap-4 lg:gap-6 lg:sticky lg:top-24">

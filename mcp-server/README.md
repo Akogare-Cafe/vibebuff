@@ -17,13 +17,13 @@ The Model Context Protocol (MCP) is an open standard that allows AI assistants t
 ### Option 1: NPX (Recommended)
 
 ```bash
-npx @vibebuff/mcp-server
+npx vibebuff-mcp
 ```
 
 ### Option 2: Install Globally
 
 ```bash
-npm install -g @vibebuff/mcp-server
+npm install -g vibebuff-mcp
 ```
 
 ### Option 3: Build from Source
@@ -45,7 +45,7 @@ Add to your Cursor settings (`~/.cursor/mcp.json`):
   "mcpServers": {
     "vibebuff": {
       "command": "npx",
-      "args": ["@vibebuff/mcp-server"],
+      "args": ["-y", "vibebuff-mcp"],
       "env": {
         "VIBEBUFF_API_URL": "https://vibebuff.dev/api",
         "VIBEBUFF_API_KEY": "your-api-key-optional"
@@ -64,7 +64,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
   "mcpServers": {
     "vibebuff": {
       "command": "npx",
-      "args": ["@vibebuff/mcp-server"],
+      "args": ["-y", "vibebuff-mcp"],
       "env": {
         "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
       }
@@ -83,7 +83,7 @@ Add to your Continue config:
     {
       "name": "vibebuff",
       "command": "npx",
-      "args": ["@vibebuff/mcp-server"]
+      "args": ["-y", "vibebuff-mcp"]
     }
   ]
 }
@@ -91,14 +91,14 @@ Add to your Continue config:
 
 ### Windsurf
 
-Add to your Windsurf MCP settings:
+Add to your Windsurf MCP settings (`~/.codeium/windsurf/mcp_config.json`):
 
 ```json
 {
   "mcpServers": {
     "vibebuff": {
       "command": "npx",
-      "args": ["@vibebuff/mcp-server"]
+      "args": ["-y", "vibebuff-mcp"]
     }
   }
 }

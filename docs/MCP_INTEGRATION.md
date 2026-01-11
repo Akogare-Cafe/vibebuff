@@ -75,10 +75,10 @@ If you prefer running the MCP server locally:
 
 ```bash
 # Option 1: Use directly with npx (recommended)
-npx @vibebuff/mcp-server
+npx vibebuff-mcp
 
 # Option 2: Install globally
-npm install -g @vibebuff/mcp-server
+npm install -g vibebuff-mcp
 
 # Option 3: Build from source
 cd vibebuff/mcp-server
@@ -93,7 +93,7 @@ Then configure your IDE:
   "mcpServers": {
     "vibebuff": {
       "command": "npx",
-      "args": ["@vibebuff/mcp-server"],
+      "args": ["-y", "vibebuff-mcp"],
       "env": {
         "VIBEBUFF_API_URL": "https://vibebuff.dev/api"
       }
