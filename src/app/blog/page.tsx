@@ -422,6 +422,186 @@ const blogPosts = [
     tags: ["Code Quality", "ESLint", "Prettier", "Biome"],
     featured: false,
   },
+  {
+    slug: "bun-vs-node-vs-deno-2025",
+    title: "Bun vs Node.js vs Deno in 2025: JavaScript Runtime Showdown",
+    description:
+      "Compare the three major JavaScript runtimes. Bun's speed vs Node's ecosystem vs Deno's security - which runtime should power your next project?",
+    date: "2024-10-28",
+    readTime: "12 min read",
+    tags: ["Bun", "Node.js", "Deno", "JavaScript Runtime"],
+    featured: false,
+  },
+  {
+    slug: "vector-databases-ai-2025",
+    title: "Best Vector Databases for AI in 2025: Pinecone vs Weaviate vs Qdrant",
+    description:
+      "Build AI-powered search and RAG applications with the right vector database. Compare Pinecone, Weaviate, Qdrant, and Chroma for embeddings storage.",
+    date: "2024-10-25",
+    readTime: "11 min read",
+    tags: ["Vector Database", "AI", "Pinecone", "RAG"],
+    featured: false,
+  },
+  {
+    slug: "feature-flags-tools-2025",
+    title: "Best Feature Flag Tools in 2025: LaunchDarkly vs Flagsmith vs Unleash",
+    description:
+      "Ship features safely with feature flags. Compare LaunchDarkly, Flagsmith, Unleash, and open-source alternatives for progressive rollouts.",
+    date: "2024-10-20",
+    readTime: "9 min read",
+    tags: ["Feature Flags", "LaunchDarkly", "DevOps", "Deployment"],
+    featured: false,
+  },
+  {
+    slug: "background-jobs-nodejs-2025",
+    title: "Best Background Job Libraries for Node.js in 2025: BullMQ vs Agenda vs Quirrel",
+    description:
+      "Handle async tasks, scheduled jobs, and queues in Node.js. Compare BullMQ, Agenda, Quirrel, and Inngest for reliable background processing.",
+    date: "2024-10-18",
+    readTime: "10 min read",
+    tags: ["Background Jobs", "BullMQ", "Node.js", "Queues"],
+    featured: false,
+  },
+  {
+    slug: "api-documentation-tools-2025",
+    title: "Best API Documentation Tools in 2025: Swagger vs Redoc vs Stoplight",
+    description:
+      "Create beautiful API documentation developers love. Compare Swagger UI, Redoc, Stoplight, and modern alternatives for OpenAPI specs.",
+    date: "2024-10-15",
+    readTime: "8 min read",
+    tags: ["API Documentation", "Swagger", "OpenAPI", "Developer Experience"],
+    featured: false,
+  },
+  {
+    slug: "image-optimization-web-2025",
+    title: "Image Optimization for Web in 2025: Cloudinary vs Imgix vs Vercel OG",
+    description:
+      "Optimize images for performance and SEO. Compare image CDNs, formats like AVIF and WebP, and lazy loading strategies for modern web apps.",
+    date: "2024-10-12",
+    readTime: "10 min read",
+    tags: ["Image Optimization", "Cloudinary", "Performance", "CDN"],
+    featured: false,
+  },
+  {
+    slug: "logging-observability-2025",
+    title: "Logging and Observability in 2025: Axiom vs Logtail vs Papertrail",
+    description:
+      "Debug production issues faster with modern logging. Compare Axiom, Logtail, Papertrail, and structured logging best practices.",
+    date: "2024-10-10",
+    readTime: "9 min read",
+    tags: ["Logging", "Observability", "Axiom", "Debugging"],
+    featured: false,
+  },
+  {
+    slug: "caching-strategies-2025",
+    title: "Caching Strategies in 2025: Redis vs Memcached vs Upstash",
+    description:
+      "Speed up your application with effective caching. Compare Redis, Memcached, Upstash, and edge caching patterns for optimal performance.",
+    date: "2024-10-08",
+    readTime: "11 min read",
+    tags: ["Caching", "Redis", "Upstash", "Performance"],
+    featured: false,
+  },
+  {
+    slug: "secrets-management-2025",
+    title: "Secrets Management in 2025: Vault vs Doppler vs Infisical",
+    description:
+      "Secure your API keys and credentials. Compare HashiCorp Vault, Doppler, Infisical, and environment variable best practices for teams.",
+    date: "2024-10-05",
+    readTime: "10 min read",
+    tags: ["Secrets Management", "Security", "Vault", "DevOps"],
+    featured: false,
+  },
+  {
+    slug: "realtime-sync-engines-2025",
+    title: "Real-time Sync Engines in 2025: LiveBlocks vs Yjs vs Automerge",
+    description:
+      "Build collaborative apps like Figma and Notion. Compare LiveBlocks, Yjs, Automerge, and CRDTs for real-time multiplayer experiences.",
+    date: "2024-10-02",
+    readTime: "12 min read",
+    tags: ["Real-time", "Collaboration", "CRDTs", "LiveBlocks"],
+    featured: false,
+  },
+  {
+    slug: "llm-frameworks-2025",
+    title: "Best LLM Frameworks in 2025: LangChain vs LlamaIndex vs Vercel AI SDK",
+    description:
+      "Build AI applications with the right framework. Compare LangChain, LlamaIndex, Vercel AI SDK, and patterns for LLM-powered features.",
+    date: "2024-09-28",
+    readTime: "13 min read",
+    tags: ["LLM", "AI", "LangChain", "Vercel AI SDK"],
+    featured: false,
+  },
+  {
+    slug: "schema-validation-2025",
+    title: "Schema Validation in 2025: Zod vs Yup vs Valibot vs ArkType",
+    description:
+      "Validate data with type-safe schemas. Compare Zod, Yup, Valibot, and ArkType for runtime validation in TypeScript applications.",
+    date: "2024-09-25",
+    readTime: "9 min read",
+    tags: ["Schema Validation", "Zod", "TypeScript", "Validation"],
+    featured: false,
+  },
+  {
+    slug: "date-time-libraries-2025",
+    title: "Best Date/Time Libraries in 2025: date-fns vs Day.js vs Temporal API",
+    description:
+      "Handle dates and times correctly in JavaScript. Compare date-fns, Day.js, Luxon, and the upcoming Temporal API for timezone-safe code.",
+    date: "2024-09-22",
+    readTime: "8 min read",
+    tags: ["Date/Time", "date-fns", "Day.js", "JavaScript"],
+    featured: false,
+  },
+  {
+    slug: "component-libraries-2025",
+    title: "Best React Component Libraries in 2025: shadcn/ui vs Radix vs Chakra",
+    description:
+      "Build UIs faster with component libraries. Compare shadcn/ui, Radix UI, Chakra UI, and headless vs styled approaches for React apps.",
+    date: "2024-09-20",
+    readTime: "11 min read",
+    tags: ["Component Libraries", "shadcn/ui", "Radix UI", "React"],
+    featured: false,
+  },
+  {
+    slug: "data-fetching-react-2025",
+    title: "Data Fetching in React 2025: TanStack Query vs SWR vs RTK Query",
+    description:
+      "Fetch and cache data efficiently in React. Compare TanStack Query, SWR, RTK Query, and server-side patterns for optimal data management.",
+    date: "2024-09-18",
+    readTime: "10 min read",
+    tags: ["Data Fetching", "TanStack Query", "SWR", "React"],
+    featured: false,
+  },
+  {
+    slug: "bundlers-2025",
+    title: "JavaScript Bundlers in 2025: Vite vs Turbopack vs esbuild vs Rspack",
+    description:
+      "Build faster with modern bundlers. Compare Vite, Turbopack, esbuild, and Rspack for development speed and production optimization.",
+    date: "2024-09-15",
+    readTime: "11 min read",
+    tags: ["Bundlers", "Vite", "Turbopack", "Build Tools"],
+    featured: false,
+  },
+  {
+    slug: "error-tracking-2025",
+    title: "Error Tracking in 2025: Sentry vs BugSnag vs Rollbar vs Highlight",
+    description:
+      "Catch and fix bugs before users report them. Compare Sentry, BugSnag, Rollbar, and Highlight for error monitoring and session replay.",
+    date: "2024-09-12",
+    readTime: "9 min read",
+    tags: ["Error Tracking", "Sentry", "Monitoring", "Debugging"],
+    featured: false,
+  },
+  {
+    slug: "internationalization-2025",
+    title: "Internationalization in 2025: next-intl vs react-i18next vs Lingui",
+    description:
+      "Go global with proper i18n. Compare next-intl, react-i18next, Lingui, and best practices for multilingual React and Next.js applications.",
+    date: "2024-09-10",
+    readTime: "10 min read",
+    tags: ["i18n", "Internationalization", "next-intl", "Localization"],
+    featured: false,
+  },
 ];
 
 export default function BlogPage() {
