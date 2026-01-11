@@ -270,3 +270,33 @@ export const getToolsForTimeline = query({
     return toolsWithDates;
   },
 });
+
+export const getAllForLogos = query({
+  handler: async (ctx) => {
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+    
+    return tools.map((tool) => ({
+      _id: tool._id,
+      name: tool.name,
+      slug: tool.slug,
+      websiteUrl: tool.websiteUrl,
+      githubUrl: tool.githubUrl,
+      logoUrl: tool.logoUrl,
+    }));
+  },
+});
+
+export const updateLogo = mutation({
+  args: {
+    toolId: v.id("tools"),
+    logoUrl: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.toolId, {
+      logoUrl: args.logoUrl,
+    });
+  },
+});

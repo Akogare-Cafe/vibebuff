@@ -33,6 +33,7 @@ import {
   Eye,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
+import { ToolMasteryHero } from "@/components/tool-mastery-hero";
 import { TourTrigger } from "@/components/page-tour";
 import { profileTourConfig } from "@/lib/tour-configs";
 // import { ReferralCard } from "@/components/referral-card";
@@ -398,91 +399,10 @@ export default function ProfilePage() {
                 
                 {topMasteries.length > 0 ? (
                   <div className="p-4 relative z-10">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {topMasteries.map((mastery) => {
-                        const masteryColor = MASTERY_COLORS[mastery.level] || MASTERY_COLORS.novice;
-                        const isMaxed = mastery.level === "grandmaster";
-                        const nextLevelXp = getNextLevelXp(mastery.level);
-                        const currentLevelXp = getCurrentLevelXp(mastery.level);
-                        const progressPercent = nextLevelXp 
-                          ? Math.min(100, ((mastery.xp - currentLevelXp) / (nextLevelXp - currentLevelXp)) * 100)
-                          : 100;
-
-                        return (
-                          <Link key={mastery._id} href={`/tools/${mastery.tool?.slug}`}>
-                            <div className="group relative p-4 rounded-lg bg-background/50 border border-border hover:border-primary/50 transition-all cursor-pointer overflow-hidden">
-                              <div className={`absolute top-0 left-0 right-0 h-0.5 ${masteryColor.color}`} />
-                              
-                              <div className="flex items-start gap-3">
-                                <div className={`relative size-12 rounded-lg bg-card border-2 flex-shrink-0 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105 ${
-                                  isMaxed ? 'border-yellow-500' : 'border-border'
-                                } ${isMaxed ? masteryColor.shadow : ''}`}>
-                                  {mastery.tool?.logoUrl ? (
-                                    <img src={mastery.tool.logoUrl} alt={mastery.tool.name} className="w-8 h-8 object-contain" />
-                                  ) : (
-                                    <ToolIcon toolSlug={mastery.tool?.slug || ''} className="w-6 h-6 text-primary" />
-                                  )}
-                                  {isMaxed && (
-                                    <div className="absolute -top-1 -right-1">
-                                      <Crown className="w-4 h-4 text-yellow-500 drop-shadow-lg" />
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center justify-between gap-2">
-                                    <h4 className="text-sm font-bold text-foreground truncate group-hover:text-primary transition-colors">
-                                      {mastery.tool?.name || "Unknown"}
-                                    </h4>
-                                    <span className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${masteryColor.color} text-white`}>
-                                      {mastery.level}
-                                    </span>
-                                  </div>
-                                  
-                                  <div className="mt-2">
-                                    <div className="flex justify-between items-center text-[10px] mb-1">
-                                      <span className="text-muted-foreground">{mastery.xp.toLocaleString()} XP</span>
-                                      {nextLevelXp && (
-                                        <span className="text-muted-foreground">{nextLevelXp.toLocaleString()} XP</span>
-                                      )}
-                                    </div>
-                                    <div className="h-1.5 w-full bg-black/30 rounded-full overflow-hidden">
-                                      <div 
-                                        className={`h-full ${masteryColor.color} transition-all duration-500`}
-                                        style={{ width: `${progressPercent}%` }}
-                                      />
-                                    </div>
-                                  </div>
-
-                                  <div className="flex items-center gap-3 mt-2 text-[10px] text-muted-foreground">
-                                    <span className="flex items-center gap-1">
-                                      <Eye className="w-3 h-3" /> {mastery.interactions.views}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                      <Layers className="w-3 h-3" /> {mastery.interactions.deckAdds}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                      <Swords className="w-3 h-3" /> {mastery.interactions.battleWins}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-
-                    {masteryStats && masteryStats.totalTools > 4 && (
-                      <div className="mt-4 pt-4 border-t border-border flex justify-center">
-                        <Link href="/profile/mastery">
-                          <button className="text-xs font-bold text-primary border border-primary/30 bg-primary/10 px-4 py-2 rounded hover:bg-primary hover:text-white transition-all flex items-center gap-2">
-                            View All {masteryStats.totalTools} Masteries
-                            <GitBranch className="w-3.5 h-3.5" />
-                          </button>
-                        </Link>
-                      </div>
-                    )}
+                    <ToolMasteryHero 
+                      masteries={topMasteries} 
+                      totalTools={masteryStats?.totalTools}
+                    />
                   </div>
                 ) : (
                   <div className="py-12 px-6 text-center relative z-10">

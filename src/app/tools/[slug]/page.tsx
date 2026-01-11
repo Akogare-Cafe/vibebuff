@@ -166,9 +166,25 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         {/* Tool Header */}
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div>
-              <h1 className="text-primary text-2xl mb-2 pixel-glow">{tool.name}</h1>
-              <p className="text-muted-foreground text-base">{tool.tagline}</p>
+            <div className="flex items-start gap-4">
+              <div className="size-16 sm:size-20 bg-card border-4 border-border flex items-center justify-center shrink-0 overflow-hidden">
+                {tool.logoUrl ? (
+                  <img 
+                    src={tool.logoUrl} 
+                    alt={`${tool.name} logo`} 
+                    className="w-full h-full object-contain p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                ) : null}
+                <Package className={`w-8 h-8 sm:w-10 sm:h-10 text-muted-foreground ${tool.logoUrl ? 'hidden' : ''}`} />
+              </div>
+              <div>
+                <h1 className="text-primary text-2xl mb-2 pixel-glow">{tool.name}</h1>
+                <p className="text-muted-foreground text-base">{tool.tagline}</p>
+              </div>
             </div>
             <div className="flex gap-2">
               <PixelBadge variant="default">

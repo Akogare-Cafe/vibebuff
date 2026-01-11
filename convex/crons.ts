@@ -15,4 +15,16 @@ crons.weekly(
   internal.email.sendWeeklyDigest
 );
 
+crons.cron(
+  "scrape-tool-logos-morning",
+  "0 8 * * *",
+  internal.logoScraper.scrapeLogosCron
+);
+
+crons.cron(
+  "scrape-tool-logos-evening",
+  "0 20 * * *",
+  internal.logoScraper.scrapeLogosCron
+);
+
 export default crons;
