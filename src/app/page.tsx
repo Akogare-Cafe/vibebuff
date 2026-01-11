@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, Suspense, lazy } from "react";
+import { useState, useEffect, useRef, Suspense, lazy, memo, useCallback, useMemo } from "react";
 import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { PixelButton } from "@/components/pixel-button";
@@ -28,12 +28,14 @@ import {
   X
 } from "lucide-react";
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
-import { AutoLinkTools } from "@/components/auto-link-tools";
 import { HomePageSchemas } from "@/components/seo-structured-data";
-import { NewsletterSignup, TrustBadges, QuickStartCTA } from "@/components/lead-capture";
 import dynamic from "next/dynamic";
 import { TourTrigger } from "@/components/page-tour";
 import { homeTourConfig } from "@/lib/tour-configs";
+
+const NewsletterSignup = dynamic(() => import("@/components/lead-capture").then(m => ({ default: m.NewsletterSignup })), { ssr: false });
+const TrustBadges = dynamic(() => import("@/components/lead-capture").then(m => ({ default: m.TrustBadges })), { ssr: false });
+const QuickStartCTA = dynamic(() => import("@/components/lead-capture").then(m => ({ default: m.QuickStartCTA })), { ssr: false });
 
 const AnimatedBackground = dynamic(
   () => import("@/components/animated-background").then(mod => ({ default: mod.AnimatedBackground })),

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, Suspense, useMemo, useCallback, memo } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
@@ -137,7 +137,7 @@ function ToolsPageContent() {
   const categories = useQuery(api.categories.list);
   const tools = useQuery(api.tools.list, {
     categorySlug: selectedCategory !== "all" ? selectedCategory : undefined,
-    limit: 200
+    limit: 100
   });
   const featuredTools = useQuery(api.tools.featured);
   const searchResults = useQuery(
@@ -156,11 +156,11 @@ function ToolsPageContent() {
   const toggleFavorite = useMutation(api.toolUsage.toggleFavorite);
   const trackUsage = useMutation(api.toolUsage.trackUsage);
 
-  const favoriteIds = new Set(favorites?.filter((f) => f !== null).map((f) => f._id) ?? []);
+  const favoriteIds = useMemo(() => new Set(favorites?.filter((f) => f !== null).map((f) => f._id) ?? []), [favorites]);
 
   const baseTools = searchQuery.length > 1 ? searchResults : tools;
   
-  const filteredTools = baseTools?.filter((tool) => {
+  const filteredTools = useMemo(() => baseTools?.filter((tool) => {
     if (selectedPricing.length > 0 && !selectedPricing.includes(tool.pricingModel)) {
       return false;
     }
@@ -193,15 +193,15 @@ function ToolsPageContent() {
       }
     }
     return true;
-  });
+  }), [baseTools, selectedPricing, openSourceOnly, hasGithub, minStars, minDownloads, hasTypeScript, featuredOnly, selectedLanguage, recentlyUpdated]);
 
-  const sortedTools = [...(filteredTools ?? [])].sort((a, b) => {
+  const sortedTools = useMemo(() => [...(filteredTools ?? [])].sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     if (sortBy === "stars") return (b.githubStars ?? 0) - (a.githubStars ?? 0);
     if (sortBy === "featured") return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
     if (sortBy === "newest") return b._creationTime - a._creationTime;
     return 0;
-  });
+  }), [filteredTools, sortBy]);
 
   const activeFilterCount = [
     selectedPricing.length > 0,
@@ -238,7 +238,7 @@ function ToolsPageContent() {
 
   const featuredTool = featuredTools?.[0];
 
-  const handleCategoryChange = (categorySlug: string) => {
+  const handleCategoryChange = useCallback((categorySlug: string) => {
     setSelectedCategory(categorySlug);
     setCurrentPage(1);
     if (categorySlug === "all") {
@@ -246,28 +246,28 @@ function ToolsPageContent() {
     } else {
       router.push(`/tools?category=${categorySlug}`);
     }
-  };
+  }, [router]);
 
-  const handleToggleFavorite = async (toolId: Id<"tools">) => {
+  const handleToggleFavorite = useCallback(async (toolId: Id<"tools">) => {
     if (!user?.id) return;
     await toggleFavorite({ userId: user.id, toolId });
-  };
+  }, [user?.id, toggleFavorite]);
 
-  const handleToolClick = async (toolId: Id<"tools">, slug: string) => {
+  const handleToolClick = useCallback(async (toolId: Id<"tools">, slug: string) => {
     if (user?.id) {
       await trackUsage({ userId: user.id, toolId });
     }
     router.push(`/tools/${slug}`);
-  };
+  }, [user?.id, trackUsage, router]);
 
-  const togglePricingFilter = (pricing: string) => {
+  const togglePricingFilter = useCallback((pricing: string) => {
     setSelectedPricing((prev) =>
       prev.includes(pricing)
         ? prev.filter((p) => p !== pricing)
         : [...prev, pricing]
     );
     setCurrentPage(1);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background pb-24">
