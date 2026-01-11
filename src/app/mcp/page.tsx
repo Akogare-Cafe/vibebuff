@@ -205,7 +205,7 @@ export default function McpPage() {
                 </PixelButton>
               </a>
               <a
-                href="https://github.com/vibebuff/mcp-server"
+                href="https://github.com/kavymi/mcp-server"
                 target="_blank"
                 rel="noopener noreferrer"
               >
