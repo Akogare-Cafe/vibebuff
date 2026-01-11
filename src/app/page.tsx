@@ -266,7 +266,7 @@ export default function Home() {
                         className="block p-3 hover:bg-secondary transition-colors border-b border-border last:border-b-0"
                       >
                         <p className="text-foreground text-sm font-medium">{tool.name}</p>
-                        <p className="text-muted-foreground text-xs"><AutoLinkTools text={tool.tagline} /></p>
+                        <p className="text-muted-foreground text-xs">{tool.tagline}</p>
                       </Link>
                     ))}
                     {searchResults.length > 6 && (
@@ -441,7 +441,7 @@ export default function Home() {
                                       {tool.confidence}%
                                     </PixelBadge>
                                   </div>
-                                  <p className="text-muted-foreground text-xs line-clamp-1"><AutoLinkTools text={tool.tagline} /></p>
+                                  <p className="text-muted-foreground text-xs line-clamp-1">{tool.tagline}</p>
                                   <p className="text-primary/80 text-xs mt-1 italic line-clamp-1">{tool.reasoning}</p>
                                 </div>
                               </Link>
@@ -555,7 +555,7 @@ export default function Home() {
                          tool.pricingModel === "open_source" ? "OSS" : "Paid"}
                       </PixelBadge>
                     </div>
-                    <PixelCardDescription><AutoLinkTools text={tool.tagline} /></PixelCardDescription>
+                    <PixelCardDescription>{tool.tagline}</PixelCardDescription>
                   </PixelCardHeader>
                   <PixelCardContent>
                     <div className="flex flex-wrap gap-2">
