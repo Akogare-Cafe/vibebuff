@@ -623,6 +623,277 @@ export const updateScrapeJobStatus = internalMutation({
   },
 });
 
+const TAG_RULES: Record<string, Record<string, string[]>> = {
+  "use-case": {
+    "web-development": ["web", "website", "frontend", "backend", "fullstack", "html", "css", "dom"],
+    "mobile-development": ["mobile", "ios", "android", "react-native", "flutter", "swift", "kotlin"],
+    "api-development": ["api", "rest", "graphql", "grpc", "endpoint", "swagger", "openapi"],
+    "data-science": ["data", "analytics", "visualization", "pandas", "numpy", "jupyter", "notebook"],
+    "machine-learning": ["ml", "machine learning", "deep learning", "neural", "tensorflow", "pytorch", "model"],
+    "devops": ["devops", "ci/cd", "pipeline", "deployment", "infrastructure", "container", "kubernetes", "docker"],
+    "testing": ["test", "testing", "unit test", "e2e", "integration", "qa", "quality"],
+    "documentation": ["docs", "documentation", "readme", "wiki", "markdown", "jsdoc", "typedoc"],
+    "automation": ["automate", "automation", "workflow", "script", "task", "cron", "schedule"],
+    "monitoring": ["monitor", "observability", "logging", "metrics", "tracing", "apm", "alerting"],
+    "security": ["security", "auth", "authentication", "authorization", "encrypt", "vulnerability", "scan"],
+    "database": ["database", "db", "sql", "nosql", "query", "orm", "migration"],
+    "realtime": ["realtime", "real-time", "websocket", "socket", "live", "streaming", "pubsub"],
+    "ai-coding": ["ai coding", "code generation", "copilot", "autocomplete", "code assist", "pair programming"],
+  },
+  "tech-stack": {
+    "typescript": ["typescript", "ts", ".ts", "tsc"],
+    "javascript": ["javascript", "js", "node", "npm", "yarn", "pnpm"],
+    "python": ["python", "py", "pip", "conda", "django", "flask", "fastapi"],
+    "go": ["golang", "go ", " go", "go-"],
+    "rust": ["rust", "cargo", "rustc"],
+    "java": ["java", "jvm", "maven", "gradle", "spring"],
+    "ruby": ["ruby", "rails", "gem", "bundler"],
+    "php": ["php", "laravel", "symfony", "composer"],
+    "swift": ["swift", "swiftui", "xcode", "ios"],
+    "kotlin": ["kotlin", "android", "jetpack"],
+    "react": ["react", "jsx", "next.js", "nextjs", "gatsby", "remix"],
+    "vue": ["vue", "vuejs", "nuxt", "vite"],
+    "svelte": ["svelte", "sveltekit"],
+    "angular": ["angular", "ng-", "rxjs"],
+  },
+  "platform": {
+    "vscode": ["vscode", "vs code", "visual studio code"],
+    "jetbrains": ["jetbrains", "intellij", "webstorm", "pycharm", "phpstorm"],
+    "neovim": ["neovim", "nvim", "vim"],
+    "cursor": ["cursor"],
+    "windsurf": ["windsurf", "codeium"],
+    "browser": ["browser", "chrome", "firefox", "safari", "extension"],
+    "cli": ["cli", "terminal", "command line", "shell", "bash", "zsh"],
+    "cloud": ["aws", "azure", "gcp", "google cloud", "cloudflare", "vercel", "netlify"],
+    "self-hosted": ["self-hosted", "self hosted", "on-premise", "docker", "kubernetes"],
+  },
+  "integration": {
+    "github": ["github"],
+    "gitlab": ["gitlab"],
+    "bitbucket": ["bitbucket"],
+    "slack": ["slack"],
+    "discord": ["discord"],
+    "notion": ["notion"],
+    "linear": ["linear"],
+    "jira": ["jira", "atlassian"],
+    "figma": ["figma"],
+    "vercel": ["vercel"],
+    "supabase": ["supabase"],
+    "firebase": ["firebase"],
+    "stripe": ["stripe", "payment"],
+    "openai": ["openai", "gpt", "chatgpt"],
+    "anthropic": ["anthropic", "claude"],
+  },
+  "feature": {
+    "open-source": ["open source", "open-source", "oss", "mit license", "apache license", "gpl"],
+    "free-tier": ["free tier", "free plan", "freemium", "free to use"],
+    "enterprise": ["enterprise", "team", "organization", "sso", "saml"],
+    "offline": ["offline", "local", "no internet"],
+    "multi-language": ["multi-language", "multilingual", "i18n", "internationalization"],
+    "collaborative": ["collaborative", "collaboration", "multiplayer", "team", "shared"],
+    "ai-powered": ["ai", "artificial intelligence", "llm", "gpt", "claude", "gemini", "copilot"],
+    "mcp": ["mcp", "model context protocol"],
+    "agent": ["agent", "agentic", "autonomous"],
+  },
+};
+
+function generateTagsFromTool(tool: {
+  name: string;
+  tagline: string;
+  description: string;
+  websiteUrl: string;
+  githubUrl?: string | null;
+  isOpenSource: boolean;
+  pricingModel: string;
+  features: string[];
+  tags: string[];
+  externalData?: {
+    github?: { topics?: string[]; language?: string } | null;
+    npm?: { keywords?: string[] } | null;
+  } | null;
+}): string[] {
+  const tags = new Set<string>();
+  
+  const name = tool.name.toLowerCase();
+  const description = (tool.description || "").toLowerCase();
+  const tagline = (tool.tagline || "").toLowerCase();
+  const websiteUrl = (tool.websiteUrl || "").toLowerCase();
+  
+  const githubTopics = tool.externalData?.github?.topics || [];
+  const npmKeywords = tool.externalData?.npm?.keywords || [];
+  const language = tool.externalData?.github?.language?.toLowerCase() || "";
+  
+  const searchableText = `${name} ${description} ${tagline} ${websiteUrl} ${tool.features.join(" ")} ${githubTopics.join(" ")} ${npmKeywords.join(" ")} ${language}`;
+  
+  for (const [, tagRules] of Object.entries(TAG_RULES)) {
+    for (const [tagName, keywords] of Object.entries(tagRules)) {
+      for (const keyword of keywords) {
+        if (searchableText.includes(keyword.toLowerCase())) {
+          tags.add(tagName);
+          break;
+        }
+      }
+    }
+  }
+  
+  for (const topic of githubTopics) {
+    const topicLower = topic.toLowerCase().replace(/_/g, "-");
+    if (topicLower.length > 2 && topicLower.length < 30) {
+      tags.add(topicLower);
+    }
+  }
+  
+  for (const keyword of npmKeywords) {
+    const keywordLower = keyword.toLowerCase().replace(/_/g, "-");
+    if (keywordLower.length > 2 && keywordLower.length < 30) {
+      tags.add(keywordLower);
+    }
+  }
+  
+  if (tool.githubUrl || tool.isOpenSource) {
+    tags.add("open-source");
+  }
+  
+  if (tool.pricingModel === "free" || tool.pricingModel === "freemium" || tool.pricingModel === "open_source") {
+    tags.add("free-tier");
+  }
+  
+  if (tool.pricingModel === "enterprise") {
+    tags.add("enterprise");
+  }
+  
+  tags.add("developer-tools");
+  
+  const existingTags = tool.tags.filter(t => t && t.length > 0);
+  for (const tag of existingTags) {
+    tags.add(tag.toLowerCase().replace(/_/g, "-"));
+  }
+  
+  return Array.from(tags).sort().slice(0, 20);
+}
+
+export const regenerateToolTags = mutation({
+  args: {
+    toolId: v.optional(v.id("tools")),
+    dryRun: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
+    const userProfile = await ctx.db
+      .query("userProfiles")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", userId))
+      .first();
+
+    if (!userProfile?.isAdmin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
+
+    if (args.toolId) {
+      const tool = await ctx.db.get(args.toolId);
+      if (!tool) {
+        throw new Error("Tool not found");
+      }
+      
+      const newTags = generateTagsFromTool(tool);
+      
+      if (!args.dryRun) {
+        await ctx.db.patch(args.toolId, { tags: newTags });
+      }
+      
+      return {
+        success: true,
+        toolId: args.toolId,
+        toolName: tool.name,
+        oldTags: tool.tags,
+        newTags,
+        dryRun: args.dryRun || false,
+      };
+    }
+
+    const tools = await ctx.db.query("tools").collect();
+    const results: Array<{ toolId: string; name: string; oldTags: string[]; newTags: string[] }> = [];
+    
+    for (const tool of tools) {
+      const newTags = generateTagsFromTool(tool);
+      
+      if (!args.dryRun) {
+        await ctx.db.patch(tool._id, { tags: newTags });
+      }
+      
+      results.push({
+        toolId: tool._id,
+        name: tool.name,
+        oldTags: tool.tags,
+        newTags,
+      });
+    }
+    
+    return {
+      success: true,
+      totalTools: results.length,
+      dryRun: args.dryRun || false,
+      results: results.slice(0, 20),
+    };
+  },
+});
+
+export const getAvailableTags = query({
+  args: {},
+  handler: async (ctx) => {
+    const tools = await ctx.db.query("tools").filter((q) => q.eq(q.field("isActive"), true)).collect();
+    
+    const tagCounts = new Map<string, number>();
+    
+    for (const tool of tools) {
+      for (const tag of tool.tags) {
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      }
+    }
+    
+    const sortedTags = Array.from(tagCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([tag, count]) => ({ tag, count }));
+    
+    return {
+      totalTags: sortedTags.length,
+      tags: sortedTags,
+    };
+  },
+});
+
+export const internalRegenerateAllToolTags = internalMutation({
+  args: {
+    dryRun: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const tools = await ctx.db.query("tools").collect();
+    const results: Array<{ toolId: string; name: string; oldTagCount: number; newTagCount: number }> = [];
+    
+    for (const tool of tools) {
+      const newTags = generateTagsFromTool(tool);
+      
+      if (!args.dryRun) {
+        await ctx.db.patch(tool._id, { tags: newTags });
+      }
+      
+      results.push({
+        toolId: tool._id,
+        name: tool.name,
+        oldTagCount: tool.tags.length,
+        newTagCount: newTags.length,
+      });
+    }
+    
+    return {
+      success: true,
+      totalTools: results.length,
+      dryRun: args.dryRun || false,
+      sampleResults: results.slice(0, 10),
+    };
+  },
+});
+
 export const approveScrapeJob = mutation({
   args: {
     jobId: v.id("communityToolSuggestions"),

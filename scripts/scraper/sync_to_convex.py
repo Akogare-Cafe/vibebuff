@@ -151,6 +151,129 @@ MCP_CATEGORY_MAPPING = {
     "other": "other",
 }
 
+TAG_RULES = {
+    "use-case": {
+        "web-development": ["web", "website", "frontend", "backend", "fullstack", "html", "css", "dom"],
+        "mobile-development": ["mobile", "ios", "android", "react-native", "flutter", "swift", "kotlin"],
+        "api-development": ["api", "rest", "graphql", "grpc", "endpoint", "swagger", "openapi"],
+        "data-science": ["data", "analytics", "visualization", "pandas", "numpy", "jupyter", "notebook"],
+        "machine-learning": ["ml", "machine learning", "deep learning", "neural", "tensorflow", "pytorch", "model"],
+        "devops": ["devops", "ci/cd", "pipeline", "deployment", "infrastructure", "container", "kubernetes", "docker"],
+        "testing": ["test", "testing", "unit test", "e2e", "integration", "qa", "quality"],
+        "documentation": ["docs", "documentation", "readme", "wiki", "markdown", "jsdoc", "typedoc"],
+        "automation": ["automate", "automation", "workflow", "script", "task", "cron", "schedule"],
+        "monitoring": ["monitor", "observability", "logging", "metrics", "tracing", "apm", "alerting"],
+        "security": ["security", "auth", "authentication", "authorization", "encrypt", "vulnerability", "scan"],
+        "database": ["database", "db", "sql", "nosql", "query", "orm", "migration"],
+        "realtime": ["realtime", "real-time", "websocket", "socket", "live", "streaming", "pubsub"],
+        "ai-coding": ["ai coding", "code generation", "copilot", "autocomplete", "code assist", "pair programming"],
+    },
+    "tech-stack": {
+        "typescript": ["typescript", "ts", ".ts", "tsc"],
+        "javascript": ["javascript", "js", "node", "npm", "yarn", "pnpm"],
+        "python": ["python", "py", "pip", "conda", "django", "flask", "fastapi"],
+        "go": ["golang", "go ", " go", "go-"],
+        "rust": ["rust", "cargo", "rustc"],
+        "java": ["java", "jvm", "maven", "gradle", "spring"],
+        "ruby": ["ruby", "rails", "gem", "bundler"],
+        "php": ["php", "laravel", "symfony", "composer"],
+        "swift": ["swift", "swiftui", "xcode", "ios"],
+        "kotlin": ["kotlin", "android", "jetpack"],
+        "react": ["react", "jsx", "next.js", "nextjs", "gatsby", "remix"],
+        "vue": ["vue", "vuejs", "nuxt", "vite"],
+        "svelte": ["svelte", "sveltekit"],
+        "angular": ["angular", "ng-", "rxjs"],
+    },
+    "platform": {
+        "vscode": ["vscode", "vs code", "visual studio code"],
+        "jetbrains": ["jetbrains", "intellij", "webstorm", "pycharm", "phpstorm"],
+        "neovim": ["neovim", "nvim", "vim"],
+        "cursor": ["cursor"],
+        "windsurf": ["windsurf", "codeium"],
+        "browser": ["browser", "chrome", "firefox", "safari", "extension"],
+        "cli": ["cli", "terminal", "command line", "shell", "bash", "zsh"],
+        "cloud": ["aws", "azure", "gcp", "google cloud", "cloudflare", "vercel", "netlify"],
+        "self-hosted": ["self-hosted", "self hosted", "on-premise", "docker", "kubernetes"],
+    },
+    "integration": {
+        "github": ["github"],
+        "gitlab": ["gitlab"],
+        "bitbucket": ["bitbucket"],
+        "slack": ["slack"],
+        "discord": ["discord"],
+        "notion": ["notion"],
+        "linear": ["linear"],
+        "jira": ["jira", "atlassian"],
+        "figma": ["figma"],
+        "vercel": ["vercel"],
+        "supabase": ["supabase"],
+        "firebase": ["firebase"],
+        "stripe": ["stripe", "payment"],
+        "openai": ["openai", "gpt", "chatgpt"],
+        "anthropic": ["anthropic", "claude"],
+    },
+    "feature": {
+        "open-source": ["open source", "open-source", "oss", "mit license", "apache license", "gpl"],
+        "free-tier": ["free tier", "free plan", "freemium", "free to use"],
+        "enterprise": ["enterprise", "team", "organization", "sso", "saml"],
+        "offline": ["offline", "local", "no internet"],
+        "multi-language": ["multi-language", "multilingual", "i18n", "internationalization"],
+        "collaborative": ["collaborative", "collaboration", "multiplayer", "team", "shared"],
+        "ai-powered": ["ai", "artificial intelligence", "llm", "gpt", "claude", "gemini", "copilot"],
+        "mcp": ["mcp", "model context protocol"],
+        "agent": ["agent", "agentic", "autonomous"],
+    },
+}
+
+
+def generate_tags_from_metadata(tool: dict) -> list[str]:
+    """Generate comprehensive tags based on tool metadata analysis."""
+    tags = set()
+    
+    name = tool.get("name", "").lower()
+    description = tool.get("description", "").lower()
+    url = tool.get("url", "").lower() if tool.get("url") else ""
+    category = tool.get("category", "").lower()
+    
+    metadata = tool.get("metadata", {}) or {}
+    github_topics = metadata.get("github", {}).get("topics", []) if isinstance(metadata.get("github"), dict) else []
+    npm_keywords = metadata.get("npm", {}).get("keywords", []) if isinstance(metadata.get("npm"), dict) else []
+    
+    searchable_text = f"{name} {description} {url} {category} {' '.join(github_topics)} {' '.join(npm_keywords)}"
+    
+    for tag_category, tag_rules in TAG_RULES.items():
+        for tag_name, keywords in tag_rules.items():
+            for keyword in keywords:
+                if keyword.lower() in searchable_text:
+                    tags.add(tag_name)
+                    break
+    
+    for topic in github_topics:
+        topic_lower = topic.lower().replace("_", "-")
+        if len(topic_lower) > 2 and len(topic_lower) < 30:
+            tags.add(topic_lower)
+    
+    for keyword in npm_keywords:
+        keyword_lower = keyword.lower().replace("_", "-")
+        if len(keyword_lower) > 2 and len(keyword_lower) < 30:
+            tags.add(keyword_lower)
+    
+    if tool.get("githubUrl") or "github.com" in url:
+        tags.add("open-source")
+    
+    pricing = metadata.get("pricing", {})
+    if pricing.get("is_open_source"):
+        tags.add("open-source")
+    if pricing.get("has_free_tier"):
+        tags.add("free-tier")
+    
+    if category:
+        tags.add(category.replace("_", "-"))
+    
+    tags.add("developer-tools")
+    
+    return sorted(list(tags))[:20]
+
 def determine_mcp_category(tool: dict) -> str:
     """Determine MCP server category from tool metadata."""
     name = tool.get("name", "").lower()
@@ -262,6 +385,15 @@ def transform_vibe_tool(tool: dict) -> Optional[dict]:
     if metadata and metadata.get("github_url"):
         github_url = metadata["github_url"]
     
+    tool_with_desc = {**tool, "description": description, "githubUrl": github_url}
+    generated_tags = generate_tags_from_metadata(tool_with_desc)
+    
+    base_tags = ["ai-powered", "ai-coding"]
+    if category:
+        base_tags.append(category.replace("_", "-"))
+    
+    all_tags = list(set(base_tags + generated_tags))[:20]
+    
     return {
         "name": name,
         "slug": slugify(name),
@@ -277,7 +409,7 @@ def transform_vibe_tool(tool: dict) -> Optional[dict]:
         "cons": [],
         "bestFor": ["AI-assisted coding", "Vibe coding"],
         "features": features if features else ["AI coding assistance"],
-        "tags": ["ai", "coding", "vibe-coding", category] if category else ["ai", "coding", "vibe-coding"],
+        "tags": all_tags,
         "isOpenSource": metadata.get("pricing", {}).get("is_open_source", False) if metadata else False,
     }
 
@@ -341,11 +473,18 @@ def transform_discovered_tool(tool: dict) -> Optional[dict]:
     
     is_mcp = "mcp" in name.lower() or "mcp" in url.lower() or category == "mcp"
     
-    tags = ["ai", "developer-tools"]
+    tool_with_desc = {**tool, "description": description, "githubUrl": github_url}
+    generated_tags = generate_tags_from_metadata(tool_with_desc)
+    
+    base_tags = ["developer-tools"]
     if is_mcp:
-        tags.append("mcp")
+        base_tags.append("mcp")
     if category:
-        tags.append(category.replace("_", "-"))
+        base_tags.append(category.replace("_", "-"))
+    if github_url:
+        base_tags.append("open-source")
+    
+    all_tags = list(set(base_tags + generated_tags))[:20]
     
     return {
         "name": name,
@@ -362,7 +501,7 @@ def transform_discovered_tool(tool: dict) -> Optional[dict]:
         "cons": [],
         "bestFor": ["Developers"],
         "features": [],
-        "tags": tags,
+        "tags": all_tags,
         "isOpenSource": github_url is not None,
     }
 
@@ -526,9 +665,16 @@ def transform_mcp_tool(tool: dict) -> Optional[dict]:
     
     category = determine_mcp_category(tool)
     
-    tags = ["mcp", "ai", "automation"]
+    tool_with_desc = {**tool, "description": description, "githubUrl": github_url}
+    generated_tags = generate_tags_from_metadata(tool_with_desc)
+    
+    base_tags = ["mcp", "ai-powered", "automation"]
     if category != "other":
-        tags.append(category.replace("_", "-"))
+        base_tags.append(category.replace("_", "-"))
+    if github_url:
+        base_tags.append("open-source")
+    
+    all_tags = list(set(base_tags + generated_tags))[:20]
     
     return {
         "name": name,
@@ -541,7 +687,7 @@ def transform_mcp_tool(tool: dict) -> Optional[dict]:
         "author": None,
         "category": category,
         "transportTypes": ["stdio"],
-        "tags": tags,
+        "tags": all_tags,
         "isOfficial": "modelcontextprotocol" in url.lower() if url else False,
         "isVerified": False,
         "isFeatured": False,

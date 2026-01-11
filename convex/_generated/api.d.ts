@@ -13,6 +13,7 @@ import type * as admin from "../admin.js";
 import type * as adminActions from "../adminActions.js";
 import type * as ads from "../ads.js";
 import type * as ai from "../ai.js";
+import type * as apiKeys from "../apiKeys.js";
 import type * as architect from "../architect.js";
 import type * as articles from "../articles.js";
 import type * as battles from "../battles.js";
@@ -99,6 +100,7 @@ declare const fullApi: ApiFromModules<{
   adminActions: typeof adminActions;
   ads: typeof ads;
   ai: typeof ai;
+  apiKeys: typeof apiKeys;
   architect: typeof architect;
   articles: typeof articles;
   battles: typeof battles;

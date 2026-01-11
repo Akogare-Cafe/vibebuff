@@ -3026,4 +3026,19 @@ export default defineSchema({
     .index("by_battle", ["battleId"])
     .index("by_voter", ["voterId"])
     .index("by_battle_voter", ["battleId", "voterId"]),
+
+  apiKeys: defineTable({
+    userId: v.string(),
+    name: v.string(),
+    keyPrefix: v.string(),
+    keyHash: v.string(),
+    lastUsedAt: v.optional(v.number()),
+    usageCount: v.number(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+    expiresAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"])
+    .index("by_key_hash", ["keyHash"])
+    .index("by_user_active", ["userId", "isActive"]),
 });

@@ -21,6 +21,7 @@ import {
   ChevronRight,
   Bot,
   Cpu,
+  Key,
 } from "lucide-react";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelButton } from "@/components/pixel-button";
@@ -204,6 +205,12 @@ export default function McpPage() {
                   <ArrowRight className="w-5 h-5" />
                 </PixelButton>
               </a>
+              <Link href="/api-keys">
+                <PixelButton variant="outline" size="lg" className="flex items-center gap-2">
+                  <Key className="w-5 h-5" />
+                  Get API Key
+                </PixelButton>
+              </Link>
               <a
                 href="https://github.com/kavymi/mcp-server"
                 target="_blank"
