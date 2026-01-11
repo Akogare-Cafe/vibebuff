@@ -24,6 +24,7 @@ const isPublicRoute = createRouteMatcher([
   "/companies(.*)",
   "/users(.*)",
   "/timeline(.*)",
+  "/status(.*)",
   "/sitemap.xml",
   "/robots.txt",
 ]);
@@ -42,7 +43,7 @@ export default clerkMiddleware(async (auth, request) => {
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' data:; " +
-    "connect-src 'self' https://*.convex.cloud https://clerk.com https://*.clerk.accounts.dev https://api.vercel.com; " +
+    "connect-src 'self' https://*.convex.cloud wss://*.convex.cloud https://clerk.com https://*.clerk.accounts.dev https://api.vercel.com; " +
     "frame-src 'self' https://challenges.cloudflare.com; " +
     "object-src 'none'; " +
     "base-uri 'self'; " +

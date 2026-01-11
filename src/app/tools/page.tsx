@@ -50,10 +50,27 @@ import {
   ChevronUp,
   Unlock,
   Clock,
+  FileCode,
+  Download,
+  CheckCircle,
+  Flame,
+  Shield,
+  Rocket,
+  Calendar,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
+import { AutoLinkTools } from "@/components/auto-link-tools";
 import { AdDisplay } from "@/components/ad-display";
 import { McpPromoCard } from "@/components/mcp-promo-card";
+import {
+  TrendingSectionSkeleton,
+  NewToolsSectionSkeleton,
+  CategoriesSkeleton,
+  PricingFilterSkeleton,
+  FeaturedToolSkeleton,
+  ToolsGridSkeleton,
+  SkeletonPulse,
+} from "@/components/skeletons";
 
 type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
@@ -110,6 +127,11 @@ function ToolsPageContent() {
   const [openSourceOnly, setOpenSourceOnly] = useState(false);
   const [hasGithub, setHasGithub] = useState(false);
   const [minStars, setMinStars] = useState<number | null>(null);
+  const [minDownloads, setMinDownloads] = useState<number | null>(null);
+  const [hasTypeScript, setHasTypeScript] = useState(false);
+  const [featuredOnly, setFeaturedOnly] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  const [recentlyUpdated, setRecentlyUpdated] = useState(false);
   const itemsPerPage = 12;
 
   const categories = useQuery(api.categories.list);
@@ -151,6 +173,25 @@ function ToolsPageContent() {
     if (minStars !== null && (tool.githubStars ?? 0) < minStars) {
       return false;
     }
+    if (minDownloads !== null && (tool.npmDownloadsWeekly ?? 0) < minDownloads) {
+      return false;
+    }
+    if (hasTypeScript && !tool.externalData?.npm?.types) {
+      return false;
+    }
+    if (featuredOnly && !tool.isFeatured) {
+      return false;
+    }
+    if (selectedLanguage && tool.externalData?.github?.language !== selectedLanguage) {
+      return false;
+    }
+    if (recentlyUpdated) {
+      const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
+      const pushedAt = tool.externalData?.github?.pushedAt;
+      if (!pushedAt || new Date(pushedAt).getTime() < thirtyDaysAgo) {
+        return false;
+      }
+    }
     return true;
   });
 
@@ -167,6 +208,11 @@ function ToolsPageContent() {
     openSourceOnly,
     hasGithub,
     minStars !== null,
+    minDownloads !== null,
+    hasTypeScript,
+    featuredOnly,
+    selectedLanguage !== null,
+    recentlyUpdated,
   ].filter(Boolean).length;
 
   const clearAllFilters = () => {
@@ -174,6 +220,11 @@ function ToolsPageContent() {
     setOpenSourceOnly(false);
     setHasGithub(false);
     setMinStars(null);
+    setMinDownloads(null);
+    setHasTypeScript(false);
+    setFeaturedOnly(false);
+    setSelectedLanguage(null);
+    setRecentlyUpdated(false);
     setSelectedCategory("all");
     setCurrentPage(1);
     router.push("/tools");
@@ -327,11 +378,22 @@ function ToolsPageContent() {
                       Has GitHub Repo
                     </span>
                   </label>
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${featuredOnly ? "border-primary bg-primary" : "border-border"} flex items-center justify-center group-hover:border-primary/70`}
+                      onClick={() => setFeaturedOnly(!featuredOnly)}
+                    >
+                      {featuredOnly && <Star className="w-2.5 h-2.5 text-white" />}
+                    </div>
+                    <span className={`text-sm ${featuredOnly ? "text-primary font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                      Featured Only
+                    </span>
+                  </label>
                 </div>
               </div>
               <div>
                 <label className="text-xs text-muted-foreground mb-2 block">Minimum Stars</label>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {[null, 1000, 5000, 10000, 50000].map((stars) => (
                     <button
                       key={stars ?? "any"}
@@ -347,36 +409,133 @@ function ToolsPageContent() {
                   ))}
                 </div>
               </div>
-              <div className="sm:col-span-2">
-                <label className="text-xs text-muted-foreground mb-2 block">Quick Filters</label>
+              <div>
+                <label className="text-xs text-muted-foreground mb-2 block">Weekly Downloads</label>
                 <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={() => {
-                      setOpenSourceOnly(true);
-                      setMinStars(10000);
-                    }}
-                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors"
-                  >
-                    Popular OSS (10K+ stars)
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedPricing(["free", "open_source"]);
-                    }}
-                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-colors"
-                  >
-                    Free Tools
-                  </button>
-                  <button
-                    onClick={() => {
-                      setHasGithub(true);
-                      setMinStars(1000);
-                    }}
-                    className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-yellow-500 hover:text-yellow-400 transition-colors"
-                  >
-                    Battle-Tested (1K+ stars)
-                  </button>
+                  {[null, 10000, 100000, 1000000, 10000000].map((downloads) => (
+                    <button
+                      key={downloads ?? "any"}
+                      onClick={() => setMinDownloads(downloads)}
+                      className={`px-2 py-1 text-xs rounded border transition-colors ${
+                        minDownloads === downloads
+                          ? "bg-cyan-500/20 border-cyan-500 text-cyan-400"
+                          : "border-border text-muted-foreground hover:border-cyan-500/50 hover:text-cyan-400"
+                      }`}
+                    >
+                      {downloads === null ? "Any" : downloads >= 1000000 ? `${downloads / 1000000}M+` : `${downloads / 1000}K+`}
+                    </button>
+                  ))}
                 </div>
+              </div>
+              <div>
+                <label className="text-xs text-muted-foreground mb-2 block">Code Quality</label>
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${hasTypeScript ? "border-blue-500 bg-blue-500" : "border-border"} flex items-center justify-center group-hover:border-blue-400`}
+                      onClick={() => setHasTypeScript(!hasTypeScript)}
+                    >
+                      {hasTypeScript && <FileCode className="w-2.5 h-2.5 text-white" />}
+                    </div>
+                    <span className={`text-sm ${hasTypeScript ? "text-blue-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                      TypeScript Support
+                    </span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div 
+                      className={`size-4 rounded border ${recentlyUpdated ? "border-green-500 bg-green-500" : "border-border"} flex items-center justify-center group-hover:border-green-400`}
+                      onClick={() => setRecentlyUpdated(!recentlyUpdated)}
+                    >
+                      {recentlyUpdated && <Calendar className="w-2.5 h-2.5 text-white" />}
+                    </div>
+                    <span className={`text-sm ${recentlyUpdated ? "text-green-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                      Updated Recently (30d)
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <label className="text-xs text-muted-foreground mb-2 block">Primary Language</label>
+              <div className="flex flex-wrap gap-2">
+                {[null, "TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "Ruby"].map((lang) => (
+                  <button
+                    key={lang ?? "any"}
+                    onClick={() => setSelectedLanguage(lang)}
+                    className={`px-3 py-1.5 text-xs rounded border transition-colors flex items-center gap-1.5 ${
+                      selectedLanguage === lang
+                        ? "bg-orange-500/20 border-orange-500 text-orange-400"
+                        : "border-border text-muted-foreground hover:border-orange-500/50 hover:text-orange-400"
+                    }`}
+                  >
+                    <Code className="w-3 h-3" />
+                    {lang ?? "Any"}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <label className="text-xs text-muted-foreground mb-2 block">Quick Filters</label>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => {
+                    setOpenSourceOnly(true);
+                    setMinStars(10000);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"
+                >
+                  <Flame className="w-3 h-3" />
+                  Popular OSS (10K+ stars)
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedPricing(["free", "open_source"]);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-colors flex items-center gap-1.5"
+                >
+                  <Coins className="w-3 h-3" />
+                  Free Tools
+                </button>
+                <button
+                  onClick={() => {
+                    setHasGithub(true);
+                    setMinStars(1000);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-1.5"
+                >
+                  <Shield className="w-3 h-3" />
+                  Battle-Tested (1K+ stars)
+                </button>
+                <button
+                  onClick={() => {
+                    setHasTypeScript(true);
+                    setRecentlyUpdated(true);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-blue-500 hover:text-blue-400 transition-colors flex items-center gap-1.5"
+                >
+                  <Rocket className="w-3 h-3" />
+                  Modern Stack (TS + Active)
+                </button>
+                <button
+                  onClick={() => {
+                    setMinDownloads(1000000);
+                    setHasTypeScript(true);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-cyan-500 hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+                >
+                  <Download className="w-3 h-3" />
+                  High Adoption (1M+ downloads)
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedLanguage("TypeScript");
+                    setOpenSourceOnly(true);
+                  }}
+                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-indigo-500 hover:text-indigo-400 transition-colors flex items-center gap-1.5"
+                >
+                  <FileCode className="w-3 h-3" />
+                  TypeScript Projects
+                </button>
               </div>
             </div>
           </div>
@@ -384,7 +543,9 @@ function ToolsPageContent() {
 
         {!searchQuery && selectedCategory === "all" && !showAdvancedFilters && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            {trendingTools && trendingTools.length > 0 && (
+            {trendingTools === undefined ? (
+              <TrendingSectionSkeleton />
+            ) : trendingTools.length > 0 ? (
               <div className="border border-border rounded-xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-gradient-to-r from-orange-500/10 to-transparent">
                   <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
@@ -397,9 +558,9 @@ function ToolsPageContent() {
                     if (!tool) return null;
                     const style = pricingStyles[tool.pricingModel as PricingModel] || pricingStyles.free;
                     return (
-                      <div
+                      <Link
                         key={tool._id}
-                        onClick={() => handleToolClick(tool._id, tool.slug)}
+                        href={`/tools/${tool.slug}`}
                         className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
                       >
                         <span className="text-orange-500 font-bold text-sm w-5">{index + 1}</span>
@@ -417,14 +578,16 @@ function ToolsPageContent() {
                         <div className="text-right">
                           <p className="text-xs text-orange-400 font-mono">{tool.weeklyViews ?? 0} views</p>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
               </div>
-            )}
+            ) : null}
 
-            {newTools && newTools.length > 0 && (
+            {newTools === undefined ? (
+              <NewToolsSectionSkeleton />
+            ) : newTools.length > 0 ? (
               <div className="border border-border rounded-xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-border bg-gradient-to-r from-green-500/10 to-transparent">
                   <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
@@ -438,9 +601,9 @@ function ToolsPageContent() {
                     const addedDate = new Date(tool._creationTime);
                     const daysAgo = Math.floor((Date.now() - tool._creationTime) / (1000 * 60 * 60 * 24));
                     return (
-                      <div
+                      <Link
                         key={tool._id}
-                        onClick={() => handleToolClick(tool._id, tool.slug)}
+                        href={`/tools/${tool.slug}`}
                         className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
                       >
                         <div className="size-8 bg-background rounded border border-white/10 flex items-center justify-center shrink-0">
@@ -460,62 +623,66 @@ function ToolsPageContent() {
                             {daysAgo === 0 ? "Today" : daysAgo === 1 ? "Yesterday" : `${daysAgo}d ago`}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start mt-6">
           <aside className="lg:col-span-3 flex flex-col gap-4 lg:gap-6 lg:sticky lg:top-24">
-            <div className="border border-border rounded-xl overflow-hidden">
-              <div className="px-4 py-3 border-b border-border">
-                <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
-                  <LayoutGrid className="w-4 h-4 text-primary" />
-                  Categories
-                </h3>
+            {categories === undefined ? (
+              <CategoriesSkeleton />
+            ) : (
+              <div className="border border-border rounded-xl overflow-hidden">
+                <div className="px-4 py-3 border-b border-border">
+                  <h3 className="text-foreground font-bold flex items-center gap-2 text-sm uppercase tracking-wide">
+                    <LayoutGrid className="w-4 h-4 text-primary" />
+                    Categories
+                  </h3>
+                </div>
+                <div className="p-2 space-y-1">
+                  <button
+                    onClick={() => handleCategoryChange("all")}
+                    className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
+                      selectedCategory === "all"
+                        ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
+                        : "hover:bg-white/5 text-muted-foreground group"
+                    }`}
+                  >
+                    <span className={`flex items-center gap-2 ${selectedCategory !== "all" ? "group-hover:text-foreground" : ""}`}>
+                      <LayoutGrid className="w-4 h-4" />
+                      All Tools
+                    </span>
+                    <span className={`text-xs ${selectedCategory === "all" ? "bg-black/40 px-1.5 rounded text-primary" : "text-gray-600 group-hover:text-gray-400"}`}>
+                      {stats?.toolsCount ?? 0}
+                    </span>
+                  </button>
+                  {categories.map((cat) => {
+                    const IconComponent = categoryIcons[cat.slug] || categoryIcons.default;
+                    return (
+                      <button
+                        key={cat._id}
+                        onClick={() => handleCategoryChange(cat.slug)}
+                        className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
+                          selectedCategory === cat.slug
+                            ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
+                            : "hover:bg-white/5 text-muted-foreground group"
+                        }`}
+                      >
+                        <span className={`flex items-center gap-2 ${selectedCategory !== cat.slug ? "group-hover:text-foreground" : ""}`}>
+                          <IconComponent className="w-4 h-4" />
+                          {cat.name}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="p-2 space-y-1">
-                <button
-                  onClick={() => handleCategoryChange("all")}
-                  className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
-                    selectedCategory === "all"
-                      ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
-                      : "hover:bg-white/5 text-muted-foreground group"
-                  }`}
-                >
-                  <span className={`flex items-center gap-2 ${selectedCategory !== "all" ? "group-hover:text-foreground" : ""}`}>
-                    <LayoutGrid className="w-4 h-4" />
-                    All Tools
-                  </span>
-                  <span className={`text-xs ${selectedCategory === "all" ? "bg-black/40 px-1.5 rounded text-primary" : "text-gray-600 group-hover:text-gray-400"}`}>
-                    {stats?.toolsCount ?? 0}
-                  </span>
-                </button>
-                {categories?.map((cat) => {
-                  const IconComponent = categoryIcons[cat.slug] || categoryIcons.default;
-                  return (
-                    <button
-                      key={cat._id}
-                      onClick={() => handleCategoryChange(cat.slug)}
-                      className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
-                        selectedCategory === cat.slug
-                          ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
-                          : "hover:bg-white/5 text-muted-foreground group"
-                      }`}
-                    >
-                      <span className={`flex items-center gap-2 ${selectedCategory !== cat.slug ? "group-hover:text-foreground" : ""}`}>
-                        <IconComponent className="w-4 h-4" />
-                        {cat.name}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            )}
 
             <div className="border border-border rounded-xl overflow-hidden">
               <div className="px-4 py-3 border-b border-border">
@@ -551,7 +718,9 @@ function ToolsPageContent() {
           </aside>
 
           <section className="lg:col-span-9 flex flex-col gap-8">
-            {featuredTool && (
+            {featuredTools === undefined ? (
+              <FeaturedToolSkeleton />
+            ) : featuredTool ? (
               <div 
                 className="bg-card border border-primary/30 rounded-xl p-1 relative overflow-hidden group shadow-[0_0_40px_rgba(127,19,236,0.1)] cursor-pointer"
                 onClick={() => handleToolClick(featuredTool._id, featuredTool.slug)}
@@ -593,7 +762,7 @@ function ToolsPageContent() {
                       )}
                     </div>
                     <div className="mt-4 text-muted-foreground text-sm leading-relaxed border-l-2 border-primary/30 pl-4">
-                      {featuredTool.description}
+                      <AutoLinkTools text={featuredTool.description} />
                     </div>
                     {featuredTool.stats && (
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-3 gap-y-2 sm:gap-x-4 sm:gap-y-3 mt-4 sm:mt-6">
@@ -671,7 +840,7 @@ function ToolsPageContent() {
                   </div>
                 </div>
               </div>
-            )}
+            ) : null}
 
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -680,9 +849,16 @@ function ToolsPageContent() {
                   Available Tools
                 </h3>
                 <span className="text-xs text-muted-foreground">
-                  Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0} items
+                  {tools === undefined ? (
+                    <SkeletonPulse className="h-3 w-24 inline-block" />
+                  ) : (
+                    <>Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0} items</>
+                  )}
                 </span>
               </div>
+              {tools === undefined ? (
+                <ToolsGridSkeleton count={12} />
+              ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {paginatedTools?.map((tool) => {
                   const style = pricingStyles[tool.pricingModel] || pricingStyles.free;
@@ -736,7 +912,7 @@ function ToolsPageContent() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2 mt-1">{tool.tagline}</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2 mt-1"><AutoLinkTools text={tool.tagline} /></p>
                       <button className={`mt-auto w-full py-1.5 rounded bg-secondary text-xs text-foreground font-bold ${style.hoverBtn} transition-colors`}>
                         Inspect
                       </button>
@@ -744,6 +920,7 @@ function ToolsPageContent() {
                   );
                 })}
               </div>
+              )}
             </div>
 
             {totalPages > 1 && (

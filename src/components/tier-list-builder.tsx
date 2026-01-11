@@ -137,7 +137,7 @@ export function TierListBuilder({ userId, categoryId, className }: TierListBuild
                     key={toolId}
                     className="group relative border border-border bg-[#0a0f1a] px-2 py-1"
                   >
-                    <span className="text-primary text-sm">{tool.name}</span>
+                    <Link href={`/tools/${tool.slug}`} className="text-primary text-sm hover:underline">{tool.name}</Link>
                     <div className="absolute -top-6 right-0 hidden group-hover:flex gap-1">
                       <button
                         onClick={() => moveTier(toolId, tier, "up")}

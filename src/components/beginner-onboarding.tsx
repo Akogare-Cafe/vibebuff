@@ -28,6 +28,7 @@ import {
   Laptop,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface OnboardingStep {
   id: number;
@@ -467,9 +468,10 @@ export function OnboardingResults() {
               </h3>
               <div className="grid gap-3">
                 {recommendations.tools.filter((tool): tool is NonNullable<typeof tool> => tool !== null).map((tool) => (
-                  <div
+                  <Link
                     key={tool._id}
-                    className="p-4 rounded-lg border-2 border-border bg-[#111827]/30"
+                    href={`/tools/${tool.slug}`}
+                    className="block p-4 rounded-lg border-2 border-border bg-[#111827]/30 hover:border-primary transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-card flex items-center justify-center">
@@ -480,7 +482,7 @@ export function OnboardingResults() {
                         <p className="text-muted-foreground text-sm">{tool.tagline}</p>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

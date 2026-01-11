@@ -26,6 +26,7 @@ import {
   Package,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AutoLinkTools } from "./auto-link-tools";
 
 type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage";
 
@@ -184,7 +185,7 @@ export function ToolsLeaderboard({ limit = 25, showFilters = true, compact = fal
                       )}
                     </div>
                     {!compact && (
-                      <p className="text-xs text-muted-foreground truncate">{tool.tagline}</p>
+                      <p className="text-xs text-muted-foreground truncate"><AutoLinkTools text={tool.tagline} /></p>
                     )}
                   </div>
 

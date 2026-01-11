@@ -20,6 +20,7 @@ import {
   Store,
   FileText,
   Swords,
+  Activity,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
@@ -177,6 +178,13 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/status"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-green-500/10 text-green-500 hover:bg-green-500/20 transition-colors border border-green-500/20"
+          >
+            <Activity className="w-3.5 h-3.5" />
+            <span>Status</span>
+          </Link>
           <div className="hidden sm:block">
             <OnlineIndicator />
           </div>

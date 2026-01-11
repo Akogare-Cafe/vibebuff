@@ -1,7 +1,7 @@
 import { Trophy, ChevronLeft, Zap, Swords, Layers, Map, Star, Flame, MessageSquare } from "lucide-react";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
-import { LeaderboardPodiumSkeleton, ListItemSkeleton } from "@/components/skeletons";
+import { LeaderboardPodiumSkeleton, LeaderboardListSkeleton } from "@/components/skeletons";
 import Link from "next/link";
 
 const LEADERBOARD_TABS = [
@@ -52,12 +52,8 @@ export default function LeaderboardsLoading() {
         </div>
 
         <PixelCard>
-          <PixelCardContent className="p-0">
-            <div className="divide-y divide-border">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <ListItemSkeleton key={i} />
-              ))}
-            </div>
+          <PixelCardContent className="p-4">
+            <LeaderboardListSkeleton count={10} />
           </PixelCardContent>
         </PixelCard>
       </main>

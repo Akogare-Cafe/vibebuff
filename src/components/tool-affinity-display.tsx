@@ -5,6 +5,7 @@ import { api } from "../../convex/_generated/api";
 import { PixelCard } from "./pixel-card";
 import { PixelBadge } from "./pixel-badge";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Heart,
@@ -86,7 +87,13 @@ export function ToolAffinityDisplay({ userId, className }: ToolAffinityDisplayPr
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h3 className="text-primary text-base mb-1">
-                    {affinity.tool?.name ?? "Unknown Tool"}
+                    {affinity.tool?.slug ? (
+                      <Link href={`/tools/${affinity.tool.slug}`} className="hover:underline">
+                        {affinity.tool.name}
+                      </Link>
+                    ) : (
+                      "Unknown Tool"
+                    )}
                   </h3>
                   <PixelBadge
                     variant="outline"

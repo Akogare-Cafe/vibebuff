@@ -160,12 +160,14 @@ interface LoadoutSlotProps {
     assignedTool: {
       _id: Id<"tools">;
       name: string;
+      slug: string;
       tagline: string;
       pricingModel: string;
     } | null;
     availableTools: Array<{
       _id: Id<"tools">;
       name: string;
+      slug: string;
       tagline: string;
       pricingModel: string;
     } | null>;
@@ -209,7 +211,7 @@ function LoadoutSlot({ slot, isExpanded, onToggle, onAssign, onRemove }: Loadout
           <div>
             <p className="text-primary text-sm uppercase">{slot.category.name}</p>
             {hasAssigned ? (
-              <p className="text-green-400 text-sm">{slot.assignedTool!.name}</p>
+              <Link href={`/tools/${slot.assignedTool!.slug}`} onClick={(e) => e.stopPropagation()} className="text-green-400 text-sm hover:underline">{slot.assignedTool!.name}</Link>
             ) : (
               <p className="text-muted-foreground text-xs">
                 {hasOptions ? `${slot.availableTools.length} available` : "No tools available"}

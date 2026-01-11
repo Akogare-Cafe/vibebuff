@@ -69,6 +69,7 @@ import type * as stackBuilderCollab from "../stackBuilderCollab.js";
 import type * as stackContracts from "../stackContracts.js";
 import type * as stackMarketplace from "../stackMarketplace.js";
 import type * as startupStories from "../startupStories.js";
+import type * as status from "../status.js";
 import type * as synergies from "../synergies.js";
 import type * as templates from "../templates.js";
 import type * as tierLists from "../tierLists.js";
@@ -154,6 +155,7 @@ declare const fullApi: ApiFromModules<{
   stackContracts: typeof stackContracts;
   stackMarketplace: typeof stackMarketplace;
   startupStories: typeof startupStories;
+  status: typeof status;
   synergies: typeof synergies;
   templates: typeof templates;
   tierLists: typeof tierLists;

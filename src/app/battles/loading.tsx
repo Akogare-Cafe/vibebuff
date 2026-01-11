@@ -1,6 +1,6 @@
 import { Swords, Plus, Filter } from "lucide-react";
 import { PixelButton } from "@/components/pixel-button";
-import { CardSkeleton, SkeletonPulse } from "@/components/skeletons";
+import { BattleGridSkeleton } from "@/components/skeletons";
 
 export default function BattlesLoading() {
   return (
@@ -36,11 +36,7 @@ export default function BattlesLoading() {
           </PixelButton>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <CardSkeleton key={i} />
-          ))}
-        </div>
+        <BattleGridSkeleton count={6} />
       </main>
     </div>
   );

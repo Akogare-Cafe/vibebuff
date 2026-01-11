@@ -1,7 +1,7 @@
 import { Users, Search, Plus, ChevronLeft } from "lucide-react";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
-import { CardSkeleton } from "@/components/skeletons";
+import { GroupGridSkeleton } from "@/components/skeletons";
 import Link from "next/link";
 
 export default function GroupsLoading() {
@@ -39,11 +39,7 @@ export default function GroupsLoading() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <CardSkeleton key={i} />
-          ))}
-        </div>
+        <GroupGridSkeleton count={9} />
       </main>
     </div>
   );

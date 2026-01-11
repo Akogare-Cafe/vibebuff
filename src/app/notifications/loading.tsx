@@ -1,6 +1,5 @@
 import { Bell } from "lucide-react";
-import { PixelCard, PixelCardContent } from "@/components/pixel-card";
-import { SkeletonPulse } from "@/components/skeletons";
+import { NotificationListSkeleton } from "@/components/skeletons";
 
 export default function NotificationsLoading() {
   return (
@@ -16,23 +15,7 @@ export default function NotificationsLoading() {
           </p>
         </div>
 
-        <div className="space-y-3">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <PixelCard key={i}>
-              <PixelCardContent className="p-4">
-                <div className="flex items-start gap-4">
-                  <SkeletonPulse className="size-10 rounded-lg flex-shrink-0" />
-                  <div className="flex-1 min-w-0 space-y-2">
-                    <SkeletonPulse className="h-4 w-3/4" />
-                    <SkeletonPulse className="h-3 w-1/2" />
-                    <SkeletonPulse className="h-3 w-24" />
-                  </div>
-                  <SkeletonPulse className="w-2 h-2 rounded-full flex-shrink-0" />
-                </div>
-              </PixelCardContent>
-            </PixelCard>
-          ))}
-        </div>
+        <NotificationListSkeleton count={10} />
       </main>
     </div>
   );

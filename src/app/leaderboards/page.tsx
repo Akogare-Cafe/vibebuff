@@ -21,6 +21,7 @@ import {
   Zap,
   MessageSquare,
 } from "lucide-react";
+import { ToolsLeaderboard } from "@/components/tools-leaderboard";
 import { TourTrigger } from "@/components/page-tour";
 import { leaderboardsTourConfig } from "@/lib/tour-configs";
 
@@ -108,6 +109,21 @@ export default function LeaderboardsPage() {
           <p className="text-muted-foreground text-sm">
             See how you stack up against other adventurers in the VIBEBUFF community.
           </p>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+            <Trophy className="w-5 h-5 text-yellow-400" />
+            Tools Rankings
+          </h2>
+          <ToolsLeaderboard limit={10} showFilters={true} />
+        </div>
+
+        <div className="mb-6">
+          <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+            <Users className="w-5 h-5 text-primary" />
+            User Rankings
+          </h2>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6" data-tour="leaderboard-tabs">

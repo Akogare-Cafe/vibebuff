@@ -19,6 +19,7 @@ import {
   Shuffle
 } from "lucide-react";
 import { DynamicIcon } from "@/components/dynamic-icon";
+import { AutoLinkTools } from "@/components/auto-link-tools";
 
 function formatSlug(slug: string): string {
   return slug
@@ -95,7 +96,7 @@ export default function AlternativesPage() {
                 </div>
                 <div>
                   <PixelCardTitle className="text-2xl">{tool.name}</PixelCardTitle>
-                  <PixelCardDescription className="text-base">{tool.tagline}</PixelCardDescription>
+                  <PixelCardDescription className="text-base"><AutoLinkTools text={tool.tagline} /></PixelCardDescription>
                 </div>
               </div>
             </PixelCardHeader>
@@ -110,7 +111,7 @@ export default function AlternativesPage() {
                     {tool.pros.slice(0, 4).map((pro, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
                         <CheckCircle className="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
-                        {pro}
+                        <AutoLinkTools text={pro} />
                       </li>
                     ))}
                   </ul>
@@ -124,7 +125,7 @@ export default function AlternativesPage() {
                     {tool.cons.slice(0, 4).map((con, i) => (
                       <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
                         <XCircle className="w-3 h-3 text-red-500 mt-1 flex-shrink-0" />
-                        {con}
+                        <AutoLinkTools text={con} />
                       </li>
                     ))}
                   </ul>
@@ -179,7 +180,7 @@ export default function AlternativesPage() {
                             </PixelBadge>
                           )}
                         </div>
-                        <p className="text-muted-foreground mb-3">{alt.tagline}</p>
+                        <p className="text-muted-foreground mb-3"><AutoLinkTools text={alt.tagline} /></p>
                         <div className="grid gap-2 md:grid-cols-2 mb-3">
                           <div>
                             <span className="text-xs font-medium text-green-600">Pros:</span>
@@ -187,7 +188,7 @@ export default function AlternativesPage() {
                               {alt.pros.slice(0, 2).map((pro, i) => (
                                 <li key={i} className="flex items-start gap-1">
                                   <CheckCircle className="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
-                                  <span className="truncate">{pro}</span>
+                                  <span className="truncate"><AutoLinkTools text={pro} /></span>
                                 </li>
                               ))}
                             </ul>
@@ -198,7 +199,7 @@ export default function AlternativesPage() {
                               {alt.cons.slice(0, 2).map((con, i) => (
                                 <li key={i} className="flex items-start gap-1">
                                   <XCircle className="w-3 h-3 text-red-500 mt-1 flex-shrink-0" />
-                                  <span className="truncate">{con}</span>
+                                  <span className="truncate"><AutoLinkTools text={con} /></span>
                                 </li>
                               ))}
                             </ul>

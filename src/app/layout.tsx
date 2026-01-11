@@ -135,9 +135,25 @@ export const metadata: Metadata = {
   // verification: {
   //   google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
   // },
+  icons: {
+    icon: [
+      { url: "/icon?v=1", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon?v=1", type: "image/png", sizes: "180x180" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/favicon.svg",
+        color: "#3b82f6",
+      },
+    ],
+  },
   other: {
-    "msapplication-TileColor": "#7f13ec",
-    "theme-color": "#7f13ec",
+    "msapplication-TileColor": "#3b82f6",
+    "theme-color": "#3b82f6",
     "apple-mobile-web-app-title": "VIBEBUFF",
     "application-name": "VIBEBUFF",
     "ai:description": "VibeBuff is an AI-powered tech stack recommendation platform with 500+ developer tools. Get stack recommendations, compare tools, and discover what top startups use.",
@@ -163,7 +179,7 @@ export default function RootLayout({
             __html: `(function(){try{var m=localStorage.getItem('vibebuff-color-mode');if(m==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}}catch(e){}})()`,
           }}
         />
-        <BotIdClient
+<BotIdClient
           protect={[
             {
               path: "/api/*",

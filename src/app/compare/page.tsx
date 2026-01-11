@@ -47,6 +47,7 @@ import {
 import { Id } from "../../../convex/_generated/dataModel";
 import { DynamicIcon, ToolIcon } from "@/components/dynamic-icon";
 import { motion, AnimatePresence } from "framer-motion";
+import { AutoLinkTools } from "@/components/auto-link-tools";
 import { TourTrigger } from "@/components/page-tour";
 import { compareTourConfig } from "@/lib/tour-configs";
 
@@ -440,7 +441,7 @@ function ComparePageContent() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wide">Stats Leader</p>
-                    <p className="text-xl font-bold text-foreground">{comparisonStats.winner.name}</p>
+                    <Link href={`/tools/${comparisonStats.winner.slug}`} className="text-xl font-bold text-foreground hover:text-primary transition-colors">{comparisonStats.winner.name}</Link>
                     <p className="text-xs text-primary">Total Score: {comparisonStats.winnerScore}</p>
                   </div>
                 </div>
@@ -685,7 +686,7 @@ function ComparePageContent() {
                           {tool.pros.slice(0, 3).map((pro, i) => (
                             <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
                               <Plus className="w-3 h-3 text-green-500 shrink-0 mt-0.5" />
-                              <span>{pro}</span>
+                              <AutoLinkTools text={pro} />
                             </li>
                           ))}
                         </ul>
@@ -706,7 +707,7 @@ function ComparePageContent() {
                           {tool.cons.slice(0, 3).map((con, i) => (
                             <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
                               <AlertTriangle className="w-3 h-3 text-yellow-500 shrink-0 mt-0.5" />
-                              <span>{con}</span>
+                              <AutoLinkTools text={con} />
                             </li>
                           ))}
                         </ul>
@@ -727,7 +728,7 @@ function ComparePageContent() {
                           {tool.bestFor.slice(0, 3).map((item, i) => (
                             <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
                               <ArrowRight className="w-3 h-3 text-primary shrink-0 mt-0.5" />
-                              <span>{item}</span>
+                              <AutoLinkTools text={item} />
                             </li>
                           ))}
                         </ul>
