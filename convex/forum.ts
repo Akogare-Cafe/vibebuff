@@ -204,7 +204,7 @@ export const upvotePost = mutation({
     const existingVote = await ctx.db
       .query("forumPostVotes")
       .withIndex("by_user_post", (q) =>
-        q.eq("oderId", identity.subject).eq("postId", args.postId)
+        q.eq("voterId", identity.subject).eq("postId", args.postId)
       )
       .first();
 
@@ -218,7 +218,7 @@ export const upvotePost = mutation({
     } else {
       await ctx.db.insert("forumPostVotes", {
         postId: args.postId,
-        oderId: identity.subject,
+        voterId: identity.subject,
         votedAt: Date.now(),
       });
       const post = await ctx.db.get(args.postId);
@@ -241,7 +241,7 @@ export const getUserVotes = query({
         const vote = await ctx.db
           .query("forumPostVotes")
           .withIndex("by_user_post", (q) =>
-            q.eq("oderId", identity.subject).eq("postId", postId)
+            q.eq("voterId", identity.subject).eq("postId", postId)
           )
           .first();
         return vote ? postId : null;

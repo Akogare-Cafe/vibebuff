@@ -83,7 +83,9 @@ export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState<TabType>("profile");
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const settings = useQuery(
     api.userSettings.getSettings,
@@ -100,6 +102,7 @@ export default function SettingsPage() {
   const updatePrivacy = useMutation(api.userSettings.updatePrivacy);
   const updatePreferences = useMutation(api.userSettings.updatePreferences);
   const updateUserProfile = useMutation(api.userProfiles.updateProfile);
+  const deleteAccountMutation = useMutation(api.userSettings.deleteAccount);
 
   const [profileForm, setProfileForm] = useState({
     displayName: "",
@@ -154,6 +157,7 @@ export default function SettingsPage() {
   const handleSaveProfile = async () => {
     if (!user?.id) return;
     setIsSaving(true);
+    setSaveError(null);
     try {
       await updateProfile({
         ...profileForm,
@@ -167,6 +171,8 @@ export default function SettingsPage() {
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
       console.error("Failed to save profile:", error);
+      setSaveError("Failed to save profile. Please try again.");
+      setTimeout(() => setSaveError(null), 3000);
     }
     setIsSaving(false);
   };
@@ -174,6 +180,7 @@ export default function SettingsPage() {
   const handleSaveNotifications = async () => {
     if (!user?.id) return;
     setIsSaving(true);
+    setSaveError(null);
     try {
       await updateNotifications({
         notifications: notificationSettings,
@@ -182,6 +189,8 @@ export default function SettingsPage() {
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
       console.error("Failed to save notifications:", error);
+      setSaveError("Failed to save notifications. Please try again.");
+      setTimeout(() => setSaveError(null), 3000);
     }
     setIsSaving(false);
   };
@@ -189,6 +198,7 @@ export default function SettingsPage() {
   const handleSavePrivacy = async () => {
     if (!user?.id) return;
     setIsSaving(true);
+    setSaveError(null);
     try {
       await updatePrivacy({
         privacy: privacySettings,
@@ -197,6 +207,8 @@ export default function SettingsPage() {
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
       console.error("Failed to save privacy settings:", error);
+      setSaveError("Failed to save privacy settings. Please try again.");
+      setTimeout(() => setSaveError(null), 3000);
     }
     setIsSaving(false);
   };
@@ -204,6 +216,7 @@ export default function SettingsPage() {
   const handleSavePreferences = async () => {
     if (!user?.id) return;
     setIsSaving(true);
+    setSaveError(null);
     try {
       await updatePreferences({
         preferences: preferenceSettings,
@@ -212,8 +225,25 @@ export default function SettingsPage() {
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
       console.error("Failed to save preferences:", error);
+      setSaveError("Failed to save preferences. Please try again.");
+      setTimeout(() => setSaveError(null), 3000);
     }
     setIsSaving(false);
+  };
+
+  const handleDeleteAccount = async () => {
+    if (!user?.id) return;
+    setIsDeleting(true);
+    try {
+      await deleteAccountMutation({});
+      setDeleteDialogOpen(false);
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Failed to delete account:", error);
+      setSaveError("Failed to delete account. Please try again.");
+      setTimeout(() => setSaveError(null), 3000);
+      setIsDeleting(false);
+    }
   };
 
   if (!isLoaded) {
@@ -420,6 +450,12 @@ export default function SettingsPage() {
                           Saved
                         </span>
                       )}
+                      {saveError && (
+                        <span className="text-sm text-red-500 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {saveError}
+                        </span>
+                      )}
                     </div>
                     <PixelButton onClick={handleSaveProfile} disabled={isSaving}>
                       {isSaving ? (
@@ -506,6 +542,12 @@ export default function SettingsPage() {
                         <span className="text-sm text-green-500 flex items-center gap-1">
                           <CheckCircle className="w-4 h-4" />
                           Saved
+                        </span>
+                      )}
+                      {saveError && (
+                        <span className="text-sm text-red-500 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {saveError}
                         </span>
                       )}
                     </div>
@@ -613,6 +655,12 @@ export default function SettingsPage() {
                         <span className="text-sm text-green-500 flex items-center gap-1">
                           <CheckCircle className="w-4 h-4" />
                           Saved
+                        </span>
+                      )}
+                      {saveError && (
+                        <span className="text-sm text-red-500 flex items-center gap-1">
+                          <AlertTriangle className="w-4 h-4" />
+                          {saveError}
                         </span>
                       )}
                     </div>
@@ -724,6 +772,12 @@ export default function SettingsPage() {
                             Saved
                           </span>
                         )}
+                        {saveError && (
+                          <span className="text-sm text-red-500 flex items-center gap-1">
+                            <AlertTriangle className="w-4 h-4" />
+                            {saveError}
+                          </span>
+                        )}
                       </div>
                       <PixelButton onClick={handleSavePreferences} disabled={isSaving}>
                         {isSaving ? (
@@ -771,18 +825,21 @@ export default function SettingsPage() {
                             </DialogDescription>
                           </DialogHeader>
                           <DialogFooter className="gap-2">
-                            <PixelButton variant="ghost" onClick={() => setDeleteDialogOpen(false)}>
+                            <PixelButton variant="ghost" onClick={() => setDeleteDialogOpen(false)} disabled={isDeleting}>
                               Cancel
                             </PixelButton>
                             <PixelButton
                               variant="outline"
                               className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
-                              onClick={() => {
-                                setDeleteDialogOpen(false);
-                              }}
+                              onClick={handleDeleteAccount}
+                              disabled={isDeleting}
                             >
-                              <Trash2 className="w-4 h-4 mr-2" />
-                              Delete Account
+                              {isDeleting ? (
+                                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                              ) : (
+                                <Trash2 className="w-4 h-4 mr-2" />
+                              )}
+                              {isDeleting ? "Deleting..." : "Delete Account"}
                             </PixelButton>
                           </DialogFooter>
                         </DialogContent>

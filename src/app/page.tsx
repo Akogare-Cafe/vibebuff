@@ -221,7 +221,7 @@ export default function Home() {
       </div>
       
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="text-center mb-16">
           {/* Elegant Fantasy Title */}
           <div className="mb-10">

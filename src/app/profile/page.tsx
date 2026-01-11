@@ -30,6 +30,7 @@ import {
   Heart,
   Zap,
   Gift,
+  Eye,
 } from "lucide-react";
 import { ToolIcon } from "@/components/dynamic-icon";
 import { TourTrigger } from "@/components/page-tour";
@@ -69,6 +70,28 @@ const MASTERY_COLORS: Record<string, { color: string; shadow: string }> = {
   master: { color: "bg-orange-500", shadow: "shadow-[0_0_8px_rgba(249,115,22,0.5)]" },
   grandmaster: { color: "bg-yellow-500", shadow: "shadow-[0_0_8px_rgba(234,179,8,0.5)]" },
 };
+
+const MASTERY_XP_THRESHOLDS: Record<string, number> = {
+  novice: 0,
+  apprentice: 100,
+  journeyman: 500,
+  expert: 1000,
+  master: 5000,
+  grandmaster: 10000,
+};
+
+function getCurrentLevelXp(level: string): number {
+  return MASTERY_XP_THRESHOLDS[level] || 0;
+}
+
+function getNextLevelXp(level: string): number | null {
+  const levels = Object.keys(MASTERY_XP_THRESHOLDS);
+  const currentIndex = levels.indexOf(level);
+  if (currentIndex < levels.length - 1) {
+    return MASTERY_XP_THRESHOLDS[levels[currentIndex + 1]];
+  }
+  return null;
+}
 
 export default function ProfilePage() {
   const { user, isLoaded } = useUser();
@@ -326,67 +349,150 @@ export default function ProfilePage() {
           </aside>
 
           <div className="flex-1 flex flex-col gap-8 min-w-0">
-            <section className="flex flex-col gap-4">
+            <section className="flex flex-col gap-4" data-tour="tool-mastery">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
                   <GitBranch className="w-6 h-6 text-purple-400" />
                   Tool Mastery
                 </h2>
-                {topMasteries.length > 0 && (
-                  <span className="text-xs bg-card border border-border px-3 py-1 rounded text-muted-foreground">
-                    {masteryStats?.totalTools || 0} tools mastered
-                  </span>
+                {masteryStats && (
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <Zap className="w-3.5 h-3.5 text-yellow-500" />
+                      <span className="font-bold text-foreground">{masteryStats.totalXp.toLocaleString()}</span>
+                      <span>XP</span>
+                    </div>
+                    <span className="text-xs bg-card border border-border px-3 py-1 rounded text-muted-foreground">
+                      {masteryStats.totalTools} tools
+                    </span>
+                  </div>
                 )}
               </div>
-              <div className="bg-card border border-border rounded-xl p-6 overflow-x-auto inventory-scroll relative">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(127,19,236,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(127,19,236,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+              {masteryStats && masteryStats.totalTools > 0 && (
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                  {Object.entries(MASTERY_COLORS).map(([level, config]) => {
+                    const count = masteryStats.byLevel[level as keyof typeof masteryStats.byLevel] || 0;
+                    return (
+                      <div
+                        key={level}
+                        className={`relative p-2.5 rounded-lg border border-border bg-card/50 text-center transition-all ${
+                          count > 0 ? 'hover:border-primary/50' : 'opacity-50'
+                        }`}
+                      >
+                        <div className={`absolute inset-0 rounded-lg ${config.color} opacity-10`} />
+                        <p className={`text-lg font-bold relative z-10 ${count > 0 ? 'text-foreground' : 'text-muted-foreground'}`}>
+                          {count}
+                        </p>
+                        <p className="text-[10px] uppercase tracking-wider text-muted-foreground relative z-10">
+                          {level}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div className="bg-card border border-border rounded-xl overflow-hidden relative">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(127,19,236,0.08),transparent_70%)] pointer-events-none" />
+                
                 {topMasteries.length > 0 ? (
-                  <div className="flex items-center min-w-[600px] justify-between gap-4 py-8 relative z-10">
-                    {topMasteries.map((mastery, index) => {
-                      const masteryColor = MASTERY_COLORS[mastery.level] || MASTERY_COLORS.novice;
-                      const isMaxed = mastery.level === "grandmaster";
-                      return (
-                        <div key={mastery._id} className="flex items-center">
-                          <div className="group relative flex flex-col items-center gap-2">
-                            {!isMaxed && (
-                              <div className="absolute -inset-2 rounded-full border border-dashed border-yellow-500 animate-spin pointer-events-none opacity-50" style={{ animationDuration: '10s' }} />
-                            )}
-                            <div
-                              className={`size-16 rounded-full bg-card border-2 ${
-                                isMaxed
-                                  ? 'border-primary shadow-[0_0_15px_rgba(127,19,236,0.4)]'
-                                  : 'border-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.4)]'
-                              } flex items-center justify-center relative z-10 cursor-pointer hover:scale-110 transition-transform overflow-hidden`}
-                            >
-                              {mastery.tool?.logoUrl ? (
-                                <img src={mastery.tool.logoUrl} alt={mastery.tool.name} className="w-10 h-10 object-contain" />
-                              ) : (
-                                <ToolIcon toolSlug={mastery.tool?.slug || ''} className="w-8 h-8 text-primary" />
-                              )}
-                              <div
-                                className={`absolute -bottom-1 -right-1 ${
-                                  isMaxed ? 'bg-primary' : 'bg-yellow-600'
-                                } text-white text-[10px] px-1.5 py-0.5 rounded-full border border-card font-bold uppercase`}
-                              >
-                                {mastery.level.slice(0, 3)}
+                  <div className="p-4 relative z-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {topMasteries.map((mastery) => {
+                        const masteryColor = MASTERY_COLORS[mastery.level] || MASTERY_COLORS.novice;
+                        const isMaxed = mastery.level === "grandmaster";
+                        const nextLevelXp = getNextLevelXp(mastery.level);
+                        const currentLevelXp = getCurrentLevelXp(mastery.level);
+                        const progressPercent = nextLevelXp 
+                          ? Math.min(100, ((mastery.xp - currentLevelXp) / (nextLevelXp - currentLevelXp)) * 100)
+                          : 100;
+
+                        return (
+                          <Link key={mastery._id} href={`/tools/${mastery.tool?.slug}`}>
+                            <div className="group relative p-4 rounded-lg bg-background/50 border border-border hover:border-primary/50 transition-all cursor-pointer overflow-hidden">
+                              <div className={`absolute top-0 left-0 right-0 h-0.5 ${masteryColor.color}`} />
+                              
+                              <div className="flex items-start gap-3">
+                                <div className={`relative size-12 rounded-lg bg-card border-2 flex-shrink-0 flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105 ${
+                                  isMaxed ? 'border-yellow-500' : 'border-border'
+                                } ${isMaxed ? masteryColor.shadow : ''}`}>
+                                  {mastery.tool?.logoUrl ? (
+                                    <img src={mastery.tool.logoUrl} alt={mastery.tool.name} className="w-8 h-8 object-contain" />
+                                  ) : (
+                                    <ToolIcon toolSlug={mastery.tool?.slug || ''} className="w-6 h-6 text-primary" />
+                                  )}
+                                  {isMaxed && (
+                                    <div className="absolute -top-1 -right-1">
+                                      <Crown className="w-4 h-4 text-yellow-500 drop-shadow-lg" />
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <h4 className="text-sm font-bold text-foreground truncate group-hover:text-primary transition-colors">
+                                      {mastery.tool?.name || "Unknown"}
+                                    </h4>
+                                    <span className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${masteryColor.color} text-white`}>
+                                      {mastery.level}
+                                    </span>
+                                  </div>
+                                  
+                                  <div className="mt-2">
+                                    <div className="flex justify-between items-center text-[10px] mb-1">
+                                      <span className="text-muted-foreground">{mastery.xp.toLocaleString()} XP</span>
+                                      {nextLevelXp && (
+                                        <span className="text-muted-foreground">{nextLevelXp.toLocaleString()} XP</span>
+                                      )}
+                                    </div>
+                                    <div className="h-1.5 w-full bg-black/30 rounded-full overflow-hidden">
+                                      <div 
+                                        className={`h-full ${masteryColor.color} transition-all duration-500`}
+                                        style={{ width: `${progressPercent}%` }}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className="flex items-center gap-3 mt-2 text-[10px] text-muted-foreground">
+                                    <span className="flex items-center gap-1">
+                                      <Eye className="w-3 h-3" /> {mastery.interactions.views}
+                                    </span>
+                                    <span className="flex items-center gap-1">
+                                      <Layers className="w-3 h-3" /> {mastery.interactions.deckAdds}
+                                    </span>
+                                    <span className="flex items-center gap-1">
+                                      <Swords className="w-3 h-3" /> {mastery.interactions.battleWins}
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <span className="text-xs font-bold text-foreground bg-black/50 px-2 py-0.5 rounded backdrop-blur-sm truncate max-w-[80px]">
-                              {mastery.tool?.name || "Unknown"}
-                            </span>
-                          </div>
-                          {index < topMasteries.length - 1 && (
-                            <div className="h-1 w-16 mx-4 rounded-full bg-primary shadow-[0_0_10px_rgba(127,19,236,0.3)]" />
-                          )}
-                        </div>
-                      );
-                    })}
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    {masteryStats && masteryStats.totalTools > 4 && (
+                      <div className="mt-4 pt-4 border-t border-border flex justify-center">
+                        <Link href="/profile/mastery">
+                          <button className="text-xs font-bold text-primary border border-primary/30 bg-primary/10 px-4 py-2 rounded hover:bg-primary hover:text-white transition-all flex items-center gap-2">
+                            View All {masteryStats.totalTools} Masteries
+                            <GitBranch className="w-3.5 h-3.5" />
+                          </button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 ) : (
-                  <div className="py-12 text-center relative z-10">
-                    <ToolIcon toolSlug="" className="w-12 h-12 mx-auto mb-4 text-muted-foreground/50" />
-                    <p className="text-muted-foreground">No tool masteries yet</p>
-                    <p className="text-sm text-muted-foreground/70 mt-1">Start exploring tools to build mastery</p>
+                  <div className="py-12 px-6 text-center relative z-10">
+                    <div className="size-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                      <GitBranch className="w-8 h-8 text-primary/50" />
+                    </div>
+                    <p className="text-foreground font-medium">No tool masteries yet</p>
+                    <p className="text-sm text-muted-foreground mt-1 max-w-xs mx-auto">
+                      Explore tools, add them to decks, and win battles to build your mastery
+                    </p>
                     <Link href="/tools">
                       <button className="mt-4 text-xs font-bold text-primary border border-primary/30 bg-primary/10 px-4 py-2 rounded hover:bg-primary hover:text-white transition-all">
                         Explore Tools

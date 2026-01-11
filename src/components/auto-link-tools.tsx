@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { sanitizeHtml } from "@/lib/sanitize";
 
 interface ToolInfo {
   name: string;
@@ -150,8 +151,8 @@ export function AutoLinkToolsHtml({ html, className }: AutoLinkToolsHtmlProps) {
   const tools = useQuery(api.tools.getAllNamesAndSlugs);
 
   const linkedHtml = useMemo(() => {
-    if (!tools) return html;
-    return autoLinkToolsInHtml(html, tools);
+    if (!tools) return sanitizeHtml(html);
+    return sanitizeHtml(autoLinkToolsInHtml(html, tools));
   }, [html, tools]);
 
   return (

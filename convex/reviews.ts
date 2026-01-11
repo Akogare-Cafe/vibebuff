@@ -99,6 +99,22 @@ export const create = mutation({
   handler: async (ctx, args) => {
     const userId = await getAuthenticatedUser(ctx);
     
+    if (args.title.length > 200) {
+      throw new Error("Title must be 200 characters or less");
+    }
+    if (args.content.length > 5000) {
+      throw new Error("Review content must be 5000 characters or less");
+    }
+    if (args.pros.length > 10) {
+      throw new Error("Maximum 10 pros allowed");
+    }
+    if (args.cons.length > 10) {
+      throw new Error("Maximum 10 cons allowed");
+    }
+    if (args.usedFor && args.usedFor.length > 500) {
+      throw new Error("'Used for' description must be 500 characters or less");
+    }
+    
     // Check if user already reviewed this tool
     const existing = await ctx.db
       .query("toolReviews")

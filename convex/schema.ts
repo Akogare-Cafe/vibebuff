@@ -2555,12 +2555,12 @@ export default defineSchema({
 
   forumPostVotes: defineTable({
     postId: v.id("forumPosts"),
-    oderId: v.string(),
+    voterId: v.string(),
     votedAt: v.number(),
   })
     .index("by_post", ["postId"])
-    .index("by_user", ["oderId"])
-    .index("by_user_post", ["oderId", "postId"]),
+    .index("by_user", ["voterId"])
+    .index("by_user_post", ["voterId", "postId"]),
 
   // ============================================
   // MCP Servers Database

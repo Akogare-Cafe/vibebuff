@@ -98,7 +98,7 @@ export default function AdvertisePage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <PixelBadge className="mb-4">
               <Megaphone className="w-4 h-4 mr-2" />

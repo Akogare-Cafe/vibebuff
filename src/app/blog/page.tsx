@@ -222,6 +222,206 @@ const blogPosts = [
     tags: ["SaaS", "Tech Stack", "Full Stack"],
     featured: false,
   },
+  {
+    slug: "docker-vs-kubernetes-2025",
+    title: "Docker vs Kubernetes in 2025: When to Use Each",
+    description:
+      "Understand the differences between Docker and Kubernetes. Learn when to use containers alone vs orchestration for your deployment strategy.",
+    date: "2024-12-18",
+    readTime: "12 min read",
+    tags: ["Docker", "Kubernetes", "DevOps", "Containers"],
+    featured: false,
+  },
+  {
+    slug: "testing-frameworks-javascript-2025",
+    title: "Best JavaScript Testing Frameworks in 2025: Jest vs Vitest vs Playwright",
+    description:
+      "Compare modern testing frameworks for JavaScript. From unit tests with Vitest to E2E with Playwright - choose the right testing stack.",
+    date: "2024-12-15",
+    readTime: "10 min read",
+    tags: ["Testing", "Jest", "Vitest", "Playwright"],
+    featured: false,
+  },
+  {
+    slug: "css-in-js-vs-utility-first-2025",
+    title: "CSS-in-JS vs Utility-First CSS in 2025: The Great Debate",
+    description:
+      "Styled Components vs Tailwind CSS - compare styling approaches for React apps. Performance, DX, and maintainability analyzed.",
+    date: "2024-12-12",
+    readTime: "9 min read",
+    tags: ["CSS", "Tailwind", "Styled Components", "Styling"],
+    featured: false,
+  },
+  {
+    slug: "web3-development-stack-2025",
+    title: "Complete Web3 Development Stack Guide for 2025",
+    description:
+      "Build decentralized applications with the right tools. Compare Ethereum, Solana, and Polygon development stacks with frameworks and libraries.",
+    date: "2024-12-10",
+    readTime: "14 min read",
+    tags: ["Web3", "Blockchain", "Ethereum", "Solana"],
+    featured: false,
+  },
+  {
+    slug: "mobile-app-frameworks-2025",
+    title: "Best Mobile App Frameworks in 2025: React Native vs Flutter vs Native",
+    description:
+      "Choose the right mobile development framework. Compare React Native, Flutter, and native development for iOS and Android apps.",
+    date: "2024-12-08",
+    readTime: "13 min read",
+    tags: ["Mobile", "React Native", "Flutter", "iOS"],
+    featured: false,
+  },
+  {
+    slug: "graphql-vs-rest-vs-trpc-2025",
+    title: "GraphQL vs REST vs tRPC in 2025: API Architecture Comparison",
+    description:
+      "Modern API design patterns compared. Learn when to use GraphQL, REST, or tRPC for type-safe, efficient backend communication.",
+    date: "2024-12-05",
+    readTime: "11 min read",
+    tags: ["API", "GraphQL", "tRPC", "REST"],
+    featured: false,
+  },
+  {
+    slug: "micro-frontends-architecture-2025",
+    title: "Micro-Frontends Architecture Guide for 2025",
+    description:
+      "Build scalable frontend applications with micro-frontends. Compare Module Federation, Single-SPA, and modern implementation patterns.",
+    date: "2024-12-03",
+    readTime: "12 min read",
+    tags: ["Architecture", "Micro-Frontends", "Webpack", "Module Federation"],
+    featured: false,
+  },
+  {
+    slug: "cms-comparison-2025",
+    title: "Best Headless CMS in 2025: Contentful vs Sanity vs Strapi",
+    description:
+      "Compare top headless CMS platforms for modern web apps. Features, pricing, and developer experience of Contentful, Sanity, and Strapi.",
+    date: "2024-12-01",
+    readTime: "10 min read",
+    tags: ["CMS", "Contentful", "Sanity", "Strapi"],
+    featured: false,
+  },
+  {
+    slug: "performance-monitoring-tools-2025",
+    title: "Best Performance Monitoring Tools in 2025: Sentry vs Datadog vs New Relic",
+    description:
+      "Monitor your application performance with the right tools. Compare APM solutions, error tracking, and observability platforms.",
+    date: "2024-11-28",
+    readTime: "11 min read",
+    tags: ["Monitoring", "Sentry", "Datadog", "Performance"],
+    featured: false,
+  },
+  {
+    slug: "svelte-vs-react-vs-vue-2025",
+    title: "Svelte vs React vs Vue in 2025: The Ultimate Framework Battle",
+    description:
+      "Three-way comparison of top frontend frameworks. Performance benchmarks, ecosystem, and real-world use cases for Svelte, React, and Vue.",
+    date: "2024-11-25",
+    readTime: "13 min read",
+    tags: ["Svelte", "React", "Vue", "Frontend"],
+    featured: false,
+  },
+  {
+    slug: "ci-cd-pipelines-2025",
+    title: "Best CI/CD Tools in 2025: GitHub Actions vs GitLab CI vs CircleCI",
+    description:
+      "Automate your deployment pipeline with the right CI/CD tool. Compare features, pricing, and performance of top platforms.",
+    date: "2024-11-22",
+    readTime: "10 min read",
+    tags: ["CI/CD", "GitHub Actions", "GitLab", "DevOps"],
+    featured: false,
+  },
+  {
+    slug: "websocket-alternatives-2025",
+    title: "WebSockets vs Server-Sent Events vs WebRTC in 2025",
+    description:
+      "Choose the right real-time communication protocol. Compare WebSockets, SSE, and WebRTC for live data streaming and chat applications.",
+    date: "2024-11-20",
+    readTime: "9 min read",
+    tags: ["WebSockets", "Real-time", "WebRTC", "SSE"],
+    featured: false,
+  },
+  {
+    slug: "design-systems-2025",
+    title: "Building Design Systems in 2025: Storybook vs Chromatic vs Figma",
+    description:
+      "Create and maintain design systems effectively. Tools, best practices, and workflows for component libraries and design tokens.",
+    date: "2024-11-18",
+    readTime: "12 min read",
+    tags: ["Design Systems", "Storybook", "Figma", "UI"],
+    featured: false,
+  },
+  {
+    slug: "search-engines-2025",
+    title: "Best Search Solutions in 2025: Algolia vs Elasticsearch vs Meilisearch",
+    description:
+      "Implement powerful search in your application. Compare search engines, performance, and pricing for different use cases.",
+    date: "2024-11-15",
+    readTime: "11 min read",
+    tags: ["Search", "Algolia", "Elasticsearch", "Meilisearch"],
+    featured: false,
+  },
+  {
+    slug: "email-services-developers-2025",
+    title: "Best Email Services for Developers in 2025: SendGrid vs Resend vs Postmark",
+    description:
+      "Send transactional emails reliably. Compare email APIs, deliverability, and developer experience of top email services.",
+    date: "2024-11-12",
+    readTime: "9 min read",
+    tags: ["Email", "SendGrid", "Resend", "Postmark"],
+    featured: false,
+  },
+  {
+    slug: "payment-processing-2025",
+    title: "Payment Processing in 2025: Stripe vs PayPal vs Square",
+    description:
+      "Integrate payments into your application. Compare fees, features, and developer experience of leading payment processors.",
+    date: "2024-11-10",
+    readTime: "10 min read",
+    tags: ["Payments", "Stripe", "PayPal", "Square"],
+    featured: false,
+  },
+  {
+    slug: "static-site-generators-2025",
+    title: "Best Static Site Generators in 2025: Astro vs Hugo vs Eleventy",
+    description:
+      "Build blazing-fast static sites with modern generators. Compare Astro, Hugo, and Eleventy for blogs, documentation, and marketing sites.",
+    date: "2024-11-08",
+    readTime: "10 min read",
+    tags: ["SSG", "Astro", "Hugo", "Eleventy"],
+    featured: false,
+  },
+  {
+    slug: "form-libraries-react-2025",
+    title: "Best React Form Libraries in 2025: React Hook Form vs Formik vs TanStack Form",
+    description:
+      "Handle forms efficiently in React. Compare validation, performance, and DX of top form libraries for complex form requirements.",
+    date: "2024-11-05",
+    readTime: "9 min read",
+    tags: ["React", "Forms", "React Hook Form", "Formik"],
+    featured: false,
+  },
+  {
+    slug: "animation-libraries-web-2025",
+    title: "Best Animation Libraries for Web in 2025: Framer Motion vs GSAP vs Anime.js",
+    description:
+      "Create stunning web animations. Compare animation libraries for React and vanilla JavaScript with performance benchmarks.",
+    date: "2024-11-03",
+    readTime: "10 min read",
+    tags: ["Animation", "Framer Motion", "GSAP", "UI"],
+    featured: false,
+  },
+  {
+    slug: "code-quality-tools-2025",
+    title: "Essential Code Quality Tools in 2025: ESLint vs Prettier vs Biome",
+    description:
+      "Maintain code quality and consistency. Compare linters, formatters, and all-in-one tools for JavaScript and TypeScript projects.",
+    date: "2024-11-01",
+    readTime: "8 min read",
+    tags: ["Code Quality", "ESLint", "Prettier", "Biome"],
+    featured: false,
+  },
 ];
 
 export default function BlogPage() {
@@ -230,7 +430,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="max-w-6xl mx-auto px-4 py-12">
+      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-primary text-xl mb-4 pixel-glow">

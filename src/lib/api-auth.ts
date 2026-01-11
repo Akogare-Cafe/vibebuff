@@ -5,6 +5,11 @@ export function validateApiKey(request: NextRequest): boolean {
   const expectedKey = process.env.MCP_API_KEY;
   
   if (!expectedKey) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error("MCP_API_KEY not configured in production - blocking all requests");
+      return false;
+    }
+    console.warn("MCP_API_KEY not configured - API endpoints unprotected in development");
     return true;
   }
   

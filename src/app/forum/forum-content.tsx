@@ -54,7 +54,7 @@ export function ForumContent() {
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={forumTourConfig} />
       </div>
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">Community Forum</h1>
           <p className="text-muted-foreground">

@@ -3,7 +3,10 @@ import { v } from "convex/values";
 import { getAuthenticatedUser } from "./lib/auth";
 import { internal } from "./_generated/api";
 
-const ADMIN_EMAILS = ["kavyrattana@gmail.com"];
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "kavyrattana@gmail.com")
+  .split(",")
+  .map(email => email.trim())
+  .filter(Boolean);
 
 export const isAdmin = query({
   args: {},

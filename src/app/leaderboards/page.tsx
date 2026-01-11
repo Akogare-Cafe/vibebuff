@@ -96,7 +96,7 @@ export default function LeaderboardsPage() {
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={leaderboardsTourConfig} />
       </div>
-      <main className="max-w-4xl mx-auto px-4 py-8">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 mb-4">
             <ChevronLeft className="w-4 h-4" /> Back to Community

@@ -162,7 +162,7 @@ export default function McpPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-background to-background" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50" />
         
-        <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 relative">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
           <div className="flex items-center gap-2 mb-4">
             <Link href="/" className="text-muted-foreground hover:text-primary text-sm">
               Home
@@ -220,7 +220,7 @@ export default function McpPage() {
       </section>
 
       <section id="installation" className="py-16 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
               Quick Installation
@@ -288,7 +288,7 @@ export default function McpPage() {
       </section>
 
       <section className="py-16 border-b border-border bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
               What You Get
@@ -323,7 +323,7 @@ export default function McpPage() {
       </section>
 
       <section className="py-16 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
               Available Tools
@@ -360,7 +360,7 @@ export default function McpPage() {
       </section>
 
       <section className="py-16 border-b border-border bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground font-heading mb-4">
               Example Use Cases
@@ -396,7 +396,7 @@ export default function McpPage() {
       </section>
 
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <PixelCard className="bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-background border-purple-500/30">
             <PixelCardContent className="p-8 text-center">
               <Terminal className="w-12 h-12 text-purple-400 mx-auto mb-4" />

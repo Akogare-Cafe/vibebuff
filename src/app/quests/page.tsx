@@ -88,7 +88,7 @@ export default function QuestsPage() {
         <TourTrigger tourConfig={questsTourConfig} />
       </div>
 
-      <main className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4">
             <ChevronLeft className="w-4 h-4" />

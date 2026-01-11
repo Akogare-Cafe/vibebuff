@@ -457,7 +457,7 @@ export default function FavoritesPage() {
                         {tool.logoUrl ? (
                           <img src={tool.logoUrl} alt={tool.name} className="w-10 h-10 object-contain" />
                         ) : (
-                          <Wrench className="w-6 h-6 text-muted-foreground" />
+                          <ToolIcon toolSlug={tool.slug} className="w-6 h-6 text-primary" />
                         )}
                         {tool.isFavorite && (
                           <div className="absolute -top-1 -right-1 bg-red-500 rounded-full p-0.5">

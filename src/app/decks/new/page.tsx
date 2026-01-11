@@ -105,7 +105,7 @@ export default function NewDeckPage() {
   if (!user) {
     return (
       <div className="min-h-screen bg-background">
-        <main className="max-w-4xl mx-auto px-4 py-12">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <PixelCard className="text-center p-8">
             <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
             <h1 className="text-primary text-lg mb-4">SIGN IN REQUIRED</h1>
@@ -131,7 +131,7 @@ export default function NewDeckPage() {
         <TourTrigger tourConfig={decksTourConfig} />
       </div>
 
-      <section className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-8">
           <div className="flex items-center gap-2 text-primary mb-2">
             <Package className="w-5 h-5" />
