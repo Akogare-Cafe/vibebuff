@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { AlertTriangle, RefreshCw, Home, Shield } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AlertTriangle, RefreshCw, Home, Shield, Flag } from "lucide-react";
 import { PixelCard } from "@/components/pixel-card";
 import { PixelButton } from "@/components/pixel-button";
+import { ErrorReportDialog } from "@/components/error-report-dialog";
+import { createErrorReport, submitErrorReport, type ErrorReport } from "@/lib/error-reporter";
 
 export default function AdminError({
   error,
@@ -12,11 +14,26 @@ export default function AdminError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const [showReportDialog, setShowReportDialog] = useState(false);
+  const [errorReport, setErrorReport] = useState<ErrorReport | null>(null);
+
   useEffect(() => {
     console.error("Admin page error:", error);
   }, [error]);
 
+  const handleReportClick = async () => {
+    const report = await createErrorReport(error);
+    setErrorReport(report);
+    setShowReportDialog(true);
+  };
+
+  const handleSubmitReport = async (userMessage: string) => {
+    if (!errorReport) return false;
+    return await submitErrorReport(errorReport, userMessage);
+  };
+
   return (
+    <>
     <div className="container mx-auto px-4 py-12">
       <PixelCard className="max-w-xl mx-auto">
         <div className="flex flex-col items-center text-center space-y-6 p-8">
@@ -40,6 +57,14 @@ export default function AdminError({
               Try Again
             </PixelButton>
             <PixelButton
+              onClick={handleReportClick}
+              variant="outline"
+              className="gap-2"
+            >
+              <Flag className="w-4 h-4" />
+              Report
+            </PixelButton>
+            <PixelButton
               onClick={() => (window.location.href = "/")}
               variant="outline"
               className="gap-2"
@@ -51,5 +76,14 @@ export default function AdminError({
         </div>
       </PixelCard>
     </div>
+
+    {showReportDialog && errorReport && (
+      <ErrorReportDialog
+        report={errorReport}
+        onSubmit={handleSubmitReport}
+        onClose={() => setShowReportDialog(false)}
+      />
+    )}
+  </>
   );
 }

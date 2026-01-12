@@ -1,3 +1,5 @@
+"use client";
+
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { cn } from "@/lib/utils";
 import { LayoutGrid, Coins, TrendingUp, Sparkles, Star } from "lucide-react";
