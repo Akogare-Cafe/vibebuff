@@ -13,6 +13,7 @@ import { OnboardingWrapper } from "@/components/onboarding-wrapper";
 import { ReferralHandler } from "@/components/referral-handler";
 import { McpNotificationBanner } from "@/components/mcp-notification-banner";
 import { PageTourProvider } from "@/components/page-tour";
+import { ErrorBoundaryProvider } from "@/components/providers/error-boundary-provider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -364,20 +365,22 @@ export default function RootLayout({
         />
       </head>
       <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col`}>
-        <ClerkClientProvider>
-          <ConvexClientProvider>
-            <ThemeProvider>
-              <PageTourProvider>
-                {/* <McpNotificationBanner /> */}
-                <Header />
-                <OnboardingWrapper />
-                <ReferralHandler />
-                <main className="flex-1">{children}</main>
-                <Footer />
-              </PageTourProvider>
-            </ThemeProvider>
-          </ConvexClientProvider>
-        </ClerkClientProvider>
+        <ErrorBoundaryProvider>
+          <ClerkClientProvider>
+            <ConvexClientProvider>
+              <ThemeProvider>
+                <PageTourProvider>
+                  {/* <McpNotificationBanner /> */}
+                  <Header />
+                  <OnboardingWrapper />
+                  <ReferralHandler />
+                  <main className="flex-1">{children}</main>
+                  <Footer />
+                </PageTourProvider>
+              </ThemeProvider>
+            </ConvexClientProvider>
+          </ClerkClientProvider>
+        </ErrorBoundaryProvider>
         <Analytics />
         <SpeedInsights />
       </body>

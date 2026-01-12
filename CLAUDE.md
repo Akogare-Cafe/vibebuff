@@ -59,15 +59,25 @@ Use these pixel-styled components for consistency:
 - `PixelBadge`
 - `PixelInput`
 
-## Convex Backend
+## Convex Backend - CRITICAL
 
-When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+**ALWAYS run this command immediately after modifying ANY file in the `convex/` folder:**
 
 ```bash
-npx convex dev --once
+npx convex dev --once --typecheck disable
 ```
 
-This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+### When to Sync (MANDATORY)
+- After editing any `.ts` file in `convex/`
+- After changing function signatures or validators
+- After adding/removing Convex functions
+- After modifying database schema (`schema.ts`)
+- Before testing changes in the browser
+- Before marking a feature as complete
+
+**Failing to sync will cause "Server Error" runtime errors in the application.**
+
+This command deploys your local Convex functions to the development backend, ensuring the deployed code matches your local changes.
 
 ## When Making Changes
 
@@ -75,12 +85,18 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 2. Use lucide-react icons exclusively
 3. Maintain the retro gaming aesthetic
 4. Test that changes don't break existing functionality
-5. If Convex functions were modified, run `npx convex dev --once`
+5. **If you modified ANY file in `convex/` folder, run `npx convex dev --once --typecheck disable` IMMEDIATELY**
 
 ## After Completing Features
 
-**MANDATORY**: After completing any feature or making significant changes, verify the production build:
+**MANDATORY**: After completing any feature or making significant changes:
 
+### 1. Sync Convex (if you modified `convex/` folder)
+```bash
+npx convex dev --once --typecheck disable
+```
+
+### 2. Verify Production Build
 ```bash
 pnpm build
 ```
@@ -92,4 +108,7 @@ This catches:
 - Missing Response objects
 - Runtime errors in production mode
 
-**A feature is NOT complete until `pnpm build` succeeds.**
+**A feature is NOT complete until BOTH steps succeed.**
+
+### Troubleshooting
+If you see "Server Error" in browser console mentioning Convex functions, you forgot to sync. Run `npx convex dev --once --typecheck disable` immediately.

@@ -31,15 +31,25 @@ import { Search, Star, Gamepad2 } from "lucide-react";
 - **Animations**: Framer Motion
 - **Flow Diagrams**: @xyflow/react
 
-## Convex Backend
+## Convex Backend - CRITICAL
 
-When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+**ALWAYS run this command immediately after modifying ANY file in the `convex/` folder:**
 
 ```bash
-npx convex dev --once
+npx convex dev --once --typecheck disable
 ```
 
-This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+### When to Sync (MANDATORY)
+- After editing any `.ts` file in `convex/`
+- After changing function signatures or validators
+- After adding/removing Convex functions
+- After modifying database schema
+- Before testing changes in the browser
+- Before marking a feature as complete
+
+**Failing to sync will cause "Server Error" runtime errors in the application.**
+
+This command deploys your local Convex functions to the development backend, ensuring the deployed code matches your local changes.
 
 ## Code Style
 
@@ -56,16 +66,22 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 
 ## After Completing Features
 
-After completing any feature or making significant changes, you MUST verify the build:
+After completing any feature or making significant changes, you MUST:
 
+### 1. Sync Convex (if you modified `convex/` folder)
+```bash
+npx convex dev --once --typecheck disable
+```
+
+### 2. Verify Production Build
 ```bash
 pnpm build
 ```
 
 This ensures:
-1. TypeScript compiles without errors
-2. Next.js can generate static pages
-3. No runtime errors in production build
-4. All route handlers return proper responses
+- TypeScript compiles without errors
+- Next.js can generate static pages
+- No runtime errors in production build
+- All route handlers return proper responses
 
-Do NOT consider a feature complete until the build passes successfully.
+**Do NOT consider a feature complete until BOTH steps pass successfully.**

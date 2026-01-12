@@ -69,15 +69,25 @@ convex/            → Backend functions
 docs/              → Documentation
 ```
 
-## Convex Backend
+## Convex Backend - CRITICAL
 
-When modifying files in the `convex/` folder, you MUST sync the functions to the dev deployment:
+**ALWAYS run this command immediately after modifying ANY file in the `convex/` folder:**
 
 ```bash
-npx convex dev --once
+npx convex dev --once --typecheck disable
 ```
 
-This ensures the deployed Convex functions match the local code. Failing to do this will cause runtime errors if validators or function signatures have changed.
+### When to Sync (MANDATORY)
+- After editing any `.ts` file in `convex/`
+- After changing function signatures or validators
+- After adding/removing Convex functions
+- After modifying database schema (`schema.ts`)
+- Before testing changes in the browser
+- Before marking a feature as complete
+
+**Failing to sync will cause "Server Error" runtime errors in the application.**
+
+This command deploys your local Convex functions to the development backend, ensuring the deployed code matches your local changes.
 
 ## Before Committing Changes
 
@@ -85,7 +95,7 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 2. Confirm all icons use lucide-react
 3. Check TypeScript compiles without errors
 4. Ensure pixel aesthetic is maintained
-5. If Convex functions were modified, run `npx convex dev --once`
+5. **If Convex functions were modified, run `npx convex dev --once --typecheck disable` IMMEDIATELY**
 6. **Run production build verification**: `pnpm build`
 
 ## Feature Completion Checklist
@@ -93,8 +103,8 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 A feature is NOT complete until ALL of these pass:
 
 ```bash
-# 1. Sync Convex functions (if modified)
-npx convex dev --once
+# 1. Sync Convex functions (if you modified convex/ folder)
+npx convex dev --once --typecheck disable
 
 # 2. Verify production build
 pnpm build
@@ -107,3 +117,6 @@ The build must succeed with:
 - All route handlers returning proper Response objects
 
 **Do NOT mark a feature as complete if the build fails.**
+
+### Common Mistake to Avoid
+If you see "Server Error" in the browser console mentioning Convex functions, you forgot to run `npx convex dev --once`. Run it immediately.
