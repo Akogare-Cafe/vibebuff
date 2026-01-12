@@ -3041,4 +3041,25 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_key_hash", ["keyHash"])
     .index("by_user_active", ["userId", "isActive"]),
+
+  packageAnalyses: defineTable({
+    userId: v.string(),
+    packageName: v.string(),
+    score: v.number(),
+    grade: v.string(),
+    matchedToolIds: v.array(v.string()),
+    stats: v.object({
+      totalDependencies: v.number(),
+      matchedCount: v.number(),
+      unmatchedCount: v.number(),
+      openSourceCount: v.number(),
+      featuredCount: v.number(),
+      healthScore: v.number(),
+      modernityScore: v.number(),
+      popularityScore: v.number(),
+    }),
+    analyzedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_analyzed_at", ["analyzedAt"]),
 });

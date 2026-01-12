@@ -18,6 +18,7 @@ on:
           - rss
           - awesome
           - vibe-tools
+          - newsletters
       sync_to_db:
         description: 'Sync scraped data to Convex database'
         required: false
@@ -42,12 +43,27 @@ jobs:
           cache: 'pip'
           cache-dependency-path: scripts/scraper/requirements.txt
       
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - name: Install Node dependencies
+        run: pnpm install
+      
+      - name: Install Python dependencies
         run: |
           cd scripts/scraper
           pip install -r requirements.txt
       
-      - name: Run scraper
+      - name: Run Python scraper
+        if: ${{ github.event.inputs.scraper != 'newsletters' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -57,6 +73,10 @@ jobs:
           else
             python main.py --only ${{ github.event.inputs.scraper }}
           fi
+      
+      - name: Run Newsletter scraper
+        if: ${{ github.event.inputs.scraper == 'newsletters' || github.event.inputs.scraper == 'all' || github.event.inputs.scraper == '' }}
+        run: pnpm scrape-newsletters
       
       - name: Sync to Convex database
         if: ${{ github.event.inputs.sync_to_db != 'false' }}
@@ -78,7 +98,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add scripts/scraper/data/
+          git add scripts/scraper/data/ newsletter-tools.json newsletter-tools.md
           git diff --staged --quiet || git commit -m "chore: update tool metadata [skip ci]"
           git pull --rebase origin main
           git push

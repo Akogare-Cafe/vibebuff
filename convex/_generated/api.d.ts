@@ -52,6 +52,7 @@ import type * as newsletter from "../newsletter.js";
 import type * as nominations from "../nominations.js";
 import type * as notifications from "../notifications.js";
 import type * as onboarding from "../onboarding.js";
+import type * as packageAnalyzer from "../packageAnalyzer.js";
 import type * as packageImport from "../packageImport.js";
 import type * as popularity from "../popularity.js";
 import type * as presence from "../presence.js";
@@ -139,6 +140,7 @@ declare const fullApi: ApiFromModules<{
   nominations: typeof nominations;
   notifications: typeof notifications;
   onboarding: typeof onboarding;
+  packageAnalyzer: typeof packageAnalyzer;
   packageImport: typeof packageImport;
   popularity: typeof popularity;
   presence: typeof presence;
