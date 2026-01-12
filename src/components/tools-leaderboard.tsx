@@ -21,13 +21,10 @@ import {
   Medal,
   Award,
   Package,
-  Layers,
-  MousePointerClick,
-  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage" | "deckAdds" | "clicks" | "weeklyViews";
+type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage";
 
 const sortOptions: { 
   value: SortOption; 
@@ -85,36 +82,6 @@ const sortOptions: {
       color: "text-blue-400"
     })
   },
-  { 
-    value: "deckAdds", 
-    label: "Deck Additions", 
-    icon: <Layers className="w-5 h-5 text-cyan-400" />,
-    getStatValue: (tool) => ({
-      icon: <Layers className="w-4 h-4" />,
-      value: formatNumber(tool.stats.deckAdds),
-      color: "text-cyan-400"
-    })
-  },
-  { 
-    value: "clicks", 
-    label: "Most Clicked", 
-    icon: <MousePointerClick className="w-5 h-5 text-orange-400" />,
-    getStatValue: (tool) => ({
-      icon: <MousePointerClick className="w-4 h-4" />,
-      value: formatNumber(tool.stats.clicks),
-      color: "text-orange-400"
-    })
-  },
-  { 
-    value: "weeklyViews", 
-    label: "Hot This Week", 
-    icon: <Calendar className="w-5 h-5 text-pink-400" />,
-    getStatValue: (tool) => ({
-      icon: <Calendar className="w-4 h-4" />,
-      value: formatNumber(tool.stats.weeklyViews),
-      color: "text-pink-400"
-    })
-  },
 ];
 
 const pricingColors: Record<string, string> = {
@@ -157,9 +124,6 @@ export function ToolsLeaderboard({ limit = 10, showFilters = false, compact = fa
   const trendingTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "trending", limit });
   const favoritesTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "favorites", limit });
   const usageTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "usage", limit });
-  const deckAddsTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "deckAdds", limit });
-  const clicksTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "clicks", limit });
-  const weeklyViewsTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "weeklyViews", limit });
 
   const toolsDataMap: Record<SortOption, typeof starsTools> = {
     stars: starsTools,
@@ -167,9 +131,6 @@ export function ToolsLeaderboard({ limit = 10, showFilters = false, compact = fa
     trending: trendingTools,
     favorites: favoritesTools,
     usage: usageTools,
-    deckAdds: deckAddsTools,
-    clicks: clicksTools,
-    weeklyViews: weeklyViewsTools,
   };
 
   return (
