@@ -1,4 +1,4 @@
-import { Trophy, ChevronLeft, Zap, Swords, Layers, Map, Star, Flame, MessageSquare } from "lucide-react";
+import { Trophy, ChevronLeft, Zap, Swords, Layers, Map, Star } from "lucide-react";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { LeaderboardPodiumSkeleton, LeaderboardListSkeleton } from "@/components/skeletons";
@@ -10,8 +10,6 @@ const LEADERBOARD_TABS = [
   { id: "decks", label: "Decks", icon: <Layers className="w-4 h-4" /> },
   { id: "quests", label: "Quests", icon: <Map className="w-4 h-4" /> },
   { id: "mastery", label: "Mastery", icon: <Star className="w-4 h-4" /> },
-  { id: "streaks", label: "Streaks", icon: <Flame className="w-4 h-4" /> },
-  { id: "reviews", label: "Reviews", icon: <MessageSquare className="w-4 h-4" /> },
 ];
 
 export default function LeaderboardsLoading() {

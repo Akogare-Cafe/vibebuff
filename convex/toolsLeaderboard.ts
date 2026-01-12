@@ -8,7 +8,10 @@ export const getToolsLeaderboard = query({
       v.literal("downloads"),
       v.literal("trending"),
       v.literal("favorites"),
-      v.literal("usage")
+      v.literal("usage"),
+      v.literal("deckAdds"),
+      v.literal("clicks"),
+      v.literal("weeklyViews")
     )),
     limit: v.optional(v.number()),
     categorySlug: v.optional(v.string()),
@@ -78,6 +81,15 @@ export const getToolsLeaderboard = query({
         break;
       case "usage":
         toolsWithStats.sort((a, b) => b.stats.views - a.stats.views);
+        break;
+      case "deckAdds":
+        toolsWithStats.sort((a, b) => b.stats.deckAdds - a.stats.deckAdds);
+        break;
+      case "clicks":
+        toolsWithStats.sort((a, b) => b.stats.clicks - a.stats.clicks);
+        break;
+      case "weeklyViews":
+        toolsWithStats.sort((a, b) => b.stats.weeklyViews - a.stats.weeklyViews);
         break;
     }
 

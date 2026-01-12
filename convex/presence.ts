@@ -19,7 +19,9 @@ export const heartbeat = mutation({
         .first();
 
       if (existing) {
-        await ctx.db.patch(existing._id, {
+        await ctx.db.replace(existing._id, {
+          oderId: userId,
+          sessionId: existing.sessionId,
           lastSeen: now,
           isOnline: true,
           isAuthenticated: true,
@@ -42,9 +44,12 @@ export const heartbeat = mutation({
         .first();
 
       if (existing) {
-        await ctx.db.patch(existing._id, {
+        await ctx.db.replace(existing._id, {
+          oderId: existing.oderId,
+          sessionId: args.sessionId,
           lastSeen: now,
           isOnline: true,
+          isAuthenticated: false,
         });
       } else {
         await ctx.db.insert("userPresence", {
