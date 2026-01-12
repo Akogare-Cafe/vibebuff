@@ -783,6 +783,12 @@ function PublishToMarketplaceModal({
 
   const handlePublish = async () => {
     if (!user?.id) return;
+    
+    if (tags.length === 0) {
+      setError("Please add at least one tag to help others discover your stack.");
+      return;
+    }
+
     setIsPublishing(true);
     setError(null);
 
@@ -2083,7 +2089,11 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         <PublishToMarketplaceModal
           build={publishModalBuild}
           onClose={() => setPublishModalBuild(null)}
-          onPublished={() => {}}
+          onPublished={() => {
+            setPublishModalBuild(null);
+            setSaveMessage("Stack published to marketplace!");
+            setTimeout(() => setSaveMessage(null), 3000);
+          }}
         />
       )}
 

@@ -179,8 +179,19 @@ export default function LeaderboardsPage() {
         <div className="space-y-8">
           <StatsOverview />
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <Trophy className="w-6 h-6 text-yellow-400" />
+              Tools Rankings
+            </h2>
             <ToolsLeaderboard limit={15} />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <Layers className="w-6 h-6 text-purple-400" />
+              Stack Builder Rankings
+            </h2>
             <StacksLeaderboard limit={15} />
           </div>
 
