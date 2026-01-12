@@ -65,7 +65,8 @@ export default function InvitePage() {
 
   const handleTwitterShare = async () => {
     if (referralUrl) {
-      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(referralUrl)}`;
+      const urlWithUtm = `${referralUrl}${referralUrl.includes('?') ? '&' : '?'}utm_source=twitter&utm_medium=social&utm_campaign=invite_page`;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(urlWithUtm)}`;
       window.open(twitterUrl, "_blank", "noopener,noreferrer");
       await trackShare({
         shareType: "referral",
@@ -77,7 +78,8 @@ export default function InvitePage() {
 
   const handleLinkedInShare = async () => {
     if (referralUrl) {
-      const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralUrl)}`;
+      const urlWithUtm = `${referralUrl}${referralUrl.includes('?') ? '&' : '?'}utm_source=linkedin&utm_medium=social&utm_campaign=invite_page`;
+      const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlWithUtm)}`;
       window.open(linkedinUrl, "_blank", "noopener,noreferrer");
       await trackShare({
         shareType: "referral",

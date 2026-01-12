@@ -150,6 +150,37 @@ export const getAllNamesAndSlugs = query({
   },
 });
 
+export const getToolPreview = query({
+  args: { slug: v.string() },
+  handler: async (ctx, args) => {
+    const tool = await ctx.db
+      .query("tools")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+    
+    if (!tool) return null;
+    
+    const category = await ctx.db.get(tool.categoryId);
+    
+    return {
+      _id: tool._id,
+      name: tool.name,
+      slug: tool.slug,
+      tagline: tool.tagline,
+      logoUrl: tool.logoUrl,
+      pricingModel: tool.pricingModel,
+      githubStars: tool.githubStars,
+      npmDownloadsWeekly: tool.npmDownloadsWeekly,
+      isOpenSource: tool.isOpenSource,
+      isFeatured: tool.isFeatured,
+      category: category ? {
+        name: category.name,
+        icon: category.icon,
+      } : null,
+    };
+  },
+});
+
 export const updateScreenshots = mutation({
   args: {
     toolId: v.id("tools"),

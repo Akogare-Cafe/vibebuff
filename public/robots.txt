@@ -1,5 +1,6 @@
 # VibeBuff Robots.txt
 # Canonical URL: https://vibebuff.dev
+# AI-Friendly Developer Tools Database
 
 User-agent: *
 Allow: /
@@ -19,20 +20,30 @@ Sitemap: https://vibebuff.dev/sitemap.xml
 # AI Crawler Directives
 # These crawlers are used by AI assistants to understand site content
 
-# OpenAI GPTBot
+# OpenAI GPTBot (ChatGPT)
 User-agent: GPTBot
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
-Allow: /.well-known/llms.txt
+Allow: /.well-known/
+Crawl-delay: 1
 Disallow: /api/
 Disallow: /admin/
+
+# OpenAI ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Allow: /.well-known/
 
 # Google Bard / Gemini
 User-agent: Google-Extended
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /.well-known/
+Crawl-delay: 1
 Disallow: /api/
 Disallow: /admin/
 
@@ -41,6 +52,8 @@ User-agent: anthropic-ai
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /.well-known/
+Crawl-delay: 1
 Disallow: /api/
 Disallow: /admin/
 
@@ -49,6 +62,8 @@ User-agent: ClaudeBot
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /.well-known/
+Crawl-delay: 1
 Disallow: /api/
 Disallow: /admin/
 
@@ -57,6 +72,8 @@ User-agent: PerplexityBot
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /.well-known/
+Crawl-delay: 1
 Disallow: /api/
 Disallow: /admin/
 
@@ -65,6 +82,7 @@ User-agent: cohere-ai
 Allow: /
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /.well-known/
 Disallow: /api/
 Disallow: /admin/
 
@@ -72,18 +90,54 @@ Disallow: /admin/
 User-agent: FacebookBot
 Allow: /
 Allow: /api/ai/
+Allow: /llms.txt
+Allow: /.well-known/
 Disallow: /api/
 Disallow: /admin/
+
+# Meta AI (alternative)
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Allow: /.well-known/
 
 # Common Crawl (used by many AI models)
 User-agent: CCBot
 Allow: /
 Allow: /api/ai/
+Crawl-delay: 2
 Disallow: /api/
 Disallow: /admin/
 
+# Diffbot (knowledge graph)
+User-agent: Diffbot
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+
+# AI2Bot (Allen Institute)
+User-agent: AI2Bot
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+
+# Applebot-Extended (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+Allow: /api/ai/
+Allow: /llms.txt
+Allow: /.well-known/
+
+# Bytespider (TikTok/ByteDance)
+User-agent: Bytespider
+Allow: /
+Allow: /api/ai/
+
 # AI Discovery Files
-# llms.txt - AI-readable site description
-# /.well-known/llms.txt - Standard location
+# /llms.txt - AI-readable site description
+# /.well-known/llms.txt - Standard location for AI discovery
 # /.well-known/ai-plugin.json - ChatGPT plugin manifest
-# /api/ai/* - Public AI API endpoints
+# /.well-known/openapi.yaml - OpenAPI specification
+# /api/ai/* - Public AI API endpoints (no auth required)
+# /mcp/vibebuff - Model Context Protocol server info

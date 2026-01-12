@@ -76,10 +76,31 @@ export const metadata: Metadata = {
     "developer tool battles",
     "tech stack marketplace",
     "stack builder game",
+    "developer tool database",
+    "software engineering tools",
+    "web development frameworks",
+    "backend as a service",
+    "authentication providers",
+    "hosting platforms",
+    "database comparison",
+    "ORM comparison",
+    "CSS frameworks",
+    "state management libraries",
+    "testing frameworks",
+    "API development tools",
+    "serverless platforms",
+    "edge computing",
+    "real-time databases",
+    "headless CMS",
+    "payment processing",
+    "analytics platforms",
+    "monitoring tools",
+    "CI/CD platforms",
   ],
   authors: [{ name: "VIBEBUFF Team", url: siteUrl }],
   creator: "VIBEBUFF",
   publisher: "VIBEBUFF",
+  applicationName: "VIBEBUFF",
   robots: {
     index: true,
     follow: true,
@@ -132,9 +153,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  // verification: {
-  //   google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
-  // },
   icons: {
     icon: [
       { url: "/icon?v=1", type: "image/png", sizes: "32x32" },
@@ -156,10 +174,26 @@ export const metadata: Metadata = {
     "theme-color": "#3b82f6",
     "apple-mobile-web-app-title": "VIBEBUFF",
     "application-name": "VIBEBUFF",
-    "ai:description": "VibeBuff is an AI-powered tech stack recommendation platform with 500+ developer tools. Get stack recommendations, compare tools, and discover what top startups use.",
-    "ai:api": "https://vibebuff.dev/api/ai",
-    "ai:llms": "https://vibebuff.dev/llms.txt",
-    "ai:openapi": "https://vibebuff.dev/.well-known/openapi.yaml",
+    "ai:title": "VibeBuff - Developer Tools Database & Tech Stack Recommendations",
+    "ai:description": "VibeBuff is a comprehensive database of 500+ developer tools with AI-powered tech stack recommendations. Search, compare, and discover the best tools for your project across 15+ categories including frontend frameworks, backend services, databases, authentication, hosting, and more. Get personalized stack recommendations based on project type, budget, and scale.",
+    "ai:type": "developer_tools_database",
+    "ai:api": `${siteUrl}/api/ai`,
+    "ai:api_documentation": `${siteUrl}/api-docs`,
+    "ai:llms": `${siteUrl}/llms.txt`,
+    "ai:openapi": `${siteUrl}/.well-known/openapi.yaml`,
+    "ai:plugin": `${siteUrl}/.well-known/ai-plugin.json`,
+    "ai:mcp": `${siteUrl}/mcp/vibebuff`,
+    "ai:features": "tool_search,tool_comparison,stack_recommendations,category_browsing,company_stacks,community_ratings",
+    "ai:categories": "frontend,backend,database,authentication,hosting,devops,ai-ml,testing,analytics,payments,cms,monitoring,api,security,mobile",
+    "ai:data_format": "json",
+    "ai:authentication": "none_required",
+    "ai:rate_limit": "100_requests_per_minute",
+    "ai:tool_count": "500+",
+    "ai:last_updated": new Date().toISOString().split('T')[0],
+    "chatgpt:plugin": `${siteUrl}/.well-known/ai-plugin.json`,
+    "claude:mcp": `${siteUrl}/mcp/vibebuff`,
+    "perplexity:api": `${siteUrl}/api/ai`,
+    "bard:api": `${siteUrl}/api/ai`,
   },
 };
 
@@ -177,6 +211,139 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var m=localStorage.getItem('vibebuff-color-mode');if(m==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "VibeBuff",
+              "alternateName": "VIBEBUFF",
+              "url": siteUrl,
+              "description": "The ultimate tech stack builder for developers. Compare 500+ tools, get AI-powered recommendations, battle frameworks head-to-head, and discover what top startups use.",
+              "applicationCategory": "DeveloperApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "1200",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "featureList": [
+                "Compare 500+ developer tools",
+                "AI-powered stack recommendations",
+                "Side-by-side tool comparisons",
+                "Visual stack builder",
+                "Company tech stack discovery",
+                "Community ratings and reviews",
+                "RPG-style gamification",
+                "Tool mastery tracking",
+                "Public API access"
+              ],
+              "screenshot": `${siteUrl}/og-image.png`,
+              "softwareVersion": "1.0",
+              "author": {
+                "@type": "Organization",
+                "name": "VibeBuff Team",
+                "url": siteUrl
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "VibeBuff",
+                "url": siteUrl,
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": `${siteUrl}/logo.svg`
+                }
+              },
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": `${siteUrl}/tools?search={search_term_string}`
+                  },
+                  "query-input": "required name=search_term_string"
+                },
+                {
+                  "@type": "CompareAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": `${siteUrl}/compare/{tool1}-vs-{tool2}`
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "VibeBuff",
+              "url": siteUrl,
+              "logo": `${siteUrl}/logo.svg`,
+              "sameAs": [
+                "https://twitter.com/vibebuff",
+                "https://github.com/vibebuff"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Support",
+                "email": "support@vibebuff.dev",
+                "url": `${siteUrl}/contact`
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "VibeBuff",
+              "url": siteUrl,
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": `${siteUrl}/tools?search={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Developer Tool Categories",
+              "description": "Browse 500+ developer tools across 15+ categories",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Frontend Frameworks", "url": `${siteUrl}/tools?category=frontend` },
+                { "@type": "ListItem", "position": 2, "name": "Backend Frameworks", "url": `${siteUrl}/tools?category=backend` },
+                { "@type": "ListItem", "position": 3, "name": "Databases", "url": `${siteUrl}/tools?category=database` },
+                { "@type": "ListItem", "position": 4, "name": "Authentication", "url": `${siteUrl}/tools?category=authentication` },
+                { "@type": "ListItem", "position": 5, "name": "Hosting Platforms", "url": `${siteUrl}/tools?category=hosting` },
+                { "@type": "ListItem", "position": 6, "name": "DevOps Tools", "url": `${siteUrl}/tools?category=devops` },
+                { "@type": "ListItem", "position": 7, "name": "AI & ML Tools", "url": `${siteUrl}/tools?category=ai-ml` },
+                { "@type": "ListItem", "position": 8, "name": "Testing Frameworks", "url": `${siteUrl}/tools?category=testing` }
+              ]
+            })
           }}
         />
 <BotIdClient

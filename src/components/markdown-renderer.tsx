@@ -3,6 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
+import { CodeBlock } from "./code-block";
 
 interface MarkdownRendererProps {
   content: string;
@@ -88,22 +89,19 @@ export function MarkdownRenderer({ content, className, toolLinks }: MarkdownRend
     ),
     code: ({ className, children }) => {
       const isInline = !className;
-      if (isInline) {
-        return (
-          <code className="bg-card px-1.5 py-0.5 rounded text-primary text-xs border border-border">
-            {children}
-          </code>
-        );
-      }
       return (
-        <code className="text-primary text-xs">{children}</code>
+        <code className={isInline ? "bg-card px-1.5 py-0.5 rounded text-primary text-xs border border-border" : "text-primary text-xs"}>
+          {children}
+        </code>
       );
     },
-    pre: ({ children }) => (
-      <pre className="bg-card border-2 border-border p-4 my-4 overflow-x-auto rounded-lg">
-        {children}
-      </pre>
-    ),
+    pre: ({ children }) => {
+      const codeContent = children && typeof children === "object" && "props" in children 
+        ? (children as any).props.children 
+        : children;
+      
+      return <CodeBlock>{codeContent}</CodeBlock>;
+    },
     table: ({ children }) => (
       <div className="overflow-x-auto my-4">
         <table className="w-full border-collapse text-xs">{children}</table>

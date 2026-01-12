@@ -213,7 +213,7 @@ export default function VibebuffMcpPage() {
                 </PixelButton>
               </a>
               <a
-                href="https://github.com/vibebuff/mcp-server"
+                href="https://github.com/vibebuff/mcp-server?utm_source=vibebuff&utm_medium=website&utm_campaign=mcp_vibebuff_page"
                 target="_blank"
                 rel="noopener noreferrer"
               >

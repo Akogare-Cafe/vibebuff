@@ -82,7 +82,8 @@ export function ShareModal({
   const shareText = description || `Check out ${title} on VibeBuff!`;
 
   const handleTwitterShare = async () => {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    const urlWithUtm = `${shareUrl}${shareUrl.includes('?') ? '&' : '?'}utm_source=twitter&utm_medium=social&utm_campaign=${shareType}_share`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(urlWithUtm)}`;
     window.open(twitterUrl, "_blank", "noopener,noreferrer");
     await trackShare({
       shareType,
@@ -93,7 +94,8 @@ export function ShareModal({
   };
 
   const handleLinkedInShare = async () => {
-    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+    const urlWithUtm = `${shareUrl}${shareUrl.includes('?') ? '&' : '?'}utm_source=linkedin&utm_medium=social&utm_campaign=${shareType}_share`;
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlWithUtm)}`;
     window.open(linkedinUrl, "_blank", "noopener,noreferrer");
     await trackShare({
       shareType,

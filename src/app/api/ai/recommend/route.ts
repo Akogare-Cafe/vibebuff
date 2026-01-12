@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../../../../../convex/_generated/api";
+import { rateLimit, createRateLimitResponse } from "@/lib/rate-limit";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -86,6 +87,15 @@ const STACK_TEMPLATES: Record<
 };
 
 export async function GET(request: NextRequest) {
+  const rateLimitResult = await rateLimit(request, {
+    maxRequests: 50,
+    windowMs: 60000,
+  });
+
+  if (!rateLimitResult.allowed) {
+    return createRateLimitResponse(rateLimitResult.resetAt);
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const type = searchParams.get("type") || "saas";

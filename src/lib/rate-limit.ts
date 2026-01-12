@@ -1,70 +1,64 @@
 import { NextRequest } from "next/server";
-
-interface RateLimitStore {
-  count: number;
-  resetAt: number;
-}
-
-const store = new Map<string, RateLimitStore>();
-
-function cleanupExpiredEntries() {
-  const now = Date.now();
-  for (const [key, value] of store.entries()) {
-    if (value.resetAt < now) {
-      store.delete(key);
-    }
-  }
-}
+import { getRedis } from "./redis";
 
 export interface RateLimitConfig {
   maxRequests: number;
   windowMs: number;
 }
 
-export function rateLimit(
+export async function rateLimit(
   request: NextRequest,
   config: RateLimitConfig = { maxRequests: 10, windowMs: 60000 }
-): { allowed: boolean; remaining: number; resetAt: number } {
+): Promise<{ allowed: boolean; remaining: number; resetAt: number }> {
+  const redis = getRedis();
+  
   const identifier = 
     request.headers.get("x-forwarded-for")?.split(",")[0] ||
     request.headers.get("x-real-ip") ||
     "unknown";
 
   const now = Date.now();
-  const key = `${identifier}:${request.nextUrl.pathname}`;
+  const key = `ratelimit:${identifier}:${request.nextUrl.pathname}`;
 
-  cleanupExpiredEntries();
-
-  let entry = store.get(key);
-
-  if (!entry || entry.resetAt < now) {
-    entry = {
-      count: 1,
-      resetAt: now + config.windowMs,
-    };
-    store.set(key, entry);
+  if (!redis) {
     return {
       allowed: true,
-      remaining: config.maxRequests - 1,
-      resetAt: entry.resetAt,
+      remaining: config.maxRequests,
+      resetAt: now + config.windowMs,
     };
   }
 
-  entry.count++;
+  try {
+    const current = await redis.incr(key);
+    
+    if (current === 1) {
+      await redis.pexpire(key, config.windowMs);
+    }
 
-  if (entry.count > config.maxRequests) {
+    const ttl = await redis.pttl(key);
+    const resetAt = ttl > 0 ? now + ttl : now + config.windowMs;
+
+    if (current > config.maxRequests) {
+      return {
+        allowed: false,
+        remaining: 0,
+        resetAt,
+      };
+    }
+
     return {
-      allowed: false,
-      remaining: 0,
-      resetAt: entry.resetAt,
+      allowed: true,
+      remaining: Math.max(0, config.maxRequests - current),
+      resetAt,
+    };
+  } catch (error) {
+    console.error("Rate limit error:", error);
+    return {
+      allowed: true,
+      remaining: config.maxRequests,
+      resetAt: now + config.windowMs,
     };
   }
-
-  return {
-    allowed: true,
-    remaining: config.maxRequests - entry.count,
-    resetAt: entry.resetAt,
-  };
 }
 
 export function createRateLimitResponse(resetAt: number) {

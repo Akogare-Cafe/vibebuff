@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { sanitizeHtml } from "@/lib/sanitize";
+import { ToolHoverCard } from "@/components/tool-hover-card";
 
 interface ToolInfo {
   name: string;
@@ -102,14 +103,13 @@ export function AutoLinkTools({
       {segments.map((segment, index) => {
         if (segment.type === "tool" && segment.slug) {
           return (
-            <Link
+            <ToolHoverCard
               key={index}
-              href={`/tools/${segment.slug}`}
+              slug={segment.slug}
               className={linkClassName}
-              onClick={(e) => e.stopPropagation()}
             >
               {segment.content}
-            </Link>
+            </ToolHoverCard>
           );
         }
         return <span key={index}>{segment.content}</span>;
