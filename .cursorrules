@@ -53,3 +53,19 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 
 - Do not add or delete comments unless explicitly asked
 - Preserve existing documentation
+
+## After Completing Features
+
+After completing any feature or making significant changes, you MUST verify the build:
+
+```bash
+pnpm build
+```
+
+This ensures:
+1. TypeScript compiles without errors
+2. Next.js can generate static pages
+3. No runtime errors in production build
+4. All route handlers return proper responses
+
+Do NOT consider a feature complete until the build passes successfully.

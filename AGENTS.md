@@ -86,3 +86,24 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 3. Check TypeScript compiles without errors
 4. Ensure pixel aesthetic is maintained
 5. If Convex functions were modified, run `npx convex dev --once`
+6. **Run production build verification**: `pnpm build`
+
+## Feature Completion Checklist
+
+A feature is NOT complete until ALL of these pass:
+
+```bash
+# 1. Sync Convex functions (if modified)
+npx convex dev --once
+
+# 2. Verify production build
+pnpm build
+```
+
+The build must succeed with:
+- Zero TypeScript errors
+- All pages/routes generating successfully
+- No prerender errors
+- All route handlers returning proper Response objects
+
+**Do NOT mark a feature as complete if the build fails.**

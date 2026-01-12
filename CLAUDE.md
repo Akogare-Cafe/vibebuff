@@ -76,3 +76,20 @@ This ensures the deployed Convex functions match the local code. Failing to do t
 3. Maintain the retro gaming aesthetic
 4. Test that changes don't break existing functionality
 5. If Convex functions were modified, run `npx convex dev --once`
+
+## After Completing Features
+
+**MANDATORY**: After completing any feature or making significant changes, verify the production build:
+
+```bash
+pnpm build
+```
+
+This catches:
+- TypeScript compilation errors
+- Next.js static generation issues
+- Route handler problems
+- Missing Response objects
+- Runtime errors in production mode
+
+**A feature is NOT complete until `pnpm build` succeeds.**
