@@ -3062,4 +3062,18 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_analyzed_at", ["analyzedAt"]),
+
+  liveCursors: defineTable({
+    userId: v.optional(v.string()),
+    sessionId: v.string(),
+    userName: v.optional(v.string()),
+    userAvatar: v.optional(v.string()),
+    x: v.number(),
+    y: v.number(),
+    page: v.string(),
+    lastUpdated: v.number(),
+  })
+    .index("by_session", ["sessionId"])
+    .index("by_page", ["page"])
+    .index("by_last_updated", ["lastUpdated"]),
 });

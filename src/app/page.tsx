@@ -59,6 +59,11 @@ const ToolsTicker = dynamic(
   }
 );
 
+const LiveCursors = dynamic(
+  () => import("@/components/live-cursors").then(mod => ({ default: mod.LiveCursors })),
+  { ssr: false }
+);
+
 interface AIRecommendation {
   id: string;
   name: string;
@@ -215,6 +220,7 @@ export default function Home() {
     <div className="min-h-screen bg-background relative">
       <AnimatedBackground />
       <HomePageSchemas />
+      <LiveCursors page="/" />
       
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={homeTourConfig} />

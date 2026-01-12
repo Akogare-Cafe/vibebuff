@@ -323,6 +323,60 @@ export const getUserRankings = query({
   },
 });
 
+export const getToolsViewedLeaderboard = query({
+  args: {
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 50;
+
+    const profiles = await ctx.db
+      .query("userProfiles")
+      .collect();
+
+    const sorted = profiles
+      .sort((a, b) => b.toolsViewed - a.toolsViewed)
+      .slice(0, limit);
+
+    return sorted.map((profile, index) => ({
+      rank: index + 1,
+      clerkId: profile.clerkId,
+      username: profile.username,
+      avatarUrl: profile.avatarUrl,
+      level: profile.level,
+      toolsViewed: profile.toolsViewed,
+      title: profile.title,
+    }));
+  },
+});
+
+export const getVotesCastLeaderboard = query({
+  args: {
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const limit = args.limit || 50;
+
+    const profiles = await ctx.db
+      .query("userProfiles")
+      .collect();
+
+    const sorted = profiles
+      .sort((a, b) => b.votescast - a.votescast)
+      .slice(0, limit);
+
+    return sorted.map((profile, index) => ({
+      rank: index + 1,
+      clerkId: profile.clerkId,
+      username: profile.username,
+      avatarUrl: profile.avatarUrl,
+      level: profile.level,
+      votescast: profile.votescast,
+      title: profile.title,
+    }));
+  },
+});
+
 export const getTopUsers = query({
   args: {
     category: v.union(

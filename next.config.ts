@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { withBotId } from "botid/next/config";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const securityHeaders = [
   {
@@ -68,4 +69,18 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBotId(nextConfig);
+export default withSentryConfig(withBotId(nextConfig), {
+  org: "akogarecafe",
+  project: "vibebuff",
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  reactComponentAnnotation: {
+    enabled: true,
+  },
+  tunnelRoute: "/monitoring",
+  sourcemaps: {
+    disable: true,
+  },
+  disableLogger: true,
+  automaticVercelMonitors: true,
+});

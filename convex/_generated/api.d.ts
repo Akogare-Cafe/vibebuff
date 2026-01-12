@@ -44,6 +44,7 @@ import type * as ingest from "../ingest.js";
 import type * as leaderboardSeasons from "../leaderboardSeasons.js";
 import type * as leaderboards from "../leaderboards.js";
 import type * as lib_auth from "../lib/auth.js";
+import type * as liveCursors from "../liveCursors.js";
 import type * as logoScraper from "../logoScraper.js";
 import type * as lore from "../lore.js";
 import type * as mastery from "../mastery.js";
@@ -132,6 +133,7 @@ declare const fullApi: ApiFromModules<{
   leaderboardSeasons: typeof leaderboardSeasons;
   leaderboards: typeof leaderboards;
   "lib/auth": typeof lib_auth;
+  liveCursors: typeof liveCursors;
   logoScraper: typeof logoScraper;
   lore: typeof lore;
   mastery: typeof mastery;
