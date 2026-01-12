@@ -1,5 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 const isPublicRoute = createRouteMatcher([
   "/",
@@ -27,9 +28,30 @@ const isPublicRoute = createRouteMatcher([
   "/status(.*)",
   "/sitemap.xml",
   "/robots.txt",
+  "/blocked",
 ]);
 
+const BLACKLISTED_COUNTRIES = process.env.BLACKLISTED_COUNTRIES?.split(",").map(c => c.trim()) || [];
+
+function isCountryBlocked(request: NextRequest): boolean {
+  if (BLACKLISTED_COUNTRIES.length === 0) {
+    return false;
+  }
+
+  const country = request.headers.get("x-vercel-ip-country");
+  
+  if (!country) {
+    return false;
+  }
+
+  return BLACKLISTED_COUNTRIES.includes(country);
+}
+
 export default clerkMiddleware(async (auth, request) => {
+  if (request.nextUrl.pathname !== "/blocked" && isCountryBlocked(request)) {
+    return NextResponse.redirect(new URL("/blocked", request.url));
+  }
+
   if (!isPublicRoute(request)) {
     await auth.protect();
   }
