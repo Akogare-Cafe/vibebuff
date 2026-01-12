@@ -133,7 +133,7 @@ function TickerItem({ tool, display }: { tool: ToolTickerItem; display: TickerDi
 export function ToolsTicker() {
   const tools = useQuery(api.tools.getLatestTools, { 
     limit: 12,
-    excludeCategories: ["mcp-servers"],
+    excludeCategories: ["mcp-servers", "claude-plugins"],
   });
   const [showSettings, setShowSettings] = useState(false);
   const [displayOptions, setDisplayOptions] = useState<TickerDisplay[]>(["stars", "category"]);
