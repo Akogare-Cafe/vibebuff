@@ -142,8 +142,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-solid border-border bg-background/95 backdrop-blur-sm">
-      <div className="flex items-center justify-between whitespace-nowrap px-4 lg:px-10 py-3">
-        <div className="flex items-center gap-4 lg:gap-6">
+      <div className="flex items-center justify-between whitespace-nowrap px-3 sm:px-4 lg:px-10 py-2.5 sm:py-3">
+        <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
           <Link href="/" className="flex items-center text-foreground">
             <Logo size="md" showText className="hidden sm:flex" />
             <Logo size="sm" showText={false} className="sm:hidden" />
@@ -180,7 +180,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/status"
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-green-500/10 text-green-500 hover:bg-green-500/20 transition-colors border border-green-500/20"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 min-h-[36px] rounded-lg text-xs font-medium bg-green-500/10 text-green-500 hover:bg-green-500/20 active:bg-green-500/30 transition-colors border border-green-500/20"
           >
             <Activity className="w-3.5 h-3.5" />
             <span>Status</span>
@@ -190,7 +190,7 @@ export function Header() {
           </div>
           <button
             onClick={toggleMode}
-            className="flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors border border-border"
+            className="flex items-center justify-center rounded-lg min-w-[44px] min-h-[44px] size-10 sm:size-10 bg-card hover:bg-secondary active:bg-secondary/80 text-muted-foreground hover:text-foreground transition-colors border border-border"
             aria-label="Toggle theme"
           >
             {mode === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -198,7 +198,7 @@ export function Header() {
           <NotificationBell />
           
           <button
-            className="lg:hidden flex items-center justify-center rounded-lg size-10 bg-card hover:bg-secondary text-foreground transition-colors border border-border"
+            className="lg:hidden flex items-center justify-center rounded-lg min-w-[44px] min-h-[44px] size-10 sm:size-10 bg-card hover:bg-secondary active:bg-secondary/80 text-foreground transition-colors border border-border"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -209,8 +209,8 @@ export function Header() {
             <UserMenu />
           ) : (
             <Link href="/sign-in">
-              <button className="flex items-center justify-center rounded-lg h-10 bg-primary hover:bg-primary/90 text-white gap-2 px-4 text-sm font-bold transition-all shadow-[0_0_15px_rgba(127,19,236,0.4)]">
-                <LogIn className="w-5 h-5" />
+              <button className="flex items-center justify-center rounded-lg min-h-[44px] h-10 sm:h-10 bg-primary hover:bg-primary/90 active:bg-primary/80 text-white gap-2 px-3 sm:px-4 text-sm font-bold transition-all shadow-[0_0_15px_rgba(127,19,236,0.4)]">
+                <LogIn className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="hidden sm:inline">Connect</span>
               </button>
             </Link>
@@ -219,7 +219,7 @@ export function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <nav className="lg:hidden border-t border-border bg-card px-4 py-3 max-h-[70vh] overflow-y-auto">
+        <nav className="lg:hidden border-t border-border bg-card px-3 sm:px-4 py-3 max-h-[70vh] overflow-y-auto">
           <div className="sm:hidden mb-3 pb-3 border-b border-border">
             <OnlineIndicator />
           </div>
@@ -232,10 +232,10 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-3 px-4 py-3 min-h-[48px] rounded-lg text-sm font-medium transition-colors ${
                       isActive
                         ? "bg-primary/20 text-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary/80"
                     }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -253,10 +253,10 @@ export function Header() {
                 <div key={item.label}>
                   <button
                     onClick={() => setExpandedMobileMenu(isExpanded ? null : item.label)}
-                    className={`w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                    className={`w-full flex items-center justify-between gap-3 px-4 py-3 min-h-[48px] rounded-lg text-sm font-medium transition-colors ${
                       isChildActive
                         ? "bg-primary/20 text-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary/80"
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -274,10 +274,10 @@ export function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors ${
+                            className={`flex items-center gap-3 px-4 py-2.5 min-h-[44px] rounded-lg text-sm transition-colors ${
                               isActive
                                 ? "text-primary font-medium"
-                                : "text-muted-foreground hover:text-foreground"
+                                : "text-muted-foreground hover:text-foreground active:text-foreground"
                             }`}
                           >
                             <child.icon className="w-4 h-4" />

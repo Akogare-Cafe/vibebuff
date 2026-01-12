@@ -38,6 +38,13 @@ export const metadata: Metadata = {
     default: "VIBEBUFF - Build Your Perfect Tech Stack | Compare 500+ Developer Tools",
     template: "%s | VIBEBUFF",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
   description:
     "The ultimate tech stack builder for developers. Compare 500+ tools, get AI-powered recommendations, battle frameworks head-to-head, and discover what top startups use. Free forever.",
   keywords: [

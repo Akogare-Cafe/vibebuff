@@ -226,28 +226,28 @@ export default function Home() {
       </div>
       
       {/* Hero Section */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="text-center mb-16">
           {/* Elegant Fantasy Title */}
-          <div className="mb-10">
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl text-foreground tracking-wide mb-2">
+          <div className="mb-6 sm:mb-8 md:mb-10">
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground tracking-wide mb-2">
               VIBEBUFF
             </h1>
-            <div className="ornate-divider w-48 mx-auto my-4" />
-            <p className="font-heading text-xl sm:text-2xl text-primary tracking-widest">
+            <div className="ornate-divider w-32 sm:w-40 md:w-48 mx-auto my-3 sm:my-4" />
+            <p className="font-heading text-lg sm:text-xl md:text-2xl text-primary tracking-widest">
               Tech Stack Compendium
             </p>
           </div>
 
-          <p className="text-muted-foreground text-base mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed px-2">
             Choose your tech stack wisely, Adventurer!
             <br />
             <span className="text-primary font-medium">AI-Powered Recommendations for Your Quest</span>
           </p>
 
           {/* Search Box */}
-          <div className="max-w-2xl mx-auto mb-8" ref={searchRef} data-tour="search">
-            <div className="flex gap-4 flex-col sm:flex-row">
+          <div className="max-w-2xl mx-auto mb-6 sm:mb-8" ref={searchRef} data-tour="search">
+            <div className="flex gap-3 sm:gap-4 flex-col sm:flex-row">
               <div className="relative flex-1">
                 <PixelInput
                   placeholder="SEARCH TOOLS..."
@@ -261,16 +261,16 @@ export default function Home() {
                   className="w-full"
                 />
                 {showSearchResults && searchResults && searchResults.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 z-50 border-2 border-border bg-card rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                  <div className="absolute top-full left-0 right-0 mt-2 z-50 border-2 border-border bg-card rounded-lg shadow-lg max-h-[50vh] sm:max-h-64 overflow-y-auto">
                     {searchResults.slice(0, 6).map((tool) => (
                       <Link
                         key={tool._id}
                         href={`/tools/${tool.slug}`}
                         onClick={() => setShowSearchResults(false)}
-                        className="block p-3 hover:bg-secondary transition-colors border-b border-border last:border-b-0"
+                        className="block p-3 sm:p-3 min-h-[48px] hover:bg-secondary active:bg-secondary/80 transition-colors border-b border-border last:border-b-0"
                       >
-                        <p className="text-foreground text-sm font-medium">{tool.name}</p>
-                        <p className="text-muted-foreground text-xs">{tool.tagline}</p>
+                        <p className="text-foreground text-sm sm:text-sm font-medium">{tool.name}</p>
+                        <p className="text-muted-foreground text-xs sm:text-xs line-clamp-1">{tool.tagline}</p>
                       </Link>
                     ))}
                     {searchResults.length > 6 && (
@@ -298,7 +298,7 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex gap-3 sm:gap-4 justify-center flex-wrap px-2">
             <Link href="/tools">
               <PixelButton size="lg" variant="secondary">
                 <Package className="w-4 h-4 mr-2" />
@@ -309,16 +309,16 @@ export default function Home() {
         </div>
 
         {/* AI Stack Builder Prompt Section */}
-        <section className="mb-16 md:mb-20">
-          <PixelCard className="p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="ai-builder">
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
-                <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-white" />
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <PixelCard className="p-4 sm:p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="ai-builder">
+            <div className="text-center mb-4 sm:mb-6">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
               </div>
-              <h2 className="font-heading text-foreground text-xl md:text-2xl mb-2">
+              <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-2">
                 AI Stack Builder
               </h2>
-              <p className="text-muted-foreground text-sm md:text-base max-w-lg mx-auto">
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base max-w-lg mx-auto px-2">
                 Describe what you want to build and let AI suggest the perfect tech stack for your project
               </p>
             </div>
@@ -330,10 +330,11 @@ export default function Home() {
                   onChange={(e) => setAiPrompt(e.target.value)}
                   onKeyDown={handleAIPromptKeyDown}
                   placeholder="e.g., I want to build a SaaS app with user authentication, real-time features, and payment processing..."
-                  className="w-full h-28 md:h-32 px-4 py-3 bg-background border-2 border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none resize-none"
+                  className="w-full min-h-[100px] sm:min-h-[112px] md:h-32 px-3 sm:px-4 py-2.5 sm:py-3 bg-background border-2 border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none resize-y"
                   disabled={isGeneratingAI}
+                  rows={3}
                 />
-                <div className="absolute bottom-3 right-3">
+                <div className="mt-3 sm:mt-0 sm:absolute sm:bottom-3 sm:right-3 flex justify-end">
                   <PixelButton 
                     onClick={handleAIPromptSubmit} 
                     disabled={!aiPrompt.trim() || isGeneratingAI}
@@ -354,28 +355,28 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-4 justify-center">
+              <div className="flex flex-wrap gap-2 mt-3 sm:mt-4 justify-center">
                 <button
                   onClick={() => setAiPrompt("I want to build a SaaS app with user authentication, subscriptions, and a dashboard")}
-                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="text-xs px-3 py-2 sm:py-1.5 min-h-[36px] sm:min-h-0 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary active:bg-primary/10 transition-colors"
                 >
                   SaaS with Auth
                 </button>
                 <button
                   onClick={() => setAiPrompt("Build an e-commerce store with payments, inventory management, and real-time notifications")}
-                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="text-xs px-3 py-2 sm:py-1.5 min-h-[36px] sm:min-h-0 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary active:bg-primary/10 transition-colors"
                 >
                   E-Commerce Store
                 </button>
                 <button
                   onClick={() => setAiPrompt("Create a real-time chat application with AI features and file sharing")}
-                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="text-xs px-3 py-2 sm:py-1.5 min-h-[36px] sm:min-h-0 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary active:bg-primary/10 transition-colors"
                 >
                   Real-time Chat
                 </button>
                 <button
                   onClick={() => setAiPrompt("Build a portfolio website with a blog and CMS, using free tools only")}
-                  className="text-xs px-3 py-1.5 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="text-xs px-3 py-2 sm:py-1.5 min-h-[36px] sm:min-h-0 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary active:bg-primary/10 transition-colors"
                 >
                   Portfolio + Blog
                 </button>
@@ -385,16 +386,16 @@ export default function Home() {
 
           {/* AI Results Modal/Section */}
           {showAIResults && (
-            <div className="mt-6">
-              <PixelCard className="p-6 md:p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="font-heading text-primary text-lg md:text-xl flex items-center gap-2">
-                    <Bot className="w-5 h-5" />
+            <div className="mt-4 sm:mt-6">
+              <PixelCard className="p-4 sm:p-6 md:p-8">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <h3 className="font-heading text-primary text-base sm:text-lg md:text-xl flex items-center gap-2">
+                    <Bot className="w-4 h-4 sm:w-5 sm:h-5" />
                     AI Recommended Stack
                   </h3>
                   <button
                     onClick={closeAIResults}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-muted-foreground hover:text-foreground active:text-foreground transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center -mr-2"
                     aria-label="Close AI recommendations"
                   >
                     <X className="w-5 h-5" />
@@ -432,7 +433,7 @@ export default function Home() {
                             <ChevronRight className="w-4 h-4 text-primary" />
                             {category}
                           </h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                             {tools.slice(0, 3).map((tool, index) => (
                               <Link key={tool.id} href={`/tools/${tool.slug}`}>
                                 <div className={`p-3 border rounded-lg transition-all hover:border-primary ${index === 0 ? "border-primary bg-primary/5" : "border-border"}`}>
@@ -521,18 +522,18 @@ export default function Home() {
         )}
 
         {/* Categories Grid */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Browse Categories
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> Browse Categories
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5" data-tour="categories">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5" data-tour="categories">
             {categories?.map((category) => (
               <Link key={category._id} href={`/tools?category=${category.slug}`}>
-                <PixelCard className="text-center p-5 md:p-6 cursor-pointer hover:border-primary transition-all group min-h-[120px] md:min-h-[140px] flex flex-col items-center justify-center">
-                  <div className="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                    <DynamicIcon name={category.icon || "Package"} className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+                <PixelCard className="text-center p-4 sm:p-5 md:p-6 cursor-pointer hover:border-primary active:border-primary active:bg-primary/5 transition-all group min-h-[100px] sm:min-h-[120px] md:min-h-[140px] flex flex-col items-center justify-center">
+                  <div className="flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+                    <DynamicIcon name={category.icon || "Package"} className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary" />
                   </div>
-                  <p className="text-sm md:text-base text-foreground group-hover:text-primary font-medium text-center">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground group-hover:text-primary font-medium text-center">
                     {category.name}
                   </p>
                 </PixelCard>
@@ -542,11 +543,11 @@ export default function Home() {
         </section>
 
         {/* Featured Tools */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Legendary Items
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> Legendary Items
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" data-tour="featured">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" data-tour="featured">
             {featuredTools?.slice(0, 6).map((tool) => (
               <Link key={tool._id} href={`/tools/${tool.slug}`}>
                 <PixelCard className="h-full" rarity="rare">
@@ -582,30 +583,30 @@ export default function Home() {
         </section>
 
         {/* How It Works */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> How To Play
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> How To Play
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            <PixelCard className="text-center p-8 md:p-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center">
-                <FileText className="w-8 h-8 md:w-10 md:h-10 text-white" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <PixelCard className="text-center p-6 sm:p-8 md:p-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center">
+                <FileText className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
               </div>
-              <h3 className="font-heading text-primary text-lg md:text-xl mb-2 md:mb-3">Step 1</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
+              <h3 className="font-heading text-primary text-base sm:text-lg md:text-xl mb-2 md:mb-3">Step 1</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">
                 Describe your quest in plain English
               </p>
             </PixelCard>
-            <PixelCard className="text-center p-8 md:p-10">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                <Bot className="w-8 h-8 md:w-10 md:h-10 text-white" />
+            <PixelCard className="text-center p-6 sm:p-8 md:p-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                <Bot className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
               </div>
-              <h3 className="font-heading text-primary text-lg md:text-xl mb-2 md:mb-3">Step 2</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
+              <h3 className="font-heading text-primary text-base sm:text-lg md:text-xl mb-2 md:mb-3">Step 2</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">
                 AI analyzes your requirements
               </p>
             </PixelCard>
-            <PixelCard className="text-center p-8 md:p-10">
+            <PixelCard className="text-center p-6 sm:p-8 md:p-10">
               <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center">
                 <Zap className="w-8 h-8 md:w-10 md:h-10 text-white" />
               </div>
@@ -618,33 +619,33 @@ export default function Home() {
         </section>
 
         {/* Stats Bar */}
-        <section className="border-2 border-border rounded-xl p-6 md:p-8 bg-gradient-to-r from-card via-background to-card mb-16 md:mb-20 shadow-sm">
-          <div className="flex flex-wrap justify-around gap-6 md:gap-10 text-center">
+        <section className="border-2 border-border rounded-xl p-4 sm:p-6 md:p-8 bg-gradient-to-r from-card via-background to-card mb-12 sm:mb-16 md:mb-20 shadow-sm">
+          <div className="flex flex-wrap justify-around gap-4 sm:gap-6 md:gap-10 text-center">
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">500+</p>
-              <p className="text-muted-foreground text-sm md:text-base">Tools</p>
+              <p className="font-heading text-primary text-xl sm:text-2xl md:text-3xl">500+</p>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">Tools</p>
             </div>
-            <div className="ornate-divider w-px h-12 bg-gradient-to-b from-transparent via-primary to-transparent" />
+            <div className="ornate-divider w-px h-10 sm:h-12 bg-gradient-to-b from-transparent via-primary to-transparent" />
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">15+</p>
-              <p className="text-muted-foreground text-sm md:text-base">Categories</p>
+              <p className="font-heading text-primary text-xl sm:text-2xl md:text-3xl">15+</p>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">Categories</p>
             </div>
-            <div className="ornate-divider w-px h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
+            <div className="ornate-divider w-px h-10 sm:h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">AI</p>
-              <p className="text-muted-foreground text-sm md:text-base">Powered</p>
+              <p className="font-heading text-primary text-xl sm:text-2xl md:text-3xl">AI</p>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">Powered</p>
             </div>
-            <div className="ornate-divider w-px h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
+            <div className="ornate-divider w-px h-10 sm:h-12 md:h-14 bg-gradient-to-b from-transparent via-primary to-transparent hidden sm:block" />
             <div>
-              <p className="font-heading text-primary text-2xl md:text-3xl">2025</p>
-              <p className="text-muted-foreground text-sm md:text-base">Updated</p>
+              <p className="font-heading text-primary text-xl sm:text-2xl md:text-3xl">2025</p>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base">Updated</p>
             </div>
           </div>
         </section>
 
         {/* Package.json Analyzer CTA */}
-        <section className="mb-16 md:mb-20">
-          <PixelCard className="p-6 md:p-10 bg-gradient-to-br from-card via-background to-card border-2 border-primary/30 hover:border-primary/50 transition-all">
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <PixelCard className="p-4 sm:p-6 md:p-10 bg-gradient-to-br from-card via-background to-card border-2 border-primary/30 hover:border-primary/50 active:border-primary/60 transition-all">
             <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shrink-0 shadow-lg">
                 <FileJson className="w-10 h-10 md:w-12 md:h-12 text-white" />
@@ -674,22 +675,22 @@ export default function Home() {
         </section>
 
         {/* SEO Content Section - Why VIBEBUFF */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-xl md:text-2xl mb-6 md:mb-8 flex items-center gap-3">
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary" /> Why Use Vibebuff?
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> Why Use Vibebuff?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            <PixelCard className="p-6 md:p-8">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center mb-4 md:mb-5">
-                <TrendingUp className="w-6 h-6 md:w-7 md:h-7 text-white" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <PixelCard className="p-4 sm:p-6 md:p-8">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center mb-3 sm:mb-4 md:mb-5">
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
               </div>
-              <h3 className="font-heading text-foreground text-base md:text-lg mb-3">Stay Ahead of Trends</h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              <h3 className="font-heading text-foreground text-sm sm:text-base md:text-lg mb-2 sm:mb-3">Stay Ahead of Trends</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
                 Our database is continuously updated with the latest frameworks, libraries, and developer tools. 
                 From React and Next.js to emerging technologies, we track what&apos;s trending in the developer community.
               </p>
             </PixelCard>
-            <PixelCard className="p-6 md:p-8">
+            <PixelCard className="p-4 sm:p-6 md:p-8">
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center mb-4 md:mb-5">
                 <Users className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>

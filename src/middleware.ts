@@ -33,6 +33,45 @@ const isPublicRoute = createRouteMatcher([
 
 const BLACKLISTED_COUNTRIES = process.env.BLACKLISTED_COUNTRIES?.split(",").map(c => c.trim()) || [];
 
+const BLOCKED_PATHS = [
+  /\/wp-admin/i,
+  /\/wp-login\.php/i,
+  /\/xmlrpc\.php/i,
+  /\/wordpress\//i,
+  /\/wp-content\//i,
+  /\/wp-includes\//i,
+  /\/wp-json\//i,
+  /\.php$/i,
+  /\/admin\.php/i,
+  /\/config\.php/i,
+  /\/setup\.php/i,
+  /\/install\.php/i,
+  /\/phpMyAdmin/i,
+  /\/phpmyadmin/i,
+  /\/pma\//i,
+  /\/adminer/i,
+  /\/administrator\//i,
+  /\/shell\.php/i,
+  /\/c99\.php/i,
+  /\/upload\.php/i,
+  /\/fileupload\.php/i,
+  /\/\.env/i,
+  /\/\.git\//i,
+  /\/\.aws\//i,
+  /\/\.ssh\//i,
+  /\/backup/i,
+  /\/db\//i,
+  /\/database\//i,
+  /\/sql/i,
+  /\/mysql/i,
+  /\/cgi-bin\//i,
+  /\/vendor\//i,
+  /\/composer\.json/i,
+  /\/package\.json/i,
+  /\/\.htaccess/i,
+  /\/web\.config/i,
+];
+
 function isCountryBlocked(request: NextRequest): boolean {
   if (BLACKLISTED_COUNTRIES.length === 0) {
     return false;
@@ -47,7 +86,17 @@ function isCountryBlocked(request: NextRequest): boolean {
   return BLACKLISTED_COUNTRIES.includes(country);
 }
 
+function isSuspiciousBot(request: NextRequest): boolean {
+  const pathname = request.nextUrl.pathname;
+  
+  return BLOCKED_PATHS.some(pattern => pattern.test(pathname));
+}
+
 export default clerkMiddleware(async (auth, request) => {
+  if (isSuspiciousBot(request)) {
+    return new NextResponse(null, { status: 404 });
+  }
+
   if (request.nextUrl.pathname !== "/blocked" && isCountryBlocked(request)) {
     return NextResponse.redirect(new URL("/blocked", request.url));
   }

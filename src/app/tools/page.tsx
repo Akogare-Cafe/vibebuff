@@ -75,11 +75,11 @@ import {
 type PricingModel = "free" | "freemium" | "paid" | "open_source" | "enterprise";
 
 const pricingStyles: Record<PricingModel, { border: string; label: string; labelColor: string; hoverBtn: string }> = {
-  free: { border: "border-green-500 shadow-[0_0_8px_rgba(34,197,94,0.3)]", label: "Free", labelColor: "text-green-500", hoverBtn: "hover:bg-green-600" },
-  freemium: { border: "border-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]", label: "Freemium", labelColor: "text-blue-500", hoverBtn: "hover:bg-blue-600" },
-  paid: { border: "border-yellow-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]", label: "Paid", labelColor: "text-yellow-500", hoverBtn: "hover:bg-yellow-600" },
-  open_source: { border: "border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]", label: "Open Source", labelColor: "text-purple-500", hoverBtn: "hover:bg-purple-600" },
-  enterprise: { border: "border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]", label: "Enterprise", labelColor: "text-orange-500", hoverBtn: "hover:bg-orange-600" },
+  free: { border: "border-green-500 shadow-[0_0_8px_rgba(34,197,94,0.3)]", label: "Free", labelColor: "text-green-600 dark:text-green-500", hoverBtn: "hover:bg-green-600" },
+  freemium: { border: "border-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]", label: "Freemium", labelColor: "text-blue-600 dark:text-blue-500", hoverBtn: "hover:bg-blue-600" },
+  paid: { border: "border-yellow-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]", label: "Paid", labelColor: "text-yellow-600 dark:text-yellow-500", hoverBtn: "hover:bg-yellow-600" },
+  open_source: { border: "border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]", label: "Open Source", labelColor: "text-purple-600 dark:text-purple-500", hoverBtn: "hover:bg-purple-600" },
+  enterprise: { border: "border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]", label: "Enterprise", labelColor: "text-orange-600 dark:text-orange-500", hoverBtn: "hover:bg-orange-600" },
 };
 
 const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -94,10 +94,10 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
 };
 
 const rarityFilters = [
-  { id: "free", label: "Free", color: "border-green-500", textColor: "text-green-400" },
-  { id: "freemium", label: "Freemium", color: "border-blue-500", textColor: "text-blue-400" },
-  { id: "open_source", label: "Open Source", color: "border-purple-500", textColor: "text-purple-400" },
-  { id: "paid", label: "Paid", color: "border-yellow-500", textColor: "text-yellow-500" },
+  { id: "free", label: "Free", color: "border-green-500", textColor: "text-green-600 dark:text-green-400" },
+  { id: "freemium", label: "Freemium", color: "border-blue-500", textColor: "text-blue-600 dark:text-blue-400" },
+  { id: "open_source", label: "Open Source", color: "border-purple-500", textColor: "text-purple-600 dark:text-purple-400" },
+  { id: "paid", label: "Paid", color: "border-yellow-500", textColor: "text-yellow-600 dark:text-yellow-500" },
 ];
 
 export default function ToolsPage() {
@@ -561,10 +561,10 @@ function ToolsPageContent() {
                       <Link
                         key={tool._id}
                         href={`/tools/${tool.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
+                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary/50 cursor-pointer group transition-colors"
                       >
                         <span className="text-orange-500 font-bold text-sm w-5">{index + 1}</span>
-                        <div className="size-8 bg-background rounded border border-white/10 flex items-center justify-center shrink-0">
+                        <div className="size-8 bg-background rounded border border-border flex items-center justify-center shrink-0">
                           {tool.logoUrl ? (
                             <img src={tool.logoUrl} alt={tool.name} className="w-5 h-5 object-contain" />
                           ) : (
@@ -576,7 +576,7 @@ function ToolsPageContent() {
                           <p className={`text-xs ${style.labelColor}`}>{style.label}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-xs text-orange-400 font-mono">{tool.weeklyViews ?? 0} views</p>
+                          <p className="text-xs text-orange-600 dark:text-orange-400 font-mono">{tool.weeklyViews ?? 0} views</p>
                         </div>
                       </Link>
                     );
@@ -604,9 +604,9 @@ function ToolsPageContent() {
                       <Link
                         key={tool._id}
                         href={`/tools/${tool.slug}`}
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 cursor-pointer group transition-colors"
+                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary/50 cursor-pointer group transition-colors"
                       >
-                        <div className="size-8 bg-background rounded border border-white/10 flex items-center justify-center shrink-0">
+                        <div className="size-8 bg-background rounded border border-border flex items-center justify-center shrink-0">
                           {tool.logoUrl ? (
                             <img src={tool.logoUrl} alt={tool.name} className="w-5 h-5 object-contain" />
                           ) : (
@@ -618,7 +618,7 @@ function ToolsPageContent() {
                           <p className={`text-xs ${style.labelColor}`}>{style.label}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-xs text-green-400 flex items-center gap-1">
+                          <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             {daysAgo === 0 ? "Today" : daysAgo === 1 ? "Yesterday" : `${daysAgo}d ago`}
                           </p>
@@ -650,14 +650,14 @@ function ToolsPageContent() {
                     className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
                       selectedCategory === "all"
                         ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
-                        : "hover:bg-white/5 text-muted-foreground group"
+                        : "hover:bg-secondary/50 text-muted-foreground group"
                     }`}
                   >
                     <span className={`flex items-center gap-2 ${selectedCategory !== "all" ? "group-hover:text-foreground" : ""}`}>
                       <LayoutGrid className="w-4 h-4" />
                       All Tools
                     </span>
-                    <span className={`text-xs ${selectedCategory === "all" ? "bg-black/40 px-1.5 rounded text-primary" : "text-gray-600 group-hover:text-gray-400"}`}>
+                    <span className={`text-xs ${selectedCategory === "all" ? "bg-muted px-1.5 rounded text-primary font-semibold" : "text-muted-foreground group-hover:text-foreground"}`}>
                       {stats?.toolsCount ?? 0}
                     </span>
                   </button>
@@ -670,7 +670,7 @@ function ToolsPageContent() {
                         className={`w-full text-left px-3 py-2 rounded text-sm font-medium flex justify-between items-center transition-colors ${
                           selectedCategory === cat.slug
                             ? "bg-primary/20 border border-primary/40 text-foreground font-bold"
-                            : "hover:bg-white/5 text-muted-foreground group"
+                            : "hover:bg-secondary/50 text-muted-foreground group"
                         }`}
                       >
                         <span className={`flex items-center gap-2 ${selectedCategory !== cat.slug ? "group-hover:text-foreground" : ""}`}>
@@ -749,12 +749,12 @@ function ToolsPageContent() {
                             {featuredTool.pricingModel === "open_source" ? "OSS" : featuredTool.pricingModel.toUpperCase()}
                           </span>
                         </div>
-                        <p className="text-purple-300 text-sm font-medium">{featuredTool.tagline}</p>
+                        <p className="text-purple-700 dark:text-purple-300 text-sm font-medium">{featuredTool.tagline}</p>
                       </div>
                       {featuredTool.githubStars && (
                         <div className="hidden sm:block text-right">
                           <div className="text-xs text-muted-foreground mb-1">GitHub Stars</div>
-                          <div className="text-xl font-bold text-yellow-400 font-mono flex items-center gap-1">
+                          <div className="text-xl font-bold text-yellow-600 dark:text-yellow-400 font-mono flex items-center gap-1">
                             <Star className="w-4 h-4" />
                             {(featuredTool.githubStars / 1000).toFixed(1)}K
                           </div>
@@ -768,46 +768,46 @@ function ToolsPageContent() {
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-3 gap-y-2 sm:gap-x-4 sm:gap-y-3 mt-4 sm:mt-6">
                         <div>
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-400">HP</span>
-                            <span className="text-red-400 font-mono font-bold">{featuredTool.stats.hp}</span>
+                            <span className="text-muted-foreground">HP</span>
+                            <span className="text-red-600 dark:text-red-400 font-mono font-bold">{featuredTool.stats.hp}</span>
                           </div>
-                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-sm overflow-hidden">
                             <div className="h-full bg-red-500 rounded-sm" style={{ width: `${featuredTool.stats.hp}%` }} />
                           </div>
                         </div>
                         <div>
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-400">ATK</span>
-                            <span className="text-orange-400 font-mono font-bold">{featuredTool.stats.attack}</span>
+                            <span className="text-muted-foreground">ATK</span>
+                            <span className="text-orange-600 dark:text-orange-400 font-mono font-bold">{featuredTool.stats.attack}</span>
                           </div>
-                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-sm overflow-hidden">
                             <div className="h-full bg-orange-500 rounded-sm" style={{ width: `${featuredTool.stats.attack}%` }} />
                           </div>
                         </div>
                         <div>
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-400">DEF</span>
-                            <span className="text-blue-400 font-mono font-bold">{featuredTool.stats.defense}</span>
+                            <span className="text-muted-foreground">DEF</span>
+                            <span className="text-blue-600 dark:text-blue-400 font-mono font-bold">{featuredTool.stats.defense}</span>
                           </div>
-                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-sm overflow-hidden">
                             <div className="h-full bg-blue-500 rounded-sm" style={{ width: `${featuredTool.stats.defense}%` }} />
                           </div>
                         </div>
                         <div>
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-400">SPD</span>
-                            <span className="text-green-400 font-mono font-bold">{featuredTool.stats.speed}</span>
+                            <span className="text-muted-foreground">SPD</span>
+                            <span className="text-green-600 dark:text-green-400 font-mono font-bold">{featuredTool.stats.speed}</span>
                           </div>
-                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-sm overflow-hidden">
                             <div className="h-full bg-green-500 rounded-sm" style={{ width: `${featuredTool.stats.speed}%` }} />
                           </div>
                         </div>
                         <div>
                           <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gray-400">MANA</span>
-                            <span className="text-purple-400 font-mono font-bold">{featuredTool.stats.mana}</span>
+                            <span className="text-muted-foreground">MANA</span>
+                            <span className="text-purple-600 dark:text-purple-400 font-mono font-bold">{featuredTool.stats.mana}</span>
                           </div>
-                          <div className="h-1.5 bg-black/40 rounded-sm overflow-hidden">
+                          <div className="h-1.5 bg-muted rounded-sm overflow-hidden">
                             <div className="h-full bg-purple-500 rounded-sm" style={{ width: `${featuredTool.stats.mana}%` }} />
                           </div>
                         </div>
@@ -826,7 +826,7 @@ function ToolsPageContent() {
                             e.stopPropagation();
                             handleToggleFavorite(featuredTool._id);
                           }}
-                          className={`bg-card border hover:bg-white/5 font-bold py-2 px-4 rounded transition-colors flex items-center gap-2 ${
+                          className={`bg-card border hover:bg-secondary/50 font-bold py-2 px-4 rounded transition-colors flex items-center gap-2 ${
                             favoriteIds.has(featuredTool._id) 
                               ? "border-red-500 text-red-500" 
                               : "border-border text-muted-foreground hover:text-foreground"
@@ -885,7 +885,7 @@ function ToolsPageContent() {
                         </button>
                       )}
                       <div className="flex items-center gap-4">
-                        <div className="size-14 bg-background rounded-lg border border-white/10 flex items-center justify-center shrink-0">
+                        <div className="size-14 bg-background rounded-lg border border-border flex items-center justify-center shrink-0">
                           {tool.logoUrl ? (
                             <img src={tool.logoUrl} alt={tool.name} className="w-8 h-8 object-contain" />
                           ) : (
@@ -899,15 +899,15 @@ function ToolsPageContent() {
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-1">
                         <div className="p-1.5 rounded text-center">
-                          <div className="text-[10px] text-gray-500 uppercase">Stars</div>
-                          <div className="text-green-400 font-bold text-xs flex items-center justify-center gap-1">
+                          <div className="text-[10px] text-muted-foreground uppercase">Stars</div>
+                          <div className="text-green-600 dark:text-green-400 font-bold text-xs flex items-center justify-center gap-1">
                             <Star className="w-3 h-3" />
                             {tool.githubStars ? `${(tool.githubStars / 1000).toFixed(1)}K` : "N/A"}
                           </div>
                         </div>
                         <div className="p-1.5 rounded text-center">
-                          <div className="text-[10px] text-gray-500 uppercase">Type</div>
-                          <div className="text-blue-400 font-bold text-xs">
+                          <div className="text-[10px] text-muted-foreground uppercase">Type</div>
+                          <div className="text-blue-600 dark:text-blue-400 font-bold text-xs">
                             {tool.isOpenSource ? "OSS" : "Closed"}
                           </div>
                         </div>
@@ -928,7 +928,7 @@ function ToolsPageContent() {
                 <button 
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="size-8 rounded bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -960,7 +960,7 @@ function ToolsPageContent() {
                 <button 
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="size-8 rounded bg-secondary flex items-center justify-center text-gray-400 hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="size-8 rounded bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
