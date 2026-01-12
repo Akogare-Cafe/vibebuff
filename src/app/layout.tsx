@@ -367,7 +367,7 @@ export default function RootLayout({
           <ConvexClientProvider>
             <ThemeProvider>
               <PageTourProvider>
-                <McpNotificationBanner />
+                {/* <McpNotificationBanner /> */}
                 <Header />
                 <OnboardingWrapper />
                 <ReferralHandler />

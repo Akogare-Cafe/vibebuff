@@ -293,31 +293,6 @@ function ToolsPageContent() {
               <Trophy className="w-4 h-4" />
               <span className="hidden sm:inline">Leaderboards</span>
             </Link>
-            <button
-              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-              className={`px-4 py-2 border text-sm font-medium rounded transition-colors flex items-center gap-2 ${
-                showAdvancedFilters || activeFilterCount > 0
-                  ? "bg-primary/20 border-primary text-primary"
-                  : "bg-transparent border-border hover:border-primary text-foreground"
-              }`}
-            >
-              <Filter className="w-4 h-4" />
-              <span className="hidden sm:inline">Filters</span>
-              {activeFilterCount > 0 && (
-                <span className="bg-primary text-white text-xs px-1.5 py-0.5 rounded-full">{activeFilterCount}</span>
-              )}
-            </button>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured" | "trending" | "newest")}
-              className="px-4 py-2 bg-transparent border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
-            >
-              <option value="featured">Sort: Featured</option>
-              <option value="trending">Sort: Trending</option>
-              <option value="newest">Sort: Newest</option>
-              <option value="stars">Sort: Stars</option>
-              <option value="name">Sort: Name</option>
-            </select>
           </div>
         </div>
 
@@ -843,18 +818,45 @@ function ToolsPageContent() {
             ) : null}
 
             <div>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                 <h3 className="text-foreground font-bold text-lg flex items-center gap-2">
                   <LayoutGrid className="w-5 h-5 text-muted-foreground" />
                   Available Tools
                 </h3>
-                <span className="text-xs text-muted-foreground">
-                  {tools === undefined ? (
-                    <SkeletonPulse className="h-3 w-24 inline-block" />
-                  ) : (
-                    <>Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0} items</>
-                  )}
-                </span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+                    className={`px-4 py-2 border text-sm font-medium rounded transition-colors flex items-center gap-2 ${
+                      showAdvancedFilters || activeFilterCount > 0
+                        ? "bg-primary/20 border-primary text-primary"
+                        : "bg-transparent border-border hover:border-primary text-foreground"
+                    }`}
+                  >
+                    <Filter className="w-4 h-4" />
+                    <span className="hidden sm:inline">Filters</span>
+                    {activeFilterCount > 0 && (
+                      <span className="bg-primary text-white text-xs px-1.5 py-0.5 rounded-full">{activeFilterCount}</span>
+                    )}
+                  </button>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as "name" | "stars" | "featured" | "trending" | "newest")}
+                    className="px-4 py-2 bg-transparent border border-border hover:border-primary text-foreground text-sm font-medium rounded transition-colors cursor-pointer"
+                  >
+                    <option value="featured">Sort: Featured</option>
+                    <option value="trending">Sort: Trending</option>
+                    <option value="newest">Sort: Newest</option>
+                    <option value="stars">Sort: Stars</option>
+                    <option value="name">Sort: Name</option>
+                  </select>
+                  <span className="text-xs text-muted-foreground hidden lg:inline">
+                    {tools === undefined ? (
+                      <SkeletonPulse className="h-3 w-24 inline-block" />
+                    ) : (
+                      <>Showing {paginatedTools?.length ?? 0} of {sortedTools?.length ?? 0}</>
+                    )}
+                  </span>
+                </div>
               </div>
               {tools === undefined ? (
                 <ToolsGridSkeleton count={12} />
