@@ -21,10 +21,13 @@ import {
   Medal,
   Award,
   Package,
+  Layers,
+  MousePointerClick,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage";
+type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage" | "deckAdds" | "clicks" | "weeklyViews";
 
 const sortOptions: { 
   value: SortOption; 
@@ -80,6 +83,36 @@ const sortOptions: {
       icon: <Eye className="w-4 h-4" />,
       value: formatNumber(tool.stats.views),
       color: "text-blue-400"
+    })
+  },
+  { 
+    value: "deckAdds", 
+    label: "Deck Additions", 
+    icon: <Layers className="w-5 h-5 text-cyan-400" />,
+    getStatValue: (tool) => ({
+      icon: <Layers className="w-4 h-4" />,
+      value: formatNumber(tool.stats.deckAdds),
+      color: "text-cyan-400"
+    })
+  },
+  { 
+    value: "clicks", 
+    label: "Most Clicked", 
+    icon: <MousePointerClick className="w-5 h-5 text-orange-400" />,
+    getStatValue: (tool) => ({
+      icon: <MousePointerClick className="w-4 h-4" />,
+      value: formatNumber(tool.stats.clicks),
+      color: "text-orange-400"
+    })
+  },
+  { 
+    value: "weeklyViews", 
+    label: "Hot This Week", 
+    icon: <Calendar className="w-5 h-5 text-pink-400" />,
+    getStatValue: (tool) => ({
+      icon: <Calendar className="w-4 h-4" />,
+      value: formatNumber(tool.stats.weeklyViews),
+      color: "text-pink-400"
     })
   },
 ];

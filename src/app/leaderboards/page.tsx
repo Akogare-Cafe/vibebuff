@@ -10,7 +10,6 @@ import {
   Medal,
   Swords,
   Layers,
-  Flame,
   Star,
   Users,
   ChevronLeft,
@@ -24,14 +23,13 @@ import { ToolsLeaderboard } from "@/components/tools-leaderboard";
 import { TourTrigger } from "@/components/page-tour";
 import { leaderboardsTourConfig } from "@/lib/tour-configs";
 
-type LeaderboardType = "xp" | "battles" | "decks" | "mastery" | "streaks" | "reviews" | "quests" | "toolsViewed" | "votes";
+type LeaderboardType = "xp" | "battles" | "decks" | "mastery" | "reviews" | "quests" | "toolsViewed" | "votes";
 
 const LEADERBOARD_CONFIG: { id: LeaderboardType; label: string; icon: React.ReactNode; getStatValue: (user: Record<string, unknown>) => string }[] = [
   { id: "xp", label: "XP Leaders", icon: <Zap className="w-5 h-5 text-yellow-400" />, getStatValue: (user) => `${(user.xp as number).toLocaleString()} XP` },
   { id: "battles", label: "Battle Champions", icon: <Swords className="w-5 h-5 text-red-400" />, getStatValue: (user) => `${user.battlesWon} wins (${user.winRate}%)` },
   { id: "decks", label: "Deck Builders", icon: <Layers className="w-5 h-5 text-blue-400" />, getStatValue: (user) => `${user.decksCreated} decks` },
   { id: "mastery", label: "Tool Masters", icon: <Star className="w-5 h-5 text-purple-400" />, getStatValue: (user) => `${(user.masteryXp as number).toLocaleString()} XP` },
-  { id: "streaks", label: "Streak Kings", icon: <Flame className="w-5 h-5 text-orange-400" />, getStatValue: (user) => `${user.currentStreak} day streak` },
   { id: "reviews", label: "Top Reviewers", icon: <MessageSquare className="w-5 h-5 text-cyan-400" />, getStatValue: (user) => `${user.reviewCount} reviews` },
   { id: "quests", label: "Quest Completers", icon: <Target className="w-5 h-5 text-green-400" />, getStatValue: (user) => `${user.questsCompleted} quests` },
   { id: "toolsViewed", label: "Tool Explorers", icon: <Eye className="w-5 h-5 text-indigo-400" />, getStatValue: (user) => `${user.toolsViewed} tools` },
@@ -43,7 +41,6 @@ export default function LeaderboardsPage() {
   const battlesLeaderboard = useQuery(api.leaderboards.getBattlesLeaderboard, { limit: 10 });
   const decksLeaderboard = useQuery(api.leaderboards.getDecksLeaderboard, { limit: 10 });
   const masteryLeaderboard = useQuery(api.leaderboards.getMasteryLeaderboard, { limit: 10 });
-  const streaksLeaderboard = useQuery(api.leaderboards.getStreakLeaderboard, { limit: 10 });
   const reviewsLeaderboard = useQuery(api.leaderboards.getReviewsLeaderboard, { limit: 10 });
   const questsLeaderboard = useQuery(api.leaderboards.getQuestsLeaderboard, { limit: 10 });
   const toolsViewedLeaderboard = useQuery(api.leaderboards.getToolsViewedLeaderboard, { limit: 10 });
@@ -54,7 +51,6 @@ export default function LeaderboardsPage() {
     battles: battlesLeaderboard,
     decks: decksLeaderboard,
     mastery: masteryLeaderboard,
-    streaks: streaksLeaderboard,
     reviews: reviewsLeaderboard,
     quests: questsLeaderboard,
     toolsViewed: toolsViewedLeaderboard,
