@@ -25,7 +25,9 @@ import {
   Sparkles,
   ArrowRight,
   Loader2,
-  X
+  X,
+  FileJson,
+  BarChart3,
 } from "lucide-react";
 import { DynamicIcon, CategoryIcon } from "@/components/dynamic-icon";
 import { HomePageSchemas } from "@/components/seo-structured-data";
@@ -638,6 +640,37 @@ export default function Home() {
               <p className="text-muted-foreground text-sm md:text-base">Updated</p>
             </div>
           </div>
+        </section>
+
+        {/* Package.json Analyzer CTA */}
+        <section className="mb-16 md:mb-20">
+          <PixelCard className="p-6 md:p-10 bg-gradient-to-br from-card via-background to-card border-2 border-primary/30 hover:border-primary/50 transition-all">
+            <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shrink-0 shadow-lg">
+                <FileJson className="w-10 h-10 md:w-12 md:h-12 text-white" />
+              </div>
+              <div className="flex-1 text-center lg:text-left">
+                <h2 className="font-heading text-foreground text-xl md:text-2xl mb-2 md:mb-3">
+                  Analyze Your package.json
+                </h2>
+                <p className="text-muted-foreground text-sm md:text-base mb-4 max-w-2xl">
+                  Upload your package.json to get a detailed score and analysis of your tech stack. 
+                  See how your dependencies rank, get recommendations, and save matched tools to your deck.
+                </p>
+                <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                  <Link href="/analyze">
+                    <PixelButton size="lg">
+                      <BarChart3 className="w-4 h-4 mr-2" /> ANALYZE NOW
+                    </PixelButton>
+                  </Link>
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span>Get scored S to F</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </PixelCard>
         </section>
 
         {/* SEO Content Section - Why VIBEBUFF */}

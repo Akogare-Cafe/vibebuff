@@ -6,18 +6,19 @@ import json
 import httpx
 from typing import Optional
 from dotenv import load_dotenv
+from bot_avoidance import (
+    get_api_headers,
+    random_delay,
+    retry_with_backoff,
+    RateLimiter,
+    create_client_with_limits,
+)
 
 load_dotenv()
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-HEADERS = {
-    "Accept": "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-}
-
-if GITHUB_TOKEN:
-    HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+rate_limiter = RateLimiter(requests_per_minute=30)
 
 
 def parse_github_url(url: str) -> Optional[tuple[str, str]]:
@@ -41,10 +42,25 @@ async def fetch_repo_metadata(client: httpx.AsyncClient, owner: str, repo: str) 
     """Fetch repository metadata from GitHub API."""
     url = f"https://api.github.com/repos/{owner}/{repo}"
     
+    await rate_limiter.wait()
+    
+    headers = get_api_headers(
+        api_key=GITHUB_TOKEN,
+        extra_headers={
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+    )
+    
+    async def _fetch():
+        return await client.get(url, headers=headers)
+    
     try:
-        response = await client.get(url, headers=HEADERS)
+        response = await retry_with_backoff(_fetch, max_retries=3)
+        
         if response.status_code == 200:
             data = response.json()
+            await random_delay(0.3, 0.8)
             return {
                 "name": data.get("name"),
                 "full_name": data.get("full_name"),
@@ -78,10 +94,21 @@ async def fetch_repo_releases(client: httpx.AsyncClient, owner: str, repo: str, 
     """Fetch recent releases from GitHub API."""
     url = f"https://api.github.com/repos/{owner}/{repo}/releases"
     
+    await rate_limiter.wait()
+    
+    headers = get_api_headers(
+        api_key=GITHUB_TOKEN,
+        extra_headers={
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+    )
+    
     try:
-        response = await client.get(url, headers=HEADERS, params={"per_page": limit})
+        response = await client.get(url, headers=headers, params={"per_page": limit})
         if response.status_code == 200:
             releases = response.json()
+            await random_delay(0.2, 0.5)
             return [
                 {
                     "tag_name": r.get("tag_name"),
@@ -100,10 +127,21 @@ async def fetch_repo_contributors(client: httpx.AsyncClient, owner: str, repo: s
     """Fetch top contributors from GitHub API."""
     url = f"https://api.github.com/repos/{owner}/{repo}/contributors"
     
+    await rate_limiter.wait()
+    
+    headers = get_api_headers(
+        api_key=GITHUB_TOKEN,
+        extra_headers={
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+    )
+    
     try:
-        response = await client.get(url, headers=HEADERS, params={"per_page": limit})
+        response = await client.get(url, headers=headers, params={"per_page": limit})
         if response.status_code == 200:
             contributors = response.json()
+            await random_delay(0.2, 0.5)
             return [
                 {
                     "login": c.get("login"),
@@ -120,7 +158,7 @@ async def scrape_github_repos(github_urls: list[str]) -> dict:
     """Scrape metadata for multiple GitHub repositories."""
     results = {}
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with create_client_with_limits(timeout=30.0) as client:
         for url in github_urls:
             parsed = parse_github_url(url)
             if not parsed:

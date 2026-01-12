@@ -10,6 +10,15 @@ from typing import Optional
 import asyncio
 import re
 from datetime import datetime
+from bot_avoidance import (
+    get_realistic_headers,
+    random_delay,
+    retry_with_backoff,
+    RateLimiter,
+    create_client_with_limits,
+)
+
+rate_limiter = RateLimiter(requests_per_minute=20)
 
 
 PRICING_PATTERNS = [
@@ -87,15 +96,17 @@ def extract_integrations(text: str) -> list[str]:
 
 async def search_duckduckgo(client: httpx.AsyncClient, query: str, max_results: int = 5) -> list:
     """Search DuckDuckGo for information about a tool."""
-    # Use DuckDuckGo HTML search (no API key needed)
     url = "https://html.duckduckgo.com/html/"
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
-    }
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _search():
+        return await client.post(url, data={"q": query}, headers=headers)
     
     try:
-        response = await client.post(url, data={"q": query}, headers=headers)
+        response = await retry_with_backoff(_search, max_retries=2)
         if response.status_code != 200:
             return []
         
@@ -127,6 +138,7 @@ async def search_duckduckgo(client: httpx.AsyncClient, query: str, max_results: 
                     "url": link,
                 })
         
+        await random_delay(0.5, 1.5)
         return results
     except Exception as e:
         print(f"Search error for '{query}': {e}")
@@ -135,13 +147,15 @@ async def search_duckduckgo(client: httpx.AsyncClient, query: str, max_results: 
 
 async def scrape_tool_website(client: httpx.AsyncClient, url: str) -> dict:
     """Scrape comprehensive metadata from a tool's website."""
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    }
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _fetch():
+        return await client.get(url, headers=headers, follow_redirects=True, timeout=15.0)
     
     try:
-        response = await client.get(url, headers=headers, follow_redirects=True, timeout=15.0)
+        response = await retry_with_backoff(_fetch, max_retries=2)
         if response.status_code != 200:
             return {"error": f"HTTP {response.status_code}"}
         
@@ -250,13 +264,14 @@ async def scrape_tool_website(client: httpx.AsyncClient, url: str) -> dict:
             "schema_org": schema_org,
             "scraped_at": datetime.now().isoformat(),
         }
+        await random_delay(0.3, 0.8)
     except Exception as e:
         return {"error": str(e)}
 
 
 async def search_tool_info(tool_name: str, tool_url: Optional[str] = None) -> dict:
     """Search for comprehensive information about a tool."""
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with create_client_with_limits(timeout=30.0) as client:
         result = {
             "name": tool_name,
             "search_results": [],
@@ -273,7 +288,7 @@ async def search_tool_info(tool_name: str, tool_url: Optional[str] = None) -> di
         for query in queries:
             search_results = await search_duckduckgo(client, query, max_results=3)
             result["search_results"].extend(search_results)
-            await asyncio.sleep(1)  # Rate limiting
+            await random_delay(1.0, 2.0)
         
         # Scrape the tool's website if provided
         if tool_url:
@@ -292,7 +307,7 @@ async def search_multiple_tools(tools: list[dict]) -> dict:
         
         print(f"Searching for: {name}")
         results[name] = await search_tool_info(name, url)
-        await asyncio.sleep(2)  # Rate limiting between tools
+        await random_delay(2.0, 4.0)
     
     return results
 

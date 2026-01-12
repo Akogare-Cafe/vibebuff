@@ -9,6 +9,15 @@ from bs4 import BeautifulSoup
 from typing import Optional
 from datetime import datetime
 import asyncio
+from bot_avoidance import (
+    get_realistic_headers,
+    random_delay,
+    retry_with_backoff,
+    RateLimiter,
+    create_client_with_limits,
+)
+
+rate_limiter = RateLimiter(requests_per_minute=15)
 
 
 DEVELOPER_TOPICS = [
@@ -43,13 +52,16 @@ TOOL_CATEGORIES = {
 async def fetch_producthunt_topic(client: httpx.AsyncClient, topic: str) -> list[dict]:
     """Fetch products from a Product Hunt topic page."""
     url = f"https://www.producthunt.com/topics/{topic}"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    }
+    
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _fetch():
+        return await client.get(url, headers=headers, follow_redirects=True)
     
     try:
-        response = await client.get(url, headers=headers, follow_redirects=True)
+        response = await retry_with_backoff(_fetch, max_retries=2)
         if response.status_code != 200:
             return []
         
@@ -71,6 +83,7 @@ async def fetch_producthunt_topic(client: httpx.AsyncClient, topic: str) -> list
                 }
                 products.append(product)
         
+        await random_delay(0.5, 1.5)
         return products
     except Exception as e:
         print(f"Error fetching topic {topic}: {e}")
@@ -80,13 +93,16 @@ async def fetch_producthunt_topic(client: httpx.AsyncClient, topic: str) -> list
 async def fetch_producthunt_search(client: httpx.AsyncClient, query: str) -> list[dict]:
     """Search Product Hunt for products."""
     url = f"https://www.producthunt.com/search?q={query}"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    }
+    
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _search():
+        return await client.get(url, headers=headers, follow_redirects=True)
     
     try:
-        response = await client.get(url, headers=headers, follow_redirects=True)
+        response = await retry_with_backoff(_search, max_retries=2)
         if response.status_code != 200:
             return []
         
@@ -107,6 +123,7 @@ async def fetch_producthunt_search(client: httpx.AsyncClient, query: str) -> lis
                     "source": "producthunt_search",
                 })
         
+        await random_delay(0.5, 1.5)
         return products
     except Exception as e:
         print(f"Error searching for {query}: {e}")
@@ -115,13 +132,15 @@ async def fetch_producthunt_search(client: httpx.AsyncClient, query: str) -> lis
 
 async def scrape_product_details(client: httpx.AsyncClient, url: str) -> dict:
     """Scrape detailed information about a product."""
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    }
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _fetch():
+        return await client.get(url, headers=headers, follow_redirects=True)
     
     try:
-        response = await client.get(url, headers=headers, follow_redirects=True)
+        response = await retry_with_backoff(_fetch, max_retries=2)
         if response.status_code != 200:
             return {"url": url, "error": f"HTTP {response.status_code}"}
         
@@ -163,6 +182,7 @@ async def scrape_product_details(client: httpx.AsyncClient, url: str) -> dict:
             "image": og_image.get("content") if og_image else None,
             "scraped_at": datetime.now().isoformat(),
         }
+        await random_delay(0.3, 0.8)
     except Exception as e:
         return {"url": url, "error": str(e)}
 
@@ -208,20 +228,20 @@ async def discover_developer_tools(topics: list[str] = None, search_queries: lis
         "all_products": [],
     }
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with create_client_with_limits(timeout=30.0) as client:
         for topic in topics:
             print(f"Fetching topic: {topic}")
             products = await fetch_producthunt_topic(client, topic)
             results["topics"][topic] = products
             results["all_products"].extend(products)
-            await asyncio.sleep(2)
+            await random_delay(2.0, 4.0)
         
         for query in search_queries:
             print(f"Searching: {query}")
             products = await fetch_producthunt_search(client, query)
             results["searches"][query] = products
             results["all_products"].extend(products)
-            await asyncio.sleep(2)
+            await random_delay(2.0, 4.0)
     
     seen_names = set()
     unique_products = []
@@ -241,13 +261,13 @@ async def enrich_products(products: list[dict], limit: int = 20) -> list[dict]:
     """Enrich products with detailed information."""
     enriched = []
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with create_client_with_limits(timeout=30.0) as client:
         for product in products[:limit]:
             if product.get("url"):
                 print(f"Enriching: {product.get('name')}")
                 details = await scrape_product_details(client, product["url"])
                 enriched.append({**product, **details})
-                await asyncio.sleep(2)
+                await random_delay(2.0, 4.0)
     
     return enriched
 
