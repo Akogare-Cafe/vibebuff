@@ -157,6 +157,9 @@ export function ToolsLeaderboard({ limit = 10, showFilters = false, compact = fa
   const trendingTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "trending", limit });
   const favoritesTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "favorites", limit });
   const usageTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "usage", limit });
+  const deckAddsTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "deckAdds", limit });
+  const clicksTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "clicks", limit });
+  const weeklyViewsTools = useQuery(api.toolsLeaderboard.getToolsLeaderboard, { sortBy: "weeklyViews", limit });
 
   const toolsDataMap: Record<SortOption, typeof starsTools> = {
     stars: starsTools,
@@ -164,6 +167,9 @@ export function ToolsLeaderboard({ limit = 10, showFilters = false, compact = fa
     trending: trendingTools,
     favorites: favoritesTools,
     usage: usageTools,
+    deckAdds: deckAddsTools,
+    clicks: clicksTools,
+    weeklyViews: weeklyViewsTools,
   };
 
   return (
