@@ -12,6 +12,7 @@ from npm_scraper import scrape_npm_packages, NPM_PACKAGES
 from rss_feeds import scrape_all_feeds, get_latest_releases, get_latest_blog_posts, RSS_FEEDS
 from web_search import search_multiple_tools, TOOLS_TO_SEARCH, DISCOVERY_SEARCH_QUERIES
 from awesome_lists_scraper import scrape_awesome_lists, deduplicate_tools
+from deduplication_tracker import DeduplicationTracker
 from article_scraper import scrape_articles, aggregate_tool_mentions, filter_articles_with_tools
 from producthunt_scraper import discover_developer_tools, enrich_products
 from github_trending import scrape_github_trending
@@ -33,6 +34,7 @@ async def run_all_scrapers(
     skip_rss: bool = False,
     skip_web_search: bool = False,
     skip_awesome_lists: bool = False,
+    use_deduplication: bool = True,
     skip_articles: bool = False,
     skip_producthunt: bool = False,
     skip_github_trending: bool = False,
@@ -52,9 +54,14 @@ async def run_all_scrapers(
     output_dir = os.path.join(os.path.dirname(__file__), "data")
     os.makedirs(output_dir, exist_ok=True)
     
+    dedup_tracker = DeduplicationTracker() if use_deduplication else None
+    if dedup_tracker:
+        print(f"\nDeduplication tracker stats: {dedup_tracker.get_stats()}")
+    
     results = {
         "scraped_at": datetime.now().isoformat(),
         "sources": {},
+        "deduplication_enabled": use_deduplication,
     }
     
     # GitHub metadata
@@ -121,7 +128,15 @@ async def run_all_scrapers(
     if not skip_awesome_lists:
         print("\n=== Scraping Awesome Lists ===")
         awesome_data = await scrape_awesome_lists()
-        unique_tools = deduplicate_tools(awesome_data)
+        
+        existing_urls = dedup_tracker.scraped_urls if dedup_tracker else None
+        unique_tools = deduplicate_tools(awesome_data, existing_urls)
+        
+        if dedup_tracker:
+            tool_urls = [tool["url"] for tool in unique_tools]
+            dedup_tracker.mark_multiple_scraped(tool_urls)
+            print(f"Marked {len(tool_urls)} new tools as scraped")
+        
         results["sources"]["awesome_lists"] = {
             "count": len(awesome_data),
             "unique_tools": len(unique_tools),

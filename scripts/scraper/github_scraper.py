@@ -13,12 +13,15 @@ from bot_avoidance import (
     RateLimiter,
     create_client_with_limits,
 )
+from cache_manager import CacheManager, ConditionalFetcher
 
 load_dotenv()
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 rate_limiter = RateLimiter(requests_per_minute=30)
+cache = CacheManager(cache_dir="cache", default_ttl_hours=72)
+conditional_fetcher = ConditionalFetcher(cache)
 
 
 def parse_github_url(url: str) -> Optional[tuple[str, str]]:
@@ -40,6 +43,13 @@ def parse_github_url(url: str) -> Optional[tuple[str, str]]:
 
 async def fetch_repo_metadata(client: httpx.AsyncClient, owner: str, repo: str) -> dict:
     """Fetch repository metadata from GitHub API."""
+    cache_key = f"github:repo:{owner}/{repo}"
+    cached_data = cache.get(cache_key, ttl_hours=72)
+    
+    if cached_data and not cached_data.get("error"):
+        print(f"  Using cached data for {owner}/{repo}")
+        return cached_data
+    
     url = f"https://api.github.com/repos/{owner}/{repo}"
     
     await rate_limiter.wait()
@@ -52,16 +62,27 @@ async def fetch_repo_metadata(client: httpx.AsyncClient, owner: str, repo: str) 
         }
     )
     
+    conditional_headers = conditional_fetcher.get_conditional_headers(url)
+    headers.update(conditional_headers)
+    
     async def _fetch():
         return await client.get(url, headers=headers)
     
     try:
         response = await retry_with_backoff(_fetch, max_retries=3)
         
+        if response.status_code == 304:
+            print(f"  Not modified: {owner}/{repo}")
+            return cached_data if cached_data else {"error": "Not modified but no cache"}
+        
         if response.status_code == 200:
             data = response.json()
-            await random_delay(0.3, 0.8)
-            return {
+            
+            etag = response.headers.get("ETag")
+            last_modified = response.headers.get("Last-Modified")
+            conditional_fetcher.update_headers(url, etag, last_modified)
+            
+            result = {
                 "name": data.get("name"),
                 "full_name": data.get("full_name"),
                 "description": data.get("description"),
@@ -80,6 +101,10 @@ async def fetch_repo_metadata(client: httpx.AsyncClient, owner: str, repo: str) 
                 "archived": data.get("archived"),
                 "is_fork": data.get("fork"),
             }
+            
+            cache.set(cache_key, result)
+            await random_delay(0.3, 0.8)
+            return result
         elif response.status_code == 404:
             return {"error": "Repository not found"}
         elif response.status_code == 403:
@@ -157,6 +182,11 @@ async def fetch_repo_contributors(client: httpx.AsyncClient, owner: str, repo: s
 async def scrape_github_repos(github_urls: list[str]) -> dict:
     """Scrape metadata for multiple GitHub repositories."""
     results = {}
+    
+    print(f"\nCache stats: {cache.get_stats()}")
+    expired_count = cache.clear_expired()
+    if expired_count > 0:
+        print(f"Cleared {expired_count} expired cache entries")
     
     async with create_client_with_limits(timeout=30.0) as client:
         for url in github_urls:

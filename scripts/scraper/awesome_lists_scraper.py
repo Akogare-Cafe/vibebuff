@@ -6,8 +6,32 @@ import json
 import re
 import httpx
 from typing import Optional
+from bot_avoidance import (
+    get_realistic_headers,
+    random_delay,
+    retry_with_backoff,
+    RateLimiter,
+    create_client_with_limits,
+)
+from cache_manager import CacheManager
+
+rate_limiter = RateLimiter(requests_per_minute=20)
+cache = CacheManager(cache_dir="cache", default_ttl_hours=168)
 
 AWESOME_LISTS = [
+    # AI Tools & Agents
+    {
+        "name": "mahseema/awesome-ai-tools",
+        "url": "https://raw.githubusercontent.com/mahseema/awesome-ai-tools/main/README.md",
+    },
+    {
+        "name": "Jenqyang/Awesome-AI-Agents",
+        "url": "https://raw.githubusercontent.com/Jenqyang/Awesome-AI-Agents/main/README.md",
+    },
+    {
+        "name": "wsxiaoys/awesome-ai-coding",
+        "url": "https://raw.githubusercontent.com/wsxiaoys/awesome-ai-coding/main/README.md",
+    },
     # Vibe Coding specific
     {
         "name": "filipecalegario/awesome-vibe-coding",
@@ -175,12 +199,29 @@ def extract_tools_from_content(content: str) -> list:
     return tools
 
 
-async def fetch_awesome_list(client: httpx.AsyncClient, url: str) -> Optional[str]:
+async def fetch_awesome_list(client: httpx.AsyncClient, url: str, list_name: str) -> Optional[str]:
     """Fetch raw markdown content from GitHub."""
+    cache_key = f"awesome_list:{list_name}"
+    cached_content = cache.get(cache_key, ttl_hours=168)
+    
+    if cached_content:
+        print(f"  Using cached content for {list_name}")
+        return cached_content
+    
+    await rate_limiter.wait()
+    
+    headers = get_realistic_headers()
+    
+    async def _fetch():
+        return await client.get(url, headers=headers)
+    
     try:
-        response = await client.get(url)
+        response = await retry_with_backoff(_fetch, max_retries=2)
         if response.status_code == 200:
-            return response.text
+            content = response.text
+            cache.set(cache_key, content)
+            await random_delay(0.5, 1.5)
+            return content
         return None
     except Exception as e:
         print(f"Error fetching {url}: {e}")
@@ -191,13 +232,18 @@ async def scrape_awesome_lists() -> dict:
     """Scrape all awesome-vibe-coding lists."""
     results = {}
     
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    print(f"\nCache stats: {cache.get_stats()}")
+    expired_count = cache.clear_expired()
+    if expired_count > 0:
+        print(f"Cleared {expired_count} expired cache entries")
+    
+    async with create_client_with_limits(timeout=30.0) as client:
         for list_info in AWESOME_LISTS:
             name = list_info["name"]
             url = list_info["url"]
             
             print(f"Fetching: {name}")
-            content = await fetch_awesome_list(client, url)
+            content = await fetch_awesome_list(client, url, name)
             
             if content:
                 tools = extract_tools_from_content(content)
@@ -216,10 +262,11 @@ async def scrape_awesome_lists() -> dict:
     return results
 
 
-def deduplicate_tools(results: dict) -> list:
-    """Deduplicate tools across all awesome lists."""
-    seen_urls = set()
+def deduplicate_tools(results: dict, existing_tools: Optional[set] = None) -> list:
+    """Deduplicate tools across all awesome lists and against existing tools."""
+    seen_urls = existing_tools if existing_tools else set()
     unique_tools = []
+    skipped_count = 0
     
     for list_name, data in results.items():
         if "error" in data:
@@ -227,10 +274,17 @@ def deduplicate_tools(results: dict) -> list:
         
         for tool in data.get("tools", []):
             url = tool["url"].lower().rstrip("/")
-            if url not in seen_urls:
-                seen_urls.add(url)
-                tool["source"] = list_name
-                unique_tools.append(tool)
+            
+            if url in seen_urls:
+                skipped_count += 1
+                continue
+            
+            seen_urls.add(url)
+            tool["source"] = list_name
+            unique_tools.append(tool)
+    
+    if skipped_count > 0:
+        print(f"Skipped {skipped_count} already-scraped tools")
     
     return unique_tools
 

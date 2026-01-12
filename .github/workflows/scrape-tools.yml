@@ -2,8 +2,8 @@ name: Scrape Tool Metadata
 
 on:
   schedule:
-    # Run 2 times daily at 6 AM and 6 PM UTC
-    - cron: '0 6,18 * * *'
+    # Run once every 3 days at 6 AM UTC
+    - cron: '0 6 */3 * *'
   workflow_dispatch:
     inputs:
       scraper:
@@ -35,6 +35,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
+      - name: Restore scraper cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            scripts/scraper/cache
+            scripts/scraper/data
+          key: scraper-cache-${{ hashFiles('scripts/scraper/**/*.py') }}-${{ github.run_number }}
+          restore-keys: |
+            scraper-cache-${{ hashFiles('scripts/scraper/**/*.py') }}-
+            scraper-cache-
       
       - name: Set up Python
         uses: actions/setup-python@v5
