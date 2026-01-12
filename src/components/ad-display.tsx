@@ -427,7 +427,6 @@ class AdErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.debug("AdDisplay error (Convex not connected):", error.message);
   }
 
   render() {

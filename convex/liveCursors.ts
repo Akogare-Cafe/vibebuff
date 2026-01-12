@@ -86,6 +86,8 @@ export const removeCursor = mutation({
     if (cursor) {
       await ctx.db.delete(cursor._id);
     }
+    
+    return { success: true };
   },
 });
 

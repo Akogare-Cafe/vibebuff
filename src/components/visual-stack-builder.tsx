@@ -645,7 +645,6 @@ function ShareModal({
         isPublic: true,
       });
     } catch (error) {
-      console.error("Error making build public:", error);
     } finally {
       setIsUpdating(false);
     }
@@ -804,7 +803,6 @@ function PublishToMarketplaceModal({
       onClose();
     } catch (err) {
       setError("Failed to publish. Please try again.");
-      console.error(err);
     } finally {
       setIsPublishing(false);
     }
@@ -1634,7 +1632,6 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
 
       setTimeout(() => setSaveMessage(null), 3000);
     } catch (error) {
-      console.error("Error saving build:", error);
       setSaveMessage("Error saving stack");
     } finally {
       setIsSaving(false);
@@ -1703,7 +1700,6 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
       a.download = `${buildTitle.replace(/\s+/g, "-").toLowerCase()}-stack.png`;
       a.click();
     } catch (error) {
-      console.error("Error exporting image:", error);
     }
   };
 

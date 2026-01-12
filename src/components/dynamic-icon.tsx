@@ -1068,7 +1068,6 @@ interface DynamicIconProps extends Omit<LucideProps, "ref"> {
 }
 
 export function DynamicIcon({ name, ...props }: DynamicIconProps) {
-  console.log("DynamicIcon name:", name, "found:", !!iconComponents[name]);
   const IconComponent = iconComponents[name];
   
   if (!IconComponent) {

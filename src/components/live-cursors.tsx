@@ -91,14 +91,14 @@ export function LiveCursors({ page = "/" }: LiveCursorsProps) {
     
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      removeCursor({ sessionId });
+      removeCursor({ sessionId }).catch(() => {});
     };
   }, [handleMouseMove, removeCursor, sessionId]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        removeCursor({ sessionId });
+        removeCursor({ sessionId }).catch(() => {});
       }
     };
 

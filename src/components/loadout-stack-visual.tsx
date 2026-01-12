@@ -406,7 +406,6 @@ export function LoadoutStackVisual({
       }
       setTimeout(() => setSaveMessage(null), 3000);
     } catch (error) {
-      console.error("Error saving stack:", error);
       setSaveMessage("Error saving stack");
     } finally {
       setIsSaving(false);
@@ -459,7 +458,6 @@ export function LoadoutStackVisual({
       a.download = `${stackTitle.replace(/\s+/g, "-").toLowerCase()}-stack.png`;
       a.click();
     } catch (error) {
-      console.error("Error exporting image:", error);
     }
   };
 

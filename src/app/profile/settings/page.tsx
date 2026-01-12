@@ -170,7 +170,6 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      console.error("Failed to save profile:", error);
       setSaveError("Failed to save profile. Please try again.");
       setTimeout(() => setSaveError(null), 3000);
     }
@@ -188,7 +187,6 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      console.error("Failed to save notifications:", error);
       setSaveError("Failed to save notifications. Please try again.");
       setTimeout(() => setSaveError(null), 3000);
     }
@@ -206,7 +204,6 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      console.error("Failed to save privacy settings:", error);
       setSaveError("Failed to save privacy settings. Please try again.");
       setTimeout(() => setSaveError(null), 3000);
     }
@@ -224,7 +221,6 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      console.error("Failed to save preferences:", error);
       setSaveError("Failed to save preferences. Please try again.");
       setTimeout(() => setSaveError(null), 3000);
     }
@@ -239,7 +235,6 @@ export default function SettingsPage() {
       setDeleteDialogOpen(false);
       window.location.href = "/";
     } catch (error) {
-      console.error("Failed to delete account:", error);
       setSaveError("Failed to delete account. Please try again.");
       setTimeout(() => setSaveError(null), 3000);
       setIsDeleting(false);

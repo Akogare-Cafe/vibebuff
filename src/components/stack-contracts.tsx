@@ -72,7 +72,6 @@ export function StackContracts({ userId, className }: StackContractsProps) {
       setSelectedContract(null);
       setSelectedTools([]);
     } catch (error) {
-      console.error("Failed to submit contract:", error);
     }
   };
 

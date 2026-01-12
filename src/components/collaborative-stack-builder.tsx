@@ -746,7 +746,6 @@ export function CollaborativeStackBuilder({ sessionId, isHost }: CollaborativeSt
     try {
       await calculateScore({ sessionId });
     } catch (error) {
-      console.error("Error calculating score:", error);
     } finally {
       setIsCalculatingScore(false);
     }
@@ -773,7 +772,6 @@ export function CollaborativeStackBuilder({ sessionId, isHost }: CollaborativeSt
       a.download = `${session?.name || "stack"}-collab.png`;
       a.click();
     } catch (error) {
-      console.error("Error exporting image:", error);
     }
   };
 

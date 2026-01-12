@@ -99,7 +99,6 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
       });
       setShowForm(false);
     } catch (error) {
-      console.error("Failed to submit nomination:", error);
     }
   };
 
@@ -107,7 +106,6 @@ export function ToolNominationsBoard({ userId, className }: ToolNominationsBoard
     try {
       await voteForNomination({ userId, nominationId });
     } catch (error) {
-      console.error("Failed to vote:", error);
     }
   };
 

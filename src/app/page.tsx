@@ -126,7 +126,6 @@ export default function Home() {
     try {
       await seedDatabase();
     } catch (e) {
-      console.error(e);
     }
     setIsSeeding(false);
   };
@@ -198,7 +197,6 @@ export default function Home() {
       });
       setAiRecommendations(result);
     } catch (error) {
-      console.error("AI recommendation error:", error);
     } finally {
       setIsGeneratingAI(false);
     }

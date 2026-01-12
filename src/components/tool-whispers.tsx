@@ -124,7 +124,6 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
     try {
       await unlockWhisper({ userId, toolId, whisperId });
     } catch (error) {
-      console.error("Failed to unlock whisper:", error);
     }
   };
 
@@ -133,7 +132,6 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
     try {
       await upvoteWhisper({ userId, whisperId });
     } catch (error) {
-      console.error("Failed to upvote:", error);
     }
   };
 
@@ -150,7 +148,6 @@ export function ToolWhispers({ toolId, userId, className }: ToolWhispersProps) {
       setNewWhisper({ content: "", whisperType: "pro_tip", source: "" });
       setShowSubmitForm(false);
     } catch (error) {
-      console.error("Failed to submit whisper:", error);
     }
   };
 

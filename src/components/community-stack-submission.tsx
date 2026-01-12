@@ -409,7 +409,6 @@ function CreateToolModal({
 
       onCreated(toolId, category);
     } catch (error) {
-      console.error("Failed to create tool suggestion:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -639,7 +638,6 @@ function SubmissionForm({ onClose, onSuccess }: { onClose: () => void; onSuccess
       });
       onSuccess();
     } catch (error) {
-      console.error("Failed to submit stack:", error);
     } finally {
       setIsSubmitting(false);
     }

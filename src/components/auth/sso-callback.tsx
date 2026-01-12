@@ -40,7 +40,6 @@ export function SSOCallback() {
           router.push("/");
         }
       } catch (err) {
-        console.error("SSO callback error:", err);
         hasHandled.current = true;
         router.push("/sign-in?error=sso_failed");
       }

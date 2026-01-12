@@ -62,7 +62,6 @@ export function AddToDeckButton({ toolId, toolName, onAddedToDeck }: AddToDeckBu
       }, 2000);
       onAddedToDeck?.();
     } catch (error) {
-      console.error("Failed to add tool to deck:", error);
     } finally {
       setAddingToDeckId(null);
     }
@@ -92,7 +91,6 @@ export function AddToDeckButton({ toolId, toolName, onAddedToDeck }: AddToDeckBu
       }, 1500);
       onAddedToDeck?.();
     } catch (error) {
-      console.error("Failed to create deck:", error);
     } finally {
       setIsCreating(false);
     }

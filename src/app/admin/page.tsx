@@ -444,7 +444,6 @@ function UsersTab({
     try {
       await onSetAdmin({ targetUserId: userId, isAdmin: !currentStatus });
     } catch (error) {
-      console.error("Failed to update admin status:", error);
     } finally {
       setLoadingUser(null);
     }
@@ -569,7 +568,6 @@ function ToolsTab({
     try {
       await onUpdateTool({ toolId, updates: { isActive: !currentStatus } });
     } catch (error) {
-      console.error("Failed to update tool:", error);
     } finally {
       setLoadingTool(null);
     }
@@ -580,7 +578,6 @@ function ToolsTab({
     try {
       await onUpdateTool({ toolId, updates: { isFeatured: !currentStatus } });
     } catch (error) {
-      console.error("Failed to update tool:", error);
     } finally {
       setLoadingTool(null);
     }
@@ -718,7 +715,6 @@ function SuggestionsTab({
       setExpandedId(null);
       setReviewNote("");
     } catch (error) {
-      console.error("Failed to approve:", error);
     } finally {
       setLoadingId(null);
     }
@@ -731,7 +727,6 @@ function SuggestionsTab({
       setExpandedId(null);
       setReviewNote("");
     } catch (error) {
-      console.error("Failed to reject:", error);
     } finally {
       setLoadingId(null);
     }
@@ -903,7 +898,6 @@ function CronsTab({
     try {
       await onUpdateFeedSource({ sourceId, updates: { isActive: !isActive } });
     } catch (error) {
-      console.error("Failed to update feed source:", error);
     } finally {
       setLoadingSource(null);
     }

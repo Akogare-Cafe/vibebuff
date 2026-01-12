@@ -111,7 +111,6 @@ export function SuggestEditModal({ tool, trigger }: SuggestEditModalProps) {
       
       setSubmitted(true);
     } catch (error) {
-      console.error("Failed to submit suggestion:", error);
     } finally {
       setIsSubmitting(false);
     }

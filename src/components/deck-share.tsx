@@ -49,7 +49,6 @@ export function DeckShare({
         isPublic: true,
       });
     } catch (error) {
-      console.error("Error making deck public:", error);
     } finally {
       setIsUpdating(false);
     }
