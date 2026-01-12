@@ -111,4 +111,14 @@ This catches:
 **A feature is NOT complete until BOTH steps succeed.**
 
 ### Troubleshooting
-If you see "Server Error" in browser console mentioning Convex functions, you forgot to sync. Run `npx convex dev --once --typecheck disable` immediately.
+
+**Convex Server Errors**: If you see "Server Error" in browser console mentioning Convex functions, you forgot to sync. Run `npx convex dev --once --typecheck disable` immediately.
+
+**HMR Module Errors**: If you see errors like "Module was instantiated... but the module factory is not available" or "deleted in an HMR update" (often with Clerk/React):
+
+```bash
+pnpm clean
+pnpm dev
+```
+
+Then hard refresh browser (Cmd+Shift+R). This clears corrupted HMR cache.

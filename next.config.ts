@@ -76,7 +76,7 @@ export default withSentryConfig(withBotId(nextConfig), {
   widenClientFileUpload: true,
   tunnelRoute: "/monitoring",
   sourcemaps: {
-    disable: true,
+    deleteSourcemapsAfterUpload: true,
   },
   webpack: {
     treeshake: {

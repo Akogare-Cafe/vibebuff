@@ -85,3 +85,29 @@ This ensures:
 - All route handlers return proper responses
 
 **Do NOT consider a feature complete until BOTH steps pass successfully.**
+
+## HMR Module Instantiation Errors
+
+If you encounter errors like:
+- `Module was instantiated because it was required from module... but the module factory is not available`
+- `It might have been deleted in an HMR update`
+- Clerk/React module instantiation failures
+
+**This is a Hot Module Replacement cache corruption issue.**
+
+### Fix
+
+Run the clean script and restart the dev server:
+
+```bash
+pnpm clean
+pnpm dev
+```
+
+Then hard refresh the browser (Cmd+Shift+R / Ctrl+Shift+R).
+
+### When This Happens
+- After package updates
+- After switching branches with different dependencies
+- After interrupted builds
+- Random HMR state corruption during development

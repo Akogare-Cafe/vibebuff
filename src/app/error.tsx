@@ -1,5 +1,6 @@
 "use client";
 
+import * as Sentry from "@sentry/nextjs";
 import { useEffect, useState } from "react";
 import { AlertTriangle, RefreshCw, Home, Flag } from "lucide-react";
 import { PixelCard } from "@/components/pixel-card";
@@ -18,7 +19,7 @@ export default function Error({
   const [errorReport, setErrorReport] = useState<ErrorReport | null>(null);
 
   useEffect(() => {
-    console.error("Root error:", error);
+    Sentry.captureException(error);
   }, [error]);
 
   const handleReportClick = async () => {

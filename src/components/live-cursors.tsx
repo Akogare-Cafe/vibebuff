@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useSpring, useTransform } from "framer-motion";
 import { MousePointer2 } from "lucide-react";
 
 interface CursorData {
@@ -18,6 +18,11 @@ interface CursorData {
 
 interface LiveCursorsProps {
   page?: string;
+}
+
+interface InterpolatedCursor extends CursorData {
+  targetX: number;
+  targetY: number;
 }
 
 const CURSOR_COLORS = [
@@ -113,60 +118,106 @@ export function LiveCursors({ page = "/" }: LiveCursorsProps) {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999]">
       <AnimatePresence>
-        {cursors.map((cursor) => {
-          const color = getCursorColor(cursor.sessionId);
-          const displayName = cursor.userName || "Anonymous";
-          
-          return (
-            <motion.div
-              key={cursor.sessionId}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.2 }}
-              style={{
-                position: "absolute",
-                left: `${cursor.x}%`,
-                top: `${cursor.y}%`,
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <div className="relative">
-                <MousePointer2
-                  className="w-6 h-6 drop-shadow-lg"
-                  style={{ 
-                    color,
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
-                  }}
-                />
-                
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="absolute left-8 top-0 whitespace-nowrap"
-                >
-                  <div
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-white shadow-lg"
-                    style={{ 
-                      backgroundColor: color,
-                      boxShadow: `0 4px 12px ${color}40`,
-                    }}
-                  >
-                    {cursor.userAvatar && (
-                      <img
-                        src={cursor.userAvatar}
-                        alt={displayName}
-                        className="w-4 h-4 rounded-full border border-white/30"
-                      />
-                    )}
-                    <span className="drop-shadow-sm">{displayName}</span>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          );
-        })}
+        {cursors.map((cursor) => (
+          <SmoothCursor key={cursor.sessionId} cursor={cursor} />
+        ))}
       </AnimatePresence>
     </div>
+  );
+}
+
+const springConfig = { damping: 30, stiffness: 400, mass: 0.5 };
+
+function SmoothCursor({ cursor }: { cursor: CursorData }) {
+  const color = getCursorColor(cursor.sessionId);
+  const displayName = cursor.userName || "Anonymous";
+  
+  const springX = useSpring(cursor.x, springConfig);
+  const springY = useSpring(cursor.y, springConfig);
+  
+  useEffect(() => {
+    springX.set(cursor.x);
+    springY.set(cursor.y);
+  }, [cursor.x, cursor.y, springX, springY]);
+
+  const left = useTransform(springX, (v) => `${v}%`);
+  const top = useTransform(springY, (v) => `${v}%`);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.5 }}
+      transition={{ duration: 0.15 }}
+      style={{
+        position: "absolute",
+        left,
+        top,
+        x: "-50%",
+        y: "-50%",
+        willChange: "left, top",
+      }}
+    >
+      <div className="relative">
+        <motion.div
+          animate={{ rotate: [0, -5, 5, 0] }}
+          transition={{ 
+            duration: 0.3, 
+            ease: "easeOut",
+            times: [0, 0.3, 0.6, 1],
+          }}
+        >
+          <MousePointer2
+            className="w-6 h-6"
+            style={{ 
+              color,
+              filter: `drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 8px ${color}50)`,
+            }}
+          />
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, x: -5, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.2 }}
+          className="absolute left-7 top-0 whitespace-nowrap"
+        >
+          <motion.div
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-white shadow-lg backdrop-blur-sm"
+            style={{ 
+              backgroundColor: `${color}ee`,
+              boxShadow: `0 4px 12px ${color}40, 0 0 20px ${color}20`,
+            }}
+            whileHover={{ scale: 1.05 }}
+          >
+            {cursor.userAvatar && (
+              <motion.img
+                src={cursor.userAvatar}
+                alt={displayName}
+                className="w-4 h-4 rounded-full border border-white/30"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+              />
+            )}
+            <span className="drop-shadow-sm">{displayName}</span>
+          </motion.div>
+        </motion.div>
+        
+        <motion.div
+          className="absolute -inset-2 rounded-full"
+          style={{ backgroundColor: `${color}15` }}
+          animate={{ 
+            scale: [1, 1.5, 1],
+            opacity: [0.5, 0, 0.5],
+          }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+    </motion.div>
   );
 }

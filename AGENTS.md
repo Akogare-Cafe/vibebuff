@@ -120,3 +120,29 @@ The build must succeed with:
 
 ### Common Mistake to Avoid
 If you see "Server Error" in the browser console mentioning Convex functions, you forgot to run `npx convex dev --once`. Run it immediately.
+
+## HMR Module Instantiation Errors
+
+If you encounter errors like:
+- `Module was instantiated because it was required from module... but the module factory is not available`
+- `It might have been deleted in an HMR update`
+- Clerk/React module instantiation failures
+
+**This is a Hot Module Replacement cache corruption issue.**
+
+### Fix
+
+Run the clean script and restart the dev server:
+
+```bash
+pnpm clean
+pnpm dev
+```
+
+Then hard refresh the browser (Cmd+Shift+R / Ctrl+Shift+R).
+
+### When This Happens
+- After package updates
+- After switching branches with different dependencies
+- After interrupted builds
+- Random HMR state corruption during development
