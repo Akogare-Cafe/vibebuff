@@ -5,6 +5,7 @@ import { api } from "../../convex/_generated/api";
 import Link from "next/link";
 import { Star, Download, TrendingUp, Package, Github, Globe, Calendar, Settings2 } from "lucide-react";
 import { PixelBadge } from "@/components/pixel-badge";
+import { ToolIcon } from "@/components/dynamic-icon";
 import { useState } from "react";
 
 interface ToolTickerItem {
@@ -55,7 +56,7 @@ function TickerItem({ tool, display }: { tool: ToolTickerItem; display: TickerDi
             loading="lazy"
           />
         ) : (
-          <Package className="w-4 h-4 text-muted-foreground" />
+          <ToolIcon toolSlug={tool.slug} className="w-4 h-4 text-muted-foreground" />
         )}
       </div>
 

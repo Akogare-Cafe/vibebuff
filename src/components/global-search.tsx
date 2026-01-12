@@ -188,8 +188,18 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
                       onClick={() => handleSelect(`/tools/${tool.slug}`)}
                       className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-secondary transition-colors text-left group"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
-                        <ToolIcon toolSlug={tool.slug} className="w-4 h-4" />
+                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-card border border-border overflow-hidden">
+                        {tool.logoUrl ? (
+                          <Image
+                            src={tool.logoUrl}
+                            alt={tool.name}
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <ToolIcon toolSlug={tool.slug} className="w-4 h-4 text-muted-foreground" />
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-sm font-medium text-foreground truncate">
