@@ -1,3 +1,5 @@
+"use client";
+
 import { Home, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PixelCard } from "@/components/pixel-card";
