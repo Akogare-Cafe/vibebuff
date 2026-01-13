@@ -1,22 +1,9 @@
 "use client";
 
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "./pixel-card";
-import { BarChart3, TrendingUp, Eye, MousePointer, Heart, Swords, GitCompare, Activity } from "lucide-react";
+import { BarChart3, TrendingUp, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Cell,
-} from "recharts";
+import { BarChart, BarList } from "@tremor/react";
 
 interface ToolStatsChartProps {
   stats?: {
@@ -40,20 +27,12 @@ const STAT_COLORS = {
 export function ToolStatsRadar({ stats, className }: ToolStatsChartProps) {
   if (!stats) return null;
 
-  const radarData = [
-    { stat: "HP", value: stats.hp, fullMark: 100 },
-    { stat: "ATK", value: stats.attack, fullMark: 100 },
-    { stat: "DEF", value: stats.defense, fullMark: 100 },
-    { stat: "SPD", value: stats.speed, fullMark: 100 },
-    { stat: "MANA", value: stats.mana, fullMark: 100 },
-  ];
-
-  const barData = [
-    { name: "HP", value: stats.hp, fill: STAT_COLORS.HP },
-    { name: "ATK", value: stats.attack, fill: STAT_COLORS.ATK },
-    { name: "DEF", value: stats.defense, fill: STAT_COLORS.DEF },
-    { name: "SPD", value: stats.speed, fill: STAT_COLORS.SPD },
-    { name: "MANA", value: stats.mana, fill: STAT_COLORS.MANA },
+  const barListData = [
+    { name: "HP", value: stats.hp, color: "red" },
+    { name: "ATK", value: stats.attack, color: "orange" },
+    { name: "DEF", value: stats.defense, color: "blue" },
+    { name: "SPD", value: stats.speed, color: "green" },
+    { name: "MANA", value: stats.mana, color: "purple" },
   ];
 
   return (
@@ -64,58 +43,28 @@ export function ToolStatsRadar({ stats, className }: ToolStatsChartProps) {
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-48 mb-4">
-          <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={radarData}>
-              <PolarGrid stroke="#374151" />
-              <PolarAngleAxis
-                dataKey="stat"
-                tick={{ fill: "#9ca3af", fontSize: 11 }}
-              />
-              <PolarRadiusAxis
-                angle={90}
-                domain={[0, 100]}
-                tick={{ fill: "#6b7280", fontSize: 9 }}
-              />
-              <Radar
-                name="Stats"
-                dataKey="value"
-                stroke="#22c55e"
-                fill="#22c55e"
-                fillOpacity={0.3}
-                strokeWidth={2}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                  color: "#22c55e",
-                }}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="h-32">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={barData} layout="vertical" margin={{ left: 0, right: 10 }}>
-              <XAxis type="number" domain={[0, 100]} tick={{ fill: "#9ca3af", fontSize: 9 }} axisLine={{ stroke: "#374151" }} />
-              <YAxis type="category" dataKey="name" tick={{ fill: "#9ca3af", fontSize: 10 }} axisLine={{ stroke: "#374151" }} width={45} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                }}
-                formatter={(value) => [`${value}`, "Power"]}
-              />
-              <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                {barData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.fill} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+        <div className="space-y-4">
+          {barListData.map((stat) => (
+            <div key={stat.name}>
+              <div className="flex justify-between mb-1">
+                <span className="text-muted-foreground text-xs font-medium">{stat.name}</span>
+                <span className="text-primary text-xs font-mono">{stat.value}/100</span>
+              </div>
+              <div className="h-2 bg-border rounded-full overflow-hidden">
+                <div
+                  className={cn(
+                    "h-full transition-all",
+                    stat.color === "red" && "bg-red-500",
+                    stat.color === "orange" && "bg-orange-500",
+                    stat.color === "blue" && "bg-blue-500",
+                    stat.color === "green" && "bg-green-500",
+                    stat.color === "purple" && "bg-purple-500"
+                  )}
+                  style={{ width: `${stat.value}%` }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
         <div className="mt-4 pt-3 border-t border-border">
           <div className="flex justify-between items-center">
@@ -149,17 +98,17 @@ const ENGAGEMENT_COLORS = ["#06b6d4", "#22c55e", "#ec4899", "#eab308", "#ef4444"
 
 export function PopularityChart({ popularity, className }: PopularityChartProps) {
   const chartData = [
-    { name: "Views", value: popularity.views, fill: ENGAGEMENT_COLORS[0] },
-    { name: "Clicks", value: popularity.clicks, fill: ENGAGEMENT_COLORS[1] },
-    { name: "Favorites", value: popularity.favorites, fill: ENGAGEMENT_COLORS[2] },
-    { name: "Deck Adds", value: popularity.deckAdds, fill: ENGAGEMENT_COLORS[3] },
-    { name: "Battles", value: popularity.battlePicks, fill: ENGAGEMENT_COLORS[4] },
-    { name: "Compares", value: popularity.comparisons, fill: ENGAGEMENT_COLORS[5] },
+    { name: "Views", value: popularity.views },
+    { name: "Clicks", value: popularity.clicks },
+    { name: "Favorites", value: popularity.favorites },
+    { name: "Deck Adds", value: popularity.deckAdds },
+    { name: "Battles", value: popularity.battlePicks },
+    { name: "Compares", value: popularity.comparisons },
   ];
 
   const weeklyData = [
-    { name: "Views", value: popularity.weeklyViews, fill: "#06b6d4" },
-    { name: "Clicks", value: popularity.weeklyClicks, fill: "#22c55e" },
+    { name: "Views", value: popularity.weeklyViews },
+    { name: "Clicks", value: popularity.weeklyClicks },
   ];
 
   return (
@@ -170,32 +119,15 @@ export function PopularityChart({ popularity, className }: PopularityChartProps)
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-48 mb-4">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} margin={{ left: -10, right: 10 }}>
-              <XAxis
-                dataKey="name"
-                tick={{ fill: "#9ca3af", fontSize: 9 }}
-                axisLine={{ stroke: "#374151" }}
-                tickFormatter={(value) => value.length > 6 ? `${value.slice(0, 5)}..` : value}
-              />
-              <YAxis tick={{ fill: "#9ca3af", fontSize: 9 }} axisLine={{ stroke: "#374151" }} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                }}
-                formatter={(value) => [(value as number).toLocaleString(), ""]}
-              />
-              <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.fill} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        <BarChart
+          className="h-48 mb-4"
+          data={chartData}
+          index="name"
+          categories={["value"]}
+          colors={["cyan", "green", "pink", "yellow", "red", "purple"]}
+          valueFormatter={(value) => value.toLocaleString()}
+          showLegend={false}
+        />
 
         <div className="pt-3 border-t border-border">
           <div className="flex items-center justify-between mb-3">
@@ -205,27 +137,13 @@ export function PopularityChart({ popularity, className }: PopularityChartProps)
             </div>
             <span className="text-green-400 text-xl font-mono">{popularity.trendScore}</span>
           </div>
-          <div className="h-24">
+          <div>
             <p className="text-muted-foreground text-[10px] mb-2 text-center">WEEKLY ACTIVITY</p>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={weeklyData} layout="vertical" margin={{ left: 0, right: 10 }}>
-                <XAxis type="number" tick={{ fill: "#9ca3af", fontSize: 9 }} axisLine={{ stroke: "#374151" }} />
-                <YAxis type="category" dataKey="name" tick={{ fill: "#9ca3af", fontSize: 10 }} axisLine={{ stroke: "#374151" }} width={50} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#0a0f1a",
-                    border: "2px solid #374151",
-                    borderRadius: 0,
-                  }}
-                  formatter={(value) => [(value as number).toLocaleString(), ""]}
-                />
-                <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                  {weeklyData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+            <BarList
+              data={weeklyData}
+              valueFormatter={(value: number) => value.toLocaleString()}
+              color="cyan"
+            />
           </div>
         </div>
       </PixelCardContent>
@@ -245,9 +163,8 @@ interface RatingDisplayProps {
 
 export function RatingDisplay({ rating, className }: RatingDisplayProps) {
   const distributionData = [5, 4, 3, 2, 1].map((star) => ({
-    star: `${star}★`,
-    count: rating.distribution[star as keyof typeof rating.distribution],
-    fill: star >= 4 ? "#eab308" : star === 3 ? "#f97316" : "#ef4444",
+    name: `${star}★`,
+    value: rating.distribution[star as keyof typeof rating.distribution],
   }));
 
   return (
@@ -263,32 +180,12 @@ export function RatingDisplay({ rating, className }: RatingDisplayProps) {
             <p className="text-primary text-4xl font-mono">{rating.averageRating.toFixed(1)}</p>
             <p className="text-muted-foreground text-xs mt-1">{rating.totalReviews} REVIEWS</p>
           </div>
-          <div className="flex-1 h-32">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={distributionData} layout="vertical" margin={{ left: 0, right: 10 }}>
-                <XAxis type="number" tick={{ fill: "#9ca3af", fontSize: 9 }} axisLine={{ stroke: "#374151" }} />
-                <YAxis
-                  type="category"
-                  dataKey="star"
-                  tick={{ fill: "#eab308", fontSize: 10 }}
-                  axisLine={{ stroke: "#374151" }}
-                  width={35}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#0a0f1a",
-                    border: "2px solid #374151",
-                    borderRadius: 0,
-                  }}
-                  formatter={(value) => [`${value} reviews`, ""]}
-                />
-                <Bar dataKey="count" radius={[0, 4, 4, 0]}>
-                  {distributionData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.fill} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="flex-1">
+            <BarList
+              data={distributionData}
+              valueFormatter={(value: number) => `${value} reviews`}
+              color="yellow"
+            />
           </div>
         </div>
         {rating.shippedCount > 0 && (

@@ -1,23 +1,6 @@
 "use client";
 
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  PieChart,
-  Pie,
-  Cell,
-  AreaChart,
-  Area,
-} from "recharts";
+import { BarChart, DonutChart, AreaChart, BarList } from "@tremor/react";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "./pixel-card";
 import { BarChart3, PieChart as PieChartIcon, Activity, TrendingUp } from "lucide-react";
 
@@ -54,10 +37,9 @@ const CHART_COLORS = [
 export function XpDistributionChart({ data }: XpDistributionChartProps) {
   if (!data || data.length === 0) return null;
 
-  const chartData = data.slice(0, 10).map((user, index) => ({
+  const chartData = data.slice(0, 10).map((user) => ({
     name: user.username || `User ${user.rank}`,
-    xp: user.xp || 0,
-    fill: CHART_COLORS[index % CHART_COLORS.length],
+    "XP": user.xp || 0,
   }));
 
   return (
@@ -68,35 +50,16 @@ export function XpDistributionChart({ data }: XpDistributionChartProps) {
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} layout="vertical" margin={{ left: 0, right: 20 }}>
-              <XAxis type="number" tick={{ fill: "#9ca3af", fontSize: 10 }} axisLine={{ stroke: "#374151" }} />
-              <YAxis
-                type="category"
-                dataKey="name"
-                tick={{ fill: "#9ca3af", fontSize: 10 }}
-                axisLine={{ stroke: "#374151" }}
-                width={80}
-                tickFormatter={(value) => value.length > 10 ? `${value.slice(0, 10)}...` : value}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                  color: "#22c55e",
-                }}
-                formatter={(value) => [`${(value as number).toLocaleString()} XP`, "XP"]}
-              />
-              <Bar dataKey="xp" radius={[0, 4, 4, 0]}>
-                {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.fill} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        <BarChart
+          className="h-64"
+          data={chartData}
+          index="name"
+          categories={["XP"]}
+          colors={["emerald"]}
+          valueFormatter={(value) => `${value.toLocaleString()} XP`}
+          layout="vertical"
+          showLegend={false}
+        />
       </PixelCardContent>
     </PixelCard>
   );
@@ -111,8 +74,7 @@ export function BattleStatsChart({ data }: BattleStatsChartProps) {
 
   const chartData = data.slice(0, 8).map((user) => ({
     name: user.username || `User ${user.rank}`,
-    wins: user.battlesWon || 0,
-    winRate: user.winRate || 0,
+    "Battles Won": user.battlesWon || 0,
   }));
 
   return (
@@ -123,44 +85,15 @@ export function BattleStatsChart({ data }: BattleStatsChartProps) {
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ left: 0, right: 20, top: 10 }}>
-              <defs>
-                <linearGradient id="winsGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
-                </linearGradient>
-              </defs>
-              <XAxis
-                dataKey="name"
-                tick={{ fill: "#9ca3af", fontSize: 10 }}
-                axisLine={{ stroke: "#374151" }}
-                tickFormatter={(value) => value.length > 6 ? `${value.slice(0, 6)}..` : value}
-              />
-              <YAxis tick={{ fill: "#9ca3af", fontSize: 10 }} axisLine={{ stroke: "#374151" }} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                  color: "#ef4444",
-                }}
-                formatter={(value, name) => [
-                  name === "wins" ? `${value} wins` : `${value}%`,
-                  name === "wins" ? "Battles Won" : "Win Rate",
-                ]}
-              />
-              <Area
-                type="monotone"
-                dataKey="wins"
-                stroke="#ef4444"
-                fill="url(#winsGradient)"
-                strokeWidth={2}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
+        <AreaChart
+          className="h-64"
+          data={chartData}
+          index="name"
+          categories={["Battles Won"]}
+          colors={["red"]}
+          valueFormatter={(value) => `${value} wins`}
+          showLegend={false}
+        />
       </PixelCardContent>
     </PixelCard>
   );
@@ -180,10 +113,10 @@ export function ActivityBreakdownChart({ xpData, battlesData, decksData, questsD
   const totalQuests = questsData?.reduce((sum, u) => sum + (u.questsCompleted || 0), 0) || 0;
 
   const chartData = [
-    { name: "XP Earned", value: totalXp, color: "#22c55e" },
-    { name: "Battles Won", value: totalBattles, color: "#ef4444" },
-    { name: "Decks Created", value: totalDecks, color: "#3b82f6" },
-    { name: "Quests Done", value: totalQuests, color: "#a855f7" },
+    { name: "XP Earned", value: totalXp },
+    { name: "Battles Won", value: totalBattles },
+    { name: "Decks Created", value: totalDecks },
+    { name: "Quests Done", value: totalQuests },
   ].filter((d) => d.value > 0);
 
   if (chartData.length === 0) return null;
@@ -196,35 +129,15 @@ export function ActivityBreakdownChart({ xpData, battlesData, decksData, questsD
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-64 flex items-center justify-center">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                innerRadius={50}
-                outerRadius={80}
-                paddingAngle={2}
-                dataKey="value"
-                label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
-                labelLine={{ stroke: "#6b7280" }}
-              >
-                {chartData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} stroke="#0a0f1a" strokeWidth={2} />
-                ))}
-              </Pie>
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                }}
-                formatter={(value) => [(value as number).toLocaleString(), ""]}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        <DonutChart
+          className="h-64"
+          data={chartData}
+          category="value"
+          index="name"
+          colors={["emerald", "red", "blue", "purple"]}
+          valueFormatter={(value) => value.toLocaleString()}
+          showLabel={true}
+        />
       </PixelCardContent>
     </PixelCard>
   );
@@ -242,39 +155,21 @@ interface TopPerformersRadarProps {
 }
 
 export function TopPerformersRadar({ user, maxRank }: TopPerformersRadarProps) {
-  const chartData = [
-    { stat: "XP", value: maxRank - (user.xpRank || maxRank) + 1, fullMark: maxRank },
-    { stat: "Battles", value: maxRank - (user.battlesRank || maxRank) + 1, fullMark: maxRank },
-    { stat: "Decks", value: maxRank - (user.decksRank || maxRank) + 1, fullMark: maxRank },
-    { stat: "Quests", value: maxRank - (user.questsRank || maxRank) + 1, fullMark: maxRank },
-    { stat: "Mastery", value: maxRank - (user.masteryRank || maxRank) + 1, fullMark: maxRank },
+  const barListData = [
+    { name: "XP Rank", value: maxRank - (user.xpRank || maxRank) + 1 },
+    { name: "Battles Rank", value: maxRank - (user.battlesRank || maxRank) + 1 },
+    { name: "Decks Rank", value: maxRank - (user.decksRank || maxRank) + 1 },
+    { name: "Quests Rank", value: maxRank - (user.questsRank || maxRank) + 1 },
+    { name: "Mastery Rank", value: maxRank - (user.masteryRank || maxRank) + 1 },
   ];
 
   return (
     <div className="h-64">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={chartData}>
-          <PolarGrid stroke="#374151" />
-          <PolarAngleAxis dataKey="stat" tick={{ fill: "#9ca3af", fontSize: 11 }} />
-          <PolarRadiusAxis tick={{ fill: "#6b7280", fontSize: 9 }} domain={[0, maxRank]} />
-          <Radar
-            name={user.username || "User"}
-            dataKey="value"
-            stroke="#22c55e"
-            fill="#22c55e"
-            fillOpacity={0.3}
-            strokeWidth={2}
-          />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "#0a0f1a",
-              border: "2px solid #374151",
-              borderRadius: 0,
-              color: "#22c55e",
-            }}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
+      <BarList
+        data={barListData}
+        valueFormatter={(value: number) => `Rank ${maxRank - value + 1}`}
+        color="emerald"
+      />
     </div>
   );
 }
@@ -289,8 +184,8 @@ export function EngagementTrendChart({ toolsViewedData, votesData }: EngagementT
 
   const chartData = (toolsViewedData || []).slice(0, 10).map((user, index) => ({
     name: user.username || `User ${user.rank}`,
-    toolsViewed: user.toolsViewed || 0,
-    votes: votesData?.[index]?.votescast || 0,
+    "Tools Viewed": user.toolsViewed || 0,
+    "Votes Cast": votesData?.[index]?.votescast || 0,
   }));
 
   if (chartData.length === 0) return null;
@@ -303,38 +198,15 @@ export function EngagementTrendChart({ toolsViewedData, votesData }: EngagementT
         </PixelCardTitle>
       </PixelCardHeader>
       <PixelCardContent>
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} margin={{ left: 0, right: 20 }}>
-              <XAxis
-                dataKey="name"
-                tick={{ fill: "#9ca3af", fontSize: 10 }}
-                axisLine={{ stroke: "#374151" }}
-                tickFormatter={(value) => value.length > 6 ? `${value.slice(0, 6)}..` : value}
-              />
-              <YAxis tick={{ fill: "#9ca3af", fontSize: 10 }} axisLine={{ stroke: "#374151" }} />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "#0a0f1a",
-                  border: "2px solid #374151",
-                  borderRadius: 0,
-                }}
-              />
-              <Bar dataKey="toolsViewed" name="Tools Viewed" fill="#6366f1" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="votes" name="Votes Cast" fill="#ec4899" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="flex justify-center gap-6 mt-3">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-indigo-500" />
-            <span className="text-muted-foreground text-xs">Tools Viewed</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-pink-500" />
-            <span className="text-muted-foreground text-xs">Votes Cast</span>
-          </div>
-        </div>
+        <BarChart
+          className="h-64"
+          data={chartData}
+          index="name"
+          categories={["Tools Viewed", "Votes Cast"]}
+          colors={["indigo", "pink"]}
+          valueFormatter={(value) => value.toString()}
+          showLegend={true}
+        />
       </PixelCardContent>
     </PixelCard>
   );
