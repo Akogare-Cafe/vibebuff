@@ -4,6 +4,7 @@ import { ChevronLeft, Calendar, Clock, Twitter, Linkedin } from "lucide-react";
 import { notFound } from "next/navigation";
 import { BlogContent } from "@/components/blog-content";
 import { getBlogPost, getBlogSlugs } from "@/lib/blog";
+import { BlogPromoSection } from "@/components/blog-promo-section";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -130,17 +131,8 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </article>
 
-        <div className="border-4 border-border bg-card p-8 mt-12 text-center">
-          <h2 className="text-primary text-sm mb-4">FIND YOUR PERFECT TECH STACK</h2>
-          <p className="text-muted-foreground text-xs mb-6">
-            Use our AI-powered Stack Builder to get personalized recommendations for your project.
-          </p>
-          <Link
-            href="/"
-            className="inline-block bg-primary text-background px-6 py-2 text-sm hover:bg-primary transition-colors"
-          >
-            AI STACK BUILDER
-          </Link>
+        <div className="mt-12">
+          <BlogPromoSection />
         </div>
       </main>
 

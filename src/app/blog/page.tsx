@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { BlogList } from "@/components/blog-list";
 import { getAllBlogPosts } from "@/lib/blog";
+import { BlogPromoSection } from "@/components/blog-promo-section";
 
 export const metadata: Metadata = {
   title: "Blog - Developer Guides & Tech Stack Insights",
@@ -39,6 +40,10 @@ export default function BlogPage() {
         </div>
 
         <BlogList posts={posts} />
+
+        <section className="mb-12">
+          <BlogPromoSection />
+        </section>
 
         <section className="border-4 border-primary bg-card p-8 text-center">
           <h2 className="text-primary text-sm mb-4">
