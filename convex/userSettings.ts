@@ -87,32 +87,58 @@ export const updateProfile = mutation({
     twitterUsername: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthenticatedUser(ctx);
-    const updates = args;
-    
-    let settings = await ctx.db
-      .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", userId))
-      .first();
+    try {
+      const userId = await getAuthenticatedUser(ctx);
+      console.log("updateProfile called by user:", userId);
+      console.log("updateProfile args:", args);
+      
+      // Filter out undefined values to only update provided fields
+      const updates: Record<string, string> = {};
+      if (args.displayName !== undefined) updates.displayName = args.displayName;
+      if (args.bio !== undefined) updates.bio = args.bio;
+      if (args.location !== undefined) updates.location = args.location;
+      if (args.website !== undefined) updates.website = args.website;
+      if (args.githubUsername !== undefined) updates.githubUsername = args.githubUsername;
+      if (args.twitterUsername !== undefined) updates.twitterUsername = args.twitterUsername;
+      
+      let settings = await ctx.db
+        .query("userSettings")
+        .withIndex("by_user", (q) => q.eq("userId", userId))
+        .first();
 
-    if (!settings) {
-      const now = Date.now();
-      const settingsId = await ctx.db.insert("userSettings", {
-        userId,
-        ...DEFAULT_SETTINGS,
+      if (!settings) {
+        console.log("Creating new settings for user:", userId);
+        const now = Date.now();
+        const settingsId = await ctx.db.insert("userSettings", {
+          userId,
+          ...DEFAULT_SETTINGS,
+          displayName: args.displayName,
+          bio: args.bio,
+          location: args.location,
+          website: args.website,
+          githubUsername: args.githubUsername,
+          twitterUsername: args.twitterUsername,
+          createdAt: now,
+          updatedAt: now,
+        });
+        const newSettings = await ctx.db.get(settingsId);
+        console.log("Created new settings:", settingsId);
+        return newSettings;
+      }
+
+      console.log("Updating existing settings:", settings._id);
+      await ctx.db.patch(settings._id, {
         ...updates,
-        createdAt: now,
-        updatedAt: now,
+        updatedAt: Date.now(),
       });
-      return await ctx.db.get(settingsId);
+
+      const updatedSettings = await ctx.db.get(settings._id);
+      console.log("Updated settings successfully");
+      return updatedSettings;
+    } catch (error) {
+      console.error("Error in updateProfile:", error);
+      throw error;
     }
-
-    await ctx.db.patch(settings._id, {
-      ...updates,
-      updatedAt: Date.now(),
-    });
-
-    return await ctx.db.get(settings._id);
   },
 });
 

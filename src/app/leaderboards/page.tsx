@@ -21,13 +21,6 @@ import {
 import { ToolsLeaderboard } from "@/components/tools-leaderboard";
 import { TourTrigger } from "@/components/page-tour";
 import { leaderboardsTourConfig } from "@/lib/tour-configs";
-import {
-  XpDistributionChart,
-  BattleStatsChart,
-  ActivityBreakdownChart,
-  EngagementTrendChart,
-} from "@/components/leaderboard-charts";
-import { BarChart3 } from "lucide-react";
 
 type LeaderboardType = "xp" | "battles" | "decks" | "mastery" | "quests" | "toolsViewed" | "votes";
 
@@ -85,27 +78,6 @@ export default function LeaderboardsPage() {
             Tools Rankings
           </h2>
           <ToolsLeaderboard limit={10} />
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-cyan-400" />
-            Community Stats
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <XpDistributionChart data={xpLeaderboard} />
-            <BattleStatsChart data={battlesLeaderboard} />
-            <ActivityBreakdownChart
-              xpData={xpLeaderboard}
-              battlesData={battlesLeaderboard}
-              decksData={decksLeaderboard}
-              questsData={questsLeaderboard}
-            />
-            <EngagementTrendChart
-              toolsViewedData={toolsViewedLeaderboard}
-              votesData={votesLeaderboard}
-            />
-          </div>
         </div>
 
         <div className="mb-6">

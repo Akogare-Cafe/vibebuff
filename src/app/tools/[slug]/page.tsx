@@ -49,7 +49,6 @@ import { AdDisplay } from "@/components/ad-display";
 import { ShareButton } from "@/components/share-modal";
 import { SuggestEditModal } from "@/components/suggest-edit-modal";
 import { AutoLinkTools } from "@/components/auto-link-tools";
-import { ToolStatsRadar, PopularityChart, RatingDisplay } from "@/components/tool-stats-chart";
 import { ToolReviews } from "@/components/tool-reviews";
 import { ToolExternalData } from "@/components/tool-external-data";
 import { ToolInstallCommands, ToolSocialLinks, ToolReadmeInfo, ToolChangelog } from "@/components/tool-expanded-metadata";
@@ -579,16 +578,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
           </PixelCard>
         )}
 
-        {/* Analytics & Stats Section */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {tool.stats && <ToolStatsRadar stats={tool.stats} />}
-          {popularity && <PopularityChart popularity={popularity} />}
-        </div>
-
-        {/* Community Rating */}
-        {ratingSummary && ratingSummary.totalReviews > 0 && (
-          <RatingDisplay rating={ratingSummary} className="mb-8" />
-        )}
 
         {/* Install Commands */}
         <ToolInstallCommands
