@@ -6,6 +6,9 @@ import { BlogContent } from "@/components/blog-content";
 import { getBlogPost, getBlogSlugs } from "@/lib/blog";
 import { BlogPromoSection } from "@/components/blog-promo-section";
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 type Props = {
   params: Promise<{ slug: string }>;
 };

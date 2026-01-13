@@ -25,6 +25,16 @@ import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { ComparisonViewTracker } from "./view-tracker";
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const comparisons = await fetchQuery(api.seo.listComparisons, { limit: 200 });
+  return comparisons.map((comparison) => ({
+    slug: comparison.slug,
+  }));
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
