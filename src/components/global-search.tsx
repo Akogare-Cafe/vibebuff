@@ -6,13 +6,14 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import {
   Search,
-  Package,
   Scale,
   Building2,
   FileText,
   X,
   Loader2,
   ArrowRight,
+  Sparkles,
+  Command,
 } from "lucide-react";
 import Image from "next/image";
 import { ToolIcon } from "@/components/dynamic-icon";
@@ -88,113 +89,145 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
 
   const isLoading = debouncedQuery.length >= 2 && searchResults === undefined;
 
+  const isFocused = isOpen || query.length > 0;
+
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <label
-        className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all cursor-text"
-        onClick={() => {
-          setIsOpen(true);
-          inputRef.current?.focus();
-        }}
+      <div
+        className={`relative rounded-xl transition-all duration-300 ${
+          isFocused
+            ? "shadow-[0_0_20px_rgba(127,19,236,0.15)] ring-1 ring-primary/30"
+            : "hover:shadow-[0_0_15px_rgba(127,19,236,0.08)]"
+        }`}
       >
-        <div className="text-muted-foreground flex border-none bg-card items-center justify-center pl-4 rounded-l-lg">
-          <Search className="w-5 h-5" />
-        </div>
-        <input
-          ref={inputRef}
-          type="text"
-          className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none text-foreground focus:outline-0 bg-card border-none h-full placeholder:text-muted-foreground/50 px-4 pl-2 text-sm font-normal"
-          placeholder="Search everything..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setIsOpen(true);
-          }}
-          onFocus={() => setIsOpen(true)}
+        <div
+          className={`absolute -inset-[1px] rounded-xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 opacity-0 transition-opacity duration-300 ${
+            isFocused ? "opacity-100" : "group-hover:opacity-50"
+          }`}
         />
-        {query && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setQuery("");
-              inputRef.current?.focus();
-            }}
-            className="flex items-center justify-center px-2 bg-card rounded-r-lg text-muted-foreground hover:text-foreground"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        )}
-        {!query && (
-          <div className="hidden sm:flex items-center pr-3 bg-card rounded-r-lg">
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-              <span className="text-xs">⌘</span>K
-            </kbd>
+        <label
+          className="relative flex w-full items-stretch rounded-xl h-11 group cursor-text bg-card/80 backdrop-blur-sm border border-border/50 overflow-hidden"
+          onClick={() => {
+            setIsOpen(true);
+            inputRef.current?.focus();
+          }}
+        >
+          <div className={`flex items-center justify-center pl-4 transition-colors duration-200 ${
+            isFocused ? "text-primary" : "text-muted-foreground"
+          }`}>
+            <Search className={`w-4 h-4 transition-transform duration-200 ${isFocused ? "scale-110" : ""}`} />
           </div>
-        )}
-      </label>
+          <input
+            ref={inputRef}
+            type="text"
+            className="flex w-full min-w-0 flex-1 resize-none overflow-hidden bg-transparent text-foreground focus:outline-none h-full placeholder:text-muted-foreground/60 px-3 text-sm font-normal tracking-wide"
+            placeholder="Search tools, comparisons, companies..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setIsOpen(true);
+            }}
+            onFocus={() => setIsOpen(true)}
+          />
+          {query && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setQuery("");
+                inputRef.current?.focus();
+              }}
+              className="flex items-center justify-center px-3 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+          {!query && (
+            <div className="hidden sm:flex items-center gap-1.5 pr-3">
+              <kbd className="inline-flex h-6 items-center gap-1 rounded-md bg-muted/80 border border-border/60 px-2 font-mono text-[11px] font-medium text-muted-foreground shadow-sm">
+                <Command className="w-3 h-3" />
+                <span>K</span>
+              </kbd>
+            </div>
+          )}
+        </label>
+      </div>
 
       {isOpen && (query.length >= 2 || hasResults) && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-xl z-50 max-h-[70vh] overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-3 bg-card/95 backdrop-blur-xl border border-border/50 rounded-xl shadow-2xl shadow-black/20 z-50 max-h-[70vh] overflow-y-auto overflow-x-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent pointer-events-none rounded-xl" />
+          
           {isLoading && (
-            <div className="flex items-center justify-center py-8">
-              <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+            <div className="relative flex items-center justify-center gap-3 py-10">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 rounded-full blur-md animate-pulse" />
+                <Loader2 className="relative w-5 h-5 animate-spin text-primary" />
+              </div>
+              <span className="text-sm text-muted-foreground">Searching...</span>
             </div>
           )}
 
           {!isLoading && debouncedQuery.length >= 2 && !hasResults && (
-            <div className="py-8 text-center text-muted-foreground text-sm">
-              No results found for &quot;{debouncedQuery}&quot;
+            <div className="relative py-10 text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-muted/50 mb-3">
+                <Search className="w-5 h-5 text-muted-foreground" />
+              </div>
+              <p className="text-sm text-muted-foreground">
+                No results found for <span className="text-foreground font-medium">&quot;{debouncedQuery}&quot;</span>
+              </p>
             </div>
           )}
 
           {!isLoading && hasResults && (
-            <div className="py-2">
+            <div className="relative py-2">
               {searchResults.pages.length > 0 && (
-                <div className="px-3 py-2">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                <div className="px-2 py-2">
+                  <div className="flex items-center gap-2 px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+                    <FileText className="w-3 h-3" />
                     Pages
                   </div>
                   {searchResults.pages.map((page) => (
                     <button
                       key={page.href}
                       onClick={() => handleSelect(page.href)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-secondary transition-colors text-left group"
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-all duration-150 text-left group"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
+                      <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 text-primary ring-1 ring-primary/10">
                         <FileText className="w-4 h-4" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-foreground truncate">
+                        <div className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
                           {page.name}
                         </div>
                         <div className="text-xs text-muted-foreground truncate">
                           {page.description}
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </button>
                   ))}
                 </div>
               )}
 
               {searchResults.tools.length > 0 && (
-                <div className="px-3 py-2 border-t border-border">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                <div className="px-2 py-2">
+                  {searchResults.pages.length > 0 && <div className="h-px bg-border/50 mx-3 mb-2" />}
+                  <div className="flex items-center gap-2 px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+                    <Sparkles className="w-3 h-3" />
                     Tools
                   </div>
                   {searchResults.tools.map((tool) => (
                     <button
                       key={tool.id}
                       onClick={() => handleSelect(`/tools/${tool.slug}`)}
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-secondary transition-colors text-left group"
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-all duration-150 text-left group"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-card border border-border overflow-hidden">
+                      <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-card ring-1 ring-border/60 overflow-hidden">
                         {tool.logoUrl ? (
                           <Image
                             src={tool.logoUrl}
                             alt={tool.name}
-                            width={32}
-                            height={32}
+                            width={36}
+                            height={36}
                             className="w-full h-full object-contain"
                           />
                         ) : (
@@ -202,22 +235,24 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-foreground truncate">
+                        <div className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
                           {tool.name}
                         </div>
                         <div className="text-xs text-muted-foreground truncate">
                           {tool.tagline}
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </button>
                   ))}
                 </div>
               )}
 
               {searchResults.comparisons.length > 0 && (
-                <div className="px-3 py-2 border-t border-border">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                <div className="px-2 py-2">
+                  {(searchResults.pages.length > 0 || searchResults.tools.length > 0) && <div className="h-px bg-border/50 mx-3 mb-2" />}
+                  <div className="flex items-center gap-2 px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+                    <Scale className="w-3 h-3" />
                     Comparisons
                   </div>
                   {searchResults.comparisons.map((comparison) => (
@@ -226,28 +261,30 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
                       onClick={() =>
                         handleSelect(`/compare/${comparison.slug}`)
                       }
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-secondary transition-colors text-left group"
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-all duration-150 text-left group"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-orange-500/10 text-orange-500">
+                      <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 text-orange-500 ring-1 ring-orange-500/10">
                         <Scale className="w-4 h-4" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-foreground truncate">
+                        <div className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
                           {comparison.title}
                         </div>
                         <div className="text-xs text-muted-foreground truncate">
                           {comparison.tool1Slug} vs {comparison.tool2Slug}
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </button>
                   ))}
                 </div>
               )}
 
               {searchResults.companies.length > 0 && (
-                <div className="px-3 py-2 border-t border-border">
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                <div className="px-2 py-2">
+                  {(searchResults.pages.length > 0 || searchResults.tools.length > 0 || searchResults.comparisons.length > 0) && <div className="h-px bg-border/50 mx-3 mb-2" />}
+                  <div className="flex items-center gap-2 px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+                    <Building2 className="w-3 h-3" />
                     Companies
                   </div>
                   {searchResults.companies.map((company) => (
@@ -256,15 +293,15 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
                       onClick={() =>
                         handleSelect(`/companies/${company.slug}`)
                       }
-                      className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-secondary transition-colors text-left group"
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/5 transition-all duration-150 text-left group"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-card border border-border overflow-hidden">
+                      <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-card ring-1 ring-border/60 overflow-hidden">
                         {company.logoUrl ? (
                           <Image
                             src={company.logoUrl}
                             alt={company.name}
-                            width={32}
-                            height={32}
+                            width={36}
+                            height={36}
                             className="w-full h-full object-contain"
                           />
                         ) : (
@@ -272,21 +309,21 @@ export function GlobalSearch({ className }: GlobalSearchProps) {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-foreground truncate">
+                        <div className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
                           {company.name}
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     </button>
                   ))}
                 </div>
               )}
 
               {debouncedQuery.length >= 2 && (
-                <div className="px-3 py-2 border-t border-border">
+                <div className="px-3 py-3 border-t border-border/50 bg-muted/30">
                   <button
                     onClick={() => handleSelect(`/tools?search=${encodeURIComponent(debouncedQuery)}`)}
-                    className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-colors"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-all duration-150 ring-1 ring-primary/20 hover:ring-primary/30"
                   >
                     <Search className="w-4 h-4" />
                     Search all tools for &quot;{debouncedQuery}&quot;

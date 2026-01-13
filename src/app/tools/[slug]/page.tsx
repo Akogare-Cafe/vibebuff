@@ -772,6 +772,26 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
           </PixelCardContent>
         </PixelCard>
 
+        {/* Alternatives CTA */}
+        <PixelCard className="mb-8 border-secondary">
+          <PixelCardContent className="py-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-8 h-8 text-secondary" />
+                <div>
+                  <p className="text-primary text-sm">{tool.name.toUpperCase()} ALTERNATIVES</p>
+                  <p className="text-muted-foreground text-xs">Discover the best alternatives to {tool.name}</p>
+                </div>
+              </div>
+              <Link href={`/alternatives/${tool.slug}`}>
+                <PixelButton variant="secondary">
+                  <Sparkles className="w-4 h-4 mr-2" /> VIEW ALTERNATIVES
+                </PixelButton>
+              </Link>
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+
         {/* User Reviews Section */}
         <div className="mb-8">
           <ToolReviews toolId={tool._id} userId={userId || undefined} />

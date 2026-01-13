@@ -170,10 +170,13 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      setSaveError("Failed to save profile. Please try again.");
+      console.error("Profile save error:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to save profile. Please try again.";
+      setSaveError(errorMessage);
       setTimeout(() => setSaveError(null), 3000);
+    } finally {
+      setIsSaving(false);
     }
-    setIsSaving(false);
   };
 
   const handleSaveNotifications = async () => {
@@ -187,10 +190,13 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      setSaveError("Failed to save notifications. Please try again.");
+      console.error("Notification save error:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to save notifications. Please try again.";
+      setSaveError(errorMessage);
       setTimeout(() => setSaveError(null), 3000);
+    } finally {
+      setIsSaving(false);
     }
-    setIsSaving(false);
   };
 
   const handleSavePrivacy = async () => {
@@ -204,10 +210,13 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      setSaveError("Failed to save privacy settings. Please try again.");
+      console.error("Privacy save error:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to save privacy settings. Please try again.";
+      setSaveError(errorMessage);
       setTimeout(() => setSaveError(null), 3000);
+    } finally {
+      setIsSaving(false);
     }
-    setIsSaving(false);
   };
 
   const handleSavePreferences = async () => {
@@ -221,10 +230,13 @@ export default function SettingsPage() {
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 2000);
     } catch (error) {
-      setSaveError("Failed to save preferences. Please try again.");
+      console.error("Preferences save error:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to save preferences. Please try again.";
+      setSaveError(errorMessage);
       setTimeout(() => setSaveError(null), 3000);
+    } finally {
+      setIsSaving(false);
     }
-    setIsSaving(false);
   };
 
   const handleDeleteAccount = async () => {

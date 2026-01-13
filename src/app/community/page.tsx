@@ -389,7 +389,7 @@ export default function CommunityPage() {
             )}
           </div>
           <div className="text-center mt-6">
-            <Link href="/compare">
+            <Link href="/comparisons">
               <PixelButton variant="outline">
                 <Scale className="w-4 h-4 mr-2" /> VIEW ALL COMPARISONS
               </PixelButton>

@@ -97,11 +97,18 @@ export function SuggestEditModal({ tool, trigger }: SuggestEditModalProps) {
       if (websiteUrl !== tool.websiteUrl) suggestedChanges.websiteUrl = websiteUrl;
       if (githubUrl !== (tool.githubUrl || "")) suggestedChanges.githubUrl = githubUrl || undefined;
       if (docsUrl !== (tool.docsUrl || "")) suggestedChanges.docsUrl = docsUrl || undefined;
-      if (JSON.stringify(pros) !== JSON.stringify(tool.pros)) suggestedChanges.pros = pros;
-      if (JSON.stringify(cons) !== JSON.stringify(tool.cons)) suggestedChanges.cons = cons;
-      if (JSON.stringify(bestFor) !== JSON.stringify(tool.bestFor)) suggestedChanges.bestFor = bestFor;
-      if (JSON.stringify(features) !== JSON.stringify(tool.features)) suggestedChanges.features = features;
-      if (JSON.stringify(tags) !== JSON.stringify(tool.tags)) suggestedChanges.tags = tags;
+      
+      const filteredPros = pros.filter(p => p.trim() !== "");
+      const filteredCons = cons.filter(c => c.trim() !== "");
+      const filteredBestFor = bestFor.filter(b => b.trim() !== "");
+      const filteredFeatures = features.filter(f => f.trim() !== "");
+      const filteredTags = tags.filter(t => t.trim() !== "");
+      
+      if (JSON.stringify(filteredPros) !== JSON.stringify(tool.pros)) suggestedChanges.pros = filteredPros;
+      if (JSON.stringify(filteredCons) !== JSON.stringify(tool.cons)) suggestedChanges.cons = filteredCons;
+      if (JSON.stringify(filteredBestFor) !== JSON.stringify(tool.bestFor)) suggestedChanges.bestFor = filteredBestFor;
+      if (JSON.stringify(filteredFeatures) !== JSON.stringify(tool.features)) suggestedChanges.features = filteredFeatures;
+      if (JSON.stringify(filteredTags) !== JSON.stringify(tool.tags)) suggestedChanges.tags = filteredTags;
 
       await submitSuggestion({
         toolId: tool._id,
@@ -111,6 +118,7 @@ export function SuggestEditModal({ tool, trigger }: SuggestEditModalProps) {
       
       setSubmitted(true);
     } catch (error) {
+      console.error("Failed to submit suggestion:", error);
     } finally {
       setIsSubmitting(false);
     }

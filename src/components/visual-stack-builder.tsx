@@ -1476,6 +1476,20 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
     [setEdges]
   );
 
+  const onNodesDelete = useCallback(
+    (deleted: Node[]) => {
+      setEdges((eds: Edge[]) =>
+        eds.filter(
+          (edge) =>
+            !deleted.some(
+              (node) => node.id === edge.source || node.id === edge.target
+            )
+        )
+      );
+    },
+    [setEdges]
+  );
+
   const handleAddNode = useCallback(
     (category: string, label: string, description?: string) => {
       const newNode: Node<ToolNodeData> = {
@@ -1808,6 +1822,42 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
     [setNodes, setEdges]
   );
 
+  const handleImportStackJSON = useCallback(() => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (!data.nodes || !Array.isArray(data.nodes)) {
+          alert("Invalid stack file format. Missing nodes array.");
+          return;
+        }
+
+        setNodes(data.nodes.map((node: Node<ToolNodeData>) => ({
+          ...node,
+          type: node.type || "tool",
+        })));
+        setEdges(data.edges || []);
+        setBuildTitle(data.title || "Imported Stack");
+        setBuildDescription(data.description || "");
+        setCurrentBuildId(null);
+        setActiveTab("builder");
+        setSaveMessage("Stack imported successfully!");
+        setTimeout(() => setSaveMessage(null), 3000);
+      } catch (error) {
+        alert("Failed to import stack. Please ensure the file is a valid stack JSON export.");
+      }
+    };
+    input.click();
+  }, [setNodes, setEdges]);
+
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
@@ -1826,10 +1876,26 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
             <Plus className="w-4 h-4 sm:mr-1" />
             <span className="hidden sm:inline">New</span>
           </PixelButton>
-          <PixelButton variant="outline" size="sm" className="sm:size-auto" onClick={() => setShowImportModal(true)}>
-            <Upload className="w-4 h-4 sm:mr-1" />
-            <span className="hidden sm:inline">Import</span>
-          </PixelButton>
+          <div className="relative group">
+            <PixelButton variant="outline" size="sm" className="sm:size-auto">
+              <Upload className="w-4 h-4 sm:mr-1" />
+              <span className="hidden sm:inline">Import</span>
+            </PixelButton>
+            <div className="absolute left-0 top-full mt-1 bg-card border-2 border-border rounded-lg p-2 hidden group-hover:block z-10 min-w-[160px]">
+              <button
+                onClick={() => setShowImportModal(true)}
+                className="w-full text-left px-2 py-1.5 text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 rounded flex items-center gap-2"
+              >
+                <FileJson className="w-3 h-3" /> package.json
+              </button>
+              <button
+                onClick={handleImportStackJSON}
+                className="w-full text-left px-2 py-1.5 text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 rounded flex items-center gap-2"
+              >
+                <Upload className="w-3 h-3" /> Stack JSON
+              </button>
+            </div>
+          </div>
           <a href="/stack-builder/collab/new">
             <PixelButton variant="outline" size="sm" className="sm:size-auto bg-primary/10 border-primary/50 hover:bg-primary/20">
               <Users className="w-4 h-4 sm:mr-1" />
@@ -2024,8 +2090,10 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
+                onNodesDelete={onNodesDelete}
                 nodeTypes={nodeTypes}
                 fitView
+                deleteKeyCode={["Backspace", "Delete"]}
                 className="[&_.react-flow__pane]:bg-muted"
               >
                 <Background color="#1e3a5f" gap={20} />
@@ -2037,6 +2105,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
                   <div className="text-muted-foreground text-xs">
                     <p>Drag to move nodes</p>
                     <p>Connect by dragging from edges</p>
+                    <p>Select & press Delete to remove</p>
                   </div>
                 </Panel>
               </ReactFlow>
