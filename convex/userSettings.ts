@@ -87,8 +87,13 @@ export const updateProfile = mutation({
     twitterUsername: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("You must be signed in to update your profile");
+    }
+    
     try {
-      const userId = await getAuthenticatedUser(ctx);
+      const userId = identity.subject;
       console.log("updateProfile called by user:", userId);
       console.log("updateProfile args:", args);
       
