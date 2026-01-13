@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface TourStep {
   target?: string;
@@ -49,6 +50,7 @@ export function PageTourProvider({ children }: { children: React.ReactNode }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [seenTours, setSeenTours] = useState<Set<string>>(new Set());
   const [isInitialized, setIsInitialized] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const stored = localStorage.getItem("vibebuff_page_tours_seen");
@@ -141,7 +143,7 @@ export function PageTourProvider({ children }: { children: React.ReactNode }) {
     >
       {children}
       <AnimatePresence>
-        {activeTour && (
+        {activeTour && !isMobile && (
           <TourOverlay
             tour={activeTour}
             currentStep={currentStep}
