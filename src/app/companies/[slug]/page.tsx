@@ -225,7 +225,7 @@ export default function CompanyProfilePage() {
                 )}
                 {company.websiteUrl && (
                   <a
-                    href={company.websiteUrl}
+                    href={`${company.websiteUrl}${company.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=company_page&utm_campaign=company_profile`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 hover:text-primary transition-colors"

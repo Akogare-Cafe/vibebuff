@@ -27,6 +27,20 @@ const footerLinks = {
     { name: "Vercel vs Netlify", href: "/compare/vercel-vs-netlify" },
     { name: "Supabase vs Firebase", href: "/compare/supabase-vs-firebase" },
   ],
+  alternatives: [
+    { name: "React Alternatives", href: "/alternatives/react" },
+    { name: "Next.js Alternatives", href: "/alternatives/nextjs" },
+    { name: "Supabase Alternatives", href: "/alternatives/supabase" },
+    { name: "Vercel Alternatives", href: "/alternatives/vercel" },
+    { name: "Tailwind Alternatives", href: "/alternatives/tailwindcss" },
+  ],
+  bestFor: [
+    { name: "Best DB for Startups", href: "/best/database/for/startups" },
+    { name: "Best Auth for Next.js", href: "/best/authentication/for/nextjs" },
+    { name: "Best Hosting for Production", href: "/best/hosting/for/production" },
+    { name: "Best Frontend for Beginners", href: "/best/frontend/for/beginners" },
+    { name: "Best Backend for Serverless", href: "/best/backend/for/serverless" },
+  ],
   resources: [
     { name: "Developer Blog", href: "/blog" },
     { name: "Documentation", href: "/docs" },
@@ -37,6 +51,7 @@ const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
+    { name: "Advertise", href: "/advertise" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
   ],
@@ -46,8 +61,8 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border py-8 lg:py-12 mt-auto mb-20 lg:mb-0">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+          <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 text-foreground mb-4">
               <LogoIcon className="w-5 h-5" />
               <h3 className="font-bold text-lg bg-gradient-to-r from-purple-400 via-primary to-purple-600 bg-clip-text text-transparent">VIBEBUFF</h3>
@@ -91,6 +106,30 @@ export function Footer() {
             </ul>
           </div>
           <div>
+            <h4 className="text-foreground font-bold mb-4 uppercase text-xs tracking-wider">Alternatives</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {footerLinks.alternatives.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-primary transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-foreground font-bold mb-4 uppercase text-xs tracking-wider">Best For</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {footerLinks.bestFor.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-primary transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
             <h4 className="text-foreground font-bold mb-4 uppercase text-xs tracking-wider">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.resources.map((link) => (
@@ -102,6 +141,8 @@ export function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border">
           <div>
             <h4 className="text-foreground font-bold mb-4 uppercase text-xs tracking-wider">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">

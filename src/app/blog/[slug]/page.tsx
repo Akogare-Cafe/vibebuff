@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="text-primary text-sm">SHARE THIS ARTICLE</span>
               <div className="flex gap-4">
                 <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}`)}`}
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}?utm_source=twitter&utm_medium=social&utm_campaign=blog_share`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary"
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <Twitter className="w-4 h-4" />
                 </a>
                 <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}`)}`}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://vibebuff.dev/blog/${slug}?utm_source=linkedin&utm_medium=social&utm_campaign=blog_share`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary"

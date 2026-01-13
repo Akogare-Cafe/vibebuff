@@ -205,7 +205,7 @@ export default function BestForPage() {
                           </PixelButton>
                         </Link>
                         {tool.websiteUrl && (
-                          <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer">
+                          <a href={`${tool.websiteUrl}${tool.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=best_tools_page&utm_campaign=tool_recommendations`} target="_blank" rel="noopener noreferrer">
                             <PixelButton variant="outline" size="sm">
                               <ExternalLink className="w-4 h-4" />
                             </PixelButton>

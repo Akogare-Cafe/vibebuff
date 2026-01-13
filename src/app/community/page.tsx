@@ -312,8 +312,8 @@ export default function CommunityPage() {
                           <p className="text-muted-foreground text-xs">{tool.tagline}</p>
                         </div>
                       </div>
-                      <PixelBadge variant="outline" className="text-[10px]">
-                        <TrendingUp className="w-3 h-3 mr-1" />
+                      <PixelBadge variant="outline" className="text-xs">
+                        <TrendingUp className="w-4 h-4 mr-1" />
                         {tool.trendScore}
                       </PixelBadge>
                     </div>

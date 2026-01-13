@@ -471,7 +471,7 @@ export const metadata: Metadata = {
             {launchPlatforms.map((platform) => (
               <a
                 key={platform.name}
-                href={platform.url}
+                href={`${platform.url}${platform.url.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=marketing_guide&utm_campaign=launch_platforms`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-4 border-border bg-card p-5 hover:border-primary transition-colors"
@@ -515,10 +515,10 @@ export const metadata: Metadata = {
                         </div>
                         <ArrowRight className="w-4 h-4 text-muted-foreground" />
                       </Link>
-                    ) : (
+                    ) : tool.url ? (
                       <a
                         key={tool.name}
-                        href={tool.url}
+                        href={`${tool.url}${tool.url.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=marketing_guide&utm_campaign=recommended_tools`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-between p-3 bg-background border border-border hover:border-primary transition-colors"
@@ -529,7 +529,7 @@ export const metadata: Metadata = {
                         </div>
                         <ExternalLink className="w-4 h-4 text-muted-foreground" />
                       </a>
-                    )
+                    ) : null
                   ))}
                 </div>
               </div>
@@ -545,7 +545,7 @@ export const metadata: Metadata = {
             {resources.map((resource) => (
               <a
                 key={resource.title}
-                href={resource.url}
+                href={`${resource.url}${resource.url.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=marketing_guide&utm_campaign=learning_resources`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-4 border-border bg-card p-5 hover:border-primary transition-colors"

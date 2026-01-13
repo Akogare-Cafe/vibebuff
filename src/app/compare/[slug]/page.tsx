@@ -259,14 +259,14 @@ export default async function ComparisonPage({ params }: Props) {
 
                 <div className="flex gap-2 mt-4">
                   {tool1.websiteUrl && (
-                    <a href={tool1.websiteUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={`${tool1.websiteUrl}${tool1.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_page&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer">
                       <PixelButton variant="outline" size="sm">
                         <Globe className="w-3 h-3 mr-1" /> WEBSITE
                       </PixelButton>
                     </a>
                   )}
                   {tool1.githubUrl && (
-                    <a href={tool1.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={`${tool1.githubUrl}${tool1.githubUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_page&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer">
                       <PixelButton variant="outline" size="sm">
                         <Github className="w-3 h-3 mr-1" /> GITHUB
                       </PixelButton>
@@ -318,14 +318,14 @@ export default async function ComparisonPage({ params }: Props) {
 
                 <div className="flex gap-2 mt-4">
                   {tool2.websiteUrl && (
-                    <a href={tool2.websiteUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={`${tool2.websiteUrl}${tool2.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_page&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer">
                       <PixelButton variant="outline" size="sm">
                         <Globe className="w-3 h-3 mr-1" /> WEBSITE
                       </PixelButton>
                     </a>
                   )}
                   {tool2.githubUrl && (
-                    <a href={tool2.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={`${tool2.githubUrl}${tool2.githubUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_page&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer">
                       <PixelButton variant="outline" size="sm">
                         <Github className="w-3 h-3 mr-1" /> GITHUB
                       </PixelButton>

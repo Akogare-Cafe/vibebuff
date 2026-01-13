@@ -767,12 +767,12 @@ function ComparePageContent() {
                       <td key={tool._id} className="p-4 text-center border-r border-border last:border-r-0">
                         <div className="flex justify-center gap-3">
                           {tool.websiteUrl && (
-                            <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
+                            <a href={`${tool.websiteUrl}${tool.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_table&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
                               <Globe className="w-4 h-4 text-muted-foreground hover:text-primary" />
                             </a>
                           )}
                           {tool.githubUrl && (
-                            <a href={tool.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
+                            <a href={`${tool.githubUrl}${tool.githubUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=compare_table&utm_campaign=tool_comparison`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-background border border-border hover:border-primary transition-colors">
                               <Github className="w-4 h-4 text-muted-foreground hover:text-primary" />
                             </a>
                           )}

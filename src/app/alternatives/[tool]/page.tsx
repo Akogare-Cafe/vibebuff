@@ -217,7 +217,7 @@ export default function AlternativesPage() {
                             </PixelButton>
                           </Link>
                           {alt.websiteUrl && (
-                            <a href={alt.websiteUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={`${alt.websiteUrl}${alt.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=alternatives_page&utm_campaign=tool_alternatives`} target="_blank" rel="noopener noreferrer">
                               <PixelButton variant="ghost" size="sm">
                                 <ExternalLink className="w-4 h-4" />
                               </PixelButton>

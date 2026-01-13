@@ -270,7 +270,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {tool.githubUrl && (
                   <a
-                    href={tool.githubUrl}
+                    href={`${tool.githubUrl}${tool.githubUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=tool_page&utm_campaign=quick_links`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
@@ -290,7 +290,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 )}
                 {tool.websiteUrl && (
                   <a
-                    href={tool.websiteUrl}
+                    href={`${tool.websiteUrl}${tool.websiteUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=tool_page&utm_campaign=quick_links`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
@@ -310,7 +310,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                 )}
                 {tool.docsUrl && (
                   <a
-                    href={tool.docsUrl}
+                    href={`${tool.docsUrl}${tool.docsUrl.includes('?') ? '&' : '?'}utm_source=vibebuff&utm_medium=tool_page&utm_campaign=quick_links`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent({ toolId: tool._id, eventType: "click" })}
