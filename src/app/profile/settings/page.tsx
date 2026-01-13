@@ -159,9 +159,16 @@ export default function SettingsPage() {
     setIsSaving(true);
     setSaveError(null);
     try {
-      await updateProfile({
-        ...profileForm,
-      });
+      const updates: Record<string, string> = {};
+      if (profileForm.displayName) updates.displayName = profileForm.displayName;
+      if (profileForm.bio) updates.bio = profileForm.bio;
+      if (profileForm.location) updates.location = profileForm.location;
+      if (profileForm.website) updates.website = profileForm.website;
+      if (profileForm.githubUsername) updates.githubUsername = profileForm.githubUsername;
+      if (profileForm.twitterUsername) updates.twitterUsername = profileForm.twitterUsername;
+
+      await updateProfile(updates);
+      
       if (profileForm.displayName) {
         await updateUserProfile({
           username: profileForm.displayName,
