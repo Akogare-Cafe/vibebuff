@@ -310,212 +310,6 @@ function ToolsPageContent() {
           </label>
         </div>
 
-        {showAdvancedFilters && (
-          <div className="border border-border rounded-xl p-4 mb-6 bg-card/50">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-foreground font-bold text-sm flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-primary" />
-                Advanced Filters
-              </h3>
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={clearAllFilters}
-                  className="text-xs text-muted-foreground hover:text-red-400 flex items-center gap-1 transition-colors"
-                >
-                  <X className="w-3 h-3" />
-                  Clear all
-                </button>
-              )}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div>
-                <label className="text-xs text-muted-foreground mb-2 block">Source Type</label>
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 cursor-pointer group">
-                    <div 
-                      className={`size-4 rounded border ${openSourceOnly ? "border-purple-500 bg-purple-500" : "border-border"} flex items-center justify-center group-hover:border-purple-400`}
-                      onClick={() => setOpenSourceOnly(!openSourceOnly)}
-                    >
-                      {openSourceOnly && <Unlock className="w-2.5 h-2.5 text-white" />}
-                    </div>
-                    <span className={`text-sm ${openSourceOnly ? "text-purple-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      Open Source Only
-                    </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer group">
-                    <div 
-                      className={`size-4 rounded border ${hasGithub ? "border-gray-500 bg-gray-500" : "border-border"} flex items-center justify-center group-hover:border-gray-400`}
-                      onClick={() => setHasGithub(!hasGithub)}
-                    >
-                      {hasGithub && <Github className="w-2.5 h-2.5 text-white" />}
-                    </div>
-                    <span className={`text-sm ${hasGithub ? "text-gray-300 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      Has GitHub Repo
-                    </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer group">
-                    <div 
-                      className={`size-4 rounded border ${featuredOnly ? "border-primary bg-primary" : "border-border"} flex items-center justify-center group-hover:border-primary/70`}
-                      onClick={() => setFeaturedOnly(!featuredOnly)}
-                    >
-                      {featuredOnly && <Star className="w-2.5 h-2.5 text-white" />}
-                    </div>
-                    <span className={`text-sm ${featuredOnly ? "text-primary font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      Featured Only
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <label className="text-xs text-muted-foreground mb-2 block">Minimum Stars</label>
-                <div className="flex flex-wrap gap-2">
-                  {[null, 1000, 5000, 10000, 50000].map((stars) => (
-                    <button
-                      key={stars ?? "any"}
-                      onClick={() => setMinStars(stars)}
-                      className={`px-2 py-1 text-xs rounded border transition-colors ${
-                        minStars === stars
-                          ? "bg-yellow-500/20 border-yellow-500 text-yellow-400"
-                          : "border-border text-muted-foreground hover:border-yellow-500/50 hover:text-yellow-400"
-                      }`}
-                    >
-                      {stars === null ? "Any" : stars >= 1000 ? `${stars / 1000}K+` : stars}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-xs text-muted-foreground mb-2 block">Weekly Downloads</label>
-                <div className="flex flex-wrap gap-2">
-                  {[null, 10000, 100000, 1000000, 10000000].map((downloads) => (
-                    <button
-                      key={downloads ?? "any"}
-                      onClick={() => setMinDownloads(downloads)}
-                      className={`px-2 py-1 text-xs rounded border transition-colors ${
-                        minDownloads === downloads
-                          ? "bg-cyan-500/20 border-cyan-500 text-cyan-400"
-                          : "border-border text-muted-foreground hover:border-cyan-500/50 hover:text-cyan-400"
-                      }`}
-                    >
-                      {downloads === null ? "Any" : downloads >= 1000000 ? `${downloads / 1000000}M+` : `${downloads / 1000}K+`}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="text-xs text-muted-foreground mb-2 block">Code Quality</label>
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 cursor-pointer group">
-                    <div 
-                      className={`size-4 rounded border ${hasTypeScript ? "border-blue-500 bg-blue-500" : "border-border"} flex items-center justify-center group-hover:border-blue-400`}
-                      onClick={() => setHasTypeScript(!hasTypeScript)}
-                    >
-                      {hasTypeScript && <FileCode className="w-2.5 h-2.5 text-white" />}
-                    </div>
-                    <span className={`text-sm ${hasTypeScript ? "text-blue-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      TypeScript Support
-                    </span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer group">
-                    <div 
-                      className={`size-4 rounded border ${recentlyUpdated ? "border-green-500 bg-green-500" : "border-border"} flex items-center justify-center group-hover:border-green-400`}
-                      onClick={() => setRecentlyUpdated(!recentlyUpdated)}
-                    >
-                      {recentlyUpdated && <Calendar className="w-2.5 h-2.5 text-white" />}
-                    </div>
-                    <span className={`text-sm ${recentlyUpdated ? "text-green-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      Updated Recently (30d)
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-border/50">
-              <label className="text-xs text-muted-foreground mb-2 block">Primary Language</label>
-              <div className="flex flex-wrap gap-2">
-                {[null, "TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "Ruby"].map((lang) => (
-                  <button
-                    key={lang ?? "any"}
-                    onClick={() => setSelectedLanguage(lang)}
-                    className={`px-3 py-1.5 text-xs rounded border transition-colors flex items-center gap-1.5 ${
-                      selectedLanguage === lang
-                        ? "bg-orange-500/20 border-orange-500 text-orange-400"
-                        : "border-border text-muted-foreground hover:border-orange-500/50 hover:text-orange-400"
-                    }`}
-                  >
-                    <Code className="w-3 h-3" />
-                    {lang ?? "Any"}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-border/50">
-              <label className="text-xs text-muted-foreground mb-2 block">Quick Filters</label>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => {
-                    setOpenSourceOnly(true);
-                    setMinStars(10000);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"
-                >
-                  <Flame className="w-3 h-3" />
-                  Popular OSS (10K+ stars)
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedPricing(["free", "open_source"]);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-colors flex items-center gap-1.5"
-                >
-                  <Coins className="w-3 h-3" />
-                  Free Tools
-                </button>
-                <button
-                  onClick={() => {
-                    setHasGithub(true);
-                    setMinStars(1000);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-1.5"
-                >
-                  <Shield className="w-3 h-3" />
-                  Battle-Tested (1K+ stars)
-                </button>
-                <button
-                  onClick={() => {
-                    setHasTypeScript(true);
-                    setRecentlyUpdated(true);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-blue-500 hover:text-blue-400 transition-colors flex items-center gap-1.5"
-                >
-                  <Rocket className="w-3 h-3" />
-                  Modern Stack (TS + Active)
-                </button>
-                <button
-                  onClick={() => {
-                    setMinDownloads(1000000);
-                    setHasTypeScript(true);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-cyan-500 hover:text-cyan-400 transition-colors flex items-center gap-1.5"
-                >
-                  <Download className="w-3 h-3" />
-                  High Adoption (1M+ downloads)
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedLanguage("TypeScript");
-                    setOpenSourceOnly(true);
-                  }}
-                  className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-indigo-500 hover:text-indigo-400 transition-colors flex items-center gap-1.5"
-                >
-                  <FileCode className="w-3 h-3" />
-                  TypeScript Projects
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
         {!searchQuery && selectedCategory === "all" && !showAdvancedFilters && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             {trendingTools === undefined ? (
@@ -858,6 +652,213 @@ function ToolsPageContent() {
                   </span>
                 </div>
               </div>
+
+              {showAdvancedFilters && (
+                <div className="border border-border rounded-xl p-4 mb-6 bg-card/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-foreground font-bold text-sm flex items-center gap-2">
+                      <SlidersHorizontal className="w-4 h-4 text-primary" />
+                      Advanced Filters
+                    </h3>
+                    {activeFilterCount > 0 && (
+                      <button
+                        onClick={clearAllFilters}
+                        className="text-xs text-muted-foreground hover:text-red-400 flex items-center gap-1 transition-colors"
+                      >
+                        <X className="w-3 h-3" />
+                        Clear all
+                      </button>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-2 block">Source Type</label>
+                      <div className="space-y-2">
+                        <label className="flex items-center gap-2 cursor-pointer group">
+                          <div 
+                            className={`size-4 rounded border ${openSourceOnly ? "border-purple-500 bg-purple-500" : "border-border"} flex items-center justify-center group-hover:border-purple-400`}
+                            onClick={() => setOpenSourceOnly(!openSourceOnly)}
+                          >
+                            {openSourceOnly && <Unlock className="w-2.5 h-2.5 text-white" />}
+                          </div>
+                          <span className={`text-sm ${openSourceOnly ? "text-purple-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                            Open Source Only
+                          </span>
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer group">
+                          <div 
+                            className={`size-4 rounded border ${hasGithub ? "border-gray-500 bg-gray-500" : "border-border"} flex items-center justify-center group-hover:border-gray-400`}
+                            onClick={() => setHasGithub(!hasGithub)}
+                          >
+                            {hasGithub && <Github className="w-2.5 h-2.5 text-white" />}
+                          </div>
+                          <span className={`text-sm ${hasGithub ? "text-gray-300 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                            Has GitHub Repo
+                          </span>
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer group">
+                          <div 
+                            className={`size-4 rounded border ${featuredOnly ? "border-primary bg-primary" : "border-border"} flex items-center justify-center group-hover:border-primary/70`}
+                            onClick={() => setFeaturedOnly(!featuredOnly)}
+                          >
+                            {featuredOnly && <Star className="w-2.5 h-2.5 text-white" />}
+                          </div>
+                          <span className={`text-sm ${featuredOnly ? "text-primary font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                            Featured Only
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-2 block">Minimum Stars</label>
+                      <div className="flex flex-wrap gap-2">
+                        {[null, 1000, 5000, 10000, 50000].map((stars) => (
+                          <button
+                            key={stars ?? "any"}
+                            onClick={() => setMinStars(stars)}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              minStars === stars
+                                ? "bg-yellow-500/20 border-yellow-500 text-yellow-400"
+                                : "border-border text-muted-foreground hover:border-yellow-500/50 hover:text-yellow-400"
+                            }`}
+                          >
+                            {stars === null ? "Any" : stars >= 1000 ? `${stars / 1000}K+` : stars}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-2 block">Weekly Downloads</label>
+                      <div className="flex flex-wrap gap-2">
+                        {[null, 10000, 100000, 1000000, 10000000].map((downloads) => (
+                          <button
+                            key={downloads ?? "any"}
+                            onClick={() => setMinDownloads(downloads)}
+                            className={`px-2 py-1 text-xs rounded border transition-colors ${
+                              minDownloads === downloads
+                                ? "bg-cyan-500/20 border-cyan-500 text-cyan-400"
+                                : "border-border text-muted-foreground hover:border-cyan-500/50 hover:text-cyan-400"
+                            }`}
+                          >
+                            {downloads === null ? "Any" : downloads >= 1000000 ? `${downloads / 1000000}M+` : `${downloads / 1000}K+`}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-2 block">Code Quality</label>
+                      <div className="space-y-2">
+                        <label className="flex items-center gap-2 cursor-pointer group">
+                          <div 
+                            className={`size-4 rounded border ${hasTypeScript ? "border-blue-500 bg-blue-500" : "border-border"} flex items-center justify-center group-hover:border-blue-400`}
+                            onClick={() => setHasTypeScript(!hasTypeScript)}
+                          >
+                            {hasTypeScript && <FileCode className="w-2.5 h-2.5 text-white" />}
+                          </div>
+                          <span className={`text-sm ${hasTypeScript ? "text-blue-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                            TypeScript Support
+                          </span>
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer group">
+                          <div 
+                            className={`size-4 rounded border ${recentlyUpdated ? "border-green-500 bg-green-500" : "border-border"} flex items-center justify-center group-hover:border-green-400`}
+                            onClick={() => setRecentlyUpdated(!recentlyUpdated)}
+                          >
+                            {recentlyUpdated && <Calendar className="w-2.5 h-2.5 text-white" />}
+                          </div>
+                          <span className={`text-sm ${recentlyUpdated ? "text-green-400 font-medium" : "text-muted-foreground group-hover:text-foreground"}`}>
+                            Updated Recently (30d)
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <label className="text-xs text-muted-foreground mb-2 block">Primary Language</label>
+                    <div className="flex flex-wrap gap-2">
+                      {[null, "TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "Ruby"].map((lang) => (
+                        <button
+                          key={lang ?? "any"}
+                          onClick={() => setSelectedLanguage(lang)}
+                          className={`px-3 py-1.5 text-xs rounded border transition-colors flex items-center gap-1.5 ${
+                            selectedLanguage === lang
+                              ? "bg-orange-500/20 border-orange-500 text-orange-400"
+                              : "border-border text-muted-foreground hover:border-orange-500/50 hover:text-orange-400"
+                          }`}
+                        >
+                          <Code className="w-3 h-3" />
+                          {lang ?? "Any"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <label className="text-xs text-muted-foreground mb-2 block">Quick Filters</label>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => {
+                          setOpenSourceOnly(true);
+                          setMinStars(10000);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"
+                      >
+                        <Flame className="w-3 h-3" />
+                        Popular OSS (10K+ stars)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedPricing(["free", "open_source"]);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-green-500 hover:text-green-400 transition-colors flex items-center gap-1.5"
+                      >
+                        <Coins className="w-3 h-3" />
+                        Free Tools
+                      </button>
+                      <button
+                        onClick={() => {
+                          setHasGithub(true);
+                          setMinStars(1000);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-1.5"
+                      >
+                        <Shield className="w-3 h-3" />
+                        Battle-Tested (1K+ stars)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setHasTypeScript(true);
+                          setRecentlyUpdated(true);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-blue-500 hover:text-blue-400 transition-colors flex items-center gap-1.5"
+                      >
+                        <Rocket className="w-3 h-3" />
+                        Modern Stack (TS + Active)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setMinDownloads(1000000);
+                          setHasTypeScript(true);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-cyan-500 hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+                      >
+                        <Download className="w-3 h-3" />
+                        High Adoption (1M+ downloads)
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedLanguage("TypeScript");
+                          setOpenSourceOnly(true);
+                        }}
+                        className="px-3 py-1.5 text-xs rounded border border-border text-muted-foreground hover:border-indigo-500 hover:text-indigo-400 transition-colors flex items-center gap-1.5"
+                      >
+                        <FileCode className="w-3 h-3" />
+                        TypeScript Projects
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {tools === undefined ? (
                 <ToolsGridSkeleton count={12} />
               ) : (

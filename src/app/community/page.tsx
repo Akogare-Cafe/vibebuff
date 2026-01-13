@@ -238,7 +238,7 @@ export default function CommunityPage() {
                             <span className="flex items-center gap-1">
                               <Users className="w-3 h-3" /> {group.memberCount}
                             </span>
-                            <PixelBadge variant="outline" className="text-[8px]">
+                            <PixelBadge variant="outline" className="text-[10px]">
                               {group.groupType}
                             </PixelBadge>
                           </div>
@@ -312,8 +312,8 @@ export default function CommunityPage() {
                           <p className="text-muted-foreground text-xs">{tool.tagline}</p>
                         </div>
                       </div>
-                      <PixelBadge variant="outline" className="text-[6px]">
-                        <TrendingUp className="w-2 h-2 mr-1" />
+                      <PixelBadge variant="outline" className="text-[10px]">
+                        <TrendingUp className="w-3 h-3 mr-1" />
                         {tool.trendScore}
                       </PixelBadge>
                     </div>
@@ -354,8 +354,8 @@ export default function CommunityPage() {
                 <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
                   <PixelCardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <PixelBadge variant="outline" className="text-[6px]">
-                        <Eye className="w-2 h-2 mr-1" />
+                      <PixelBadge variant="outline" className="text-[10px]">
+                        <Eye className="w-3 h-3 mr-1" />
                         {comparison.views} views
                       </PixelBadge>
                       <Scale className="w-4 h-4 text-primary" />
@@ -422,7 +422,7 @@ export default function CommunityPage() {
                     <p className="text-muted-foreground text-xs mb-3">{tool.tagline}</p>
                     <div className="flex flex-wrap gap-1">
                       {tool.tags.slice(0, 3).map((tag) => (
-                        <PixelBadge key={tag} variant="outline" className="text-[6px]">
+                        <PixelBadge key={tag} variant="outline" className="text-[10px]">
                           {tag}
                         </PixelBadge>
                       ))}
