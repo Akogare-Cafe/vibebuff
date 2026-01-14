@@ -1,19 +1,24 @@
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "dompurify";
+
+const SANITIZE_CONFIG = {
+  ALLOWED_TAGS: [
+    "h2", "h3", "h4", "h5", "h6",
+    "p", "br", "hr",
+    "strong", "em", "b", "i", "u",
+    "a", "ul", "ol", "li",
+    "pre", "code",
+    "table", "thead", "tbody", "tr", "th", "td",
+    "blockquote", "span", "div"
+  ],
+  ALLOWED_ATTR: ["href", "class", "target", "rel"],
+  ALLOW_DATA_ATTR: false,
+};
 
 export function sanitizeHtml(dirty: string): string {
-  return DOMPurify.sanitize(dirty, {
-    ALLOWED_TAGS: [
-      "h2", "h3", "h4", "h5", "h6",
-      "p", "br", "hr",
-      "strong", "em", "b", "i", "u",
-      "a", "ul", "ol", "li",
-      "pre", "code",
-      "table", "thead", "tbody", "tr", "th", "td",
-      "blockquote", "span", "div"
-    ],
-    ALLOWED_ATTR: ["href", "class", "target", "rel"],
-    ALLOW_DATA_ATTR: false,
-  });
+  if (typeof window === "undefined") {
+    return dirty;
+  }
+  return DOMPurify.sanitize(dirty, SANITIZE_CONFIG);
 }
 
 function parseMarkdownTables(content: string): string {
