@@ -84,7 +84,7 @@ export default function SettingsPage() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const settings = useQuery(api.userSettings.getSettings);
+  const settings = useQuery(api.userSettings.getSettings, {});
 
   const profile = useQuery(
     api.userProfiles.getProfile,

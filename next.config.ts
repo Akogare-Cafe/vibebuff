@@ -4,6 +4,10 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 const securityHeaders = [
   {
+    key: "X-Robots-Tag",
+    value: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  },
+  {
     key: "X-DNS-Prefetch-Control",
     value: "on",
   },
