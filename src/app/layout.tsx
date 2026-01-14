@@ -364,7 +364,7 @@ export default function RootLayout({
           ]}
         />
       </head>
-      <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col`}>
+      <body className={`${spaceGrotesk.variable} ${notoSans.variable} antialiased min-h-screen flex flex-col pt-20 sm:pt-[88px]`}>
         <ErrorBoundaryProvider>
           <ClerkClientProvider>
             <ConvexClientProvider>
