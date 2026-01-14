@@ -30,10 +30,7 @@ import {
   CheckCircle,
   Trash2,
   AlertTriangle,
-  Home,
   Backpack,
-  MessageSquare,
-  Play,
 } from "lucide-react";
 import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from "@/components/pixel-card";
 import { PixelButton } from "@/components/pixel-button";
@@ -87,20 +84,14 @@ export default function SettingsPage() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const settings = useQuery(
-    api.userSettings.getSettings,
-    user?.id ? { userId: user.id } : "skip"
-  );
+  const settings = useQuery(api.userSettings.getSettings);
 
   const profile = useQuery(
     api.userProfiles.getProfile,
     user?.id ? { clerkId: user.id } : "skip"
   );
 
-  const updateProfile = useMutation(api.userSettings.updateProfile);
-  const updateNotifications = useMutation(api.userSettings.updateNotifications);
-  const updatePrivacy = useMutation(api.userSettings.updatePrivacy);
-  const updatePreferences = useMutation(api.userSettings.updatePreferences);
+  const saveSettings = useMutation(api.userSettings.saveSettings);
   const updateUserProfile = useMutation(api.userProfiles.updateProfile);
   const deleteAccountMutation = useMutation(api.userSettings.deleteAccount);
 
@@ -148,9 +139,15 @@ export default function SettingsPage() {
         githubUsername: settings.githubUsername || "",
         twitterUsername: settings.twitterUsername || "",
       });
-      setNotificationSettings(settings.notifications);
-      setPrivacySettings(settings.privacy);
-      setPreferenceSettings(settings.preferences);
+      if (settings.notifications) {
+        setNotificationSettings(settings.notifications);
+      }
+      if (settings.privacy) {
+        setPrivacySettings(settings.privacy);
+      }
+      if (settings.preferences) {
+        setPreferenceSettings(settings.preferences);
+      }
     }
   }, [settings, profile]);
 
@@ -159,15 +156,14 @@ export default function SettingsPage() {
     setIsSaving(true);
     setSaveError(null);
     try {
-      const updates: Record<string, string> = {};
-      if (profileForm.displayName) updates.displayName = profileForm.displayName;
-      if (profileForm.bio) updates.bio = profileForm.bio;
-      if (profileForm.location) updates.location = profileForm.location;
-      if (profileForm.website) updates.website = profileForm.website;
-      if (profileForm.githubUsername) updates.githubUsername = profileForm.githubUsername;
-      if (profileForm.twitterUsername) updates.twitterUsername = profileForm.twitterUsername;
-
-      await updateProfile(updates);
+      await saveSettings({
+        displayName: profileForm.displayName || undefined,
+        bio: profileForm.bio || undefined,
+        location: profileForm.location || undefined,
+        website: profileForm.website || undefined,
+        githubUsername: profileForm.githubUsername || undefined,
+        twitterUsername: profileForm.twitterUsername || undefined,
+      });
       
       if (profileForm.displayName) {
         await updateUserProfile({
@@ -191,7 +187,7 @@ export default function SettingsPage() {
     setIsSaving(true);
     setSaveError(null);
     try {
-      await updateNotifications({
+      await saveSettings({
         notifications: notificationSettings,
       });
       setSaveSuccess(true);
@@ -211,7 +207,7 @@ export default function SettingsPage() {
     setIsSaving(true);
     setSaveError(null);
     try {
-      await updatePrivacy({
+      await saveSettings({
         privacy: privacySettings,
       });
       setSaveSuccess(true);
@@ -231,7 +227,7 @@ export default function SettingsPage() {
     setIsSaving(true);
     setSaveError(null);
     try {
-      await updatePreferences({
+      await saveSettings({
         preferences: preferenceSettings,
       });
       setSaveSuccess(true);

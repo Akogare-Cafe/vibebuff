@@ -2,32 +2,93 @@ import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { getAuthenticatedUser } from "./lib/auth";
 
-const DEFAULT_SETTINGS = {
-  notifications: {
-    emailDigest: true,
-    achievementAlerts: true,
-    weeklyProgress: true,
-    communityUpdates: false,
-    battleInvites: true,
-    newToolAlerts: true,
-    desktopNotifications: false,
-  },
-  privacy: {
-    showProfile: true,
-    showActivity: true,
-    showDecks: true,
-    showAchievements: true,
-    showOnLeaderboard: true,
-  },
-  preferences: {
-    theme: "dark" as const,
-    soundEffects: true,
-    animations: true,
-    compactMode: false,
-  },
+const notificationsValidator = v.object({
+  emailDigest: v.boolean(),
+  achievementAlerts: v.boolean(),
+  weeklyProgress: v.boolean(),
+  communityUpdates: v.boolean(),
+  battleInvites: v.boolean(),
+  newToolAlerts: v.boolean(),
+  desktopNotifications: v.boolean(),
+});
+
+const privacyValidator = v.object({
+  showProfile: v.boolean(),
+  showActivity: v.boolean(),
+  showDecks: v.boolean(),
+  showAchievements: v.boolean(),
+  showOnLeaderboard: v.boolean(),
+});
+
+const preferencesValidator = v.object({
+  theme: v.union(v.literal("dark"), v.literal("light"), v.literal("system")),
+  soundEffects: v.boolean(),
+  animations: v.boolean(),
+  compactMode: v.boolean(),
+});
+
+const DEFAULT_NOTIFICATIONS = {
+  emailDigest: true,
+  achievementAlerts: true,
+  weeklyProgress: true,
+  communityUpdates: false,
+  battleInvites: true,
+  newToolAlerts: true,
+  desktopNotifications: false,
+};
+
+const DEFAULT_PRIVACY = {
+  showProfile: true,
+  showActivity: true,
+  showDecks: true,
+  showAchievements: true,
+  showOnLeaderboard: true,
+};
+
+const DEFAULT_PREFERENCES = {
+  theme: "dark" as const,
+  soundEffects: true,
+  animations: true,
+  compactMode: false,
 };
 
 export const getSettings = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      return null;
+    }
+    
+    const userId = identity.subject;
+    const settings = await ctx.db
+      .query("userSettings")
+      .withIndex("by_user", (q) => q.eq("userId", userId))
+      .first();
+
+    if (!settings) {
+      return {
+        userId,
+        displayName: undefined,
+        bio: undefined,
+        location: undefined,
+        website: undefined,
+        githubUsername: undefined,
+        twitterUsername: undefined,
+        notifications: DEFAULT_NOTIFICATIONS,
+        privacy: DEFAULT_PRIVACY,
+        preferences: DEFAULT_PREFERENCES,
+        _id: null,
+        createdAt: null,
+        updatedAt: null,
+      };
+    }
+
+    return settings;
+  },
+});
+
+export const getSettingsByUserId = query({
   args: { userId: v.string() },
   handler: async (ctx, args) => {
     const settings = await ctx.db
@@ -44,8 +105,12 @@ export const getSettings = query({
         website: undefined,
         githubUsername: undefined,
         twitterUsername: undefined,
-        ...DEFAULT_SETTINGS,
+        notifications: DEFAULT_NOTIFICATIONS,
+        privacy: DEFAULT_PRIVACY,
+        preferences: DEFAULT_PREFERENCES,
         _id: null,
+        createdAt: null,
+        updatedAt: null,
       };
     }
 
@@ -53,31 +118,7 @@ export const getSettings = query({
   },
 });
 
-export const getOrCreateSettings = mutation({
-  args: { userId: v.string() },
-  handler: async (ctx, args) => {
-    const existing = await ctx.db
-      .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
-      .first();
-
-    if (existing) {
-      return existing;
-    }
-
-    const now = Date.now();
-    const settingsId = await ctx.db.insert("userSettings", {
-      userId: args.userId,
-      ...DEFAULT_SETTINGS,
-      createdAt: now,
-      updatedAt: now,
-    });
-
-    return await ctx.db.get(settingsId);
-  },
-});
-
-export const updateProfile = mutation({
+export const saveSettings = mutation({
   args: {
     displayName: v.optional(v.string()),
     bio: v.optional(v.string()),
@@ -85,183 +126,51 @@ export const updateProfile = mutation({
     website: v.optional(v.string()),
     githubUsername: v.optional(v.string()),
     twitterUsername: v.optional(v.string()),
-  },
-  handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
-      throw new Error("You must be signed in to update your profile");
-    }
-    
-    try {
-      const userId = identity.subject;
-      console.log("updateProfile called by user:", userId);
-      console.log("updateProfile args:", args);
-      
-      // Filter out undefined values to only update provided fields
-      const updates: Record<string, string> = {};
-      if (args.displayName !== undefined) updates.displayName = args.displayName;
-      if (args.bio !== undefined) updates.bio = args.bio;
-      if (args.location !== undefined) updates.location = args.location;
-      if (args.website !== undefined) updates.website = args.website;
-      if (args.githubUsername !== undefined) updates.githubUsername = args.githubUsername;
-      if (args.twitterUsername !== undefined) updates.twitterUsername = args.twitterUsername;
-      
-      let settings = await ctx.db
-        .query("userSettings")
-        .withIndex("by_user", (q) => q.eq("userId", userId))
-        .first();
-
-      if (!settings) {
-        console.log("Creating new settings for user:", userId);
-        const now = Date.now();
-        const settingsId = await ctx.db.insert("userSettings", {
-          userId,
-          ...DEFAULT_SETTINGS,
-          displayName: args.displayName,
-          bio: args.bio,
-          location: args.location,
-          website: args.website,
-          githubUsername: args.githubUsername,
-          twitterUsername: args.twitterUsername,
-          createdAt: now,
-          updatedAt: now,
-        });
-        const newSettings = await ctx.db.get(settingsId);
-        console.log("Created new settings:", settingsId);
-        return newSettings;
-      }
-
-      console.log("Updating existing settings:", settings._id);
-      await ctx.db.patch(settings._id, {
-        ...updates,
-        updatedAt: Date.now(),
-      });
-
-      const updatedSettings = await ctx.db.get(settings._id);
-      console.log("Updated settings successfully");
-      return updatedSettings;
-    } catch (error) {
-      console.error("Error in updateProfile:", error);
-      throw error;
-    }
-  },
-});
-
-export const updateNotifications = mutation({
-  args: {
-    notifications: v.object({
-      emailDigest: v.boolean(),
-      achievementAlerts: v.boolean(),
-      weeklyProgress: v.boolean(),
-      communityUpdates: v.boolean(),
-      battleInvites: v.boolean(),
-      newToolAlerts: v.boolean(),
-      desktopNotifications: v.boolean(),
-    }),
+    notifications: v.optional(notificationsValidator),
+    privacy: v.optional(privacyValidator),
+    preferences: v.optional(preferencesValidator),
   },
   handler: async (ctx, args) => {
     const userId = await getAuthenticatedUser(ctx);
+    const now = Date.now();
     
-    let settings = await ctx.db
+    const existing = await ctx.db
       .query("userSettings")
       .withIndex("by_user", (q) => q.eq("userId", userId))
       .first();
 
-    if (!settings) {
-      const now = Date.now();
+    if (!existing) {
       const settingsId = await ctx.db.insert("userSettings", {
         userId,
-        ...DEFAULT_SETTINGS,
-        notifications: args.notifications,
+        displayName: args.displayName,
+        bio: args.bio,
+        location: args.location,
+        website: args.website,
+        githubUsername: args.githubUsername,
+        twitterUsername: args.twitterUsername,
+        notifications: args.notifications ?? DEFAULT_NOTIFICATIONS,
+        privacy: args.privacy ?? DEFAULT_PRIVACY,
+        preferences: args.preferences ?? DEFAULT_PREFERENCES,
         createdAt: now,
         updatedAt: now,
       });
       return await ctx.db.get(settingsId);
     }
 
-    await ctx.db.patch(settings._id, {
-      notifications: args.notifications,
-      updatedAt: Date.now(),
-    });
-
-    return await ctx.db.get(settings._id);
-  },
-});
-
-export const updatePrivacy = mutation({
-  args: {
-    privacy: v.object({
-      showProfile: v.boolean(),
-      showActivity: v.boolean(),
-      showDecks: v.boolean(),
-      showAchievements: v.boolean(),
-      showOnLeaderboard: v.boolean(),
-    }),
-  },
-  handler: async (ctx, args) => {
-    const userId = await getAuthenticatedUser(ctx);
+    const updates: Record<string, unknown> = { updatedAt: now };
     
-    let settings = await ctx.db
-      .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", userId))
-      .first();
+    if (args.displayName !== undefined) updates.displayName = args.displayName;
+    if (args.bio !== undefined) updates.bio = args.bio;
+    if (args.location !== undefined) updates.location = args.location;
+    if (args.website !== undefined) updates.website = args.website;
+    if (args.githubUsername !== undefined) updates.githubUsername = args.githubUsername;
+    if (args.twitterUsername !== undefined) updates.twitterUsername = args.twitterUsername;
+    if (args.notifications !== undefined) updates.notifications = args.notifications;
+    if (args.privacy !== undefined) updates.privacy = args.privacy;
+    if (args.preferences !== undefined) updates.preferences = args.preferences;
 
-    if (!settings) {
-      const now = Date.now();
-      const settingsId = await ctx.db.insert("userSettings", {
-        userId,
-        ...DEFAULT_SETTINGS,
-        privacy: args.privacy,
-        createdAt: now,
-        updatedAt: now,
-      });
-      return await ctx.db.get(settingsId);
-    }
-
-    await ctx.db.patch(settings._id, {
-      privacy: args.privacy,
-      updatedAt: Date.now(),
-    });
-
-    return await ctx.db.get(settings._id);
-  },
-});
-
-export const updatePreferences = mutation({
-  args: {
-    preferences: v.object({
-      theme: v.union(v.literal("dark"), v.literal("light"), v.literal("system")),
-      soundEffects: v.boolean(),
-      animations: v.boolean(),
-      compactMode: v.boolean(),
-    }),
-  },
-  handler: async (ctx, args) => {
-    const userId = await getAuthenticatedUser(ctx);
-    
-    let settings = await ctx.db
-      .query("userSettings")
-      .withIndex("by_user", (q) => q.eq("userId", userId))
-      .first();
-
-    if (!settings) {
-      const now = Date.now();
-      const settingsId = await ctx.db.insert("userSettings", {
-        userId,
-        ...DEFAULT_SETTINGS,
-        preferences: args.preferences,
-        createdAt: now,
-        updatedAt: now,
-      });
-      return await ctx.db.get(settingsId);
-    }
-
-    await ctx.db.patch(settings._id, {
-      preferences: args.preferences,
-      updatedAt: Date.now(),
-    });
-
-    return await ctx.db.get(settings._id);
+    await ctx.db.patch(existing._id, updates);
+    return await ctx.db.get(existing._id);
   },
 });
 
