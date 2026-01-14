@@ -99,12 +99,6 @@ export function UserProfile({ userId, className }: UserProfileProps) {
             color="text-blue-400"
           />
           <StatBox 
-            icon={<Scroll className="w-4 h-4" />}
-            label="QUESTS"
-            value={profile.questsCompleted}
-            color="text-green-400"
-          />
-          <StatBox 
             icon={<Star className="w-4 h-4" />}
             label="TOOLS VIEWED"
             value={profile.toolsViewed}

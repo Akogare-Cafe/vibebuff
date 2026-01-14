@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Star, Download, TrendingUp, Package, Github, Globe, Calendar, Settings2 } from "lucide-react";
 import { PixelBadge } from "@/components/pixel-badge";
 import { ToolIcon } from "@/components/dynamic-icon";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 
 interface ToolTickerItem {
@@ -187,11 +188,10 @@ export function ToolsTicker() {
           <span className="text-xs text-muted-foreground">Show:</span>
           {(["stars", "downloads", "date", "category"] as TickerDisplay[]).map((option) => (
             <label key={option} className="flex items-center gap-1.5 text-xs cursor-pointer">
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={displayOptions.includes(option)}
-                onChange={() => toggleDisplay(option)}
-                className="w-3 h-3 rounded border-border accent-primary"
+                onCheckedChange={() => toggleDisplay(option)}
+                className="w-3 h-3"
               />
               <span className="text-muted-foreground capitalize">{option}</span>
             </label>

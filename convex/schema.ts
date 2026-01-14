@@ -276,7 +276,7 @@ export default defineSchema({
     battlesWon: v.number(),
     battlesLost: v.number(),
     decksCreated: v.number(),
-    questsCompleted: v.number(),
+    questsCompleted: v.optional(v.number()),
     votescast: v.number(),
     isAdmin: v.optional(v.boolean()),
   })
@@ -303,32 +303,6 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_share_token", ["shareToken"]),
-
-  // ============================================
-  // Quest History
-  // ============================================
-  questHistory: defineTable({
-    userId: v.optional(v.string()),
-    sessionId: v.string(),
-    answers: v.object({
-      projectType: v.string(),
-      scale: v.string(),
-      budget: v.string(),
-      features: v.array(v.string()),
-    }),
-    recommendedToolIds: v.array(v.id("tools")),
-    aiReasoning: v.optional(v.string()),
-    createdAt: v.number(),
-    outcome: v.optional(v.union(
-      v.literal("shipped"),
-      v.literal("in_progress"),
-      v.literal("abandoned"),
-      v.literal("pending")
-    )),
-    outcomeNotes: v.optional(v.string()),
-  })
-    .index("by_user", ["userId"])
-    .index("by_session", ["sessionId"]),
 
   // ============================================
   // Tool Usage Tracking

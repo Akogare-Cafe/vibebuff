@@ -86,33 +86,6 @@ export const getDecksLeaderboard = query({
   },
 });
 
-export const getQuestsLeaderboard = query({
-  args: {
-    limit: v.optional(v.number()),
-  },
-  handler: async (ctx, args) => {
-    const limit = args.limit || 50;
-
-    const profiles = await ctx.db
-      .query("userProfiles")
-      .collect();
-
-    const sorted = profiles
-      .sort((a, b) => b.questsCompleted - a.questsCompleted)
-      .slice(0, limit);
-
-    return sorted.map((profile, index) => ({
-      rank: index + 1,
-      clerkId: profile.clerkId,
-      username: profile.username,
-      avatarUrl: profile.avatarUrl,
-      level: profile.level,
-      questsCompleted: profile.questsCompleted,
-      title: profile.title,
-    }));
-  },
-});
-
 export const getMasteryLeaderboard = query({
   args: {
     limit: v.optional(v.number()),
@@ -293,10 +266,6 @@ export const getUserRankings = query({
       .sort((a, b) => b.decksCreated - a.decksCreated)
       .findIndex((p) => p.clerkId === args.userId) + 1;
 
-    const questsRank = allProfiles
-      .sort((a, b) => b.questsCompleted - a.questsCompleted)
-      .findIndex((p) => p.clerkId === args.userId) + 1;
-
     return {
       totalUsers: allProfiles.length,
       xp: {
@@ -313,11 +282,6 @@ export const getUserRankings = query({
         rank: decksRank,
         value: profile.decksCreated,
         percentile: Math.round(((allProfiles.length - decksRank) / allProfiles.length) * 100),
-      },
-      quests: {
-        rank: questsRank,
-        value: profile.questsCompleted,
-        percentile: Math.round(((allProfiles.length - questsRank) / allProfiles.length) * 100),
       },
     };
   },
@@ -382,8 +346,7 @@ export const getTopUsers = query({
     category: v.union(
       v.literal("xp"),
       v.literal("battles"),
-      v.literal("decks"),
-      v.literal("quests")
+      v.literal("decks")
     ),
     limit: v.optional(v.number()),
   },
@@ -405,9 +368,6 @@ export const getTopUsers = query({
       case "decks":
         sorted = profiles.sort((a, b) => b.decksCreated - a.decksCreated);
         break;
-      case "quests":
-        sorted = profiles.sort((a, b) => b.questsCompleted - a.questsCompleted);
-        break;
     }
 
     return sorted.slice(0, limit).map((profile, index) => ({
@@ -419,7 +379,6 @@ export const getTopUsers = query({
       xp: profile.xp,
       battlesWon: profile.battlesWon,
       decksCreated: profile.decksCreated,
-      questsCompleted: profile.questsCompleted,
       title: profile.title,
     }));
   },
