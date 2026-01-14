@@ -21,6 +21,7 @@ import {
 import { ToolsLeaderboard } from "@/components/tools-leaderboard";
 import { TourTrigger } from "@/components/page-tour";
 import { leaderboardsTourConfig } from "@/lib/tour-configs";
+import { SkeletonPulse } from "@/components/skeletons";
 
 type LeaderboardType = "xp" | "battles" | "decks" | "mastery" | "quests" | "toolsViewed" | "votes";
 
@@ -101,9 +102,17 @@ export default function LeaderboardsPage() {
                 <PixelCardContent className="p-0">
                   <div className="divide-y divide-border">
                     {!data && (
-                      <div className="p-6 text-center">
-                        <Trophy className="w-8 h-8 mx-auto mb-2 text-muted-foreground/50 animate-pulse" />
-                        <p className="text-muted-foreground text-sm">Loading...</p>
+                      <div className="space-y-0 divide-y divide-border">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <div key={i} className="flex items-center gap-3 p-3">
+                            <SkeletonPulse className="w-6 h-6 shrink-0" />
+                            <SkeletonPulse className="size-8 shrink-0 rounded-full" />
+                            <div className="flex-1 min-w-0 space-y-1.5">
+                              <SkeletonPulse className="h-4 w-24" />
+                            </div>
+                            <SkeletonPulse className="h-4 w-16 shrink-0" />
+                          </div>
+                        ))}
                       </div>
                     )}
                     {data?.length === 0 && (

@@ -26,6 +26,7 @@ import {
   Flame,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SkeletonPulse } from "./skeletons";
 
 type SortOption = "stars" | "downloads" | "trending" | "favorites" | "usage" | "deckAdds" | "clicks" | "weeklyViews";
 
@@ -187,9 +188,17 @@ export function ToolsLeaderboard({ limit = 10, showFilters = false, compact = fa
             <PixelCardContent className="p-0">
               <div className="divide-y divide-border">
                 {!tools && (
-                  <div className="p-6 text-center">
-                    <Trophy className="w-8 h-8 mx-auto mb-2 text-muted-foreground/50 animate-pulse" />
-                    <p className="text-muted-foreground text-sm">Loading...</p>
+                  <div className="space-y-0 divide-y divide-border">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div key={i} className="flex items-center gap-3 p-3">
+                        <SkeletonPulse className="w-6 h-6 shrink-0" />
+                        <SkeletonPulse className="w-8 h-8 rounded-lg shrink-0" />
+                        <div className="flex-1 min-w-0 space-y-1.5">
+                          <SkeletonPulse className="h-4 w-28" />
+                        </div>
+                        <SkeletonPulse className="h-4 w-16 shrink-0" />
+                      </div>
+                    ))}
                   </div>
                 )}
                 {tools?.length === 0 && (
