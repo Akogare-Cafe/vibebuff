@@ -53,14 +53,20 @@ const DEFAULT_PREFERENCES = {
 };
 
 export const getSettings = query({
-  args: {},
-  handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
-      return null;
+  args: {
+    userId: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    let userId = args.userId;
+    
+    if (!userId) {
+      const identity = await ctx.auth.getUserIdentity();
+      if (!identity) {
+        return null;
+      }
+      userId = identity.subject;
     }
     
-    const userId = identity.subject;
     const settings = await ctx.db
       .query("userSettings")
       .withIndex("by_user", (q) => q.eq("userId", userId))
@@ -131,7 +137,13 @@ export const saveSettings = mutation({
     preferences: v.optional(preferencesValidator),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthenticatedUser(ctx);
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      console.log("saveSettings: No identity found, auth failed");
+      throw new Error("You must be signed in to save settings");
+    }
+    console.log("saveSettings: Authenticated as", identity.subject);
+    const userId = identity.subject;
     const now = Date.now();
     
     const existing = await ctx.db
@@ -140,7 +152,7 @@ export const saveSettings = mutation({
       .first();
 
     if (!existing) {
-      const settingsId = await ctx.db.insert("userSettings", {
+      const newSettings = {
         userId,
         displayName: args.displayName,
         bio: args.bio,
@@ -153,7 +165,9 @@ export const saveSettings = mutation({
         preferences: args.preferences ?? DEFAULT_PREFERENCES,
         createdAt: now,
         updatedAt: now,
-      });
+      };
+      console.log("Creating new settings:", JSON.stringify(newSettings));
+      const settingsId = await ctx.db.insert("userSettings", newSettings);
       return await ctx.db.get(settingsId);
     }
 
@@ -169,6 +183,7 @@ export const saveSettings = mutation({
     if (args.privacy !== undefined) updates.privacy = args.privacy;
     if (args.preferences !== undefined) updates.preferences = args.preferences;
 
+    console.log("Updating settings:", JSON.stringify(updates));
     await ctx.db.patch(existing._id, updates);
     return await ctx.db.get(existing._id);
   },
