@@ -621,6 +621,78 @@ interface UserBuild {
   updatedAt: number;
 }
 
+function PostSavePromptModal({
+  build,
+  onClose,
+  onMakePublic,
+  onPublishToMarketplace,
+}: {
+  build: UserBuild;
+  onClose: () => void;
+  onMakePublic: () => void;
+  onPublishToMarketplace: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <PixelCard className="p-6 max-w-md w-full mx-4">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-primary text-sm flex items-center gap-2">
+            <Sparkles className="w-4 h-4" /> STACK SAVED!
+          </h3>
+          <button
+            onClick={onClose}
+            className="text-muted-foreground hover:text-primary"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <p className="text-muted-foreground text-sm mb-6">
+          Your stack "{build.title}" has been saved. Would you like to share it with the community?
+        </p>
+
+        <div className="space-y-3">
+          <PixelButton
+            onClick={onMakePublic}
+            className="w-full justify-start"
+            variant="outline"
+          >
+            <Share2 className="w-4 h-4 mr-2" />
+            <div className="text-left flex-1">
+              <div className="font-bold text-sm">Make Public & Get Share Link</div>
+              <div className="text-xs text-muted-foreground font-normal">
+                Generate a shareable link to your stack
+              </div>
+            </div>
+          </PixelButton>
+
+          <PixelButton
+            onClick={onPublishToMarketplace}
+            className="w-full justify-start"
+            variant="outline"
+          >
+            <Store className="w-4 h-4 mr-2" />
+            <div className="text-left flex-1">
+              <div className="font-bold text-sm">Publish to Marketplace</div>
+              <div className="text-xs text-muted-foreground font-normal">
+                Share with the community and get upvotes
+              </div>
+            </div>
+          </PixelButton>
+
+          <PixelButton
+            onClick={onClose}
+            variant="ghost"
+            className="w-full"
+          >
+            Maybe Later
+          </PixelButton>
+        </div>
+      </PixelCard>
+    </div>
+  );
+}
+
 function ShareModal({
   build,
   onClose,
@@ -1352,6 +1424,7 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
   const [currentBuildId, setCurrentBuildId] = useState<Id<"userStackBuilds"> | null>(null);
   const [shareModalBuild, setShareModalBuild] = useState<UserBuild | null>(null);
   const [publishModalBuild, setPublishModalBuild] = useState<UserBuild | null>(null);
+  const [postSavePromptBuild, setPostSavePromptBuild] = useState<UserBuild | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [showImportModal, setShowImportModal] = useState(false);
@@ -1622,6 +1695,9 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
         animated: e.animated,
       }));
 
+      let savedBuildId = currentBuildId;
+      let shouldShowPrompt = false;
+      
       if (currentBuildId) {
         await updateBuild({
           buildId: currentBuildId,
@@ -1631,6 +1707,11 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           edges: edgeData,
         });
         setSaveMessage("Stack updated!");
+        
+        const existingBuild = userBuilds?.find(b => b._id === currentBuildId);
+        if (existingBuild && !existingBuild.isPublic) {
+          shouldShowPrompt = true;
+        }
       } else {
         const newBuildId = await createBuild({
           userId: user.id,
@@ -1641,10 +1722,26 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
           isPublic: false,
         });
         setCurrentBuildId(newBuildId);
+        savedBuildId = newBuildId;
         setSaveMessage("Stack saved!");
+        shouldShowPrompt = true;
       }
 
       setTimeout(() => setSaveMessage(null), 3000);
+
+      if (shouldShowPrompt && savedBuildId) {
+        const buildForPrompt: UserBuild = {
+          _id: savedBuildId,
+          title: buildTitle,
+          description: buildDescription || undefined,
+          nodes: nodeData as Node<ToolNodeData>[],
+          edges: edgeData,
+          isPublic: false,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        };
+        setPostSavePromptBuild(buildForPrompt);
+      }
     } catch (error) {
       setSaveMessage("Error saving stack");
     } finally {
@@ -2158,6 +2255,21 @@ export function VisualStackBuilder({ initialTools }: VisualStackBuilderProps) {
             setPublishModalBuild(null);
             setSaveMessage("Stack published to marketplace!");
             setTimeout(() => setSaveMessage(null), 3000);
+          }}
+        />
+      )}
+
+      {postSavePromptBuild && (
+        <PostSavePromptModal
+          build={postSavePromptBuild}
+          onClose={() => setPostSavePromptBuild(null)}
+          onMakePublic={() => {
+            setShareModalBuild(postSavePromptBuild);
+            setPostSavePromptBuild(null);
+          }}
+          onPublishToMarketplace={() => {
+            setPublishModalBuild(postSavePromptBuild);
+            setPostSavePromptBuild(null);
           }}
         />
       )}

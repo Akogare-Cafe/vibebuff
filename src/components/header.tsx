@@ -21,6 +21,10 @@ import {
   FileText,
   Swords,
   Activity,
+  BarChart3,
+  Compass,
+  Building2,
+  History,
 } from "lucide-react";
 import { UserMenu } from "@/components/auth";
 import { useUser } from "@clerk/nextjs";
@@ -47,9 +51,12 @@ const navItems: NavItem[] = [
       { href: "/compare", label: "Compare Tools", icon: Scale, description: "Side-by-side tool comparison" },
       { href: "/battles", label: "Stack Battles", icon: Swords, description: "Vote on the best tech stack" },
       { href: "/stack-marketplace", label: "Marketplace", icon: Store, description: "Community-built stacks" },
+      { href: "/analyze", label: "Stack Analyzer", icon: BarChart3, description: "Analyze your package.json" },
+      { href: "/timeline", label: "Tool Timeline", icon: History, description: "History of developer tools" },
     ],
   },
   { href: "/leaderboards", label: "Leaderboards", icon: Trophy },
+  { href: "/quests", label: "Quests", icon: Compass },
   {
     label: "Community",
     icon: Users,
@@ -57,6 +64,8 @@ const navItems: NavItem[] = [
       { href: "/community", label: "Community Hub", icon: Users, description: "Connect with developers" },
       { href: "/forum", label: "Forum", icon: MessagesSquare, description: "Discuss tools & stacks" },
       { href: "/blog", label: "Blog", icon: BookOpen, description: "Latest articles & guides" },
+      { href: "/companies", label: "Companies", icon: Building2, description: "Company tech stacks" },
+      { href: "/groups", label: "Groups", icon: Users, description: "Join developer groups" },
     ],
   },
   { href: "/docs", label: "Docs", icon: FileText },
