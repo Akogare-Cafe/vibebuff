@@ -17,7 +17,12 @@ interface Props {
 export default async function Image({ params }: Props) {
   const { tool: toolSlug } = await params;
 
-  let tool = null;
+  let tool: {
+    name: string;
+    logoUrl?: string;
+    categoryId: string;
+    category?: { name: string } | null;
+  } | null = null;
   let alternatives: Array<{ name: string; logoUrl?: string }> = [];
   try {
     tool = await fetchQuery(api.tools.getBySlug, { slug: toolSlug });
