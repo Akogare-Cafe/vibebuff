@@ -27,6 +27,7 @@ from betalist_scraper import scrape_betalist
 from hackernews_scraper import scrape_hackernews
 from vibe_tools_scraper import scrape_vibe_tools
 from company_techstack_scraper import scrape_company_tech_stacks
+from claude_scraper import scrape_claude_ecosystem
 
 
 async def run_all_scrapers(
@@ -50,6 +51,7 @@ async def run_all_scrapers(
     skip_hackernews: bool = False,
     skip_vibe_tools: bool = False,
     skip_company_stacks: bool = False,
+    skip_claude: bool = False,
 ) -> dict:
     """Run all scrapers and aggregate results."""
     
@@ -330,6 +332,20 @@ async def run_all_scrapers(
             json.dump(company_data, f, indent=2)
         print(f"Company Stacks: {company_data.get('total_unique_companies', 0)} companies")
     
+    # Claude Ecosystem
+    if not skip_claude:
+        print("\n=== Scraping Claude Ecosystem ===")
+        claude_data = await scrape_claude_ecosystem()
+        results["sources"]["claude_ecosystem"] = {
+            "total_models": claude_data.get("stats", {}).get("total_models", 0),
+            "total_resources": claude_data.get("stats", {}).get("total_resources_from_awesome", 0),
+            "mcp_servers": claude_data.get("stats", {}).get("official_mcp_servers", 0) + claude_data.get("stats", {}).get("community_mcp_servers", 0),
+            "skills": claude_data.get("stats", {}).get("total_skills", 0),
+        }
+        with open(os.path.join(output_dir, "claude_ecosystem.json"), "w") as f:
+            json.dump(claude_data, f, indent=2)
+        print(f"Claude Ecosystem: {claude_data.get('stats', {}).get('total_models', 0)} models, {claude_data.get('stats', {}).get('total_resources_from_awesome', 0)} resources")
+    
     # Save summary
     with open(os.path.join(output_dir, "scrape_summary.json"), "w") as f:
         json.dump(results, f, indent=2)
@@ -371,11 +387,12 @@ if __name__ == "__main__":
     parser.add_argument("--skip-hackernews", action="store_true", help="Skip Hacker News")
     parser.add_argument("--skip-vibe-tools", action="store_true", help="Skip Vibe Tools scraping")
     parser.add_argument("--skip-company-stacks", action="store_true", help="Skip Company Tech Stacks scraping")
+    parser.add_argument("--skip-claude", action="store_true", help="Skip Claude Ecosystem scraping")
     parser.add_argument("--only", choices=[
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
         "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools",
-        "company-stacks"
+        "company-stacks", "claude"
     ], help="Only run specific scraper")
     
     args = parser.parse_args()
@@ -384,7 +401,7 @@ if __name__ == "__main__":
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
         "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools",
-        "company-stacks"
+        "company-stacks", "claude"
     ]
     
     if args.only:
@@ -407,6 +424,7 @@ if __name__ == "__main__":
         skip_hackernews = args.only != "hackernews"
         skip_vibe_tools = args.only != "vibe-tools"
         skip_company_stacks = args.only != "company-stacks"
+        skip_claude = args.only != "claude"
     else:
         skip_github = args.skip_github
         skip_npm = args.skip_npm
@@ -427,6 +445,7 @@ if __name__ == "__main__":
         skip_hackernews = args.skip_hackernews
         skip_vibe_tools = args.skip_vibe_tools
         skip_company_stacks = args.skip_company_stacks
+        skip_claude = args.skip_claude
     
     async def main():
         results = await run_all_scrapers(
@@ -449,6 +468,7 @@ if __name__ == "__main__":
             skip_hackernews=skip_hackernews,
             skip_vibe_tools=skip_vibe_tools,
             skip_company_stacks=skip_company_stacks,
+            skip_claude=skip_claude,
         )
         print_summary(results)
     

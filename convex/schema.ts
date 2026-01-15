@@ -3050,4 +3050,67 @@ export default defineSchema({
     .index("by_session", ["sessionId"])
     .index("by_page", ["page"])
     .index("by_last_updated", ["lastUpdated"]),
+
+  claudeModels: defineTable({
+    modelId: v.string(),
+    name: v.string(),
+    family: v.string(),
+    releaseDate: v.string(),
+    contextWindow: v.number(),
+    maxOutput: v.number(),
+    capabilities: v.array(v.string()),
+    isLatest: v.boolean(),
+    description: v.optional(v.string()),
+    pricing: v.optional(v.object({
+      inputPerMillion: v.optional(v.number()),
+      outputPerMillion: v.optional(v.number()),
+    })),
+    updatedAt: v.number(),
+  })
+    .index("by_model_id", ["modelId"])
+    .index("by_family", ["family"])
+    .index("by_latest", ["isLatest"]),
+
+  claudeResources: defineTable({
+    name: v.string(),
+    url: v.string(),
+    description: v.optional(v.string()),
+    category: v.string(),
+    resourceType: v.string(),
+    stars: v.optional(v.number()),
+    language: v.optional(v.string()),
+    topics: v.optional(v.array(v.string())),
+    source: v.string(),
+    scrapedAt: v.number(),
+  })
+    .index("by_category", ["category"])
+    .index("by_type", ["resourceType"])
+    .index("by_source", ["source"])
+    .index("by_url", ["url"]),
+
+  claudeMcpServers: defineTable({
+    name: v.string(),
+    fullName: v.optional(v.string()),
+    url: v.string(),
+    description: v.optional(v.string()),
+    serverType: v.string(),
+    stars: v.optional(v.number()),
+    language: v.optional(v.string()),
+    isOfficial: v.boolean(),
+    scrapedAt: v.number(),
+  })
+    .index("by_type", ["serverType"])
+    .index("by_official", ["isOfficial"])
+    .index("by_stars", ["stars"]),
+
+  claudeReleases: defineTable({
+    version: v.string(),
+    name: v.string(),
+    publishedAt: v.string(),
+    url: v.string(),
+    body: v.optional(v.string()),
+    scrapedAt: v.number(),
+  })
+    .index("by_version", ["version"])
+    .index("by_published", ["publishedAt"]),
 });

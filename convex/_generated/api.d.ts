@@ -20,6 +20,7 @@ import type * as battles from "../battles.js";
 import type * as bulkUpdateProsConsInternal from "../bulkUpdateProsConsInternal.js";
 import type * as categories from "../categories.js";
 import type * as checkToolsProsConsInternal from "../checkToolsProsConsInternal.js";
+import type * as claude from "../claude.js";
 import type * as communityStacks from "../communityStacks.js";
 import type * as companies from "../companies.js";
 import type * as compare from "../compare.js";
@@ -110,6 +111,7 @@ declare const fullApi: ApiFromModules<{
   bulkUpdateProsConsInternal: typeof bulkUpdateProsConsInternal;
   categories: typeof categories;
   checkToolsProsConsInternal: typeof checkToolsProsConsInternal;
+  claude: typeof claude;
   communityStacks: typeof communityStacks;
   companies: typeof companies;
   compare: typeof compare;
