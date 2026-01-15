@@ -26,6 +26,7 @@ from indiehackers_scraper import scrape_indiehackers
 from betalist_scraper import scrape_betalist
 from hackernews_scraper import scrape_hackernews
 from vibe_tools_scraper import scrape_vibe_tools
+from company_techstack_scraper import scrape_company_tech_stacks
 
 
 async def run_all_scrapers(
@@ -48,6 +49,7 @@ async def run_all_scrapers(
     skip_betalist: bool = False,
     skip_hackernews: bool = False,
     skip_vibe_tools: bool = False,
+    skip_company_stacks: bool = False,
 ) -> dict:
     """Run all scrapers and aggregate results."""
     
@@ -315,6 +317,19 @@ async def run_all_scrapers(
             json.dump(vibe_data, f, indent=2)
         print(f"Vibe Tools: {vibe_data.get('total_unique_tools', 0)} unique tools")
     
+    # Company Tech Stacks
+    if not skip_company_stacks:
+        print("\n=== Scraping Company Tech Stacks ===")
+        company_data = await scrape_company_tech_stacks()
+        results["sources"]["company_stacks"] = {
+            "total_companies": company_data.get("total_unique_companies", 0),
+            "stackshare": company_data.get("sources", {}).get("stackshare", 0),
+            "website_detection": company_data.get("sources", {}).get("website_detection", 0),
+        }
+        with open(os.path.join(output_dir, "company_tech_stacks.json"), "w") as f:
+            json.dump(company_data, f, indent=2)
+        print(f"Company Stacks: {company_data.get('total_unique_companies', 0)} companies")
+    
     # Save summary
     with open(os.path.join(output_dir, "scrape_summary.json"), "w") as f:
         json.dump(results, f, indent=2)
@@ -355,10 +370,12 @@ if __name__ == "__main__":
     parser.add_argument("--skip-betalist", action="store_true", help="Skip BetaList")
     parser.add_argument("--skip-hackernews", action="store_true", help="Skip Hacker News")
     parser.add_argument("--skip-vibe-tools", action="store_true", help="Skip Vibe Tools scraping")
+    parser.add_argument("--skip-company-stacks", action="store_true", help="Skip Company Tech Stacks scraping")
     parser.add_argument("--only", choices=[
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
-        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools"
+        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools",
+        "company-stacks"
     ], help="Only run specific scraper")
     
     args = parser.parse_args()
@@ -366,7 +383,8 @@ if __name__ == "__main__":
     all_scrapers = [
         "github", "npm", "rss", "web", "awesome", "articles", "producthunt",
         "trending", "alternativeto", "stackshare", "devhunt", "ai-directories",
-        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools"
+        "vscode", "packages", "indiehackers", "betalist", "hackernews", "vibe-tools",
+        "company-stacks"
     ]
     
     if args.only:
@@ -388,6 +406,7 @@ if __name__ == "__main__":
         skip_betalist = args.only != "betalist"
         skip_hackernews = args.only != "hackernews"
         skip_vibe_tools = args.only != "vibe-tools"
+        skip_company_stacks = args.only != "company-stacks"
     else:
         skip_github = args.skip_github
         skip_npm = args.skip_npm
@@ -407,6 +426,7 @@ if __name__ == "__main__":
         skip_betalist = args.skip_betalist
         skip_hackernews = args.skip_hackernews
         skip_vibe_tools = args.skip_vibe_tools
+        skip_company_stacks = args.skip_company_stacks
     
     async def main():
         results = await run_all_scrapers(
@@ -428,6 +448,7 @@ if __name__ == "__main__":
             skip_betalist=skip_betalist,
             skip_hackernews=skip_hackernews,
             skip_vibe_tools=skip_vibe_tools,
+            skip_company_stacks=skip_company_stacks,
         )
         print_summary(results)
     

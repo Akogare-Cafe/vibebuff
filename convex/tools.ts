@@ -268,9 +268,14 @@ export const getToolsForTimeline = query({
       .filter((q) => q.eq(q.field("isActive"), true))
       .collect();
     
+    const now = Date.now();
+    const thirtyDaysAgo = now - (30 * 24 * 60 * 60 * 1000);
+    
     const toolsWithDates = allTools
       .map((tool) => {
         const releaseDate = tool.externalData?.github?.createdAt || tool.externalData?.npm?.firstPublished || null;
+        const isRecentlyAdded = tool._creationTime > thirtyDaysAgo;
+        
         return {
           _id: tool._id,
           name: tool.name,
@@ -293,6 +298,8 @@ export const getToolsForTimeline = query({
           language: tool.externalData?.github?.language,
           forks: tool.externalData?.github?.forks,
           contributors: tool.externalData?.github?.contributors,
+          isRecentlyAdded,
+          addedToDbAt: tool._creationTime,
         };
       })
       .filter((tool) => tool.releaseDateTimestamp !== null)

@@ -25,6 +25,7 @@ import {
   Tag,
   Sparkles,
   History,
+  Plus,
 } from "lucide-react";
 import { DynamicIcon } from "@/components/dynamic-icon";
 
@@ -50,6 +51,8 @@ type TimelineTool = {
   language?: string;
   forks?: number;
   contributors?: number;
+  isRecentlyAdded?: boolean;
+  addedToDbAt?: number;
 };
 
 function TimelineItem({ tool, index }: { tool: TimelineTool; index: number }) {
@@ -113,6 +116,12 @@ function TimelineItem({ tool, index }: { tool: TimelineTool; index: number }) {
                     <h3 className="text-primary font-semibold truncate">{tool.name}</h3>
                     {tool.isFeatured && (
                       <Sparkles className="w-4 h-4 text-primary shrink-0" />
+                    )}
+                    {tool.isRecentlyAdded && (
+                      <PixelBadge variant="default" className="flex items-center gap-1 bg-green-500 text-white border-green-600">
+                        <Plus className="w-3 h-3" />
+                        NEW
+                      </PixelBadge>
                     )}
                   </div>
                   <p className="text-muted-foreground text-xs line-clamp-1">{tool.tagline}</p>
