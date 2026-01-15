@@ -334,13 +334,29 @@ export function Header() {
             ) : (
               <motion.button
                 onClick={() => setAuthModalOpen(true)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative flex items-center justify-center rounded-xl h-9 sm:h-10 bg-gradient-to-r from-primary via-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white gap-2 px-4 sm:px-5 text-sm font-bold transition-all shadow-lg shadow-primary/30 overflow-hidden group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative flex items-center justify-center rounded-lg h-9 sm:h-10 bg-gradient-to-br from-primary via-blue-600 to-primary text-white gap-2 px-4 sm:px-6 text-sm font-bold overflow-hidden group border-2 border-accent/50 hover:border-accent transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/20 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <Zap className="w-4 h-4 relative z-10" />
-                <span className="hidden sm:inline relative z-10">Connect</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent/0 via-accent/30 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300 -z-10" />
+                
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute top-0 right-0 w-2 h-2 bg-accent rounded-full"
+                />
+                
+                <Zap className="w-4 h-4 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="hidden sm:inline relative z-10 tracking-wide">CONNECT</span>
               </motion.button>
             )}
           </div>
