@@ -17,8 +17,8 @@ interface Props {
 export default async function Image({ params }: Props) {
   const { slug } = await params;
 
-  let tool = null;
-  let ratingSummary = null;
+  let tool: Awaited<ReturnType<typeof fetchQuery<typeof api.tools.getBySlug>>> = null;
+  let ratingSummary: { totalReviews: number; averageRating: number } | null = null;
   try {
     tool = await fetchQuery(api.tools.getBySlug, { slug });
     if (tool) {

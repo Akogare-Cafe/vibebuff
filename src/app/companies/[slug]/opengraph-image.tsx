@@ -17,7 +17,13 @@ interface Props {
 export default async function Image({ params }: Props) {
   const { slug } = await params;
 
-  let company = null;
+  let company: {
+    name: string;
+    logoUrl?: string;
+    industry?: string;
+    location?: string;
+    toolIds?: string[];
+  } | null = null;
   let tools: Array<{ name: string; logoUrl?: string }> = [];
   try {
     company = await fetchQuery(api.companies.getBySlug, { slug });
