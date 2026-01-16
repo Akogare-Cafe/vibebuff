@@ -1,7 +1,8 @@
-import { MetadataRoute } from 'next'
- 
-export default function manifest(): MetadataRoute.Manifest {
-  return {
+import { NextResponse } from 'next/server'
+import type { MetadataRoute } from 'next'
+
+export function GET() {
+  const manifest: MetadataRoute.Manifest = {
     name: 'VibeBuff - Build Your Perfect Tech Stack',
     short_name: 'VibeBuff',
     description: 'The ultimate tech stack builder for developers. Compare 500+ tools, get AI-powered recommendations, and discover what top startups use.',
@@ -31,4 +32,6 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: '/',
     lang: 'en-US',
   }
+
+  return NextResponse.json(manifest)
 }
