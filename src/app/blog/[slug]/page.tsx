@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+
   return {
     title: post.title,
     description: post.description,
@@ -35,11 +37,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+      url: `${siteUrl}/blog/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+    },
+    alternates: {
+      canonical: `${siteUrl}/blog/${slug}`,
     },
   };
 }

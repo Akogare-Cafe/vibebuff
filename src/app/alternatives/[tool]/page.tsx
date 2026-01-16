@@ -34,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ tool: str
   const pageTitle = `Best ${tool.name} Alternatives in 2025`;
   const description = `Looking for alternatives to ${tool.name}? Compare features, pricing, and community feedback for the top ${tool.name} alternatives.`;
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
+
   return {
     title: `${pageTitle} | VibeBuff`,
     description,
@@ -41,11 +43,15 @@ export async function generateMetadata({ params }: { params: Promise<{ tool: str
       title: pageTitle,
       description,
       type: "website",
+      url: `${siteUrl}/alternatives/${toolSlug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description,
+    },
+    alternates: {
+      canonical: `${siteUrl}/alternatives/${toolSlug}`,
     },
   };
 }
