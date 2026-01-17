@@ -57,7 +57,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type Tab = "overview" | "users" | "tools" | "suggestions" | "ads" | "crons" | "scrape" | "add-tool";
+type Tab = "overview" | "users" | "tools" | "suggestions" | "ads" | "crons" | "scrape" | "add-tool" | "bulk-import";
 
 export default function AdminDashboardPage() {
   const { isSignedIn, isLoaded } = useAuth();
@@ -81,6 +81,8 @@ export default function AdminDashboardPage() {
   const createTool = useMutation(api.admin.createTool);
   const updateFeedSource = useMutation(api.admin.updateFeedSource);
   const scrapeAndParse = useAction(api.adminActions.scrapeAndParseUrl);
+  const scrapeMultipleUrls = useAction(api.adminActions.scrapeMultipleUrls);
+  const bulkCreateTools = useMutation(api.admin.bulkCreateTools);
   const approveScrapeJob = useMutation(api.admin.approveScrapeJob);
   const stats = useQuery(api.admin.getDashboardStats);
   const users = useQuery(api.admin.getAllUsers, { search: userSearch || undefined, limit: 50 });
@@ -155,6 +157,7 @@ export default function AdminDashboardPage() {
     { id: "tools", label: "Tools", icon: <Package className="w-4 h-4" />, badge: stats?.totalTools },
     { id: "add-tool", label: "Add Tool", icon: <Plus className="w-4 h-4" /> },
     { id: "scrape", label: "Scrape", icon: <Globe className="w-4 h-4" /> },
+    { id: "bulk-import", label: "Bulk Import", icon: <Sparkles className="w-4 h-4" /> },
     { id: "crons", label: "Crons", icon: <Timer className="w-4 h-4" /> },
     { id: "suggestions", label: "Suggestions", icon: <MessageSquarePlus className="w-4 h-4" />, badge: stats?.pendingSuggestions },
     { id: "ads", label: "Ads", icon: <Megaphone className="w-4 h-4" /> },
@@ -315,6 +318,14 @@ export default function AdminDashboardPage() {
 
         {activeTab === "add-tool" && (
           <AddToolTab categories={categories} onCreateTool={createTool} />
+        )}
+
+        {activeTab === "bulk-import" && (
+          <BulkImportTab
+            categories={categories}
+            onScrapeMultiple={scrapeMultipleUrls}
+            onBulkCreate={bulkCreateTools}
+          />
         )}
       </div>
     </div>
@@ -1460,6 +1471,305 @@ function AddToolTab({
           </div>
         </PixelCardContent>
       </PixelCard>
+    </div>
+  );
+}
+
+function BulkImportTab({
+  categories,
+  onScrapeMultiple,
+  onBulkCreate,
+}: {
+  categories: any;
+  onScrapeMultiple: (args: { urls: string[] }) => Promise<any>;
+  onBulkCreate: (args: { tools: any[] }) => Promise<any>;
+}) {
+  const [urlsInput, setUrlsInput] = useState("");
+  const [scraping, setScraping] = useState(false);
+  const [scrapedResults, setScrapedResults] = useState<any[]>([]);
+  const [importing, setImporting] = useState(false);
+  const [importResults, setImportResults] = useState<any>(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleScrapeUrls = async () => {
+    const urls = urlsInput
+      .split("\n")
+      .map(url => url.trim())
+      .filter(url => url.length > 0);
+
+    if (urls.length === 0) return;
+
+    setScraping(true);
+    setScrapedResults([]);
+    setImportResults(null);
+
+    try {
+      const result = await onScrapeMultiple({ urls });
+      setScrapedResults(result.results || []);
+    } catch (error) {
+      alert(`Error scraping URLs: ${error}`);
+    } finally {
+      setScraping(false);
+    }
+  };
+
+  const handleBulkImport = async () => {
+    if (!selectedCategory) {
+      alert("Please select a default category");
+      return;
+    }
+
+    const successfulTools = scrapedResults
+      .filter(r => r.success && r.tool)
+      .map(r => ({
+        ...r.tool,
+        categorySlug: selectedCategory,
+      }));
+
+    if (successfulTools.length === 0) {
+      alert("No tools to import");
+      return;
+    }
+
+    setImporting(true);
+    try {
+      const result = await onBulkCreate({ tools: successfulTools });
+      setImportResults(result);
+      setUrlsInput("");
+      setScrapedResults([]);
+    } catch (error) {
+      alert(`Error importing tools: ${error}`);
+    } finally {
+      setImporting(false);
+    }
+  };
+
+  const successCount = scrapedResults.filter(r => r.success).length;
+  const failureCount = scrapedResults.filter(r => !r.success).length;
+
+  return (
+    <div className="space-y-6">
+      <PixelCard>
+        <PixelCardHeader>
+          <PixelCardTitle className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5" /> BULK TOOL IMPORT
+          </PixelCardTitle>
+        </PixelCardHeader>
+        <PixelCardContent>
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm text-muted-foreground block mb-2">
+                Paste URLs (one per line)
+              </label>
+              <Textarea
+                value={urlsInput}
+                onChange={(e) => setUrlsInput(e.target.value)}
+                placeholder="https://github.com/user/repo&#10;https://example.com/tool&#10;https://github.com/another/project"
+                className="w-full min-h-[200px] bg-background border border-border text-foreground text-sm font-mono"
+                disabled={scraping}
+              />
+              <p className="text-xs text-muted-foreground mt-2">
+                Supports GitHub repos and tool websites. Each URL will be scraped for metadata.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <PixelButton
+                onClick={handleScrapeUrls}
+                disabled={scraping || !urlsInput.trim()}
+              >
+                {scraping ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                    SCRAPING...
+                  </>
+                ) : (
+                  <>
+                    <Globe className="w-4 h-4 mr-2" />
+                    SCRAPE URLS
+                  </>
+                )}
+              </PixelButton>
+
+              {scrapedResults.length > 0 && (
+                <div className="text-sm text-muted-foreground">
+                  {successCount} successful, {failureCount} failed
+                </div>
+              )}
+            </div>
+          </div>
+        </PixelCardContent>
+      </PixelCard>
+
+      {scrapedResults.length > 0 && (
+        <PixelCard>
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-2">
+              <Package className="w-5 h-5" /> SCRAPED RESULTS ({scrapedResults.length})
+            </PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 pb-4 border-b border-border">
+                <div className="flex-1">
+                  <label className="text-xs text-muted-foreground block mb-1">
+                    Default Category for All Tools
+                  </label>
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger className="w-full max-w-xs">
+                      <SelectValue placeholder="Select category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories?.map((cat: any) => (
+                        <SelectItem key={cat._id} value={cat.slug}>
+                          {cat.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <PixelButton
+                  onClick={handleBulkImport}
+                  disabled={importing || !selectedCategory || successCount === 0}
+                  className="mt-5"
+                >
+                  {importing ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                      IMPORTING...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      IMPORT {successCount} TOOLS
+                    </>
+                  )}
+                </PixelButton>
+              </div>
+
+              <div className="space-y-3 max-h-[600px] overflow-y-auto">
+                {scrapedResults.map((result, idx) => (
+                  <div
+                    key={idx}
+                    className={`p-4 rounded-lg border ${
+                      result.success
+                        ? "border-green-500/30 bg-green-500/5"
+                        : "border-red-500/30 bg-red-500/5"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-2">
+                          {result.success ? (
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          ) : (
+                            <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                          )}
+                          <span className="text-xs text-muted-foreground truncate">
+                            {result.url}
+                          </span>
+                        </div>
+
+                        {result.success && result.tool ? (
+                          <div className="space-y-2">
+                            <div>
+                              <h4 className="text-sm font-medium text-foreground">
+                                {result.tool.name}
+                              </h4>
+                              <p className="text-xs text-muted-foreground">
+                                {result.tool.tagline}
+                              </p>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              <PixelBadge variant="outline" className="text-[10px]">
+                                {result.tool.pricingModel}
+                              </PixelBadge>
+                              {result.tool.isOpenSource && (
+                                <PixelBadge variant="default" className="text-[10px]">
+                                  <Github className="w-2 h-2 mr-1" /> OPEN SOURCE
+                                </PixelBadge>
+                              )}
+                              <PixelBadge variant="secondary" className="text-[10px]">
+                                {result.tool.features?.length || 0} features
+                              </PixelBadge>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-xs text-red-400">{result.error}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+      )}
+
+      {importResults && (
+        <PixelCard>
+          <PixelCardHeader>
+            <PixelCardTitle className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-500" /> IMPORT COMPLETE
+            </PixelCardTitle>
+          </PixelCardHeader>
+          <PixelCardContent>
+            <div className="space-y-3">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center p-3 bg-muted/50 rounded">
+                  <div className="text-2xl font-bold text-primary">
+                    {importResults.totalProcessed}
+                  </div>
+                  <div className="text-xs text-muted-foreground">Total Processed</div>
+                </div>
+                <div className="text-center p-3 bg-green-500/10 rounded">
+                  <div className="text-2xl font-bold text-green-500">
+                    {importResults.successCount}
+                  </div>
+                  <div className="text-xs text-muted-foreground">Imported</div>
+                </div>
+                <div className="text-center p-3 bg-red-500/10 rounded">
+                  <div className="text-2xl font-bold text-red-500">
+                    {importResults.failureCount}
+                  </div>
+                  <div className="text-xs text-muted-foreground">Failed</div>
+                </div>
+              </div>
+
+              {importResults.results && importResults.results.length > 0 && (
+                <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                  {importResults.results.map((r: any, idx: number) => (
+                    <div
+                      key={idx}
+                      className={`p-2 rounded text-xs ${
+                        r.success
+                          ? "bg-green-500/10 text-green-400"
+                          : "bg-red-500/10 text-red-400"
+                      }`}
+                    >
+                      {r.success ? (
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="w-3 h-3" />
+                          <span>{r.name} imported successfully</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2">
+                          <XCircle className="w-3 h-3" />
+                          <span>
+                            {r.name}: {r.error}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </PixelCardContent>
+        </PixelCard>
+      )}
     </div>
   );
 }

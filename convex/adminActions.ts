@@ -232,6 +232,46 @@ Return ONLY valid JSON, no markdown or explanation.`;
   },
 });
 
+export const scrapeMultipleUrls = action({
+  args: {
+    urls: v.array(v.string()),
+  },
+  handler: async (ctx, args): Promise<{
+    success: boolean;
+    results: Array<{
+      url: string;
+      success: boolean;
+      tool?: any;
+      error?: string;
+    }>;
+  }> => {
+    const results = [];
+    
+    for (const url of args.urls) {
+      const trimmedUrl = url.trim();
+      if (!trimmedUrl) continue;
+      
+      try {
+        const result = await ctx.runAction(internal.adminActions.scrapeAndParseUrl, { url: trimmedUrl });
+        results.push({
+          url: trimmedUrl,
+          success: result.success,
+          tool: result.tool,
+          error: result.error,
+        });
+      } catch (error) {
+        results.push({
+          url: trimmedUrl,
+          success: false,
+          error: `Failed to scrape: ${error}`,
+        });
+      }
+    }
+    
+    return { success: true, results };
+  },
+});
+
 export const triggerFeedFetch = action({
   args: {},
   handler: async (ctx) => {

@@ -586,6 +586,31 @@ export const internalRequireAdmin = internalQuery({
   },
 });
 
+export const internalSetAdminByUsername = internalMutation({
+  args: { 
+    username: v.string(),
+    isAdmin: v.boolean(),
+  },
+  handler: async (ctx, args) => {
+    const userProfile = await ctx.db
+      .query("userProfiles")
+      .filter((q) => q.eq(q.field("username"), args.username))
+      .first();
+
+    if (!userProfile) {
+      throw new Error(`User with username "${args.username}" not found`);
+    }
+
+    await ctx.db.patch(userProfile._id, { isAdmin: args.isAdmin });
+    return { 
+      success: true, 
+      userId: userProfile.clerkId,
+      username: userProfile.username,
+      isAdmin: args.isAdmin,
+    };
+  },
+});
+
 export const updateScrapeJobStatus = internalMutation({
   args: {
     jobId: v.id("communityToolSuggestions"),
@@ -980,5 +1005,121 @@ export const approveScrapeJob = mutation({
     });
 
     return { success: true, toolId };
+  },
+});
+
+export const bulkCreateTools = mutation({
+  args: {
+    tools: v.array(v.object({
+      name: v.string(),
+      slug: v.string(),
+      tagline: v.string(),
+      description: v.string(),
+      websiteUrl: v.string(),
+      categorySlug: v.string(),
+      pricingModel: v.union(
+        v.literal("free"),
+        v.literal("freemium"),
+        v.literal("paid"),
+        v.literal("open_source"),
+        v.literal("enterprise")
+      ),
+      isOpenSource: v.boolean(),
+      githubUrl: v.optional(v.string()),
+      docsUrl: v.optional(v.string()),
+      logoUrl: v.optional(v.string()),
+      pros: v.array(v.string()),
+      cons: v.array(v.string()),
+      bestFor: v.array(v.string()),
+      features: v.array(v.string()),
+      tags: v.array(v.string()),
+    })),
+  },
+  handler: async (ctx, args) => {
+    const userId = await getAuthenticatedUser(ctx);
+    
+    const userProfile = await ctx.db
+      .query("userProfiles")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", userId))
+      .first();
+
+    if (!userProfile?.isAdmin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
+
+    const results = [];
+    
+    for (const toolData of args.tools) {
+      try {
+        const category = await ctx.db
+          .query("categories")
+          .withIndex("by_slug", (q) => q.eq("slug", toolData.categorySlug))
+          .first();
+
+        if (!category) {
+          results.push({
+            success: false,
+            name: toolData.name,
+            error: `Category not found: ${toolData.categorySlug}`,
+          });
+          continue;
+        }
+
+        const existingTool = await ctx.db
+          .query("tools")
+          .withIndex("by_slug", (q) => q.eq("slug", toolData.slug))
+          .first();
+
+        if (existingTool) {
+          results.push({
+            success: false,
+            name: toolData.name,
+            error: `Tool with slug "${toolData.slug}" already exists`,
+          });
+          continue;
+        }
+
+        const toolId = await ctx.db.insert("tools", {
+          name: toolData.name,
+          slug: toolData.slug,
+          tagline: toolData.tagline,
+          description: toolData.description,
+          websiteUrl: toolData.websiteUrl,
+          githubUrl: toolData.githubUrl,
+          docsUrl: toolData.docsUrl,
+          logoUrl: toolData.logoUrl,
+          categoryId: category._id,
+          pricingModel: toolData.pricingModel,
+          isOpenSource: toolData.isOpenSource,
+          isActive: true,
+          isFeatured: false,
+          pros: toolData.pros,
+          cons: toolData.cons,
+          bestFor: toolData.bestFor,
+          features: toolData.features,
+          tags: toolData.tags,
+        });
+
+        results.push({
+          success: true,
+          name: toolData.name,
+          toolId,
+        });
+      } catch (error) {
+        results.push({
+          success: false,
+          name: toolData.name,
+          error: `Failed to create: ${error}`,
+        });
+      }
+    }
+
+    return { 
+      success: true, 
+      results,
+      totalProcessed: results.length,
+      successCount: results.filter(r => r.success).length,
+      failureCount: results.filter(r => !r.success).length,
+    };
   },
 });
