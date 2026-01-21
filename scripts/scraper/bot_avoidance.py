@@ -170,7 +170,12 @@ async def retry_with_backoff(
             
             if hasattr(result, 'status_code') and result.status_code in retry_on_status:
                 if attempt < max_retries:
-                    await exponential_backoff_delay(attempt, base_delay, max_delay)
+                    if result.status_code == 429:
+                        delay = min(base_delay * (2 ** (attempt + 2)), max_delay)
+                    else:
+                        delay = min(base_delay * (2 ** attempt), max_delay)
+                    jitter = random.uniform(0, delay * 0.1)
+                    await asyncio.sleep(delay + jitter)
                     continue
             
             return result
@@ -181,12 +186,68 @@ async def retry_with_backoff(
                 await exponential_backoff_delay(attempt, base_delay, max_delay)
             else:
                 raise
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code in retry_on_status and attempt < max_retries:
+                if e.response.status_code == 429:
+                    delay = min(base_delay * (2 ** (attempt + 2)), max_delay)
+                else:
+                    delay = min(base_delay * (2 ** attempt), max_delay)
+                jitter = random.uniform(0, delay * 0.1)
+                await asyncio.sleep(delay + jitter)
+                last_exception = e
+            else:
+                raise
         except Exception as e:
             last_exception = e
             raise
     
     if last_exception:
         raise last_exception
+
+
+async def safe_get(
+    client: httpx.AsyncClient,
+    url: str,
+    max_retries: int = 3,
+    base_delay: float = 2.0,
+    **kwargs
+) -> Optional[httpx.Response]:
+    """
+    Safely make a GET request with retry logic and rate limiting.
+    
+    Args:
+        client: httpx.AsyncClient instance
+        url: URL to fetch
+        max_retries: Maximum retry attempts
+        base_delay: Base delay for exponential backoff
+        **kwargs: Additional arguments for client.get()
+    
+    Returns:
+        Response object or None if all retries failed
+    """
+    async def _get():
+        return await client.get(url, **kwargs)
+    
+    try:
+        response = await retry_with_backoff(
+            _get,
+            max_retries=max_retries,
+            base_delay=base_delay,
+            max_delay=120.0
+        )
+        response.raise_for_status()
+        return response
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 429:
+            print(f"Rate limited after {max_retries} retries: {url}")
+        elif e.response.status_code == 404:
+            print(f"Not found: {url}")
+        else:
+            print(f"HTTP error {e.response.status_code}: {url}")
+        return None
+    except Exception as e:
+        print(f"Error fetching {url}: {e}")
+        return None
 
 
 class RateLimiter:
@@ -217,6 +278,28 @@ class RateLimiter:
             await asyncio.sleep(wait_time + jitter)
         
         self.last_request_time = time.time()
+
+
+_rate_limiters = {}
+
+
+def get_rate_limiter(domain: str) -> RateLimiter:
+    """
+    Get or create a rate limiter for a specific domain.
+    
+    Args:
+        domain: Domain name (e.g., 'github.com')
+    
+    Returns:
+        RateLimiter instance for the domain
+    """
+    from rate_limit_config import RATE_LIMITS
+    
+    if domain not in _rate_limiters:
+        requests_per_minute = RATE_LIMITS.get(domain, RATE_LIMITS["default"])
+        _rate_limiters[domain] = RateLimiter(requests_per_minute)
+    
+    return _rate_limiters[domain]
 
 
 def create_client_with_limits(
