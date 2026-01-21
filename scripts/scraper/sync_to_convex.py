@@ -415,12 +415,8 @@ def transform_vibe_tool(tool: dict) -> Optional[dict]:
 
 
 async def upsert_tool(client: httpx.AsyncClient, tool_data: dict) -> dict:
-    """Upsert a single tool to Convex."""
-    if not CONVEX_URL or not CONVEX_DEPLOY_KEY:
-        return {"error": "Missing CONVEX_URL or CONVEX_DEPLOY_KEY"}
-    
-    url = f"{CONVEX_URL}/api/mutation"
-    
+    """Upsert a tool to Convex via HTTP API."""
+    url = f"{CONVEX_URL}/api/run"
     headers = {
         "Authorization": f"Convex {CONVEX_DEPLOY_KEY}",
         "Content-Type": "application/json",
@@ -436,9 +432,12 @@ async def upsert_tool(client: httpx.AsyncClient, tool_data: dict) -> dict:
         if response.status_code == 200:
             return response.json()
         else:
-            return {"error": f"HTTP {response.status_code}: {response.text}"}
+            error_text = response.text[:200] if len(response.text) > 200 else response.text
+            print(f"Error upserting tool: HTTP {response.status_code}: {error_text}")
+            return {"error": f"HTTP {response.status_code}: {error_text}"}
     except Exception as e:
-        return {"error": str(e)}
+        print(f"Error upserting tool: {type(e).__name__}: {str(e)}")
+        return {"error": f"{type(e).__name__}: {str(e)}"}
 
 
 def transform_discovered_tool(tool: dict) -> Optional[dict]:
@@ -782,6 +781,11 @@ async def sync_all_scraped_tools():
     results["total_synced"] += vibe_result.get("success", 0)
     results["total_errors"] += len(vibe_result.get("errors", []))
     
+    mcp_result = await sync_mcp_servers()
+    results["mcp_servers"] = mcp_result
+    results["total_synced"] += mcp_result.get("success", 0)
+    results["total_errors"] += len(mcp_result.get("errors", []))
+    
     return results
 
 
@@ -826,27 +830,39 @@ def main():
     print(f"Convex URL: {CONVEX_URL}")
     print()
     
-    if mcp_only:
-        results = asyncio.run(sync_mcp_only())
-    else:
-        results = asyncio.run(sync_all_scraped_tools())
+    try:
+        if mcp_only:
+            results = asyncio.run(sync_mcp_only())
+        else:
+            results = asyncio.run(sync_all_scraped_tools())
+    except Exception as e:
+        print(f"ERROR during sync: {e}")
+        import traceback
+        traceback.print_exc()
+        results = None
     
     print()
     print("=" * 50)
     print("SYNC COMPLETE")
     print("=" * 50)
-    print(f"Total synced: {results['total_synced']}")
-    print(f"Total errors: {results['total_errors']}")
     
-    if results.get("mcp_servers", {}).get("errors"):
-        print("\nMCP Server Errors:")
-        for error in results["mcp_servers"]["errors"][:10]:
-            print(f"  - {error}")
-    
-    if results.get("vibe_tools", {}).get("errors"):
-        print("\nVibe Tool Errors:")
-        for error in results["vibe_tools"]["errors"][:10]:
-            print(f"  - {error}")
+    if results:
+        print(f"Total synced: {results.get('total_synced', 0)}")
+        print(f"Total errors: {results.get('total_errors', 0)}")
+        
+        mcp_servers = results.get("mcp_servers")
+        if mcp_servers and mcp_servers.get("errors"):
+            print("\nMCP Server Errors:")
+            for error in mcp_servers["errors"][:10]:
+                print(f"  - {error}")
+        
+        vibe_tools = results.get("vibe_tools")
+        if vibe_tools and vibe_tools.get("errors"):
+            print("\nVibe Tool Errors:")
+            for error in vibe_tools["errors"][:10]:
+                print(f"  - {error}")
+    else:
+        print("ERROR: Sync failed to return results")
 
 
 if __name__ == "__main__":
