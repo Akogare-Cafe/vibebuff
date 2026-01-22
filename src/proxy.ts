@@ -4,10 +4,15 @@ import type { NextRequest } from "next/server";
 
 const isPublicRoute = createRouteMatcher([
   "/",
+  "/docs(.*)",
   "/tools(.*)",
   "/compare(.*)",
   "/stack-builder(.*)",
   "/community(.*)",
+  "/battles(.*)",
+  "/analyze(.*)",
+  "/stack-marketplace(.*)",
+  "/forum(.*)",
   "/deck(.*)",
   "/profile(.*)",
   "/activity(.*)",
