@@ -2,8 +2,8 @@ name: Scrape Tool Metadata
 
 on:
   schedule:
-    # Run once every 3 days at 6 AM UTC
-    - cron: '0 6 */3 * *'
+    # Run once daily at 6 AM UTC
+    - cron: '0 6 * * *'
   workflow_dispatch:
     inputs:
       scraper:
