@@ -7,6 +7,8 @@ import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import Link from "next/link";
 import {
   Building2,
@@ -35,30 +37,27 @@ export default function CompaniesPage() {
   );
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-6">
-          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 mb-4">
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="COMPANIES"
+        description="Discover company tech stacks and connect with teams using similar tools."
+        icon={Building2}
+        breadcrumb={
+          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1">
             <ChevronLeft className="w-4 h-4" /> Back to Community
           </Link>
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
-              <Building2 className="w-8 h-8 text-primary" />
-              <h1 className="font-heading text-foreground text-2xl">COMPANIES</h1>
-            </div>
-            <Link href="/companies/new">
-              <PixelButton>
-                <Plus className="w-4 h-4 mr-2" /> Create Company
-              </PixelButton>
-            </Link>
-          </div>
-          <p className="text-muted-foreground text-sm">
-            Discover company tech stacks and connect with teams using similar tools.
-          </p>
-        </div>
+        }
+        actions={
+          <Link href="/companies/new">
+            <PixelButton>
+              <Plus className="w-4 h-4 mr-2" /> Create Company
+            </PixelButton>
+          </Link>
+        }
+      />
 
-        <div className="mb-8">
-          <div className="max-w-md relative">
+        <Section>
+          <div className="max-w-md relative mx-auto">
             <PixelInput
               placeholder="Search companies..."
               value={searchQuery}
@@ -67,14 +66,15 @@ export default function CompaniesPage() {
             />
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           </div>
-        </div>
+        </Section>
 
-        {searchQuery.length > 1 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {searchResults?.map((company) => (
-              <Link key={company._id} href={`/companies/${company.slug}`}>
-                <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
-                  <PixelCardContent className="p-4">
+        <Section>
+          {searchQuery.length > 1 ? (
+            <Grid cols={3}>
+              {searchResults?.map((company) => (
+                <Link key={company._id} href={`/companies/${company.slug}`}>
+                  <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
+                    <PixelCardContent className="p-4">
                     <div className="flex items-start gap-3">
                       <div className="size-14 rounded-lg bg-primary/20 flex items-center justify-center overflow-hidden flex-shrink-0">
                         {company.logoUrl ? (
@@ -120,9 +120,9 @@ export default function CompaniesPage() {
                 <p className="text-muted-foreground">No companies found matching your search</p>
               </div>
             )}
-          </div>
+          </Grid>
         ) : allCompanies && allCompanies.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Grid cols={3}>
             {allCompanies.map((company) => (
               <Link key={company._id} href={`/companies/${company.slug}`}>
                 <PixelCard className="h-full hover:border-primary transition-colors cursor-pointer">
@@ -174,7 +174,7 @@ export default function CompaniesPage() {
                 </PixelCard>
               </Link>
             ))}
-          </div>
+          </Grid>
         ) : (
           <div className="text-center py-12">
             <Building2 className="w-16 h-16 mx-auto mb-4 text-muted-foreground/30" />
@@ -191,7 +191,7 @@ export default function CompaniesPage() {
             </div>
           </div>
         )}
-      </main>
-    </div>
+        </Section>
+    </PageLayout>
   );
 }

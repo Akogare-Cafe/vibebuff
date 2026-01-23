@@ -3,6 +3,8 @@
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { PixelCard, PixelCardContent, PixelCardHeader, PixelCardTitle } from "@/components/pixel-card";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import Link from "next/link";
 import {
   Trophy,
@@ -51,53 +53,51 @@ export default function LeaderboardsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout>
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={leaderboardsTourConfig} />
       </div>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-6">
-          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 mb-4">
+      <PageHeader
+        title="LEADERBOARDS"
+        description="See how you stack up against other adventurers in the VIBEBUFF community."
+        icon={Trophy}
+        breadcrumb={
+          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1">
             <ChevronLeft className="w-4 h-4" /> Back to Community
           </Link>
-          <div className="flex items-center gap-3 mb-2">
-            <Trophy className="w-8 h-8 text-yellow-500" />
-            <h1 className="font-heading text-foreground text-2xl">LEADERBOARDS</h1>
-          </div>
-          <p className="text-muted-foreground text-sm">
-            See how you stack up against other adventurers in the VIBEBUFF community.
-          </p>
-        </div>
+        }
+      />
 
-        <div className="mb-8">
+        <Section>
           <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
             <Trophy className="w-5 h-5 text-yellow-400" />
             Tools Rankings
           </h2>
           <ToolsLeaderboard limit={10} />
-        </div>
+        </Section>
 
-        <div className="mb-6">
+        <Section spacing="md">
           <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
             <Users className="w-5 h-5 text-primary" />
             User Rankings
           </h2>
-        </div>
+        </Section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" data-tour="leaderboard-list">
-          {LEADERBOARD_CONFIG.map((config) => {
-            const data = leaderboardDataMap[config.id];
-            return (
-              <PixelCard key={config.id}>
-                <PixelCardHeader className="pb-2">
-                  <PixelCardTitle className="flex items-center gap-2 text-base">
-                    {config.icon}
-                    {config.label}
-                  </PixelCardTitle>
-                </PixelCardHeader>
-                <PixelCardContent className="p-0">
-                  <div className="divide-y divide-border">
-                    {!data && (
+        <Section>
+          <Grid cols={4} data-tour="leaderboard-list">
+            {LEADERBOARD_CONFIG.map((config) => {
+              const data = leaderboardDataMap[config.id];
+              return (
+                <PixelCard key={config.id}>
+                  <PixelCardHeader className="pb-2">
+                    <PixelCardTitle className="flex items-center gap-2 text-base">
+                      {config.icon}
+                      {config.label}
+                    </PixelCardTitle>
+                  </PixelCardHeader>
+                  <PixelCardContent className="p-0">
+                    <div className="divide-y divide-border">
+                      {!data && (
                       <div className="space-y-0 divide-y divide-border">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <div key={i} className="flex items-center gap-3 p-3">
@@ -147,8 +147,8 @@ export default function LeaderboardsPage() {
               </PixelCard>
             );
           })}
-        </div>
-      </main>
-    </div>
+        </Grid>
+      </Section>
+    </PageLayout>
   );
 }

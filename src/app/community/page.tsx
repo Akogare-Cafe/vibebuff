@@ -8,6 +8,8 @@ import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
 import { CommunityStackSubmission } from "@/components/community-stack-submission";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import Link from "next/link";
 import {
   Users,
@@ -47,54 +49,51 @@ export default function CommunityPage() {
   );
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Users className="w-8 h-8 text-primary" />
-            <h1 className="font-heading text-foreground text-2xl">COMMUNITY HUB</h1>
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="COMMUNITY HUB"
+        description="Connect with developers, join groups, compete on leaderboards, and discover trending tools."
+        icon={Users}
+      />
+
+        <Section>
+          <div className="flex justify-center gap-2">
+            <PixelButton
+              variant={activeTab === "discover" ? "default" : "outline"}
+              onClick={() => setActiveTab("discover")}
+              size="sm"
+            >
+              <Sparkles className="w-4 h-4 mr-2" />
+              Discover
+            </PixelButton>
+            <PixelButton
+              variant={activeTab === "leaderboards" ? "default" : "outline"}
+              onClick={() => setActiveTab("leaderboards")}
+              size="sm"
+            >
+              <Trophy className="w-4 h-4 mr-2" />
+              Leaderboards
+            </PixelButton>
+            <PixelButton
+              variant={activeTab === "groups" ? "default" : "outline"}
+              onClick={() => setActiveTab("groups")}
+              size="sm"
+            >
+              <Users className="w-4 h-4 mr-2" />
+              Groups
+            </PixelButton>
+            <PixelButton
+              variant={activeTab === "share-stacks" ? "default" : "outline"}
+              onClick={() => setActiveTab("share-stacks")}
+              size="sm"
+            >
+              <Layers className="w-4 h-4 mr-2" />
+              Share Stacks
+            </PixelButton>
           </div>
-          <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
-            Connect with developers, join groups, compete on leaderboards, and discover trending tools.
-          </p>
-        </div>
+        </Section>
 
-        <div className="flex justify-center gap-2 mb-8">
-          <PixelButton
-            variant={activeTab === "discover" ? "default" : "outline"}
-            onClick={() => setActiveTab("discover")}
-            size="sm"
-          >
-            <Sparkles className="w-4 h-4 mr-2" />
-            Discover
-          </PixelButton>
-          <PixelButton
-            variant={activeTab === "leaderboards" ? "default" : "outline"}
-            onClick={() => setActiveTab("leaderboards")}
-            size="sm"
-          >
-            <Trophy className="w-4 h-4 mr-2" />
-            Leaderboards
-          </PixelButton>
-          <PixelButton
-            variant={activeTab === "groups" ? "default" : "outline"}
-            onClick={() => setActiveTab("groups")}
-            size="sm"
-          >
-            <Users className="w-4 h-4 mr-2" />
-            Groups
-          </PixelButton>
-          <PixelButton
-            variant={activeTab === "share-stacks" ? "default" : "outline"}
-            onClick={() => setActiveTab("share-stacks")}
-            size="sm"
-          >
-            <Layers className="w-4 h-4 mr-2" />
-            Share Stacks
-          </PixelButton>
-        </div>
-
-        <div className="mb-8">
+        <Section>
           <div className="max-w-md mx-auto relative">
             <PixelInput
               placeholder="Search users..."
@@ -128,10 +127,10 @@ export default function CommunityPage() {
               </div>
             )}
           </div>
-        </div>
+        </Section>
 
         {activeTab === "leaderboards" && (
-          <section className="mb-12">
+          <Section>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-primary text-lg flex items-center gap-2">
                 <Crown className="w-5 h-5" /> TOP ADVENTURERS
@@ -183,17 +182,17 @@ export default function CommunityPage() {
                 </div>
               </PixelCardContent>
             </PixelCard>
-          </section>
+          </Section>
         )}
 
         {activeTab === "share-stacks" && (
-          <section className="mb-12">
+          <Section>
             <CommunityStackSubmission />
-          </section>
+          </Section>
         )}
 
         {activeTab === "groups" && (
-          <section className="mb-12">
+          <Section>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-primary text-lg flex items-center gap-2">
                 <Users className="w-5 h-5" /> POPULAR GROUPS
@@ -289,16 +288,15 @@ export default function CommunityPage() {
                 </Link>
               </PixelCard>
             </div>
-          </section>
+          </Section>
         )}
 
         {activeTab === "discover" && (
           <>
-
-        <section className="mb-12">
-          <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
-            <Flame className="w-4 h-4" /> TRENDING THIS WEEK
-          </h2>
+            <Section>
+              <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
+                <Flame className="w-4 h-4" /> TRENDING THIS WEEK
+              </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {trendingTools?.slice(0, 6).filter((tool): tool is NonNullable<typeof tool> => tool !== null).map((tool, index) => (
               <Link key={tool._id} href={`/tools/${tool.slug}`}>
@@ -342,9 +340,9 @@ export default function CommunityPage() {
               </>
             )}
           </div>
-        </section>
+        </Section>
 
-        <section className="mb-12">
+        <Section>
           <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
             <Sparkles className="w-4 h-4" /> POPULAR COMPARISONS
           </h2>
@@ -395,9 +393,9 @@ export default function CommunityPage() {
               </PixelButton>
             </Link>
           </div>
-        </section>
+        </Section>
 
-        <section className="mb-12">
+        <Section>
           <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
             <Star className="w-4 h-4" /> LEGENDARY TOOLS
           </h2>
@@ -444,9 +442,9 @@ export default function CommunityPage() {
               </PixelButton>
             </Link>
           </div>
-        </section>
+        </Section>
 
-        <section className="mb-12">
+        <Section>
           <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
             <Trophy className="w-4 h-4" /> COMMUNITY STATS
           </h2>
@@ -472,9 +470,9 @@ export default function CommunityPage() {
               <p className="text-muted-foreground text-xs">UPDATED</p>
             </PixelCard>
           </div>
-        </section>
+        </Section>
 
-        <section className="mb-12">
+        <Section>
           <h2 className="text-primary text-sm mb-6 flex items-center gap-2">
             <ChevronRight className="w-4 h-4" /> GET INVOLVED
           </h2>
@@ -507,9 +505,9 @@ export default function CommunityPage() {
               </PixelCard>
             </Link>
           </div>
-        </section>
+        </Section>
 
-        <section className="border-4 border-primary bg-card p-8 text-center">
+        <Section>
           <h2 className="text-primary text-sm mb-4">JOIN THE VIBEBUFF COMMUNITY</h2>
           <p className="text-muted-foreground text-xs mb-6 max-w-xl mx-auto">
             Stay updated with the latest developer tools, framework comparisons, and tech stack recommendations.
@@ -526,10 +524,9 @@ export default function CommunityPage() {
               </PixelButton>
             </Link>
           </div>
-        </section>
-        </>
+        </Section>
+          </>
         )}
-      </main>
-    </div>
+    </PageLayout>
   );
 }

@@ -5,6 +5,8 @@ import { api } from "../../../convex/_generated/api";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -280,49 +282,31 @@ export default function TimelinePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <History className="w-8 h-8 text-primary" />
-            <h1 className="text-primary text-3xl font-bold">TOOL TIMELINE</h1>
-          </div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore the history of developer tools. See when each tool was released and track the evolution of the development ecosystem.
-          </p>
-          
-          <div className="mt-6 flex items-center justify-center gap-4 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Package className="w-4 h-4" />
-              <span>{filteredTools?.length || 0} Tools</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <span>{sortedYears.length} Years</span>
-            </div>
-          </div>
-        </motion.div>
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="TOOL TIMELINE"
+        description="Explore the history of developer tools. See when each tool was released and track the evolution of the development ecosystem."
+        icon={History}
+        badge={`${filteredTools?.length || 0} Tools`}
+      />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="mb-8"
-        >
-          <PixelButton
-            variant="outline"
-            onClick={() => setShowFilters(!showFilters)}
-            className="mx-auto flex items-center gap-2"
+        <Section>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="flex justify-center"
           >
-            <Filter className="w-4 h-4" />
-            Filter by Category
-            <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? "rotate-180" : ""}`} />
-          </PixelButton>
+            <PixelButton
+              variant="outline"
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2"
+            >
+              <Filter className="w-4 h-4" />
+              Filter by Category
+              <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? "rotate-180" : ""}`} />
+            </PixelButton>
+          </motion.div>
 
           <AnimatePresence>
             {showFilters && (
@@ -359,7 +343,7 @@ export default function TimelinePage() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </Section>
 
         <div className="relative">
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
@@ -405,7 +389,6 @@ export default function TimelinePage() {
             </PixelButton>
           </motion.div>
         )}
-      </main>
-    </div>
+    </PageLayout>
   );
 }
