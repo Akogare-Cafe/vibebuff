@@ -34,6 +34,9 @@ import { HomePageSchemas } from "@/components/seo-structured-data";
 import dynamic from "next/dynamic";
 import { TourTrigger } from "@/components/page-tour";
 import { homeTourConfig } from "@/lib/tour-configs";
+import { PageContainer } from "@/components/layout/page-container";
+import { SectionHeading } from "@/components/layout/section-heading";
+import { SectionSpacer } from "@/components/layout/section-spacer";
 
 const NewsletterSignup = dynamic(() => import("@/components/lead-capture").then(m => ({ default: m.NewsletterSignup })), { ssr: false });
 const TrustBadges = dynamic(() => import("@/components/lead-capture").then(m => ({ default: m.TrustBadges })), { ssr: false });
@@ -230,8 +233,9 @@ export default function Home() {
       </div>
       
       {/* Hero Section */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20">
-        <div className="text-center mb-16">
+      <PageContainer>
+        <div className="py-8 sm:py-12 md:py-16 lg:py-20">
+          <div className="text-center mb-16">
           {/* Elegant Fantasy Title */}
           <div className="mb-6 sm:mb-8 md:mb-10">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground tracking-wide mb-2">
@@ -313,8 +317,8 @@ export default function Home() {
         </div>
 
         {/* AI Stack Builder Prompt Section */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <PixelCard className="p-4 sm:p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="ai-builder">
+        <SectionSpacer size="lg" />
+        <PixelCard className="p-4 sm:p-6 md:p-8 border-primary bg-gradient-to-br from-card via-background to-card" data-tour="ai-builder">
             <div className="text-center mb-4 sm:mb-6">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center">
                 <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
@@ -526,11 +530,12 @@ export default function Home() {
         )}
 
         {/* Categories Grid */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> Browse Categories
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5" data-tour="categories">
+        <SectionSpacer size="lg" />
+        <SectionHeading icon={Package} size="lg">
+          Browse Categories
+        </SectionHeading>
+        <SectionSpacer size="md" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5" data-tour="categories">
             {categories?.map((category) => (
               <Link key={category._id} href={`/tools?category=${category.slug}`}>
                 <PixelCard className="text-center p-4 sm:p-5 md:p-6 cursor-pointer hover:border-primary active:border-primary active:bg-primary/5 transition-all group min-h-[100px] sm:min-h-[120px] md:min-h-[140px] flex flex-col items-center justify-center">
@@ -547,11 +552,12 @@ export default function Home() {
         </section>
 
         {/* Featured Tools */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> Legendary Items
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" data-tour="featured">
+        <SectionSpacer size="lg" />
+        <SectionHeading icon={ChevronRight} size="lg">
+          Legendary Items
+        </SectionHeading>
+        <SectionSpacer size="md" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" data-tour="featured">
             {featuredTools?.slice(0, 6).map((tool) => (
               <Link key={tool._id} href={`/tools/${tool.slug}`}>
                 <PixelCard className="h-full" rarity="rare">
@@ -587,11 +593,12 @@ export default function Home() {
         </section>
 
         {/* How It Works */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <h2 className="font-heading text-foreground text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 md:mb-8 flex items-center gap-2 sm:gap-3">
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" /> How To Play
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <SectionSpacer size="lg" />
+        <SectionHeading icon={ChevronRight} size="lg">
+          How To Play
+        </SectionHeading>
+        <SectionSpacer size="md" />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             <PixelCard className="text-center p-6 sm:p-8 md:p-10">
               <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center">
                 <FileText className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
@@ -623,7 +630,8 @@ export default function Home() {
         </section>
 
         {/* Stats Bar */}
-        <section className="border-2 border-border rounded-xl p-4 sm:p-6 md:p-8 bg-gradient-to-r from-card via-background to-card mb-12 sm:mb-16 md:mb-20 shadow-sm">
+        <SectionSpacer size="lg" />
+        <div className="border-2 border-border rounded-xl p-4 sm:p-6 md:p-8 bg-gradient-to-r from-card via-background to-card shadow-sm">
           <div className="flex flex-wrap justify-around gap-4 sm:gap-6 md:gap-10 text-center">
             <div>
               <p className="font-heading text-primary text-xl sm:text-2xl md:text-3xl">500+</p>
@@ -645,11 +653,11 @@ export default function Home() {
               <p className="text-muted-foreground text-xs sm:text-sm md:text-base">Updated</p>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Package.json Analyzer CTA */}
-        <section className="mb-12 sm:mb-16 md:mb-20">
-          <PixelCard className="p-4 sm:p-6 md:p-10 bg-gradient-to-br from-card via-background to-card border-2 border-primary/30 hover:border-primary/50 active:border-primary/60 transition-all">
+        <SectionSpacer size="lg" />
+        <PixelCard className="p-4 sm:p-6 md:p-10 bg-gradient-to-br from-card via-background to-card border-2 border-primary/30 hover:border-primary/50 active:border-primary/60 transition-all">
             <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shrink-0 shadow-lg">
                 <FileJson className="w-10 h-10 md:w-12 md:h-12 text-white" />
@@ -875,8 +883,8 @@ export default function Home() {
             <NewsletterSignup />
             <QuickStartCTA />
           </div>
-        </section>
-      </section>
+        </div>
+      </PageContainer>
     </div>
   );
 }

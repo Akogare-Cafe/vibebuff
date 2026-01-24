@@ -57,6 +57,29 @@
 
 :root {
   --radius: 8px;
+  
+  /* Spacing scale - 8pt base system */
+  --spacing-screen: 20px;
+  --spacing-card: 16px;
+  --spacing-section: 24px;
+  --spacing-gap-tight: 8px;
+  --spacing-gap-normal: 12px;
+  --spacing-gap-loose: 16px;
+  --spacing-gap-xl: 24px;
+  
+  /* Typography scale */
+  --text-hero-xs: 2.5rem; /* 40px */
+  --text-hero-sm: 3rem; /* 48px */
+  --text-hero-md: 3.5rem; /* 56px */
+  --text-hero-lg: 4rem; /* 64px */
+  --text-hero-xl: 4.5rem; /* 72px */
+  
+  --text-title-xs: 1.125rem; /* 18px */
+  --text-title-sm: 1.25rem; /* 20px */
+  --text-title-md: 1.5rem; /* 24px */
+  --text-title-lg: 1.75rem; /* 28px */
+  --text-title-xl: 2rem; /* 32px */
+  
   /* Gundam Freedom Light Mode - Clean white with blue accents */
   --background: #f8fafc;
   --foreground: #1e293b;
