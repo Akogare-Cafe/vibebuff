@@ -4,8 +4,8 @@ import { api } from "../../convex/_generated/api";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 3600;
+export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let comparisons: Array<{ slug: string; lastUpdated: number }> = [];
@@ -13,149 +13,151 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let companies: Array<{ slug: string; updatedAt: number }> = [];
 
   try {
-    comparisons = await fetchQuery(api.seo.listComparisons, { limit: 100 });
-    tools = await fetchQuery(api.tools.list, { limit: 200 });
-    companies = await fetchQuery(api.companies.listForSitemap, { limit: 200 });
+    comparisons = await fetchQuery(api.seo.listComparisons, { limit: 500 });
+    tools = await fetchQuery(api.tools.list, { limit: 1000 });
+    companies = await fetchQuery(api.companies.listForSitemap, { limit: 500 });
   } catch (error) {
     console.error("Failed to fetch dynamic sitemap data:", error);
   }
+
+  const now = new Date();
   
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${siteUrl}/tools`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/compare`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/stack-builder`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/community`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/leaderboards`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/stack-marketplace`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/docs`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/about`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${siteUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${siteUrl}/get-started`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/forum`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/mcp`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/mcp/vibebuff`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/api-docs`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/llms.txt`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${siteUrl}/advertise`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${siteUrl}/guides/marketing`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/companies`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/groups`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.6,
     },
     {
       url: `${siteUrl}/privacy`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${siteUrl}/terms`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
@@ -164,103 +166,103 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts: MetadataRoute.Sitemap = [
     {
       url: `${siteUrl}/blog/state-management-react-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog/edge-functions-vs-serverless-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog/ai-coding-assistants-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog/convex-vs-supabase-vs-firebase`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog/deployment-platforms-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${siteUrl}/blog/best-react-frameworks-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/nextjs-vs-remix-comparison`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/choosing-database-for-startup`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/ai-tools-for-developers`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/tech-stack-for-saas`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/best-frontend-frameworks-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/postgresql-vs-mongodb-guide`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/best-authentication-services`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/blog/vercel-vs-netlify-vs-aws`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/best-orm-nodejs-2025`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/blog/tailwind-vs-bootstrap-vs-css`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteUrl}/blog/supabase-vs-firebase-comparison`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -284,7 +286,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "api",
   ].map((category) => ({
     url: `${siteUrl}/tools?category=${category}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -307,7 +309,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "pnpm-vs-npm",
   ].map((comparison) => ({
     url: `${siteUrl}/compare/${comparison}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
@@ -321,14 +323,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
     url: `${siteUrl}/tools/${tool.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
 
   const alternativesPages: MetadataRoute.Sitemap = tools.map((tool) => ({
     url: `${siteUrl}/alternatives/${tool.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -366,7 +368,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const useCase of useCases) {
       bestForPages.push({
         url: `${siteUrl}/best/${category}/for/${useCase}`,
-        lastModified: new Date(),
+        lastModified: now,
         changeFrequency: "weekly" as const,
         priority: 0.7,
       });
