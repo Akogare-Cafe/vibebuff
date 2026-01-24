@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../convex/_generated/api";
 

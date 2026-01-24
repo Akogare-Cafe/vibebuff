@@ -17,7 +17,6 @@ export const canSpinToday = query({
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const todayStart = today.getTime();
-    const todayEnd = todayStart + 24 * 60 * 60 * 1000;
 
     const todaySpin = await ctx.db
       .query("userSpins")

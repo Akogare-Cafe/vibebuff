@@ -75,8 +75,9 @@ export const runSimulation = mutation({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function calculateSimulationResults(tools: any[], scenario: any) {
-  const toolCategories = tools.map((t) => t?.categoryId).filter(Boolean);
+  const _toolCategories = tools.map((t) => t?.categoryId).filter(Boolean);
   const toolCount = tools.length;
 
   let scalability = 50;

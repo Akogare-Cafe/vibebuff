@@ -135,6 +135,7 @@ export const storeDiscoveredPackages = internalMutation({
           firstSeenAt: now,
           lastSeenAt: now,
           isMatched: pkg.isMatched,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           matchedToolId: pkg.matchedToolId as any,
           suggestedCategory: pkg.suggestedCategory,
           isReviewed: false,

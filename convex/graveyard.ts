@@ -7,6 +7,7 @@ export const getGraveyardEntries = query({
     if (args.cause) {
       return await ctx.db
         .query("toolGraveyard")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_cause", (q) => q.eq("causeOfDeath", args.cause as any))
         .take(args.limit || 20);
     }

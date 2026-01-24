@@ -1,4 +1,5 @@
 import { mutation } from "./_generated/server";
+import { Id } from "./_generated/dataModel";
 
 export const seedForumData = mutation({
   args: {},
@@ -68,7 +69,7 @@ export const seedForumData = mutation({
       },
     ];
 
-    const categoryIds: Record<string, string> = {};
+    const categoryIds: Record<string, Id<"forumCategories">> = {};
     for (const category of categories) {
       const id = await ctx.db.insert("forumCategories", category);
       categoryIds[category.slug] = id;
@@ -455,7 +456,7 @@ Our codebase is about 50k lines of TypeScript.`,
       if (!categoryId) continue;
 
       await ctx.db.insert("forumThreads", {
-        categoryId: categoryId as any,
+        categoryId,
         title: thread.title,
         slug: thread.slug,
         content: thread.content,
@@ -468,7 +469,7 @@ Our codebase is about 50k lines of TypeScript.`,
         updatedAt: now,
       });
 
-      await ctx.db.patch(categoryId as any, {
+      await ctx.db.patch(categoryId, {
         threadCount: 1,
         lastActivityAt: now,
       });

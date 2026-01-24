@@ -212,7 +212,7 @@ export const seedTemplates = mutation({
         const validToolIds = toolIds.filter((id): id is NonNullable<typeof id> => id !== undefined);
 
         if (validToolIds.length > 0) {
-          const categoryAssignments = validToolIds.map((toolId, i) => ({
+          const categoryAssignments = validToolIds.map((toolId) => ({
             categorySlug: "frontend", // Simplified - would need proper category mapping
             toolId,
           }));

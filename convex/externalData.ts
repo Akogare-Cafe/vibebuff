@@ -517,6 +517,7 @@ export const fetchAllToolsExternalData = action({
         };
 
         await ctx.runMutation(internal.externalDataInternal.updateToolExternalData, {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           toolId: tool._id as any,
           externalData,
           githubStars: githubData?.stars,

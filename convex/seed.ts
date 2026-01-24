@@ -48,6 +48,7 @@ export const seedDatabase = mutation({
       { name: "CLI Agents", slug: "cli-agents", description: "Command-line AI coding agents and assistants", icon: "Terminal", sortOrder: 15 },
     ];
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const categoryIds: Record<string, any> = {};
     for (const cat of categories) {
       const id = await ctx.db.insert("categories", cat);

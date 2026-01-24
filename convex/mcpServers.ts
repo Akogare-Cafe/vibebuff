@@ -19,6 +19,7 @@ export const list = query({
     } else if (args.category) {
       servers = await ctx.db
         .query("mcpServers")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_category", (q) => q.eq("category", args.category as any))
         .collect();
     } else {
@@ -106,6 +107,7 @@ export const getConfigForIde = query({
     const config = await ctx.db
       .query("mcpServerConfigs")
       .withIndex("by_server_ide", (q) =>
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         q.eq("mcpServerId", args.mcpServerId).eq("ide", args.ide as any)
       )
       .first();

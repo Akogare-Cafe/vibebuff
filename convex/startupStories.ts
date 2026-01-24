@@ -14,6 +14,7 @@ export const getStories = query({
     if (args.stage) {
       return await ctx.db
         .query("startupStories")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_stage", (q) => q.eq("stage", args.stage as any))
         .take(args.limit || 20);
     }

@@ -179,7 +179,7 @@ export const updateSubmission = mutation({
       throw new Error("Cannot edit submission that is already under review");
     }
 
-    const { submissionId, userId, ...updates } = args;
+    const { submissionId, userId: _userId, ...updates } = args;
     const filteredUpdates = Object.fromEntries(
       Object.entries(updates).filter(([, value]) => value !== undefined)
     );

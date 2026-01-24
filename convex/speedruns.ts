@@ -7,6 +7,7 @@ export const getCategories = query({
     if (args.type) {
       return await ctx.db
         .query("speedrunCategories")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_type", (q) => q.eq("categoryType", args.type as any))
         .collect();
     }

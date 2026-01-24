@@ -33,6 +33,7 @@ export const getPuzzles = query({
     if (args.difficulty) {
       const puzzles = await ctx.db
         .query("architectPuzzles")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_difficulty", (q) => q.eq("difficulty", args.difficulty as any))
         .take(args.limit || 20);
       return puzzles;

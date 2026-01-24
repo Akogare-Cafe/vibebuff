@@ -118,7 +118,7 @@ export const getLeaderboard = query({
     const sortBy = args.sortBy || "trend";
     const limit = args.limit || 20;
 
-    let popularityRecords = await ctx.db.query("toolPopularity").collect();
+    const popularityRecords = await ctx.db.query("toolPopularity").collect();
 
     switch (sortBy) {
       case "views":

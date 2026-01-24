@@ -33,6 +33,7 @@ export const getRelationshipsByType = query({
   handler: async (ctx, args) => {
     const relationships = await ctx.db
       .query("toolRelationships")
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .withIndex("by_type", (q) => q.eq("relationshipType", args.type as any))
       .take(args.limit || 50);
 
@@ -91,13 +92,16 @@ export const getRelationshipGraph = query({
   handler: async (ctx, args) => {
     const maxDepth = args.depth || 2;
     const visited = new Set<string>();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const nodes: any[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const edges: any[] = [];
 
     async function explore(toolId: string, currentDepth: number) {
       if (currentDepth > maxDepth || visited.has(toolId)) return;
       visited.add(toolId);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const tool = await ctx.db.get(toolId as any);
       if (tool) {
         nodes.push({ id: toolId, data: tool, depth: currentDepth });
@@ -105,11 +109,13 @@ export const getRelationshipGraph = query({
 
       const relationships = await ctx.db
         .query("toolRelationships")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_tool1", (q) => q.eq("tool1Id", toolId as any))
         .collect();
 
       const reverseRelationships = await ctx.db
         .query("toolRelationships")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_tool2", (q) => q.eq("tool2Id", toolId as any))
         .collect();
 

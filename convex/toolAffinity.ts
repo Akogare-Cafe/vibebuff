@@ -50,7 +50,7 @@ export const getUserAffinities = query({
     const tools = await Promise.all(toolIds.map((id) => ctx.db.get(id)));
     const toolMap = new Map(tools.filter(Boolean).map((t) => [t!._id, t]));
 
-    const unlockedPerks: { name: string; description: string; bonus: string }[] = [];
+    const _unlockedPerks: { name: string; description: string; bonus: string }[] = [];
     const levelOrder = ["stranger", "acquaintance", "friend", "companion", "soulmate"];
 
     return affinities

@@ -66,10 +66,11 @@ export const getToolsBySlug = query({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function calculateDynamicStats(
   ctx: { db: any },
   tool: {
-    _id: any;
+    _id: string;
     githubStars?: number;
     npmDownloadsWeekly?: number;
     isOpenSource: boolean;
@@ -132,19 +133,21 @@ async function calculateDynamicStats(
 
   const usageRecords = await ctx.db
     .query("toolUsage")
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .filter((q: any) => q.eq(q.field("toolId"), tool._id))
-    .collect();
+    .collect() as Array<{ usageCount: number; isFavorite: boolean }>;
 
   const masteryRecords = await ctx.db
     .query("toolMastery")
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .withIndex("by_tool", (q: any) => q.eq("toolId", tool._id))
-    .collect();
+    .collect() as Array<{ interactions: { deckAdds: number; battleWins: number; comparisons: number } }>;
 
-  const totalViews = usageRecords.reduce((sum: number, r: any) => sum + r.usageCount, 0);
-  const totalFavorites = usageRecords.filter((r: any) => r.isFavorite).length;
-  const totalDeckAdds = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.deckAdds, 0);
-  const totalBattleWins = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.battleWins, 0);
-  const totalComparisons = masteryRecords.reduce((sum: number, r: any) => sum + r.interactions.comparisons, 0);
+  const totalViews = usageRecords.reduce((sum: number, r) => sum + r.usageCount, 0);
+  const totalFavorites = usageRecords.filter((r) => r.isFavorite).length;
+  const totalDeckAdds = masteryRecords.reduce((sum: number, r) => sum + r.interactions.deckAdds, 0);
+  const totalBattleWins = masteryRecords.reduce((sum: number, r) => sum + r.interactions.battleWins, 0);
+  const totalComparisons = masteryRecords.reduce((sum: number, r) => sum + r.interactions.comparisons, 0);
 
   const viewBonus = Math.min(Math.floor(totalViews / 50), 10);
   const favoriteBonus = Math.min(Math.floor(totalFavorites / 5), 10);

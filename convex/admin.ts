@@ -1,7 +1,6 @@
 import { query, mutation, internalMutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
 import { getAuthenticatedUser } from "./lib/auth";
-import { internal } from "./_generated/api";
 
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "kavyrattana@gmail.com")
   .split(",")
@@ -160,7 +159,7 @@ export const updateTool = mutation({
       throw new Error("Tool not found");
     }
 
-    const updates: Record<string, any> = {};
+    const updates: Record<string, unknown> = {};
     Object.entries(args.updates).forEach(([key, value]) => {
       if (value !== undefined) {
         updates[key] = value;
@@ -267,7 +266,6 @@ export const setAdminByEmail = mutation({
     const users = await ctx.db.query("userProfiles").collect();
     
     for (const user of users) {
-      const userIdentity = user.clerkId;
       if (args.email === "kavyrattana@gmail.com" && user.username === "kavyrattana") {
         await ctx.db.patch(user._id, { isAdmin: args.isAdmin });
         return { success: true, userId: user.clerkId };

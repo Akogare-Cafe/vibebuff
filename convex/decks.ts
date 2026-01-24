@@ -165,7 +165,7 @@ export const updateDeck = mutation({
     
     const { deckId, ...updates } = args;
     const filteredUpdates = Object.fromEntries(
-      Object.entries(updates).filter(([_, v]) => v !== undefined)
+      Object.entries(updates).filter(([, v]) => v !== undefined)
     );
 
     await ctx.db.patch(deckId, {

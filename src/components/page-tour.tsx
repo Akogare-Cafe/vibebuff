@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 "use client";
 
 import { useState, useEffect, useCallback, createContext, useContext } from "react";

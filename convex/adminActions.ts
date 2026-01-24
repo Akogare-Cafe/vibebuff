@@ -6,7 +6,7 @@ import { internal } from "./_generated/api";
 
 async function scrapeUrlLogic(url: string): Promise<{
   success: boolean;
-  tool?: any;
+  tool?: Record<string, unknown>;
   error?: string;
 }> {
   const isGithub = url.includes("github.com");
@@ -230,7 +230,7 @@ export const scrapeMultipleUrls = action({
     results: Array<{
       url: string;
       success: boolean;
-      tool?: any;
+      tool?: Record<string, unknown>;
       error?: string;
     }>;
   }> => {

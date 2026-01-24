@@ -1,6 +1,5 @@
 import { query, mutation, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
-import { Id } from "./_generated/dataModel";
 
 const BASE_STAT = 20;
 const MAX_STAT = 100;
