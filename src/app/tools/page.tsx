@@ -62,6 +62,8 @@ import { ToolIcon } from "@/components/dynamic-icon";
 import { AutoLinkTools } from "@/components/auto-link-tools";
 import { AdDisplay } from "@/components/ad-display";
 import { McpPromoCard } from "@/components/mcp-promo-card";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout } from "@/components/page-layout";
 import {
   TrendingSectionSkeleton,
   NewToolsSectionSkeleton,
@@ -270,31 +272,22 @@ function ToolsPageContent() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
-
-      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
-          <div>
-            <div className="flex items-center gap-2 text-primary mb-1">
-              <Store className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase tracking-widest">
-                {stats ? `${stats.toolsCount} Tools Available` : "Loading..."}
-              </span>
-            </div>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">Tech Stack Armory</h1>
-            <p className="text-muted-foreground mt-2 max-w-2xl">Equip yourself with legendary frameworks and libraries. Check requirements before acquiring.</p>
-          </div>
-          <div className="flex gap-2">
-            <Link
-              href="/tools/leaderboards"
-              className="px-4 py-2 bg-transparent border border-yellow-500/50 hover:border-yellow-500 text-yellow-400 text-sm font-medium rounded transition-colors flex items-center gap-2"
-            >
-              <Trophy className="w-4 h-4" />
-              <span className="hidden sm:inline">Leaderboards</span>
-            </Link>
-          </div>
-        </div>
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="TECH STACK ARMORY"
+        description="Equip yourself with legendary frameworks and libraries. Check requirements before acquiring."
+        icon={Package}
+        badge={stats ? `${stats.toolsCount} Tools` : undefined}
+        actions={
+          <Link
+            href="/tools/leaderboards"
+            className="px-4 py-2 bg-transparent border border-yellow-500/50 hover:border-yellow-500 text-yellow-400 text-sm font-medium rounded transition-colors flex items-center gap-2"
+          >
+            <Trophy className="w-4 h-4" />
+            <span className="hidden sm:inline">Leaderboards</span>
+          </Link>
+        }
+      />
 
         <div className="flex-1 max-w-lg py-4">
           <label className="flex w-full items-stretch rounded-lg h-10 group focus-within:ring-2 focus-within:ring-primary/50 transition-all border border-border">
@@ -973,8 +966,6 @@ function ToolsPageContent() {
             <McpPromoCard className="mt-8" />
           </section>
         </div>
-      </main>
-
-    </div>
+    </PageLayout>
   );
 }

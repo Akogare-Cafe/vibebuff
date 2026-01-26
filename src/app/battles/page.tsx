@@ -9,6 +9,8 @@ import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section } from "@/components/page-layout";
 import Link from "next/link";
 import {
   Swords,
@@ -108,26 +110,17 @@ export default function BattlesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-12">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
-      
+    <PageLayout maxWidth="xl">
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={battlesTourConfig} />
       </div>
 
-      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="mb-8 text-center">
-          <div className="flex items-center justify-center gap-2 text-primary mb-2">
-            <Swords className="w-5 h-5" />
-            <span className="text-xs font-bold uppercase tracking-widest">Stack Battles</span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-2">
-            Battle Arena
-          </h1>
-          <p className="text-muted-foreground text-sm max-w-md mx-auto">
-            Challenge other developers to compare tech stacks. Create a battle with a prompt and let the community vote!
-          </p>
-        </div>
+      <PageHeader
+        title="BATTLE ARENA"
+        description="Challenge other developers to compare tech stacks. Create a battle with a prompt and let the community vote!"
+        icon={Swords}
+        badge="Stack Battles"
+      />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8" data-tour="battle-card">
           <div className="flex gap-2">
@@ -311,7 +304,6 @@ export default function BattlesPage() {
             </Link>
           </PixelCard>
         )}
-      </section>
 
       <AnimatePresence>
         {showCreateModal && (
@@ -432,7 +424,7 @@ export default function BattlesPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </PageLayout>
   );
 }
 

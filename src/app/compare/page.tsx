@@ -7,6 +7,8 @@ import { PixelButton } from "@/components/pixel-button";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelInput } from "@/components/pixel-input";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section } from "@/components/page-layout";
 import Link from "next/link";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { useSearchParams } from "next/navigation";
@@ -212,27 +214,17 @@ function ComparePageContent() {
   }, [validCompareTools]);
 
   return (
-    <div className="min-h-screen bg-background pb-12">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
-      
+    <PageLayout maxWidth="xl">
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={compareTourConfig} />
       </div>
       
-      <section className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        {/* Page Header */}
-        <div className="mb-8 text-center">
-          <div className="flex items-center justify-center gap-2 text-primary mb-2">
-            <Swords className="w-5 h-5" />
-            <span className="text-xs font-bold uppercase tracking-widest">Tool Arena</span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-2">
-            Compare Tools
-          </h1>
-          <p className="text-muted-foreground text-sm max-w-md mx-auto">
-            Select up to 4 tools to compare stats, features, and find the best fit for your stack
-          </p>
-        </div>
+      <PageHeader
+        title="COMPARE TOOLS"
+        description="Select up to 4 tools to compare stats, features, and find the best fit for your stack."
+        icon={Scale}
+        badge="Tool Arena"
+      />
 
         {/* Tool Selection Area */}
         <div className="mb-8" data-tour="compare-search">
@@ -890,7 +882,6 @@ function ComparePageContent() {
             </div>
           </motion.div>
         )}
-      </section>
-    </div>
+    </PageLayout>
   );
 }

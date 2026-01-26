@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import { TourTrigger } from "@/components/page-tour";
 import { forumTourConfig } from "@/lib/tour-configs";
 
@@ -50,17 +52,15 @@ export function ForumContent() {
   const stats = useQuery(api.forum.getForumStats);
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout maxWidth="xl">
       <div className="fixed bottom-4 right-4 z-50">
         <TourTrigger tourConfig={forumTourConfig} />
       </div>
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Community Forum</h1>
-          <p className="text-muted-foreground">
-            Discuss tools, share experiences, and connect with fellow developers
-          </p>
-        </div>
+      <PageHeader
+        title="COMMUNITY FORUM"
+        description="Discuss tools, share experiences, and connect with fellow developers."
+        icon={MessagesSquare}
+      />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" data-tour="forum-categories">
           <PixelCard>
@@ -205,7 +205,6 @@ export function ForumContent() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

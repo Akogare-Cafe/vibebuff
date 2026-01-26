@@ -7,6 +7,8 @@ import { PixelCard, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
 import { PixelInput } from "@/components/pixel-input";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout, Section, Grid } from "@/components/page-layout";
 import Link from "next/link";
 import {
   Users,
@@ -44,30 +46,27 @@ export default function GroupsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-6">
-          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1 mb-4">
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="GROUPS"
+        description="Join groups to share tools, stacks, and decks with like-minded developers."
+        icon={Users}
+        breadcrumb={
+          <Link href="/community" className="text-muted-foreground hover:text-foreground text-sm flex items-center gap-1">
             <ChevronLeft className="w-4 h-4" /> Back to Community
           </Link>
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
-              <Users className="w-8 h-8 text-primary" />
-              <h1 className="font-heading text-foreground text-2xl">GROUPS</h1>
-            </div>
-            <Link href="/groups/new">
-              <PixelButton>
-                <UserPlus className="w-4 h-4 mr-2" /> Create Group
-              </PixelButton>
-            </Link>
-          </div>
-          <p className="text-muted-foreground text-sm">
-            Join groups to share tools, stacks, and decks with like-minded developers.
-          </p>
-        </div>
+        }
+        actions={
+          <Link href="/groups/new">
+            <PixelButton>
+              <UserPlus className="w-4 h-4 mr-2" /> Create Group
+            </PixelButton>
+          </Link>
+        }
+      />
 
-        <div className="mb-8">
-          <div className="max-w-md relative">
+        <Section>
+          <div className="max-w-md relative mx-auto">
             <PixelInput
               placeholder="Search groups..."
               value={searchQuery}
@@ -76,7 +75,7 @@ export default function GroupsPage() {
             />
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           </div>
-        </div>
+        </Section>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayGroups?.map((group) => (
@@ -157,7 +156,6 @@ export default function GroupsPage() {
             </div>
           )}
         </div>
-      </main>
-    </div>
+    </PageLayout>
   );
 }

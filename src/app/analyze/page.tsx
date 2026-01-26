@@ -8,6 +8,8 @@ import { Id } from "../../../convex/_generated/dataModel";
 import { PixelCard, PixelCardHeader, PixelCardTitle, PixelCardContent } from "@/components/pixel-card";
 import { PixelBadge } from "@/components/pixel-badge";
 import { PixelButton } from "@/components/pixel-button";
+import { PageHeader } from "@/components/page-header";
+import { PageLayout } from "@/components/page-layout";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -171,21 +173,13 @@ export default function AnalyzePage() {
   const gradeColors = result ? GRADE_COLORS[result.grade] || GRADE_COLORS.F : null;
 
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
-
-      <main className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 text-primary mb-2">
-            <FileJson className="w-5 h-5" />
-            <span className="text-xs uppercase tracking-wider">Stack Analyzer</span>
-          </div>
-          <h1 className="text-primary text-3xl mb-3 pixel-glow">PACKAGE.JSON ANALYZER</h1>
-          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
-            Upload or paste your package.json to get a detailed analysis of your tech stack,
-            including scores, recommendations, and the ability to save tools to your deck.
-          </p>
-        </div>
+    <PageLayout maxWidth="xl">
+      <PageHeader
+        title="STACK ANALYZER"
+        description="Upload or paste your package.json to get a detailed analysis of your tech stack, including scores, recommendations, and the ability to save tools to your deck."
+        icon={BarChart3}
+        badge="Package.json"
+      />
 
         {!result && (
           <PixelCard className="max-w-2xl mx-auto mb-8">
@@ -513,7 +507,6 @@ export default function AnalyzePage() {
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
-    </div>
+    </PageLayout>
   );
 }

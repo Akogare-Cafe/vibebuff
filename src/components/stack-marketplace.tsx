@@ -15,6 +15,7 @@ import { PixelButton } from "./pixel-button";
 import { PixelBadge } from "./pixel-badge";
 import { PixelInput } from "./pixel-input";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/page-header";
 import {
   Store,
   Search,
@@ -670,18 +671,12 @@ export function StackMarketplace() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-primary flex items-center gap-2">
-            <Store className="w-6 h-6" />
-            Stack Marketplace
-          </h1>
-          <p className="text-muted-foreground text-sm mt-1">
-            Discover, share, and import community tech stacks
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2">
+      <PageHeader
+        title="STACK MARKETPLACE"
+        description="Discover, share, and import community tech stacks."
+        icon={Store}
+        actions={
+          <div className="flex items-center gap-2">
           <PixelButton
             variant={activeTab === "browse" ? "default" : "outline"}
             onClick={() => setActiveTab("browse")}
@@ -714,7 +709,8 @@ export function StackMarketplace() {
             </>
           )}
         </div>
-      </div>
+        }
+      />
 
       {activeTab === "browse" && featuredStacks && featuredStacks.length > 0 && (
         <div>
