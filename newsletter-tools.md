@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 67
+Total tools: 66
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,22 @@ Total tools: 67
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (8 tools)
+## TLDR (7 tools)
+
+### pandas 3.0.0 (GitHub Repo)
+- **URL**: https://github.com/pandas-dev/pandas/releases/tag/v3.0.0?utm_source=tldrnewsletter
+- **Date**: 2026-01-22
+- **Description**: pandas 3.0.0 (GitHub Repo)pandas 3.0.0 includes some new features, bug fixes, and performance improvements, as well as possible breaking changes. It removes a functionality that was deprecated in previous releases. Users are recommended to first upgrade to pandas 2.3 and to ensure their code is working without warnings before upgrading to pandas 3.0. A link to a list of all the changes in the release is available.
+
+### syntux (GitHub Repo)
+- **URL**: https://github.com/puffinsoft/syntux?utm_source=tldrnewsletter
+- **Date**: 2026-01-21
+- **Description**: syntux (GitHub Repo)syntux is a generative UI library that is consistent and flexible.
+
+### Headroom (GitHub Repo)
+- **URL**: https://github.com/chopratejas/headroom?utm_source=tldrnewsletter
+- **Date**: 2026-01-14
+- **Description**: Headroom (GitHub Repo)Headroom is a context optimization layer for LLM applications that cuts costs by 50% to 90% without losing accuracy.
 
 ### Mantic (GitHub Repo)
 - **URL**: https://github.com/marcoaapfortes/Mantic.sh?utm_source=tldrnewsletter
@@ -261,24 +276,4 @@ Total tools: 67
 - **URL**: https://github.com/parcadei/Continuous-Claude-v2?utm_source=tldrnewsletter
 - **Date**: 2025-12-29
 - **Description**: Continuous Claude (GitHub Repo)Continuous Claude is a framework that saves state to a ledger, wipes context, and resumes fresh.
-
-### Claude How To (GitHub Repo)
-- **URL**: https://github.com/luongnv89/claude-howto?utm_source=tldrnewsletter
-- **Date**: 2025-12-26
-- **Description**: Claude How To (GitHub Repo)A complete guide to Claude Code features.
-
-### Vibium (GitHub Repo)
-- **URL**: https://github.com/VibiumDev/vibium?utm_source=tldrnewsletter
-- **Date**: 2025-12-25
-- **Description**: Vibium (GitHub Repo)Vibium is a browser automation infrastructure built for AI agents. It uses a single binary to drive a browser using AI, with zero setup. The tool handles browser management, proxies, MCP servers, and more. It works across Linux, macOS, and Windows, with no manual browser setup required.
-
-### MicroQuickJS (GitHub Repo)
-- **URL**: https://github.com/bellard/mquickjs/blob/main/README.md?utm_source=tldrnewsletter
-- **Date**: 2025-12-24
-- **Description**: MicroQuickJS (GitHub Repo)MicroQuickJS is a JavaScript engine targeted at embedded systems that compiles and runs JavaScript programs with as low as 10 kB of RAM.
-
-### Working with Q — Coding Agent Protocol (12 minute read)
-- **URL**: https://gist.github.com/Web-Dev-Codi/29b25c56a0f1e2535d93614eab67b4d1?utm_source=tldrnewsletter
-- **Date**: 2025-12-11
-- **Description**: Working with Q — Coding Agent Protocol (12 minute read)This repository contains instructions for agent models to emulate applied rationality for a coding agent.
 
