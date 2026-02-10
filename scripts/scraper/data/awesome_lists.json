@@ -22840,8 +22840,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1382,
-    "total_links": 1399,
+    "tools_count": 1383,
+    "total_links": 1400,
     "tools": [
       {
         "name": "Pull Requests",
@@ -24068,10 +24068,18 @@
         "description": "Trigger your webhook after each operation"
       },
       {
-        "name": "Siterelic",
-        "url": "https://siterelic.com/",
+        "name": "Geekflare API",
+        "url": "https://geekflare.com/api/",
         "category": "tool",
-        "description": "Siterelic API lets you take screenshots, audit websites, TLS scan, DNS lookup, test TTFB, and more"
+        "description": "Geekflare API lets you scrape websites into Markdown, take screenshots, perform TLS scans and DNS lookups, test load times, and more",
+        "source": "ripienaar/free-for-dev"
+      },
+      {
+        "name": "credit mapping",
+        "url": "https://docs.geekflare.com/api/api-credit-mapping",
+        "category": "tool",
+        "description": null,
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "SmartParse",
@@ -24677,8 +24685,7 @@
         "name": "RightFeature",
         "url": "https://rightfeature.com/",
         "category": "tool",
-        "description": "Easily collect feedback from your customers, turn customer feedback into your product roadmap",
-        "source": "ripienaar/free-for-dev"
+        "description": "Easily collect feedback from your customers, turn customer feedback into your product roadmap"
       },
       {
         "name": "Contentful",
@@ -25779,16 +25786,17 @@
         "description": "Notifications infrastructure for developers"
       },
       {
-        "name": "NotificationAPI.com",
-        "url": "https://www.notificationapi.com/",
-        "category": "tool",
-        "description": "Add user notifications to any software in 5 minutes"
-      },
-      {
         "name": "Novu.co",
         "url": "https://novu.co",
         "category": "tool",
         "description": "The open-source notification infrastructure for developers"
+      },
+      {
+        "name": "Pingram.io",
+        "url": "https://www.pingram.io/",
+        "category": "tool",
+        "description": "Communication infrastructure in 5 minutes",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Pocket Alert",
@@ -27072,8 +27080,7 @@
         "name": "FormNX",
         "url": "https://www.FormNX.com/",
         "category": "tool",
-        "description": "Create unlimited forms get unlimited submissions free of cost",
-        "source": "ripienaar/free-for-dev"
+        "description": "Create unlimited forms get unlimited submissions free of cost"
       },
       {
         "name": "Arize AX",
@@ -31976,8 +31983,12 @@
         "url": "https://simplescraper.io"
       },
       {
-        "text": "Siterelic",
-        "url": "https://siterelic.com/"
+        "text": "Geekflare API",
+        "url": "https://geekflare.com/api/"
+      },
+      {
+        "text": "credit mapping",
+        "url": "https://docs.geekflare.com/api/api-credit-mapping"
       },
       {
         "text": "SmartParse",
@@ -33128,12 +33139,12 @@
         "url": "https://knock.app"
       },
       {
-        "text": "NotificationAPI.com",
-        "url": "https://www.notificationapi.com/"
-      },
-      {
         "text": "Novu.co",
         "url": "https://novu.co"
+      },
+      {
+        "text": "Pingram.io",
+        "url": "https://www.pingram.io/"
       },
       {
         "text": "Pocket Alert",
@@ -51502,7 +51513,7 @@
         "name": "BoldKit",
         "url": "https://github.com/ANIBIT14/boldkit",
         "category": "github",
-        "description": "A neubrutalism-styled Vue 3 component library with 45+ components, 35 SVG shapes, and charts"
+        "description": "A neubrutalism-styled Vue 3 & Nuxt component library with 45+ components, 35 SVG shapes, and charts"
       },
       {
         "name": "Inspira UI",
@@ -60940,8 +60951,7 @@
         "name": "Codington",
         "url": "https://codington.io",
         "category": "tool",
-        "description": "Interactive TypeScript practice exercises with instant feedback, designed for learning and teaching",
-        "source": "dzharii/awesome-typescript"
+        "description": "Interactive TypeScript practice exercises with instant feedback, designed for learning and teaching"
       },
       {
         "name": "Codebook",
@@ -102963,8 +102973,7 @@
         "name": "MyMangaDB",
         "url": "https://github.com/FabianRolfMatthiasNoll/MyMangaDB",
         "category": "github",
-        "description": "`\u26a0` - Manga collection manager with automatic metadata, MyAnimeList import and detailed collection statistics",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "`\u26a0` - Manga collection manager with automatic metadata, MyAnimeList import and detailed collection statistics"
       },
       {
         "name": "Stump",
@@ -107422,22 +107431,19 @@
         "name": "MediaMTX",
         "url": "https://mediamtx.org",
         "category": "tool",
-        "description": "Ready-to-use, zero-dependency real-time media server and proxy to publish, read, record, playback and route video/audio streams over SRT, WebRTC, RTSP, RTMP, HLS, MPEG-TS, RTP",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Ready-to-use, zero-dependency real-time media server and proxy to publish, read, record, playback and route video/audio streams over SRT, WebRTC, RTSP, RTMP, HLS, MPEG-TS, RTP"
       },
       {
         "name": "Source Code",
         "url": "https://github.com/bluenviron/mediamtx",
         "category": "github",
-        "description": ",",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ","
       },
       {
         "name": "Clients",
         "url": "https://mediamtx.org/docs/kickoff/introduction",
         "category": "tool",
-        "description": ") `MIT` `Go/Docker`",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `MIT` `Go/Docker`"
       },
       {
         "name": "Meelo",
