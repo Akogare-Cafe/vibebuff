@@ -70816,8 +70816,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 113,
-    "total_links": 117,
+    "tools_count": 114,
+    "total_links": 118,
     "tools": [
       {
         "name": "How to Contribute",
@@ -70868,12 +70868,6 @@
         "description": "Truly declarative API testing framework in Js, or plain JSON"
       },
       {
-        "name": "Zato API Test",
-        "url": "https://zato.io/en/docs/3.2/api-testing/index.html",
-        "category": "tool",
-        "description": "API testing in plain English with extendable Python implementation"
-      },
-      {
         "name": "Tests Coverage Tool",
         "url": "https://github.com/Nikita-Filonov/tests-coverage-tool",
         "category": "github",
@@ -70890,6 +70884,13 @@
         "url": "https://apify.com/ar27111994/webhook-debugger-logger",
         "category": "tool",
         "description": "Enterprise-grade tool for testing, debugging, and logging incoming webhooks in real-time"
+      },
+      {
+        "name": "Webhook Debugger",
+        "url": "https://github.com/brancogao/webhook-debugger",
+        "category": "github",
+        "description": "Open-source, self-hosted webhook inspector with signature verification support",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "BeEF",
@@ -71450,6 +71451,13 @@
         "description": "A curated collection of resources around Apache JMeter"
       },
       {
+        "name": "Awesome Performance Engineering",
+        "url": "https://github.com/be-next/awesome-performance-engineering",
+        "category": "github",
+        "description": "A curated collection of tools and resources for performance engineering, covering observability and performance testing",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "How They Test",
         "url": "https://github.com/abhivaikar/howtheytest",
         "category": "github",
@@ -71532,10 +71540,6 @@
         "url": "https://github.com/justiceo/spectest"
       },
       {
-        "text": "Zato API Test",
-        "url": "https://zato.io/en/docs/3.2/api-testing/index.html"
-      },
-      {
         "text": "Tests Coverage Tool",
         "url": "https://github.com/Nikita-Filonov/tests-coverage-tool"
       },
@@ -71546,6 +71550,10 @@
       {
         "text": "Webhook Debugger & Logger",
         "url": "https://apify.com/ar27111994/webhook-debugger-logger"
+      },
+      {
+        "text": "Webhook Debugger",
+        "url": "https://github.com/brancogao/webhook-debugger"
       },
       {
         "text": "BeEF",
@@ -71930,6 +71938,10 @@
       {
         "text": "Awesome JMeter",
         "url": "https://github.com/aliesbelik/awesome-jmeter"
+      },
+      {
+        "text": "Awesome Performance Engineering",
+        "url": "https://github.com/be-next/awesome-performance-engineering"
       },
       {
         "text": "How They Test",
@@ -114059,16 +114071,18 @@
         "description": ") `GPL-3"
       },
       {
-        "name": "Varnish",
-        "url": "https://varnish-cache.org/",
+        "name": "Vinyl Cache",
+        "url": "https://vinyl-cache.org/",
         "category": "tool",
-        "description": "Web application accelerator/caching HTTP reverse proxy"
+        "description": "Web application accelerator/caching HTTP reverse proxy (formerly Varnish)",
+        "source": "awesome-selfhosted/awesome-selfhosted"
       },
       {
         "name": "Source Code",
-        "url": "https://github.com/varnishcache/varnish-cache",
-        "category": "github",
-        "description": ") `BSD-3-Clause` `Go/deb/Docker`"
+        "url": "https://code.vinyl-cache.org/vinyl-cache/vinyl-cache",
+        "category": "tool",
+        "description": ") `BSD-2-Clause` `Go/deb/Docker`",
+        "source": "awesome-selfhosted/awesome-selfhosted"
       },
       {
         "name": "Zoraxy",
@@ -125689,12 +125703,12 @@
         "url": "https://github.com/Safe3/uusec-waf"
       },
       {
-        "text": "Varnish",
-        "url": "https://varnish-cache.org/"
+        "text": "Vinyl Cache",
+        "url": "https://vinyl-cache.org/"
       },
       {
         "text": "Source Code",
-        "url": "https://github.com/varnishcache/varnish-cache"
+        "url": "https://code.vinyl-cache.org/vinyl-cache/vinyl-cache"
       },
       {
         "text": "Zoraxy",
