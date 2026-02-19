@@ -3088,6 +3088,47 @@ export default defineSchema({
     .index("by_source", ["source"])
     .index("by_url", ["url"]),
 
+  // ============================================
+  // Tool Resources (YouTube, Docs, How-Tos, Articles)
+  // ============================================
+  toolResources: defineTable({
+    toolId: v.id("tools"),
+    resourceType: v.union(
+      v.literal("youtube"),
+      v.literal("documentation"),
+      v.literal("howto"),
+      v.literal("article"),
+      v.literal("tutorial")
+    ),
+    title: v.string(),
+    url: v.string(),
+    description: v.optional(v.string()),
+    thumbnailUrl: v.optional(v.string()),
+    source: v.optional(v.string()),
+    publishedAt: v.optional(v.string()),
+    duration: v.optional(v.string()),
+    viewCount: v.optional(v.number()),
+    channelName: v.optional(v.string()),
+    isActive: v.boolean(),
+    fetchedAt: v.number(),
+  })
+    .index("by_tool", ["toolId"])
+    .index("by_tool_type", ["toolId", "resourceType"])
+    .index("by_url", ["url"]),
+
+  toolResourceFetchLog: defineTable({
+    toolId: v.id("tools"),
+    lastFetchedAt: v.number(),
+    youtubeCount: v.number(),
+    articleCount: v.number(),
+    totalCount: v.number(),
+    status: v.union(
+      v.literal("success"),
+      v.literal("partial"),
+      v.literal("failed")
+    ),
+  }).index("by_tool", ["toolId"]),
+
   claudeMcpServers: defineTable({
     name: v.string(),
     fullName: v.optional(v.string()),

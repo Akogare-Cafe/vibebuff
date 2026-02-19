@@ -388,6 +388,58 @@ export const cleanupInvalidTools = mutation({
   },
 });
 
+export const cleanupLowQualityTools = mutation({
+  args: {
+    dryRun: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const tools = await ctx.db.query("tools").collect();
+    const dryRun = args.dryRun ?? true;
+
+    let deleted = 0;
+    const deletedTools: string[] = [];
+
+    for (const tool of tools) {
+      const hasGithub = !!tool.githubUrl;
+      const hasNpm = !!tool.npmPackageName;
+      const hasPros = Array.isArray(tool.pros) && tool.pros.length > 0;
+      const hasCons = Array.isArray(tool.cons) && tool.cons.length > 0;
+      const hasFeatures = Array.isArray(tool.features) && tool.features.length > 0;
+      const hasBestFor = Array.isArray(tool.bestFor) && tool.bestFor.length > 0;
+      const hasStars = (tool.githubStars ?? 0) > 0;
+      const hasDownloads = (tool.npmDownloadsWeekly ?? 0) > 0;
+      const hasExternalData = !!tool.externalData?.lastFetched;
+      const isFeatured = !!tool.isFeatured;
+
+      const descLen = (tool.description || "").length;
+      const hasShortDesc = descLen < 30;
+      const descSameAsTagline = tool.description && tool.tagline &&
+        tool.description.trim() === tool.tagline.trim();
+
+      const hasNoUsefulData = !hasGithub && !hasNpm && !hasPros && !hasCons &&
+        !hasFeatures && !hasBestFor && !hasStars && !hasDownloads &&
+        !hasExternalData && !isFeatured;
+
+      const isLowQuality = hasNoUsefulData;
+
+      if (isLowQuality) {
+        deletedTools.push(tool.name);
+        if (!dryRun) {
+          await ctx.db.delete(tool._id);
+        }
+        deleted++;
+      }
+    }
+
+    return {
+      dryRun,
+      wouldDelete: deleted,
+      samples: deletedTools.slice(0, 50),
+      totalRemaining: tools.length - (dryRun ? 0 : deleted),
+    };
+  },
+});
+
 export const getIngestionStats = mutation({
   handler: async (ctx) => {
     const tools = await ctx.db.query("tools").collect();

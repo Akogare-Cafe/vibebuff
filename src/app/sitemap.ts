@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../../convex/_generated/api";
+import { getBlogSlugs } from "@/lib/blog";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
 
@@ -163,110 +164,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const blogPosts: MetadataRoute.Sitemap = [
-    {
-      url: `${siteUrl}/blog/state-management-react-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/blog/edge-functions-vs-serverless-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/blog/ai-coding-assistants-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/blog/convex-vs-supabase-vs-firebase`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/blog/deployment-platforms-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/blog/best-react-frameworks-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/nextjs-vs-remix-comparison`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/choosing-database-for-startup`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/ai-tools-for-developers`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/tech-stack-for-saas`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/best-frontend-frameworks-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/postgresql-vs-mongodb-guide`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/best-authentication-services`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/blog/vercel-vs-netlify-vs-aws`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/blog/best-orm-nodejs-2025`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/blog/tailwind-vs-bootstrap-vs-css`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/blog/supabase-vs-firebase-comparison`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  ];
+  const blogSlugs = getBlogSlugs();
+  const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${siteUrl}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   const categoryPages: MetadataRoute.Sitemap = [
     "frontend",

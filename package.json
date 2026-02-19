@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint || true",
     "clean": "rm -rf .next .turbo node_modules/.cache && echo 'Cache cleared. Restart dev server.'",
-    "scrape-newsletters": "tsx scripts/newsletter-scraper.ts"
+    "scrape-newsletters": "tsx scripts/newsletter-scraper.ts",
+    "generate-blogs": "tsx scripts/generate-blog-posts.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",

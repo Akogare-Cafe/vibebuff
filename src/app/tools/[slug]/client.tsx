@@ -54,6 +54,7 @@ import { ToolExternalData } from "@/components/tool-external-data";
 import { ToolInstallCommands, ToolSocialLinks, ToolReadmeInfo, ToolChangelog } from "@/components/tool-expanded-metadata";
 import { AddToDeckButton } from "@/components/add-to-deck-button";
 import { RelatedArticles } from "@/components/related-articles";
+import { ToolResources } from "@/components/tool-resources";
 import { ToolJsonLd } from "@/components/tool-json-ld";
 
 export default function ToolDetailPageClient({ slug }: { slug: string }) {
@@ -613,6 +614,11 @@ export default function ToolDetailPageClient({ slug }: { slug: string }) {
             onRefresh={handleRefreshExternalData}
             isRefreshing={isRefreshingData}
           />
+        </div>
+
+        {/* Videos, Docs, How-Tos & Articles */}
+        <div className="mb-8">
+          <ToolResources toolId={tool._id} toolName={tool.name} />
         </div>
 
         {/* Tool Metadata Grid */}

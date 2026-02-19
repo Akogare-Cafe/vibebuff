@@ -1,0 +1,93 @@
+name: Generate Blog Posts
+
+on:
+  schedule:
+    # Run daily at 8 AM UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      post_count:
+        description: 'Number of blog posts to generate'
+        required: false
+        default: '10'
+        type: choice
+        options:
+          - '1'
+          - '3'
+          - '5'
+          - '10'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-blogs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate blog posts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOG_POSTS_COUNT: ${{ github.event.inputs.post_count || '10' }}
+        run: pnpm tsx scripts/generate-blog-posts.ts
+
+      - name: Check for new posts
+        id: check_changes
+        run: |
+          NEW_FILES=$(git status --porcelain src/content/blog/ | grep "^??" | wc -l | tr -d ' ')
+          echo "new_posts=$NEW_FILES" >> $GITHUB_OUTPUT
+          echo "Found $NEW_FILES new blog posts"
+
+      - name: Upload generation summary
+        if: steps.check_changes.outputs.new_posts != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-gen-summary-${{ github.run_number }}
+          path: blog-gen-summary.json
+          retention-days: 30
+
+      - name: Commit and push new blog posts
+        if: steps.check_changes.outputs.new_posts != '0'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/content/blog/
+          git commit -m "content: add ${{ steps.check_changes.outputs.new_posts }} AI-generated blog posts [skip ci]"
+          git pull --rebase origin main
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ -f blog-gen-summary.json ]; then
+            echo "## Blog Generation Summary" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat blog-gen-summary.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## Blog Generation Summary" >> $GITHUB_STEP_SUMMARY
+            echo "No new posts were generated." >> $GITHUB_STEP_SUMMARY
+          fi

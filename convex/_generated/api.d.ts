@@ -80,6 +80,8 @@ import type * as templates from "../templates.js";
 import type * as tierLists from "../tierLists.js";
 import type * as timeMachine from "../timeMachine.js";
 import type * as toolAffinity from "../toolAffinity.js";
+import type * as toolResources from "../toolResources.js";
+import type * as toolResourcesInternal from "../toolResourcesInternal.js";
 import type * as toolStats from "../toolStats.js";
 import type * as toolSuggestions from "../toolSuggestions.js";
 import type * as toolUsage from "../toolUsage.js";
@@ -171,6 +173,8 @@ declare const fullApi: ApiFromModules<{
   tierLists: typeof tierLists;
   timeMachine: typeof timeMachine;
   toolAffinity: typeof toolAffinity;
+  toolResources: typeof toolResources;
+  toolResourcesInternal: typeof toolResourcesInternal;
   toolStats: typeof toolStats;
   toolSuggestions: typeof toolSuggestions;
   toolUsage: typeof toolUsage;
