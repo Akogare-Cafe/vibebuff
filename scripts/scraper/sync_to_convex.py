@@ -422,9 +422,11 @@ async def upsert_tool(client: httpx.AsyncClient, tool_data: dict) -> dict:
         "Content-Type": "application/json",
     }
     
+    cleaned_data = {k: v for k, v in tool_data.items() if v is not None}
+    
     payload = {
         "path": "ingest:upsertTool",
-        "args": tool_data,
+        "args": cleaned_data,
     }
     
     try:
@@ -490,9 +492,8 @@ def transform_discovered_tool(tool: dict) -> Optional[dict]:
         "slug": slugify(name),
         "tagline": tagline,
         "description": description[:1000] if description else f"{name} is a developer tool.",
-        "websiteUrl": url if "github.com" not in url else None,
+        "websiteUrl": url,
         "githubUrl": github_url,
-        "docsUrl": None,
         "categorySlug": category_slug,
         "pricingModel": "freemium",
         "githubStars": None,
@@ -680,10 +681,9 @@ def transform_mcp_tool(tool: dict) -> Optional[dict]:
         "slug": slugify(name),
         "description": description[:1000] if description else f"{name} is an MCP server for AI assistants.",
         "shortDescription": short_description,
-        "websiteUrl": url if "github.com" not in url else None,
+        "websiteUrl": url if "github.com" not in url else github_url,
         "githubUrl": github_url,
         "docsUrl": metadata.get("docs_url") if metadata else None,
-        "author": None,
         "category": category,
         "transportTypes": ["stdio"],
         "tags": all_tags,
@@ -705,9 +705,11 @@ async def upsert_mcp_server(client: httpx.AsyncClient, server_data: dict) -> dic
         "Content-Type": "application/json",
     }
     
+    cleaned_data = {k: v for k, v in server_data.items() if v is not None}
+    
     payload = {
         "path": "mcpServers:upsertMcpServer",
-        "args": server_data,
+        "args": cleaned_data,
     }
     
     try:

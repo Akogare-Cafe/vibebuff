@@ -28,6 +28,7 @@ from hackernews_scraper import scrape_hackernews
 from vibe_tools_scraper import scrape_vibe_tools
 from company_techstack_scraper import scrape_company_tech_stacks
 from claude_scraper import scrape_claude_ecosystem
+from sync_to_convex import sync_all_scraped_tools
 
 
 async def run_all_scrapers(
@@ -349,6 +350,19 @@ async def run_all_scrapers(
     # Save summary
     with open(os.path.join(output_dir, "scrape_summary.json"), "w") as f:
         json.dump(results, f, indent=2)
+    
+    # Sync scraped tools to Convex DB
+    print("\n=== Syncing Scraped Tools to Convex ===\n")
+    try:
+        sync_results = await sync_all_scraped_tools()
+        results["sync"] = {
+            "total_synced": sync_results.get("total_synced", 0),
+            "total_errors": sync_results.get("total_errors", 0),
+        }
+        print(f"Sync complete: {sync_results.get('total_synced', 0)} synced, {sync_results.get('total_errors', 0)} errors")
+    except Exception as e:
+        print(f"Sync to Convex failed: {e}")
+        results["sync"] = {"error": str(e)}
     
     return results
 
