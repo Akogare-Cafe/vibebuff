@@ -1,6 +1,6 @@
 "use node";
 
-import { action } from "./_generated/server";
+import { action, internalAction } from "./_generated/server";
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
@@ -457,6 +457,61 @@ interface FetchResults {
   skipped: number;
   details: { name: string; status: string; error?: string }[];
 }
+
+export const refreshExternalDataBatch = internalAction({
+  args: {},
+  handler: async (ctx): Promise<{ processed: number; success: number; failed: number }> => {
+    const tools = await ctx.runQuery(internal.externalDataInternal.getStaleToolsForRefresh, {
+      limit: 20,
+      staleAfterMs: 7 * 24 * 60 * 60 * 1000,
+    }) as ToolForFetch[];
+
+    let success = 0;
+    let failed = 0;
+
+    for (const tool of tools) {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        let githubData: Awaited<ReturnType<typeof fetchGithubData>> = null;
+        let npmData: Awaited<ReturnType<typeof fetchNpmData>> = null;
+
+        if (tool.githubUrl) {
+          const parsed = extractGithubOwnerRepo(tool.githubUrl);
+          if (parsed) {
+            githubData = await fetchGithubData(parsed.owner, parsed.repo);
+          }
+        }
+
+        const npmPackageName = tool.npmPackageName || tool.slug;
+        npmData = await fetchNpmData(npmPackageName);
+
+        if (!githubData && !npmData) continue;
+
+        const externalData = {
+          github: githubData || undefined,
+          npm: npmData || undefined,
+          lastFetched: Date.now(),
+        };
+
+        await ctx.runMutation(internal.externalDataInternal.updateToolExternalData, {
+          toolId: tool._id as any,
+          externalData,
+          githubStars: githubData?.stars,
+          npmDownloadsWeekly: npmData?.downloadsWeekly,
+        });
+
+        success++;
+      } catch (error) {
+        failed++;
+        console.error(`Failed to refresh ${tool.name}:`, error);
+      }
+    }
+
+    console.log(`External data refresh: ${success} success, ${failed} failed out of ${tools.length} tools`);
+    return { processed: tools.length, success, failed };
+  },
+});
 
 export const fetchAllToolsExternalData = action({
   args: {

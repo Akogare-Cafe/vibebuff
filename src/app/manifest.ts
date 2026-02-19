@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'VibeBuff',
     description: 'The ultimate tech stack builder for developers. Compare 500+ tools, get AI-powered recommendations, and discover what top startups use.',
     start_url: '/',
-    display: 'standalone',
+    display: 'standalone' as const,
     background_color: '#0a0a0a',
     theme_color: '#3b82f6',
     icons: [
@@ -26,9 +26,5 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/svg+xml',
       },
     ],
-    categories: ['developer tools', 'productivity', 'technology'],
-    orientation: 'portrait-primary',
-    scope: '/',
-    lang: 'en-US',
   }
 }

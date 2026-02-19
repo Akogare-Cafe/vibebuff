@@ -321,8 +321,46 @@ export const cleanupInvalidTools = mutation({
   handler: async (ctx) => {
     const tools = await ctx.db.query("tools").collect();
     
-    const excludedUrlPatterns = ["/blog/", "/article/", "/post/", "/news/", "/guide/", "/tutorial/", "/docs/", "/wiki/", "/alternatives/", "/vs/", "/comparison/", "medium.com/", "dev.to/", "hashnode.com/", "substack.com/", "wikipedia.org/", "youtube.com/", "reddit.com/"];
-    const excludedNamePatterns = ["how to", "how-to", "guide to", "tutorial", "introduction to", "getting started", "best practices", "tips and tricks", "top 10", "top 5", "top 7", "i tested", "we tested", "review:", "comparison:", "vs.", "versus", "alternatives", "alternative to", "best ai", "5 best", "7 best", "10 best"];
+    const excludedUrlPatterns = [
+      "/blog/", "/article/", "/post/", "/news/", "/guide/", "/tutorial/",
+      "/docs/", "/wiki/", "/alternatives/", "/vs/", "/comparison/",
+      "medium.com/", "dev.to/", "hashnode.com/", "substack.com/",
+      "wikipedia.org/", "youtube.com/", "reddit.com/", "twitter.com/",
+      "x.com/", "linkedin.com/", "facebook.com/", "tiktok.com/",
+      "/tag/", "/tags/", "/category/", "/categories/", "/archive/",
+      "/search?", "/search/", "/explore", "/trending", "/popular",
+      "/list/", "/lists/", "/collection/", "/collections/",
+      "producthunt.com/", "alternativeto.net/", "stackshare.io/",
+      "g2.com/", "capterra.com/", "trustradius.com/",
+      "slant.co/", "saashub.com/", "toolify.ai/",
+      "theresanaiforthat.com/", "futurepedia.io/",
+      "ycombinator.com/", "news.ycombinator.com/",
+    ];
+    
+    const excludedNamePatterns = [
+      "how to", "how-to", "guide to", "tutorial", "introduction to",
+      "getting started", "best practices", "tips and tricks",
+      "top 10", "top 5", "top 7", "top 20", "top 50", "top 100",
+      "i tested", "we tested", "review:", "comparison:", "vs.", "versus",
+      "alternatives", "alternative to", "best ai", "5 best", "7 best",
+      "10 best", "15 best", "20 best", "50 best",
+      "awesome mcp", "awesome-mcp", "mcp server list", "mcp directory",
+      "mcp server finder", "best mcp", "curated list",
+      "awesome list", "awesome-list",
+      "example clients", "essential tool integrations",
+      "| cursor", "| claude", "| windsurf",
+      "complete guide", "ultimate guide", "definitive guide",
+      "cheat sheet", "cheatsheet", "roadmap",
+      "what is", "why you should", "why i",
+      "list of", "directory of", "collection of", "catalog of",
+      "roundup", "round-up", "wrap-up", "wrapup",
+    ];
+
+    const excludedTaglinePatterns = [
+      "curated list", "awesome list", "collection of",
+      "discover the best", "find the best", "compare and choose",
+      "our curated directory",
+    ];
     
     let deleted = 0;
     const deletedTools: string[] = [];
@@ -330,19 +368,23 @@ export const cleanupInvalidTools = mutation({
     for (const tool of tools) {
       const url = (tool.websiteUrl || "").toLowerCase();
       const name = (tool.name || "").toLowerCase();
+      const tagline = (tool.tagline || "").toLowerCase();
       
       const hasExcludedUrl = excludedUrlPatterns.some(p => url.includes(p));
       const hasExcludedName = excludedNamePatterns.some(p => name.includes(p));
+      const hasExcludedTagline = excludedTaglinePatterns.some(p => tagline.includes(p));
       const nameTooLong = tool.name && tool.name.length > 80;
+      const nameHasPipe = tool.name && tool.name.includes(" | ") && tool.name.length > 50;
+      const nameHasEllipsis = tool.name && tool.name.includes("...");
       
-      if (hasExcludedUrl || hasExcludedName || nameTooLong) {
+      if (hasExcludedUrl || hasExcludedName || hasExcludedTagline || nameTooLong || nameHasPipe || nameHasEllipsis) {
         deletedTools.push(tool.name);
         await ctx.db.delete(tool._id);
         deleted++;
       }
     }
     
-    return { deleted, deletedTools: deletedTools.slice(0, 20) };
+    return { deleted, deletedTools: deletedTools.slice(0, 50), totalRemaining: tools.length - deleted };
   },
 });
 

@@ -27,4 +27,10 @@ crons.cron(
   internal.logoScraper.scrapeLogosCron
 );
 
+crons.interval(
+  "refresh-tool-external-data",
+  { hours: 6 },
+  internal.externalData.refreshExternalDataBatch
+);
+
 export default crons;

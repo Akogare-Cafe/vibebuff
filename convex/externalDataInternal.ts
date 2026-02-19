@@ -8,6 +8,31 @@ export const getToolForFetch = internalQuery({
   },
 });
 
+export const getStaleToolsForRefresh = internalQuery({
+  args: {
+    limit: v.number(),
+    staleAfterMs: v.number(),
+  },
+  handler: async (ctx, args) => {
+    const cutoff = Date.now() - args.staleAfterMs;
+    const tools = await ctx.db
+      .query("tools")
+      .filter((q) => q.eq(q.field("isActive"), true))
+      .collect();
+
+    const staleTools = tools
+      .filter((t) => !t.externalData?.lastFetched || t.externalData.lastFetched < cutoff)
+      .sort((a, b) => {
+        const aFetched = a.externalData?.lastFetched ?? 0;
+        const bFetched = b.externalData?.lastFetched ?? 0;
+        return aFetched - bFetched;
+      })
+      .slice(0, args.limit);
+
+    return staleTools;
+  },
+});
+
 export const getAllToolsForFetch = internalQuery({
   args: {
     limit: v.optional(v.number()),
