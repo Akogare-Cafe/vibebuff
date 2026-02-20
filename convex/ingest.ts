@@ -1,4 +1,4 @@
-import { mutation, internalMutation } from "./_generated/server";
+import { mutation, internalMutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const upsertTool = mutation({
@@ -388,6 +388,55 @@ export const cleanupInvalidTools = mutation({
   },
 });
 
+export const diagnoseLowQualityTools = query({
+  handler: async (ctx) => {
+    const tools = await ctx.db.query("tools").collect();
+    let withGithub = 0, withNpm = 0, withPros = 0, withCons = 0;
+    let withFeatures = 0, withBestFor = 0, withStars = 0, withDownloads = 0;
+    let withExternal = 0, featured = 0;
+    let noRichData = 0;
+    const noRichSamples: string[] = [];
+
+    for (const tool of tools) {
+      if (tool.githubUrl) withGithub++;
+      if (tool.npmPackageName) withNpm++;
+      if (tool.pros && tool.pros.length > 0) withPros++;
+      if (tool.cons && tool.cons.length > 0) withCons++;
+      if (tool.features && tool.features.length > 0) withFeatures++;
+      if (tool.bestFor && tool.bestFor.length > 0) withBestFor++;
+      if ((tool.githubStars ?? 0) > 0) withStars++;
+      if ((tool.npmDownloadsWeekly ?? 0) > 0) withDownloads++;
+      if (tool.externalData?.lastFetched) withExternal++;
+      if (tool.isFeatured) featured++;
+
+      const hasRich = !!(
+        tool.githubUrl || tool.npmPackageName ||
+        (tool.pros && tool.pros.length > 0) ||
+        (tool.cons && tool.cons.length > 0) ||
+        (tool.features && tool.features.length > 0) ||
+        (tool.bestFor && tool.bestFor.length > 0) ||
+        ((tool.githubStars ?? 0) > 0) ||
+        ((tool.npmDownloadsWeekly ?? 0) > 0) ||
+        tool.externalData?.lastFetched ||
+        tool.isFeatured
+      );
+      if (!hasRich) {
+        noRichData++;
+        if (noRichSamples.length < 30) {
+          noRichSamples.push(`${tool.name} | ${tool.websiteUrl} | desc:${(tool.description || "").length}chars | tags:${(tool.tags || []).length}`);
+        }
+      }
+    }
+
+    return {
+      total: tools.length,
+      withGithub, withNpm, withPros, withCons,
+      withFeatures, withBestFor, withStars, withDownloads,
+      withExternal, featured, noRichData, noRichSamples,
+    };
+  },
+});
+
 export const cleanupLowQualityTools = mutation({
   args: {
     dryRun: v.optional(v.boolean()),
@@ -400,29 +449,19 @@ export const cleanupLowQualityTools = mutation({
     const deletedTools: string[] = [];
 
     for (const tool of tools) {
-      const hasGithub = !!tool.githubUrl;
-      const hasNpm = !!tool.npmPackageName;
-      const hasPros = Array.isArray(tool.pros) && tool.pros.length > 0;
-      const hasCons = Array.isArray(tool.cons) && tool.cons.length > 0;
-      const hasFeatures = Array.isArray(tool.features) && tool.features.length > 0;
-      const hasBestFor = Array.isArray(tool.bestFor) && tool.bestFor.length > 0;
-      const hasStars = (tool.githubStars ?? 0) > 0;
-      const hasDownloads = (tool.npmDownloadsWeekly ?? 0) > 0;
-      const hasExternalData = !!tool.externalData?.lastFetched;
-      const isFeatured = !!tool.isFeatured;
+      const hasRichData = !!(
+        tool.githubUrl || tool.npmPackageName ||
+        (tool.pros && tool.pros.length > 0) ||
+        (tool.cons && tool.cons.length > 0) ||
+        (tool.features && tool.features.length > 0) ||
+        (tool.bestFor && tool.bestFor.length > 0) ||
+        ((tool.githubStars ?? 0) > 0) ||
+        ((tool.npmDownloadsWeekly ?? 0) > 0) ||
+        tool.externalData?.lastFetched ||
+        tool.isFeatured
+      );
 
-      const descLen = (tool.description || "").length;
-      const hasShortDesc = descLen < 30;
-      const descSameAsTagline = tool.description && tool.tagline &&
-        tool.description.trim() === tool.tagline.trim();
-
-      const hasNoUsefulData = !hasGithub && !hasNpm && !hasPros && !hasCons &&
-        !hasFeatures && !hasBestFor && !hasStars && !hasDownloads &&
-        !hasExternalData && !isFeatured;
-
-      const isLowQuality = hasNoUsefulData;
-
-      if (isLowQuality) {
+      if (!hasRichData) {
         deletedTools.push(tool.name);
         if (!dryRun) {
           await ctx.db.delete(tool._id);
