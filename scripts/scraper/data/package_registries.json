@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-02-21T06:35:50.507208",
+  "scraped_at": "2026-02-22T06:39:31.522079",
   "pypi": {
     "langchain": {
       "name": "langchain",
@@ -383,7 +383,7 @@
     },
     "fastapi": {
       "name": "fastapi",
-      "version": "0.129.0",
+      "version": "0.129.2",
       "summary": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
       "description": "<p align=\"center\">\n  <a href=\"https://fastapi.tiangolo.com\"><img src=\"https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png\" alt=\"FastAPI\"></a>\n</p>\n<p align=\"center\">\n    <em>FastAPI framework, high performance, easy to learn, fast to code, ready for production</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/fastapi/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\" target=\"_blank\">\n    <img src=\"https://github.com/fastapi/fastapi/actions/workflows/test.yml/badge.",
       "author": null,
@@ -415,6 +415,14 @@
       },
       "recent_releases": [
         {
+          "version": "0.129.2",
+          "upload_time": "2026-02-21T17:25:47"
+        },
+        {
+          "version": "0.129.1",
+          "upload_time": "2026-02-21T13:10:05"
+        },
+        {
           "version": "0.129.0",
           "upload_time": "2026-02-12T13:54:54"
         },
@@ -425,17 +433,9 @@
         {
           "version": "0.128.7",
           "upload_time": "2026-02-10T12:26:39"
-        },
-        {
-          "version": "0.128.6",
-          "upload_time": "2026-02-09T17:27:02"
-        },
-        {
-          "version": "0.128.5",
-          "upload_time": "2026-02-08T10:22:28"
         }
       ],
-      "total_releases": 275,
+      "total_releases": 277,
       "source": "pypi"
     },
     "django": {
@@ -1519,7 +1519,7 @@
     },
     "typer": {
       "name": "typer",
-      "version": "0.24.0",
+      "version": "0.24.1",
       "summary": "Typer, build great CLIs. Easy to code. Based on Python type hints.",
       "description": "<p align=\"center\">\n  <a href=\"https://typer.tiangolo.com\"><img src=\"https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg#only-light\" alt=\"Typer\"></a>\n\n</p>\n<p align=\"center\">\n    <em>Typer, build great CLIs. Easy to code. Based on Python type hints.</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/typer/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\" target=\"_blank\">\n    <img src=\"https://github.com/fastapi/typer/actions/workflows/test.yml/badge.svg?event",
       "author": null,
@@ -1551,6 +1551,10 @@
       },
       "recent_releases": [
         {
+          "version": "0.24.1",
+          "upload_time": "2026-02-21T16:54:41"
+        },
+        {
           "version": "0.24.0",
           "upload_time": "2026-02-16T22:08:47"
         },
@@ -1565,13 +1569,9 @@
         {
           "version": "0.23.0",
           "upload_time": "2026-02-11T15:22:21"
-        },
-        {
-          "version": "0.22.0",
-          "upload_time": "2026-02-11T11:00:13"
         }
       ],
-      "total_releases": 74,
+      "total_releases": 75,
       "source": "pypi"
     },
     "click": {
@@ -1780,7 +1780,7 @@
     },
     "litellm": {
       "name": "litellm",
-      "version": "1.81.13",
+      "version": "1.81.14",
       "summary": "Library to easily interface with LLM API providers",
       "description": "<h1 align=\"center\">\n        \ud83d\ude85 LiteLLM\n    </h1>\n    <p align=\"center\">\n        <p align=\"center\">Call 100+ LLMs in OpenAI format. [Bedrock, Azure, OpenAI, VertexAI, Anthropic, Groq, etc.]\n        </p>\n        <p align=\"center\">\n        <a href=\"https://render.com/deploy?repo=https://github.com/BerriAI/litellm\" target=\"_blank\" rel=\"nofollow\"><img src=\"https://render.com/images/deploy-to-render-button.svg\" alt=\"Deploy to Render\"></a>\n        <a href=\"https://railway.app/template/HLP0Ub?referralCod",
       "author": "BerriAI",
@@ -1809,6 +1809,10 @@
       },
       "recent_releases": [
         {
+          "version": "1.81.14",
+          "upload_time": "2026-02-22T00:33:32"
+        },
+        {
           "version": "1.81.13",
           "upload_time": "2026-02-17T02:00:44"
         },
@@ -1823,13 +1827,9 @@
         {
           "version": "1.81.10",
           "upload_time": "2026-02-11T00:17:43"
-        },
-        {
-          "version": "1.81.9",
-          "upload_time": "2026-02-07T21:14:21"
         }
       ],
-      "total_releases": 1273,
+      "total_releases": 1274,
       "source": "pypi"
     },
     "chromadb": {
@@ -2451,8 +2451,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tokio",
       "documentation": null,
-      "downloads": 534854219,
-      "recent_downloads": 87281771,
+      "downloads": 535476662,
+      "recent_downloads": 86975756,
       "max_version": "1.49.0",
       "max_stable_version": "1.49.0",
       "created_at": "2016-07-01T20:39:07.497766Z",
@@ -2498,8 +2498,8 @@
       "homepage": "https://serde.rs",
       "repository": "https://github.com/serde-rs/serde",
       "documentation": "https://docs.rs/serde",
-      "downloads": 830411794,
-      "recent_downloads": 116771740,
+      "downloads": 831275595,
+      "recent_downloads": 116344409,
       "max_version": "1.0.228",
       "max_stable_version": "1.0.228",
       "created_at": "2014-12-05T20:20:39.487502Z",
@@ -2510,9 +2510,9 @@
         "serialization"
       ],
       "categories": [
-        "no-std::no-alloc",
+        "encoding",
         "no-std",
-        "encoding"
+        "no-std::no-alloc"
       ],
       "versions_count": 315,
       "recent_versions": [
@@ -2545,8 +2545,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/reqwest",
       "documentation": "https://docs.rs/reqwest",
-      "downloads": 375854121,
-      "recent_downloads": 61586304,
+      "downloads": 376312819,
+      "recent_downloads": 61347377,
       "max_version": "0.13.2",
       "max_stable_version": "0.13.2",
       "created_at": "2016-10-16T17:29:41.599749Z",
@@ -2557,8 +2557,8 @@
         "request"
       ],
       "categories": [
-        "wasm",
-        "web-programming::http-client"
+        "web-programming::http-client",
+        "wasm"
       ],
       "versions_count": 123,
       "recent_versions": [
@@ -2591,8 +2591,8 @@
       "homepage": "https://github.com/tokio-rs/axum",
       "repository": "https://github.com/tokio-rs/axum",
       "documentation": null,
-      "downloads": 245661465,
-      "recent_downloads": 48160167,
+      "downloads": 245976546,
+      "recent_downloads": 47943523,
       "max_version": "0.8.8",
       "max_stable_version": "0.8.8",
       "created_at": "2021-07-22T13:52:05.710239Z",
@@ -2604,8 +2604,8 @@
       ],
       "categories": [
         "asynchronous",
-        "web-programming::http-server",
-        "network-programming"
+        "network-programming",
+        "web-programming::http-server"
       ],
       "versions_count": 93,
       "recent_versions": [
@@ -2638,8 +2638,8 @@
       "homepage": "https://actix.rs",
       "repository": "https://github.com/actix/actix-web",
       "documentation": null,
-      "downloads": 58852889,
-      "recent_downloads": 7595711,
+      "downloads": 58892703,
+      "recent_downloads": 7563170,
       "max_version": "4.13.0",
       "max_stable_version": "4.13.0",
       "created_at": "2017-10-23T23:08:29.260260Z",
@@ -2652,9 +2652,9 @@
         "web"
       ],
       "categories": [
+        "asynchronous",
         "network-programming",
         "web-programming::http-server",
-        "asynchronous",
         "web-programming::websocket"
       ],
       "versions_count": 155,
@@ -2688,8 +2688,8 @@
       "homepage": null,
       "repository": "https://github.com/clap-rs/clap",
       "documentation": null,
-      "downloads": 678375254,
-      "recent_downloads": 102651347,
+      "downloads": 679148758,
+      "recent_downloads": 102273196,
       "max_version": "4.5.60",
       "max_stable_version": "4.5.60",
       "created_at": "2015-03-01T01:17:24.903018Z",
@@ -2735,8 +2735,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tracing",
       "documentation": null,
-      "downloads": 475049149,
-      "recent_downloads": 79891198,
+      "downloads": 475618742,
+      "recent_downloads": 79703220,
       "max_version": "0.1.44",
       "max_stable_version": "0.1.44",
       "created_at": "2017-11-27T18:43:02.901436Z",
@@ -2784,8 +2784,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/anyhow",
       "documentation": "https://docs.rs/anyhow",
-      "downloads": 550616687,
-      "recent_downloads": 85925314,
+      "downloads": 551278760,
+      "recent_downloads": 85601345,
       "max_version": "1.0.102",
       "max_stable_version": "1.0.102",
       "created_at": "2019-10-05T19:52:26.646502Z",
@@ -2795,8 +2795,8 @@
         "error-handling"
       ],
       "categories": [
-        "no-std",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 104,
       "recent_versions": [
@@ -2829,8 +2829,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/thiserror",
       "documentation": "https://docs.rs/thiserror",
-      "downloads": 771204150,
-      "recent_downloads": 144852637,
+      "downloads": 772267955,
+      "recent_downloads": 144343617,
       "max_version": "2.0.18",
       "max_stable_version": "2.0.18",
       "created_at": "2019-10-09T18:05:40.346377Z",
@@ -2841,8 +2841,8 @@
         "error-handling"
       ],
       "categories": [
-        "no-std",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 89,
       "recent_versions": [
@@ -2875,8 +2875,8 @@
       "homepage": null,
       "repository": "https://github.com/launchbadge/sqlx",
       "documentation": "https://docs.rs/sqlx",
-      "downloads": 73139616,
-      "recent_downloads": 16528165,
+      "downloads": 73249423,
+      "recent_downloads": 16472550,
       "max_version": "0.9.0-alpha.1",
       "max_stable_version": "0.8.6",
       "created_at": "2019-06-06T23:42:00.933224Z",
@@ -2914,8 +2914,8 @@
       "homepage": "https://diesel.rs",
       "repository": "https://github.com/diesel-rs/diesel",
       "documentation": "https://docs.rs/diesel/",
-      "downloads": 22310223,
-      "recent_downloads": 2403303,
+      "downloads": 22325642,
+      "recent_downloads": 2386688,
       "max_version": "2.3.6",
       "max_stable_version": "2.3.6",
       "created_at": "2015-11-29T17:53:47.748928Z",
@@ -2959,8 +2959,8 @@
       "homepage": "https://www.sea-ql.org/SeaORM",
       "repository": "https://github.com/SeaQL/sea-orm",
       "documentation": "https://docs.rs/sea-orm",
-      "downloads": 16508981,
-      "recent_downloads": 3787365,
+      "downloads": 16521010,
+      "recent_downloads": 3770988,
       "max_version": "2.0.0-rc.34",
       "max_stable_version": "1.1.19",
       "created_at": "2021-08-07T18:38:14.382787Z",
@@ -3006,8 +3006,8 @@
       "homepage": "https://async.rs",
       "repository": "https://github.com/async-rs/async-std",
       "documentation": null,
-      "downloads": 70957058,
-      "recent_downloads": 8595707,
+      "downloads": 70997878,
+      "recent_downloads": 8526759,
       "max_version": "1.13.2",
       "max_stable_version": "1.13.2",
       "created_at": "2019-05-30T16:02:17.377461Z",
@@ -3020,9 +3020,9 @@
         "task"
       ],
       "categories": [
-        "network-programming",
         "asynchronous",
-        "concurrency"
+        "concurrency",
+        "network-programming"
       ],
       "versions_count": 38,
       "recent_versions": [
@@ -3055,8 +3055,8 @@
       "homepage": "https://hyper.rs",
       "repository": "https://github.com/hyperium/hyper",
       "documentation": "https://docs.rs/hyper",
-      "downloads": 523664501,
-      "recent_downloads": 84976069,
+      "downloads": 524242634,
+      "recent_downloads": 84598332,
       "max_version": "1.8.1",
       "max_stable_version": "1.8.1",
       "created_at": "2014-11-22T04:05:30.459510Z",
@@ -3102,8 +3102,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/warp",
       "documentation": "https://docs.rs/warp",
-      "downloads": 36877536,
-      "recent_downloads": 3150749,
+      "downloads": 36897133,
+      "recent_downloads": 3115446,
       "max_version": "0.4.2",
       "max_stable_version": "0.4.2",
       "created_at": "2018-03-29T17:38:58.215096Z",
@@ -3148,8 +3148,8 @@
       "homepage": "https://rocket.rs",
       "repository": "https://github.com/rwf2/Rocket",
       "documentation": "https://api.rocket.rs/v0.5/rocket/",
-      "downloads": 10337508,
-      "recent_downloads": 814833,
+      "downloads": 10344399,
+      "recent_downloads": 810443,
       "max_version": "0.5.1",
       "max_stable_version": "0.5.1",
       "created_at": "2016-12-23T13:09:40.202029Z",
@@ -3194,8 +3194,8 @@
       "homepage": "https://github.com/hyperium/tonic",
       "repository": "https://github.com/hyperium/tonic",
       "documentation": null,
-      "downloads": 214539873,
-      "recent_downloads": 37933222,
+      "downloads": 214768199,
+      "recent_downloads": 37729568,
       "max_version": "0.14.5",
       "max_stable_version": "0.14.5",
       "created_at": "2018-07-18T06:55:22.955614Z",
@@ -3243,8 +3243,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/prost",
       "documentation": null,
-      "downloads": 317700655,
-      "recent_downloads": 57260209,
+      "downloads": 318027994,
+      "recent_downloads": 56988036,
       "max_version": "0.14.3",
       "max_stable_version": "0.14.3",
       "created_at": "2017-06-25T07:39:15.991516Z",
@@ -3287,8 +3287,8 @@
       "homepage": "https://github.com/rustls/rustls",
       "repository": "https://github.com/rustls/rustls",
       "documentation": null,
-      "downloads": 510143549,
-      "recent_downloads": 92661580,
+      "downloads": 510774123,
+      "recent_downloads": 92335529,
       "max_version": "0.24.0-dev.0",
       "max_stable_version": "0.23.36",
       "created_at": "2016-08-27T06:58:30.801463Z",
@@ -3329,8 +3329,8 @@
       "homepage": null,
       "repository": "https://github.com/rayon-rs/rayon",
       "documentation": "https://docs.rs/rayon/",
-      "downloads": 314980235,
-      "recent_downloads": 42660824,
+      "downloads": 315330165,
+      "recent_downloads": 42510368,
       "max_version": "1.11.0",
       "max_stable_version": "1.11.0",
       "created_at": "2015-12-10T22:38:20.637638Z",
@@ -3376,8 +3376,8 @@
       "homepage": "https://github.com/crossbeam-rs/crossbeam",
       "repository": "https://github.com/crossbeam-rs/crossbeam",
       "documentation": null,
-      "downloads": 82283474,
-      "recent_downloads": 10352508,
+      "downloads": 82360359,
+      "recent_downloads": 10290741,
       "max_version": "0.8.4",
       "max_stable_version": "0.8.4",
       "created_at": "2015-08-27T18:36:48.638047Z",
@@ -3390,10 +3390,10 @@
         "lock-free"
       ],
       "categories": [
-        "no-std",
         "concurrency",
         "data-structures",
-        "memory-management"
+        "memory-management",
+        "no-std"
       ],
       "versions_count": 36,
       "recent_versions": [
@@ -3426,8 +3426,8 @@
       "homepage": null,
       "repository": "https://github.com/Amanieu/parking_lot",
       "documentation": null,
-      "downloads": 642493494,
-      "recent_downloads": 98701874,
+      "downloads": 643186833,
+      "recent_downloads": 98363800,
       "max_version": "0.12.5",
       "max_stable_version": "0.12.5",
       "created_at": "2016-05-13T15:57:59.130349Z",
@@ -3473,8 +3473,8 @@
       "homepage": "https://github.com/xacrimon/dashmap",
       "repository": "https://github.com/xacrimon/dashmap",
       "documentation": "https://docs.rs/dashmap",
-      "downloads": 215983673,
-      "recent_downloads": 37455842,
+      "downloads": 216227594,
+      "recent_downloads": 37277432,
       "max_version": "7.0.0-rc2",
       "max_stable_version": "6.1.0",
       "created_at": "2019-08-25T18:22:12.397782Z",
@@ -3520,8 +3520,8 @@
       "homepage": null,
       "repository": "https://github.com/matklad/once_cell",
       "documentation": "https://docs.rs/once_cell",
-      "downloads": 722351915,
-      "recent_downloads": 103115646,
+      "downloads": 723112429,
+      "recent_downloads": 102718515,
       "max_version": "1.21.3",
       "max_stable_version": "1.21.3",
       "created_at": "2018-08-02T00:12:48.969947Z",
@@ -3565,8 +3565,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
       "documentation": "https://docs.rs/lazy_static",
-      "downloads": 613246152,
-      "recent_downloads": 81001657,
+      "downloads": 613859905,
+      "recent_downloads": 80748883,
       "max_version": "1.5.0",
       "max_stable_version": "1.5.0",
       "created_at": "2014-11-23T01:18:10.993977Z",
@@ -3577,9 +3577,9 @@
         "static"
       ],
       "categories": [
-        "no-std",
         "memory-management",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 38,
       "recent_versions": [
@@ -3612,8 +3612,8 @@
       "homepage": "https://github.com/rust-lang/regex",
       "repository": "https://github.com/rust-lang/regex",
       "documentation": "https://docs.rs/regex",
-      "downloads": 684975712,
-      "recent_downloads": 99256332,
+      "downloads": 685755976,
+      "recent_downloads": 98967530,
       "max_version": "1.12.3",
       "max_stable_version": "1.12.3",
       "created_at": "2014-12-13T22:10:11.303311Z",
@@ -3653,8 +3653,8 @@
       "homepage": "https://github.com/chronotope/chrono",
       "repository": "https://github.com/chronotope/chrono",
       "documentation": "https://docs.rs/chrono/",
-      "downloads": 474138582,
-      "recent_downloads": 72833717,
+      "downloads": 474675170,
+      "recent_downloads": 72568141,
       "max_version": "0.4.43",
       "max_stable_version": "0.4.43",
       "created_at": "2014-11-20T04:21:11.545166Z",
@@ -3698,8 +3698,8 @@
       "homepage": "https://github.com/uuid-rs/uuid",
       "repository": "https://github.com/uuid-rs/uuid",
       "documentation": "https://docs.rs/uuid",
-      "downloads": 449772232,
-      "recent_downloads": 66992630,
+      "downloads": 450275181,
+      "recent_downloads": 66759521,
       "max_version": "1.21.0",
       "max_stable_version": "1.21.0",
       "created_at": "2014-11-11T05:37:37.261193Z",
@@ -3710,10 +3710,10 @@
         "uuid"
       ],
       "categories": [
-        "parser-implementations",
         "data-structures",
-        "wasm",
-        "no-std"
+        "parser-implementations",
+        "no-std",
+        "wasm"
       ],
       "versions_count": 86,
       "recent_versions": [
@@ -3746,8 +3746,8 @@
       "homepage": "https://rust-random.github.io/book",
       "repository": "https://github.com/rust-random/rand",
       "documentation": "https://docs.rs/rand",
-      "downloads": 903795402,
-      "recent_downloads": 147002182,
+      "downloads": 904999233,
+      "recent_downloads": 146652439,
       "max_version": "0.10.0",
       "max_stable_version": "0.10.0",
       "created_at": "2015-02-03T06:17:14.147783Z",
@@ -3791,8 +3791,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-itertools/itertools",
       "documentation": "https://docs.rs/itertools/",
-      "downloads": 860428591,
-      "recent_downloads": 142974605,
+      "downloads": 861395051,
+      "recent_downloads": 142260982,
       "max_version": "0.14.0",
       "max_stable_version": "0.14.0",
       "created_at": "2014-11-21T19:56:41.399795Z",
@@ -3804,9 +3804,9 @@
         "zip"
       ],
       "categories": [
+        "algorithms",
         "rust-patterns",
         "no-std",
-        "algorithms",
         "no-std::no-alloc"
       ],
       "versions_count": 130,
@@ -3840,8 +3840,8 @@
       "homepage": "https://rust-lang.github.io/futures-rs",
       "repository": "https://github.com/rust-lang/futures-rs",
       "documentation": null,
-      "downloads": 446957767,
-      "recent_downloads": 70394350,
+      "downloads": 447443703,
+      "recent_downloads": 70159912,
       "max_version": "0.3.32",
       "max_stable_version": "0.3.32",
       "created_at": "2016-07-31T20:58:03.676528Z",
@@ -3885,8 +3885,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/async-trait",
       "documentation": "https://docs.rs/async-trait",
-      "downloads": 386482029,
-      "recent_downloads": 59161796,
+      "downloads": 386904055,
+      "recent_downloads": 58950710,
       "max_version": "0.1.89",
       "max_stable_version": "0.1.89",
       "created_at": "2019-07-23T16:10:00.020678Z",
@@ -3895,8 +3895,8 @@
         "async"
       ],
       "categories": [
-        "no-std",
-        "asynchronous"
+        "asynchronous",
+        "no-std"
       ],
       "versions_count": 90,
       "recent_versions": [
@@ -3929,8 +3929,8 @@
       "homepage": "https://github.com/tower-rs/tower",
       "repository": "https://github.com/tower-rs/tower",
       "documentation": null,
-      "downloads": 333679913,
-      "recent_downloads": 65304222,
+      "downloads": 334138886,
+      "recent_downloads": 65034404,
       "max_version": "0.5.3",
       "max_stable_version": "0.5.3",
       "created_at": "2016-12-23T17:20:31.319203Z",
@@ -3977,8 +3977,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/bytes",
       "documentation": null,
-      "downloads": 578492980,
-      "recent_downloads": 93839542,
+      "downloads": 579155565,
+      "recent_downloads": 93506260,
       "max_version": "1.11.1",
       "max_stable_version": "1.11.1",
       "created_at": "2015-01-30T08:04:59.453916Z",
@@ -4023,8 +4023,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang/log",
       "documentation": "https://docs.rs/log",
-      "downloads": 729993829,
-      "recent_downloads": 111311411,
+      "downloads": 730805670,
+      "recent_downloads": 110921679,
       "max_version": "0.4.29",
       "max_stable_version": "0.4.29",
       "created_at": "2014-12-13T22:10:19.944550Z",
@@ -4066,8 +4066,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/env_logger",
       "documentation": null,
-      "downloads": 385534793,
-      "recent_downloads": 48659627,
+      "downloads": 385868755,
+      "recent_downloads": 48466346,
       "max_version": "0.11.9",
       "max_stable_version": "0.11.9",
       "created_at": "2015-01-27T15:33:08.586936Z",
@@ -4111,8 +4111,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/config-rs",
       "documentation": null,
-      "downloads": 69596963,
-      "recent_downloads": 9269130,
+      "downloads": 69660777,
+      "recent_downloads": 9207948,
       "max_version": "0.15.19",
       "max_stable_version": "0.15.19",
       "created_at": "2015-04-16T18:35:56.393987Z",
@@ -4158,8 +4158,8 @@
       "homepage": "https://github.com/dotenv-rs/dotenv",
       "repository": "https://github.com/dotenv-rs/dotenv",
       "documentation": null,
-      "downloads": 42327350,
-      "recent_downloads": 6565248,
+      "downloads": 42367142,
+      "recent_downloads": 6534781,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-20T20:53:09.509225Z",
@@ -4763,7 +4763,7 @@
     },
     {
       "name": "fastapi",
-      "version": "0.129.0",
+      "version": "0.129.2",
       "summary": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
       "description": "<p align=\"center\">\n  <a href=\"https://fastapi.tiangolo.com\"><img src=\"https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png\" alt=\"FastAPI\"></a>\n</p>\n<p align=\"center\">\n    <em>FastAPI framework, high performance, easy to learn, fast to code, ready for production</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/fastapi/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\" target=\"_blank\">\n    <img src=\"https://github.com/fastapi/fastapi/actions/workflows/test.yml/badge.",
       "author": null,
@@ -4795,6 +4795,14 @@
       },
       "recent_releases": [
         {
+          "version": "0.129.2",
+          "upload_time": "2026-02-21T17:25:47"
+        },
+        {
+          "version": "0.129.1",
+          "upload_time": "2026-02-21T13:10:05"
+        },
+        {
           "version": "0.129.0",
           "upload_time": "2026-02-12T13:54:54"
         },
@@ -4805,17 +4813,9 @@
         {
           "version": "0.128.7",
           "upload_time": "2026-02-10T12:26:39"
-        },
-        {
-          "version": "0.128.6",
-          "upload_time": "2026-02-09T17:27:02"
-        },
-        {
-          "version": "0.128.5",
-          "upload_time": "2026-02-08T10:22:28"
         }
       ],
-      "total_releases": 275,
+      "total_releases": 277,
       "source": "pypi"
     },
     {
@@ -5899,7 +5899,7 @@
     },
     {
       "name": "typer",
-      "version": "0.24.0",
+      "version": "0.24.1",
       "summary": "Typer, build great CLIs. Easy to code. Based on Python type hints.",
       "description": "<p align=\"center\">\n  <a href=\"https://typer.tiangolo.com\"><img src=\"https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg#only-light\" alt=\"Typer\"></a>\n\n</p>\n<p align=\"center\">\n    <em>Typer, build great CLIs. Easy to code. Based on Python type hints.</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/typer/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\" target=\"_blank\">\n    <img src=\"https://github.com/fastapi/typer/actions/workflows/test.yml/badge.svg?event",
       "author": null,
@@ -5931,6 +5931,10 @@
       },
       "recent_releases": [
         {
+          "version": "0.24.1",
+          "upload_time": "2026-02-21T16:54:41"
+        },
+        {
           "version": "0.24.0",
           "upload_time": "2026-02-16T22:08:47"
         },
@@ -5945,13 +5949,9 @@
         {
           "version": "0.23.0",
           "upload_time": "2026-02-11T15:22:21"
-        },
-        {
-          "version": "0.22.0",
-          "upload_time": "2026-02-11T11:00:13"
         }
       ],
-      "total_releases": 74,
+      "total_releases": 75,
       "source": "pypi"
     },
     {
@@ -6160,7 +6160,7 @@
     },
     {
       "name": "litellm",
-      "version": "1.81.13",
+      "version": "1.81.14",
       "summary": "Library to easily interface with LLM API providers",
       "description": "<h1 align=\"center\">\n        \ud83d\ude85 LiteLLM\n    </h1>\n    <p align=\"center\">\n        <p align=\"center\">Call 100+ LLMs in OpenAI format. [Bedrock, Azure, OpenAI, VertexAI, Anthropic, Groq, etc.]\n        </p>\n        <p align=\"center\">\n        <a href=\"https://render.com/deploy?repo=https://github.com/BerriAI/litellm\" target=\"_blank\" rel=\"nofollow\"><img src=\"https://render.com/images/deploy-to-render-button.svg\" alt=\"Deploy to Render\"></a>\n        <a href=\"https://railway.app/template/HLP0Ub?referralCod",
       "author": "BerriAI",
@@ -6189,6 +6189,10 @@
       },
       "recent_releases": [
         {
+          "version": "1.81.14",
+          "upload_time": "2026-02-22T00:33:32"
+        },
+        {
           "version": "1.81.13",
           "upload_time": "2026-02-17T02:00:44"
         },
@@ -6203,13 +6207,9 @@
         {
           "version": "1.81.10",
           "upload_time": "2026-02-11T00:17:43"
-        },
-        {
-          "version": "1.81.9",
-          "upload_time": "2026-02-07T21:14:21"
         }
       ],
-      "total_releases": 1273,
+      "total_releases": 1274,
       "source": "pypi"
     },
     {
@@ -6829,8 +6829,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tokio",
       "documentation": null,
-      "downloads": 534854219,
-      "recent_downloads": 87281771,
+      "downloads": 535476662,
+      "recent_downloads": 86975756,
       "max_version": "1.49.0",
       "max_stable_version": "1.49.0",
       "created_at": "2016-07-01T20:39:07.497766Z",
@@ -6876,8 +6876,8 @@
       "homepage": "https://serde.rs",
       "repository": "https://github.com/serde-rs/serde",
       "documentation": "https://docs.rs/serde",
-      "downloads": 830411794,
-      "recent_downloads": 116771740,
+      "downloads": 831275595,
+      "recent_downloads": 116344409,
       "max_version": "1.0.228",
       "max_stable_version": "1.0.228",
       "created_at": "2014-12-05T20:20:39.487502Z",
@@ -6888,9 +6888,9 @@
         "serialization"
       ],
       "categories": [
-        "no-std::no-alloc",
+        "encoding",
         "no-std",
-        "encoding"
+        "no-std::no-alloc"
       ],
       "versions_count": 315,
       "recent_versions": [
@@ -6923,8 +6923,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/reqwest",
       "documentation": "https://docs.rs/reqwest",
-      "downloads": 375854121,
-      "recent_downloads": 61586304,
+      "downloads": 376312819,
+      "recent_downloads": 61347377,
       "max_version": "0.13.2",
       "max_stable_version": "0.13.2",
       "created_at": "2016-10-16T17:29:41.599749Z",
@@ -6935,8 +6935,8 @@
         "request"
       ],
       "categories": [
-        "wasm",
-        "web-programming::http-client"
+        "web-programming::http-client",
+        "wasm"
       ],
       "versions_count": 123,
       "recent_versions": [
@@ -6969,8 +6969,8 @@
       "homepage": "https://github.com/tokio-rs/axum",
       "repository": "https://github.com/tokio-rs/axum",
       "documentation": null,
-      "downloads": 245661465,
-      "recent_downloads": 48160167,
+      "downloads": 245976546,
+      "recent_downloads": 47943523,
       "max_version": "0.8.8",
       "max_stable_version": "0.8.8",
       "created_at": "2021-07-22T13:52:05.710239Z",
@@ -6982,8 +6982,8 @@
       ],
       "categories": [
         "asynchronous",
-        "web-programming::http-server",
-        "network-programming"
+        "network-programming",
+        "web-programming::http-server"
       ],
       "versions_count": 93,
       "recent_versions": [
@@ -7016,8 +7016,8 @@
       "homepage": "https://actix.rs",
       "repository": "https://github.com/actix/actix-web",
       "documentation": null,
-      "downloads": 58852889,
-      "recent_downloads": 7595711,
+      "downloads": 58892703,
+      "recent_downloads": 7563170,
       "max_version": "4.13.0",
       "max_stable_version": "4.13.0",
       "created_at": "2017-10-23T23:08:29.260260Z",
@@ -7030,9 +7030,9 @@
         "web"
       ],
       "categories": [
+        "asynchronous",
         "network-programming",
         "web-programming::http-server",
-        "asynchronous",
         "web-programming::websocket"
       ],
       "versions_count": 155,
@@ -7066,8 +7066,8 @@
       "homepage": null,
       "repository": "https://github.com/clap-rs/clap",
       "documentation": null,
-      "downloads": 678375254,
-      "recent_downloads": 102651347,
+      "downloads": 679148758,
+      "recent_downloads": 102273196,
       "max_version": "4.5.60",
       "max_stable_version": "4.5.60",
       "created_at": "2015-03-01T01:17:24.903018Z",
@@ -7113,8 +7113,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tracing",
       "documentation": null,
-      "downloads": 475049149,
-      "recent_downloads": 79891198,
+      "downloads": 475618742,
+      "recent_downloads": 79703220,
       "max_version": "0.1.44",
       "max_stable_version": "0.1.44",
       "created_at": "2017-11-27T18:43:02.901436Z",
@@ -7162,8 +7162,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/anyhow",
       "documentation": "https://docs.rs/anyhow",
-      "downloads": 550616687,
-      "recent_downloads": 85925314,
+      "downloads": 551278760,
+      "recent_downloads": 85601345,
       "max_version": "1.0.102",
       "max_stable_version": "1.0.102",
       "created_at": "2019-10-05T19:52:26.646502Z",
@@ -7173,8 +7173,8 @@
         "error-handling"
       ],
       "categories": [
-        "no-std",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 104,
       "recent_versions": [
@@ -7207,8 +7207,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/thiserror",
       "documentation": "https://docs.rs/thiserror",
-      "downloads": 771204150,
-      "recent_downloads": 144852637,
+      "downloads": 772267955,
+      "recent_downloads": 144343617,
       "max_version": "2.0.18",
       "max_stable_version": "2.0.18",
       "created_at": "2019-10-09T18:05:40.346377Z",
@@ -7219,8 +7219,8 @@
         "error-handling"
       ],
       "categories": [
-        "no-std",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 89,
       "recent_versions": [
@@ -7253,8 +7253,8 @@
       "homepage": null,
       "repository": "https://github.com/launchbadge/sqlx",
       "documentation": "https://docs.rs/sqlx",
-      "downloads": 73139616,
-      "recent_downloads": 16528165,
+      "downloads": 73249423,
+      "recent_downloads": 16472550,
       "max_version": "0.9.0-alpha.1",
       "max_stable_version": "0.8.6",
       "created_at": "2019-06-06T23:42:00.933224Z",
@@ -7292,8 +7292,8 @@
       "homepage": "https://diesel.rs",
       "repository": "https://github.com/diesel-rs/diesel",
       "documentation": "https://docs.rs/diesel/",
-      "downloads": 22310223,
-      "recent_downloads": 2403303,
+      "downloads": 22325642,
+      "recent_downloads": 2386688,
       "max_version": "2.3.6",
       "max_stable_version": "2.3.6",
       "created_at": "2015-11-29T17:53:47.748928Z",
@@ -7337,8 +7337,8 @@
       "homepage": "https://www.sea-ql.org/SeaORM",
       "repository": "https://github.com/SeaQL/sea-orm",
       "documentation": "https://docs.rs/sea-orm",
-      "downloads": 16508981,
-      "recent_downloads": 3787365,
+      "downloads": 16521010,
+      "recent_downloads": 3770988,
       "max_version": "2.0.0-rc.34",
       "max_stable_version": "1.1.19",
       "created_at": "2021-08-07T18:38:14.382787Z",
@@ -7384,8 +7384,8 @@
       "homepage": "https://async.rs",
       "repository": "https://github.com/async-rs/async-std",
       "documentation": null,
-      "downloads": 70957058,
-      "recent_downloads": 8595707,
+      "downloads": 70997878,
+      "recent_downloads": 8526759,
       "max_version": "1.13.2",
       "max_stable_version": "1.13.2",
       "created_at": "2019-05-30T16:02:17.377461Z",
@@ -7398,9 +7398,9 @@
         "task"
       ],
       "categories": [
-        "network-programming",
         "asynchronous",
-        "concurrency"
+        "concurrency",
+        "network-programming"
       ],
       "versions_count": 38,
       "recent_versions": [
@@ -7433,8 +7433,8 @@
       "homepage": "https://hyper.rs",
       "repository": "https://github.com/hyperium/hyper",
       "documentation": "https://docs.rs/hyper",
-      "downloads": 523664501,
-      "recent_downloads": 84976069,
+      "downloads": 524242634,
+      "recent_downloads": 84598332,
       "max_version": "1.8.1",
       "max_stable_version": "1.8.1",
       "created_at": "2014-11-22T04:05:30.459510Z",
@@ -7480,8 +7480,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/warp",
       "documentation": "https://docs.rs/warp",
-      "downloads": 36877536,
-      "recent_downloads": 3150749,
+      "downloads": 36897133,
+      "recent_downloads": 3115446,
       "max_version": "0.4.2",
       "max_stable_version": "0.4.2",
       "created_at": "2018-03-29T17:38:58.215096Z",
@@ -7526,8 +7526,8 @@
       "homepage": "https://rocket.rs",
       "repository": "https://github.com/rwf2/Rocket",
       "documentation": "https://api.rocket.rs/v0.5/rocket/",
-      "downloads": 10337508,
-      "recent_downloads": 814833,
+      "downloads": 10344399,
+      "recent_downloads": 810443,
       "max_version": "0.5.1",
       "max_stable_version": "0.5.1",
       "created_at": "2016-12-23T13:09:40.202029Z",
@@ -7572,8 +7572,8 @@
       "homepage": "https://github.com/hyperium/tonic",
       "repository": "https://github.com/hyperium/tonic",
       "documentation": null,
-      "downloads": 214539873,
-      "recent_downloads": 37933222,
+      "downloads": 214768199,
+      "recent_downloads": 37729568,
       "max_version": "0.14.5",
       "max_stable_version": "0.14.5",
       "created_at": "2018-07-18T06:55:22.955614Z",
@@ -7621,8 +7621,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/prost",
       "documentation": null,
-      "downloads": 317700655,
-      "recent_downloads": 57260209,
+      "downloads": 318027994,
+      "recent_downloads": 56988036,
       "max_version": "0.14.3",
       "max_stable_version": "0.14.3",
       "created_at": "2017-06-25T07:39:15.991516Z",
@@ -7665,8 +7665,8 @@
       "homepage": "https://github.com/rustls/rustls",
       "repository": "https://github.com/rustls/rustls",
       "documentation": null,
-      "downloads": 510143549,
-      "recent_downloads": 92661580,
+      "downloads": 510774123,
+      "recent_downloads": 92335529,
       "max_version": "0.24.0-dev.0",
       "max_stable_version": "0.23.36",
       "created_at": "2016-08-27T06:58:30.801463Z",
@@ -7707,8 +7707,8 @@
       "homepage": null,
       "repository": "https://github.com/rayon-rs/rayon",
       "documentation": "https://docs.rs/rayon/",
-      "downloads": 314980235,
-      "recent_downloads": 42660824,
+      "downloads": 315330165,
+      "recent_downloads": 42510368,
       "max_version": "1.11.0",
       "max_stable_version": "1.11.0",
       "created_at": "2015-12-10T22:38:20.637638Z",
@@ -7754,8 +7754,8 @@
       "homepage": "https://github.com/crossbeam-rs/crossbeam",
       "repository": "https://github.com/crossbeam-rs/crossbeam",
       "documentation": null,
-      "downloads": 82283474,
-      "recent_downloads": 10352508,
+      "downloads": 82360359,
+      "recent_downloads": 10290741,
       "max_version": "0.8.4",
       "max_stable_version": "0.8.4",
       "created_at": "2015-08-27T18:36:48.638047Z",
@@ -7768,10 +7768,10 @@
         "lock-free"
       ],
       "categories": [
-        "no-std",
         "concurrency",
         "data-structures",
-        "memory-management"
+        "memory-management",
+        "no-std"
       ],
       "versions_count": 36,
       "recent_versions": [
@@ -7804,8 +7804,8 @@
       "homepage": null,
       "repository": "https://github.com/Amanieu/parking_lot",
       "documentation": null,
-      "downloads": 642493494,
-      "recent_downloads": 98701874,
+      "downloads": 643186833,
+      "recent_downloads": 98363800,
       "max_version": "0.12.5",
       "max_stable_version": "0.12.5",
       "created_at": "2016-05-13T15:57:59.130349Z",
@@ -7851,8 +7851,8 @@
       "homepage": "https://github.com/xacrimon/dashmap",
       "repository": "https://github.com/xacrimon/dashmap",
       "documentation": "https://docs.rs/dashmap",
-      "downloads": 215983673,
-      "recent_downloads": 37455842,
+      "downloads": 216227594,
+      "recent_downloads": 37277432,
       "max_version": "7.0.0-rc2",
       "max_stable_version": "6.1.0",
       "created_at": "2019-08-25T18:22:12.397782Z",
@@ -7898,8 +7898,8 @@
       "homepage": null,
       "repository": "https://github.com/matklad/once_cell",
       "documentation": "https://docs.rs/once_cell",
-      "downloads": 722351915,
-      "recent_downloads": 103115646,
+      "downloads": 723112429,
+      "recent_downloads": 102718515,
       "max_version": "1.21.3",
       "max_stable_version": "1.21.3",
       "created_at": "2018-08-02T00:12:48.969947Z",
@@ -7943,8 +7943,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
       "documentation": "https://docs.rs/lazy_static",
-      "downloads": 613246152,
-      "recent_downloads": 81001657,
+      "downloads": 613859905,
+      "recent_downloads": 80748883,
       "max_version": "1.5.0",
       "max_stable_version": "1.5.0",
       "created_at": "2014-11-23T01:18:10.993977Z",
@@ -7955,9 +7955,9 @@
         "static"
       ],
       "categories": [
-        "no-std",
         "memory-management",
-        "rust-patterns"
+        "rust-patterns",
+        "no-std"
       ],
       "versions_count": 38,
       "recent_versions": [
@@ -7990,8 +7990,8 @@
       "homepage": "https://github.com/rust-lang/regex",
       "repository": "https://github.com/rust-lang/regex",
       "documentation": "https://docs.rs/regex",
-      "downloads": 684975712,
-      "recent_downloads": 99256332,
+      "downloads": 685755976,
+      "recent_downloads": 98967530,
       "max_version": "1.12.3",
       "max_stable_version": "1.12.3",
       "created_at": "2014-12-13T22:10:11.303311Z",
@@ -8031,8 +8031,8 @@
       "homepage": "https://github.com/chronotope/chrono",
       "repository": "https://github.com/chronotope/chrono",
       "documentation": "https://docs.rs/chrono/",
-      "downloads": 474138582,
-      "recent_downloads": 72833717,
+      "downloads": 474675170,
+      "recent_downloads": 72568141,
       "max_version": "0.4.43",
       "max_stable_version": "0.4.43",
       "created_at": "2014-11-20T04:21:11.545166Z",
@@ -8076,8 +8076,8 @@
       "homepage": "https://github.com/uuid-rs/uuid",
       "repository": "https://github.com/uuid-rs/uuid",
       "documentation": "https://docs.rs/uuid",
-      "downloads": 449772232,
-      "recent_downloads": 66992630,
+      "downloads": 450275181,
+      "recent_downloads": 66759521,
       "max_version": "1.21.0",
       "max_stable_version": "1.21.0",
       "created_at": "2014-11-11T05:37:37.261193Z",
@@ -8088,10 +8088,10 @@
         "uuid"
       ],
       "categories": [
-        "parser-implementations",
         "data-structures",
-        "wasm",
-        "no-std"
+        "parser-implementations",
+        "no-std",
+        "wasm"
       ],
       "versions_count": 86,
       "recent_versions": [
@@ -8124,8 +8124,8 @@
       "homepage": "https://rust-random.github.io/book",
       "repository": "https://github.com/rust-random/rand",
       "documentation": "https://docs.rs/rand",
-      "downloads": 903795402,
-      "recent_downloads": 147002182,
+      "downloads": 904999233,
+      "recent_downloads": 146652439,
       "max_version": "0.10.0",
       "max_stable_version": "0.10.0",
       "created_at": "2015-02-03T06:17:14.147783Z",
@@ -8169,8 +8169,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-itertools/itertools",
       "documentation": "https://docs.rs/itertools/",
-      "downloads": 860428591,
-      "recent_downloads": 142974605,
+      "downloads": 861395051,
+      "recent_downloads": 142260982,
       "max_version": "0.14.0",
       "max_stable_version": "0.14.0",
       "created_at": "2014-11-21T19:56:41.399795Z",
@@ -8182,9 +8182,9 @@
         "zip"
       ],
       "categories": [
+        "algorithms",
         "rust-patterns",
         "no-std",
-        "algorithms",
         "no-std::no-alloc"
       ],
       "versions_count": 130,
@@ -8218,8 +8218,8 @@
       "homepage": "https://rust-lang.github.io/futures-rs",
       "repository": "https://github.com/rust-lang/futures-rs",
       "documentation": null,
-      "downloads": 446957767,
-      "recent_downloads": 70394350,
+      "downloads": 447443703,
+      "recent_downloads": 70159912,
       "max_version": "0.3.32",
       "max_stable_version": "0.3.32",
       "created_at": "2016-07-31T20:58:03.676528Z",
@@ -8263,8 +8263,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/async-trait",
       "documentation": "https://docs.rs/async-trait",
-      "downloads": 386482029,
-      "recent_downloads": 59161796,
+      "downloads": 386904055,
+      "recent_downloads": 58950710,
       "max_version": "0.1.89",
       "max_stable_version": "0.1.89",
       "created_at": "2019-07-23T16:10:00.020678Z",
@@ -8273,8 +8273,8 @@
         "async"
       ],
       "categories": [
-        "no-std",
-        "asynchronous"
+        "asynchronous",
+        "no-std"
       ],
       "versions_count": 90,
       "recent_versions": [
@@ -8307,8 +8307,8 @@
       "homepage": "https://github.com/tower-rs/tower",
       "repository": "https://github.com/tower-rs/tower",
       "documentation": null,
-      "downloads": 333679913,
-      "recent_downloads": 65304222,
+      "downloads": 334138886,
+      "recent_downloads": 65034404,
       "max_version": "0.5.3",
       "max_stable_version": "0.5.3",
       "created_at": "2016-12-23T17:20:31.319203Z",
@@ -8355,8 +8355,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/bytes",
       "documentation": null,
-      "downloads": 578492980,
-      "recent_downloads": 93839542,
+      "downloads": 579155565,
+      "recent_downloads": 93506260,
       "max_version": "1.11.1",
       "max_stable_version": "1.11.1",
       "created_at": "2015-01-30T08:04:59.453916Z",
@@ -8401,8 +8401,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang/log",
       "documentation": "https://docs.rs/log",
-      "downloads": 729993829,
-      "recent_downloads": 111311411,
+      "downloads": 730805670,
+      "recent_downloads": 110921679,
       "max_version": "0.4.29",
       "max_stable_version": "0.4.29",
       "created_at": "2014-12-13T22:10:19.944550Z",
@@ -8444,8 +8444,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/env_logger",
       "documentation": null,
-      "downloads": 385534793,
-      "recent_downloads": 48659627,
+      "downloads": 385868755,
+      "recent_downloads": 48466346,
       "max_version": "0.11.9",
       "max_stable_version": "0.11.9",
       "created_at": "2015-01-27T15:33:08.586936Z",
@@ -8489,8 +8489,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/config-rs",
       "documentation": null,
-      "downloads": 69596963,
-      "recent_downloads": 9269130,
+      "downloads": 69660777,
+      "recent_downloads": 9207948,
       "max_version": "0.15.19",
       "max_stable_version": "0.15.19",
       "created_at": "2015-04-16T18:35:56.393987Z",
@@ -8536,8 +8536,8 @@
       "homepage": "https://github.com/dotenv-rs/dotenv",
       "repository": "https://github.com/dotenv-rs/dotenv",
       "documentation": null,
-      "downloads": 42327350,
-      "recent_downloads": 6565248,
+      "downloads": 42367142,
+      "recent_downloads": 6534781,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-20T20:53:09.509225Z",
