@@ -23080,8 +23080,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1387,
-    "total_links": 1404,
+    "tools_count": 1388,
+    "total_links": 1405,
     "tools": [
       {
         "name": "Pull Requests",
@@ -27570,6 +27570,13 @@
         "url": "https://appwrite.io",
         "category": "tool",
         "description": "Unlimited projects with no project pausing (supports websockets) and authentication service"
+      },
+      {
+        "name": "Clever Cloud",
+        "url": "https://clever.cloud",
+        "category": "tool",
+        "description": "European PaaS with automated deployments, autoscaling, managed databases, and Git-based workflows",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Choreo",
@@ -34442,6 +34449,10 @@
       {
         "text": "appwrite",
         "url": "https://appwrite.io"
+      },
+      {
+        "text": "Clever Cloud",
+        "url": "https://clever.cloud"
       },
       {
         "text": "Choreo",
@@ -46274,8 +46285,8 @@
   },
   "unicodeveloper/awesome-nextjs": {
     "url": "https://raw.githubusercontent.com/unicodeveloper/awesome-nextjs/master/README.md",
-    "tools_count": 200,
-    "total_links": 217,
+    "tools_count": 202,
+    "total_links": 219,
     "tools": [
       {
         "name": "<img src=\"http://res.cloudinary.com/unicodeveloper/image/upload/v1524776764/next-jslogo.svg\" align=\"right\" width=\"250\">",
@@ -47016,6 +47027,13 @@
         "description": "Easily add Google Tag Manager to Next 13 and up"
       },
       {
+        "name": "modal-layout-component",
+        "url": "https://github.com/ArtemZhyto/Modal-layout-component",
+        "category": "github",
+        "description": "Lightweight and accessible headless modal layout for Next",
+        "source": "unicodeveloper/awesome-nextjs"
+      },
+      {
         "name": "next-api-decorators",
         "url": "https://github.com/storyofams/next-api-decorators",
         "category": "github",
@@ -47044,6 +47062,13 @@
         "url": "https://github.com/nicepkg/shotog",
         "category": "github",
         "description": "Dynamic OG image generation API for Next"
+      },
+      {
+        "name": "DevToolKit",
+        "url": "https://github.com/a827681306/devtoolkit",
+        "category": "github",
+        "description": "Free online developer tools built with Next",
+        "source": "unicodeveloper/awesome-nextjs"
       },
       {
         "name": "CourseLit",
@@ -48012,6 +48037,10 @@
         "url": "https://github.com/XD2Sketch/next-google-tag-manager"
       },
       {
+        "text": "modal-layout-component",
+        "url": "https://github.com/ArtemZhyto/Modal-layout-component"
+      },
+      {
         "text": "next-api-decorators",
         "url": "https://github.com/storyofams/next-api-decorators"
       },
@@ -48030,6 +48059,10 @@
       {
         "text": "ShotOG",
         "url": "https://github.com/nicepkg/shotog"
+      },
+      {
+        "text": "DevToolKit",
+        "url": "https://github.com/a827681306/devtoolkit"
       },
       {
         "text": "CourseLit",
@@ -70633,8 +70666,7 @@
         "name": "mockd",
         "url": "https://github.com/getmockd/mockd",
         "category": "github",
-        "description": "Open-source multi-protocol mock server supporting HTTP, gRPC, GraphQL, WebSocket, MQTT, and SOAP with chaos engineering and proxy recording",
-        "source": "TheJambo/awesome-testing"
+        "description": "Open-source multi-protocol mock server supporting HTTP, gRPC, GraphQL, WebSocket, MQTT, and SOAP with chaos engineering and proxy recording"
       },
       {
         "name": "WireMock",
@@ -71078,8 +71110,7 @@
         "name": "And others",
         "url": "https://github.com/ChristoWolf/awesome-testing-blogs",
         "category": "github",
-        "description": "## Newsletters",
-        "source": "TheJambo/awesome-testing"
+        "description": "## Newsletters"
       },
       {
         "name": "Coding Jag",
@@ -72262,8 +72293,8 @@
   },
   "veggiemonk/awesome-docker": {
     "url": "https://raw.githubusercontent.com/veggiemonk/awesome-docker/master/README.md",
-    "tools_count": 878,
-    "total_links": 882,
+    "tools_count": 882,
+    "total_links": 886,
     "tools": [
       {
         "name": "![Last Commit",
@@ -73472,16 +73503,17 @@
         "description": "Tsuru is an extensible and open source Platform as a Service software"
       },
       {
-        "name": "bunkerized-nginx",
-        "url": "https://github.com/bunkerity/bunkerized-nginx",
+        "name": "BunkerWeb",
+        "url": "https://github.com/bunkerity/bunkerweb",
         "category": "github",
-        "description": "Web app hosting and reverse proxy secure by default"
+        "description": "Open-source and next-gen Web Application Firewall (WAF)"
       },
       {
-        "name": "@bunkerity",
-        "url": "https://github.com/bunkerity",
-        "category": "github",
-        "description": ""
+        "name": "Bunkerity",
+        "url": "https://www.bunkerity.com",
+        "category": "tool",
+        "description": "",
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "caddy-docker-proxy",
@@ -73902,6 +73934,20 @@
         "url": "https://github.com/anchore/syft",
         "category": "github",
         "description": "CLI tool and library for generating a Software Bill of Materials (SBOM) from container images and filesystems"
+      },
+      {
+        "name": "segspec",
+        "url": "https://github.com/dormstern/segspec",
+        "category": "github",
+        "description": "Extracts network dependencies from Docker Compose, Kubernetes manifests, Helm charts, and other config files to generate Kubernetes NetworkPolicies with evidence tracing",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "@dormstern",
+        "url": "https://github.com/dormstern",
+        "category": "github",
+        "description": "",
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "Sysdig Falco",
@@ -74910,6 +74956,20 @@
         "url": "https://github.com/eclipse-theia/theia",
         "category": "github",
         "description": "Extensible platform to develop full-fledged multi-language Cloud & Desktop IDE-like products with state-of-the-art web technologies"
+      },
+      {
+        "name": "usulnet",
+        "url": "https://github.com/fr4nsys/usulnet",
+        "category": "github",
+        "description": "A complete and modern Docker management platform designed for sysadmin, devops with enterprise grade tools, cve scanner, ssh, rdp on web and much more",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "@fr4nsys",
+        "url": "https://github.com/fr4nsys",
+        "category": "github",
+        "description": "",
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "Yacht",
@@ -78344,12 +78404,12 @@
         "url": "https://github.com/tsuru/tsuru"
       },
       {
-        "text": "bunkerized-nginx",
-        "url": "https://github.com/bunkerity/bunkerized-nginx"
+        "text": "BunkerWeb",
+        "url": "https://github.com/bunkerity/bunkerweb"
       },
       {
-        "text": "@bunkerity",
-        "url": "https://github.com/bunkerity"
+        "text": "Bunkerity",
+        "url": "https://www.bunkerity.com"
       },
       {
         "text": "caddy-docker-proxy",
@@ -78630,6 +78690,14 @@
       {
         "text": "Syft",
         "url": "https://github.com/anchore/syft"
+      },
+      {
+        "text": "segspec",
+        "url": "https://github.com/dormstern/segspec"
+      },
+      {
+        "text": "@dormstern",
+        "url": "https://github.com/dormstern"
       },
       {
         "text": "Sysdig Falco",
@@ -79302,6 +79370,14 @@
       {
         "text": "Theia",
         "url": "https://github.com/eclipse-theia/theia"
+      },
+      {
+        "text": "usulnet",
+        "url": "https://github.com/fr4nsys/usulnet"
+      },
+      {
+        "text": "@fr4nsys",
+        "url": "https://github.com/fr4nsys"
       },
       {
         "text": "Yacht",
