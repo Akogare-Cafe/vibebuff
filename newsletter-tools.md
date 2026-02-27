@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 66
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,40 +240,30 @@ Total tools: 66
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (7 tools)
+## TLDR (5 tools)
 
-### pandas 3.0.0 (GitHub Repo)
-- **URL**: https://github.com/pandas-dev/pandas/releases/tag/v3.0.0?utm_source=tldrnewsletter
-- **Date**: 2026-01-22
-- **Description**: pandas 3.0.0 (GitHub Repo)pandas 3.0.0 includes some new features, bug fixes, and performance improvements, as well as possible breaking changes. It removes a functionality that was deprecated in previous releases. Users are recommended to first upgrade to pandas 2.3 and to ensure their code is working without warnings before upgrading to pandas 3.0. A link to a list of all the changes in the release is available.
+### GitHub Agentic Workflows - Repository automation, running the coding agents you know and love, with strong guardrails and security-first design principles (Sponsor)
+- **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&amp;utm_medium=email&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026
+- **Date**: 2026-02-23
+- **Description**: GitHub Agentic Workflows - Repository automation, running the coding agents you know and love, with strong guardrails and security-first design principles (Sponsor)☀️ Imagine waking up to your issues triaged, your CI failures investigated with fixes for you to review, and two fresh PRs proposing improvements to your tests. All of that while you were sleeping.Give yourself a headstart, every day. Create your first agentic workflow today.
 
-### syntux (GitHub Repo)
-- **URL**: https://github.com/puffinsoft/syntux?utm_source=tldrnewsletter
-- **Date**: 2026-01-21
-- **Description**: syntux (GitHub Repo)syntux is a generative UI library that is consistent and flexible.
+### Create your first agentic workflow today
+- **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&utm_medium=email&utm_campaign=agentic-workflows-tech-preview-feb-2026
+- **Date**: 2026-02-23
+- **Description**: ☀️ Imagine waking up to your issues triaged, your CI failures investigated with fixes for you to review, and two fresh PRs proposing improvements to your tests. All of that while you were sleeping.Give yourself a headstart, every day. Create your first agentic workflow today.
 
-### Headroom (GitHub Repo)
-- **URL**: https://github.com/chopratejas/headroom?utm_source=tldrnewsletter
-- **Date**: 2026-01-14
-- **Description**: Headroom (GitHub Repo)Headroom is a context optimization layer for LLM applications that cuts costs by 50% to 90% without losing accuracy.
+### klaw (GitHub Repo)
+- **URL**: https://github.com/klawsh/klaw.sh?utm_source=tldrnewsletter
+- **Date**: 2026-02-16
+- **Description**: klaw (GitHub Repo)klaw is a tool for enterprise AI agent orchestration that allows users to manage, monitor, and scale their AI workforce to hundreds of agents.
 
-### Mantic (GitHub Repo)
-- **URL**: https://github.com/marcoaapfortes/Mantic.sh?utm_source=tldrnewsletter
-- **Date**: 2026-01-07
-- **Description**: Mantic (GitHub Repo)Mantic is a structural code search engine for AI agents that provides sub-500ms file ranking across massive code bases without embeddings, vector databases, or external dependencies.
+### Vouch (GitHub Repo)
+- **URL**: https://github.com/mitchellh/vouch?utm_source=tldrnewsletter
+- **Date**: 2026-02-09
+- **Description**: Vouch (GitHub Repo)Vouch is a community trust management system. It requires people to be vouched for before they can interact with certain parts of a project. People can be explicitly denounced to block them from interacting with a project. The implementation can be used for any project on any code forge. Vouch lists can be configured to read other projects' lists of vouched or denounced users, so projects with shared values can share their trust decisions with each other.
 
-### Worktrunk (GitHub Repo)
-- **URL**: https://github.com/max-sixty/worktrunk?utm_source=tldrnewsletter
-- **Date**: 2026-01-01
-- **Description**: Worktrunk (GitHub Repo)Worktrunk is a CLI for git worktree management designed to run AI agents in parallel.
-
-### Publishing your work increases your luck (11 minute read)
-- **URL**: https://github.com/readme/guides/publishing-your-work?utm_source=tldrnewsletter
-- **Date**: 2025-12-29
-- **Description**: Publishing your work increases your luck (11 minute read)You increase your luck by making yourself more visible to the world.
-
-### Continuous Claude (GitHub Repo)
-- **URL**: https://github.com/parcadei/Continuous-Claude-v2?utm_source=tldrnewsletter
-- **Date**: 2025-12-29
-- **Description**: Continuous Claude (GitHub Repo)Continuous Claude is a framework that saves state to a ledger, wipes context, and resumes fresh.
+### Exploring Solutions to Tackle Low-Quality Contributions on GitHub (2 minute read)
+- **URL**: https://github.com/orgs/community/discussions/185387?utm_source=tldrnewsletter
+- **Date**: 2026-02-03
+- **Description**: Exploring Solutions to Tackle Low-Quality Contributions on GitHub (2 minute read)GitHub is evaluating whether to add options to disable PRs entirely, restrict PRs to collaborators, and delete a PR from the UI, and it is exploring other ways to tackle low-quality contributions as AI adoption increases.
 
