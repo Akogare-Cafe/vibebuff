@@ -6803,8 +6803,8 @@
   },
   "wsxiaoys/awesome-ai-coding": {
     "url": "https://raw.githubusercontent.com/wsxiaoys/awesome-ai-coding/main/README.md",
-    "tools_count": 86,
-    "total_links": 86,
+    "tools_count": 87,
+    "total_links": 87,
     "tools": [
       {
         "name": "Open a pull request",
@@ -7305,6 +7305,13 @@
         "description": ": AI-powered platform for building custom AI agents, workflows, and apps using natural language"
       },
       {
+        "name": "OpenPaw",
+        "url": "https://github.com/daxaur/openpaw",
+        "category": "github",
+        "description": ": Open-source CLI tool (`npx pawmode`) that turns Claude Code into a personal assistant with 38 skills \u2014 email, calendar, Spotify, smart home, Slack, GitHub, and more",
+        "source": "wsxiaoys/awesome-ai-coding"
+      },
+      {
         "name": "Awesome AI-Powered Developer Tools",
         "url": "https://github.com/jamesmurdza/awesome-ai-devtools",
         "category": "github",
@@ -7655,6 +7662,10 @@
       {
         "text": "Taskade Genesis",
         "url": "https://taskade.com/genesis"
+      },
+      {
+        "text": "OpenPaw",
+        "url": "https://github.com/daxaur/openpaw"
       },
       {
         "text": "Awesome AI-Powered Developer Tools",
@@ -23110,8 +23121,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1389,
-    "total_links": 1406,
+    "tools_count": 1393,
+    "total_links": 1410,
     "tools": [
       {
         "name": "Pull Requests",
@@ -25718,6 +25729,13 @@
         "description": "Find web app vulnerabilities, audit for OWASP Risks"
       },
       {
+        "name": "Smart Grow Vault",
+        "url": "https://vault.smart-grow.app/",
+        "category": "tool",
+        "description": "Secure Enterprise-grade platform for managing environment variables and secrets",
+        "source": "ripienaar/free-for-dev"
+      },
+      {
         "name": "Socket",
         "url": "https://socket.dev",
         "category": "tool",
@@ -26160,6 +26178,13 @@
         "url": "https://openobserve.ai/",
         "category": "tool",
         "description": "200 GB Ingestion/month free, 15 Days Retention"
+      },
+      {
+        "name": "Smart Grow Logs",
+        "url": "https://logs.smart-grow.app/",
+        "category": "tool",
+        "description": "Centralized log management platform with end-to-end encryption, real-time alerts, and multi-platform SDKs",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "AutoLocalise.com",
@@ -27066,6 +27091,13 @@
         "url": "https://verimail.io/",
         "category": "tool",
         "description": "Bulk and API email verification service"
+      },
+      {
+        "name": "Waitlio",
+        "url": "https://waitlio.com/",
+        "category": "tool",
+        "description": "Waitlist management software for product launches",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Wraps",
@@ -29118,6 +29150,13 @@
         "url": "https://qrme.sh",
         "category": "tool",
         "description": "Fast, beautiful bulk QR code generator \u2013 no login, no watermark, no ads"
+      },
+      {
+        "name": "QRtracer",
+        "url": "https://qrtracer.io",
+        "category": "tool",
+        "description": "Free QR code generator with built-in scan analytics, bulk generation & brand customisation, focused on reliability without any ads",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "QuickChart",
@@ -33218,6 +33257,10 @@
         "url": "https://www.qualys.com/community-edition"
       },
       {
+        "text": "Smart Grow Vault",
+        "url": "https://vault.smart-grow.app/"
+      },
+      {
         "text": "Socket",
         "url": "https://socket.dev"
       },
@@ -33512,6 +33555,10 @@
       {
         "text": "openobserve.ai",
         "url": "https://openobserve.ai/"
+      },
+      {
+        "text": "Smart Grow Logs",
+        "url": "https://logs.smart-grow.app/"
       },
       {
         "text": "AutoLocalise.com",
@@ -34128,6 +34175,10 @@
       {
         "text": "verimail.io",
         "url": "https://verimail.io/"
+      },
+      {
+        "text": "Waitlio",
+        "url": "https://waitlio.com/"
       },
       {
         "text": "Wraps",
@@ -35504,6 +35555,10 @@
       {
         "text": "QRME.SH",
         "url": "https://qrme.sh"
+      },
+      {
+        "text": "QRtracer",
+        "url": "https://qrtracer.io"
       },
       {
         "text": "QuickChart",
@@ -70655,8 +70710,7 @@
         "name": "Spiderhash",
         "url": "https://spiderhash.io/",
         "category": "tool",
-        "description": "Webhook debugging and request inspection tool for testing callback payloads, headers, and delivery behavior",
-        "source": "TheJambo/awesome-testing"
+        "description": "Webhook debugging and request inspection tool for testing callback payloads, headers, and delivery behavior"
       },
       {
         "name": "BeEF",
@@ -70854,8 +70908,7 @@
         "name": "TestDino",
         "url": "https://github.com/TestDinoHQ",
         "category": "github",
-        "description": "A Playwright\u2011focused test reporting and analytics platform that centralizes CI runs, classifies failures, and uses AI insights to help teams debug faster and ship more reliable releases",
-        "source": "TheJambo/awesome-testing"
+        "description": "A Playwright\u2011focused test reporting and analytics platform that centralizes CI runs, classifies failures, and uses AI insights to help teams debug faster and ship more reliable releases"
       },
       {
         "name": "Kiwi TCMS",
@@ -70939,15 +70992,13 @@
         "name": "RatedWithAI",
         "url": "https://ratedwithai.com",
         "category": "tool",
-        "description": "AI-powered website accessibility scanner that checks for ADA and WCAG 2",
-        "source": "TheJambo/awesome-testing"
+        "description": "AI-powered website accessibility scanner that checks for ADA and WCAG 2"
       },
       {
         "name": "WAVE",
         "url": "https://wave.webaim.org/",
         "category": "tool",
-        "description": "Suite of evaluation tools that helps authors make their web content more accessible to individuals with disabilities",
-        "source": "TheJambo/awesome-testing"
+        "description": "Suite of evaluation tools that helps authors make their web content more accessible to individuals with disabilities"
       },
       {
         "name": "Yslow",
@@ -72897,8 +72948,7 @@
         "name": "Dynatrace",
         "url": "https://docs.dynatrace.com/docs/observe/infrastructure-observability/container-platform-monitoring",
         "category": "tool",
-        "description": ":heavy_dollar_sign: Monitor containerized applications without installing agents or modifying your Run commands",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":heavy_dollar_sign: Monitor containerized applications without installing agents or modifying your Run commands"
       },
       {
         "name": "Glances",
@@ -74626,8 +74676,7 @@
         "name": "opencontainer",
         "url": "https://github.com/opencontainers/image-spec/blob/main/annotations.md",
         "category": "github",
-        "description": "A convention and shared namespace for Docker labels defined by OCI Image Spec",
-        "source": "veggiemonk/awesome-docker"
+        "description": "A convention and shared namespace for Docker labels defined by OCI Image Spec"
       },
       {
         "name": "Amazon Elastic Container Registry :heavy_dollar_sign:",
@@ -75365,8 +75414,7 @@
         "name": "dgoss",
         "url": "https://github.com/goss-org/goss/tree/master/extras/dgoss",
         "category": "github",
-        "description": "A fast YAML based tool for validating docker containers",
-        "source": "veggiemonk/awesome-docker"
+        "description": "A fast YAML based tool for validating docker containers"
       },
       {
         "name": "DockerSpec",
@@ -75426,8 +75474,7 @@
         "name": "Ansible",
         "url": "https://docs.ansible.com/projects/ansible/latest/collections/community/general/docker_container_module.html",
         "category": "tool",
-        "description": "Manage the life cycle of Docker containers",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Manage the life cycle of Docker containers"
       },
       {
         "name": "dexec",
@@ -75523,8 +75570,7 @@
         "name": "CodeShip",
         "url": "https://www.cloudbees.com/blog/how-to-run-codeship-parallel-test-pipelines-efficiently-for-optimal-ci-parallelization",
         "category": "tool",
-        "description": ":heavy_dollar_sign: Work with your established Docker workflows while automating your testing and deployment tasks with our hosted platform dedicated to speed and security",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":heavy_dollar_sign: Work with your established Docker workflows while automating your testing and deployment tasks with our hosted platform dedicated to speed and security"
       },
       {
         "name": "ConcourseCI",
@@ -75578,8 +75624,7 @@
         "name": "Google Container Engine",
         "url": "https://docs.cloud.google.com/kubernetes-engine/docs",
         "category": "tool",
-        "description": ":heavy_dollar_sign: Docker containers on Google Cloud Computing powered by",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":heavy_dollar_sign: Docker containers on Google Cloud Computing powered by"
       },
       {
         "name": "Mesosphere DC/OS Platform",
