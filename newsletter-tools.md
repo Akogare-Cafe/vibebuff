@@ -242,6 +242,11 @@ Total tools: 64
 
 ## TLDR (5 tools)
 
+### Google Workspace CLI (GitHub Repo)
+- **URL**: https://github.com/googleworkspace/cli?utm_source=tldrnewsletter
+- **Date**: 2026-03-05
+- **Description**: Google Workspace CLI (GitHub Repo)The Google Workspace CLI is a CLI for all of Google Workspace designed for humans and AI agents. The tool builds its entire command surface dynamically at runtime using Google's Discovery Service, so new API endpoints and methods are picked up automatically. It supports multiple auth workflows, so it works on PC, in CI, and on a server. There are currently over 100 Agent Skills for APIs, common workflows, and Google apps.
+
 ### GitHub Agentic Workflows - Repository automation, running the coding agents you know and love, with strong guardrails and security-first design principles (Sponsor)
 - **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&amp;utm_medium=email&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026
 - **Date**: 2026-02-23
@@ -261,9 +266,4 @@ Total tools: 64
 - **URL**: https://github.com/mitchellh/vouch?utm_source=tldrnewsletter
 - **Date**: 2026-02-09
 - **Description**: Vouch (GitHub Repo)Vouch is a community trust management system. It requires people to be vouched for before they can interact with certain parts of a project. People can be explicitly denounced to block them from interacting with a project. The implementation can be used for any project on any code forge. Vouch lists can be configured to read other projects' lists of vouched or denounced users, so projects with shared values can share their trust decisions with each other.
-
-### Exploring Solutions to Tackle Low-Quality Contributions on GitHub (2 minute read)
-- **URL**: https://github.com/orgs/community/discussions/185387?utm_source=tldrnewsletter
-- **Date**: 2026-02-03
-- **Description**: Exploring Solutions to Tackle Low-Quality Contributions on GitHub (2 minute read)GitHub is evaluating whether to add options to disable PRs entirely, restrict PRs to collaborators, and delete a PR from the UI, and it is exploring other ways to tackle low-quality contributions as AI adoption increases.
 
