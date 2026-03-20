@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,22 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### Crust (GitHub Repo)
+- **URL**: https://github.com/chenxin-yan/crust?utm_source=tldrnewsletter
+- **Date**: 2026-03-18
+- **Description**: Crust (GitHub Repo)Crust is a TypeScript-first, Bun-native CLI framework with composable modules.
+
+### OpenReview (GitHub Repo)
+- **URL**: https://github.com/vercel-labs/openreview?utm_source=tldrnewsletter
+- **Date**: 2026-03-18
+- **Description**: OpenReview (GitHub Repo)OpenReview is a self-hosted AI code review bot that provides on-demand PR reviews powered by Claude.
+
+### Pact (GitHub Repo)
+- **URL**: https://github.com/jmcentire/pact?utm_source=tldrnewsletter
+- **Date**: 2026-03-11
+- **Description**: Pact (GitHub Repo)Pact is a multi-agent software engineering framework designed for projects where getting the boundaries right matters more than getting the code written fast.
 
 ### Google Workspace CLI (GitHub Repo)
 - **URL**: https://github.com/googleworkspace/cli?utm_source=tldrnewsletter
@@ -256,14 +271,4 @@ Total tools: 64
 - **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&utm_medium=email&utm_campaign=agentic-workflows-tech-preview-feb-2026
 - **Date**: 2026-02-23
 - **Description**: ☀️ Imagine waking up to your issues triaged, your CI failures investigated with fixes for you to review, and two fresh PRs proposing improvements to your tests. All of that while you were sleeping.Give yourself a headstart, every day. Create your first agentic workflow today.
-
-### klaw (GitHub Repo)
-- **URL**: https://github.com/klawsh/klaw.sh?utm_source=tldrnewsletter
-- **Date**: 2026-02-16
-- **Description**: klaw (GitHub Repo)klaw is a tool for enterprise AI agent orchestration that allows users to manage, monitor, and scale their AI workforce to hundreds of agents.
-
-### Vouch (GitHub Repo)
-- **URL**: https://github.com/mitchellh/vouch?utm_source=tldrnewsletter
-- **Date**: 2026-02-09
-- **Description**: Vouch (GitHub Repo)Vouch is a community trust management system. It requires people to be vouched for before they can interact with certain parts of a project. People can be explicitly denounced to block them from interacting with a project. The implementation can be used for any project on any code forge. Vouch lists can be configured to read other projects' lists of vouched or denounced users, so projects with shared values can share their trust decisions with each other.
 
