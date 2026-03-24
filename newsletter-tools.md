@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 63
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (4 tools)
 
 ### Crust (GitHub Repo)
 - **URL**: https://github.com/chenxin-yan/crust?utm_source=tldrnewsletter
@@ -261,14 +261,4 @@ Total tools: 65
 - **URL**: https://github.com/googleworkspace/cli?utm_source=tldrnewsletter
 - **Date**: 2026-03-05
 - **Description**: Google Workspace CLI (GitHub Repo)The Google Workspace CLI is a CLI for all of Google Workspace designed for humans and AI agents. The tool builds its entire command surface dynamically at runtime using Google's Discovery Service, so new API endpoints and methods are picked up automatically. It supports multiple auth workflows, so it works on PC, in CI, and on a server. There are currently over 100 Agent Skills for APIs, common workflows, and Google apps.
-
-### GitHub Agentic Workflows - Repository automation, running the coding agents you know and love, with strong guardrails and security-first design principles (Sponsor)
-- **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&amp;utm_medium=email&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026
-- **Date**: 2026-02-23
-- **Description**: GitHub Agentic Workflows - Repository automation, running the coding agents you know and love, with strong guardrails and security-first design principles (Sponsor)☀️ Imagine waking up to your issues triaged, your CI failures investigated with fixes for you to review, and two fresh PRs proposing improvements to your tests. All of that while you were sleeping.Give yourself a headstart, every day. Create your first agentic workflow today.
-
-### Create your first agentic workflow today
-- **URL**: https://github.github.com/gh-aw/?utm_source=tldr-newsletter-agentic-workflows-cta&utm_medium=email&utm_campaign=agentic-workflows-tech-preview-feb-2026
-- **Date**: 2026-02-23
-- **Description**: ☀️ Imagine waking up to your issues triaged, your CI failures investigated with fixes for you to review, and two fresh PRs proposing improvements to your tests. All of that while you were sleeping.Give yourself a headstart, every day. Create your first agentic workflow today.
 
