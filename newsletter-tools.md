@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 63
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 63
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (4 tools)
+## TLDR (5 tools)
+
+### Gridland (GitHub Repo)
+- **URL**: https://github.com/thoughtfulllc/gridland?utm_source=tldrnewsletter
+- **Date**: 2026-03-25
+- **Description**: Gridland (GitHub Repo)Gridland enables developers to build terminal apps that run in the browser.
 
 ### Crust (GitHub Repo)
 - **URL**: https://github.com/chenxin-yan/crust?utm_source=tldrnewsletter
