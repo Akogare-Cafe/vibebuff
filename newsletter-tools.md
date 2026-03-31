@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### pgmicro (GitHub Repo)
+- **URL**: https://github.com/glommer/pgmicro?utm_source=tldrnewsletter
+- **Date**: 2026-03-30
+- **Description**: pgmicro (GitHub Repo)pgmicro is an in-process reimplementation of PostgreSQL that is backed by a SQLite-compatible storage engine.
 
 ### Gridland (GitHub Repo)
 - **URL**: https://github.com/thoughtfulllc/gridland?utm_source=tldrnewsletter
