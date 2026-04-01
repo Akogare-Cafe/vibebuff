@@ -22824,8 +22824,7 @@
         "name": "RunThisLLM",
         "url": "https://runthisllm.com",
         "category": "tool",
-        "description": "See which LLMs you can run on your hardware",
-        "source": "steven2358/awesome-generative-ai"
+        "description": "See which LLMs you can run on your hardware"
       },
       {
         "name": "Auto-GPT",
@@ -25125,8 +25124,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1255,
-    "total_links": 1272,
+    "tools_count": 1257,
+    "total_links": 1274,
     "tools": [
       {
         "name": "Pull Requests",
@@ -28271,6 +28270,13 @@
         "url": "https://lingohub.com/",
         "category": "tool",
         "description": "Free up to 3 users, always free for Open Source"
+      },
+      {
+        "name": "Localhero.ai",
+        "url": "https://localhero.ai",
+        "category": "tool",
+        "description": "Automatic on-brand translations on every pull request, with glossary and translation memory",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "localazy.com",
@@ -31831,6 +31837,13 @@
         "description": "A cloud coding environment for various program languages"
       },
       {
+        "name": "RunMat",
+        "url": "https://runmat.com/sandbox",
+        "category": "tool",
+        "description": "GPU-accelerated numerical computing IDE in the browser",
+        "source": "ripienaar/free-for-dev"
+      },
+      {
         "name": "SoloLearn",
         "url": "https://code.sololearn.com",
         "category": "tool",
@@ -34793,6 +34806,10 @@
         "url": "https://lingohub.com/"
       },
       {
+        "text": "Localhero.ai",
+        "url": "https://localhero.ai"
+      },
+      {
         "text": "localazy.com",
         "url": "https://localazy.com"
       },
@@ -37183,6 +37200,10 @@
       {
         "text": "Replit",
         "url": "https://replit.com/"
+      },
+      {
+        "text": "RunMat",
+        "url": "https://runmat.com/sandbox"
       },
       {
         "text": "SoloLearn",
@@ -73235,8 +73256,8 @@
   },
   "veggiemonk/awesome-docker": {
     "url": "https://raw.githubusercontent.com/veggiemonk/awesome-docker/master/README.md",
-    "tools_count": 628,
-    "total_links": 632,
+    "tools_count": 645,
+    "total_links": 649,
     "tools": [
       {
         "name": "![Last Commit",
@@ -73713,6 +73734,20 @@
         "description": ":ice_cube: - Reconfigures Prometheus when a new service is updated or deployed automatically"
       },
       {
+        "name": "Docker-Sentinel",
+        "url": "https://github.com/Will-Luck/Docker-Sentinel",
+        "category": "github",
+        "description": "Automated container updates with per-container policies, rollback safety, and a real-time web dashboard",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "Will-Luck",
+        "url": "https://github.com/Will-Luck",
+        "category": "github",
+        "description": null,
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
         "name": "DockProbe",
         "url": "https://github.com/deep-on/dockprobe",
         "category": "github",
@@ -73849,6 +73884,20 @@
         "url": "https://github.com/gpulido/SwarmAlert",
         "category": "github",
         "description": ":ice_cube: - Monitors a Docker Swarm and sends Pushover alerts when it finds a container with no healthy service task running"
+      },
+      {
+        "name": "Wiremap",
+        "url": "https://github.com/codeofmario/wiremap",
+        "category": "github",
+        "description": "A self-hosted visual Docker network topology explorer with real-time log streaming, live stats, embedded terminal, and container inspection",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "codeofmario",
+        "url": "https://github.com/codeofmario",
+        "category": "github",
+        "description": null,
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "Zabbix Docker",
@@ -74265,6 +74314,20 @@
         "description": "LXC - Linux Containers"
       },
       {
+        "name": "Mocker",
+        "url": "https://github.com/us/mocker",
+        "category": "github",
+        "description": "Docker-compatible container CLI for macOS, built on Apple's Containerization framework",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "us",
+        "url": "https://github.com/us",
+        "category": "github",
+        "description": null,
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
         "name": "podman",
         "url": "https://github.com/containers/libpod",
         "category": "github",
@@ -74391,6 +74454,19 @@
         "description": "Powerful runtime vulnerability scanner for kubernetes, virtual machines and serverless"
       },
       {
+        "name": "Den",
+        "url": "https://github.com/us/den",
+        "category": "github",
+        "description": "Self-hosted sandbox runtime for AI agents with Docker containers, security hardening, REST API and WebSocket support",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "us",
+        "url": "https://github.com/us",
+        "category": "github",
+        "description": null
+      },
+      {
         "name": "docker-bench-security",
         "url": "https://github.com/docker/docker-bench-security",
         "category": "github",
@@ -74407,6 +74483,19 @@
         "url": "https://github.com/Peco602/dvwassl",
         "category": "github",
         "description": ":ice_cube: - SSL-enabled Damn Vulnerable Web App to test Web Application Firewalls"
+      },
+      {
+        "name": "Grype",
+        "url": "https://github.com/anchore/grype",
+        "category": "github",
+        "description": "A vulnerability scanner for container images, filesystems and SBOMs",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "Anchore",
+        "url": "https://github.com/anchore",
+        "category": "github",
+        "description": null
       },
       {
         "name": "KICS",
@@ -74455,6 +74544,12 @@
         "url": "https://github.com/anchore/syft",
         "category": "github",
         "description": "CLI tool and library for generating a Software Bill of Materials (SBOM) from container images and filesystems"
+      },
+      {
+        "name": "Anchore",
+        "url": "https://github.com/anchore",
+        "category": "github",
+        "description": null
       },
       {
         "name": "Sysdig Falco",
@@ -74773,6 +74868,27 @@
         "url": "https://github.com/fussybeaver/bollard",
         "category": "github",
         "description": ","
+      },
+      {
+        "name": "swarmcli",
+        "url": "https://github.com/Eldara-Tech/swarmcli",
+        "category": "github",
+        "description": "Swarm Management at the speed of thought \u2014 with real-time log streaming, instant shell access to containers, seamless port forwarding, and on-demand secret reveal capabilities, giving you full control over your Docker Swarm without breaking your flow",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "tdocker",
+        "url": "https://github.com/pivovarit/tdocker",
+        "category": "github",
+        "description": "A `docker ps` replacement for everyday container operations by",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "@pivovarit",
+        "url": "https://github.com/pivovarit",
+        "category": "github",
+        "description": null,
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "captain",
@@ -75645,6 +75761,13 @@
         "description": "Uber's Highly scalable P2P docker registry, capable of distributing TBs of data in seconds"
       },
       {
+        "name": "NORA",
+        "url": "https://github.com/getnora-io/nora",
+        "category": "github",
+        "description": "Lightweight multi-protocol artifact registry supporting Docker, Maven, npm, Cargo and PyPI in a single 32MB binary",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
         "name": "nscr",
         "url": "https://github.com/jhstatewide/nscr",
         "category": "github",
@@ -76087,6 +76210,20 @@
         "url": "https://github.com/moshebe/gebug",
         "category": "github",
         "description": "A tool that makes debugging of Dockerized Go applications super easy by enabling Debugger and Hot-Reload features, seamlessly"
+      },
+      {
+        "name": "HarborPilot",
+        "url": "https://github.com/potterwhite/HarborPilot",
+        "category": "github",
+        "description": "Automated multi-platform Docker image builder for embedded Linux development (RK3588, RV1126, RK3568)",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
+        "name": "potterwhite",
+        "url": "https://github.com/potterwhite",
+        "category": "github",
+        "description": null,
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "Kitt",
@@ -77329,6 +77466,14 @@
         "url": "https://github.com/docker-flow/docker-flow-monitor"
       },
       {
+        "text": "Docker-Sentinel",
+        "url": "https://github.com/Will-Luck/Docker-Sentinel"
+      },
+      {
+        "text": "Will-Luck",
+        "url": "https://github.com/Will-Luck"
+      },
+      {
         "text": "DockProbe",
         "url": "https://github.com/deep-on/dockprobe"
       },
@@ -77419,6 +77564,14 @@
       {
         "text": "SwarmAlert",
         "url": "https://github.com/gpulido/SwarmAlert"
+      },
+      {
+        "text": "Wiremap",
+        "url": "https://github.com/codeofmario/wiremap"
+      },
+      {
+        "text": "codeofmario",
+        "url": "https://github.com/codeofmario"
       },
       {
         "text": "Zabbix Docker",
@@ -77697,6 +77850,14 @@
         "url": "https://github.com/lxc/lxc"
       },
       {
+        "text": "Mocker",
+        "url": "https://github.com/us/mocker"
+      },
+      {
+        "text": "us",
+        "url": "https://github.com/us"
+      },
+      {
         "text": "podman",
         "url": "https://github.com/containers/libpod"
       },
@@ -77781,6 +77942,14 @@
         "url": "https://github.com/deepfence/ThreatMapper"
       },
       {
+        "text": "Den",
+        "url": "https://github.com/us/den"
+      },
+      {
+        "text": "us",
+        "url": "https://github.com/us"
+      },
+      {
         "text": "docker-bench-security",
         "url": "https://github.com/docker/docker-bench-security"
       },
@@ -77791,6 +77960,14 @@
       {
         "text": "dvwassl",
         "url": "https://github.com/Peco602/dvwassl"
+      },
+      {
+        "text": "Grype",
+        "url": "https://github.com/anchore/grype"
+      },
+      {
+        "text": "Anchore",
+        "url": "https://github.com/anchore"
       },
       {
         "text": "KICS",
@@ -77823,6 +78000,10 @@
       {
         "text": "Syft",
         "url": "https://github.com/anchore/syft"
+      },
+      {
+        "text": "Anchore",
+        "url": "https://github.com/anchore"
       },
       {
         "text": "Sysdig Falco",
@@ -78035,6 +78216,18 @@
       {
         "text": "Bollard",
         "url": "https://github.com/fussybeaver/bollard"
+      },
+      {
+        "text": "swarmcli",
+        "url": "https://github.com/Eldara-Tech/swarmcli"
+      },
+      {
+        "text": "tdocker",
+        "url": "https://github.com/pivovarit/tdocker"
+      },
+      {
+        "text": "@pivovarit",
+        "url": "https://github.com/pivovarit"
       },
       {
         "text": "captain",
@@ -78617,6 +78810,10 @@
         "url": "https://github.com/uber/kraken"
       },
       {
+        "text": "NORA",
+        "url": "https://github.com/getnora-io/nora"
+      },
+      {
         "text": "nscr",
         "url": "https://github.com/jhstatewide/nscr"
       },
@@ -78911,6 +79108,14 @@
       {
         "text": "Gebug",
         "url": "https://github.com/moshebe/gebug"
+      },
+      {
+        "text": "HarborPilot",
+        "url": "https://github.com/potterwhite/HarborPilot"
+      },
+      {
+        "text": "potterwhite",
+        "url": "https://github.com/potterwhite"
       },
       {
         "text": "Kitt",

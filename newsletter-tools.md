@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 66
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (7 tools)
+
+### Codex plugin for Claude Code (GitHub Repo)
+- **URL**: https://github.com/openai/codex-plugin-cc?utm_source=tldrnewsletter
+- **Date**: 2026-03-31
+- **Description**: Codex plugin for Claude Code (GitHub Repo)This plugin enables Claude Code users to start using Codex from the workflow they already have. Users can use Codex from inside Claude Code for code reviews or delegate tasks to Codex. The plugin uses the local Codex CLI, so existing sign-in methods and configs still apply. It also uses the same repository checkout and machine-local environment.
 
 ### pgmicro (GitHub Repo)
 - **URL**: https://github.com/glommer/pgmicro?utm_source=tldrnewsletter
