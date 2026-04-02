@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 66
+Total tools: 68
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,17 @@ Total tools: 66
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (7 tools)
+## TLDR (9 tools)
+
+### Check out the open source Skills library [Github]
+- **URL**: https://github.com/MiniMax-AI/skills?utm_source=tldr&utm_medium=newsletter&utm_campaign=primary_2026_04_01
+- **Date**: 2026-04-01
+- **Description**: MiniMax is also open-sourcing their Office Skills library(MIT): 4 production-grade Skills for Word, Excel, PDF & PPT that generate actually deliverable files. Works with Claude Code, Cursor, Codex & OpenCode. → Check out the open source Skills library [Github]
+
+### Inside the Claude Code source (9 minute read)
+- **URL**: https://gist.github.com/Haseeb-Qureshi/d0dc36844c19d26303ce09b42e7188c1?utm_source=tldrnewsletter
+- **Date**: 2026-04-01
+- **Description**: Inside the Claude Code source (9 minute read)Claude Code CLI's source code was recently leaked on GitHub. This post breaks down how the system works, where Anthropic made clever engineering choices, and where Anthropic's approach diverges from OpenAI's Codex. Claude Code is about 500,000 lines of TypeScript, with the actual API call comprising maybe 200 of them. Everything else in the harness.
 
 ### Codex plugin for Claude Code (GitHub Repo)
 - **URL**: https://github.com/openai/codex-plugin-cc?utm_source=tldrnewsletter
