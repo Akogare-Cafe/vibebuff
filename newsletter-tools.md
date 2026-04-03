@@ -242,6 +242,11 @@ Total tools: 68
 
 ## TLDR (9 tools)
 
+### EmDash (GitHub Repo)
+- **URL**: https://github.com/emdash-cms/emdash?utm_source=tldrnewsletter
+- **Date**: 2026-04-02
+- **Description**: EmDash (GitHub Repo)EmDash is a full-stack TypeScript CMS that takes the ideas that made WordPress dominant and rebuilds them on serverless, type-safe foundations.
+
 ### Check out the open source Skills library [Github]
 - **URL**: https://github.com/MiniMax-AI/skills?utm_source=tldr&utm_medium=newsletter&utm_campaign=primary_2026_04_01
 - **Date**: 2026-04-01
@@ -281,9 +286,4 @@ Total tools: 68
 - **URL**: https://github.com/jmcentire/pact?utm_source=tldrnewsletter
 - **Date**: 2026-03-11
 - **Description**: Pact (GitHub Repo)Pact is a multi-agent software engineering framework designed for projects where getting the boundaries right matters more than getting the code written fast.
-
-### Google Workspace CLI (GitHub Repo)
-- **URL**: https://github.com/googleworkspace/cli?utm_source=tldrnewsletter
-- **Date**: 2026-03-05
-- **Description**: Google Workspace CLI (GitHub Repo)The Google Workspace CLI is a CLI for all of Google Workspace designed for humans and AI agents. The tool builds its entire command surface dynamically at runtime using Google's Discovery Service, so new API endpoints and methods are picked up automatically. It supports multiple auth workflows, so it works on PC, in CI, and on a server. There are currently over 100 Agent Skills for APIs, common workflows, and Google apps.
 
