@@ -242,6 +242,11 @@ Total tools: 68
 
 ## TLDR (9 tools)
 
+### Scion (GitHub Repo)
+- **URL**: https://github.com/GoogleCloudPlatform/scion?utm_source=tldrnewsletter
+- **Date**: 2026-04-08
+- **Description**: Scion (GitHub Repo)Scion is a multi-agent orchestrator designed to manage deep agents in isolated containers so they can work on different parts of projects without stepping on each other.
+
 ### EmDash (GitHub Repo)
 - **URL**: https://github.com/emdash-cms/emdash?utm_source=tldrnewsletter
 - **Date**: 2026-04-02
@@ -281,9 +286,4 @@ Total tools: 68
 - **URL**: https://github.com/vercel-labs/openreview?utm_source=tldrnewsletter
 - **Date**: 2026-03-18
 - **Description**: OpenReview (GitHub Repo)OpenReview is a self-hosted AI code review bot that provides on-demand PR reviews powered by Claude.
-
-### Pact (GitHub Repo)
-- **URL**: https://github.com/jmcentire/pact?utm_source=tldrnewsletter
-- **Date**: 2026-03-11
-- **Description**: Pact (GitHub Repo)Pact is a multi-agent software engineering framework designed for projects where getting the boundaries right matters more than getting the code written fast.
 
