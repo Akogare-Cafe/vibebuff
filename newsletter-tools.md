@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 68
+Total tools: 74
 
 ## React Newsletter (59 tools)
 
@@ -240,12 +240,42 @@ Total tools: 68
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (9 tools)
+## TLDR (15 tools)
 
 ### Scion (GitHub Repo)
 - **URL**: https://github.com/GoogleCloudPlatform/scion?utm_source=tldrnewsletter
 - **Date**: 2026-04-08
 - **Description**: Scion (GitHub Repo)Scion is a multi-agent orchestrator designed to manage deep agents in isolated containers so they can work on different parts of projects without stepping on each other.
+
+### PgQue (GitHub Repo)
+- **URL**: https://github.com/NikolayS/pgque?utm_source=tldrnewsletter
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | TechPgQue (GitHub Repo)
+
+### MDV (GitHub Repo)
+- **URL**: https://github.com/drasimwagan/mdv?utm_source=tldrdev
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | DevMDV (GitHub Repo)
+
+### CraftBot (Tool)
+- **URL**: https://github.com/CraftOS-dev/CraftBot?utm_source=tldrfounders
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | FoundersCraftBot (Tool)
+
+### Hyperframes (Tool)
+- **URL**: https://github.com/heygen-com/hyperframes?utm_source=tldrfounders
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | FoundersHyperframes (Tool)
+
+### Deepgemm (GitHub Repo)
+- **URL**: https://github.com/deepseek-ai/DeepGEMM?utm_source=tldrdevops
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | DevOpsDeepgemm (GitHub Repo)
+
+### The Ultimate iOS Hardening Guide (GitHub Repo)
+- **URL**: https://github.com/iAnonymous3000/iOS-Hardening-Guide?utm_source=tldrinfosec
+- **Date**: 2026-04-03
+- **Description**: Apr 20 | InfosecThe Ultimate iOS Hardening Guide (GitHub Repo)
 
 ### EmDash (GitHub Repo)
 - **URL**: https://github.com/emdash-cms/emdash?utm_source=tldrnewsletter
