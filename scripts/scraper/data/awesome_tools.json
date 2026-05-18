@@ -1,1 +1,219 @@
-[]
+[
+  {
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com/",
+    "category": "tool",
+    "description": "Jupyter Notebooks with 4 CPU cores and 30 GB RAM computational environment without any weekly usage limits",
+    "source": "ripienaar/free-for-dev"
+  },
+  {
+    "name": "Technical Specifications",
+    "url": "https://www.kaggle.com/docs/notebooks#technical-specifications",
+    "category": "tool",
+    "description": "for more details",
+    "source": "ripienaar/free-for-dev"
+  },
+  {
+    "name": "CONTRIBUTING.md",
+    "url": "https://github.com/veggiemonk/awesome-docker/blob/master/.github/CONTRIBUTING.md",
+    "category": "github",
+    "description": "first",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "colima",
+    "url": "https://github.com/abiosoft/colima",
+    "category": "github",
+    "description": "Container runtimes on macOS (and Linux) with minimal setup",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "containerd",
+    "url": "https://github.com/containerd/containerd",
+    "category": "github",
+    "description": "An open and reliable container runtime",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "gVisor",
+    "url": "https://github.com/google/gvisor",
+    "category": "github",
+    "description": "Application Kernel for Containers",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "runc",
+    "url": "https://github.com/opencontainers/runc",
+    "category": "github",
+    "description": "CLI tool for spawning and running containers according to the OCI specification",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "youki",
+    "url": "https://github.com/youki-dev/youki",
+    "category": "github",
+    "description": "Container runtime written in Rust, implementing the OCI runtime specification",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "apko",
+    "url": "https://github.com/chainguard-dev/apko",
+    "category": "github",
+    "description": "Declarative OCI image builder from apk packages; reproducible by design",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "buildx",
+    "url": "https://github.com/docker/buildx",
+    "category": "github",
+    "description": "Official Docker CLI plugin for multi-platform builds backed by BuildKit",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "earthly",
+    "url": "https://github.com/earthly/earthly",
+    "category": "github",
+    "description": "Containerized build automation with Dockerfile-meets-Makefile syntax",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "ko",
+    "url": "https://github.com/ko-build/ko",
+    "category": "github",
+    "description": "Build and deploy Go applications as container images without a Dockerfile",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "nix2container",
+    "url": "https://github.com/nlewo/nix2container",
+    "category": "github",
+    "description": "Build OCI images with Nix without `docker load` round-trips",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "Chainguard Images",
+    "url": "https://github.com/chainguard-images/images",
+    "category": "github",
+    "description": "Minimal, signed, SBOM-attested container images built on Wolfi",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "melange",
+    "url": "https://github.com/chainguard-dev/melange",
+    "category": "github",
+    "description": "Build apk packages from declarative YAML for use with apko",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "Wolfi",
+    "url": "https://github.com/wolfi-dev/os",
+    "category": "github",
+    "description": "Undistro Linux designed for containers; glibc-based, signed, daily SBOMs",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "GCP Artifact Registry",
+    "url": "https://docs.cloud.google.com/artifact-registry/docs",
+    "category": "tool",
+    "description": ":yen: Fast, private Docker image storage on Google Cloud Platform",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "kontain.me",
+    "url": "https://github.com/imjasonh/kontain.me",
+    "category": "github",
+    "description": "On-demand container image registry that builds and serves images when they are pulled",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "crane",
+    "url": "https://github.com/google/go-containerregistry/tree/main/cmd/crane",
+    "category": "github",
+    "description": "Lightweight CLI to manipulate registry images, from `go-containerregistry`",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "go-containerregistry",
+    "url": "https://github.com/google/go-containerregistry",
+    "category": "github",
+    "description": "Go library and CLI tools (`crane`, `gcrane`, `registry`) for working with container registries",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "oras",
+    "url": "https://github.com/oras-project/oras",
+    "category": "github",
+    "description": "Push and pull arbitrary OCI artifacts to and from any OCI registry",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "regctl",
+    "url": "https://github.com/regclient/regclient",
+    "category": "github",
+    "description": "Daemonless registry client; copy, inspect, modify, and sign OCI images",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "Docker Scout",
+    "url": "https://github.com/docker/scout-cli",
+    "category": "github",
+    "description": "Official Docker CLI for SBOM generation, vulnerability analysis, and policy evaluation",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "cosign",
+    "url": "https://github.com/sigstore/cosign",
+    "category": "github",
+    "description": "Container signing, verification, and transparency log for OCI artifacts",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "in-toto",
+    "url": "https://github.com/in-toto/in-toto",
+    "category": "github",
+    "description": "Framework for supply chain attestations; underpins SLSA and cosign provenance",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "policy-controller",
+    "url": "https://github.com/sigstore/policy-controller",
+    "category": "github",
+    "description": "Kubernetes admission controller enforcing cosign signatures on container images",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "witness",
+    "url": "https://github.com/in-toto/witness",
+    "category": "github",
+    "description": "Generate and verify in-toto attestations across the build pipeline",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "Cloud Run Compose",
+    "url": "https://docs.cloud.google.com/run/docs/deploy-run-compose",
+    "category": "tool",
+    "description": ":yen: Deploy `docker-compose",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "docker-socket-proxy",
+    "url": "https://github.com/Tecnativa/docker-socket-proxy",
+    "category": "github",
+    "description": "HAProxy-based fine-grained filter for the Docker API socket; widely used to expose a restricted socket to reverse proxies and homelab stacks",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "CodeFresh",
+    "url": "https://octopus.com/codefresh",
+    "category": "tool",
+    "description": ":yen: End-to-end build, test, and share for Docker applications, with automated testing",
+    "source": "veggiemonk/awesome-docker"
+  },
+  {
+    "name": "cdebug",
+    "url": "https://github.com/iximiuz/cdebug",
+    "category": "github",
+    "description": "Swiss-army knife for debugging running containers via ephemeral sidecars; works with Docker, containerd, and Kubernetes",
+    "source": "veggiemonk/awesome-docker"
+  }
+]
