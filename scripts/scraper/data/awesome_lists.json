@@ -22775,8 +22775,8 @@
   },
   "steven2358/awesome-generative-ai": {
     "url": "https://raw.githubusercontent.com/steven2358/awesome-generative-ai/main/README.md",
-    "tools_count": 375,
-    "total_links": 382,
+    "tools_count": 377,
+    "total_links": 384,
     "tools": [
       {
         "name": "pull requests",
@@ -23916,7 +23916,14 @@
         "name": "#opensource",
         "url": "https://github.com/mnfst/manifest",
         "category": "github",
-        "description": "### Playgrounds"
+        "description": ""
+      },
+      {
+        "name": "ai-i18n",
+        "url": "https://github.com/i18n-actions/ai-i18n",
+        "category": "github",
+        "description": "A GitHub Action that uses LLMs (Claude, GPT, Ollama) to automatically translate i18n localization files",
+        "source": "steven2358/awesome-generative-ai"
       },
       {
         "name": "OpenAI Playground",
@@ -24136,7 +24143,7 @@
       },
       {
         "name": "#opensource",
-        "url": "https://github.com/clawdbot/clawdbot",
+        "url": "https://github.com/openclaw/openclaw",
         "category": "github",
         "description": ""
       },
@@ -24186,7 +24193,13 @@
         "name": "#opensource",
         "url": "https://github.com/NousResearch/hermes-agent",
         "category": "github",
-        "description": "### Custom assistants"
+        "description": ""
+      },
+      {
+        "name": "OpenAgents",
+        "url": "https://github.com/openagents-org/openagents",
+        "category": "github",
+        "description": "Open-source platform for building AI agent networks with multi-protocol support (WebSocket, gRPC, HTTP, MCP, A2A)"
       },
       {
         "name": "Poe",
@@ -25811,6 +25824,10 @@
         "url": "https://github.com/mnfst/manifest"
       },
       {
+        "text": "ai-i18n",
+        "url": "https://github.com/i18n-actions/ai-i18n"
+      },
+      {
         "text": "OpenAI Playground",
         "url": "https://platform.openai.com/playground"
       },
@@ -25956,7 +25973,7 @@
       },
       {
         "text": "#opensource",
-        "url": "https://github.com/clawdbot/clawdbot"
+        "url": "https://github.com/openclaw/openclaw"
       },
       {
         "text": "moltbook",
@@ -25989,6 +26006,10 @@
       {
         "text": "#opensource",
         "url": "https://github.com/NousResearch/hermes-agent"
+      },
+      {
+        "text": "OpenAgents",
+        "url": "https://github.com/openagents-org/openagents"
       },
       {
         "text": "Poe",
@@ -26562,8 +26583,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1281,
-    "total_links": 1298,
+    "tools_count": 1282,
+    "total_links": 1299,
     "tools": [
       {
         "name": "Pull Requests",
@@ -26587,15 +26608,13 @@
         "name": "Kaggle",
         "url": "https://www.kaggle.com/",
         "category": "tool",
-        "description": "Jupyter Notebooks with 4 CPU cores and 30 GB RAM computational environment without any weekly usage limits",
-        "source": "ripienaar/free-for-dev"
+        "description": "Jupyter Notebooks with 4 CPU cores and 30 GB RAM computational environment without any weekly usage limits"
       },
       {
         "name": "Technical Specifications",
         "url": "https://www.kaggle.com/docs/notebooks#technical-specifications",
         "category": "tool",
-        "description": "for more details",
-        "source": "ripienaar/free-for-dev"
+        "description": "for more details"
       },
       {
         "name": "Amazon Web Services",
@@ -27976,6 +27995,13 @@
         "url": "https://zipcodebase.com",
         "category": "tool",
         "description": "Free Zip Code API, access to Worldwide Postal Code Data"
+      },
+      {
+        "name": "Zip-Codes",
+        "url": "https://www.zip-codes.com/api/",
+        "category": "tool",
+        "description": "REST API for US and Canadian postal codes with address validation, radius search, and Census demographics",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Zipcodestack",
@@ -35218,6 +35244,10 @@
       {
         "text": "Zipcodebase",
         "url": "https://zipcodebase.com"
+      },
+      {
+        "text": "Zip-Codes",
+        "url": "https://www.zip-codes.com/api/"
       },
       {
         "text": "Zipcodestack",
@@ -75094,8 +75124,8 @@
   },
   "veggiemonk/awesome-docker": {
     "url": "https://raw.githubusercontent.com/veggiemonk/awesome-docker/master/README.md",
-    "tools_count": 392,
-    "total_links": 396,
+    "tools_count": 390,
+    "total_links": 394,
     "tools": [
       {
         "name": "![Last Commit",
@@ -75107,8 +75137,7 @@
         "name": "CONTRIBUTING.md",
         "url": "https://github.com/veggiemonk/awesome-docker/blob/master/.github/CONTRIBUTING.md",
         "category": "github",
-        "description": "first",
-        "source": "veggiemonk/awesome-docker"
+        "description": "first"
       },
       {
         "name": "What is Docker",
@@ -75138,15 +75167,13 @@
         "name": "colima",
         "url": "https://github.com/abiosoft/colima",
         "category": "github",
-        "description": "Container runtimes on macOS (and Linux) with minimal setup",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Container runtimes on macOS (and Linux) with minimal setup"
       },
       {
         "name": "containerd",
         "url": "https://github.com/containerd/containerd",
         "category": "github",
-        "description": "An open and reliable container runtime",
-        "source": "veggiemonk/awesome-docker"
+        "description": "An open and reliable container runtime"
       },
       {
         "name": "cri-o",
@@ -75158,8 +75185,7 @@
         "name": "gVisor",
         "url": "https://github.com/google/gvisor",
         "category": "github",
-        "description": "Application Kernel for Containers",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Application Kernel for Containers"
       },
       {
         "name": "lxc",
@@ -75183,8 +75209,7 @@
         "name": "runc",
         "url": "https://github.com/opencontainers/runc",
         "category": "github",
-        "description": "CLI tool for spawning and running containers according to the OCI specification",
-        "source": "veggiemonk/awesome-docker"
+        "description": "CLI tool for spawning and running containers according to the OCI specification"
       },
       {
         "name": "runtime-tools",
@@ -75196,8 +75221,7 @@
         "name": "youki",
         "url": "https://github.com/youki-dev/youki",
         "category": "github",
-        "description": "Container runtime written in Rust, implementing the OCI runtime specification",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Container runtime written in Rust, implementing the OCI runtime specification"
       },
       {
         "name": "ansible-bender",
@@ -75209,8 +75233,7 @@
         "name": "apko",
         "url": "https://github.com/chainguard-dev/apko",
         "category": "github",
-        "description": "Declarative OCI image builder from apk packages; reproducible by design",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Declarative OCI image builder from apk packages; reproducible by design"
       },
       {
         "name": "buildah",
@@ -75228,8 +75251,7 @@
         "name": "buildx",
         "url": "https://github.com/docker/buildx",
         "category": "github",
-        "description": "Official Docker CLI plugin for multi-platform builds backed by BuildKit",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Official Docker CLI plugin for multi-platform builds backed by BuildKit"
       },
       {
         "name": "cekit",
@@ -75265,8 +75287,7 @@
         "name": "earthly",
         "url": "https://github.com/earthly/earthly",
         "category": "github",
-        "description": "Containerized build automation with Dockerfile-meets-Makefile syntax",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Containerized build automation with Dockerfile-meets-Makefile syntax"
       },
       {
         "name": "essex",
@@ -75290,15 +75311,13 @@
         "name": "ko",
         "url": "https://github.com/ko-build/ko",
         "category": "github",
-        "description": "Build and deploy Go applications as container images without a Dockerfile",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Build and deploy Go applications as container images without a Dockerfile"
       },
       {
         "name": "nix2container",
         "url": "https://github.com/nlewo/nix2container",
         "category": "github",
-        "description": "Build OCI images with Nix without `docker load` round-trips",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Build OCI images with Nix without `docker load` round-trips"
       },
       {
         "name": "packer",
@@ -75334,8 +75353,7 @@
         "name": "Chainguard Images",
         "url": "https://github.com/chainguard-images/images",
         "category": "github",
-        "description": "Minimal, signed, SBOM-attested container images built on Wolfi",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Minimal, signed, SBOM-attested container images built on Wolfi"
       },
       {
         "name": "distroless",
@@ -75347,15 +75365,13 @@
         "name": "melange",
         "url": "https://github.com/chainguard-dev/melange",
         "category": "github",
-        "description": "Build apk packages from declarative YAML for use with apko",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Build apk packages from declarative YAML for use with apko"
       },
       {
         "name": "Wolfi",
         "url": "https://github.com/wolfi-dev/os",
         "category": "github",
-        "description": "Undistro Linux designed for containers; glibc-based, signed, daily SBOMs",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Undistro Linux designed for containers; glibc-based, signed, daily SBOMs"
       },
       {
         "name": "Dockerfile Generator",
@@ -75445,8 +75461,7 @@
         "name": "GCP Artifact Registry",
         "url": "https://docs.cloud.google.com/artifact-registry/docs",
         "category": "tool",
-        "description": ":yen: Fast, private Docker image storage on Google Cloud Platform",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":yen: Fast, private Docker image storage on Google Cloud Platform"
       },
       {
         "name": "Gitea Container Registry",
@@ -75482,8 +75497,7 @@
         "name": "kontain.me",
         "url": "https://github.com/imjasonh/kontain.me",
         "category": "github",
-        "description": "On-demand container image registry that builds and serves images when they are pulled",
-        "source": "veggiemonk/awesome-docker"
+        "description": "On-demand container image registry that builds and serves images when they are pulled"
       },
       {
         "name": "Kraken",
@@ -75531,29 +75545,25 @@
         "name": "crane",
         "url": "https://github.com/google/go-containerregistry/tree/main/cmd/crane",
         "category": "github",
-        "description": "Lightweight CLI to manipulate registry images, from `go-containerregistry`",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Lightweight CLI to manipulate registry images, from `go-containerregistry`"
       },
       {
         "name": "go-containerregistry",
         "url": "https://github.com/google/go-containerregistry",
         "category": "github",
-        "description": "Go library and CLI tools (`crane`, `gcrane`, `registry`) for working with container registries",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Go library and CLI tools (`crane`, `gcrane`, `registry`) for working with container registries"
       },
       {
         "name": "oras",
         "url": "https://github.com/oras-project/oras",
         "category": "github",
-        "description": "Push and pull arbitrary OCI artifacts to and from any OCI registry",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Push and pull arbitrary OCI artifacts to and from any OCI registry"
       },
       {
         "name": "regctl",
         "url": "https://github.com/regclient/regclient",
         "category": "github",
-        "description": "Daemonless registry client; copy, inspect, modify, and sign OCI images",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Daemonless registry client; copy, inspect, modify, and sign OCI images"
       },
       {
         "name": "skopeo",
@@ -75583,8 +75593,7 @@
         "name": "Docker Scout",
         "url": "https://github.com/docker/scout-cli",
         "category": "github",
-        "description": "Official Docker CLI for SBOM generation, vulnerability analysis, and policy evaluation",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Official Docker CLI for SBOM generation, vulnerability analysis, and policy evaluation"
       },
       {
         "name": "Grype",
@@ -75620,29 +75629,25 @@
         "name": "cosign",
         "url": "https://github.com/sigstore/cosign",
         "category": "github",
-        "description": "Container signing, verification, and transparency log for OCI artifacts",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Container signing, verification, and transparency log for OCI artifacts"
       },
       {
         "name": "in-toto",
         "url": "https://github.com/in-toto/in-toto",
         "category": "github",
-        "description": "Framework for supply chain attestations; underpins SLSA and cosign provenance",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Framework for supply chain attestations; underpins SLSA and cosign provenance"
       },
       {
         "name": "policy-controller",
         "url": "https://github.com/sigstore/policy-controller",
         "category": "github",
-        "description": "Kubernetes admission controller enforcing cosign signatures on container images",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Kubernetes admission controller enforcing cosign signatures on container images"
       },
       {
         "name": "witness",
         "url": "https://github.com/in-toto/witness",
         "category": "github",
-        "description": "Generate and verify in-toto attestations across the build pipeline",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Generate and verify in-toto attestations across the build pipeline"
       },
       {
         "name": "Composerize",
@@ -75679,12 +75684,6 @@
         "url": "https://github.com/roquie/smalte",
         "category": "github",
         "description": "Dynamically configure applications that require static configuration in docker container"
-      },
-      {
-        "name": "Stitchocker",
-        "url": "https://github.com/alexaandrov/stitchocker",
-        "category": "github",
-        "description": "A lightweight and fast command line utility for conveniently grouping your docker-compose multiple container services"
       },
       {
         "name": "CloudSlang",
@@ -75780,8 +75779,7 @@
         "name": "Cloud Run Compose",
         "url": "https://docs.cloud.google.com/run/docs/deploy-run-compose",
         "category": "tool",
-        "description": ":yen: Deploy `docker-compose",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":yen: Deploy `docker-compose"
       },
       {
         "name": "Convox Rack",
@@ -75886,12 +75884,6 @@
         "description": "Least recently used (LRU) eviction of Docker images"
       },
       {
-        "name": "docker-consul",
-        "url": "https://github.com/gliderlabs/docker-consul",
-        "category": "github",
-        "description": "Consul packaged for Docker \u2014 registers and discovers running containers"
-      },
-      {
         "name": "docker-dns",
         "url": "https://github.com/bytesharky/docker-dns",
         "category": "github",
@@ -75988,12 +75980,6 @@
         "description": "Automated reverse proxy and load-balancer for Docker, Mesos, Consul, Etcd"
       },
       {
-        "name": "Blockbridge",
-        "url": "https://github.com/blockbridge/blockbridge-docker-volume",
-        "category": "github",
-        "description": ":yen: The Blockbridge plugin is a volume plugin that provides access to an extensible set of container-based persistent storage options"
-      },
-      {
         "name": "Label Backup",
         "url": "https://github.com/resulgg/label-backup",
         "category": "github",
@@ -76072,6 +76058,13 @@
         "description": "DLIA is an AI-powered Docker log monitoring agent that uses Large Language Models (LLMs) to intelligently analyze container logs, detect anomalies, and provide contextual insights over time"
       },
       {
+        "name": "docker-exporter",
+        "url": "https://github.com/dlepaux/docker-exporter",
+        "category": "github",
+        "description": "Lightweight Prometheus exporter for Docker container metrics written in Rust",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
         "name": "Docker-Sentinel",
         "url": "https://github.com/Will-Luck/Docker-Sentinel",
         "category": "github",
@@ -76132,6 +76125,12 @@
         "description": "Self-discovering infrastructure monitoring for Docker and Kubernetes"
       },
       {
+        "name": "Middleware",
+        "url": "https://middleware.io/",
+        "category": "tool",
+        "description": ":yen: Monitor Docker hosts, containers, logs, and application performance from a unified observability platform"
+      },
+      {
         "name": "Site24x7",
         "url": "https://www.site24x7.com/docker-monitoring.html",
         "category": "tool",
@@ -76174,6 +76173,13 @@
         "description": "Static analysis for infrastructure as code manifests (Terraform, Kubernetes, Cloudformation, Helm, Dockerfile, Kustomize) find security misconfiguration and fix them"
       },
       {
+        "name": "container-explorer",
+        "url": "https://github.com/google/container-explorer",
+        "category": "github",
+        "description": "Forensic utility to explore Docker and containerd container details from mounted disk images",
+        "source": "veggiemonk/awesome-docker"
+      },
+      {
         "name": "Deepfence Threat Mapper",
         "url": "https://github.com/deepfence/ThreatMapper",
         "category": "github",
@@ -76192,17 +76198,10 @@
         "description": "Script that checks for dozens of common best-practices around deploying Docker containers in production"
       },
       {
-        "name": "docker-explorer",
-        "url": "https://github.com/google/docker-explorer",
-        "category": "github",
-        "description": "A tool to help forensicate offline docker acquisitions"
-      },
-      {
         "name": "docker-socket-proxy",
         "url": "https://github.com/Tecnativa/docker-socket-proxy",
         "category": "github",
-        "description": "HAProxy-based fine-grained filter for the Docker API socket; widely used to expose a restricted socket to reverse proxies and homelab stacks",
-        "source": "veggiemonk/awesome-docker"
+        "description": "HAProxy-based fine-grained filter for the Docker API socket; widely used to expose a restricted socket to reverse proxies and homelab stacks"
       },
       {
         "name": "KICS",
@@ -76299,12 +76298,6 @@
         "url": "https://github.com/wagoodman/dive",
         "category": "github",
         "description": "A tool for exploring each layer in a docker image"
-      },
-      {
-        "name": "dockdash",
-        "url": "https://github.com/byrnedo/dockdash",
-        "category": "github",
-        "description": "Detailed Docker container stats"
       },
       {
         "name": "docker pushrm",
@@ -76604,8 +76597,7 @@
         "name": "CodeFresh",
         "url": "https://octopus.com/codefresh",
         "category": "tool",
-        "description": ":yen: End-to-end build, test, and share for Docker applications, with automated testing",
-        "source": "veggiemonk/awesome-docker"
+        "description": ":yen: End-to-end build, test, and share for Docker applications, with automated testing"
       },
       {
         "name": "ConcourseCI",
@@ -76851,8 +76843,7 @@
         "name": "cdebug",
         "url": "https://github.com/iximiuz/cdebug",
         "category": "github",
-        "description": "Swiss-army knife for debugging running containers via ephemeral sidecars; works with Docker, containerd, and Kubernetes",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Swiss-army knife for debugging running containers via ephemeral sidecars; works with Docker, containerd, and Kubernetes"
       },
       {
         "name": "ckron",
@@ -77853,10 +77844,6 @@
         "url": "https://github.com/roquie/smalte"
       },
       {
-        "text": "Stitchocker",
-        "url": "https://github.com/alexaandrov/stitchocker"
-      },
-      {
         "text": "CloudSlang",
         "url": "https://github.com/CloudSlang/cloud-slang"
       },
@@ -77989,10 +77976,6 @@
         "url": "https://github.com/stepchowfun/docuum"
       },
       {
-        "text": "docker-consul",
-        "url": "https://github.com/gliderlabs/docker-consul"
-      },
-      {
         "text": "docker-dns",
         "url": "https://github.com/bytesharky/docker-dns"
       },
@@ -78057,10 +78040,6 @@
         "url": "https://github.com/containous/traefik"
       },
       {
-        "text": "Blockbridge",
-        "url": "https://github.com/blockbridge/blockbridge-docker-volume"
-      },
-      {
         "text": "Label Backup",
         "url": "https://github.com/resulgg/label-backup"
       },
@@ -78113,6 +78092,10 @@
         "url": "https://github.com/zorak1103/dlia"
       },
       {
+        "text": "docker-exporter",
+        "url": "https://github.com/dlepaux/docker-exporter"
+      },
+      {
         "text": "Docker-Sentinel",
         "url": "https://github.com/Will-Luck/Docker-Sentinel"
       },
@@ -78153,6 +78136,10 @@
         "url": "https://github.com/kolapsis/maintenant"
       },
       {
+        "text": "Middleware",
+        "url": "https://middleware.io/"
+      },
+      {
         "text": "Site24x7",
         "url": "https://www.site24x7.com/docker-monitoring.html"
       },
@@ -78181,6 +78168,10 @@
         "url": "https://github.com/bridgecrewio/checkov"
       },
       {
+        "text": "container-explorer",
+        "url": "https://github.com/google/container-explorer"
+      },
+      {
         "text": "Deepfence Threat Mapper",
         "url": "https://github.com/deepfence/ThreatMapper"
       },
@@ -78191,10 +78182,6 @@
       {
         "text": "docker-bench-security",
         "url": "https://github.com/docker/docker-bench-security"
-      },
-      {
-        "text": "docker-explorer",
-        "url": "https://github.com/google/docker-explorer"
       },
       {
         "text": "docker-socket-proxy",
@@ -78263,10 +78250,6 @@
       {
         "text": "dive",
         "url": "https://github.com/wagoodman/dive"
-      },
-      {
-        "text": "dockdash",
-        "url": "https://github.com/byrnedo/dockdash"
       },
       {
         "text": "docker pushrm",

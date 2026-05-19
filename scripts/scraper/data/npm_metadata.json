@@ -58,7 +58,7 @@
   "svelte": {
     "name": "svelte",
     "description": "Cybernetically enhanced web apps",
-    "latest_version": "5.55.7",
+    "latest_version": "5.55.8",
     "homepage": "https://svelte.dev",
     "repository": "git+https://github.com/sveltejs/svelte.git",
     "license": "MIT",
@@ -77,8 +77,8 @@
     ],
     "time": {
       "created": "2016-11-17T22:58:41.644Z",
-      "modified": "2026-05-14T19:07:34.832Z",
-      "latest_published": "2026-05-14T19:07:34.514Z"
+      "modified": "2026-05-18T16:45:30.154Z",
+      "latest_published": "2026-05-18T16:45:29.883Z"
     },
     "dependencies_count": 16,
     "dev_dependencies_count": 15,
@@ -169,13 +169,14 @@
     ],
     "author": null,
     "maintainers": [
+      "matheuss",
       "matt.straka",
       "vercel-release-bot",
       "zeit-bot"
     ],
     "time": {
       "created": "2011-07-11T11:00:45.416Z",
-      "modified": "2026-05-17T23:57:21.830Z",
+      "modified": "2026-05-19T00:01:34.444Z",
       "latest_published": "2026-05-07T19:01:54.751Z"
     },
     "dependencies_count": 6,
@@ -188,7 +189,7 @@
   "nuxt": {
     "name": "nuxt",
     "description": "Nuxt is a free and open-source framework with an intuitive and extendable way to create type-safe, performant and production-grade full-stack web applications and websites with Vue.js.",
-    "latest_version": "4.4.5",
+    "latest_version": "4.4.6",
     "homepage": "https://nuxt.com",
     "repository": "git+https://github.com/nuxt/nuxt.git",
     "license": "MIT",
@@ -199,8 +200,8 @@
     ],
     "time": {
       "created": "2016-10-26T11:41:36.169Z",
-      "modified": "2026-05-10T23:50:51.955Z",
-      "latest_published": "2026-05-10T23:50:51.441Z"
+      "modified": "2026-05-18T09:33:15.642Z",
+      "latest_published": "2026-05-18T09:33:15.329Z"
     },
     "dependencies_count": 55,
     "dev_dependencies_count": 12,
@@ -244,7 +245,7 @@
   "astro": {
     "name": "astro",
     "description": "Astro is a modern site builder with web best practices, performance, and DX front-of-mind.",
-    "latest_version": "6.3.3",
+    "latest_version": "6.3.5",
     "homepage": "https://astro.build",
     "repository": "git+https://github.com/withastro/astro.git",
     "license": "MIT",
@@ -256,8 +257,8 @@
     ],
     "time": {
       "created": "2021-03-13T14:19:42.582Z",
-      "modified": "2026-05-14T14:02:21.644Z",
-      "latest_published": "2026-05-14T14:02:21.371Z"
+      "modified": "2026-05-18T17:59:01.266Z",
+      "latest_published": "2026-05-18T17:59:00.946Z"
     },
     "dependencies_count": 55,
     "dev_dependencies_count": 32,
@@ -440,7 +441,7 @@
     ],
     "time": {
       "created": "2020-09-24T05:44:34.469Z",
-      "modified": "2026-05-18T06:35:57.467Z",
+      "modified": "2026-05-19T06:33:58.260Z",
       "latest_published": "2026-05-11T19:09:45.394Z"
     },
     "dependencies_count": 1,
@@ -519,7 +520,7 @@
   "posthog-js": {
     "name": "posthog-js",
     "description": "Posthog-js allows you to automatically capture usage and send events to PostHog.",
-    "latest_version": "1.373.5",
+    "latest_version": "1.374.2",
     "homepage": "https://posthog.com/docs/libraries/js",
     "repository": "git+https://github.com/PostHog/posthog-js.git",
     "license": "SEE LICENSE IN LICENSE",
@@ -550,8 +551,8 @@
     ],
     "time": {
       "created": "2020-02-20T02:44:55.768Z",
-      "modified": "2026-05-15T14:41:51.029Z",
-      "latest_published": "2026-05-15T14:41:50.639Z"
+      "modified": "2026-05-18T18:55:34.186Z",
+      "latest_published": "2026-05-18T18:55:32.677Z"
     },
     "dependencies_count": 13,
     "dev_dependencies_count": 65,
@@ -673,18 +674,16 @@
   "@supabase/supabase-js": {
     "name": "@supabase/supabase-js",
     "description": "Isomorphic Javascript SDK for Supabase",
-    "latest_version": "2.105.4",
+    "latest_version": "2.106.0",
     "homepage": "https://github.com/supabase/supabase-js/tree/master/packages/core/supabase-js",
-    "repository": "git+https://github.com/supabase/supabase-js.git",
+    "repository": "https://github.com/supabase/supabase-js.git",
     "license": "MIT",
     "keywords": [
       "javascript",
       "typescript",
       "supabase"
     ],
-    "author": {
-      "name": "Supabase"
-    },
+    "author": "Supabase",
     "maintainers": [
       "etienne_supa",
       "kiwicopple",
@@ -704,11 +703,11 @@
     ],
     "time": {
       "created": "2020-01-17T04:37:38.575Z",
-      "modified": "2026-05-15T12:05:40.137Z",
-      "latest_published": "2026-05-08T14:21:03.866Z"
+      "modified": "2026-05-18T13:27:10.787Z",
+      "latest_published": "2026-05-18T13:27:10.287Z"
     },
     "dependencies_count": 5,
-    "dev_dependencies_count": 2,
+    "dev_dependencies_count": 3,
     "downloads": {
       "weekly_downloads": null,
       "monthly_downloads": null
@@ -717,7 +716,7 @@
   "@clerk/nextjs": {
     "name": "@clerk/nextjs",
     "description": "Clerk SDK for NextJS",
-    "latest_version": "7.3.5",
+    "latest_version": "7.3.7",
     "homepage": "https://clerk.com/",
     "repository": "git+https://github.com/clerk/javascript.git",
     "license": "MIT",
@@ -746,8 +745,8 @@
     ],
     "time": {
       "created": "2021-08-18T13:56:21.330Z",
-      "modified": "2026-05-16T13:50:06.350Z",
-      "latest_published": "2026-05-15T23:57:04.569Z"
+      "modified": "2026-05-18T21:20:28.784Z",
+      "latest_published": "2026-05-18T19:27:45.085Z"
     },
     "dependencies_count": 5,
     "dev_dependencies_count": 2,
