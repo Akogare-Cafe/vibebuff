@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 68
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,50 +240,35 @@ Total tools: 68
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (9 tools)
+## TLDR (6 tools)
 
-### Scion (GitHub Repo)
-- **URL**: https://github.com/GoogleCloudPlatform/scion?utm_source=tldrnewsletter
-- **Date**: 2026-04-08
-- **Description**: Scion (GitHub Repo)Scion is a multi-agent orchestrator designed to manage deep agents in isolated containers so they can work on different parts of projects without stepping on each other.
+### Agent Sandbox (GitHub Repo)
+- **URL**: https://github.com/kubernetes-sigs/agent-sandbox?utm_source=tldrnewsletter
+- **Date**: 2026-05-26
+- **Description**: Agent Sandbox (GitHub Repo)Agent Sandbox enables the easy management of isolated, stateful, singleton workloads. It is ideal for use cases like AI agent runtimes. The core Sandbox API allows users to manage a single, stateful pod with a stable identity and persistent storage. Agent Sandbox supports extensions that build on the core Sandbox API to provide more advanced features.
 
-### EmDash (GitHub Repo)
-- **URL**: https://github.com/emdash-cms/emdash?utm_source=tldrnewsletter
-- **Date**: 2026-04-02
-- **Description**: EmDash (GitHub Repo)EmDash is a full-stack TypeScript CMS that takes the ideas that made WordPress dominant and rebuilds them on serverless, type-safe foundations.
+### Zero (GitHub Repo)
+- **URL**: https://github.com/vercel-labs/zero?utm_source=tldrnewsletter
+- **Date**: 2026-05-18
+- **Description**: Zero (GitHub Repo)Zero is a systems programming language for agents that provides small native tools, explicit effects, predictable memory, and structured compiler output. The language is still experimental and not stable yet, but it is in a stage where users can try it out and provide feedback. Practical examples are available for users to learn the language with.
 
-### Check out the open source Skills library [Github]
-- **URL**: https://github.com/MiniMax-AI/skills?utm_source=tldr&utm_medium=newsletter&utm_campaign=primary_2026_04_01
-- **Date**: 2026-04-01
-- **Description**: MiniMax is also open-sourcing their Office Skills library(MIT): 4 production-grade Skills for Word, Excel, PDF & PPT that generate actually deliverable files. Works with Claude Code, Cursor, Codex & OpenCode. → Check out the open source Skills library [Github]
+### fate (GitHub Repo)
+- **URL**: https://github.com/nkzw-tech/fate?utm_source=tldrnewsletter
+- **Date**: 2026-05-15
+- **Description**: fate (GitHub Repo)fate is a data client for React that combines view composition, normalized caching, data masking, Async React features, and type-safe data fetching. It is designed to make data fetching and state management in React applications more composable, declarative, and predictable. The framework is just JavaScript and has a minimal API and no DSL. fate helps developers avoid overfetching, stop passing unnecessary data down the tree, and eliminate boilerplate types secreted solely for 
 
-### Inside the Claude Code source (9 minute read)
-- **URL**: https://gist.github.com/Haseeb-Qureshi/d0dc36844c19d26303ce09b42e7188c1?utm_source=tldrnewsletter
-- **Date**: 2026-04-01
-- **Description**: Inside the Claude Code source (9 minute read)Claude Code CLI's source code was recently leaked on GitHub. This post breaks down how the system works, where Anthropic made clever engineering choices, and where Anthropic's approach diverges from OpenAI's Codex. Claude Code is about 500,000 lines of TypeScript, with the actual API call comprising maybe 200 of them. Everything else in the harness.
+### Can Claude find a critical decision buried in 100,000 Slack messages? (Sponsor)
+- **URL**: https://github.com/onyx-dot-app/EnterpriseRAG-Bench?utm_source=tldrnewsletter
+- **Date**: 2026-05-08
+- **Description**: Can Claude find a critical decision buried in 100,000 Slack messages? (Sponsor)RAG benchmarks use Wikipedia, research papers, and news articles. Your company's knowledge is scattered across your KB, Slack channels, and docs. That's why this realistic enterprise RAG benchmark tests 12 AI tools against 500 questions and 500k docs across 9 company sources. Onyx is the only system that beats OpenClaw. Check out the benchmark on GitHub
 
-### Codex plugin for Claude Code (GitHub Repo)
-- **URL**: https://github.com/openai/codex-plugin-cc?utm_source=tldrnewsletter
-- **Date**: 2026-03-31
-- **Description**: Codex plugin for Claude Code (GitHub Repo)This plugin enables Claude Code users to start using Codex from the workflow they already have. Users can use Codex from inside Claude Code for code reviews or delegate tasks to Codex. The plugin uses the local Codex CLI, so existing sign-in methods and configs still apply. It also uses the same repository checkout and machine-local environment.
+### enterprise RAG benchmark
+- **URL**: https://github.com/onyx-dot-app/EnterpriseRAG-Bench
+- **Date**: 2026-05-08
+- **Description**: RAG benchmarks use Wikipedia, research papers, and news articles. Your company's knowledge is scattered across your KB, Slack channels, and docs. That's why this realistic enterprise RAG benchmark tests 12 AI tools against 500 questions and 500k docs across 9 company sources. Onyx is the only system that beats OpenClaw. Check out the benchmark on GitHub
 
-### pgmicro (GitHub Repo)
-- **URL**: https://github.com/glommer/pgmicro?utm_source=tldrnewsletter
-- **Date**: 2026-03-30
-- **Description**: pgmicro (GitHub Repo)pgmicro is an in-process reimplementation of PostgreSQL that is backed by a SQLite-compatible storage engine.
-
-### Gridland (GitHub Repo)
-- **URL**: https://github.com/thoughtfulllc/gridland?utm_source=tldrnewsletter
-- **Date**: 2026-03-25
-- **Description**: Gridland (GitHub Repo)Gridland enables developers to build terminal apps that run in the browser.
-
-### Crust (GitHub Repo)
-- **URL**: https://github.com/chenxin-yan/crust?utm_source=tldrnewsletter
-- **Date**: 2026-03-18
-- **Description**: Crust (GitHub Repo)Crust is a TypeScript-first, Bun-native CLI framework with composable modules.
-
-### OpenReview (GitHub Repo)
-- **URL**: https://github.com/vercel-labs/openreview?utm_source=tldrnewsletter
-- **Date**: 2026-03-18
-- **Description**: OpenReview (GitHub Repo)OpenReview is a self-hosted AI code review bot that provides on-demand PR reviews powered by Claude.
+### Open Design (GitHub Repo)
+- **URL**: https://github.com/nexu-io/open-design?utm_source=tldrnewsletter
+- **Date**: 2026-05-04
+- **Description**: Open Design (GitHub Repo)Open Design is an open-source alternative to Claude Design. It uses the same loop and artifact-first mental model with none of the lock-in. Open Design is local-first, web deployable, and supports several coding agents. It behaves like a senior designer with a working filesystem, a deterministic palette library, and a checklist culture.
 
