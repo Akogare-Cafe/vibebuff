@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (5 tools)
 
 ### Agent Sandbox (GitHub Repo)
 - **URL**: https://github.com/kubernetes-sigs/agent-sandbox?utm_source=tldrnewsletter
@@ -266,9 +266,4 @@ Total tools: 65
 - **URL**: https://github.com/onyx-dot-app/EnterpriseRAG-Bench
 - **Date**: 2026-05-08
 - **Description**: RAG benchmarks use Wikipedia, research papers, and news articles. Your company's knowledge is scattered across your KB, Slack channels, and docs. That's why this realistic enterprise RAG benchmark tests 12 AI tools against 500 questions and 500k docs across 9 company sources. Onyx is the only system that beats OpenClaw. Check out the benchmark on GitHub
-
-### Open Design (GitHub Repo)
-- **URL**: https://github.com/nexu-io/open-design?utm_source=tldrnewsletter
-- **Date**: 2026-05-04
-- **Description**: Open Design (GitHub Repo)Open Design is an open-source alternative to Claude Design. It uses the same loop and artifact-first mental model with none of the lock-in. Open Design is local-first, web deployable, and supports several coding agents. It behaves like a senior designer with a working filesystem, a deterministic palette library, and a checklist culture.
 
