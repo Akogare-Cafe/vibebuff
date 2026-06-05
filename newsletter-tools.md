@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### sandboxed (GitHub Repo)
+- **URL**: https://github.com/tastyeffectco/sandboxes?utm_source=tldrnewsletter
+- **Date**: 2026-06-04
+- **Description**: sandboxed (GitHub Repo)sandboxed is an open source engine for AI app-builder products. It creates sandboxes, runs AI coding agents inside them, then provides a URL to access the dev server running inside the sandbox. sandboxed provides the infrastructure for AI app-builders, agent platforms, coding playgrounds, and product previews. It is best used for running many sandboxes for multiple people.
 
 ### Agent Sandbox (GitHub Repo)
 - **URL**: https://github.com/kubernetes-sigs/agent-sandbox?utm_source=tldrnewsletter
