@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (5 tools)
+
+### Open Code Review (GitHub Repo)
+- **URL**: https://github.com/alibaba/open-code-review?utm_source=tldrnewsletter
+- **Date**: 2026-06-05
+- **Description**: Open Code Review (GitHub Repo)Open Code Review is an AI-powered code review CLI tool that reads git gives, sends challenged files to a configurable LLM via an agent with tool-use capabilities, and generates structured review comments with line-level precision. It can read full file contents, search code bases, inspect other files for context, and produce deep reviews. Open Code Review's core philosophy is to combine deterministic engineering with an agent, letting each handle what it does best.
 
 ### sandboxed (GitHub Repo)
 - **URL**: https://github.com/tastyeffectco/sandboxes?utm_source=tldrnewsletter
@@ -261,14 +266,4 @@ Total tools: 65
 - **URL**: https://github.com/nkzw-tech/fate?utm_source=tldrnewsletter
 - **Date**: 2026-05-15
 - **Description**: fate (GitHub Repo)fate is a data client for React that combines view composition, normalized caching, data masking, Async React features, and type-safe data fetching. It is designed to make data fetching and state management in React applications more composable, declarative, and predictable. The framework is just JavaScript and has a minimal API and no DSL. fate helps developers avoid overfetching, stop passing unnecessary data down the tree, and eliminate boilerplate types secreted solely for 
-
-### Can Claude find a critical decision buried in 100,000 Slack messages? (Sponsor)
-- **URL**: https://github.com/onyx-dot-app/EnterpriseRAG-Bench?utm_source=tldrnewsletter
-- **Date**: 2026-05-08
-- **Description**: Can Claude find a critical decision buried in 100,000 Slack messages? (Sponsor)RAG benchmarks use Wikipedia, research papers, and news articles. Your company's knowledge is scattered across your KB, Slack channels, and docs. That's why this realistic enterprise RAG benchmark tests 12 AI tools against 500 questions and 500k docs across 9 company sources. Onyx is the only system that beats OpenClaw. Check out the benchmark on GitHub
-
-### enterprise RAG benchmark
-- **URL**: https://github.com/onyx-dot-app/EnterpriseRAG-Bench
-- **Date**: 2026-05-08
-- **Description**: RAG benchmarks use Wikipedia, research papers, and news articles. Your company's knowledge is scattered across your KB, Slack channels, and docs. That's why this realistic enterprise RAG benchmark tests 12 AI tools against 500 questions and 500k docs across 9 company sources. Onyx is the only system that beats OpenClaw. Check out the benchmark on GitHub
 
