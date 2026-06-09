@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 66
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,17 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (7 tools)
+
+### sem (GitHub Repo)
+- **URL**: https://github.com/Ataraxy-Labs/sem?utm_source=tldrnewsletter
+- **Date**: 2026-06-08
+- **Description**: sem (GitHub Repo)sem is a semantic version control tool that works on top of Git that tells users what entities changed (functions, methods, and classes) instead of just what lines changed.
+
+### pg_durable (GitHub Repo)
+- **URL**: https://github.com/microsoft/pg_durable?utm_source=tldrnewsletter
+- **Date**: 2026-06-08
+- **Description**: pg_durable (GitHub Repo)pg_durable allows developers to orchestrate retries, scheduling, parallel fan-out, and conditional branching with a tiny SQL DSL, without containers or external services, only Postgres.
 
 ### Open Code Review (GitHub Repo)
 - **URL**: https://github.com/alibaba/open-code-review?utm_source=tldrnewsletter
