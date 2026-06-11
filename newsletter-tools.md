@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 66
+Total tools: 68
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,17 @@ Total tools: 66
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (7 tools)
+## TLDR (9 tools)
+
+### ktx (GitHub Repo)
+- **URL**: https://github.com/Kaelio/ktx?utm_source=tldrnewsletter
+- **Date**: 2026-06-10
+- **Description**: ktx (GitHub Repo)ktx is an executable context layer for data and analytics agents. It allows AI agents to query data accurately and with full context. ktx is self-improving and can teach agents how to query data warehouses accurately. It learns from company knowledge, maps the data stack, builds a semantic layer, and serves agents at execution. A video explaining the tool is available in the repository.
+
+### container (GitHub Repo)
+- **URL**: https://github.com/apple/container?utm_source=tldrnewsletter
+- **Date**: 2026-06-10
+- **Description**: container (GitHub Repo)container is a tool for creating and running lightweight virtual Linux containers on Mac. It consumes and produces OCI-compatible container images and can pull and run images from any standard container registry. The tool uses the Containerization Swift package for low-level container, image, and process management.
 
 ### sem (GitHub Repo)
 - **URL**: https://github.com/Ataraxy-Labs/sem?utm_source=tldrnewsletter
