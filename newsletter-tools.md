@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 68
+Total tools: 67
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 68
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (9 tools)
+## TLDR (8 tools)
 
 ### ktx (GitHub Repo)
 - **URL**: https://github.com/Kaelio/ktx?utm_source=tldrnewsletter
@@ -281,9 +281,4 @@ Total tools: 68
 - **URL**: https://github.com/vercel-labs/zero?utm_source=tldrnewsletter
 - **Date**: 2026-05-18
 - **Description**: Zero (GitHub Repo)Zero is a systems programming language for agents that provides small native tools, explicit effects, predictable memory, and structured compiler output. The language is still experimental and not stable yet, but it is in a stage where users can try it out and provide feedback. Practical examples are available for users to learn the language with.
-
-### fate (GitHub Repo)
-- **URL**: https://github.com/nkzw-tech/fate?utm_source=tldrnewsletter
-- **Date**: 2026-05-15
-- **Description**: fate (GitHub Repo)fate is a data client for React that combines view composition, normalized caching, data masking, Async React features, and type-safe data fetching. It is designed to make data fetching and state management in React applications more composable, declarative, and predictable. The framework is just JavaScript and has a minimal API and no DSL. fate helps developers avoid overfetching, stop passing unnecessary data down the tree, and eliminate boilerplate types secreted solely for 
 
