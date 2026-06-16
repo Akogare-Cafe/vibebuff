@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 67
+Total tools: 68
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,17 @@ Total tools: 67
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (8 tools)
+## TLDR (9 tools)
+
+### Ponytail (GitHub Repo)
+- **URL**: https://github.com/DietrichGebert/ponytail?utm_source=tldrnewsletter
+- **Date**: 2026-06-15
+- **Description**: Ponytail (GitHub Repo)Ponytail is an AI senior developer. It produces efficient code at low cost and at fast speeds. Ponytail works with every model. Examples and benchmark comparisons are available in the repository.
+
+### prop-for-that (GitHub Repo)
+- **URL**: https://github.com/argyleink/prop-for-that?utm_source=tldrnewsletter
+- **Date**: 2026-06-15
+- **Description**: prop-for-that (GitHub Repo)prop-for-that exposes what JavaScript knows, but CSS can't see as live CSS custom properties.
 
 ### ktx (GitHub Repo)
 - **URL**: https://github.com/Kaelio/ktx?utm_source=tldrnewsletter
@@ -276,9 +286,4 @@ Total tools: 67
 - **URL**: https://github.com/kubernetes-sigs/agent-sandbox?utm_source=tldrnewsletter
 - **Date**: 2026-05-26
 - **Description**: Agent Sandbox (GitHub Repo)Agent Sandbox enables the easy management of isolated, stateful, singleton workloads. It is ideal for use cases like AI agent runtimes. The core Sandbox API allows users to manage a single, stateful pod with a stable identity and persistent storage. Agent Sandbox supports extensions that build on the core Sandbox API to provide more advanced features.
-
-### Zero (GitHub Repo)
-- **URL**: https://github.com/vercel-labs/zero?utm_source=tldrnewsletter
-- **Date**: 2026-05-18
-- **Description**: Zero (GitHub Repo)Zero is a systems programming language for agents that provides small native tools, explicit effects, predictable memory, and structured compiler output. The language is still experimental and not stable yet, but it is in a stage where users can try it out and provide feedback. Practical examples are available for users to learn the language with.
 
