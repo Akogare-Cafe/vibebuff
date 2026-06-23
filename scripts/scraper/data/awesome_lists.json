@@ -27382,8 +27382,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1278,
-    "total_links": 1295,
+    "tools_count": 1279,
+    "total_links": 1296,
     "tools": [
       {
         "name": "Pull Requests",
@@ -32496,6 +32496,13 @@
         "url": "https://render.com",
         "category": "tool",
         "description": "Unified cloud to build and run apps and sites with free SSL, a global CDN, private networks, auto-deploys from Git, and completely free plans for web services, databases, and static web pages"
+      },
+      {
+        "name": "Revdoku",
+        "url": "https://revdoku.com/",
+        "category": "tool",
+        "description": "Publish files, reports, custom microsites right from ChatGPT, Claude, Codex and other AI agents as public or password-protected websites",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "SourceForge",
@@ -38514,6 +38521,10 @@
       {
         "text": "render.com",
         "url": "https://render.com"
+      },
+      {
+        "text": "Revdoku",
+        "url": "https://revdoku.com/"
       },
       {
         "text": "SourceForge",
@@ -75986,8 +75997,8 @@
   },
   "veggiemonk/awesome-docker": {
     "url": "https://raw.githubusercontent.com/veggiemonk/awesome-docker/master/README.md",
-    "tools_count": 392,
-    "total_links": 396,
+    "tools_count": 390,
+    "total_links": 394,
     "tools": [
       {
         "name": "![Last Commit",
@@ -76848,16 +76859,16 @@
         "description": "Automated reverse proxy and load-balancer for Docker, Mesos, Consul, Etcd"
       },
       {
-        "name": "Label Backup",
-        "url": "https://github.com/resulgg/label-backup",
-        "category": "github",
-        "description": "A lightweight, Docker-aware backup agent that automatically discovers and backs up containerized databases (PostgreSQL, MySQL, MongoDB, Redis) based on Docker labels"
-      },
-      {
         "name": "Docker Volume Backup",
         "url": "https://github.com/offen/docker-volume-backup",
         "category": "github",
         "description": "Backup Docker volumes locally or to any S3 compatible storage"
+      },
+      {
+        "name": "Label Backup",
+        "url": "https://github.com/resulgg/label-backup",
+        "category": "github",
+        "description": "A lightweight, Docker-aware backup agent that automatically discovers and backs up containerized databases (PostgreSQL, MySQL, MongoDB, Redis) based on Docker labels"
       },
       {
         "name": "Netshare",
@@ -76876,6 +76887,13 @@
         "url": "https://www.quobyte.com/",
         "category": "tool",
         "description": ":yen: Fully fault-tolerant distributed file system with a docker volume driver"
+      },
+      {
+        "name": "resq",
+        "url": "https://github.com/mashb1t/resq",
+        "category": "github",
+        "description": "Restic-powered Docker backups for volumes, databases, and",
+        "source": "veggiemonk/awesome-docker"
       },
       {
         "name": "REX-Ray",
@@ -78186,22 +78204,10 @@
         "description": "## Videos"
       },
       {
-        "name": "Contributing to Docker by Andrew \"Tianon\" Page (InfoSiftr)",
-        "url": "https://www.youtube.com/watch?v=1jwo8-1HYYg",
-        "category": "tool",
-        "description": "(34:31)"
-      },
-      {
         "name": "Deploying and scaling applications with Docker, Swarm, and a tiny bit of Python magic",
         "url": "https://www.youtube.com/watch?v=GpHMTR7P2Ms",
         "category": "tool",
         "description": "(3:11:06)"
-      },
-      {
-        "name": "Docker and SELinux by Daniel Walsh from Red Hat",
-        "url": "https://www.youtube.com/watch?v=zWGFqMuEHdw",
-        "category": "tool",
-        "description": "(40:23)"
       },
       {
         "name": "Docker Course",
@@ -78262,12 +78268,6 @@
         "url": "https://www.youtube.com/watch?v=7CZFpHUPqXw",
         "category": "tool",
         "description": ""
-      },
-      {
-        "name": "Immutable Infrastructure with Docker and EC2 by Michael Bryzek (Gilt)",
-        "url": "https://www.youtube.com/watch?v=GaHzdqFithc",
-        "category": "tool",
-        "description": "(42:04)"
       },
       {
         "name": "Introduction to Docker and containers",
@@ -78916,12 +78916,12 @@
         "url": "https://github.com/containous/traefik"
       },
       {
-        "text": "Label Backup",
-        "url": "https://github.com/resulgg/label-backup"
-      },
-      {
         "text": "Docker Volume Backup",
         "url": "https://github.com/offen/docker-volume-backup"
+      },
+      {
+        "text": "Label Backup",
+        "url": "https://github.com/resulgg/label-backup"
       },
       {
         "text": "Netshare",
@@ -78934,6 +78934,10 @@
       {
         "text": "quobyte",
         "url": "https://www.quobyte.com/"
+      },
+      {
+        "text": "resq",
+        "url": "https://github.com/mashb1t/resq"
       },
       {
         "text": "REX-Ray",
@@ -79820,16 +79824,8 @@
         "url": "https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/"
       },
       {
-        "text": "Contributing to Docker by Andrew \"Tianon\" Page (InfoSiftr)",
-        "url": "https://www.youtube.com/watch?v=1jwo8-1HYYg"
-      },
-      {
         "text": "Deploying and scaling applications with Docker, Swarm, and a tiny bit of Python magic",
         "url": "https://www.youtube.com/watch?v=GpHMTR7P2Ms"
-      },
-      {
-        "text": "Docker and SELinux by Daniel Walsh from Red Hat",
-        "url": "https://www.youtube.com/watch?v=zWGFqMuEHdw"
       },
       {
         "text": "Docker Course",
@@ -79870,10 +79866,6 @@
       {
         "text": "From Local Docker Development to Production Deployments",
         "url": "https://www.youtube.com/watch?v=7CZFpHUPqXw"
-      },
-      {
-        "text": "Immutable Infrastructure with Docker and EC2 by Michael Bryzek (Gilt)",
-        "url": "https://www.youtube.com/watch?v=GaHzdqFithc"
       },
       {
         "text": "Introduction to Docker and containers",
@@ -107562,15 +107554,13 @@
         "name": "Transmute",
         "url": "https://transmute.sh",
         "category": "tool",
-        "description": "File converter for images, video, audio, json, excel and more",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "File converter for images, video, audio, json, excel and more"
       },
       {
         "name": "Source Code",
         "url": "https://github.com/transmute-app/transmute",
         "category": "github",
-        "description": ") `MIT` `Docker`",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `MIT` `Docker`"
       },
       {
         "name": "URL-to-PNG",
@@ -112076,8 +112066,7 @@
         "name": "Focus Flow",
         "url": "https://github.com/francesco-gaglione/focus_flow_cloud",
         "category": "github",
-        "description": "Complete ecosystem for time management using the Pomodoro technique",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Complete ecosystem for time management using the Pomodoro technique"
       },
       {
         "name": "HamsterBase Tasks",
