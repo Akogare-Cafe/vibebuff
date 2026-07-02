@@ -3,10 +3,10 @@
     "name": "vscode",
     "full_name": "microsoft/vscode",
     "description": "Visual Studio Code",
-    "stars": 186831,
-    "forks": 40765,
-    "watchers": 186831,
-    "open_issues": 18936,
+    "stars": 186877,
+    "forks": 40786,
+    "watchers": 186877,
+    "open_issues": 18928,
     "language": "TypeScript",
     "topics": [
       "editor",
@@ -17,13 +17,19 @@
     ],
     "license": "MIT",
     "created_at": "2015-09-03T20:23:38Z",
-    "updated_at": "2026-07-01T07:05:30Z",
-    "pushed_at": "2026-07-01T06:56:07Z",
+    "updated_at": "2026-07-02T07:07:28Z",
+    "pushed_at": "2026-07-02T06:47:00Z",
     "homepage": "https://code.visualstudio.com",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "1.127.0",
+        "name": "1.127.0",
+        "published_at": "2026-07-01T09:32:59Z",
+        "prerelease": false
+      },
       {
         "tag_name": "1.126.0",
         "name": "1.126.0",
@@ -47,12 +53,6 @@
         "name": "1.124.0",
         "published_at": "2026-06-10T13:39:34Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "1.123.2",
-        "name": "1.123.2",
-        "published_at": "2026-06-10T09:39:44Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -66,7 +66,7 @@
       },
       {
         "login": "sandy081",
-        "contributions": 8960
+        "contributions": 8968
       },
       {
         "login": "joaomoreno",
@@ -78,7 +78,7 @@
       },
       {
         "login": "roblourens",
-        "contributions": 6479
+        "contributions": 6481
       },
       {
         "login": "isidorn",
@@ -86,7 +86,7 @@
       },
       {
         "login": "aeschli",
-        "contributions": 5212
+        "contributions": 5215
       },
       {
         "login": "rebornix",
@@ -102,10 +102,10 @@
     "name": "zed",
     "full_name": "zed-industries/zed",
     "description": "Code at the speed of thought \u2013 Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
-    "stars": 86271,
-    "forks": 9336,
-    "watchers": 86271,
-    "open_issues": 3440,
+    "stars": 86329,
+    "forks": 9342,
+    "watchers": 86329,
+    "open_issues": 3453,
     "language": "Rust",
     "topics": [
       "gpui",
@@ -115,13 +115,25 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2021-02-20T03:01:06Z",
-    "updated_at": "2026-07-01T07:17:24Z",
-    "pushed_at": "2026-07-01T05:17:21Z",
+    "updated_at": "2026-07-02T06:56:12Z",
+    "pushed_at": "2026-07-02T06:03:21Z",
     "homepage": "https://zed.dev",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v1.10.0-pre",
+        "name": "v1.10.0-pre",
+        "published_at": "2026-07-01T17:31:57Z",
+        "prerelease": true
+      },
+      {
+        "tag_name": "v1.9.0",
+        "name": "v1.9.0",
+        "published_at": "2026-07-01T17:02:17Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v1.9.0-pre",
         "name": "v1.9.0-pre",
@@ -139,18 +151,6 @@
         "name": "v1.8.2-pre",
         "published_at": "2026-06-22T18:56:44Z",
         "prerelease": true
-      },
-      {
-        "tag_name": "v1.8.0-pre",
-        "name": "v1.8.0-pre",
-        "published_at": "2026-06-17T17:00:30Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v1.7.2",
-        "name": "v1.7.2",
-        "published_at": "2026-06-17T15:41:19Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -192,7 +192,7 @@
       },
       {
         "login": "danilo-leal",
-        "contributions": 1183
+        "contributions": 1185
       }
     ]
   },
@@ -200,10 +200,10 @@
     "name": "neovim",
     "full_name": "neovim/neovim",
     "description": "Vim-fork focused on extensibility and usability",
-    "stars": 100821,
-    "forks": 6941,
-    "watchers": 100821,
-    "open_issues": 1910,
+    "stars": 100846,
+    "forks": 6942,
+    "watchers": 100846,
+    "open_issues": 1907,
     "language": "Vim Script",
     "topics": [
       "api",
@@ -216,8 +216,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2014-01-31T13:39:22Z",
-    "updated_at": "2026-07-01T06:45:35Z",
-    "pushed_at": "2026-07-01T06:40:22Z",
+    "updated_at": "2026-07-02T07:04:31Z",
+    "pushed_at": "2026-07-02T06:28:24Z",
     "homepage": "https://neovim.io",
     "default_branch": "master",
     "archived": false,
@@ -226,7 +226,7 @@
       {
         "tag_name": "nightly",
         "name": "Nvim development (prerelease) build",
-        "published_at": "2026-07-01T06:40:22Z",
+        "published_at": "2026-07-02T06:28:24Z",
         "prerelease": true
       },
       {
@@ -257,11 +257,11 @@
     "top_contributors": [
       {
         "login": "zeertzjq",
-        "contributions": 6795
+        "contributions": 6810
       },
       {
         "login": "justinmk",
-        "contributions": 4673
+        "contributions": 4681
       },
       {
         "login": "janlazo",
@@ -269,7 +269,7 @@
       },
       {
         "login": "bfredl",
-        "contributions": 2427
+        "contributions": 2428
       },
       {
         "login": "clason",
@@ -301,10 +301,10 @@
     "name": "helix",
     "full_name": "helix-editor/helix",
     "description": "A post-modern modal text editor.",
-    "stars": 45028,
-    "forks": 3584,
-    "watchers": 45028,
-    "open_issues": 1571,
+    "stars": 45069,
+    "forks": 3586,
+    "watchers": 45069,
+    "open_issues": 1573,
     "language": "Rust",
     "topics": [
       "kakoune",
@@ -314,7 +314,7 @@
     ],
     "license": "MPL-2.0",
     "created_at": "2020-06-01T04:26:56Z",
-    "updated_at": "2026-07-01T07:30:26Z",
+    "updated_at": "2026-07-02T06:58:22Z",
     "pushed_at": "2026-06-30T23:24:51Z",
     "homepage": "https://helix-editor.com",
     "default_branch": "master",
@@ -399,9 +399,9 @@
     "name": "lapce",
     "full_name": "lapce/lapce",
     "description": "Lightning-fast and Powerful Code Editor written in Rust",
-    "stars": 38602,
-    "forks": 1296,
-    "watchers": 38602,
+    "stars": 38604,
+    "forks": 1297,
+    "watchers": 38604,
     "open_issues": 888,
     "language": "Rust",
     "topics": [
@@ -413,7 +413,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2018-02-06T08:41:06Z",
-    "updated_at": "2026-07-01T00:13:02Z",
+    "updated_at": "2026-07-02T02:53:34Z",
     "pushed_at": "2026-06-10T01:13:44Z",
     "homepage": "https://lap.dev/lapce/",
     "default_branch": "master",
@@ -498,10 +498,10 @@
     "name": "react",
     "full_name": "react/react",
     "description": "The library for web and native user interfaces.",
-    "stars": 246125,
-    "forks": 51120,
-    "watchers": 246125,
-    "open_issues": 1259,
+    "stars": 246155,
+    "forks": 51130,
+    "watchers": 246155,
+    "open_issues": 1252,
     "language": "JavaScript",
     "topics": [
       "declarative",
@@ -513,8 +513,8 @@
     ],
     "license": "MIT",
     "created_at": "2013-05-24T16:15:54Z",
-    "updated_at": "2026-07-01T06:52:00Z",
-    "pushed_at": "2026-06-30T19:45:01Z",
+    "updated_at": "2026-07-02T07:00:24Z",
+    "pushed_at": "2026-07-02T05:30:29Z",
     "homepage": "https://react.dev",
     "default_branch": "main",
     "archived": false,
@@ -586,7 +586,7 @@
       },
       {
         "login": "eps1lon",
-        "contributions": 451
+        "contributions": 452
       },
       {
         "login": "trueadm",
@@ -598,9 +598,9 @@
     "name": "vue",
     "full_name": "vuejs/vue",
     "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
-    "stars": 209922,
-    "forks": 33709,
-    "watchers": 209922,
+    "stars": 209927,
+    "forks": 33715,
+    "watchers": 209927,
     "open_issues": 635,
     "language": "TypeScript",
     "topics": [
@@ -611,7 +611,7 @@
     ],
     "license": "MIT",
     "created_at": "2013-07-29T03:24:51Z",
-    "updated_at": "2026-07-01T06:10:25Z",
+    "updated_at": "2026-07-02T06:44:32Z",
     "pushed_at": "2024-10-10T07:24:15Z",
     "homepage": "http://v2.vuejs.org",
     "default_branch": "main",
@@ -696,9 +696,9 @@
     "name": "svelte",
     "full_name": "sveltejs/svelte",
     "description": "web development for the rest of us",
-    "stars": 87366,
-    "forks": 4959,
-    "watchers": 87366,
+    "stars": 87369,
+    "forks": 4961,
+    "watchers": 87369,
     "open_issues": 1060,
     "language": "JavaScript",
     "topics": [
@@ -708,8 +708,8 @@
     ],
     "license": "MIT",
     "created_at": "2016-11-20T18:13:05Z",
-    "updated_at": "2026-07-01T07:05:57Z",
-    "pushed_at": "2026-06-29T07:01:44Z",
+    "updated_at": "2026-07-02T07:06:27Z",
+    "pushed_at": "2026-07-02T06:30:24Z",
     "homepage": "https://svelte.dev",
     "default_branch": "main",
     "archived": false,
@@ -772,11 +772,11 @@
         "contributions": 324
       },
       {
-        "login": "benmccann",
-        "contributions": 246
+        "login": "paoloricciuti",
+        "contributions": 247
       },
       {
-        "login": "paoloricciuti",
+        "login": "benmccann",
         "contributions": 246
       },
       {
@@ -793,10 +793,10 @@
     "name": "angular",
     "full_name": "angular/angular",
     "description": "Deliver web apps with confidence \ud83d\ude80",
-    "stars": 100376,
-    "forks": 27218,
-    "watchers": 100376,
-    "open_issues": 1160,
+    "stars": 100389,
+    "forks": 27227,
+    "watchers": 100389,
+    "open_issues": 1166,
     "language": "TypeScript",
     "topics": [
       "angular",
@@ -809,13 +809,25 @@
     ],
     "license": "MIT",
     "created_at": "2014-09-18T16:12:01Z",
-    "updated_at": "2026-07-01T04:27:02Z",
-    "pushed_at": "2026-07-01T01:00:09Z",
+    "updated_at": "2026-07-02T06:49:05Z",
+    "pushed_at": "2026-07-01T21:10:34Z",
     "homepage": "https://angular.dev",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v22.1.0-next.4",
+        "name": "22.1.0-next.4",
+        "published_at": "2026-07-01T21:10:35Z",
+        "prerelease": true
+      },
+      {
+        "tag_name": "v22.0.5",
+        "name": "22.0.5",
+        "published_at": "2026-07-01T20:47:51Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v22.1.0-next.3",
         "name": "22.1.0-next.3",
@@ -832,18 +844,6 @@
         "tag_name": "v22.1.0-next.2",
         "name": "22.1.0-next.2",
         "published_at": "2026-06-25T15:34:15Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v22.0.3",
-        "name": "22.0.3",
-        "published_at": "2026-06-25T15:10:33Z",
-        "prerelease": false
-      },
-      {
-        "tag_name": "v22.1.0-next.1",
-        "name": "22.1.0-next.1",
-        "published_at": "2026-06-17T21:16:12Z",
         "prerelease": true
       }
     ],
@@ -882,7 +882,7 @@
       },
       {
         "login": "alxhub",
-        "contributions": 1091
+        "contributions": 1093
       },
       {
         "login": "alan-agius4",
@@ -894,10 +894,10 @@
     "name": "solid",
     "full_name": "solidjs/solid",
     "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
-    "stars": 35677,
+    "stars": 35679,
     "forks": 1076,
-    "watchers": 35677,
-    "open_issues": 61,
+    "watchers": 35679,
+    "open_issues": 42,
     "language": "TypeScript",
     "topics": [
       "declarative",
@@ -911,8 +911,8 @@
     ],
     "license": "MIT",
     "created_at": "2018-04-24T16:36:27Z",
-    "updated_at": "2026-07-01T07:09:04Z",
-    "pushed_at": "2026-07-01T06:13:30Z",
+    "updated_at": "2026-07-02T06:57:02Z",
+    "pushed_at": "2026-07-01T23:04:26Z",
     "homepage": "https://solidjs.com",
     "default_branch": "main",
     "archived": false,
@@ -952,7 +952,7 @@
     "top_contributors": [
       {
         "login": "ryansolid",
-        "contributions": 1453
+        "contributions": 1466
       },
       {
         "login": "thetarnav",
@@ -996,10 +996,10 @@
     "name": "preact",
     "full_name": "preactjs/preact",
     "description": "\u269b\ufe0f Fast 3kB React alternative with the same modern API. Components & Virtual DOM.",
-    "stars": 38728,
-    "forks": 2041,
-    "watchers": 38728,
-    "open_issues": 155,
+    "stars": 38729,
+    "forks": 2040,
+    "watchers": 38729,
+    "open_issues": 153,
     "language": "JavaScript",
     "topics": [
       "components",
@@ -1012,8 +1012,8 @@
     ],
     "license": "MIT",
     "created_at": "2015-09-11T02:40:18Z",
-    "updated_at": "2026-07-01T00:12:51Z",
-    "pushed_at": "2026-06-30T20:19:00Z",
+    "updated_at": "2026-07-01T12:02:01Z",
+    "pushed_at": "2026-07-01T22:13:30Z",
     "homepage": "https://preactjs.com",
     "default_branch": "main",
     "archived": false,
@@ -1061,7 +1061,7 @@
       },
       {
         "login": "JoviDeCroock",
-        "contributions": 923
+        "contributions": 925
       },
       {
         "login": "andrewiggins",
@@ -1097,10 +1097,10 @@
     "name": "qwik",
     "full_name": "QwikDev/qwik",
     "description": "Instant-loading web apps, without effort",
-    "stars": 22027,
+    "stars": 22031,
     "forks": 1393,
-    "watchers": 22027,
-    "open_issues": 134,
+    "watchers": 22031,
+    "open_issues": 133,
     "language": "TypeScript",
     "topics": [
       "framework",
@@ -1110,8 +1110,8 @@
     ],
     "license": "MIT",
     "created_at": "2021-05-19T15:33:32Z",
-    "updated_at": "2026-07-01T06:20:24Z",
-    "pushed_at": "2026-06-30T17:47:09Z",
+    "updated_at": "2026-07-01T20:09:34Z",
+    "pushed_at": "2026-07-01T20:20:21Z",
     "homepage": "https://qwik.dev",
     "default_branch": "main",
     "archived": false,
@@ -1195,10 +1195,10 @@
     "name": "hono",
     "full_name": "honojs/hono",
     "description": "Web framework built on Web Standards",
-    "stars": 31188,
-    "forks": 1145,
-    "watchers": 31188,
-    "open_issues": 372,
+    "stars": 31205,
+    "forks": 1148,
+    "watchers": 31205,
+    "open_issues": 371,
     "language": "TypeScript",
     "topics": [
       "aws-lambda",
@@ -1213,8 +1213,8 @@
     ],
     "license": "MIT",
     "created_at": "2021-12-14T20:05:30Z",
-    "updated_at": "2026-07-01T06:44:34Z",
-    "pushed_at": "2026-06-30T21:28:09Z",
+    "updated_at": "2026-07-02T06:25:13Z",
+    "pushed_at": "2026-07-01T09:42:28Z",
     "homepage": "https://hono.dev",
     "default_branch": "main",
     "archived": false,
@@ -1254,7 +1254,7 @@
     "top_contributors": [
       {
         "login": "yusukebe",
-        "contributions": 1667
+        "contributions": 1668
       },
       {
         "login": "usualoma",
@@ -1298,10 +1298,10 @@
     "name": "next.js",
     "full_name": "vercel/next.js",
     "description": "The React Framework",
-    "stars": 140193,
-    "forks": 31283,
-    "watchers": 140193,
-    "open_issues": 4152,
+    "stars": 140221,
+    "forks": 31293,
+    "watchers": 140221,
+    "open_issues": 4153,
     "language": "JavaScript",
     "topics": [
       "blog",
@@ -1321,13 +1321,25 @@
     ],
     "license": "MIT",
     "created_at": "2016-10-05T23:32:51Z",
-    "updated_at": "2026-07-01T07:10:00Z",
-    "pushed_at": "2026-07-01T07:31:48Z",
+    "updated_at": "2026-07-02T07:07:56Z",
+    "pushed_at": "2026-07-02T06:22:28Z",
     "homepage": "https://nextjs.org",
     "default_branch": "canary",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v16.2.10",
+        "name": "v16.2.10",
+        "published_at": "2026-07-01T20:13:48Z",
+        "prerelease": false
+      },
+      {
+        "tag_name": "v15.5.20",
+        "name": "v15.5.20",
+        "published_at": "2026-07-01T21:07:51Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v16.3.0-preview.5",
         "name": "v16.3.0-preview.5",
@@ -1344,18 +1356,6 @@
         "tag_name": "v16.3.0-canary.67",
         "name": "v16.3.0-canary.67",
         "published_at": "2026-06-25T00:01:00Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v16.3.0-canary.66",
-        "name": "v16.3.0-canary.66",
-        "published_at": "2026-06-24T19:18:52Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v16.3.0-canary.65",
-        "name": "v16.3.0-canary.65",
-        "published_at": "2026-06-24T11:17:03Z",
         "prerelease": true
       }
     ],
@@ -1374,7 +1374,7 @@
       },
       {
         "login": "vercel-release-bot",
-        "contributions": 1943
+        "contributions": 1944
       },
       {
         "login": "huozhi",
@@ -1398,7 +1398,7 @@
       },
       {
         "login": "mischnic",
-        "contributions": 701
+        "contributions": 702
       }
     ]
   },
@@ -1406,10 +1406,10 @@
     "name": "nuxt",
     "full_name": "nuxt/nuxt",
     "description": "the full-stack Vue framework",
-    "stars": 60475,
-    "forks": 5676,
-    "watchers": 60475,
-    "open_issues": 822,
+    "stars": 60482,
+    "forks": 5677,
+    "watchers": 60482,
+    "open_issues": 825,
     "language": "TypeScript",
     "topics": [
       "csr",
@@ -1428,8 +1428,8 @@
     ],
     "license": "MIT",
     "created_at": "2016-10-26T11:18:47Z",
-    "updated_at": "2026-07-01T07:31:51Z",
-    "pushed_at": "2026-07-01T07:19:34Z",
+    "updated_at": "2026-07-02T07:00:18Z",
+    "pushed_at": "2026-07-01T15:33:42Z",
     "homepage": "https://nuxt.com",
     "default_branch": "main",
     "archived": false,
@@ -1513,18 +1513,18 @@
     "name": "kit",
     "full_name": "sveltejs/kit",
     "description": "web development, streamlined",
-    "stars": 20631,
-    "forks": 2272,
-    "watchers": 20631,
-    "open_issues": 954,
+    "stars": 20634,
+    "forks": 2273,
+    "watchers": 20634,
+    "open_issues": 942,
     "language": "JavaScript",
     "topics": [
       "svelte"
     ],
     "license": "MIT",
     "created_at": "2020-10-15T14:00:23Z",
-    "updated_at": "2026-07-01T06:20:44Z",
-    "pushed_at": "2026-07-01T07:21:48Z",
+    "updated_at": "2026-07-02T06:18:48Z",
+    "pushed_at": "2026-07-02T00:58:57Z",
     "homepage": "https://svelte.dev/docs/kit",
     "default_branch": "main",
     "archived": false,
@@ -1568,7 +1568,7 @@
       },
       {
         "login": "github-actions[bot]",
-        "contributions": 1152
+        "contributions": 1153
       },
       {
         "login": "benmccann",
@@ -1608,10 +1608,10 @@
     "name": "astro",
     "full_name": "withastro/astro",
     "description": "The web framework for content-driven websites. \u2b50\ufe0f Star to support our work!",
-    "stars": 60627,
-    "forks": 3580,
-    "watchers": 60627,
-    "open_issues": 113,
+    "stars": 60645,
+    "forks": 3584,
+    "watchers": 60645,
+    "open_issues": 103,
     "language": "TypeScript",
     "topics": [
       "astro",
@@ -1628,56 +1628,56 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2021-03-15T17:19:47Z",
-    "updated_at": "2026-07-01T07:22:54Z",
-    "pushed_at": "2026-06-30T21:45:56Z",
+    "updated_at": "2026-07-02T07:05:10Z",
+    "pushed_at": "2026-07-02T01:10:27Z",
     "homepage": "https://astro.build",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
       {
-        "tag_name": "create-astro@5.2.1",
-        "name": "create-astro@5.2.1",
-        "published_at": "2026-06-30T12:18:52Z",
+        "tag_name": "astro@7.0.5",
+        "name": "astro@7.0.5",
+        "published_at": "2026-07-01T18:21:20Z",
         "prerelease": false
       },
       {
-        "tag_name": "astro@7.0.4",
-        "name": "astro@7.0.4",
-        "published_at": "2026-06-30T12:18:46Z",
+        "tag_name": "astro-vscode@2.16.17",
+        "name": "astro-vscode@2.16.17",
+        "published_at": "2026-07-01T18:21:32Z",
         "prerelease": false
       },
       {
-        "tag_name": "@astrojs/rss@4.0.19",
-        "name": "@astrojs/rss@4.0.19",
-        "published_at": "2026-06-30T12:18:49Z",
+        "tag_name": "@astrojs/vue@7.0.1",
+        "name": "@astrojs/vue@7.0.1",
+        "published_at": "2026-07-01T18:21:26Z",
         "prerelease": false
       },
       {
-        "tag_name": "@astrojs/cloudflare@14.0.2",
-        "name": "@astrojs/cloudflare@14.0.2",
-        "published_at": "2026-06-30T12:18:55Z",
+        "tag_name": "@astrojs/vercel@11.0.1",
+        "name": "@astrojs/vercel@11.0.1",
+        "published_at": "2026-07-01T18:21:38Z",
         "prerelease": false
       },
       {
-        "tag_name": "create-astro@5.2.0",
-        "name": "create-astro@5.2.0",
-        "published_at": "2026-06-25T16:17:12Z",
+        "tag_name": "@astrojs/svelte@9.0.1",
+        "name": "@astrojs/svelte@9.0.1",
+        "published_at": "2026-07-01T18:21:35Z",
         "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "matthewp",
-        "contributions": 2024
+        "contributions": 2028
       },
       {
         "login": "astrobot-houston",
-        "contributions": 1551
+        "contributions": 1559
       },
       {
         "login": "ematipico",
-        "contributions": 1151
+        "contributions": 1152
       },
       {
         "login": "FredKSchott",
@@ -1713,49 +1713,49 @@
     "name": "remix",
     "full_name": "remix-run/remix",
     "description": "Build Better Websites. Create modern, resilient user experiences with web fundamentals.",
-    "stars": 33145,
+    "stars": 33152,
     "forks": 2780,
-    "watchers": 33145,
-    "open_issues": 57,
+    "watchers": 33152,
+    "open_issues": 56,
     "language": "TypeScript",
     "topics": [],
     "license": "MIT",
     "created_at": "2020-10-26T19:57:28Z",
-    "updated_at": "2026-07-01T07:28:00Z",
-    "pushed_at": "2026-06-30T20:45:59Z",
+    "updated_at": "2026-07-02T06:49:33Z",
+    "pushed_at": "2026-07-01T20:15:09Z",
     "homepage": "https://remix.run",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
       {
-        "tag_name": "test@0.5.0",
-        "name": "test v0.5.0",
-        "published_at": "2026-06-05T18:28:12Z",
+        "tag_name": "ui@0.4.0",
+        "name": "ui v0.4.0",
+        "published_at": "2026-07-01T19:05:54Z",
         "prerelease": false
       },
       {
-        "tag_name": "static-middleware@0.4.12",
-        "name": "static-middleware v0.4.12",
-        "published_at": "2026-06-05T18:28:22Z",
+        "tag_name": "static-middleware@0.4.13",
+        "name": "static-middleware v0.4.13",
+        "published_at": "2026-07-01T19:06:07Z",
         "prerelease": false
       },
       {
-        "tag_name": "session-middleware@0.3.3",
-        "name": "session-middleware v0.3.3",
-        "published_at": "2026-06-05T18:28:18Z",
+        "tag_name": "session-middleware@0.3.4",
+        "name": "session-middleware v0.3.4",
+        "published_at": "2026-07-01T19:06:01Z",
         "prerelease": false
       },
       {
-        "tag_name": "route-pattern@0.22.1",
-        "name": "route-pattern v0.22.1",
-        "published_at": "2026-06-05T18:28:13Z",
+        "tag_name": "route-pattern@0.23.0",
+        "name": "route-pattern v0.23.0",
+        "published_at": "2026-07-01T19:05:53Z",
         "prerelease": false
       },
       {
-        "tag_name": "render-middleware@0.1.3",
-        "name": "render-middleware v0.1.3",
-        "published_at": "2026-06-05T18:28:17Z",
+        "tag_name": "response@0.3.7",
+        "name": "response v0.3.7",
+        "published_at": "2026-07-01T19:06:00Z",
         "prerelease": false
       }
     ],
@@ -1770,7 +1770,7 @@
       },
       {
         "login": "remix-run-bot",
-        "contributions": 685
+        "contributions": 686
       },
       {
         "login": "ryanflorence",
@@ -1806,9 +1806,9 @@
     "name": "graphql",
     "full_name": "redwoodjs/graphql",
     "description": "RedwoodGraphQL",
-    "stars": 17616,
+    "stars": 17615,
     "forks": 998,
-    "watchers": 17616,
+    "watchers": 17615,
     "open_issues": 266,
     "language": "TypeScript",
     "topics": [
@@ -1820,7 +1820,7 @@
     ],
     "license": "MIT",
     "created_at": "2019-06-09T20:17:57Z",
-    "updated_at": "2026-06-29T15:08:10Z",
+    "updated_at": "2026-07-01T14:49:14Z",
     "pushed_at": "2026-06-30T19:24:06Z",
     "homepage": "https://redwoodjs.com",
     "default_branch": "main",
@@ -1905,9 +1905,9 @@
     "name": "blitz",
     "full_name": "blitz-js/blitz",
     "description": "\u26a1\ufe0f The Missing Fullstack Toolkit for Next.js",
-    "stars": 14131,
+    "stars": 14128,
     "forks": 812,
-    "watchers": 14131,
+    "watchers": 14128,
     "open_issues": 86,
     "language": "TypeScript",
     "topics": [
@@ -1925,7 +1925,7 @@
     ],
     "license": "MIT",
     "created_at": "2020-02-17T21:54:15Z",
-    "updated_at": "2026-07-01T07:00:42Z",
+    "updated_at": "2026-07-02T03:19:46Z",
     "pushed_at": "2025-11-21T13:13:37Z",
     "homepage": "https://Blitzjs.com",
     "default_branch": "main",
@@ -2010,10 +2010,10 @@
     "name": "node",
     "full_name": "nodejs/node",
     "description": "Node.js JavaScript runtime \u2728\ud83d\udc22\ud83d\ude80\u2728",
-    "stars": 117938,
-    "forks": 35833,
-    "watchers": 117938,
-    "open_issues": 2338,
+    "stars": 117957,
+    "forks": 35850,
+    "watchers": 117957,
+    "open_issues": 2339,
     "language": "JavaScript",
     "topics": [
       "javascript",
@@ -2028,8 +2028,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2014-11-26T19:57:11Z",
-    "updated_at": "2026-07-01T07:15:26Z",
-    "pushed_at": "2026-07-01T06:40:41Z",
+    "updated_at": "2026-07-02T07:07:54Z",
+    "pushed_at": "2026-07-02T04:52:18Z",
     "homepage": "https://nodejs.org",
     "default_branch": "main",
     "archived": false,
@@ -2093,7 +2093,7 @@
       },
       {
         "login": "joyeecheung",
-        "contributions": 1241
+        "contributions": 1243
       },
       {
         "login": "jasnell",
@@ -2105,7 +2105,7 @@
       },
       {
         "login": "aduh95",
-        "contributions": 1092
+        "contributions": 1093
       }
     ]
   },
@@ -2113,10 +2113,10 @@
     "name": "bun",
     "full_name": "oven-sh/bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager \u2013 all in one",
-    "stars": 93473,
-    "forks": 4741,
-    "watchers": 93473,
-    "open_issues": 6815,
+    "stars": 93486,
+    "forks": 4743,
+    "watchers": 93486,
+    "open_issues": 6832,
     "language": "Rust",
     "topics": [
       "bun",
@@ -2134,8 +2134,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2021-04-14T00:48:17Z",
-    "updated_at": "2026-07-01T06:11:46Z",
-    "pushed_at": "2026-07-01T07:30:49Z",
+    "updated_at": "2026-07-02T07:01:49Z",
+    "pushed_at": "2026-07-02T07:06:15Z",
     "homepage": "https://bun.com",
     "default_branch": "main",
     "archived": false,
@@ -2175,11 +2175,11 @@
     "top_contributors": [
       {
         "login": "Jarred-Sumner",
-        "contributions": 8378
+        "contributions": 8379
       },
       {
         "login": "robobun",
-        "contributions": 1221
+        "contributions": 1229
       },
       {
         "login": "dylan-conway",
@@ -2191,7 +2191,7 @@
       },
       {
         "login": "cirospaciari",
-        "contributions": 484
+        "contributions": 485
       },
       {
         "login": "paperclover",
@@ -2219,10 +2219,10 @@
     "name": "deno",
     "full_name": "denoland/deno",
     "description": "A modern runtime for JavaScript and TypeScript.",
-    "stars": 107345,
+    "stars": 107349,
     "forks": 6101,
-    "watchers": 107345,
-    "open_issues": 1360,
+    "watchers": 107349,
+    "open_issues": 1326,
     "language": "Rust",
     "topics": [
       "deno",
@@ -2232,13 +2232,19 @@
     ],
     "license": "MIT",
     "created_at": "2018-05-15T01:34:26Z",
-    "updated_at": "2026-07-01T06:51:03Z",
-    "pushed_at": "2026-07-01T03:17:12Z",
+    "updated_at": "2026-07-02T07:05:45Z",
+    "pushed_at": "2026-07-02T06:40:25Z",
     "homepage": "https://deno.com",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v2.9.1",
+        "name": "v2.9.1",
+        "published_at": "2026-07-01T16:31:16Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v2.9.0",
         "name": "v2.9.0",
@@ -2262,18 +2268,12 @@
         "name": "v2.8.1",
         "published_at": "2026-05-27T12:56:27Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v2.8.0",
-        "name": "v2.8.0",
-        "published_at": "2026-05-22T10:51:19Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "bartlomieju",
-        "contributions": 3081
+        "contributions": 3092
       },
       {
         "login": "dsherret",
@@ -2285,7 +2285,7 @@
       },
       {
         "login": "littledivy",
-        "contributions": 844
+        "contributions": 845
       },
       {
         "login": "nayeemrmn",
@@ -2317,10 +2317,10 @@
     "name": "go",
     "full_name": "golang/go",
     "description": "The Go programming language",
-    "stars": 134885,
-    "forks": 19048,
-    "watchers": 134885,
-    "open_issues": 10167,
+    "stars": 134908,
+    "forks": 19050,
+    "watchers": 134908,
+    "open_issues": 10164,
     "language": "Go",
     "topics": [
       "go",
@@ -2330,8 +2330,8 @@
     ],
     "license": "BSD-3-Clause",
     "created_at": "2014-08-19T04:33:40Z",
-    "updated_at": "2026-07-01T06:10:45Z",
-    "pushed_at": "2026-06-30T23:12:35Z",
+    "updated_at": "2026-07-02T07:05:59Z",
+    "pushed_at": "2026-07-01T22:13:09Z",
     "homepage": "https://go.dev",
     "default_branch": "master",
     "archived": false,
@@ -2384,10 +2384,10 @@
     "name": "rust",
     "full_name": "rust-lang/rust",
     "description": "Empowering everyone to build reliable and efficient software.",
-    "stars": 114170,
-    "forks": 15058,
-    "watchers": 114170,
-    "open_issues": 12548,
+    "stars": 114199,
+    "forks": 15065,
+    "watchers": 114199,
+    "open_issues": 12545,
     "language": "Rust",
     "topics": [
       "compiler",
@@ -2396,8 +2396,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2010-06-16T20:39:03Z",
-    "updated_at": "2026-07-01T06:10:53Z",
-    "pushed_at": "2026-07-01T06:26:48Z",
+    "updated_at": "2026-07-02T07:09:46Z",
+    "pushed_at": "2026-07-02T07:05:15Z",
     "homepage": "https://www.rust-lang.org",
     "default_branch": "main",
     "archived": false,
@@ -2437,7 +2437,7 @@
     "top_contributors": [
       {
         "login": "bors",
-        "contributions": 48305
+        "contributions": 48310
       },
       {
         "login": "matthiaskrgr",
@@ -2445,7 +2445,7 @@
       },
       {
         "login": "RalfJung",
-        "contributions": 10125
+        "contributions": 10126
       },
       {
         "login": "GuillaumeGomez",
@@ -2461,7 +2461,7 @@
       },
       {
         "login": "bjorn3",
-        "contributions": 5668
+        "contributions": 5669
       },
       {
         "login": "matklad",
@@ -2481,16 +2481,16 @@
     "name": "cpython",
     "full_name": "python/cpython",
     "description": "The Python programming language",
-    "stars": 73396,
-    "forks": 34801,
-    "watchers": 73396,
-    "open_issues": 9443,
+    "stars": 73410,
+    "forks": 34802,
+    "watchers": 73410,
+    "open_issues": 9466,
     "language": "Python",
     "topics": [],
     "license": "NOASSERTION",
     "created_at": "2017-02-10T19:23:51Z",
-    "updated_at": "2026-07-01T07:18:30Z",
-    "pushed_at": "2026-07-01T06:10:03Z",
+    "updated_at": "2026-07-02T07:10:48Z",
+    "pushed_at": "2026-07-02T07:10:27Z",
     "homepage": "https://www.python.org",
     "default_branch": "main",
     "archived": false,
@@ -2514,12 +2514,12 @@
         "contributions": 5680
       },
       {
-        "login": "freddrake",
-        "contributions": 5465
+        "login": "serhiy-storchaka",
+        "contributions": 5470
       },
       {
-        "login": "serhiy-storchaka",
-        "contributions": 5461
+        "login": "freddrake",
+        "contributions": 5465
       },
       {
         "login": "rhettinger",
@@ -2543,16 +2543,16 @@
     "name": "elixir",
     "full_name": "elixir-lang/elixir",
     "description": "Elixir is a dynamic, functional language for building scalable and maintainable applications",
-    "stars": 26509,
-    "forks": 3490,
-    "watchers": 26509,
-    "open_issues": 29,
+    "stars": 26511,
+    "forks": 3491,
+    "watchers": 26511,
+    "open_issues": 26,
     "language": "Elixir",
     "topics": [],
     "license": "Apache-2.0",
     "created_at": "2011-01-09T08:43:57Z",
-    "updated_at": "2026-07-01T01:45:04Z",
-    "pushed_at": "2026-06-30T21:53:37Z",
+    "updated_at": "2026-07-02T07:00:41Z",
+    "pushed_at": "2026-07-01T23:04:37Z",
     "homepage": "https://elixir-lang.org/",
     "default_branch": "main",
     "archived": false,
@@ -2592,7 +2592,7 @@
     "top_contributors": [
       {
         "login": "josevalim",
-        "contributions": 5486
+        "contributions": 5487
       },
       {
         "login": "eksperimental",
@@ -2616,7 +2616,7 @@
       },
       {
         "login": "sabiwara",
-        "contributions": 347
+        "contributions": 348
       },
       {
         "login": "wojtekmach",
@@ -2636,10 +2636,10 @@
     "name": "zig",
     "full_name": "ziglang/zig",
     "description": "Moved to Codeberg",
-    "stars": 43154,
+    "stars": 43153,
     "forks": 3059,
-    "watchers": 43154,
-    "open_issues": 2897,
+    "watchers": 43153,
+    "open_issues": 2896,
     "language": "Zig",
     "topics": [
       "compiler",
@@ -2648,7 +2648,7 @@
     ],
     "license": "MIT",
     "created_at": "2015-08-06T00:51:28Z",
-    "updated_at": "2026-07-01T06:18:53Z",
+    "updated_at": "2026-07-02T07:11:00Z",
     "pushed_at": "2025-11-27T01:42:59Z",
     "homepage": "https://ziglang.org/news/migrating-from-github-to-codeberg/",
     "default_branch": "master",
@@ -2733,10 +2733,10 @@
     "name": "supabase",
     "full_name": "supabase/supabase",
     "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-    "stars": 105008,
-    "forks": 12920,
-    "watchers": 105008,
-    "open_issues": 1087,
+    "stars": 105067,
+    "forks": 12938,
+    "watchers": 105067,
+    "open_issues": 1081,
     "language": "TypeScript",
     "topics": [
       "ai",
@@ -2761,8 +2761,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2019-10-12T05:56:49Z",
-    "updated_at": "2026-07-01T07:26:53Z",
-    "pushed_at": "2026-07-01T07:25:39Z",
+    "updated_at": "2026-07-02T07:08:00Z",
+    "pushed_at": "2026-07-02T03:25:51Z",
     "homepage": "https://supabase.com",
     "default_branch": "master",
     "archived": false,
@@ -2802,7 +2802,7 @@
     "top_contributors": [
       {
         "login": "joshenlim",
-        "contributions": 4754
+        "contributions": 4758
       },
       {
         "login": "kiwicopple",
@@ -2818,11 +2818,11 @@
       },
       {
         "login": "alaister",
-        "contributions": 1288
+        "contributions": 1289
       },
       {
         "login": "fsansalvadore",
-        "contributions": 1219
+        "contributions": 1222
       },
       {
         "login": "gregnr",
@@ -2838,7 +2838,7 @@
       },
       {
         "login": "charislam",
-        "contributions": 729
+        "contributions": 731
       }
     ]
   },
@@ -2846,9 +2846,9 @@
     "name": "neon",
     "full_name": "neondatabase/neon",
     "description": "Neon: Serverless Postgres. We separated storage and compute to offer autoscaling, code-like database branching, and scale to zero.",
-    "stars": 22411,
-    "forks": 1008,
-    "watchers": 22411,
+    "stars": 22428,
+    "forks": 1009,
+    "watchers": 22428,
     "open_issues": 543,
     "language": "Rust",
     "topics": [
@@ -2860,7 +2860,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2021-03-26T14:20:47Z",
-    "updated_at": "2026-07-01T07:26:54Z",
+    "updated_at": "2026-07-02T05:47:29Z",
     "pushed_at": "2026-05-25T13:07:37Z",
     "homepage": "https://neon.tech",
     "default_branch": "main",
@@ -2873,10 +2873,10 @@
     "name": "libsql",
     "full_name": "tursodatabase/libsql",
     "description": "libSQL is a fork of SQLite that is both Open Source, and Open Contributions.",
-    "stars": 16922,
+    "stars": 16925,
     "forks": 504,
-    "watchers": 16922,
-    "open_issues": 432,
+    "watchers": 16925,
+    "open_issues": 431,
     "language": "C",
     "topics": [
       "database",
@@ -2887,8 +2887,8 @@
     ],
     "license": "MIT",
     "created_at": "2022-09-29T18:56:16Z",
-    "updated_at": "2026-07-01T06:00:41Z",
-    "pushed_at": "2026-06-30T14:45:40Z",
+    "updated_at": "2026-07-01T17:07:50Z",
+    "pushed_at": "2026-07-01T14:05:26Z",
     "homepage": "https://turso.tech/libsql",
     "default_branch": "main",
     "archived": false,
@@ -2972,9 +2972,9 @@
     "name": "pocketbase",
     "full_name": "pocketbase/pocketbase",
     "description": "Open Source realtime backend in 1 file",
-    "stars": 59357,
-    "forks": 3482,
-    "watchers": 59357,
+    "stars": 59374,
+    "forks": 3483,
+    "watchers": 59374,
     "open_issues": 17,
     "language": "Go",
     "topics": [
@@ -2985,7 +2985,7 @@
     ],
     "license": "MIT",
     "created_at": "2022-07-05T06:06:21Z",
-    "updated_at": "2026-07-01T07:14:56Z",
+    "updated_at": "2026-07-02T05:15:26Z",
     "pushed_at": "2026-06-28T08:13:37Z",
     "homepage": "https://pocketbase.io",
     "default_branch": "master",
@@ -3070,10 +3070,10 @@
     "name": "appwrite",
     "full_name": "appwrite/appwrite",
     "description": "Appwrite\u00ae - complete cloud infrastructure for your web, mobile and AI apps. Including Auth, Databases, Storage, Functions, Messaging, Hosting, Realtime and more",
-    "stars": 56452,
-    "forks": 5501,
-    "watchers": 56452,
-    "open_issues": 1017,
+    "stars": 56460,
+    "forks": 5504,
+    "watchers": 56460,
+    "open_issues": 1020,
     "language": "TypeScript",
     "topics": [
       "android",
@@ -3099,8 +3099,8 @@
     ],
     "license": "BSD-3-Clause",
     "created_at": "2019-04-08T16:36:25Z",
-    "updated_at": "2026-07-01T07:20:21Z",
-    "pushed_at": "2026-07-01T07:30:02Z",
+    "updated_at": "2026-07-02T07:09:44Z",
+    "pushed_at": "2026-07-02T07:09:39Z",
     "homepage": "https://appwrite.io",
     "default_branch": "main",
     "archived": false,
@@ -3140,11 +3140,11 @@
     "top_contributors": [
       {
         "login": "eldadfux",
-        "contributions": 5542
+        "contributions": 5548
       },
       {
         "login": "abnegate",
-        "contributions": 4554
+        "contributions": 4558
       },
       {
         "login": "Meldiron",
@@ -3156,7 +3156,7 @@
       },
       {
         "login": "lohanidamodar",
-        "contributions": 3027
+        "contributions": 3044
       },
       {
         "login": "TorstenDittmann",
@@ -3164,7 +3164,7 @@
       },
       {
         "login": "ChiragAgg5k",
-        "contributions": 1631
+        "contributions": 1646
       },
       {
         "login": "shimonewman",
@@ -3184,9 +3184,9 @@
     "name": "parse-server",
     "full_name": "parse-community/parse-server",
     "description": "Parse Server for Node.js / Express",
-    "stars": 21404,
-    "forks": 4822,
-    "watchers": 21404,
+    "stars": 21405,
+    "forks": 4821,
+    "watchers": 21405,
     "open_issues": 504,
     "language": "JavaScript",
     "topics": [
@@ -3211,7 +3211,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2016-01-28T18:29:14Z",
-    "updated_at": "2026-06-30T16:34:51Z",
+    "updated_at": "2026-07-02T06:02:03Z",
     "pushed_at": "2026-07-01T00:45:18Z",
     "homepage": "https://parseplatform.org",
     "default_branch": "alpha",
@@ -3296,10 +3296,10 @@
     "name": "directus",
     "full_name": "directus/directus",
     "description": "The flexible backend for all your projects \ud83d\udc30 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
-    "stars": 36402,
-    "forks": 4809,
-    "watchers": 36402,
-    "open_issues": 389,
+    "stars": 36405,
+    "forks": 4811,
+    "watchers": 36405,
+    "open_issues": 387,
     "language": "TypeScript",
     "topics": [
       "api",
@@ -3325,13 +3325,25 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2012-12-12T01:35:36Z",
-    "updated_at": "2026-07-01T05:37:45Z",
-    "pushed_at": "2026-07-01T06:45:40Z",
+    "updated_at": "2026-07-02T06:04:21Z",
+    "pushed_at": "2026-07-02T06:23:23Z",
     "homepage": "https://directus.com",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v12.1.1",
+        "name": "v12.1.1",
+        "published_at": "2026-07-01T21:10:34Z",
+        "prerelease": false
+      },
+      {
+        "tag_name": "v12.1.0",
+        "name": "v12.1.0",
+        "published_at": "2026-07-01T20:00:47Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v12.0.2",
         "name": "v12.0.2",
@@ -3349,24 +3361,12 @@
         "name": "v12.0.0",
         "published_at": "2026-06-10T17:15:01Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v12.0.0-rc.2",
-        "name": "v12.0.0-rc.2",
-        "published_at": "2026-06-05T22:11:52Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v12.0.0-rc.1",
-        "name": "Directus v12.0.0-rc.1",
-        "published_at": "2026-05-29T12:56:10Z",
-        "prerelease": true
       }
     ],
     "top_contributors": [
       {
         "login": "rijkvanzanten",
-        "contributions": 6187
+        "contributions": 6190
       },
       {
         "login": "Nitwel",
@@ -3398,7 +3398,7 @@
       },
       {
         "login": "br41nslug",
-        "contributions": 364
+        "contributions": 369
       },
       {
         "login": "dependabot-preview[bot]",
@@ -3410,10 +3410,10 @@
     "name": "prisma",
     "full_name": "prisma/prisma",
     "description": "Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, MongoDB and CockroachDB",
-    "stars": 46304,
+    "stars": 46316,
     "forks": 2256,
-    "watchers": 46304,
-    "open_issues": 2632,
+    "watchers": 46316,
+    "open_issues": 2634,
     "language": "TypeScript",
     "topics": [
       "cockroachdb",
@@ -3439,7 +3439,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2019-06-20T13:33:47Z",
-    "updated_at": "2026-07-01T07:20:25Z",
+    "updated_at": "2026-07-02T07:11:18Z",
     "pushed_at": "2026-06-25T14:00:52Z",
     "homepage": "https://www.prisma.io",
     "default_branch": "main",
@@ -3524,10 +3524,10 @@
     "name": "drizzle-orm",
     "full_name": "drizzle-team/drizzle-orm",
     "description": "ORM",
-    "stars": 34999,
-    "forks": 1470,
-    "watchers": 34999,
-    "open_issues": 1884,
+    "stars": 35013,
+    "forks": 1469,
+    "watchers": 35013,
+    "open_issues": 1880,
     "language": "TypeScript",
     "topics": [
       "bunjs",
@@ -3543,8 +3543,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2021-06-24T09:03:05Z",
-    "updated_at": "2026-07-01T07:01:12Z",
-    "pushed_at": "2026-07-01T01:02:02Z",
+    "updated_at": "2026-07-02T05:11:13Z",
+    "pushed_at": "2026-07-02T05:00:38Z",
     "homepage": "https://orm.drizzle.team",
     "default_branch": "main",
     "archived": false,
@@ -3628,10 +3628,10 @@
     "name": "kysely",
     "full_name": "kysely-org/kysely",
     "description": "A type-safe TypeScript SQL query builder",
-    "stars": 13990,
+    "stars": 13992,
     "forks": 420,
-    "watchers": 13990,
-    "open_issues": 167,
+    "watchers": 13992,
+    "open_issues": 163,
     "language": "TypeScript",
     "topics": [
       "browser",
@@ -3651,8 +3651,8 @@
     ],
     "license": "MIT",
     "created_at": "2021-02-22T09:06:55Z",
-    "updated_at": "2026-07-01T05:04:39Z",
-    "pushed_at": "2026-07-01T00:04:27Z",
+    "updated_at": "2026-07-02T07:06:29Z",
+    "pushed_at": "2026-07-01T07:49:16Z",
     "homepage": "https://kysely.dev",
     "default_branch": "master",
     "archived": false,
@@ -3736,10 +3736,10 @@
     "name": "typeorm",
     "full_name": "typeorm/typeorm",
     "description": "TypeScript & JavaScript ORM for Node.js \u2014 supports PostgreSQL, MySQL, MariaDB, SQLite, SQL Server, Oracle, and more.",
-    "stars": 36569,
-    "forks": 6615,
-    "watchers": 36569,
-    "open_issues": 547,
+    "stars": 36572,
+    "forks": 6614,
+    "watchers": 36572,
+    "open_issues": 546,
     "language": "TypeScript",
     "topics": [
       "active-record",
@@ -3759,8 +3759,8 @@
     ],
     "license": "MIT",
     "created_at": "2016-02-29T07:41:14Z",
-    "updated_at": "2026-07-01T06:19:15Z",
-    "pushed_at": "2026-06-26T23:29:43Z",
+    "updated_at": "2026-07-02T05:58:35Z",
+    "pushed_at": "2026-07-01T16:25:29Z",
     "homepage": "http://typeorm.io",
     "default_branch": "master",
     "archived": false,
@@ -3844,9 +3844,9 @@
     "name": "next-auth",
     "full_name": "nextauthjs/next-auth",
     "description": "Authentication for the Web.",
-    "stars": 28289,
-    "forks": 4037,
-    "watchers": 28289,
+    "stars": 28286,
+    "forks": 4038,
+    "watchers": 28286,
     "open_issues": 588,
     "language": "TypeScript",
     "topics": [
@@ -3871,7 +3871,7 @@
     ],
     "license": "ISC",
     "created_at": "2018-01-27T12:28:16Z",
-    "updated_at": "2026-07-01T06:19:51Z",
+    "updated_at": "2026-07-02T06:19:19Z",
     "pushed_at": "2026-06-12T01:40:32Z",
     "homepage": "https://authjs.dev",
     "default_branch": "main",
@@ -4022,9 +4022,9 @@
     "name": "supertokens-core",
     "full_name": "supertokens/supertokens-core",
     "description": "Open source alternative to Auth0 / Firebase Auth / AWS Cognito ",
-    "stars": 15128,
-    "forks": 676,
-    "watchers": 15128,
+    "stars": 15129,
+    "forks": 677,
+    "watchers": 15129,
     "open_issues": 141,
     "language": "Java",
     "topics": [
@@ -4050,8 +4050,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2020-01-05T13:30:52Z",
-    "updated_at": "2026-06-30T12:11:35Z",
-    "pushed_at": "2026-06-30T13:05:17Z",
+    "updated_at": "2026-07-01T16:12:26Z",
+    "pushed_at": "2026-07-01T14:18:12Z",
     "homepage": "https://supertokens.com",
     "default_branch": "master",
     "archived": false,
@@ -4135,9 +4135,9 @@
     "name": "kratos",
     "full_name": "ory/kratos",
     "description": "Headless cloud-native authentication and identity management written in Go. Scales to a billion+ users. Replace Homegrown, Auth0, Okta, Firebase with better UX and DX. Passkeys, Social Sign In, OIDC, Magic Link, Multi-Factor Auth, SMS, SAML, TOTP, and more. Runs everywhere, runs best on Ory Network. ",
-    "stars": 13727,
-    "forks": 1162,
-    "watchers": 13727,
+    "stars": 13729,
+    "forks": 1164,
+    "watchers": 13729,
     "open_issues": 217,
     "language": "Go",
     "topics": [
@@ -4155,8 +4155,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2018-05-29T16:09:37Z",
-    "updated_at": "2026-06-30T16:52:13Z",
-    "pushed_at": "2026-06-25T10:21:35Z",
+    "updated_at": "2026-07-02T03:19:56Z",
+    "pushed_at": "2026-07-01T14:36:51Z",
     "homepage": "https://www.ory.com/?utm_source=github&utm_medium=banner&utm_campaign=kratos",
     "default_branch": "master",
     "archived": false,
@@ -4208,11 +4208,11 @@
       },
       {
         "login": "jonas-jonas",
-        "contributions": 161
+        "contributions": 162
       },
       {
         "login": "hperl",
-        "contributions": 154
+        "contributions": 155
       },
       {
         "login": "alnr",
@@ -4224,7 +4224,7 @@
       },
       {
         "login": "gaultier",
-        "contributions": 82
+        "contributions": 83
       },
       {
         "login": "dependabot[bot]",
@@ -4240,9 +4240,9 @@
     "name": "tailwindcss",
     "full_name": "tailwindlabs/tailwindcss",
     "description": "A utility-first CSS framework for rapid UI development.",
-    "stars": 95690,
-    "forks": 5309,
-    "watchers": 95690,
+    "stars": 95701,
+    "forks": 5312,
+    "watchers": 95701,
     "open_issues": 65,
     "language": "TypeScript",
     "topics": [
@@ -4256,8 +4256,8 @@
     ],
     "license": "MIT",
     "created_at": "2017-10-06T14:59:14Z",
-    "updated_at": "2026-07-01T06:11:43Z",
-    "pushed_at": "2026-06-29T14:11:40Z",
+    "updated_at": "2026-07-02T07:07:32Z",
+    "pushed_at": "2026-07-01T22:04:45Z",
     "homepage": "https://tailwindcss.com/",
     "default_branch": "main",
     "archived": false,
@@ -4301,7 +4301,7 @@
       },
       {
         "login": "RobinMalfait",
-        "contributions": 968
+        "contributions": 970
       },
       {
         "login": "depfu[bot]",
@@ -4341,10 +4341,10 @@
     "name": "ui",
     "full_name": "shadcn-ui/ui",
     "description": "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.",
-    "stars": 117734,
-    "forks": 9210,
-    "watchers": 117734,
-    "open_issues": 2079,
+    "stars": 117817,
+    "forks": 9221,
+    "watchers": 117817,
+    "open_issues": 2080,
     "language": "TypeScript",
     "topics": [
       "base-ui",
@@ -4361,7 +4361,7 @@
     ],
     "license": "MIT",
     "created_at": "2023-01-04T12:43:27Z",
-    "updated_at": "2026-07-01T07:31:55Z",
+    "updated_at": "2026-07-02T07:10:17Z",
     "pushed_at": "2026-06-30T06:34:55Z",
     "homepage": "https://ui.shadcn.com",
     "default_branch": "main",
@@ -4446,10 +4446,10 @@
     "name": "primitives",
     "full_name": "radix-ui/primitives",
     "description": "Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos.",
-    "stars": 19016,
-    "forks": 1198,
-    "watchers": 19016,
-    "open_issues": 401,
+    "stars": 19020,
+    "forks": 1199,
+    "watchers": 19020,
+    "open_issues": 394,
     "language": "TypeScript",
     "topics": [
       "accessibility",
@@ -4464,8 +4464,8 @@
     ],
     "license": "MIT",
     "created_at": "2020-06-19T13:23:22Z",
-    "updated_at": "2026-07-01T06:20:58Z",
-    "pushed_at": "2026-06-30T23:26:58Z",
+    "updated_at": "2026-07-02T05:09:01Z",
+    "pushed_at": "2026-07-01T21:26:48Z",
     "homepage": "https://radix-ui.com/primitives",
     "default_branch": "main",
     "archived": false,
@@ -4478,7 +4478,7 @@
       },
       {
         "login": "chaance",
-        "contributions": 416
+        "contributions": 417
       },
       {
         "login": "jjenzz",
@@ -4518,10 +4518,10 @@
     "name": "material-ui",
     "full_name": "mui/material-ui",
     "description": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
-    "stars": 98505,
+    "stars": 98512,
     "forks": 32594,
-    "watchers": 98505,
-    "open_issues": 1537,
+    "watchers": 98512,
+    "open_issues": 1538,
     "language": "JavaScript",
     "topics": [
       "design-system",
@@ -4532,8 +4532,8 @@
     ],
     "license": "MIT",
     "created_at": "2014-08-18T19:11:54Z",
-    "updated_at": "2026-07-01T06:11:19Z",
-    "pushed_at": "2026-07-01T05:55:43Z",
+    "updated_at": "2026-07-02T05:44:27Z",
+    "pushed_at": "2026-07-02T05:38:18Z",
     "homepage": "https://mui.com/material-ui/",
     "default_branch": "master",
     "archived": false,
@@ -4617,9 +4617,9 @@
     "name": "chakra-ui",
     "full_name": "chakra-ui/chakra-ui",
     "description": "Chakra UI is a component system for building SaaS products with speed \u26a1\ufe0f",
-    "stars": 40485,
-    "forks": 3618,
-    "watchers": 40485,
+    "stars": 40486,
+    "forks": 3619,
+    "watchers": 40486,
     "open_issues": 10,
     "language": "TypeScript",
     "topics": [
@@ -4642,8 +4642,8 @@
     ],
     "license": "MIT",
     "created_at": "2019-08-17T14:27:54Z",
-    "updated_at": "2026-07-01T03:44:07Z",
-    "pushed_at": "2026-06-29T19:51:33Z",
+    "updated_at": "2026-07-02T03:40:43Z",
+    "pushed_at": "2026-07-01T20:16:32Z",
     "homepage": "https://chakra-ui.com",
     "default_branch": "main",
     "archived": false,
@@ -4727,9 +4727,9 @@
     "name": "mantine",
     "full_name": "mantinedev/mantine",
     "description": "A fully featured React components library",
-    "stars": 31348,
+    "stars": 31359,
     "forks": 2330,
-    "watchers": 31348,
+    "watchers": 31359,
     "open_issues": 29,
     "language": "TypeScript",
     "topics": [
@@ -4742,7 +4742,7 @@
     ],
     "license": "MIT",
     "created_at": "2021-01-07T14:02:19Z",
-    "updated_at": "2026-07-01T07:08:59Z",
+    "updated_at": "2026-07-02T04:42:09Z",
     "pushed_at": "2026-06-28T10:51:19Z",
     "homepage": "https://mantine.dev",
     "default_branch": "master",
@@ -4827,10 +4827,10 @@
     "name": "heroui",
     "full_name": "heroui-inc/heroui",
     "description": "\ud83d\ude80 Beautiful, fast and modern React UI library. (Previously NextUI)",
-    "stars": 29748,
-    "forks": 2170,
-    "watchers": 29748,
-    "open_issues": 47,
+    "stars": 29757,
+    "forks": 2169,
+    "watchers": 29757,
+    "open_issues": 46,
     "language": "MDX",
     "topics": [
       "component-library",
@@ -4840,7 +4840,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2021-04-22T13:06:23Z",
-    "updated_at": "2026-07-01T05:10:37Z",
+    "updated_at": "2026-07-02T06:49:51Z",
     "pushed_at": "2026-06-29T09:49:45Z",
     "homepage": "https://heroui.com",
     "default_branch": "v3",
@@ -4925,10 +4925,10 @@
     "name": "ariakit",
     "full_name": "ariakit/ariakit",
     "description": "Toolkit with accessible components, styles, and examples for your next web app",
-    "stars": 8575,
-    "forks": 410,
-    "watchers": 8575,
-    "open_issues": 82,
+    "stars": 8574,
+    "forks": 411,
+    "watchers": 8574,
+    "open_issues": 91,
     "language": "TypeScript",
     "topics": [
       "a11y",
@@ -4945,8 +4945,8 @@
     ],
     "license": null,
     "created_at": "2017-09-19T22:00:42Z",
-    "updated_at": "2026-07-01T06:33:42Z",
-    "pushed_at": "2026-06-30T23:19:16Z",
+    "updated_at": "2026-07-02T01:33:59Z",
+    "pushed_at": "2026-07-02T07:12:18Z",
     "homepage": "https://ariakit.com",
     "default_branch": "main",
     "archived": false,
@@ -4986,11 +4986,11 @@
     "top_contributors": [
       {
         "login": "diegohaz",
-        "contributions": 3270
+        "contributions": 3271
       },
       {
         "login": "renovate[bot]",
-        "contributions": 3165
+        "contributions": 3166
       },
       {
         "login": "github-actions[bot]",
@@ -5002,7 +5002,7 @@
       },
       {
         "login": "ariakit-bot",
-        "contributions": 45
+        "contributions": 46
       },
       {
         "login": "rthomazel",
@@ -5030,9 +5030,9 @@
     "name": "motion",
     "full_name": "motiondivision/motion",
     "description": "A modern animation library for React and JavaScript",
-    "stars": 32602,
-    "forks": 1242,
-    "watchers": 32602,
+    "stars": 32624,
+    "forks": 1244,
+    "watchers": 32624,
     "open_issues": 120,
     "language": "TypeScript",
     "topics": [
@@ -5045,8 +5045,8 @@
     ],
     "license": "MIT",
     "created_at": "2018-11-16T09:48:38Z",
-    "updated_at": "2026-07-01T06:34:05Z",
-    "pushed_at": "2026-06-30T17:58:41Z",
+    "updated_at": "2026-07-02T06:44:25Z",
+    "pushed_at": "2026-07-01T08:38:21Z",
     "homepage": "https://motion.dev",
     "default_branch": "main",
     "archived": false,
@@ -5055,7 +5055,7 @@
     "top_contributors": [
       {
         "login": "mattgperry",
-        "contributions": 6384
+        "contributions": 6385
       },
       {
         "login": "mergetron[bot]",
@@ -5113,7 +5113,7 @@
     ],
     "license": "MIT",
     "created_at": "2018-03-07T15:39:32Z",
-    "updated_at": "2026-07-01T04:31:53Z",
+    "updated_at": "2026-07-01T16:36:53Z",
     "pushed_at": "2026-07-01T01:03:08Z",
     "homepage": "http://www.react-spring.dev/",
     "default_branch": "next",
@@ -5198,9 +5198,9 @@
     "name": "auto-animate",
     "full_name": "formkit/auto-animate",
     "description": "A zero-config, drop-in animation utility that adds smooth transitions to your web app. You can use it with React, Vue, or any other JavaScript application.",
-    "stars": 13865,
+    "stars": 13867,
     "forks": 254,
-    "watchers": 13865,
+    "watchers": 13867,
     "open_issues": 41,
     "language": "TypeScript",
     "topics": [
@@ -5212,8 +5212,8 @@
     ],
     "license": "MIT",
     "created_at": "2022-05-11T18:50:01Z",
-    "updated_at": "2026-07-01T02:16:55Z",
-    "pushed_at": "2026-04-02T16:43:30Z",
+    "updated_at": "2026-07-02T01:14:42Z",
+    "pushed_at": "2026-07-01T16:01:30Z",
     "homepage": "https://auto-animate.formkit.com",
     "default_branch": "master",
     "archived": false,
@@ -5257,7 +5257,7 @@
       },
       {
         "login": "andrew-boyd",
-        "contributions": 15
+        "contributions": 16
       },
       {
         "login": "nirtamir2",
@@ -5297,10 +5297,10 @@
     "name": "vitest",
     "full_name": "vitest-dev/vitest",
     "description": "Next generation testing framework powered by Vite.",
-    "stars": 16784,
-    "forks": 1840,
-    "watchers": 16784,
-    "open_issues": 390,
+    "stars": 16789,
+    "forks": 1839,
+    "watchers": 16789,
+    "open_issues": 392,
     "language": "TypeScript",
     "topics": [
       "test",
@@ -5309,8 +5309,8 @@
     ],
     "license": "MIT",
     "created_at": "2021-12-03T19:19:49Z",
-    "updated_at": "2026-07-01T06:59:18Z",
-    "pushed_at": "2026-07-01T06:59:15Z",
+    "updated_at": "2026-07-02T05:42:35Z",
+    "pushed_at": "2026-07-01T20:37:06Z",
     "homepage": "https://vitest.dev",
     "default_branch": "main",
     "archived": false,
@@ -5350,7 +5350,7 @@
     "top_contributors": [
       {
         "login": "sheremet-va",
-        "contributions": 1877
+        "contributions": 1878
       },
       {
         "login": "antfu",
@@ -5394,10 +5394,10 @@
     "name": "playwright",
     "full_name": "microsoft/playwright",
     "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
-    "stars": 92003,
-    "forks": 6008,
-    "watchers": 92003,
-    "open_issues": 171,
+    "stars": 92074,
+    "forks": 6018,
+    "watchers": 92074,
+    "open_issues": 168,
     "language": "TypeScript",
     "topics": [
       "automation",
@@ -5418,8 +5418,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2019-11-15T18:32:42Z",
-    "updated_at": "2026-07-01T07:25:35Z",
-    "pushed_at": "2026-07-01T07:02:42Z",
+    "updated_at": "2026-07-02T07:11:02Z",
+    "pushed_at": "2026-07-02T03:38:40Z",
     "homepage": "https://playwright.dev",
     "default_branch": "main",
     "archived": false,
@@ -5459,7 +5459,7 @@
     "top_contributors": [
       {
         "login": "pavelfeldman",
-        "contributions": 3483
+        "contributions": 3485
       },
       {
         "login": "dgozman",
@@ -5467,7 +5467,7 @@
       },
       {
         "login": "yury-s",
-        "contributions": 2525
+        "contributions": 2527
       },
       {
         "login": "mxschmitt",
@@ -5483,7 +5483,7 @@
       },
       {
         "login": "Skn0tt",
-        "contributions": 474
+        "contributions": 478
       },
       {
         "login": "JoelEinbinder",
@@ -5491,7 +5491,7 @@
       },
       {
         "login": "microsoft-playwright-automation[bot]",
-        "contributions": 337
+        "contributions": 339
       },
       {
         "login": "github-actions[bot]",
@@ -5503,10 +5503,10 @@
     "name": "cypress",
     "full_name": "cypress-io/cypress",
     "description": "Fast, easy and reliable testing for anything that runs in a browser.",
-    "stars": 50376,
+    "stars": 50379,
     "forks": 3429,
-    "watchers": 50376,
-    "open_issues": 1091,
+    "watchers": 50379,
+    "open_issues": 1098,
     "language": "TypeScript",
     "topics": [
       "angular-testing-library",
@@ -5525,8 +5525,8 @@
     ],
     "license": "MIT",
     "created_at": "2015-03-04T00:46:28Z",
-    "updated_at": "2026-07-01T06:18:31Z",
-    "pushed_at": "2026-06-30T21:50:41Z",
+    "updated_at": "2026-07-02T07:13:17Z",
+    "pushed_at": "2026-07-01T20:13:32Z",
     "homepage": "https://cypress.io",
     "default_branch": "develop",
     "archived": false,
@@ -5707,10 +5707,10 @@
     "name": "sentry",
     "full_name": "getsentry/sentry",
     "description": "Developer-first error tracking and performance monitoring",
-    "stars": 44196,
-    "forks": 4730,
-    "watchers": 44196,
-    "open_issues": 2087,
+    "stars": 44201,
+    "forks": 4733,
+    "watchers": 44201,
+    "open_issues": 2111,
     "language": "Python",
     "topics": [
       "apm",
@@ -5731,8 +5731,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2010-08-30T22:06:41Z",
-    "updated_at": "2026-07-01T07:26:43Z",
-    "pushed_at": "2026-07-01T07:34:33Z",
+    "updated_at": "2026-07-02T07:09:21Z",
+    "pushed_at": "2026-07-02T07:14:20Z",
     "homepage": "https://sentry.io",
     "default_branch": "master",
     "archived": false,
@@ -5780,7 +5780,7 @@
       },
       {
         "login": "scttcper",
-        "contributions": 3252
+        "contributions": 3256
       },
       {
         "login": "markstory",
@@ -5800,7 +5800,7 @@
       },
       {
         "login": "priscilawebdev",
-        "contributions": 2129
+        "contributions": 2131
       },
       {
         "login": "ckj",
@@ -5816,10 +5816,10 @@
     "name": "posthog",
     "full_name": "PostHog/posthog",
     "description": "\ud83e\udd94 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.",
-    "stars": 35250,
-    "forks": 2909,
-    "watchers": 35250,
-    "open_issues": 3991,
+    "stars": 35266,
+    "forks": 2916,
+    "watchers": 35266,
+    "open_issues": 4086,
     "language": "Python",
     "topics": [
       "ab-testing",
@@ -5840,60 +5840,60 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2020-01-23T22:46:58Z",
-    "updated_at": "2026-07-01T07:26:33Z",
-    "pushed_at": "2026-07-01T07:35:01Z",
+    "updated_at": "2026-07-02T07:08:02Z",
+    "pushed_at": "2026-07-02T07:13:08Z",
     "homepage": "https://posthog.com",
     "default_branch": "master",
     "archived": false,
     "is_fork": false,
     "releases": [
       {
-        "tag_name": "agent-skills-v0.303.0",
-        "name": "Agent skills agent-skills-v0.303.0",
-        "published_at": "2026-07-01T07:16:12Z",
+        "tag_name": "agent-skills-v0.313.0",
+        "name": "Agent skills agent-skills-v0.313.0",
+        "published_at": "2026-07-02T05:30:00Z",
         "prerelease": false
       },
       {
-        "tag_name": "agent-skills-v0.302.0",
-        "name": "Agent skills agent-skills-v0.302.0",
-        "published_at": "2026-07-01T04:10:03Z",
+        "tag_name": "agent-skills-v0.312.0",
+        "name": "Agent skills agent-skills-v0.312.0",
+        "published_at": "2026-07-02T04:39:43Z",
         "prerelease": false
       },
       {
-        "tag_name": "agent-skills-v0.301.0",
-        "name": "Agent skills agent-skills-v0.301.0",
-        "published_at": "2026-07-01T03:00:48Z",
+        "tag_name": "agent-skills-v0.311.0",
+        "name": "Agent skills agent-skills-v0.311.0",
+        "published_at": "2026-07-02T02:16:39Z",
         "prerelease": false
       },
       {
-        "tag_name": "agent-skills-v0.300.0",
-        "name": "Agent skills agent-skills-v0.300.0",
-        "published_at": "2026-07-01T02:20:13Z",
+        "tag_name": "agent-skills-v0.310.0",
+        "name": "Agent skills agent-skills-v0.310.0",
+        "published_at": "2026-07-02T00:53:49Z",
         "prerelease": false
       },
       {
-        "tag_name": "agent-skills-v0.299.0",
-        "name": "Agent skills agent-skills-v0.299.0",
-        "published_at": "2026-07-01T01:53:24Z",
+        "tag_name": "agent-skills-v0.309.0",
+        "name": "Agent skills agent-skills-v0.309.0",
+        "published_at": "2026-07-01T22:28:40Z",
         "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "pauldambra",
-        "contributions": 3266
+        "contributions": 3273
       },
       {
         "login": "Twixes",
-        "contributions": 2450
+        "contributions": 2452
       },
       {
         "login": "mariusandra",
-        "contributions": 2298
+        "contributions": 2300
       },
       {
         "login": "Gilbert09",
-        "contributions": 1774
+        "contributions": 1796
       },
       {
         "login": "benjackwhite",
@@ -5905,7 +5905,7 @@
       },
       {
         "login": "EDsCODE",
-        "contributions": 1248
+        "contributions": 1249
       },
       {
         "login": "thmsobrmlr",
@@ -5925,10 +5925,10 @@
     "name": "analytics",
     "full_name": "plausible/analytics",
     "description": "Open source, privacy-first web analytics. Lightweight, cookie-free Google Analytics alternative. Self-hosted or cloud.",
-    "stars": 27426,
+    "stars": 27442,
     "forks": 1664,
-    "watchers": 27426,
-    "open_issues": 80,
+    "watchers": 27442,
+    "open_issues": 77,
     "language": "Elixir",
     "topics": [
       "analytics",
@@ -5954,8 +5954,8 @@
     ],
     "license": "AGPL-3.0",
     "created_at": "2018-12-04T22:33:36Z",
-    "updated_at": "2026-07-01T07:31:45Z",
-    "pushed_at": "2026-07-01T05:32:54Z",
+    "updated_at": "2026-07-02T05:44:52Z",
+    "pushed_at": "2026-07-02T05:42:47Z",
     "homepage": "https://plausible.io",
     "default_branch": "master",
     "archived": false,
@@ -5999,7 +5999,7 @@
       },
       {
         "login": "aerosol",
-        "contributions": 627
+        "contributions": 628
       },
       {
         "login": "zoldar",
@@ -6007,7 +6007,7 @@
       },
       {
         "login": "RobertJoonas",
-        "contributions": 346
+        "contributions": 347
       },
       {
         "login": "macobo",
@@ -6039,10 +6039,10 @@
     "name": "umami",
     "full_name": "umami-software/umami",
     "description": "Umami is a modern, privacy-focused analytics platform. An open-source alternative to Google Analytics, Mixpanel and Amplitude.",
-    "stars": 37421,
-    "forks": 7415,
-    "watchers": 37421,
-    "open_issues": 125,
+    "stars": 37433,
+    "forks": 7422,
+    "watchers": 37433,
+    "open_issues": 127,
     "language": "TypeScript",
     "topics": [
       "analytics",
@@ -6057,8 +6057,8 @@
     ],
     "license": "MIT",
     "created_at": "2020-07-17T07:59:00Z",
-    "updated_at": "2026-07-01T07:31:12Z",
-    "pushed_at": "2026-06-30T15:50:38Z",
+    "updated_at": "2026-07-02T06:33:43Z",
+    "pushed_at": "2026-07-01T16:53:16Z",
     "homepage": "https://umami.is",
     "default_branch": "master",
     "archived": false,
@@ -6142,9 +6142,9 @@
     "name": "trpc",
     "full_name": "trpc/trpc",
     "description": "\ud83e\uddd9\u200d\u2640\ufe0f  Move Fast and Break Nothing. End-to-end typesafe APIs made easy. ",
-    "stars": 40385,
+    "stars": 40388,
     "forks": 1627,
-    "watchers": 40385,
+    "watchers": 40388,
     "open_issues": 233,
     "language": "TypeScript",
     "topics": [
@@ -6157,7 +6157,7 @@
     ],
     "license": "MIT",
     "created_at": "2020-07-18T01:17:11Z",
-    "updated_at": "2026-07-01T06:18:59Z",
+    "updated_at": "2026-07-02T02:54:17Z",
     "pushed_at": "2026-06-20T19:08:16Z",
     "homepage": "https://tRPC.io",
     "default_branch": "main",
@@ -6242,10 +6242,10 @@
     "name": "query",
     "full_name": "TanStack/query",
     "description": "\ud83e\udd16 Powerful asynchronous state management, server-state utilities and data fetching for the web. TS/JS, React Query, Solid Query, Svelte Query and Vue Query.",
-    "stars": 49787,
-    "forks": 3912,
-    "watchers": 49787,
-    "open_issues": 180,
+    "stars": 49789,
+    "forks": 3910,
+    "watchers": 49789,
+    "open_issues": 182,
     "language": "TypeScript",
     "topics": [
       "async",
@@ -6267,7 +6267,7 @@
     ],
     "license": "MIT",
     "created_at": "2019-09-10T19:23:58Z",
-    "updated_at": "2026-07-01T07:36:31Z",
+    "updated_at": "2026-07-02T07:03:31Z",
     "pushed_at": "2026-06-30T19:21:32Z",
     "homepage": "https://tanstack.com/query",
     "default_branch": "main",
@@ -6352,9 +6352,9 @@
     "name": "socket.io",
     "full_name": "socketio/socket.io",
     "description": "Bidirectional and low-latency communication for every platform",
-    "stars": 63139,
-    "forks": 10148,
-    "watchers": 63139,
+    "stars": 63141,
+    "forks": 10142,
+    "watchers": 63141,
     "open_issues": 177,
     "language": "TypeScript",
     "topics": [
@@ -6365,7 +6365,7 @@
     ],
     "license": "MIT",
     "created_at": "2010-03-11T18:24:48Z",
-    "updated_at": "2026-07-01T00:44:01Z",
+    "updated_at": "2026-07-02T07:00:30Z",
     "pushed_at": "2026-06-25T14:35:58Z",
     "homepage": "https://socket.io",
     "default_branch": "main",
@@ -6450,10 +6450,10 @@
     "name": "apollo-client",
     "full_name": "apollographql/apollo-client",
     "description": "The industry-leading GraphQL client for TypeScript, JavaScript, React, Vue, Angular, and more. Apollo Client delivers powerful caching, intuitive APIs, and comprehensive developer tools to accelerate your app development.",
-    "stars": 19739,
+    "stars": 19741,
     "forks": 2698,
-    "watchers": 19739,
-    "open_issues": 413,
+    "watchers": 19741,
+    "open_issues": 412,
     "language": "TypeScript",
     "topics": [
       "apollo-client",
@@ -6464,13 +6464,19 @@
     ],
     "license": "MIT",
     "created_at": "2016-02-26T20:25:00Z",
-    "updated_at": "2026-07-01T00:44:03Z",
-    "pushed_at": "2026-07-01T02:42:09Z",
+    "updated_at": "2026-07-02T07:14:17Z",
+    "pushed_at": "2026-07-02T00:52:41Z",
     "homepage": "https://apollographql.com/client",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "@apollo/client@4.2.5",
+        "name": "@apollo/client@4.2.5",
+        "published_at": "2026-07-01T21:20:02Z",
+        "prerelease": false
+      },
       {
         "tag_name": "@apollo/client@4.2.4",
         "name": "@apollo/client@4.2.4",
@@ -6494,12 +6500,6 @@
         "name": "@apollo/client@4.3.0-alpha.0",
         "published_at": "2026-06-09T15:37:34Z",
         "prerelease": true
-      },
-      {
-        "tag_name": "@apollo/client@4.2.3",
-        "name": "@apollo/client@4.2.3",
-        "published_at": "2026-06-08T22:55:33Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -6525,7 +6525,7 @@
       },
       {
         "login": "jerelmiller",
-        "contributions": 624
+        "contributions": 625
       },
       {
         "login": "phryneas",
@@ -6537,7 +6537,7 @@
       },
       {
         "login": "github-actions[bot]",
-        "contributions": 255
+        "contributions": 256
       },
       {
         "login": "alessbell",
@@ -6549,10 +6549,10 @@
     "name": "vite",
     "full_name": "vitejs/vite",
     "description": "Next generation frontend tooling. It's fast!",
-    "stars": 81641,
-    "forks": 8367,
-    "watchers": 81641,
-    "open_issues": 724,
+    "stars": 81669,
+    "forks": 8371,
+    "watchers": 81669,
+    "open_issues": 711,
     "language": "TypeScript",
     "topics": [
       "build-tool",
@@ -6563,13 +6563,19 @@
     ],
     "license": "MIT",
     "created_at": "2020-04-21T05:03:57Z",
-    "updated_at": "2026-07-01T07:17:57Z",
-    "pushed_at": "2026-07-01T03:55:08Z",
+    "updated_at": "2026-07-02T07:13:25Z",
+    "pushed_at": "2026-07-02T04:44:07Z",
     "homepage": "http://vite.dev",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v8.1.3",
+        "name": "v8.1.3",
+        "published_at": "2026-07-02T04:44:20Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v8.1.2",
         "name": "v8.1.2",
@@ -6593,12 +6599,6 @@
         "name": "v7.3.6",
         "published_at": "2026-06-25T01:50:44Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v8.1.0",
-        "name": "v8.1.0",
-        "published_at": "2026-06-23T11:32:13Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -6608,7 +6608,7 @@
       },
       {
         "login": "sapphi-red",
-        "contributions": 1792
+        "contributions": 1795
       },
       {
         "login": "patak-cat",
@@ -6640,7 +6640,7 @@
       },
       {
         "login": "shulaoda",
-        "contributions": 92
+        "contributions": 93
       }
     ]
   },
@@ -6648,10 +6648,10 @@
     "name": "esbuild",
     "full_name": "evanw/esbuild",
     "description": "An extremely fast bundler for the web",
-    "stars": 39957,
-    "forks": 1316,
-    "watchers": 39957,
-    "open_issues": 621,
+    "stars": 39954,
+    "forks": 1317,
+    "watchers": 39954,
+    "open_issues": 623,
     "language": "Go",
     "topics": [
       "bundler",
@@ -6668,7 +6668,7 @@
     ],
     "license": "MIT",
     "created_at": "2016-06-14T16:08:50Z",
-    "updated_at": "2026-07-01T06:19:02Z",
+    "updated_at": "2026-07-01T21:49:57Z",
     "pushed_at": "2026-06-12T01:32:48Z",
     "homepage": "https://esbuild.github.io/",
     "default_branch": "main",
@@ -6753,10 +6753,10 @@
     "name": "turborepo",
     "full_name": "vercel/turborepo",
     "description": "Build system optimized for JavaScript\u00a0and TypeScript, written in Rust",
-    "stars": 30628,
+    "stars": 30629,
     "forks": 2380,
-    "watchers": 30628,
-    "open_issues": 23,
+    "watchers": 30629,
+    "open_issues": 15,
     "language": "Rust",
     "topics": [
       "build-system",
@@ -6767,13 +6767,31 @@
     ],
     "license": "MIT",
     "created_at": "2021-10-05T17:37:11Z",
-    "updated_at": "2026-07-01T06:19:34Z",
-    "pushed_at": "2026-07-01T03:04:05Z",
+    "updated_at": "2026-07-02T04:49:42Z",
+    "pushed_at": "2026-07-01T22:34:17Z",
     "homepage": "https://turborepo.dev",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v2.10.3-canary.7",
+        "name": "Turborepo v2.10.3-canary.7",
+        "published_at": "2026-07-01T17:04:52Z",
+        "prerelease": true
+      },
+      {
+        "tag_name": "v2.10.3-canary.6",
+        "name": "Turborepo v2.10.3-canary.6",
+        "published_at": "2026-07-01T16:31:08Z",
+        "prerelease": true
+      },
+      {
+        "tag_name": "v2.10.3-canary.5",
+        "name": "Turborepo v2.10.3-canary.5",
+        "published_at": "2026-07-01T15:08:23Z",
+        "prerelease": true
+      },
       {
         "tag_name": "v2.10.3-canary.4",
         "name": "Turborepo v2.10.3-canary.4",
@@ -6785,30 +6803,12 @@
         "name": "Turborepo v2.10.3-canary.3",
         "published_at": "2026-06-30T21:15:52Z",
         "prerelease": true
-      },
-      {
-        "tag_name": "v2.10.3-canary.2",
-        "name": "Turborepo v2.10.3-canary.2",
-        "published_at": "2026-06-30T18:17:11Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v2.10.3-canary.1",
-        "name": "Turborepo v2.10.3-canary.1",
-        "published_at": "2026-06-30T17:03:24Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v2.10.2",
-        "name": "Turborepo v2.10.2",
-        "published_at": "2026-06-30T16:24:38Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "anthonyshew",
-        "contributions": 1605
+        "contributions": 1610
       },
       {
         "login": "sokra",
@@ -6816,7 +6816,7 @@
       },
       {
         "login": "github-actions[bot]",
-        "contributions": 725
+        "contributions": 728
       },
       {
         "login": "jaredpalmer",
@@ -6852,10 +6852,10 @@
     "name": "biome",
     "full_name": "biomejs/biome",
     "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
-    "stars": 25137,
-    "forks": 1050,
-    "watchers": 25137,
-    "open_issues": 501,
+    "stars": 25145,
+    "forks": 1052,
+    "watchers": 25145,
+    "open_issues": 492,
     "language": "Rust",
     "topics": [
       "css",
@@ -6870,13 +6870,19 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2023-07-27T20:30:22Z",
-    "updated_at": "2026-07-01T07:35:16Z",
-    "pushed_at": "2026-07-01T07:37:51Z",
+    "updated_at": "2026-07-02T07:11:57Z",
+    "pushed_at": "2026-07-02T07:15:10Z",
     "homepage": "https://biomejs.dev",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "@biomejs/biome@2.5.2",
+        "name": "Biome CLI v2.5.2\n",
+        "published_at": "2026-07-01T10:32:44Z",
+        "prerelease": false
+      },
       {
         "tag_name": "@biomejs/biome@2.5.1",
         "name": "Biome CLI v2.5.1\n",
@@ -6900,18 +6906,12 @@
         "name": "Biome CLI v2.4.16\n",
         "published_at": "2026-05-27T13:43:14Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "@biomejs/biome@2.4.15",
-        "name": "Biome CLI v2.4.15\n",
-        "published_at": "2026-05-09T17:09:39Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "ematipico",
-        "contributions": 1911
+        "contributions": 1913
       },
       {
         "login": "renovate[bot]",
@@ -6955,10 +6955,10 @@
     "name": "oxc",
     "full_name": "oxc-project/oxc",
     "description": "\u2693 A collection of high-performance JavaScript tools.",
-    "stars": 21789,
+    "stars": 21802,
     "forks": 1098,
-    "watchers": 21789,
-    "open_issues": 647,
+    "watchers": 21802,
+    "open_issues": 641,
     "language": "Rust",
     "topics": [
       "compiler",
@@ -6971,8 +6971,8 @@
     ],
     "license": "MIT",
     "created_at": "2023-02-09T05:46:51Z",
-    "updated_at": "2026-07-01T07:14:05Z",
-    "pushed_at": "2026-07-01T07:24:01Z",
+    "updated_at": "2026-07-02T06:27:33Z",
+    "pushed_at": "2026-07-02T07:07:15Z",
     "homepage": "https://oxc.rs",
     "default_branch": "main",
     "archived": false,
@@ -7012,19 +7012,19 @@
     "top_contributors": [
       {
         "login": "Boshen",
-        "contributions": 4307
+        "contributions": 4322
       },
       {
         "login": "overlookmotel",
-        "contributions": 3795
+        "contributions": 3803
       },
       {
         "login": "camc314",
-        "contributions": 1798
+        "contributions": 1799
       },
       {
         "login": "Dunqing",
-        "contributions": 1511
+        "contributions": 1515
       },
       {
         "login": "Sysix",
@@ -7032,11 +7032,11 @@
       },
       {
         "login": "renovate[bot]",
-        "contributions": 852
+        "contributions": 854
       },
       {
         "login": "leaysgur",
-        "contributions": 783
+        "contributions": 784
       },
       {
         "login": "connorshea",
@@ -7056,15 +7056,15 @@
     "name": "llama",
     "full_name": "meta-llama/llama",
     "description": "Inference code for Llama models",
-    "stars": 59483,
-    "forks": 9794,
-    "watchers": 59483,
+    "stars": 59485,
+    "forks": 9795,
+    "watchers": 59485,
     "open_issues": 523,
     "language": "Python",
     "topics": [],
     "license": "NOASSERTION",
     "created_at": "2023-02-14T09:29:12Z",
-    "updated_at": "2026-07-01T07:11:51Z",
+    "updated_at": "2026-07-02T06:46:38Z",
     "pushed_at": "2025-01-26T21:42:26Z",
     "homepage": "",
     "default_branch": "main",
@@ -7118,10 +7118,10 @@
     "name": "ollama",
     "full_name": "ollama/ollama",
     "description": "Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
-    "stars": 175206,
-    "forks": 16784,
-    "watchers": 175206,
-    "open_issues": 3511,
+    "stars": 175267,
+    "forks": 16788,
+    "watchers": 175267,
+    "open_issues": 3496,
     "language": "Go",
     "topics": [
       "deepseek",
@@ -7142,8 +7142,8 @@
     ],
     "license": "MIT",
     "created_at": "2023-06-26T19:39:32Z",
-    "updated_at": "2026-07-01T07:25:31Z",
-    "pushed_at": "2026-07-01T01:39:17Z",
+    "updated_at": "2026-07-02T07:14:45Z",
+    "pushed_at": "2026-07-02T02:43:16Z",
     "homepage": "https://ollama.com",
     "default_branch": "main",
     "archived": false,
@@ -7183,7 +7183,7 @@
     "top_contributors": [
       {
         "login": "mxyng",
-        "contributions": 1290
+        "contributions": 1291
       },
       {
         "login": "jmorganca",
@@ -7227,51 +7227,51 @@
     "name": "llama.cpp",
     "full_name": "ggml-org/llama.cpp",
     "description": "LLM inference in C/C++",
-    "stars": 118858,
-    "forks": 20120,
-    "watchers": 118858,
-    "open_issues": 1825,
+    "stars": 118967,
+    "forks": 20147,
+    "watchers": 118967,
+    "open_issues": 1829,
     "language": "C++",
     "topics": [
       "ggml"
     ],
     "license": "MIT",
     "created_at": "2023-03-10T18:58:00Z",
-    "updated_at": "2026-07-01T07:31:27Z",
-    "pushed_at": "2026-07-01T07:31:20Z",
+    "updated_at": "2026-07-02T07:10:40Z",
+    "pushed_at": "2026-07-01T20:01:44Z",
     "homepage": "https://llama.app",
     "default_branch": "master",
     "archived": false,
     "is_fork": false,
     "releases": [
       {
-        "tag_name": "b9852",
-        "name": "b9852",
-        "published_at": "2026-07-01T05:11:56Z",
+        "tag_name": "b9859",
+        "name": "b9859",
+        "published_at": "2026-07-01T18:10:10Z",
         "prerelease": false
       },
       {
-        "tag_name": "b9851",
-        "name": "b9851",
-        "published_at": "2026-06-30T19:35:08Z",
+        "tag_name": "b9858",
+        "name": "b9858",
+        "published_at": "2026-07-01T17:09:39Z",
         "prerelease": false
       },
       {
-        "tag_name": "b9850",
-        "name": "b9850",
-        "published_at": "2026-06-30T16:53:33Z",
+        "tag_name": "b9857",
+        "name": "b9857",
+        "published_at": "2026-07-01T14:41:19Z",
         "prerelease": false
       },
       {
-        "tag_name": "b9849",
-        "name": "b9849",
-        "published_at": "2026-06-30T14:56:43Z",
+        "tag_name": "b9856",
+        "name": "b9856",
+        "published_at": "2026-07-01T11:09:42Z",
         "prerelease": false
       },
       {
-        "tag_name": "b9848",
-        "name": "b9848",
-        "published_at": "2026-06-30T14:06:34Z",
+        "tag_name": "b9855",
+        "name": "b9855",
+        "published_at": "2026-07-01T10:16:09Z",
         "prerelease": false
       }
     ],
@@ -7286,7 +7286,7 @@
       },
       {
         "login": "JohannesGaessler",
-        "contributions": 385
+        "contributions": 386
       },
       {
         "login": "slaren",
@@ -7306,7 +7306,7 @@
       },
       {
         "login": "angt",
-        "contributions": 140
+        "contributions": 141
       },
       {
         "login": "am17an",
@@ -7322,10 +7322,10 @@
     "name": "langchain",
     "full_name": "langchain-ai/langchain",
     "description": "The agent engineering platform.",
-    "stars": 140614,
-    "forks": 23356,
-    "watchers": 140614,
-    "open_issues": 414,
+    "stars": 140705,
+    "forks": 23361,
+    "watchers": 140705,
+    "open_issues": 415,
     "language": "Python",
     "topics": [
       "agents",
@@ -7351,8 +7351,8 @@
     ],
     "license": "MIT",
     "created_at": "2022-10-17T02:58:36Z",
-    "updated_at": "2026-07-01T07:30:13Z",
-    "pushed_at": "2026-07-01T07:37:53Z",
+    "updated_at": "2026-07-02T07:10:42Z",
+    "pushed_at": "2026-07-01T19:01:46Z",
     "homepage": "https://docs.langchain.com/langchain/",
     "default_branch": "master",
     "archived": false,
@@ -7412,7 +7412,7 @@
       },
       {
         "login": "dependabot[bot]",
-        "contributions": 431
+        "contributions": 444
       },
       {
         "login": "cbornet",
@@ -7436,10 +7436,10 @@
     "name": "llama_index",
     "full_name": "run-llama/llama_index",
     "description": "LlamaIndex is the leading document agent and OCR platform",
-    "stars": 50549,
-    "forks": 7662,
-    "watchers": 50549,
-    "open_issues": 516,
+    "stars": 50583,
+    "forks": 7668,
+    "watchers": 50583,
+    "open_issues": 490,
     "language": "Python",
     "topics": [
       "agents",
@@ -7455,8 +7455,8 @@
     ],
     "license": "MIT",
     "created_at": "2022-11-02T04:24:54Z",
-    "updated_at": "2026-07-01T07:05:39Z",
-    "pushed_at": "2026-06-30T23:13:10Z",
+    "updated_at": "2026-07-02T07:11:12Z",
+    "pushed_at": "2026-07-02T02:21:38Z",
     "homepage": "https://developers.llamaindex.ai",
     "default_branch": "main",
     "archived": false,
@@ -7496,7 +7496,7 @@
     "top_contributors": [
       {
         "login": "logan-markewich",
-        "contributions": 1284
+        "contributions": 1285
       },
       {
         "login": "jerryjliu",
@@ -7540,10 +7540,10 @@
     "name": "transformers",
     "full_name": "huggingface/transformers",
     "description": "\ud83e\udd17 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
-    "stars": 162064,
-    "forks": 33687,
-    "watchers": 162064,
-    "open_issues": 2456,
+    "stars": 162106,
+    "forks": 33717,
+    "watchers": 162106,
+    "open_issues": 2462,
     "language": "Python",
     "topics": [
       "audio",
@@ -7568,8 +7568,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2018-10-29T13:56:00Z",
-    "updated_at": "2026-07-01T07:38:03Z",
-    "pushed_at": "2026-07-01T07:25:15Z",
+    "updated_at": "2026-07-02T07:15:51Z",
+    "pushed_at": "2026-07-02T07:11:09Z",
     "homepage": "https://huggingface.co/transformers",
     "default_branch": "main",
     "archived": false,
@@ -7645,7 +7645,7 @@
       },
       {
         "login": "Rocketknight1",
-        "contributions": 449
+        "contributions": 450
       }
     ]
   },
@@ -7653,10 +7653,10 @@
     "name": "vllm",
     "full_name": "vllm-project/vllm",
     "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
-    "stars": 84960,
-    "forks": 18740,
-    "watchers": 84960,
-    "open_issues": 5403,
+    "stars": 85101,
+    "forks": 18804,
+    "watchers": 85101,
+    "open_issues": 5480,
     "language": "Python",
     "topics": [
       "amd",
@@ -7682,8 +7682,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2023-02-09T11:23:20Z",
-    "updated_at": "2026-07-01T07:38:10Z",
-    "pushed_at": "2026-07-01T07:38:03Z",
+    "updated_at": "2026-07-02T07:10:32Z",
+    "pushed_at": "2026-07-02T06:28:18Z",
     "homepage": "https://vllm.ai",
     "default_branch": "main",
     "archived": false,
@@ -7731,11 +7731,11 @@
       },
       {
         "login": "mgoin",
-        "contributions": 547
+        "contributions": 548
       },
       {
         "login": "hmellor",
-        "contributions": 511
+        "contributions": 514
       },
       {
         "login": "youkaichao",
@@ -7747,7 +7747,7 @@
       },
       {
         "login": "njhill",
-        "contributions": 400
+        "contributions": 403
       },
       {
         "login": "yewentao256",
@@ -7755,7 +7755,7 @@
       },
       {
         "login": "jeejeelee",
-        "contributions": 309
+        "contributions": 312
       },
       {
         "login": "AndreasKaratzas",
@@ -7767,15 +7767,15 @@
     "name": "FastChat",
     "full_name": "lm-sys/FastChat",
     "description": "An open platform for training, serving, and evaluating large language models. Release repo for Vicuna and Chatbot Arena.",
-    "stars": 39489,
+    "stars": 39488,
     "forks": 4787,
-    "watchers": 39489,
+    "watchers": 39488,
     "open_issues": 1023,
     "language": "Python",
     "topics": [],
     "license": "Apache-2.0",
     "created_at": "2023-03-19T00:18:02Z",
-    "updated_at": "2026-07-01T04:08:49Z",
+    "updated_at": "2026-07-02T05:18:27Z",
     "pushed_at": "2026-05-01T00:25:53Z",
     "homepage": "",
     "default_branch": "main",
@@ -7860,21 +7860,27 @@
     "name": "claude-code",
     "full_name": "anthropics/claude-code",
     "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
-    "stars": 135215,
-    "forks": 21813,
-    "watchers": 135215,
-    "open_issues": 9120,
+    "stars": 135381,
+    "forks": 21819,
+    "watchers": 135381,
+    "open_issues": 9515,
     "language": "Python",
     "topics": [],
     "license": null,
     "created_at": "2025-02-22T17:41:21Z",
-    "updated_at": "2026-07-01T07:39:22Z",
-    "pushed_at": "2026-06-30T17:56:37Z",
+    "updated_at": "2026-07-02T07:16:28Z",
+    "pushed_at": "2026-07-01T23:55:18Z",
     "homepage": "https://code.claude.com/docs/en/overview",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v2.1.198",
+        "name": "v2.1.198",
+        "published_at": "2026-07-01T20:45:36Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v2.1.197",
         "name": "v2.1.197",
@@ -7898,18 +7904,12 @@
         "name": "v2.1.193",
         "published_at": "2026-06-25T21:45:57Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v2.1.191",
-        "name": "v2.1.191",
-        "published_at": "2026-06-24T21:58:12Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "actions-user",
-        "contributions": 367
+        "contributions": 368
       },
       {
         "login": "bcherny",
@@ -7953,21 +7953,27 @@
     "name": "codex",
     "full_name": "openai/codex",
     "description": "Lightweight coding agent that runs in your terminal",
-    "stars": 94764,
-    "forks": 14051,
-    "watchers": 94764,
-    "open_issues": 8134,
+    "stars": 94984,
+    "forks": 14084,
+    "watchers": 94984,
+    "open_issues": 8083,
     "language": "Rust",
     "topics": [],
     "license": "Apache-2.0",
     "created_at": "2025-04-13T05:37:54Z",
-    "updated_at": "2026-07-01T07:38:04Z",
-    "pushed_at": "2026-07-01T07:23:03Z",
+    "updated_at": "2026-07-02T07:15:28Z",
+    "pushed_at": "2026-07-02T07:12:04Z",
     "homepage": "",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "rust-v0.143.0-alpha.33",
+        "name": "0.143.0-alpha.33",
+        "published_at": "2026-07-02T01:58:50Z",
+        "prerelease": true
+      },
       {
         "tag_name": "rust-v0.142.5",
         "name": "0.142.5",
@@ -7991,12 +7997,6 @@
         "name": "0.143.0-alpha.31",
         "published_at": "2026-06-29T23:21:34Z",
         "prerelease": true
-      },
-      {
-        "tag_name": "rust-v0.143.0-alpha.29",
-        "name": "0.143.0-alpha.29",
-        "published_at": "2026-06-28T00:30:41Z",
-        "prerelease": true
       }
     ],
     "top_contributors": [
@@ -8006,7 +8006,7 @@
       },
       {
         "login": "bolinfest",
-        "contributions": 1002
+        "contributions": 1005
       },
       {
         "login": "aibrahim-oai",
@@ -8046,10 +8046,10 @@
     "name": "aider",
     "full_name": "Aider-AI/aider",
     "description": "aider is AI pair programming in your terminal",
-    "stars": 46890,
-    "forks": 4676,
-    "watchers": 46890,
-    "open_issues": 1686,
+    "stars": 46937,
+    "forks": 4679,
+    "watchers": 46937,
+    "open_issues": 1697,
     "language": "Python",
     "topics": [
       "anthropic",
@@ -8068,7 +8068,7 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2023-05-09T18:57:49Z",
-    "updated_at": "2026-07-01T06:36:31Z",
+    "updated_at": "2026-07-02T06:52:18Z",
     "pushed_at": "2026-05-22T14:02:20Z",
     "homepage": "https://aider.chat/",
     "default_branch": "main",
@@ -8153,10 +8153,10 @@
     "name": "goose",
     "full_name": "aaif-goose/goose",
     "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
-    "stars": 50509,
-    "forks": 5408,
-    "watchers": 50509,
-    "open_issues": 264,
+    "stars": 50555,
+    "forks": 5419,
+    "watchers": 50555,
+    "open_issues": 239,
     "language": "Rust",
     "topics": [
       "acp",
@@ -8166,13 +8166,19 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2024-08-23T19:03:36Z",
-    "updated_at": "2026-07-01T07:26:19Z",
-    "pushed_at": "2026-07-01T05:05:23Z",
+    "updated_at": "2026-07-02T07:00:18Z",
+    "pushed_at": "2026-07-02T06:58:23Z",
     "homepage": "https://goose-docs.ai/",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v1.40.0",
+        "name": "v1.40.0",
+        "published_at": "2026-07-02T05:12:00Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v1.39.0",
         "name": "v1.39.0",
@@ -8196,18 +8202,12 @@
         "name": "v1.36.0",
         "published_at": "2026-05-27T23:53:04Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v1.35.0",
-        "name": "v1.35.0",
-        "published_at": "2026-05-22T00:42:05Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
       {
         "login": "DOsinga",
-        "contributions": 271
+        "contributions": 272
       },
       {
         "login": "alexhancock",
@@ -8219,11 +8219,11 @@
       },
       {
         "login": "michaelneale",
-        "contributions": 230
+        "contributions": 231
       },
       {
         "login": "jamadeo",
-        "contributions": 228
+        "contributions": 231
       },
       {
         "login": "angiejones",
@@ -8231,15 +8231,15 @@
       },
       {
         "login": "lifeizhou-ap",
-        "contributions": 211
+        "contributions": 215
+      },
+      {
+        "login": "dependabot[bot]",
+        "contributions": 186
       },
       {
         "login": "blackgirlbytes",
         "contributions": 183
-      },
-      {
-        "login": "dependabot[bot]",
-        "contributions": 181
       },
       {
         "login": "dianed-square",
@@ -8251,10 +8251,10 @@
     "name": "gemini-cli",
     "full_name": "google-gemini/gemini-cli",
     "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
-    "stars": 105687,
-    "forks": 14198,
-    "watchers": 105687,
-    "open_issues": 1346,
+    "stars": 105703,
+    "forks": 14191,
+    "watchers": 105703,
+    "open_issues": 1340,
     "language": "TypeScript",
     "topics": [
       "ai",
@@ -8267,13 +8267,19 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2025-04-17T17:04:31Z",
-    "updated_at": "2026-07-01T06:57:49Z",
-    "pushed_at": "2026-07-01T01:49:23Z",
+    "updated_at": "2026-07-02T07:16:25Z",
+    "pushed_at": "2026-07-02T01:44:11Z",
     "homepage": "https://geminicli.com",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v0.51.0-nightly.20260702.gff00dacd9",
+        "name": "Release v0.51.0-nightly.20260702.gff00dacd9",
+        "published_at": "2026-07-02T01:44:11Z",
+        "prerelease": true
+      },
       {
         "tag_name": "v0.51.0-nightly.20260701.g7f00c5fe5",
         "name": "Release v0.51.0-nightly.20260701.g7f00c5fe5",
@@ -8296,12 +8302,6 @@
         "tag_name": "v0.51.0-nightly.20260628.gae0a3aa7b",
         "name": "Release v0.51.0-nightly.20260628.gae0a3aa7b",
         "published_at": "2026-06-28T01:45:53Z",
-        "prerelease": true
-      },
-      {
-        "tag_name": "v0.51.0-nightly.20260626.gb14416447",
-        "name": "Release v0.51.0-nightly.20260626.gb14416447",
-        "published_at": "2026-06-26T01:46:37Z",
         "prerelease": true
       }
     ],
@@ -8352,16 +8352,16 @@
     "name": "cline",
     "full_name": "cline/cline",
     "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-    "stars": 64151,
-    "forks": 6809,
-    "watchers": 64151,
-    "open_issues": 1201,
+    "stars": 64200,
+    "forks": 6819,
+    "watchers": 64200,
+    "open_issues": 1191,
     "language": "TypeScript",
     "topics": [],
     "license": "Apache-2.0",
     "created_at": "2024-07-06T07:28:10Z",
-    "updated_at": "2026-07-01T07:28:16Z",
-    "pushed_at": "2026-07-01T07:32:59Z",
+    "updated_at": "2026-07-02T06:17:26Z",
+    "pushed_at": "2026-07-02T01:22:50Z",
     "homepage": "https://cline.bot",
     "default_branch": "main",
     "archived": false,
@@ -8405,7 +8405,7 @@
       },
       {
         "login": "abeatrix",
-        "contributions": 820
+        "contributions": 822
       },
       {
         "login": "celestial-vault",
@@ -8413,7 +8413,7 @@
       },
       {
         "login": "arafatkatze",
-        "contributions": 318
+        "contributions": 321
       },
       {
         "login": "sjf",
@@ -8421,7 +8421,7 @@
       },
       {
         "login": "BarreiroT",
-        "contributions": 256
+        "contributions": 257
       },
       {
         "login": "pashpashpash",
@@ -8433,7 +8433,7 @@
       },
       {
         "login": "robinnewhouse",
-        "contributions": 152
+        "contributions": 153
       },
       {
         "login": "0xToshii",
@@ -8445,15 +8445,15 @@
     "name": "Roo-Code",
     "full_name": "RooCodeInc/Roo-Code",
     "description": "Roo Code gives you a whole dev team of AI agents in your code editor.",
-    "stars": 24305,
-    "forks": 3348,
-    "watchers": 24305,
+    "stars": 24302,
+    "forks": 3346,
+    "watchers": 24302,
     "open_issues": 1036,
     "language": "TypeScript",
     "topics": [],
     "license": "Apache-2.0",
     "created_at": "2024-10-31T17:56:50Z",
-    "updated_at": "2026-07-01T01:16:43Z",
+    "updated_at": "2026-07-02T05:59:27Z",
     "pushed_at": "2026-05-15T18:08:47Z",
     "homepage": "https://roocode.com",
     "default_branch": "main",
@@ -8538,10 +8538,10 @@
     "name": "OpenHands",
     "full_name": "OpenHands/OpenHands",
     "description": "\ud83d\ude4c OpenHands: AI-Driven Development",
-    "stars": 78912,
-    "forks": 10037,
-    "watchers": 78912,
-    "open_issues": 355,
+    "stars": 79082,
+    "forks": 10064,
+    "watchers": 79082,
+    "open_issues": 347,
     "language": "Python",
     "topics": [
       "agent",
@@ -8556,8 +8556,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2024-03-13T03:33:31Z",
-    "updated_at": "2026-07-01T07:35:42Z",
-    "pushed_at": "2026-07-01T06:11:33Z",
+    "updated_at": "2026-07-02T07:12:20Z",
+    "pushed_at": "2026-07-02T05:18:35Z",
     "homepage": "https://openhands.dev",
     "default_branch": "main",
     "archived": false,
@@ -8605,11 +8605,11 @@
       },
       {
         "login": "tofarr",
-        "contributions": 581
+        "contributions": 583
       },
       {
         "login": "rbren",
-        "contributions": 479
+        "contributions": 480
       },
       {
         "login": "hieptl",
@@ -8625,7 +8625,7 @@
       },
       {
         "login": "enyst",
-        "contributions": 340
+        "contributions": 341
       },
       {
         "login": "neubig",
@@ -8641,10 +8641,10 @@
     "name": "continue",
     "full_name": "continuedev/continue",
     "description": "open-source coding agent",
-    "stars": 34611,
-    "forks": 4912,
-    "watchers": 34611,
-    "open_issues": 971,
+    "stars": 34634,
+    "forks": 4925,
+    "watchers": 34634,
+    "open_issues": 976,
     "language": "TypeScript",
     "topics": [
       "agent",
@@ -8655,8 +8655,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2023-05-24T03:39:39Z",
-    "updated_at": "2026-07-01T03:36:03Z",
-    "pushed_at": "2026-07-01T07:07:47Z",
+    "updated_at": "2026-07-02T05:18:43Z",
+    "pushed_at": "2026-07-01T23:13:25Z",
     "homepage": "https://continue.dev",
     "default_branch": "main",
     "archived": false,
@@ -8740,10 +8740,10 @@
     "name": "kilocode",
     "full_name": "Kilo-Org/kilocode",
     "description": "Kilo is the all-in-one agentic engineering platform. Build, ship, and iterate faster with the most popular open source coding agent.",
-    "stars": 25254,
-    "forks": 2825,
-    "watchers": 25254,
-    "open_issues": 798,
+    "stars": 25350,
+    "forks": 2834,
+    "watchers": 25350,
+    "open_issues": 797,
     "language": "TypeScript",
     "topics": [
       "ai",
@@ -8761,8 +8761,8 @@
     ],
     "license": "MIT",
     "created_at": "2025-03-10T15:34:26Z",
-    "updated_at": "2026-07-01T07:37:38Z",
-    "pushed_at": "2026-07-01T00:15:33Z",
+    "updated_at": "2026-07-02T07:13:45Z",
+    "pushed_at": "2026-07-02T06:54:27Z",
     "homepage": "https://kilo.ai/",
     "default_branch": "main",
     "archived": false,
@@ -8810,15 +8810,15 @@
       },
       {
         "login": "markijbema",
-        "contributions": 1808
+        "contributions": 1830
       },
       {
         "login": "marius-kilocode",
-        "contributions": 1493
+        "contributions": 1497
       },
       {
         "login": "kirillk",
-        "contributions": 1268
+        "contributions": 1282
       },
       {
         "login": "rekram1-node",
@@ -8830,7 +8830,7 @@
       },
       {
         "login": "catrielmuller",
-        "contributions": 995
+        "contributions": 996
       },
       {
         "login": "actions-user",
@@ -8846,9 +8846,9 @@
     "name": "tabby",
     "full_name": "TabbyML/tabby",
     "description": "Self-hosted AI coding assistant",
-    "stars": 33660,
-    "forks": 1759,
-    "watchers": 33660,
+    "stars": 33663,
+    "forks": 1760,
+    "watchers": 33663,
     "open_issues": 324,
     "language": "Rust",
     "topics": [
@@ -8864,7 +8864,7 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2023-03-16T09:18:01Z",
-    "updated_at": "2026-07-01T00:38:35Z",
+    "updated_at": "2026-07-02T04:58:56Z",
     "pushed_at": "2026-06-30T20:38:02Z",
     "homepage": "https://tabbyml.com",
     "default_branch": "main",
@@ -8978,10 +8978,10 @@
     "name": "sweep",
     "full_name": "sweepai/sweep",
     "description": "Sweep: AI coding assistant for JetBrains",
-    "stars": 7699,
-    "forks": 462,
-    "watchers": 7699,
-    "open_issues": 751,
+    "stars": 7700,
+    "forks": 463,
+    "watchers": 7700,
+    "open_issues": 752,
     "language": "Jupyter Notebook",
     "topics": [
       "ai",
@@ -8996,7 +8996,7 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2023-06-14T10:08:07Z",
-    "updated_at": "2026-06-30T18:51:13Z",
+    "updated_at": "2026-07-01T20:04:40Z",
     "pushed_at": "2025-09-18T06:10:59Z",
     "homepage": "https://sweep.dev",
     "default_branch": "main",
@@ -9075,10 +9075,10 @@
     "name": "E2B",
     "full_name": "e2b-dev/E2B",
     "description": "Open-source, secure environment with real-world tools for enterprise-grade agents.",
-    "stars": 12795,
-    "forks": 954,
-    "watchers": 12795,
-    "open_issues": 58,
+    "stars": 12808,
+    "forks": 955,
+    "watchers": 12808,
+    "open_issues": 59,
     "language": "Python",
     "topics": [
       "agent",
@@ -9102,8 +9102,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2023-03-04T13:41:18Z",
-    "updated_at": "2026-07-01T07:38:45Z",
-    "pushed_at": "2026-06-30T17:32:30Z",
+    "updated_at": "2026-07-02T06:42:57Z",
+    "pushed_at": "2026-07-01T14:49:47Z",
     "homepage": "https://e2b.dev/docs",
     "default_branch": "main",
     "archived": false,
@@ -9159,7 +9159,7 @@
       },
       {
         "login": "mishushakov",
-        "contributions": 233
+        "contributions": 234
       },
       {
         "login": "0div",
@@ -9187,9 +9187,9 @@
     "name": "bolt.new",
     "full_name": "stackblitz/bolt.new",
     "description": "Prompt, run, edit, and deploy full-stack web applications. -- bolt.new -- Help Center: https://support.bolt.new/ -- Community Support: https://discord.com/invite/stackblitz",
-    "stars": 16429,
-    "forks": 14676,
-    "watchers": 16429,
+    "stars": 16432,
+    "forks": 14677,
+    "watchers": 16432,
     "open_issues": 8188,
     "language": "TypeScript",
     "topics": [
@@ -9200,7 +9200,7 @@
     ],
     "license": "MIT",
     "created_at": "2024-09-24T16:07:49Z",
-    "updated_at": "2026-07-01T06:35:47Z",
+    "updated_at": "2026-07-02T05:25:15Z",
     "pushed_at": "2024-12-17T06:29:27Z",
     "homepage": "https://bolt.new",
     "default_branch": "main",
@@ -9254,9 +9254,9 @@
     "name": "gpt-engineer",
     "full_name": "AntonOsika/gpt-engineer",
     "description": "CLI platform to experiment with codegen. Precursor to: https://lovable.dev",
-    "stars": 55203,
+    "stars": 55204,
     "forks": 7298,
-    "watchers": 55203,
+    "watchers": 55204,
     "open_issues": 70,
     "language": "Python",
     "topics": [
@@ -9273,7 +9273,7 @@
     ],
     "license": "MIT",
     "created_at": "2023-04-29T12:52:15Z",
-    "updated_at": "2026-07-01T07:04:38Z",
+    "updated_at": "2026-07-02T03:15:34Z",
     "pushed_at": "2025-05-14T10:15:10Z",
     "homepage": "",
     "default_branch": "main",
@@ -9358,9 +9358,9 @@
     "name": "inngest",
     "full_name": "inngest/inngest",
     "description": "The leading workflow orchestration platform.  Run stateful step functions and AI workflows on serverless, servers, or the edge.",
-    "stars": 5548,
+    "stars": 5550,
     "forks": 325,
-    "watchers": 5548,
+    "watchers": 5550,
     "open_issues": 220,
     "language": "Go",
     "topics": [
@@ -9375,8 +9375,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2021-06-07T18:26:33Z",
-    "updated_at": "2026-07-01T07:24:05Z",
-    "pushed_at": "2026-07-01T00:45:26Z",
+    "updated_at": "2026-07-01T23:24:39Z",
+    "pushed_at": "2026-07-01T23:28:04Z",
     "homepage": "https://www.inngest.com/docs",
     "default_branch": "main",
     "archived": false,
@@ -9460,10 +9460,10 @@
     "name": "trigger.dev",
     "full_name": "triggerdotdev/trigger.dev",
     "description": "Trigger.dev \u2013 build and deploy fully\u2011managed AI agents and workflows",
-    "stars": 15515,
-    "forks": 1327,
-    "watchers": 15515,
-    "open_issues": 386,
+    "stars": 15531,
+    "forks": 1330,
+    "watchers": 15531,
+    "open_issues": 382,
     "language": "TypeScript",
     "topics": [
       "ai",
@@ -9482,8 +9482,8 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2022-11-30T14:59:07Z",
-    "updated_at": "2026-07-01T06:34:40Z",
-    "pushed_at": "2026-06-30T21:55:51Z",
+    "updated_at": "2026-07-02T05:22:08Z",
+    "pushed_at": "2026-07-01T18:46:56Z",
     "homepage": "https://trigger.dev/changelog",
     "default_branch": "main",
     "archived": false,
@@ -9523,7 +9523,7 @@
     "top_contributors": [
       {
         "login": "matt-aitken",
-        "contributions": 2467
+        "contributions": 2469
       },
       {
         "login": "ericallam",
@@ -9535,7 +9535,7 @@
       },
       {
         "login": "nicktrn",
-        "contributions": 425
+        "contributions": 426
       },
       {
         "login": "D-K-P",
@@ -9567,9 +9567,9 @@
     "name": "temporal",
     "full_name": "temporalio/temporal",
     "description": "Temporal service",
-    "stars": 21345,
+    "stars": 21363,
     "forks": 1692,
-    "watchers": 21345,
+    "watchers": 21363,
     "open_issues": 792,
     "language": "Go",
     "topics": [
@@ -9592,8 +9592,8 @@
     ],
     "license": "MIT",
     "created_at": "2019-10-16T22:15:35Z",
-    "updated_at": "2026-07-01T05:29:58Z",
-    "pushed_at": "2026-07-01T05:09:45Z",
+    "updated_at": "2026-07-02T05:14:22Z",
+    "pushed_at": "2026-07-02T04:19:15Z",
     "homepage": "https://docs.temporal.io",
     "default_branch": "main",
     "archived": false,
@@ -9677,9 +9677,9 @@
     "name": "react-email",
     "full_name": "resend/react-email",
     "description": "\ud83d\udc8c Build and send emails using React",
-    "stars": 19382,
+    "stars": 19386,
     "forks": 1053,
-    "watchers": 19382,
+    "watchers": 19386,
     "open_issues": 57,
     "language": "TypeScript",
     "topics": [
@@ -9688,7 +9688,7 @@
     ],
     "license": "MIT",
     "created_at": "2022-09-19T19:24:54Z",
-    "updated_at": "2026-07-01T06:20:52Z",
+    "updated_at": "2026-07-01T17:23:36Z",
     "pushed_at": "2026-06-30T10:45:17Z",
     "homepage": "https://react.email",
     "default_branch": "canary",
@@ -9773,10 +9773,10 @@
     "name": "novu",
     "full_name": "novuhq/novu",
     "description": "The open-source communication infrastructure for agents and products",
-    "stars": 39234,
-    "forks": 4344,
-    "watchers": 39234,
-    "open_issues": 93,
+    "stars": 39233,
+    "forks": 4345,
+    "watchers": 39233,
+    "open_issues": 94,
     "language": "TypeScript",
     "topics": [
       "agents",
@@ -9797,8 +9797,8 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2021-08-26T15:22:44Z",
-    "updated_at": "2026-07-01T07:41:30Z",
-    "pushed_at": "2026-07-01T07:41:15Z",
+    "updated_at": "2026-07-02T04:47:04Z",
+    "pushed_at": "2026-07-02T07:04:33Z",
     "homepage": "https://go.novu.co/github",
     "default_branch": "next",
     "archived": false,
@@ -9838,7 +9838,7 @@
     "top_contributors": [
       {
         "login": "scopsy",
-        "contributions": 5034
+        "contributions": 5036
       },
       {
         "login": "djabarovgeorge",
@@ -9882,9 +9882,9 @@
     "name": "zustand",
     "full_name": "pmndrs/zustand",
     "description": "\ud83d\udc3b Bear necessities for state management in React",
-    "stars": 58356,
+    "stars": 58362,
     "forks": 2086,
-    "watchers": 58356,
+    "watchers": 58362,
     "open_issues": 5,
     "language": "TypeScript",
     "topics": [
@@ -9898,8 +9898,8 @@
     ],
     "license": "MIT",
     "created_at": "2019-04-09T09:10:06Z",
-    "updated_at": "2026-07-01T07:41:03Z",
-    "pushed_at": "2026-06-29T21:18:51Z",
+    "updated_at": "2026-07-02T07:16:18Z",
+    "pushed_at": "2026-07-01T23:02:15Z",
     "homepage": "https://zustand-demo.pmnd.rs/",
     "default_branch": "main",
     "archived": false,
@@ -9983,9 +9983,9 @@
     "name": "jotai",
     "full_name": "pmndrs/jotai",
     "description": "\ud83d\udc7b Primitive and flexible state management for React",
-    "stars": 21213,
+    "stars": 21212,
     "forks": 723,
-    "watchers": 21213,
+    "watchers": 21212,
     "open_issues": 5,
     "language": "TypeScript",
     "topics": [
@@ -9997,7 +9997,7 @@
     ],
     "license": "MIT",
     "created_at": "2020-08-11T23:15:36Z",
-    "updated_at": "2026-07-01T06:20:39Z",
+    "updated_at": "2026-07-01T15:40:09Z",
     "pushed_at": "2026-06-12T05:37:34Z",
     "homepage": "https://jotai.org",
     "default_branch": "main",
@@ -10082,10 +10082,10 @@
     "name": "xstate",
     "full_name": "statelyai/xstate",
     "description": "State machines, statecharts, and actors for complex logic",
-    "stars": 29782,
-    "forks": 1367,
-    "watchers": 29782,
-    "open_issues": 124,
+    "stars": 29792,
+    "forks": 1369,
+    "watchers": 29792,
+    "open_issues": 121,
     "language": "TypeScript",
     "topics": [
       "background-jobs",
@@ -10107,41 +10107,41 @@
     ],
     "license": "MIT",
     "created_at": "2015-09-14T15:04:15Z",
-    "updated_at": "2026-07-01T04:59:36Z",
-    "pushed_at": "2026-07-01T03:53:12Z",
+    "updated_at": "2026-07-02T05:59:38Z",
+    "pushed_at": "2026-07-02T00:16:19Z",
     "homepage": "https://stately.ai/docs",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
       {
-        "tag_name": "xstate@6.0.0-alpha.14",
-        "name": "xstate@6.0.0-alpha.14",
-        "published_at": "2026-07-01T03:53:12Z",
+        "tag_name": "xstate@6.0.0-alpha.16",
+        "name": "xstate@6.0.0-alpha.16",
+        "published_at": "2026-07-02T00:16:22Z",
         "prerelease": true
       },
       {
-        "tag_name": "xstate@6.0.0-alpha.13",
-        "name": "xstate@6.0.0-alpha.13",
-        "published_at": "2026-06-30T19:50:43Z",
+        "tag_name": "@xstate/store@4.3.0-alpha.2",
+        "name": "@xstate/store@4.3.0-alpha.2",
+        "published_at": "2026-07-02T00:16:19Z",
         "prerelease": true
       },
       {
-        "tag_name": "@xstate/store@4.2.1",
-        "name": "@xstate/store@4.2.1",
-        "published_at": "2026-06-29T00:26:23Z",
+        "tag_name": "xstate@5.32.3",
+        "name": "xstate@5.32.3",
+        "published_at": "2026-07-01T14:28:59Z",
         "prerelease": false
       },
       {
-        "tag_name": "xstate@6.0.0-alpha.12",
-        "name": "xstate@6.0.0-alpha.12",
-        "published_at": "2026-06-29T20:37:42Z",
+        "tag_name": "xstate@6.0.0-alpha.15",
+        "name": "xstate@6.0.0-alpha.15",
+        "published_at": "2026-07-01T12:43:00Z",
         "prerelease": true
       },
       {
-        "tag_name": "xstate@6.0.0-alpha.11",
-        "name": "xstate@6.0.0-alpha.11",
-        "published_at": "2026-06-28T01:22:44Z",
+        "tag_name": "xstate@6.0.0-alpha.14",
+        "name": "xstate@6.0.0-alpha.14",
+        "published_at": "2026-07-01T03:53:12Z",
         "prerelease": true
       }
     ],
@@ -10156,7 +10156,7 @@
       },
       {
         "login": "github-actions[bot]",
-        "contributions": 301
+        "contributions": 302
       },
       {
         "login": "mattpocock",
@@ -10192,15 +10192,15 @@
     "name": "nanostores",
     "full_name": "nanostores/nanostores",
     "description": "A tiny (340 bytes) state manager for React/RN/Preact/Vue/Svelte with many atomic tree-shakable stores",
-    "stars": 7457,
+    "stars": 7460,
     "forks": 154,
-    "watchers": 7457,
+    "watchers": 7460,
     "open_issues": 22,
     "language": "TypeScript",
     "topics": [],
     "license": "MIT",
     "created_at": "2020-10-14T19:51:28Z",
-    "updated_at": "2026-07-01T00:13:24Z",
+    "updated_at": "2026-07-02T06:42:15Z",
     "pushed_at": "2026-06-27T08:21:24Z",
     "homepage": "",
     "default_branch": "main",
@@ -10303,8 +10303,8 @@
     ],
     "license": "MIT",
     "created_at": "2019-03-05T23:47:10Z",
-    "updated_at": "2026-07-01T06:18:48Z",
-    "pushed_at": "2026-07-01T01:33:22Z",
+    "updated_at": "2026-07-02T04:37:41Z",
+    "pushed_at": "2026-07-02T00:58:47Z",
     "homepage": "https://react-hook-form.com",
     "default_branch": "master",
     "archived": false,
@@ -10388,9 +10388,9 @@
     "name": "zod",
     "full_name": "colinhacks/zod",
     "description": "TypeScript-first schema validation with static type inference",
-    "stars": 43078,
+    "stars": 43084,
     "forks": 2045,
-    "watchers": 43078,
+    "watchers": 43084,
     "open_issues": 228,
     "language": "TypeScript",
     "topics": [
@@ -10402,7 +10402,7 @@
     ],
     "license": "MIT",
     "created_at": "2020-03-07T20:59:08Z",
-    "updated_at": "2026-07-01T06:18:56Z",
+    "updated_at": "2026-07-02T06:42:53Z",
     "pushed_at": "2026-06-13T00:19:54Z",
     "homepage": "https://zod.dev",
     "default_branch": "main",
@@ -10487,9 +10487,9 @@
     "name": "valibot",
     "full_name": "open-circle/valibot",
     "description": "The modular and type safe schema library for validating structural data \ud83e\udd16",
-    "stars": 8799,
+    "stars": 8801,
     "forks": 352,
-    "watchers": 8799,
+    "watchers": 8801,
     "open_issues": 147,
     "language": "TypeScript",
     "topics": [
@@ -10504,7 +10504,7 @@
     ],
     "license": "MIT",
     "created_at": "2023-07-07T10:31:24Z",
-    "updated_at": "2026-07-01T00:14:01Z",
+    "updated_at": "2026-07-01T15:23:51Z",
     "pushed_at": "2026-06-28T15:14:12Z",
     "homepage": "https://valibot.dev",
     "default_branch": "main",
@@ -10589,15 +10589,15 @@
     "name": "sst",
     "full_name": "anomalyco/sst",
     "description": "Build full-stack apps on your own infrastructure.",
-    "stars": 26121,
+    "stars": 26125,
     "forks": 2104,
-    "watchers": 26121,
+    "watchers": 26125,
     "open_issues": 260,
     "language": "TypeScript",
     "topics": [],
     "license": "MIT",
     "created_at": "2020-08-04T20:28:14Z",
-    "updated_at": "2026-07-01T06:20:07Z",
+    "updated_at": "2026-07-01T20:45:29Z",
     "pushed_at": "2026-06-26T07:39:09Z",
     "homepage": "https://sst.dev",
     "default_branch": "dev",
@@ -10682,10 +10682,10 @@
     "name": "pulumi",
     "full_name": "pulumi/pulumi",
     "description": "Pulumi - Infrastructure as Code in any programming language \ud83d\ude80",
-    "stars": 25375,
+    "stars": 25379,
     "forks": 1388,
-    "watchers": 25375,
-    "open_issues": 2454,
+    "watchers": 25379,
+    "open_issues": 2451,
     "language": "Go",
     "topics": [
       "aws",
@@ -10709,13 +10709,25 @@
     ],
     "license": "Apache-2.0",
     "created_at": "2016-10-31T21:02:47Z",
-    "updated_at": "2026-07-01T07:31:36Z",
-    "pushed_at": "2026-07-01T07:36:45Z",
+    "updated_at": "2026-07-02T07:16:15Z",
+    "pushed_at": "2026-07-02T07:16:08Z",
     "homepage": "https://www.pulumi.com",
     "default_branch": "master",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v3.250.0",
+        "name": "v3.250.0",
+        "published_at": "2026-07-02T00:47:36Z",
+        "prerelease": false
+      },
+      {
+        "tag_name": "v3.249.0",
+        "name": "v3.249.0",
+        "published_at": "2026-07-01T14:20:03Z",
+        "prerelease": false
+      },
       {
         "tag_name": "v3.248.0",
         "name": "v3.248.0",
@@ -10733,18 +10745,6 @@
         "name": "v3.246.0",
         "published_at": "2026-06-11T19:51:29Z",
         "prerelease": false
-      },
-      {
-        "tag_name": "v3.245.0",
-        "name": "v3.245.0",
-        "published_at": "2026-06-04T08:53:06Z",
-        "prerelease": false
-      },
-      {
-        "tag_name": "v3.244.0",
-        "name": "v3.244.0",
-        "published_at": "2026-05-28T18:13:39Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -10754,7 +10754,7 @@
       },
       {
         "login": "Frassle",
-        "contributions": 1606
+        "contributions": 1607
       },
       {
         "login": "bors[bot]",
@@ -10762,7 +10762,7 @@
       },
       {
         "login": "tgummerer",
-        "contributions": 864
+        "contributions": 865
       },
       {
         "login": "justinvp",
@@ -10770,7 +10770,7 @@
       },
       {
         "login": "iwahbe",
-        "contributions": 790
+        "contributions": 793
       },
       {
         "login": "pgavlin",
@@ -10778,7 +10778,7 @@
       },
       {
         "login": "julienp",
-        "contributions": 686
+        "contributions": 691
       },
       {
         "login": "ellismg",
@@ -10794,10 +10794,10 @@
     "name": "terraform",
     "full_name": "hashicorp/terraform",
     "description": "Terraform enables you to safely and predictably create, change, and improve infrastructure. It is a source-available tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.",
-    "stars": 48747,
-    "forks": 10383,
-    "watchers": 48747,
-    "open_issues": 1912,
+    "stars": 48752,
+    "forks": 10379,
+    "watchers": 48752,
+    "open_issues": 1914,
     "language": "Go",
     "topics": [
       "cloud",
@@ -10808,13 +10808,19 @@
     ],
     "license": "NOASSERTION",
     "created_at": "2014-03-13T22:25:48Z",
-    "updated_at": "2026-07-01T06:18:42Z",
-    "pushed_at": "2026-06-30T20:24:11Z",
+    "updated_at": "2026-07-02T07:13:12Z",
+    "pushed_at": "2026-07-02T05:49:21Z",
     "homepage": "http://developer.hashicorp.com/terraform",
     "default_branch": "main",
     "archived": false,
     "is_fork": false,
     "releases": [
+      {
+        "tag_name": "v1.16.0-alpha20260701",
+        "name": "v1.16.0-alpha20260701",
+        "published_at": "2026-07-01T19:49:44Z",
+        "prerelease": true
+      },
       {
         "tag_name": "v1.16.0-alpha20260626",
         "name": "v1.16.0-alpha20260626",
@@ -10838,12 +10844,6 @@
         "name": "v1.16.0-alpha20260617",
         "published_at": "2026-06-17T14:07:50Z",
         "prerelease": true
-      },
-      {
-        "tag_name": "v1.15.6",
-        "name": "v1.15.6",
-        "published_at": "2026-06-10T11:52:20Z",
-        "prerelease": false
       }
     ],
     "top_contributors": [
@@ -10893,10 +10893,10 @@
     "name": "awesome-vibe-coding",
     "full_name": "filipecalegario/awesome-vibe-coding",
     "description": "A curated list of vibe coding references, collaborating with AI to write code.",
-    "stars": 4844,
-    "forks": 578,
-    "watchers": 4844,
-    "open_issues": 109,
+    "stars": 4848,
+    "forks": 580,
+    "watchers": 4848,
+    "open_issues": 111,
     "language": null,
     "topics": [
       "ai-agent",
@@ -10911,7 +10911,7 @@
     ],
     "license": "CC0-1.0",
     "created_at": "2025-03-13T17:46:56Z",
-    "updated_at": "2026-07-01T01:43:38Z",
+    "updated_at": "2026-07-02T06:57:15Z",
     "pushed_at": "2026-04-16T01:34:11Z",
     "homepage": "",
     "default_branch": "main",
@@ -10965,15 +10965,15 @@
     "name": "awesome-vibecoding",
     "full_name": "roboco-io/awesome-vibecoding",
     "description": "A curated list of resources, tutorials, best practices, and examples for Vibe Coding, the emerging paradigm of intuitive, AI-driven software development. Explore how vibe-driven collaboration between humans and AI is reshaping the future of programming.",
-    "stars": 183,
+    "stars": 184,
     "forks": 33,
-    "watchers": 183,
+    "watchers": 184,
     "open_issues": 0,
     "language": "JavaScript",
     "topics": [],
     "license": "CC0-1.0",
     "created_at": "2025-03-12T06:41:37Z",
-    "updated_at": "2026-06-30T07:38:41Z",
+    "updated_at": "2026-07-01T08:24:26Z",
     "pushed_at": "2026-06-29T06:27:16Z",
     "homepage": null,
     "default_branch": "main",
@@ -11069,9 +11069,9 @@
     "name": "awesome",
     "full_name": "sindresorhus/awesome",
     "description": "\ud83d\ude0e Awesome lists about all kinds of interesting topics",
-    "stars": 480369,
-    "forks": 35633,
-    "watchers": 480369,
+    "stars": 480693,
+    "forks": 35640,
+    "watchers": 480693,
     "open_issues": 88,
     "language": null,
     "topics": [
@@ -11083,7 +11083,7 @@
     ],
     "license": "CC0-1.0",
     "created_at": "2014-07-11T13:42:37Z",
-    "updated_at": "2026-07-01T07:42:58Z",
+    "updated_at": "2026-07-02T07:19:05Z",
     "pushed_at": "2026-06-30T18:21:16Z",
     "homepage": "",
     "default_branch": "main",
@@ -11137,9 +11137,9 @@
     "name": "awesome-react",
     "full_name": "enaqx/awesome-react",
     "description": "A collection of awesome things regarding React ecosystem",
-    "stars": 73804,
-    "forks": 7591,
-    "watchers": 73804,
+    "stars": 73814,
+    "forks": 7592,
+    "watchers": 73814,
     "open_issues": 45,
     "language": null,
     "topics": [
@@ -11156,7 +11156,7 @@
     ],
     "license": null,
     "created_at": "2014-08-06T05:31:44Z",
-    "updated_at": "2026-07-01T06:12:21Z",
+    "updated_at": "2026-07-02T04:26:20Z",
     "pushed_at": "2026-06-02T08:27:23Z",
     "homepage": "",
     "default_branch": "master",
@@ -11210,16 +11210,16 @@
     "name": "awesome-vue",
     "full_name": "vuejs/awesome-vue",
     "description": "\ud83c\udf89 A curated list of awesome things related to Vue.js",
-    "stars": 73562,
-    "forks": 9453,
-    "watchers": 73562,
-    "open_issues": 71,
+    "stars": 73561,
+    "forks": 9452,
+    "watchers": 73561,
+    "open_issues": 70,
     "language": null,
     "topics": [],
     "license": "MIT",
     "created_at": "2015-10-20T00:16:14Z",
-    "updated_at": "2026-06-30T19:20:46Z",
-    "pushed_at": "2026-06-30T19:20:38Z",
+    "updated_at": "2026-07-02T05:20:34Z",
+    "pushed_at": "2026-07-01T12:39:47Z",
     "homepage": "",
     "default_branch": "master",
     "archived": false,

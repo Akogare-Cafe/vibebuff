@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 67
+Total tools: 69
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,17 @@ Total tools: 67
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (8 tools)
+## TLDR (10 tools)
+
+### Copybara (GitHub Repo)
+- **URL**: https://github.com/google/copybara?utm_source=tldrnewsletter
+- **Date**: 2026-07-01
+- **Description**: Copybara (GitHub Repo)Copybara is a tool for transforming and moving code between repositories. One common use case is for projects that require maintaining a confidential repository and a public repository in sync. The tool allows contributions to any repository, but one repository must be selected as the authoritative repository so that there's always one source of truth. Copybara is stateless, which allows several users to use it for the same config/repositories and get the same result.
+
+### fenic (GitHub Repo)
+- **URL**: https://github.com/typedef-ai/fenic?utm_source=tldrnewsletter
+- **Date**: 2026-07-01
+- **Description**: fenic (GitHub Repo)fenic is a DataFrame query engine for semantic data processing that turns AI-assisted exploration of structured and unstructured data into reusable and inspectable DataFrame pipelines.
 
 ### Ponytail (GitHub Repo)
 - **URL**: https://github.com/DietrichGebert/ponytail?utm_source=tldrnewsletter
