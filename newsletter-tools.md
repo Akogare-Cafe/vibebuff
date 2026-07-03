@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 69
+Total tools: 68
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 69
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (10 tools)
+## TLDR (9 tools)
 
 ### Copybara (GitHub Repo)
 - **URL**: https://github.com/google/copybara?utm_source=tldrnewsletter
@@ -286,9 +286,4 @@ Total tools: 69
 - **URL**: https://github.com/alibaba/open-code-review?utm_source=tldrnewsletter
 - **Date**: 2026-06-05
 - **Description**: Open Code Review (GitHub Repo)Open Code Review is an AI-powered code review CLI tool that reads git gives, sends challenged files to a configurable LLM via an agent with tool-use capabilities, and generates structured review comments with line-level precision. It can read full file contents, search code bases, inspect other files for context, and produce deep reviews. Open Code Review's core philosophy is to combine deterministic engineering with an agent, letting each handle what it does best.
-
-### sandboxed (GitHub Repo)
-- **URL**: https://github.com/tastyeffectco/sandboxes?utm_source=tldrnewsletter
-- **Date**: 2026-06-04
-- **Description**: sandboxed (GitHub Repo)sandboxed is an open source engine for AI app-builder products. It creates sandboxes, runs AI coding agents inside them, then provides a URL to access the dev server running inside the sandbox. sandboxed provides the infrastructure for AI app-builders, agent platforms, coding playgrounds, and product previews. It is best used for running many sandboxes for multiple people.
 
