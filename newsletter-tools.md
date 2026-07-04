@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 68
+Total tools: 67
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 68
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (9 tools)
+## TLDR (8 tools)
 
 ### Copybara (GitHub Repo)
 - **URL**: https://github.com/google/copybara?utm_source=tldrnewsletter
@@ -281,9 +281,4 @@ Total tools: 68
 - **URL**: https://github.com/microsoft/pg_durable?utm_source=tldrnewsletter
 - **Date**: 2026-06-08
 - **Description**: pg_durable (GitHub Repo)pg_durable allows developers to orchestrate retries, scheduling, parallel fan-out, and conditional branching with a tiny SQL DSL, without containers or external services, only Postgres.
-
-### Open Code Review (GitHub Repo)
-- **URL**: https://github.com/alibaba/open-code-review?utm_source=tldrnewsletter
-- **Date**: 2026-06-05
-- **Description**: Open Code Review (GitHub Repo)Open Code Review is an AI-powered code review CLI tool that reads git gives, sends challenged files to a configurable LLM via an agent with tool-use capabilities, and generates structured review comments with line-level precision. It can read full file contents, search code bases, inspect other files for context, and produce deep reviews. Open Code Review's core philosophy is to combine deterministic engineering with an agent, letting each handle what it does best.
 
