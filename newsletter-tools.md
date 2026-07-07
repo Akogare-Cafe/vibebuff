@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 67
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 67
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (8 tools)
+## TLDR (6 tools)
 
 ### Copybara (GitHub Repo)
 - **URL**: https://github.com/google/copybara?utm_source=tldrnewsletter
@@ -271,14 +271,4 @@ Total tools: 67
 - **URL**: https://github.com/apple/container?utm_source=tldrnewsletter
 - **Date**: 2026-06-10
 - **Description**: container (GitHub Repo)container is a tool for creating and running lightweight virtual Linux containers on Mac. It consumes and produces OCI-compatible container images and can pull and run images from any standard container registry. The tool uses the Containerization Swift package for low-level container, image, and process management.
-
-### sem (GitHub Repo)
-- **URL**: https://github.com/Ataraxy-Labs/sem?utm_source=tldrnewsletter
-- **Date**: 2026-06-08
-- **Description**: sem (GitHub Repo)sem is a semantic version control tool that works on top of Git that tells users what entities changed (functions, methods, and classes) instead of just what lines changed.
-
-### pg_durable (GitHub Repo)
-- **URL**: https://github.com/microsoft/pg_durable?utm_source=tldrnewsletter
-- **Date**: 2026-06-08
-- **Description**: pg_durable (GitHub Repo)pg_durable allows developers to orchestrate retries, scheduling, parallel fan-out, and conditional branching with a tiny SQL DSL, without containers or external services, only Postgres.
 
