@@ -27822,8 +27822,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1312,
-    "total_links": 1329,
+    "tools_count": 1314,
+    "total_links": 1331,
     "tools": [
       {
         "name": "Pull Requests",
@@ -29450,6 +29450,13 @@
         "url": "https://flock.com",
         "category": "tool",
         "description": "A faster way for your team to communicate"
+      },
+      {
+        "name": "GhostChat",
+        "url": "https://ghostchat.dev",
+        "category": "tool",
+        "description": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking)",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "GitBook",
@@ -32912,6 +32919,13 @@
         "url": "https://simperium.com/",
         "category": "tool",
         "description": "Move data everywhere instantly and automatically, multi-platform, unlimited sending and storage of structured data, max"
+      },
+      {
+        "name": "snill.ai",
+        "url": "https://snill.ai",
+        "category": "tool",
+        "description": "AI no-code platform that turns a plain-language description into a complete business system with a relational database, dashboards, workflows, REST API and webhooks",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Supabase",
@@ -36812,6 +36826,10 @@
         "url": "https://flock.com"
       },
       {
+        "text": "GhostChat",
+        "url": "https://ghostchat.dev"
+      },
+      {
         "text": "GitBook",
         "url": "https://www.gitbook.com/"
       },
@@ -39138,6 +39156,10 @@
       {
         "text": "simperium.com",
         "url": "https://simperium.com/"
+      },
+      {
+        "text": "snill.ai",
+        "url": "https://snill.ai"
       },
       {
         "text": "Supabase",
@@ -74936,8 +74958,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 151,
-    "total_links": 155,
+    "tools_count": 154,
+    "total_links": 158,
     "tools": [
       {
         "name": "How to Contribute",
@@ -75348,6 +75370,13 @@
         "description": "Modern TCMS allowing sync of manual and automated tests"
       },
       {
+        "name": "Temp Mail 24",
+        "url": "https://temp-mail24.com/",
+        "category": "tool",
+        "description": "Browser-based receive-only temporary inbox for permitted manual signup-flow testing",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "DATAMIMIC CE",
         "url": "https://github.com/rapiddweller/datamimic",
         "category": "github",
@@ -75358,6 +75387,13 @@
         "url": "https://github.com/UtilHatch/json-validation-test-cases",
         "category": "github",
         "description": "Reusable valid, invalid, and edge-case JSON fixtures for testing parsers, validators, APIs, editors, and error handling"
+      },
+      {
+        "name": "MockJutsu",
+        "url": "https://github.com/altansayan/mock-jutsu-api",
+        "category": "github",
+        "description": "Algorithmic open-source mock data engine generating 390+ format-valid types (IBAN, TCKN, Luhn, VIN, NHS, SWIFT, MRZ and more)",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "MockHero",
@@ -75544,6 +75580,13 @@
         "url": "https://www.pr-preview.com/",
         "category": "tool",
         "description": "MCP for Claude Code that drives your web app in a headed browser and records before/after demo videos of a pull request as MP4 or GIF"
+      },
+      {
+        "name": "rrweb",
+        "url": "https://github.com/rrweb-io/rrweb",
+        "category": "github",
+        "description": "Records the DOM and user interactions as a typed JSON event stream and replays them pixel-perfect",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Xmind",
@@ -76120,12 +76163,20 @@
         "url": "https://testomat.io/"
       },
       {
+        "text": "Temp Mail 24",
+        "url": "https://temp-mail24.com/"
+      },
+      {
         "text": "DATAMIMIC CE",
         "url": "https://github.com/rapiddweller/datamimic"
       },
       {
         "text": "JSON Validation Test Cases",
         "url": "https://github.com/UtilHatch/json-validation-test-cases"
+      },
+      {
+        "text": "MockJutsu",
+        "url": "https://github.com/altansayan/mock-jutsu-api"
       },
       {
         "text": "MockHero",
@@ -76250,6 +76301,10 @@
       {
         "text": "PR Preview",
         "url": "https://www.pr-preview.com/"
+      },
+      {
+        "text": "rrweb",
+        "url": "https://github.com/rrweb-io/rrweb"
       },
       {
         "text": "Xmind",
@@ -77277,8 +77332,7 @@
         "name": "pglayers",
         "url": "https://github.com/pglayers/pglayers",
         "category": "github",
-        "description": "Pre-built PostgreSQL extensions as composable Docker layers",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Pre-built PostgreSQL extensions as composable Docker layers"
       },
       {
         "name": "Wolfi",
@@ -77302,8 +77356,7 @@
         "name": "Dofigen",
         "url": "https://github.com/lenra-io/dofigen",
         "category": "github",
-        "description": "A Dockerfile generator using a simplified description in YAML or JSON format",
-        "source": "veggiemonk/awesome-docker"
+        "description": "A Dockerfile generator using a simplified description in YAML or JSON format"
       },
       {
         "name": "Trsuted Builds",
@@ -77507,8 +77560,7 @@
         "name": "BomLens",
         "url": "https://github.com/sktelecom/bomlens",
         "category": "github",
-        "description": "Scan container images (plus source, binaries, and firmware) into CycloneDX SBOMs with vulnerability, license, and notice reports",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Scan container images (plus source, binaries, and firmware) into CycloneDX SBOMs with vulnerability, license, and notice reports"
       },
       {
         "name": "Clair",
@@ -77766,8 +77818,7 @@
         "name": "OpenRun",
         "url": "https://github.com/openrundev/openrun",
         "category": "github",
-        "description": "Builds, deploys, proxies, authenticates and auto-pauses web apps with Docker or Kubernetes",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Builds, deploys, proxies, authenticates and auto-pauses web apps with Docker or Kubernetes"
       },
       {
         "name": "Red Hat",
@@ -78067,8 +78118,7 @@
         "name": "InfraCanvas",
         "url": "https://github.com/bytestrix/InfraCanvas",
         "category": "github",
-        "description": "Live visual map of containers, pods, volumes, and networks on any Linux server",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Live visual map of containers, pods, volumes, and networks on any Linux server"
       },
       {
         "name": "Maintenant",
@@ -78128,8 +78178,7 @@
         "name": "compose-lint",
         "url": "https://github.com/tmatens/compose-lint",
         "category": "github",
-        "description": "Lints Docker Compose files for security misconfigurations \u2014 privileged containers, unpinned images, Docker socket mounts, plaintext credentials \u2014 grounded in OWASP and the CIS Docker Benchmark",
-        "source": "veggiemonk/awesome-docker"
+        "description": "Lints Docker Compose files for security misconfigurations \u2014 privileged containers, unpinned images, Docker socket mounts, plaintext credentials \u2014 grounded in OWASP and the CIS Docker Benchmark"
       },
       {
         "name": "container-explorer",
@@ -78309,8 +78358,7 @@
         "name": "dockup",
         "url": "https://github.com/paulo-amaral/dockup",
         "category": "github",
-        "description": "TUI to install, harden and maintain container runtimes: Docker Engine + Compose v2, NVIDIA Container Toolkit, Podman and Apple container, with a CIS-inspired security audit",
-        "source": "veggiemonk/awesome-docker"
+        "description": "TUI to install, harden and maintain container runtimes: Docker Engine + Compose v2, NVIDIA Container Toolkit, Podman and Apple container, with a CIS-inspired security audit"
       },
       {
         "name": "dprs",
@@ -87349,8 +87397,7 @@
         "name": "shimmytok",
         "url": "https://github.com/Michael-A-Kuykendall/shimmytok",
         "category": "github",
-        "description": "Pure-Rust tokenizer for GGUF models, compatible with llama",
-        "source": "josephmisiti/awesome-machine-learning"
+        "description": "Pure-Rust tokenizer for GGUF models, compatible with llama"
       },
       {
         "name": "ahaz",
@@ -104618,8 +104665,7 @@
         "name": "ClyoCloud",
         "url": "https://clyo.cloud/",
         "category": "tool",
-        "description": "A personal, self-hosted cloud storage and media management application built for privacy, efficiency, and aesthetics",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "A personal, self-hosted cloud storage and media management application built for privacy, efficiency, and aesthetics"
       },
       {
         "name": "Source Code",
@@ -106089,8 +106135,7 @@
         "name": "polluSensWeb",
         "url": "https://wespeakenglish.github.io/polluSensWeb/",
         "category": "tool",
-        "description": "Web-based serial interface and charting tool for visualizing and logging data from UART pollution sensors (PM2",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Web-based serial interface and charting tool for visualizing and logging data from UART pollution sensors (PM2"
       },
       {
         "name": "Demo",
@@ -106102,15 +106147,13 @@
         "name": "Source Code",
         "url": "https://github.com/WeSpeakEnglish/polluSensWeb",
         "category": "github",
-        "description": ",",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ","
       },
       {
         "name": "Clients",
         "url": "https://github.com/WeSpeakEnglish/polluSensWeb/releases",
         "category": "github",
-        "description": ") `MIT` `Javascript`",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `MIT` `Javascript`"
       },
       {
         "name": "SIP Irrigation Control",
