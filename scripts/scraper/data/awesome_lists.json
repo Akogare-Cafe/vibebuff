@@ -27972,8 +27972,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1318,
-    "total_links": 1336,
+    "tools_count": 1312,
+    "total_links": 1330,
     "tools": [
       {
         "name": "Pull Requests",
@@ -28027,31 +28027,31 @@
         "name": "CloudFront",
         "url": "https://aws.amazon.com/cloudfront/",
         "category": "tool",
-        "description": "1TB egress per month and 2M Function invocations per month"
+        "description": "1TB egress/month, 10M HTTP requests, and 2M Function invocations/month"
       },
       {
         "name": "CloudWatch",
         "url": "https://aws.amazon.com/cloudwatch/",
         "category": "tool",
-        "description": "10 custom metrics and ten alarms"
+        "description": "10 custom metrics and alarms, 1M API requests, 5GB of log data ingestion and 5GB of log data archive"
       },
       {
         "name": "CodeBuild",
         "url": "https://aws.amazon.com/codebuild/",
         "category": "tool",
-        "description": "100min of build time per month"
+        "description": "100min of build time/month"
       },
       {
         "name": "CodeCommit",
         "url": "https://aws.amazon.com/codecommit/",
         "category": "tool",
-        "description": "5 active users,50GB storage, and 10000 requests per month"
+        "description": "5 active users, 5k repositories/account, 50GB storage/month and 10K requests/month"
       },
       {
         "name": "CodePipeline",
         "url": "https://aws.amazon.com/codepipeline/",
         "category": "tool",
-        "description": "1 active pipeline per month"
+        "description": "1 active pipeline/month"
       },
       {
         "name": "DynamoDB",
@@ -28060,52 +28060,16 @@
         "description": "25GB NoSQL DB"
       },
       {
-        "name": "EC2",
-        "url": "https://aws.amazon.com/ec2/",
-        "category": "tool",
-        "description": "750 hours per month of t2"
-      },
-      {
-        "name": "EBS",
-        "url": "https://aws.amazon.com/ebs/",
-        "category": "tool",
-        "description": "30GB per month of General Purpose (SSD) or Magnetic(12mo)"
-      },
-      {
-        "name": "Elastic Load Balancing",
-        "url": "https://aws.amazon.com/elasticloadbalancing/",
-        "category": "tool",
-        "description": "750 hours per month(12mo)"
-      },
-      {
-        "name": "RDS",
-        "url": "https://aws.amazon.com/rds/",
-        "category": "tool",
-        "description": "750 hours per month of db"
-      },
-      {
-        "name": "S3",
-        "url": "https://aws.amazon.com/s3/",
-        "category": "tool",
-        "description": "5GB Standard object storage, 20K Get requests and 2K Put requests(12 mo)"
-      },
-      {
-        "name": "Glacier",
-        "url": "https://aws.amazon.com/glacier/",
-        "category": "tool",
-        "description": "10GB long-term object storage"
-      },
-      {
         "name": "Lambda",
         "url": "https://aws.amazon.com/lambda/",
         "category": "tool",
-        "description": "1 million requests per month"
+        "description": "1 million requests/month"
       },
       {
         "name": "SNS",
         "url": "https://aws.amazon.com/sns/",
         "category": "tool",
-        "description": "1 million publishes per month"
+        "description": "1 million publishes/month"
       },
       {
         "name": "SES",
@@ -28124,12 +28088,6 @@
         "url": "https://azure.microsoft.com",
         "category": "tool",
         "description": "*"
-      },
-      {
-        "name": "Virtual Machines",
-        "url": "https://azure.microsoft.com/services/virtual-machines/",
-        "category": "tool",
-        "description": "1 B1S Linux VM, 1 B1S Windows VM (12mo)"
       },
       {
         "name": "App Service",
@@ -28183,7 +28141,7 @@
         "name": "Load Balancer",
         "url": "https://azure.microsoft.com/services/load-balancer/",
         "category": "tool",
-        "description": "1 free public load-balanced IP (VIP)"
+        "description": "750 hours, 15GB data processing and 5 rules (12mo)"
       },
       {
         "name": "Notification Hubs",
@@ -28195,7 +28153,7 @@
         "name": "Bandwidth",
         "url": "https://azure.microsoft.com/pricing/details/bandwidth/",
         "category": "tool",
-        "description": "15GB Inbound(12mo) & 5GB egress per month"
+        "description": "15GB Outbound(12mo)"
       },
       {
         "name": "Cosmos DB",
@@ -28213,7 +28171,7 @@
         "name": "Storage",
         "url": "https://azure.microsoft.com/services/storage/",
         "category": "tool",
-        "description": "5GB LRS File or Blob storage (12mo)"
+        "description": "100GB LRS transactions (Azure Files), 5GB Blob storage, 10GB LRS Archive Storage, 2x64GB SSD (12mo)"
       },
       {
         "name": "Cognitive Services",
@@ -28238,6 +28196,13 @@
         "url": "https://azure.microsoft.com/services/event-grid/",
         "category": "tool",
         "description": "100K ops/month"
+      },
+      {
+        "name": "Service Bus",
+        "url": "https://azure.microsoft.com/products/service-bus/",
+        "category": "tool",
+        "description": "750 hours and 13 million operations Standard tier base unit (12mo)",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Oracle Cloud",
@@ -31315,8 +31280,7 @@
         "name": "AlertKick",
         "url": "https://www.alertkick.com",
         "category": "tool",
-        "description": "server security (eBPF agent for Linux), uptime monitoring, on-call alerting/status pages in one product",
-        "source": "ripienaar/free-for-dev"
+        "description": "server security (eBPF agent for Linux), uptime monitoring, on-call alerting/status pages in one product"
       },
       {
         "name": "assertible.com",
@@ -31934,8 +31898,7 @@
         "name": "Canny Pigeons",
         "url": "https://cannypigeons.com/",
         "category": "tool",
-        "description": "DMARC monitoring platform with DNS drift alerts, IP threat intel and unlimited users",
-        "source": "ripienaar/free-for-dev"
+        "description": "DMARC monitoring platform with DNS drift alerts, IP threat intel and unlimited users"
       },
       {
         "name": "Conduit",
@@ -35944,30 +35907,6 @@
         "url": "https://aws.amazon.com/dynamodb/"
       },
       {
-        "text": "EC2",
-        "url": "https://aws.amazon.com/ec2/"
-      },
-      {
-        "text": "EBS",
-        "url": "https://aws.amazon.com/ebs/"
-      },
-      {
-        "text": "Elastic Load Balancing",
-        "url": "https://aws.amazon.com/elasticloadbalancing/"
-      },
-      {
-        "text": "RDS",
-        "url": "https://aws.amazon.com/rds/"
-      },
-      {
-        "text": "S3",
-        "url": "https://aws.amazon.com/s3/"
-      },
-      {
-        "text": "Glacier",
-        "url": "https://aws.amazon.com/glacier/"
-      },
-      {
         "text": "Lambda",
         "url": "https://aws.amazon.com/lambda/"
       },
@@ -35986,10 +35925,6 @@
       {
         "text": "Microsoft Azure",
         "url": "https://azure.microsoft.com"
-      },
-      {
-        "text": "Virtual Machines",
-        "url": "https://azure.microsoft.com/services/virtual-machines/"
       },
       {
         "text": "App Service",
@@ -36062,6 +35997,10 @@
       {
         "text": "Event Grid",
         "url": "https://azure.microsoft.com/services/event-grid/"
+      },
+      {
+        "text": "Service Bus",
+        "url": "https://azure.microsoft.com/products/service-bus/"
       },
       {
         "text": "Oracle Cloud",
@@ -75172,8 +75111,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 155,
-    "total_links": 159,
+    "tools_count": 156,
+    "total_links": 160,
     "tools": [
       {
         "name": "How to Contribute",
@@ -76070,6 +76009,13 @@
         "description": "A wide and rich list of strategies, topics, and skills that you need to start a career in software testing and automation"
       },
       {
+        "name": "QALadder",
+        "url": "https://qaladder.org",
+        "category": "tool",
+        "description": "A free, sequenced roadmap from manual QA to SDET, with a 150-question interview bank, browser-based practice labs, and QA tools",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Testers Rage Playlist",
         "url": "https://play.spotify.com/user/sanchezni/playlist/5yzT0HrymwEeO8ckqgkPiW",
         "category": "tool",
@@ -76714,6 +76660,10 @@
       {
         "text": "How to start QA and Testing career",
         "url": "https://github.com/fityanos/Quality-Assurance-Road-Map"
+      },
+      {
+        "text": "QALadder",
+        "url": "https://qaladder.org"
       },
       {
         "text": "Testers Rage Playlist",
@@ -81311,8 +81261,8 @@
   },
   "josephmisiti/awesome-machine-learning": {
     "url": "https://raw.githubusercontent.com/josephmisiti/awesome-machine-learning/master/README.md",
-    "tools_count": 1298,
-    "total_links": 1300,
+    "tools_count": 1299,
+    "total_links": 1301,
     "tools": [
       {
         "name": "here",
@@ -85848,8 +85798,7 @@
         "name": "Leanpass",
         "url": "https://github.com/Terminay/LeanPass",
         "category": "github",
-        "description": "A lightweight, NumPy-only autodiff library for small ML projects and learning how backpropagation works",
-        "source": "josephmisiti/awesome-machine-learning"
+        "description": "A lightweight, NumPy-only autodiff library for small ML projects and learning how backpropagation works"
       },
       {
         "name": "Parris",
@@ -89036,6 +88985,13 @@
         "url": "https://github.com/Bread-Technologies/bread_wandb_viewer_extension",
         "category": "github",
         "description": "A VS Code extension to view Weights & Biases experiments, logs, and artifacts within the IDE, eliminating the need to switch to the web UI and keeping data private"
+      },
+      {
+        "name": "Cortexa",
+        "url": "https://automata-index.vercel.app",
+        "category": "tool",
+        "description": "Free, open-access search engine for robotics, ML, and AI research papers (arXiv, MDPI, IEEE OA)",
+        "source": "josephmisiti/awesome-machine-learning"
       },
       {
         "name": "Distributed Machine Learning Patterns",
@@ -94260,6 +94216,10 @@
       {
         "text": "Bread WandB Viewer",
         "url": "https://github.com/Bread-Technologies/bread_wandb_viewer_extension"
+      },
+      {
+        "text": "Cortexa",
+        "url": "https://automata-index.vercel.app"
       },
       {
         "text": "Distributed Machine Learning Patterns",
