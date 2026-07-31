@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 67
 
 ## React Newsletter (59 tools)
 
@@ -240,30 +240,45 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (8 tools)
+
+### numbat (GitHub Repo)
+- **URL**: https://github.com/perplexityai/numbat?utm_source=tldrnewsletter
+- **Date**: 2026-07-30
+- **Description**: numbat (GitHub Repo)numbat provides endpoint visibility into AI agent activity with local detection, optional pre-action blocking, and forensic reconstruction.
+
+### Seal (GitHub Repo)
+- **URL**: https://github.com/letsseal/letsseal?utm_source=tldrnewsletter
+- **Date**: 2026-07-28
+- **Description**: Seal (GitHub Repo)Seal is an open standard for proving any file is real. It creates sealed artifacts that can be verified by anyone. A seal proves integrity, time, and the issuing certificate. Seals are anchored to a public ledger that can be checked by anyone, forever.
+
+### Octane (GitHub Repo)
+- **URL**: https://github.com/octanejs/octane?utm_source=tldrnewsletter
+- **Date**: 2026-07-28
+- **Description**: Octane (GitHub Repo)Octane is a React replacement UI library with improved developer ergonomics. It is incredibly efficient and is designed to stay close to the speed of hand-written DOM code. Developers write with the React API they already know, and Octane's compiler removes the virtual DOM, Suspense waterfalls, rules-of-hooks bookkeeping, and hand-maintained dependency arrays before the app ships.
+
+### Why Software Factories Fail (40 minute read)
+- **URL**: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md?utm_source=tldrnewsletter
+- **Date**: 2026-07-24
+- **Description**: Why Software Factories Fail (40 minute read)No amount of harness engineering or loopsmaxxing can solve what is fundamentally a model-training issue. Engineers are still stuck reading code. Companies can move 10x-100x faster by convincing themselves that the code doesn't matter anymore, but they could also embrace their constraints and just move 2x-3x faster, safely.
+
+### Canvas UI (GitHub Repo)
+- **URL**: https://github.com/DavidHDev/canvas-ui?utm_source=tldrnewsletter
+- **Date**: 2026-07-24
+- **Description**: Canvas UI (GitHub Repo)Canvas UI is an open source library of creative, framework-agnostic components drawn on canvas.
+
+### scroll-world (GitHub Repo)
+- **URL**: https://github.com/oso95/scroll-world?utm_source=tldrnewsletter
+- **Date**: 2026-07-20
+- **Description**: scroll-world (GitHub Repo)scroll-world is a skill that turns any brand into a scrollable 3D world. It works with Claude Code, Codex, and any SKILL.md-compatible agent. The skill builds immersive, control-scrubbed 'fly through the world' landing pages for any industry or brand. A video example is available in the repository.
+
+### Grok Build (GitHub Repo)
+- **URL**: https://github.com/xai-org/grok-build?utm_source=tldrnewsletter
+- **Date**: 2026-07-16
+- **Description**: Grok Build (GitHub Repo)Grok build is a terminal-based AI coding agent that can understand codebases, edit files, execute shell commands, search the web, and handle long-running tasks.
 
 ### herdr (GitHub Repo)
 - **URL**: https://github.com/ogulcancelik/herdr?utm_source=tldrnewsletter
 - **Date**: 2026-07-08
 - **Description**: herdr (GitHub Repo)herdr is an agent multiplexer that lives in the terminal. It gives users a view of every agent at a glance. Agents keep running even when users are detached, and sessions survive restarts. herdr can be used by agents through a pure socket API. Plugins are available.
-
-### Copybara (GitHub Repo)
-- **URL**: https://github.com/google/copybara?utm_source=tldrnewsletter
-- **Date**: 2026-07-01
-- **Description**: Copybara (GitHub Repo)Copybara is a tool for transforming and moving code between repositories. One common use case is for projects that require maintaining a confidential repository and a public repository in sync. The tool allows contributions to any repository, but one repository must be selected as the authoritative repository so that there's always one source of truth. Copybara is stateless, which allows several users to use it for the same config/repositories and get the same result.
-
-### fenic (GitHub Repo)
-- **URL**: https://github.com/typedef-ai/fenic?utm_source=tldrnewsletter
-- **Date**: 2026-07-01
-- **Description**: fenic (GitHub Repo)fenic is a DataFrame query engine for semantic data processing that turns AI-assisted exploration of structured and unstructured data into reusable and inspectable DataFrame pipelines.
-
-### Ponytail (GitHub Repo)
-- **URL**: https://github.com/DietrichGebert/ponytail?utm_source=tldrnewsletter
-- **Date**: 2026-06-15
-- **Description**: Ponytail (GitHub Repo)Ponytail is an AI senior developer. It produces efficient code at low cost and at fast speeds. Ponytail works with every model. Examples and benchmark comparisons are available in the repository.
-
-### prop-for-that (GitHub Repo)
-- **URL**: https://github.com/argyleink/prop-for-that?utm_source=tldrnewsletter
-- **Date**: 2026-06-15
-- **Description**: prop-for-that (GitHub Repo)prop-for-that exposes what JavaScript knows, but CSS can't see as live CSS custom properties.
 
