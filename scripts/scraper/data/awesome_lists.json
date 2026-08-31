@@ -28362,8 +28362,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1342,
-    "total_links": 1362,
+    "tools_count": 1344,
+    "total_links": 1364,
     "tools": [
       {
         "name": "Pull Requests",
@@ -29480,6 +29480,13 @@
         "url": "https://kreya.app",
         "category": "tool",
         "description": "Free gRPC GUI client to call and test gRPC APIs"
+      },
+      {
+        "name": "Labelixa",
+        "url": "https://labelixa.com",
+        "category": "tool",
+        "description": "Zebra ZPL label rendering and validation API and browser viewer",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "LayerCall",
@@ -32411,9 +32418,10 @@
       },
       {
         "name": "EmailGuard",
-        "url": "https://emailguard.lazrek.net/",
+        "url": "https://emailguard.lazrek.com/",
         "category": "tool",
-        "description": "Block disposable emails, catch typos, and validate MX records via a simple API"
+        "description": "Block disposable emails, catch typos, and validate MX records via a simple API",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "EmailJS",
@@ -32486,6 +32494,13 @@
         "url": "https://inboxkitten.com/",
         "category": "tool",
         "description": "Free temporary/disposable email inbox, with up to 3-day email auto-deletes"
+      },
+      {
+        "name": "Is It Disposable",
+        "url": "https://isitdisposable.com/",
+        "category": "tool",
+        "description": "Detect and block disposable email addresses",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "KaiMail",
@@ -37176,6 +37191,10 @@
         "url": "https://kreya.app"
       },
       {
+        "text": "Labelixa",
+        "url": "https://labelixa.com"
+      },
+      {
         "text": "LayerCall",
         "url": "https://www.layercall.com"
       },
@@ -39173,7 +39192,7 @@
       },
       {
         "text": "EmailGuard",
-        "url": "https://emailguard.lazrek.net/"
+        "url": "https://emailguard.lazrek.com/"
       },
       {
         "text": "EmailJS",
@@ -39222,6 +39241,10 @@
       {
         "text": "inboxkitten.com",
         "url": "https://inboxkitten.com/"
+      },
+      {
+        "text": "Is It Disposable",
+        "url": "https://isitdisposable.com/"
       },
       {
         "text": "KaiMail",
@@ -75868,8 +75891,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 166,
-    "total_links": 170,
+    "tools_count": 168,
+    "total_links": 172,
     "tools": [
       {
         "name": "How to Contribute",
@@ -76038,6 +76061,13 @@
         "url": "https://github.com/supernovae-st/nika",
         "category": "github",
         "description": "Workflow engine for AI with testing built in: `nika test` pins a workflow's offline behavior as a golden snapshot (deterministic mock provider, zero keys) and replays it in CI; every run also leaves a hash-chained trace for post-hoc verification"
+      },
+      {
+        "name": "crilio",
+        "url": "https://github.com/mukundzha/crilio",
+        "category": "github",
+        "description": "An open-source Python CLI that uses LLM-as-a-Judge to automate semantic regression testing for LLM prompts in CI/CD, blocking GitHub PRs that cause hallucinations or break formatting rules",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Beeceptor",
@@ -76302,6 +76332,13 @@
         "url": "https://github.com/rapiddweller/datamimic",
         "category": "github",
         "description": "Open-source, deterministic engine for model-driven synthetic test data and PII pseudonymization"
+      },
+      {
+        "name": "Dummy Data Lab",
+        "url": "https://timliu724.github.io/dummy-data-lab/",
+        "category": "tool",
+        "description": "Offline, open-source browser tool for transforming CSV or TXT into controlled dummy data and generating linked test datasets without uploading source files",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "JSON Validation Test Cases",
@@ -76982,6 +77019,10 @@
         "url": "https://github.com/supernovae-st/nika"
       },
       {
+        "text": "crilio",
+        "url": "https://github.com/mukundzha/crilio"
+      },
+      {
         "text": "Beeceptor",
         "url": "https://beeceptor.com/"
       },
@@ -77156,6 +77197,10 @@
       {
         "text": "DATAMIMIC CE",
         "url": "https://github.com/rapiddweller/datamimic"
+      },
+      {
+        "text": "Dummy Data Lab",
+        "url": "https://timliu724.github.io/dummy-data-lab/"
       },
       {
         "text": "JSON Validation Test Cases",
@@ -99117,8 +99162,8 @@
   },
   "awesome-selfhosted/awesome-selfhosted": {
     "url": "https://raw.githubusercontent.com/awesome-selfhosted/awesome-selfhosted/master/README.md",
-    "tools_count": 2894,
-    "total_links": 2915,
+    "tools_count": 2892,
+    "total_links": 2913,
     "tools": [
       {
         "name": "![",
@@ -103687,18 +103732,6 @@
         "description": ") `MIT` `PHP`"
       },
       {
-        "name": "Monica",
-        "url": "https://monicahq.com/",
-        "category": "tool",
-        "description": "Personal relationship manager, and a new kind of CRM to organize interactions with your friends and family"
-      },
-      {
-        "name": "Source Code",
-        "url": "https://github.com/monicahq/monica",
-        "category": "github",
-        "description": ") `AGPL-3"
-      },
-      {
         "name": "SuiteCRM",
         "url": "https://suitecrm.com",
         "category": "tool",
@@ -107470,8 +107503,7 @@
         "name": "Source Code",
         "url": "https://gitlab.com/shibaobun/cannery",
         "category": "tool",
-        "description": ") `AGPL-3",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `AGPL-3"
       },
       {
         "name": "DVinyl",
@@ -107651,8 +107683,7 @@
         "name": "memEx",
         "url": "https://gitlab.com/shibaobun/memex",
         "category": "tool",
-        "description": "Structured personal knowledge base, inspired by zettlekasten and org-mode",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Structured personal knowledge base, inspired by zettlekasten and org-mode"
       },
       {
         "name": "SiYuan",
@@ -119571,14 +119602,6 @@
       {
         "text": "Source Code",
         "url": "https://github.com/krayin/laravel-crm"
-      },
-      {
-        "text": "Monica",
-        "url": "https://monicahq.com/"
-      },
-      {
-        "text": "Source Code",
-        "url": "https://github.com/monicahq/monica"
       },
       {
         "text": "SuiteCRM",

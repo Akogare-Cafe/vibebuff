@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 67
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,45 +240,35 @@ Total tools: 67
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (8 tools)
+## TLDR (6 tools)
 
-### numbat (GitHub Repo)
-- **URL**: https://github.com/perplexityai/numbat?utm_source=tldrnewsletter
-- **Date**: 2026-07-30
-- **Description**: numbat (GitHub Repo)numbat provides endpoint visibility into AI agent activity with local detection, optional pre-action blocking, and forensic reconstruction.
+### GitHub Agentic Workflows (6 minute read)
+- **URL**: https://github.github.com/gh-aw/?utm_source=tldrnewsletter
+- **Date**: 2026-08-31
+- **Description**: GitHub Agentic Workflows (6 minute read)GitHub Agentic Workflows enables repository automation. Developers can use event-triggered and scheduled jobs to augment existing, deterministic CI/CD with AI-powered intelligence. GitHub Agentic Workflows runs with strong guardrails to help keep repositories safe. Supported AI engines include GitHub Copilot, Claude Code, Google Gemini, and OpenAI Codex.
 
-### Seal (GitHub Repo)
-- **URL**: https://github.com/letsseal/letsseal?utm_source=tldrnewsletter
-- **Date**: 2026-07-28
-- **Description**: Seal (GitHub Repo)Seal is an open standard for proving any file is real. It creates sealed artifacts that can be verified by anyone. A seal proves integrity, time, and the issuing certificate. Seals are anchored to a public ledger that can be checked by anyone, forever.
+### OneCLI (GitHub Repo)
+- **URL**: https://github.com/onecli/onecli?utm_source=tldrnewsletter
+- **Date**: 2026-08-20
+- **Description**: OneCLI (GitHub Repo)OneCLI is an agent harness built for teams. It provides every employee in a company with a secured, sandboxed personal agent. The agents are routed through a gateway that injects credentials and enforces policies. Agents run on the company's own infrastructure. The runner is outbound-only and holds no inbound ports.
 
-### Octane (GitHub Repo)
-- **URL**: https://github.com/octanejs/octane?utm_source=tldrnewsletter
-- **Date**: 2026-07-28
-- **Description**: Octane (GitHub Repo)Octane is a React replacement UI library with improved developer ergonomics. It is incredibly efficient and is designed to stay close to the speed of hand-written DOM code. Developers write with the React API they already know, and Octane's compiler removes the virtual DOM, Suspense waterfalls, rules-of-hooks bookkeeping, and hand-maintained dependency arrays before the app ships.
+### BetterWright (GitHub Repo)
+- **URL**: https://github.com/BetterWright/betterwright?utm_source=tldrnewsletter
+- **Date**: 2026-08-20
+- **Description**: BetterWright (GitHub Repo)BetterWright is a persistent, policy-guarded Playwright browser for AI agents.
 
-### Why Software Factories Fail (40 minute read)
-- **URL**: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md?utm_source=tldrnewsletter
-- **Date**: 2026-07-24
-- **Description**: Why Software Factories Fail (40 minute read)No amount of harness engineering or loopsmaxxing can solve what is fundamentally a model-training issue. Engineers are still stuck reading code. Companies can move 10x-100x faster by convincing themselves that the code doesn't matter anymore, but they could also embrace their constraints and just move 2x-3x faster, safely.
+### Foreman (GitHub Repo)
+- **URL**: https://github.com/vercel-labs/eve-software-factory-template?utm_source=tldrnewsletter
+- **Date**: 2026-08-14
+- **Description**: Foreman (GitHub Repo)Foreman is an eve software factory that puts AI agents on every stage of the development loop and keeps people on the judgment calls. It takes tasks from GitHub and Linear, moves each one through four stations - Classifier, Analyst, Implementer, and Reviewer - and delivers a reviewed draft pull request on the repository. The Classifier triages the task, the Analyst turns it into a plan with acceptance criteria, the Implementer executes the plan in its own sandbox, and the Re
 
-### Canvas UI (GitHub Repo)
-- **URL**: https://github.com/DavidHDev/canvas-ui?utm_source=tldrnewsletter
-- **Date**: 2026-07-24
-- **Description**: Canvas UI (GitHub Repo)Canvas UI is an open source library of creative, framework-agnostic components drawn on canvas.
+### Channels SDK (GitHub Repo)
+- **URL**: https://github.com/CopilotKit/channels-sdk?utm_source=tldrnewsletter
+- **Date**: 2026-08-07
+- **Description**: Channels SDK (GitHub Repo)Channels connects an AG-UI-compatible agent to the communication platforms teams already use.
 
-### scroll-world (GitHub Repo)
-- **URL**: https://github.com/oso95/scroll-world?utm_source=tldrnewsletter
-- **Date**: 2026-07-20
-- **Description**: scroll-world (GitHub Repo)scroll-world is a skill that turns any brand into a scrollable 3D world. It works with Claude Code, Codex, and any SKILL.md-compatible agent. The skill builds immersive, control-scrubbed 'fly through the world' landing pages for any industry or brand. A video example is available in the repository.
-
-### Grok Build (GitHub Repo)
-- **URL**: https://github.com/xai-org/grok-build?utm_source=tldrnewsletter
-- **Date**: 2026-07-16
-- **Description**: Grok Build (GitHub Repo)Grok build is a terminal-based AI coding agent that can understand codebases, edit files, execute shell commands, search the web, and handle long-running tasks.
-
-### herdr (GitHub Repo)
-- **URL**: https://github.com/ogulcancelik/herdr?utm_source=tldrnewsletter
-- **Date**: 2026-07-08
-- **Description**: herdr (GitHub Repo)herdr is an agent multiplexer that lives in the terminal. It gives users a view of every agent at a glance. Agents keep running even when users are detached, and sessions survive restarts. herdr can be used by agents through a pure socket API. Plugins are available.
+### Cloudflare OS (GitHub Repo)
+- **URL**: https://github.com/cloudflare/cloudflare-os?utm_source=tldrnewsletter
+- **Date**: 2026-08-06
+- **Description**: Cloudflare OS (GitHub Repo)Cloudflare OS is an operating system for AI productivity. It features an agent chat UI where users can ask agents to do tasks, sandboxed application development, and a security framework that applies guardrails to both agents and apps. Developed to be used internally at Cloudflare, Cloudflare OS is now open source so others can copy it and customize it for their own companies. The basic user experience of Cloudflare OS is something like an online office suite, but each
 
