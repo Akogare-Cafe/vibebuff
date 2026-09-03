@@ -242,6 +242,11 @@ Total tools: 65
 
 ## TLDR (6 tools)
 
+### Exo (GitHub Repo)
+- **URL**: https://github.com/exoharness/exo?utm_source=tldrnewsletter
+- **Date**: 2026-09-03
+- **Description**: Exo (GitHub Repo)Exo is a complete AI agent harness with full visibility into both its code and runtime logs.
+
 ### GitHub Agentic Workflows (6 minute read)
 - **URL**: https://github.github.com/gh-aw/?utm_source=tldrnewsletter
 - **Date**: 2026-08-31
@@ -266,9 +271,4 @@ Total tools: 65
 - **URL**: https://github.com/CopilotKit/channels-sdk?utm_source=tldrnewsletter
 - **Date**: 2026-08-07
 - **Description**: Channels SDK (GitHub Repo)Channels connects an AG-UI-compatible agent to the communication platforms teams already use.
-
-### Cloudflare OS (GitHub Repo)
-- **URL**: https://github.com/cloudflare/cloudflare-os?utm_source=tldrnewsletter
-- **Date**: 2026-08-06
-- **Description**: Cloudflare OS (GitHub Repo)Cloudflare OS is an operating system for AI productivity. It features an agent chat UI where users can ask agents to do tasks, sandboxed application development, and a security framework that applies guardrails to both agents and apps. Developed to be used internally at Cloudflare, Cloudflare OS is now open source so others can copy it and customize it for their own companies. The basic user experience of Cloudflare OS is something like an online office suite, but each
 
