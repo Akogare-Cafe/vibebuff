@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (5 tools)
 
 ### Exo (GitHub Repo)
 - **URL**: https://github.com/exoharness/exo?utm_source=tldrnewsletter
@@ -266,9 +266,4 @@ Total tools: 65
 - **URL**: https://github.com/vercel-labs/eve-software-factory-template?utm_source=tldrnewsletter
 - **Date**: 2026-08-14
 - **Description**: Foreman (GitHub Repo)Foreman is an eve software factory that puts AI agents on every stage of the development loop and keeps people on the judgment calls. It takes tasks from GitHub and Linear, moves each one through four stations - Classifier, Analyst, Implementer, and Reviewer - and delivers a reviewed draft pull request on the repository. The Classifier triages the task, the Analyst turns it into a plan with acceptance criteria, the Implementer executes the plan in its own sandbox, and the Re
-
-### Channels SDK (GitHub Repo)
-- **URL**: https://github.com/CopilotKit/channels-sdk?utm_source=tldrnewsletter
-- **Date**: 2026-08-07
-- **Description**: Channels SDK (GitHub Repo)Channels connects an AG-UI-compatible agent to the communication platforms teams already use.
 
