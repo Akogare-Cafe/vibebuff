@@ -4784,8 +4784,8 @@
   },
   "Jenqyang/Awesome-AI-Agents": {
     "url": "https://raw.githubusercontent.com/Jenqyang/Awesome-AI-Agents/main/README.md",
-    "tools_count": 480,
-    "total_links": 480,
+    "tools_count": 498,
+    "total_links": 498,
     "tools": [
       {
         "name": "Browse the searchable website \u2192",
@@ -4912,6 +4912,20 @@
         "url": "https://img.shields.io/github/stars/OpenDevin/OpenDevin?style=social",
         "category": "tool",
         "description": ""
+      },
+      {
+        "name": "Aster",
+        "url": "https://github.com/Zfinix/aster",
+        "category": "github",
+        "description": "Open-source terminal coding agent that reads your code, answers questions, edits files, runs commands, and reviews your changes",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/Zfinix/aster?style=social",
+        "category": "tool",
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "XAgent",
@@ -5400,6 +5414,20 @@
         "description": ""
       },
       {
+        "name": "SDP (Social Daily Poster)",
+        "url": "https://github.com/dimamak/sdp",
+        "category": "github",
+        "description": "Self-hosted agent that harvests your Claude Code or Codex sessions, screenshots and messages each night, drafts one social post from the day's work, and routes it through a private Telegram bot for approval before it publishes to LinkedIn, X or Reddit",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/dimamak/sdp?style=social",
+        "category": "tool",
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
         "name": "Tracefold",
         "url": "https://github.com/TraceFold/tracefold",
         "category": "github",
@@ -5409,7 +5437,21 @@
         "name": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/TraceFold/tracefold?style=social",
         "category": "tool",
-        "description": "### Multi-Agent Task Solver Projects"
+        "description": ""
+      },
+      {
+        "name": "ENZO",
+        "url": "https://github.com/theguysudo/ENZO",
+        "category": "github",
+        "description": "Self-hosted BYOK AI workspace with multi-provider chat (Groq, OpenRouter, NVIDIA, Hugging Face, Google AI), agents with scheduled runs, and skills like Gmail, Google Calendar, web search, and project generation",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/theguysudo/ENZO?style=social",
+        "category": "tool",
+        "description": "### Multi-Agent Task Solver Projects",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "MetaGPT",
@@ -5581,15 +5623,17 @@
       },
       {
         "name": "Bernstein",
-        "url": "https://github.com/chernistry/bernstein",
+        "url": "https://github.com/sipyourdrink-ltd/bernstein",
         "category": "github",
-        "description": "Deterministic orchestrator that spawns parallel coding agents (Claude Code, Codex CLI, Gemini CLI), verifies with tests, and auto-commits"
+        "description": "Open-source governance layer for AI agents",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "GitHub Repo stars",
-        "url": "https://img.shields.io/github/stars/chernistry/bernstein?style=social",
+        "url": "https://img.shields.io/github/stars/sipyourdrink-ltd/bernstein?style=social",
         "category": "tool",
-        "description": ""
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "swarm-orchestrator",
@@ -5685,7 +5729,21 @@
         "name": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/vicoa-ai/vicoa?style=social",
         "category": "tool",
-        "description": "### Agent Society Simulation"
+        "description": ""
+      },
+      {
+        "name": "XYZZY",
+        "url": "https://github.com/Project-Nexus-YR/XYZZY",
+        "category": "github",
+        "description": "Self-hosted multiplayer workspace where a team branches a question into parallel specialist agent runs, includes or excludes each output, and publishes a Decision Brief with every claim linked to its source output; hash-chained event log, one Python process on SQLite, works with any OpenAI-compatible endpoint",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/Project-Nexus-YR/XYZZY?style=social",
+        "category": "tool",
+        "description": "### Agent Society Simulation",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "generative_agents",
@@ -5856,6 +5914,13 @@
         "description": ""
       },
       {
+        "name": "OrcaReplay",
+        "url": "https://github.com/Continuum-AI-Corp/OrcaReplay",
+        "category": "github",
+        "description": "Records a coding agent below the harness \u2014 model traffic, shell exit codes, per-turn file changes and MCP calls on one timeline \u2014 then replays the run offline with the network off, or forks it from any checkpoint onto a different model",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
         "name": "mem0",
         "url": "https://github.com/mem0ai/mem0",
         "category": "github",
@@ -5986,6 +6051,20 @@
         "url": "https://img.shields.io/github/stars/agentrhq/authsome?style=social",
         "category": "tool",
         "description": ""
+      },
+      {
+        "name": "ValetFS",
+        "url": "https://github.com/winm2m/valet-fs",
+        "category": "github",
+        "description": "Secrets stay on a paired device and are lent to the agent's machine into daemon memory only, served over FUSE or loopback WebDAV; the daemon zero-wipes them when the pairing drops or a grace window expires",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/winm2m/valet-fs?style=social",
+        "category": "tool",
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "Steel Browser",
@@ -6363,7 +6442,35 @@
         "name": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/alanhoff/agent-coordinator?style=social",
         "category": "tool",
-        "description": "## Frameworks"
+        "description": ""
+      },
+      {
+        "name": "sofagent",
+        "url": "https://github.com/KongFangXun/sofagent",
+        "category": "github",
+        "description": "Audit-first governance harness for AI coding agents: 24 rules enforced at commit time via git hooks, HMAC-chained audit log, snapshot rollback",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/KongFangXun/sofagent?style=social",
+        "category": "tool",
+        "description": "## Frameworks",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "AIWG",
+        "url": "https://github.com/jmagly/aiwg",
+        "category": "github",
+        "description": "Deploys reusable agents, skills, rules, and governed workflows into the native project paths of multiple AI coding platforms",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/jmagly/aiwg?style=social",
+        "category": "tool",
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
       },
       {
         "name": "agent-express",
@@ -7062,6 +7169,20 @@
         "description": ""
       },
       {
+        "name": "AgentLeak",
+        "url": "https://github.com/yagobski/agentleak",
+        "category": "github",
+        "description": "Python toolkit for evaluating privacy leakage across agent traces, including tool calls, inter-agent messages, shared memory, and logs, with redacted reports and CI gates",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
+        "name": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/yagobski/agentleak?style=social",
+        "category": "tool",
+        "description": "",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
         "name": "agentops",
         "url": "https://github.com/AgentOps-AI/agentops",
         "category": "github",
@@ -7548,6 +7669,13 @@
         "description": "A curated list of 500+ papers on safety in embodied AI, covering risks, attacks, and defenses across perception, cognition, planning, action, and agentic capabilities"
       },
       {
+        "name": "ossbeat",
+        "url": "https://ossbeat.com",
+        "category": "tool",
+        "description": "Weekly write-ups tracking release notes and trends across open-source AI coding agent tooling (MCP, coding agent harnesses, agent-to-agent protocols)",
+        "source": "Jenqyang/Awesome-AI-Agents"
+      },
+      {
         "name": "LLM Powered Autonomous Agents",
         "url": "https://lilianweng.github.io/posts/2023-06-23-agent/",
         "category": "tool",
@@ -7752,6 +7880,14 @@
       {
         "text": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/OpenDevin/OpenDevin?style=social"
+      },
+      {
+        "text": "Aster",
+        "url": "https://github.com/Zfinix/aster"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/Zfinix/aster?style=social"
       },
       {
         "text": "XAgent",
@@ -8078,12 +8214,28 @@
         "url": "https://img.shields.io/github/stars/desplega-ai/agent-swarm?style=social"
       },
       {
+        "text": "SDP (Social Daily Poster)",
+        "url": "https://github.com/dimamak/sdp"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/dimamak/sdp?style=social"
+      },
+      {
         "text": "Tracefold",
         "url": "https://github.com/TraceFold/tracefold"
       },
       {
         "text": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/TraceFold/tracefold?style=social"
+      },
+      {
+        "text": "ENZO",
+        "url": "https://github.com/theguysudo/ENZO"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/theguysudo/ENZO?style=social"
       },
       {
         "text": "MetaGPT",
@@ -8199,11 +8351,11 @@
       },
       {
         "text": "Bernstein",
-        "url": "https://github.com/chernistry/bernstein"
+        "url": "https://github.com/sipyourdrink-ltd/bernstein"
       },
       {
         "text": "GitHub Repo stars",
-        "url": "https://img.shields.io/github/stars/chernistry/bernstein?style=social"
+        "url": "https://img.shields.io/github/stars/sipyourdrink-ltd/bernstein?style=social"
       },
       {
         "text": "swarm-orchestrator",
@@ -8268,6 +8420,14 @@
       {
         "text": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/vicoa-ai/vicoa?style=social"
+      },
+      {
+        "text": "XYZZY",
+        "url": "https://github.com/Project-Nexus-YR/XYZZY"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/Project-Nexus-YR/XYZZY?style=social"
       },
       {
         "text": "generative_agents",
@@ -8382,6 +8542,10 @@
         "url": "https://img.shields.io/github/stars/Bevel-Software/Hexis?style=social"
       },
       {
+        "text": "OrcaReplay",
+        "url": "https://github.com/Continuum-AI-Corp/OrcaReplay"
+      },
+      {
         "text": "mem0",
         "url": "https://github.com/mem0ai/mem0"
       },
@@ -8468,6 +8632,14 @@
       {
         "text": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/agentrhq/authsome?style=social"
+      },
+      {
+        "text": "ValetFS",
+        "url": "https://github.com/winm2m/valet-fs"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/winm2m/valet-fs?style=social"
       },
       {
         "text": "Steel Browser",
@@ -8720,6 +8892,22 @@
       {
         "text": "GitHub Repo stars",
         "url": "https://img.shields.io/github/stars/alanhoff/agent-coordinator?style=social"
+      },
+      {
+        "text": "sofagent",
+        "url": "https://github.com/KongFangXun/sofagent"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/KongFangXun/sofagent?style=social"
+      },
+      {
+        "text": "AIWG",
+        "url": "https://github.com/jmagly/aiwg"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/jmagly/aiwg?style=social"
       },
       {
         "text": "agent-express",
@@ -9186,6 +9374,14 @@
         "url": "https://img.shields.io/github/stars/THUDM/AgentBench?style=social"
       },
       {
+        "text": "AgentLeak",
+        "url": "https://github.com/yagobski/agentleak"
+      },
+      {
+        "text": "GitHub Repo stars",
+        "url": "https://img.shields.io/github/stars/yagobski/agentleak?style=social"
+      },
+      {
         "text": "agentops",
         "url": "https://github.com/AgentOps-AI/agentops"
       },
@@ -9508,6 +9704,10 @@
       {
         "text": "Awesome-Embodied-AI-Safety",
         "url": "https://github.com/x-zheng16/Awesome-Embodied-AI-Safety"
+      },
+      {
+        "text": "ossbeat",
+        "url": "https://ossbeat.com"
       },
       {
         "text": "LLM Powered Autonomous Agents",
@@ -28502,8 +28702,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1350,
-    "total_links": 1370,
+    "tools_count": 1351,
+    "total_links": 1371,
     "tools": [
       {
         "name": "Pull Requests",
@@ -31119,8 +31319,7 @@
         "name": "VibeView",
         "url": "https://vibeview.io",
         "category": "tool",
-        "description": "Browser-based iOS, Android, Apple TV and Android TV simulators with AI-powered test automation from a recorded flow or plain-language instructions",
-        "source": "ripienaar/free-for-dev"
+        "description": "Browser-based iOS, Android, Apple TV and Android TV simulators with AI-powered test automation from a recorded flow or plain-language instructions"
       },
       {
         "name": "webhook.site",
@@ -31511,6 +31710,13 @@
         "url": "https://supertokens.com/",
         "category": "tool",
         "description": "Open source user authentication that natively integrates into your app - enabling you to get started quickly while controlling the user and developer experience"
+      },
+      {
+        "name": "Unkey",
+        "url": "https://www.unkey.com/",
+        "category": "tool",
+        "description": "Open-source API key management and rate-limiting platform",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "WorkOS",
@@ -38651,6 +38857,10 @@
       {
         "text": "SuperTokens",
         "url": "https://supertokens.com/"
+      },
+      {
+        "text": "Unkey",
+        "url": "https://www.unkey.com/"
       },
       {
         "text": "WorkOS",
@@ -65170,8 +65380,7 @@
         "name": "My SvelteKit Starter",
         "url": "https://github.com/moisesvalero/my-sveltekit-starter",
         "category": "github",
-        "description": "A production-ready SvelteKit boilerplate optimized for AI-assisted development, featuring Svelte 5 runes, Tailwind CSS v4, shadcn-svelte style components, i18n, and pre-configured agent instructions",
-        "source": "TheComputerM/awesome-svelte"
+        "description": "A production-ready SvelteKit boilerplate optimized for AI-assisted development, featuring Svelte 5 runes, Tailwind CSS v4, shadcn-svelte style components, i18n, and pre-configured agent instructions"
       },
       {
         "name": "microfolio",
@@ -82669,8 +82878,8 @@
   },
   "josephmisiti/awesome-machine-learning": {
     "url": "https://raw.githubusercontent.com/josephmisiti/awesome-machine-learning/master/README.md",
-    "tools_count": 1317,
-    "total_links": 1319,
+    "tools_count": 1318,
+    "total_links": 1320,
     "tools": [
       {
         "name": "here",
@@ -82953,6 +83162,13 @@
         "url": "https://github.com/facebookincubator/MCGrad/",
         "category": "github",
         "description": "A production-ready library for multicalibration, fairness, and bias correction in machine learning models"
+      },
+      {
+        "name": "MiaIA",
+        "url": "https://github.com/Agosillo/MiaIA",
+        "category": "github",
+        "description": "An open-source C++20 neural-network engine and Unreal Engine 5 Studio for building, training, visualizing, inspecting, and debugging observable feed-forward networks",
+        "source": "josephmisiti/awesome-machine-learning"
       },
       {
         "name": "MLDB",
@@ -90763,6 +90979,10 @@
       {
         "text": "MCGrad",
         "url": "https://github.com/facebookincubator/MCGrad/"
+      },
+      {
+        "text": "MiaIA",
+        "url": "https://github.com/Agosillo/MiaIA"
       },
       {
         "text": "MLDB",
