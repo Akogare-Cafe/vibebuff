@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 63
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (4 tools)
 
 ### Exo (GitHub Repo)
 - **URL**: https://github.com/exoharness/exo?utm_source=tldrnewsletter
@@ -261,9 +261,4 @@ Total tools: 64
 - **URL**: https://github.com/BetterWright/betterwright?utm_source=tldrnewsletter
 - **Date**: 2026-08-20
 - **Description**: BetterWright (GitHub Repo)BetterWright is a persistent, policy-guarded Playwright browser for AI agents.
-
-### Foreman (GitHub Repo)
-- **URL**: https://github.com/vercel-labs/eve-software-factory-template?utm_source=tldrnewsletter
-- **Date**: 2026-08-14
-- **Description**: Foreman (GitHub Repo)Foreman is an eve software factory that puts AI agents on every stage of the development loop and keeps people on the judgment calls. It takes tasks from GitHub and Linear, moves each one through four stations - Classifier, Analyst, Implementer, and Reviewer - and delivers a reviewed draft pull request on the repository. The Classifier triages the task, the Analyst turns it into a plan with acceptance criteria, the Implementer executes the plan in its own sandbox, and the Re
 
