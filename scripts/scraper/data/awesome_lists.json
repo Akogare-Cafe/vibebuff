@@ -76578,8 +76578,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 173,
-    "total_links": 177,
+    "tools_count": 177,
+    "total_links": 181,
     "tools": [
       {
         "name": "How to Contribute",
@@ -76762,6 +76762,19 @@
         "description": "An open-source Python CLI that uses LLM-as-a-Judge to automate semantic regression testing for LLM prompts in CI/CD, blocking GitHub PRs that cause hallucinations or break formatting rules"
       },
       {
+        "name": "OrcaReplay",
+        "url": "https://github.com/Continuum-AI-Corp/OrcaReplay",
+        "category": "github",
+        "description": "Records a coding-agent session below the harness, keeping the verbatim request and response bytes, then replays the same run offline with the network off or forks it from a checkpoint onto other models with a verify command deciding the verdict"
+      },
+      {
+        "name": "flight-recorder",
+        "url": "https://github.com/xag/flight-recorder",
+        "category": "github",
+        "description": "Record every nondeterministic input your code reads (LLM answers, HTTP, database, clock, randomness) as one JSONL tape per request, then replay the tape against the real code offline, bit for bit, with the first divergence named",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Beeceptor",
         "url": "https://beeceptor.com/",
         "category": "tool",
@@ -76898,6 +76911,20 @@
         "url": "https://devicelab.dev",
         "category": "tool",
         "description": "Private device lab infrastructure for mobile testing"
+      },
+      {
+        "name": "Drengr",
+        "url": "https://drengr.dev",
+        "category": "tool",
+        "description": "Mobile tests written as plain-English tasks instead of selectors, driven by an agent on real Android devices and iOS simulators",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
+        "name": "Drengr Runner",
+        "url": "https://github.com/SharminSirajudeen/drengr-runner",
+        "category": "github",
+        "description": "Drive an iOS simulator over HTTP from any language",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Ferrum",
@@ -77096,6 +77123,13 @@
         "url": "https://mzeeshan.me/tools/sample-files",
         "category": "tool",
         "description": "Free downloadable test file variants across video, audio, document, and archive formats (MP4, MOV, RTF, ZIP, PPTX, etc"
+      },
+      {
+        "name": "ARADURU File Format Test Corpus",
+        "url": "https://teamaraduru-hub.github.io/araduru-file-format-test-corpus/",
+        "category": "tool",
+        "description": "Open CC0 corpus of deterministic healthy and intentionally broken XLSX, DOCX, PPTX, ZIP, and PDF fixtures with SHA-256 manifests for file validation, parser, upload, and QA testing",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "FakeNamely",
@@ -77372,12 +77406,6 @@
         "url": "https://www.manning.com/books/testing-javascript-applications",
         "category": "tool",
         "description": "A book about JavaScript testing tools and techniques for developers"
-      },
-      {
-        "name": "Chaos Engineering",
-        "url": "https://www.manning.com/books/chaos-engineering",
-        "category": "tool",
-        "description": "A book that teaches you to design and execute controlled experiments that uncover hidden problems"
       },
       {
         "name": "The Art of Unit Testing, Third Edition",
@@ -77742,6 +77770,14 @@
         "url": "https://github.com/mukundzha/crilio"
       },
       {
+        "text": "OrcaReplay",
+        "url": "https://github.com/Continuum-AI-Corp/OrcaReplay"
+      },
+      {
+        "text": "flight-recorder",
+        "url": "https://github.com/xag/flight-recorder"
+      },
+      {
         "text": "Beeceptor",
         "url": "https://beeceptor.com/"
       },
@@ -77832,6 +77868,14 @@
       {
         "text": "DeviceLab",
         "url": "https://devicelab.dev"
+      },
+      {
+        "text": "Drengr",
+        "url": "https://drengr.dev"
+      },
+      {
+        "text": "Drengr Runner",
+        "url": "https://github.com/SharminSirajudeen/drengr-runner"
       },
       {
         "text": "Ferrum",
@@ -77964,6 +78008,10 @@
       {
         "text": "Sample Files",
         "url": "https://mzeeshan.me/tools/sample-files"
+      },
+      {
+        "text": "ARADURU File Format Test Corpus",
+        "url": "https://teamaraduru-hub.github.io/araduru-file-format-test-corpus/"
       },
       {
         "text": "FakeNamely",
@@ -78156,10 +78204,6 @@
       {
         "text": "Testing JavaScript Applications",
         "url": "https://www.manning.com/books/testing-javascript-applications"
-      },
-      {
-        "text": "Chaos Engineering",
-        "url": "https://www.manning.com/books/chaos-engineering"
       },
       {
         "text": "The Art of Unit Testing, Third Edition",
@@ -84684,8 +84728,7 @@
         "name": "Glyph",
         "url": "https://github.com/Koda-OSS/Glyph",
         "category": "github",
-        "description": "Framework-agnostic TypeScript library for generating, searching, and comparing MinHash fingerprints for fast text similarity, deduplication, and retrieval",
-        "source": "josephmisiti/awesome-machine-learning"
+        "description": "Framework-agnostic TypeScript library for generating, searching, and comparing MinHash fingerprints for fast text similarity, deduplication, and retrieval"
       },
       {
         "name": "D3.js",
