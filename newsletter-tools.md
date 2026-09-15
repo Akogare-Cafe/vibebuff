@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 63
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 63
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (4 tools)
+## TLDR (5 tools)
+
+### @shadcn/lint (GitHub Repo)
+- **URL**: https://github.com/shadcn-ui/lint?utm_source=tldrnewsletter
+- **Date**: 2026-09-15
+- **Description**: @shadcn/lint (GitHub Repo)@shadcn/lint is an agent-first linter for Tailwind design systems that works with existing design systems without any rewrite required.
 
 ### Exo (GitHub Repo)
 - **URL**: https://github.com/exoharness/exo?utm_source=tldrnewsletter
