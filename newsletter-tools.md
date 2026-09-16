@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### Tailcat (GitHub Repo)
+- **URL**: https://github.com/tailscale/tailcat?utm_source=tldrnewsletter
+- **Date**: 2026-09-16
+- **Description**: Tailcat (GitHub Repo)Tailcat is like netcat, but over Tailscale's data plane and without Tailscale's control plane.
 
 ### @shadcn/lint (GitHub Repo)
 - **URL**: https://github.com/shadcn-ui/lint?utm_source=tldrnewsletter
