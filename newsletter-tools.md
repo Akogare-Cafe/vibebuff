@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 63
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (4 tools)
 
 ### Tailcat (GitHub Repo)
 - **URL**: https://github.com/tailscale/tailcat?utm_source=tldrnewsletter
@@ -261,14 +261,4 @@ Total tools: 65
 - **URL**: https://github.github.com/gh-aw/?utm_source=tldrnewsletter
 - **Date**: 2026-08-31
 - **Description**: GitHub Agentic Workflows (6 minute read)GitHub Agentic Workflows enables repository automation. Developers can use event-triggered and scheduled jobs to augment existing, deterministic CI/CD with AI-powered intelligence. GitHub Agentic Workflows runs with strong guardrails to help keep repositories safe. Supported AI engines include GitHub Copilot, Claude Code, Google Gemini, and OpenAI Codex.
-
-### OneCLI (GitHub Repo)
-- **URL**: https://github.com/onecli/onecli?utm_source=tldrnewsletter
-- **Date**: 2026-08-20
-- **Description**: OneCLI (GitHub Repo)OneCLI is an agent harness built for teams. It provides every employee in a company with a secured, sandboxed personal agent. The agents are routed through a gateway that injects credentials and enforces policies. Agents run on the company's own infrastructure. The runner is outbound-only and holds no inbound ports.
-
-### BetterWright (GitHub Repo)
-- **URL**: https://github.com/BetterWright/betterwright?utm_source=tldrnewsletter
-- **Date**: 2026-08-20
-- **Description**: BetterWright (GitHub Repo)BetterWright is a persistent, policy-guarded Playwright browser for AI agents.
 
