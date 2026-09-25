@@ -27858,8 +27858,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1345,
-    "total_links": 1365,
+    "tools_count": 1346,
+    "total_links": 1366,
     "tools": [
       {
         "name": "Pull Requests",
@@ -28750,11 +28750,17 @@
         "description": "API that crawls websites and converts them into clean, LLM-ready markdown or structured data, handling JavaScript rendering, proxies, and rate limits"
       },
       {
+        "name": "flaky",
+        "url": "https://flakyapi.dev",
+        "category": "tool",
+        "description": "A mock API where you can paste your JSON and simulate API problems like delays, errors, failed requests, and malformed responses",
+        "source": "ripienaar/free-for-dev"
+      },
+      {
         "name": "Formfeed",
         "url": "https://formfeed.dev",
         "category": "tool",
-        "description": "API for PDF and image generation from JSON with a simple API or automation tools like Zapier & Make",
-        "source": "ripienaar/free-for-dev"
+        "description": "API for PDF and image generation from JSON with a simple API or automation tools like Zapier & Make"
       },
       {
         "name": "FraudLabs Pro",
@@ -32222,7 +32228,7 @@
         "name": "Wraps",
         "url": "https://wraps.dev",
         "category": "tool",
-        "description": "email automation workflows, 5k tracked events and unlimited contacts free"
+        "description": "Email infrastructure deployed to your own AWS account (SES), with a dashboard"
       },
       {
         "name": "ZeroSMTP",
@@ -35585,10 +35591,11 @@
         "description": "Browser automation and page rendering"
       },
       {
-        "name": "Renderwolf",
-        "url": "https://ironfang.uk/renderwolf",
+        "name": "Ironfang Render",
+        "url": "https://ironfang.uk/render",
         "category": "tool",
-        "description": "UK-based screenshot, PDF, image, QR code and clip rendering API with reusable templates and signed URLs"
+        "description": "UK-based screenshot, PDF, image, QR code and clip rendering API with reusable templates and signed URLs",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "screenshotbase.com",
@@ -36533,6 +36540,10 @@
       {
         "text": "Firecrawl",
         "url": "https://www.firecrawl.dev/"
+      },
+      {
+        "text": "flaky",
+        "url": "https://flakyapi.dev"
       },
       {
         "text": "Formfeed",
@@ -41163,8 +41174,8 @@
         "url": "https://PhantomJsCloud.com"
       },
       {
-        "text": "Renderwolf",
-        "url": "https://ironfang.uk/renderwolf"
+        "text": "Ironfang Render",
+        "url": "https://ironfang.uk/render"
       },
       {
         "text": "screenshotbase.com",
@@ -52992,8 +53003,8 @@
   },
   "vuejs/awesome-vue": {
     "url": "https://raw.githubusercontent.com/vuejs/awesome-vue/master/README.md",
-    "tools_count": 1069,
-    "total_links": 1119,
+    "tools_count": 1070,
+    "total_links": 1120,
     "tools": [
       {
         "name": "API Reference",
@@ -57056,6 +57067,13 @@
         "url": "https://tiny-pivot.com",
         "category": "tool",
         "description": "Lightweight Vue 3 data grid with pivot tables, charts, CSV/Excel export, and an optional AI data analyst"
+      },
+      {
+        "name": "vtable-guild",
+        "url": "https://github.com/parade0393/vtable-guild",
+        "category": "github",
+        "description": "Vue 3 table with row and column virtualization, sorting, filtering, selection and an ant-design-vue compatible `columns` API",
+        "source": "vuejs/awesome-vue"
       },
       {
         "name": "VueToastify",
@@ -62314,6 +62332,10 @@
       {
         "text": "TinyPivot",
         "url": "https://tiny-pivot.com"
+      },
+      {
+        "text": "vtable-guild",
+        "url": "https://github.com/parade0393/vtable-guild"
       },
       {
         "text": "VueToastify",
@@ -75775,8 +75797,8 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 177,
-    "total_links": 181,
+    "tools_count": 175,
+    "total_links": 179,
     "tools": [
       {
         "name": "How to Contribute",
@@ -75957,6 +75979,13 @@
         "url": "https://github.com/mukundzha/crilio",
         "category": "github",
         "description": "An open-source Python CLI that uses LLM-as-a-Judge to automate semantic regression testing for LLM prompts in CI/CD, blocking GitHub PRs that cause hallucinations or break formatting rules"
+      },
+      {
+        "name": "aiexpect",
+        "url": "https://github.com/dmsehgal/aiexpect",
+        "category": "github",
+        "description": "Python assertions for non-deterministic AI text that drop into pytest",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "OrcaReplay",
@@ -76205,6 +76234,12 @@
         "description": "UI Coverage Tool is an innovative, no-overhead solution for tracking and visualizing UI test coverage \u2014 directly on your actual application, not static snapshots"
       },
       {
+        "name": "VibeView",
+        "url": "https://vibeview.io/",
+        "category": "tool",
+        "description": "Run & test iOS, Android, Apple TV and Android TV apps right in your browser, with Roku in beta"
+      },
+      {
         "name": "Waterfall AI Test",
         "url": "https://github.com/jiongfeng/waterfall-ai-test-platform",
         "category": "github",
@@ -76214,7 +76249,7 @@
         "name": "agent-qa",
         "url": "https://github.com/vostride/agent-qa",
         "category": "github",
-        "description": "Open-source Agentic QA Harness with Memory"
+        "description": "Self-improving QA agent for natural-language web and mobile tests, with execution memory and regression detection"
       },
       {
         "name": "Kiwi TCMS",
@@ -76277,18 +76312,6 @@
         "description": "Reusable valid, invalid, and edge-case JSON fixtures for testing parsers, validators, APIs, editors, and error handling"
       },
       {
-        "name": "MockJutsu",
-        "url": "https://github.com/altansayan/mock-jutsu-api",
-        "category": "github",
-        "description": "Algorithmic open-source mock data engine generating 390+ format-valid types (IBAN, TCKN, Luhn, VIN, NHS, SWIFT, MRZ and more)"
-      },
-      {
-        "name": "MockHero",
-        "url": "https://mockhero.dev",
-        "category": "tool",
-        "description": "REST API for generating synthetic test data"
-      },
-      {
         "name": "Synth",
         "url": "https://github.com/getsynth/synth",
         "category": "github",
@@ -76305,12 +76328,6 @@
         "url": "https://github.com/ehmicky/test-each",
         "category": "github",
         "description": "Data-driven testing framework"
-      },
-      {
-        "name": "Fake Data Generator",
-        "url": "https://singhajit.com/tools/fake-data-generator/",
-        "category": "tool",
-        "description": "Browser-based generator for realistic mock/test data"
       },
       {
         "name": "Sample Files",
@@ -76655,12 +76672,6 @@
         "description": "Open source React Native mobile app built as a hands on training surface for QA automation"
       },
       {
-        "name": "James Bach",
-        "url": "http://www.satisfice.com/blog/",
-        "category": "tool",
-        "description": ""
-      },
-      {
         "name": "Michael Bolton",
         "url": "http://www.developsense.com/blog/",
         "category": "tool",
@@ -76963,6 +76974,10 @@
         "url": "https://github.com/mukundzha/crilio"
       },
       {
+        "text": "aiexpect",
+        "url": "https://github.com/dmsehgal/aiexpect"
+      },
+      {
         "text": "OrcaReplay",
         "url": "https://github.com/Continuum-AI-Corp/OrcaReplay"
       },
@@ -77127,6 +77142,10 @@
         "url": "https://github.com/Nikita-Filonov/ui-coverage-scenario-tool"
       },
       {
+        "text": "VibeView",
+        "url": "https://vibeview.io/"
+      },
+      {
         "text": "Waterfall AI Test",
         "url": "https://github.com/jiongfeng/waterfall-ai-test-platform"
       },
@@ -77175,14 +77194,6 @@
         "url": "https://github.com/UtilHatch/json-validation-test-cases"
       },
       {
-        "text": "MockJutsu",
-        "url": "https://github.com/altansayan/mock-jutsu-api"
-      },
-      {
-        "text": "MockHero",
-        "url": "https://mockhero.dev"
-      },
-      {
         "text": "Synth",
         "url": "https://github.com/getsynth/synth"
       },
@@ -77193,10 +77204,6 @@
       {
         "text": "test-each",
         "url": "https://github.com/ehmicky/test-each"
-      },
-      {
-        "text": "Fake Data Generator",
-        "url": "https://singhajit.com/tools/fake-data-generator/"
       },
       {
         "text": "Sample Files",
@@ -77433,10 +77440,6 @@
       {
         "text": "FrontRow",
         "url": "https://github.com/majdukovic/frontrow"
-      },
-      {
-        "text": "James Bach",
-        "url": "http://www.satisfice.com/blog/"
       },
       {
         "text": "Michael Bolton",
@@ -106563,15 +106566,13 @@
         "name": "PKVault",
         "url": "https://github.com/Chnapy/PKVault",
         "category": "github",
-        "description": "Centralized Pok\u00e9mon storage management & Pokedex app (alternative to Pok\u00e9mon Home)",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Centralized Pok\u00e9mon storage management & Pokedex app (alternative to Pok\u00e9mon Home)"
       },
       {
         "name": "Demo",
         "url": "https://pkvault-demo.chnapy.dev",
         "category": "tool",
-        "description": ") `GPL-3",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `GPL-3"
       },
       {
         "name": "Pterodactyl",
@@ -108431,15 +108432,13 @@
         "name": "HomeTube",
         "url": "https://hometube.latentnoise.dev",
         "category": "tool",
-        "description": "`\u26a0` - Web UI to download videos and playlists from 1700+ sites into a Plex or Jellyfin library, with quality selection, SponsorBlock sponsor removal, subtitles, clip cutting and resilient playlist sync",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "`\u26a0` - Web UI to download videos and playlists from 1700+ sites into a Plex or Jellyfin library, with quality selection, SponsorBlock sponsor removal, subtitles, clip cutting and resilient playlist sync"
       },
       {
         "name": "Source Code",
         "url": "https://github.com/EgalitarianMonkey/hometube",
         "category": "github",
-        "description": ") `AGPL-3",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `AGPL-3"
       },
       {
         "name": "Houndarr",
@@ -114445,15 +114444,13 @@
         "name": "Paca",
         "url": "https://paca-ai.org",
         "category": "tool",
-        "description": "AI-native project management platform where AI agents and humans collaborate as Scrum teammates on the same board and sprints",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "AI-native project management platform where AI agents and humans collaborate as Scrum teammates on the same board and sprints"
       },
       {
         "name": "Source Code",
         "url": "https://github.com/Paca-AI/paca",
         "category": "github",
-        "description": ") `Apache-2",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `Apache-2"
       },
       {
         "name": "Pagure",
