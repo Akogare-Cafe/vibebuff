@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 65
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 65
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (6 tools)
+## TLDR (5 tools)
 
 ### LiteParse (GitHub Repo)
 - **URL**: https://github.com/run-llama/liteparse?utm_source=tldrnewsletter
@@ -266,9 +266,4 @@ Total tools: 65
 - **URL**: https://github.com/exoharness/exo?utm_source=tldrnewsletter
 - **Date**: 2026-09-03
 - **Description**: Exo (GitHub Repo)Exo is a complete AI agent harness with full visibility into both its code and runtime logs.
-
-### GitHub Agentic Workflows (6 minute read)
-- **URL**: https://github.github.com/gh-aw/?utm_source=tldrnewsletter
-- **Date**: 2026-08-31
-- **Description**: GitHub Agentic Workflows (6 minute read)GitHub Agentic Workflows enables repository automation. Developers can use event-triggered and scheduled jobs to augment existing, deterministic CI/CD with AI-powered intelligence. GitHub Agentic Workflows runs with strong guardrails to help keep repositories safe. Supported AI engines include GitHub Copilot, Claude Code, Google Gemini, and OpenAI Codex.
 
