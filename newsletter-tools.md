@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### Lemma (GitHub Repo)
+- **URL**: https://github.com/lemma-work/lemma-platform?utm_source=tldrnewsletter
+- **Date**: 2026-09-30
+- **Description**: Lemma (GitHub Repo)Lemma is an open-source workspace where humans and AI agents work as one team. State is shared and permissioned, so many people and many agents work on the same records. It keeps running between sessions, on schedules, webhooks, and table events, and it improves as teams work with it. Lemma can be run locally or on Lemma Cloud.
 
 ### LiteParse (GitHub Repo)
 - **URL**: https://github.com/run-llama/liteparse?utm_source=tldrnewsletter
