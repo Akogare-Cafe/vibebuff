@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 65
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (6 tools)
+
+### zerobrew (GitHub Repo)
+- **URL**: https://github.com/zerobrewhq/zerobrew?utm_source=tldrnewsletter
+- **Date**: 2026-10-09
+- **Description**: zerobrew (GitHub Repo)zerobrew brings uv-style architecture to Homebrew packages on macOS and Linux.
 
 ### Lemma (GitHub Repo)
 - **URL**: https://github.com/lemma-work/lemma-platform?utm_source=tldrnewsletter
