@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 63
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (4 tools)
 
 ### zerobrew (GitHub Repo)
 - **URL**: https://github.com/zerobrewhq/zerobrew?utm_source=tldrnewsletter
@@ -261,9 +261,4 @@ Total tools: 64
 - **URL**: https://github.com/bendlang/bend?utm_source=tldrnewsletter
 - **Date**: 2026-09-18
 - **Description**: Bend (GitHub Repo)Bend is a language for communicating intent to AI.
-
-### Tailcat (GitHub Repo)
-- **URL**: https://github.com/tailscale/tailcat?utm_source=tldrnewsletter
-- **Date**: 2026-09-16
-- **Description**: Tailcat (GitHub Repo)Tailcat is like netcat, but over Tailscale's data plane and without Tailscale's control plane.
 
