@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 63
+Total tools: 64
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,12 @@ Total tools: 63
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (4 tools)
+## TLDR (5 tools)
+
+### pg_vectorsearch (GitHub Repo)
+- **URL**: https://github.com/timescale/pg_vectorsearch?utm_source=tldrnewsletter
+- **Date**: 2026-10-15
+- **Description**: pg_vectorsearch (GitHub Repo)pg_vectorsearch is a PostgreSQL extension for high-performance Approximate Nearest Neighbor search.
 
 ### zerobrew (GitHub Repo)
 - **URL**: https://github.com/zerobrewhq/zerobrew?utm_source=tldrnewsletter
