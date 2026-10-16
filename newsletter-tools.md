@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 64
+Total tools: 63
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 64
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (5 tools)
+## TLDR (4 tools)
 
 ### pg_vectorsearch (GitHub Repo)
 - **URL**: https://github.com/timescale/pg_vectorsearch?utm_source=tldrnewsletter
@@ -261,9 +261,4 @@ Total tools: 64
 - **URL**: https://github.com/run-llama/liteparse?utm_source=tldrnewsletter
 - **Date**: 2026-09-23
 - **Description**: LiteParse (GitHub Repo)LiteParse is a standalone OSS PDF parsing tool. Focused exclusively on fast and light parsing, it provides high-quality spatial text parsing with bounding boxes, without proprietary LLM features or cloud dependencies. It runs everything locally. A cloud-based version of the tool is available.
-
-### Bend (GitHub Repo)
-- **URL**: https://github.com/bendlang/bend?utm_source=tldrnewsletter
-- **Date**: 2026-09-18
-- **Description**: Bend (GitHub Repo)Bend is a language for communicating intent to AI.
 
