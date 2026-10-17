@@ -37,10 +37,10 @@ const nextConfig: NextConfig = {
   reactCompiler: false,
   experimental: {
     optimizeCss: true,
-    // KAV-214: prod build dpl_142jrbajeEfBRP7YJkbzdDeFTNgp died on transient Convex
-    // fetchQuery ETIMEDOUTs while prerendering ~885 pages with 7 workers.
-    // Retry failed pages and cap concurrency so one blip can't fail the deploy.
-    staticGenerationRetryCount: 3,
+    // KAV-214: Convex timeouts are retried with backoff in src/lib/convex-fetch.ts,
+    // so keep Next's page-level retry at 1. Cap prerender concurrency (this
+    // limit applies per build worker, not globally) to ease load on Convex.
+    staticGenerationRetryCount: 1,
     staticGenerationMaxConcurrency: 4,
     optimizePackageImports: ["lucide-react", "framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
   },

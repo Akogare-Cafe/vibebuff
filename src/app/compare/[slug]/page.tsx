@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { fetchQuery } from "convex/nextjs";
+import { fetchQuery } from "@/lib/convex-fetch";
 import { api } from "../../../../convex/_generated/api";
 import { notFound } from "next/navigation";
 import Link from "next/link";
