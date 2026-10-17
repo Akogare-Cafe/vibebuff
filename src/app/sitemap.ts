@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { fetchQuery } from "convex/nextjs";
+import { fetchQuery } from "@/lib/convex-fetch";
 import { api } from "../../convex/_generated/api";
 import { getBlogSlugs } from "@/lib/blog";
 
