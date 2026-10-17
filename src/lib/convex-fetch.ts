@@ -24,10 +24,14 @@ export function isTransientFetchError(error: unknown): boolean {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const fetchQuery: typeof convexFetchQuery = (async (...args: Parameters<typeof convexFetchQuery>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const callConvex = convexFetchQuery as (...args: any[]) => Promise<unknown>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const fetchQuery: typeof convexFetchQuery = (async (...args: any[]) => {
   for (let attempt = 1; ; attempt++) {
     try {
-      return await convexFetchQuery(...args);
+      return await callConvex(...args);
     } catch (error) {
       if (attempt >= MAX_ATTEMPTS || !isTransientFetchError(error)) throw error;
       const delay = BASE_DELAY_MS * 2 ** (attempt - 1) + Math.floor(Math.random() * 250);
