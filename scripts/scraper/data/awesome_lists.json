@@ -13049,12 +13049,6 @@
         "description": "record what was checked"
       },
       {
-        "name": "Lifecycle cleanup",
-        "url": "docs/lifecycle-review-2026-09-18.md",
-        "category": "tool",
-        "description": "| Removed unavailable/new-user-blocked entries, corrected canonical products, and reduced the core tool list from 156 to 40"
-      },
-      {
         "name": "More verified options",
         "url": "docs/verified-catalog.md",
         "category": "tool",
@@ -13401,6 +13395,13 @@
         "url": "https://getprbl.com",
         "category": "tool",
         "description": "\u00b7 Web | Scan a live app or repo for flaws AI coding tools commonly introduce; GitHub Action comments on PRs; Pro rewriter applies verified fixes | Free scan and GitHub Action; paid plans for rewriter and private repos; Python/JS/TS only | 2026-09-23 |"
+      },
+      {
+        "name": "**Preflight**",
+        "url": "https://launchpreflight.com",
+        "category": "tool",
+        "description": "\u00b7 Web | Turn a short interview into a tailored security-check prompt for your own coding agent, then reorder its findings into fix-now, before-launch, uncertain and later priorities | 2 free checks per month (+1 on signup); extra credits from \u20a93,300; no code upload or GitHub access; Korean UI | 2026-10-18 |",
+        "source": "roboco-io/awesome-vibecoding"
       },
       {
         "name": "**Qodo**",
@@ -13787,10 +13788,6 @@
         "url": "docs/lifecycle-review-2026-09-18.md"
       },
       {
-        "text": "Lifecycle cleanup",
-        "url": "docs/lifecycle-review-2026-09-18.md"
-      },
-      {
         "text": "More verified options",
         "url": "docs/verified-catalog.md"
       },
@@ -14021,6 +14018,10 @@
       {
         "text": "**Prbl**",
         "url": "https://getprbl.com"
+      },
+      {
+        "text": "**Preflight**",
+        "url": "https://launchpreflight.com"
       },
       {
         "text": "**Qodo**",
@@ -28662,8 +28663,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1381,
-    "total_links": 1401,
+    "tools_count": 1382,
+    "total_links": 1402,
     "tools": [
       {
         "name": "Pull Requests",
@@ -29317,8 +29318,7 @@
         "name": "App AI Gateway",
         "url": "https://appaigateway.com/",
         "category": "tool",
-        "description": "Gateway/proxy for calling AI providers from iOS applications without shipping provider keys or building your own backend",
-        "source": "ripienaar/free-for-dev"
+        "description": "Gateway/proxy for calling AI providers from iOS applications without shipping provider keys or building your own backend"
       },
       {
         "name": "Beeceptor",
@@ -33903,6 +33903,13 @@
         "url": "https://staxa.dev/",
         "category": "tool",
         "description": "Multi-tenant app hosting: each tenant gets its own app, database, subdomain and TLS in an isolated Kubernetes namespace through either a web app or API integration"
+      },
+      {
+        "name": "The Vibe Hosting",
+        "url": "https://thevibehosting.com/",
+        "category": "tool",
+        "description": "Frictionless vibe hosting for coding agents",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Val Town",
@@ -40505,6 +40512,10 @@
       {
         "text": "Staxa",
         "url": "https://staxa.dev/"
+      },
+      {
+        "text": "The Vibe Hosting",
+        "url": "https://thevibehosting.com/"
       },
       {
         "text": "Val Town",
@@ -105947,15 +105958,13 @@
         "name": "Grimmory",
         "url": "https://grimmory.org/",
         "category": "tool",
-        "description": "Library for ebooks, comics and audiobooks with a built-in reader, metadata lookup, multi-user support, OPDS, and Kobo/KOReader sync",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Library for ebooks, comics and audiobooks with a built-in reader, metadata lookup, multi-user support, OPDS, and Kobo/KOReader sync"
       },
       {
         "name": "Source Code",
         "url": "https://github.com/grimmory-tools/grimmory",
         "category": "github",
-        "description": ") `AGPL-3",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `AGPL-3"
       },
       {
         "name": "Inkheart",
@@ -116953,15 +116962,13 @@
         "name": "TREK",
         "url": "https://github.com/liketrek/TREK",
         "category": "github",
-        "description": "Collaborative trip planner with interactive maps, day-by-day itineraries, budgets, packing lists, reservations, journey journaling, and PWA support",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Collaborative trip planner with interactive maps, day-by-day itineraries, budgets, packing lists, reservations, journey journaling, and PWA support"
       },
       {
         "name": "Demo",
         "url": "https://demo.liketrek.com/",
         "category": "tool",
-        "description": ") `AGPL-3",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": ") `AGPL-3"
       },
       {
         "name": "URL shortening",
