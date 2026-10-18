@@ -37,6 +37,11 @@ const nextConfig: NextConfig = {
   reactCompiler: false,
   experimental: {
     optimizeCss: true,
+    // KAV-214: Convex timeouts are retried with backoff in src/lib/convex-fetch.ts,
+    // so keep Next's page-level retry at 1. Cap prerender concurrency (this
+    // limit applies per build worker, not globally) to ease load on Convex.
+    staticGenerationRetryCount: 1,
+    staticGenerationMaxConcurrency: 4,
     optimizePackageImports: ["lucide-react", "framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
   },
   images: {

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { fetchQuery } from "convex/nextjs";
+import { fetchQuery } from "@/lib/convex-fetch";
 import { api } from "../../../../convex/_generated/api";
 
 export const runtime = "edge";
