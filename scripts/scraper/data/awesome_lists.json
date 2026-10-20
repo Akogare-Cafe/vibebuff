@@ -28662,8 +28662,8 @@
   },
   "ripienaar/free-for-dev": {
     "url": "https://raw.githubusercontent.com/ripienaar/free-for-dev/master/README.md",
-    "tools_count": 1384,
-    "total_links": 1404,
+    "tools_count": 1387,
+    "total_links": 1407,
     "tools": [
       {
         "name": "Pull Requests",
@@ -29396,6 +29396,13 @@
         "url": "https://conversiontools.io/",
         "category": "tool",
         "description": "Online File Converter for documents, images, video, audio, and eBooks"
+      },
+      {
+        "name": "cors.dev",
+        "url": "https://cors.dev/",
+        "category": "tool",
+        "description": "CORS proxy for calling third-party APIs from frontend code: prefix any HTTPS URL with `https://proxy",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "Country-State-City Microservice API",
@@ -31609,8 +31616,7 @@
         "name": "Frontegg",
         "url": "https://frontegg.com",
         "category": "tool",
-        "description": "Customer identity for B2B SaaS: authentication, SSO/SCIM, MFA, RBAC and multi-tenant user management",
-        "source": "ripienaar/free-for-dev"
+        "description": "Customer identity for B2B SaaS: authentication, SSO/SCIM, MFA, RBAC and multi-tenant user management"
       },
       {
         "name": "Kinde",
@@ -32246,8 +32252,7 @@
         "name": "Monitorable",
         "url": "https://monitorable.io",
         "category": "tool",
-        "description": "Server health monitoring for Linux (bare metal, VMs, LXC): host and Docker metrics, systemd services and SMART disk health, with alerting, OpenTelemetry Collector agent",
-        "source": "ripienaar/free-for-dev"
+        "description": "Server health monitoring for Linux (bare metal, VMs, LXC): host and Docker metrics, systemd services and SMART disk health, with alerting, OpenTelemetry Collector agent"
       },
       {
         "name": "MonitorMonk",
@@ -32278,6 +32283,13 @@
         "url": "https://cntest.ontarionet.ca",
         "category": "tool",
         "description": "Check if a website is blocked in China by the Great Firewall"
+      },
+      {
+        "name": "OpenUptime",
+        "url": "https://openuptime.app",
+        "category": "tool",
+        "description": "Hosted uptime monitoring and status pages",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "pagecrawl.io",
@@ -32800,6 +32812,13 @@
         "url": "https://dkimvalidator.com/",
         "category": "tool",
         "description": "Test if the email's DNS/SPF/DKIM/DMARC settings are correct, free service by roundsphere"
+      },
+      {
+        "name": "DMARCmetric",
+        "url": "https://dmarcmetric.com/",
+        "category": "tool",
+        "description": "DMARC report monitoring with named sending sources, SPF/DKIM alignment and plain-English summaries",
+        "source": "ripienaar/free-for-dev"
       },
       {
         "name": "DNSExit",
@@ -37466,6 +37485,10 @@
         "url": "https://conversiontools.io/"
       },
       {
+        "text": "cors.dev",
+        "url": "https://cors.dev/"
+      },
+      {
         "text": "Country-State-City Microservice API",
         "url": "https://country-state-city.rebuscando.info/"
       },
@@ -39422,6 +39445,10 @@
         "url": "https://cntest.ontarionet.ca"
       },
       {
+        "text": "OpenUptime",
+        "url": "https://openuptime.app"
+      },
+      {
         "text": "pagecrawl.io",
         "url": "https://pagecrawl.io/"
       },
@@ -39784,6 +39811,10 @@
       {
         "text": "dkimvalidator.com",
         "url": "https://dkimvalidator.com/"
+      },
+      {
+        "text": "DMARCmetric",
+        "url": "https://dmarcmetric.com/"
       },
       {
         "text": "DNSExit",
@@ -59406,8 +59437,7 @@
         "name": "CyteEditor",
         "url": "https://github.com/cyte-editor/cyteeditor-examples",
         "category": "github",
-        "description": "Rich text editor SDK with Word/Excel paste fidelity, built-in snapshot & version comparison, and official adapters for Vue 3, Vue 2, React, Svelte, Angular, and Vanilla JS",
-        "source": "vuejs/awesome-vue"
+        "description": "Rich text editor SDK with Word/Excel paste fidelity, built-in snapshot & version comparison, and official adapters for Vue 3, Vue 2, React, Svelte, Angular, and Vanilla JS"
       },
       {
         "name": "vue-cropper",
@@ -77071,14 +77101,21 @@
   },
   "TheJambo/awesome-testing": {
     "url": "https://raw.githubusercontent.com/TheJambo/awesome-testing/master/README.md",
-    "tools_count": 191,
-    "total_links": 195,
+    "tools_count": 213,
+    "total_links": 217,
     "tools": [
       {
         "name": "How to Contribute",
         "url": "https://github.com/TheJambo/awesome-testing/blob/master/CONTRIBUTING.md",
         "category": "github",
         "description": "page and add to the list"
+      },
+      {
+        "name": "API Spector",
+        "url": "https://api-spector.dev",
+        "category": "tool",
+        "description": "Open-source API clien, mock server and contract testing tool",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Bruno",
@@ -77159,6 +77196,13 @@
         "description": "Open-source, self-hosted webhook inspector with signature verification support"
       },
       {
+        "name": "Openhook",
+        "url": "https://github.com/openhook-dev/openhook-inbox",
+        "category": "github",
+        "description": "Open-source webhook inbox for capturing callbacks and inspecting request headers and bodies through a browser, REST API, or MCP",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Spiderhash",
         "url": "https://spiderhash.io/",
         "category": "tool",
@@ -77181,6 +77225,13 @@
         "url": "https://funapi.dev",
         "category": "tool",
         "description": "A free mock REST API service designed for practicing API testing, automation, and integration with realistic scenarios and endpoints"
+      },
+      {
+        "name": "SolidPing",
+        "url": "https://github.com/fclairamb/solidping",
+        "category": "github",
+        "description": "Open-source (AGPL-3",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "BeEF",
@@ -77285,6 +77336,13 @@
         "description": "Dated archive of the system prompts and tool-call schemas shipped AI agents send, so tests can be written against a product's real declared tool surface rather than a guess at it"
       },
       {
+        "name": "fanout-check",
+        "url": "https://github.com/sunxiuguo/fanout-check",
+        "category": "github",
+        "description": "Offline Python library and CLI that checks observed concurrency, overlap, and launch timing in explicitly grouped tool or agent calls",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Beeceptor",
         "url": "https://beeceptor.com/",
         "category": "tool",
@@ -77309,6 +77367,13 @@
         "description": "Open-source multi-protocol mock server supporting HTTP, gRPC, GraphQL, WebSocket, MQTT, and SOAP with chaos engineering and proxy recording"
       },
       {
+        "name": "MockForge",
+        "url": "https://github.com/SaaSy-Solutions/mockforge",
+        "category": "github",
+        "description": "Open-source API mock server written in Rust for HTTP/OpenAPI, gRPC, GraphQL, WebSocket, Kafka, MQTT and AMQP, with data generation and latency/fault injection",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "MockServer",
         "url": "https://github.com/mock-server/mockserver-monorepo",
         "category": "github",
@@ -77331,6 +77396,13 @@
         "url": "https://twinbay.ai",
         "category": "tool",
         "description": "Hosted, stateful twins of third-party APIs such as Shopify, Slack, Zendesk and QuickBooks for integration and AI agent tests"
+      },
+      {
+        "name": "fieldtwin",
+        "url": "https://nickgeorgeai.com/fieldtwin",
+        "category": "tool",
+        "description": "Open-source, local, stateful twins of the Jobber and QuickBooks Online APIs for integration and AI agent tests, with checkpoints, rewind, and faults on demand",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Fluxguard",
@@ -77393,6 +77465,13 @@
         "description": "AI-Native Visual Testing Tool for Flawless UIs across browsers, apps, websites, and PDFs"
       },
       {
+        "name": "CurlShot",
+        "url": "https://curlshot.com",
+        "category": "tool",
+        "description": "Screenshot API for capturing baseline and comparison images of web pages in CI as PNG, JPEG, WebP or PDF, with full-page and CSS-selector element capture, device presets and ad/cookie-banner blocking",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Polarity",
         "url": "https://www.polarity.so",
         "category": "tool",
@@ -77403,6 +77482,13 @@
         "url": "https://github.com/TestChimp/ai-wright",
         "category": "github",
         "description": "Open-source library that adds AI action, assertion, and data extraction steps to Playwright tests, using annotated screenshots and your own OpenAI, Gemini, or Claude API key"
+      },
+      {
+        "name": "App Crash Lab",
+        "url": "https://github.com/aichance/business-ai-recipes/tree/main/tools/app-crash-lab",
+        "category": "github",
+        "description": "MIT-licensed Node 22+/Playwright CLI that checks saved web-app values after reload and rejected updates, exporting state diffs and standalone Playwright tests",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "blastproof",
@@ -77433,6 +77519,13 @@
         "url": "https://app.devassure.io",
         "category": "tool",
         "description": "Agentic testing for E2E web UI on real browsers"
+      },
+      {
+        "name": "Device Hub Pro",
+        "url": "https://github.com/gitemre/device-hub-pro",
+        "category": "github",
+        "description": "Free, open-source macOS app for manual testing on Android emulators, Android phones and iOS simulators side by side, with live mirroring, device controls (network, location, permissions, deep links, push), logs, screenshots and screen recordings",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "DeviceLab",
@@ -77489,6 +77582,13 @@
         "description": "Open-source AI-powered end-to-end testing tool for APIs and microservices that auto-generates test cases and mocks from real traffic"
       },
       {
+        "name": "Proxy QA Browser",
+        "url": "https://github.com/UbaidBinWaris/proxy_browser",
+        "category": "github",
+        "description": "Free, open-source desktop app to test your own web forms by US location, emulated device and browser, with recorded scenarios, consent and accessibility checks, and a CI runner",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "TestMu AI (formerly LambdaTest)",
         "url": "https://www.testmuai.com",
         "category": "tool",
@@ -77537,6 +77637,13 @@
         "description": "UI Coverage Tool is an innovative, no-overhead solution for tracking and visualizing UI test coverage \u2014 directly on your actual application, not static snapshots"
       },
       {
+        "name": "vibe-testing",
+        "url": "https://github.com/AishwaryShrivastav/vibe-testing",
+        "category": "github",
+        "description": "Open-source MCP server and CLI that scans web app routes and forms, runs browser checks with Playwright, and produces HTML QA reports",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "VibeView",
         "url": "https://vibeview.io/",
         "category": "tool",
@@ -77559,6 +77666,13 @@
         "url": "https://github.com/awss1i/assay",
         "category": "github",
         "description": "Deterministic command-line QA tool that serves a local web page, drives every control it finds in Chromium through Playwright"
+      },
+      {
+        "name": "Device Changer",
+        "url": "https://deviceschanger.org",
+        "category": "tool",
+        "description": "Applies device models, build fingerprints and identifiers to rooted Android test devices to reproduce device-specific bugs",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Kiwi TCMS",
@@ -77607,6 +77721,13 @@
         "url": "https://8m30mail.com/",
         "category": "tool",
         "description": "Receive-only temporary inbox for manual email verification testing, with an 8-minute-30-second default lifetime and no account required"
+      },
+      {
+        "name": "TempMail Hub",
+        "url": "https://tempmailhub.net/",
+        "category": "tool",
+        "description": "Free disposable inbox for manual or scripted signup and email-verification testing, with a selectable lifetime from 10 minutes to 7 days and no account required",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "DATAMIMIC CE",
@@ -77681,22 +77802,30 @@
         "description": "Free browser-based test data generators and validators for Brazilian documents (CPF, CNPJ, RG, CNH) with valid check digits, plus test credit cards"
       },
       {
-        "name": "LaunchStock Test Data Generator",
-        "url": "https://launchstock.app/tools/test-data-generator",
-        "category": "tool",
-        "description": "Browser generator for six modelled businesses: retail, SaaS, healthcare, banking, logistics and HR"
-      },
-      {
         "name": "postal-code-formats",
         "url": "https://github.com/vinceblock99/postal-code-formats",
         "category": "github",
         "description": "Postal code formats, validation regexes and 9,000 real sample codes for 31 countries, with every regex tested against the samples in CI"
       },
       {
+        "name": "ByteRivet Sample Files",
+        "url": "https://byterivet.com/test-files/",
+        "category": "tool",
+        "description": "Free browser-based generator for exact-size dummy files from 1 KB to 2 GB in 22 formats (PDF, PNG, JPG, DOCX, XLSX, CSV, JSON, ZIP, MP4, WAV and more) for upload-limit and file-handling tests",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "StanzaAPI Test Data",
         "url": "https://stanzaapi.com/datasets",
         "category": "tool",
         "description": "Free CC0 synthetic test data for regulated B2B formats (IBAN, X12, ISO 20022, GS1, VAT, LEI, UDI, Peppol, Factur-X, CBAM, EPCIS), deterministic and check-digit-valid, as JSON and CSV"
+      },
+      {
+        "name": "FormFiller test data tools",
+        "url": "https://formfillerapp.com/tools/",
+        "category": "tool",
+        "description": "Free browser-based generators for fake addresses, identities, IBANs, test card numbers and bulk CSV/JSON/SQL data in 22",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Anchor Browser",
@@ -77735,6 +77864,13 @@
         "description": "Auto-fill large forms with dummy data"
       },
       {
+        "name": "Keploy API Test Recorder",
+        "url": "https://chromewebstore.google.com/detail/keploy-api-test-recorder/ohcclfkaidblnjnggclkiecgkpgldihe",
+        "category": "tool",
+        "description": "Chrome extension that records API calls from your browser session and turns them into API tests",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "ProxySwitcher",
         "url": "https://chrome.google.com/webstore/detail/proxy-switcher-manager/onnfghpihccifgojkpnnncpagjcdbjod",
         "category": "tool",
@@ -77747,16 +77883,36 @@
         "description": "A lightweight proxy to intercept and modify network requests"
       },
       {
+        "name": "Spoof Me",
+        "url": "https://chromewebstore.google.com/detail/spoof-me/onbjkmhileedchimkcmieeiomipdljki",
+        "category": "tool",
+        "description": "Test how a site behaves for users in other browsers, OSes, languages, timezones and screen sizes by switching the whole browser identity",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "TabQA",
         "url": "https://chromewebstore.google.com/detail/tabqa/ddbodfcbakkoakaonpodnpgbkmmgpedp",
         "category": "tool",
         "description": "Connect, mirror, and control Android devices directly in Chrome via WebUSB without ADB; capture logs, inspect network requests, and record bug reproduction video buffers"
       },
       {
+        "name": "AuditReady",
+        "url": "https://feaefe371424d0725b266468856c9101.ctonew.app/",
+        "category": "tool",
+        "description": "Runs 12 deterministic HTML checks on a page against WCAG 2",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Colour Blindness Simulator",
         "url": "https://altreus.github.io/colourblind/",
         "category": "tool",
         "description": "Simulate different types of color blindness"
+      },
+      {
+        "name": "Oh My Android",
+        "url": "https://github.com/ateymoori/oh-my-android",
+        "category": "github",
+        "description": "Free, open-source macOS app for checking Android apps on emulators and phones in dark mode, large font sizes, RTL and TalkBack, with a TalkBack-order accessibility audit"
       },
       {
         "name": "RateMyApp Testing Brief Builder",
@@ -77823,6 +77979,13 @@
         "url": "https://github.com/AbdelrhmanHamouda/locust-k8s-operator",
         "category": "github",
         "description": "Run distributed Locust load tests on Kubernetes with a LocustTest CRD"
+      },
+      {
+        "name": "vhr-bench",
+        "url": "https://github.com/vpshostreview/vhr-vps-benchmark",
+        "category": "github",
+        "description": "One-minute Linux server benchmark of CPU, memory and 4k random disk IOPS using sysbench and fio",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Cannon",
@@ -77909,6 +78072,13 @@
         "description": "Self-healing test automation for mobile, web and Smart TV"
       },
       {
+        "name": "behave",
+        "url": "https://github.com/emirmrkaljevic/behave",
+        "category": "github",
+        "description": "Records how a command-line tool behaves (flags, stdin, exit codes, edge cases) as golden tests and replays them against another implementation, e",
+        "source": "TheJambo/awesome-testing"
+      },
+      {
         "name": "Captura",
         "url": "https://github.com/MathewSachin/Captura",
         "category": "github",
@@ -77943,6 +78113,13 @@
         "url": "https://kirro.io",
         "category": "tool",
         "description": "A/B testing tool with visual editor, Bayesian statistics, and GA4 conversion tracking"
+      },
+      {
+        "name": "SmartBench",
+        "url": "https://github.com/xianyu-sheng/SmartBench",
+        "category": "github",
+        "description": "Open-source CLI for evidence-constrained code audits: deterministic static analysis owns the facts and LLM hypotheses must be validated against the code before they become findings",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Fifty quick ideas to improve your Tests",
@@ -78081,6 +78258,13 @@
         "url": "https://softwaretestingweekly.com/",
         "category": "tool",
         "description": "A curated round-up of the best software testing news and tools published every Friday"
+      },
+      {
+        "name": "RoleGig QA & Testing",
+        "url": "https://rolegig.com/qa-testing/",
+        "category": "tool",
+        "description": "Weekly list of QA, test automation and SDET jobs in India, the US, Canada, Europe, Australia and the Gulf",
+        "source": "TheJambo/awesome-testing"
       },
       {
         "name": "Falsehoods",
@@ -78227,6 +78411,10 @@
         "url": "https://github.com/TheJambo/awesome-testing/blob/master/CONTRIBUTING.md"
       },
       {
+        "text": "API Spector",
+        "url": "https://api-spector.dev"
+      },
+      {
         "text": "Bruno",
         "url": "https://github.com/usebruno/bruno"
       },
@@ -78279,6 +78467,10 @@
         "url": "https://github.com/brancogao/webhook-debugger"
       },
       {
+        "text": "Openhook",
+        "url": "https://github.com/openhook-dev/openhook-inbox"
+      },
+      {
         "text": "Spiderhash",
         "url": "https://spiderhash.io/"
       },
@@ -78293,6 +78485,10 @@
       {
         "text": "funapi",
         "url": "https://funapi.dev"
+      },
+      {
+        "text": "SolidPing",
+        "url": "https://github.com/fclairamb/solidping"
       },
       {
         "text": "BeEF",
@@ -78363,6 +78559,10 @@
         "url": "https://github.com/Continuum-AI-Corp/OrcaPromptVault"
       },
       {
+        "text": "fanout-check",
+        "url": "https://github.com/sunxiuguo/fanout-check"
+      },
+      {
         "text": "Beeceptor",
         "url": "https://beeceptor.com/"
       },
@@ -78379,6 +78579,10 @@
         "url": "https://github.com/getmockd/mockd"
       },
       {
+        "text": "MockForge",
+        "url": "https://github.com/SaaSy-Solutions/mockforge"
+      },
+      {
         "text": "MockServer",
         "url": "https://github.com/mock-server/mockserver-monorepo"
       },
@@ -78393,6 +78597,10 @@
       {
         "text": "Twinbay",
         "url": "https://twinbay.ai"
+      },
+      {
+        "text": "fieldtwin",
+        "url": "https://nickgeorgeai.com/fieldtwin"
       },
       {
         "text": "Fluxguard",
@@ -78435,12 +78643,20 @@
         "url": "https://www.testmuai.com/visual-testing-tool/"
       },
       {
+        "text": "CurlShot",
+        "url": "https://curlshot.com"
+      },
+      {
         "text": "Polarity",
         "url": "https://www.polarity.so"
       },
       {
         "text": "ai-wright",
         "url": "https://github.com/TestChimp/ai-wright"
+      },
+      {
+        "text": "App Crash Lab",
+        "url": "https://github.com/aichance/business-ai-recipes/tree/main/tools/app-crash-lab"
       },
       {
         "text": "blastproof",
@@ -78461,6 +78677,10 @@
       {
         "text": "DevAssure",
         "url": "https://app.devassure.io"
+      },
+      {
+        "text": "Device Hub Pro",
+        "url": "https://github.com/gitemre/device-hub-pro"
       },
       {
         "text": "DeviceLab",
@@ -78499,6 +78719,10 @@
         "url": "https://keploy.io"
       },
       {
+        "text": "Proxy QA Browser",
+        "url": "https://github.com/UbaidBinWaris/proxy_browser"
+      },
+      {
         "text": "TestMu AI (formerly LambdaTest)",
         "url": "https://www.testmuai.com"
       },
@@ -78531,6 +78755,10 @@
         "url": "https://github.com/Nikita-Filonov/ui-coverage-scenario-tool"
       },
       {
+        "text": "vibe-testing",
+        "url": "https://github.com/AishwaryShrivastav/vibe-testing"
+      },
+      {
         "text": "VibeView",
         "url": "https://vibeview.io/"
       },
@@ -78545,6 +78773,10 @@
       {
         "text": "assay",
         "url": "https://github.com/awss1i/assay"
+      },
+      {
+        "text": "Device Changer",
+        "url": "https://deviceschanger.org"
       },
       {
         "text": "Kiwi TCMS",
@@ -78577,6 +78809,10 @@
       {
         "text": "8\u00bd Minute Mail",
         "url": "https://8m30mail.com/"
+      },
+      {
+        "text": "TempMail Hub",
+        "url": "https://tempmailhub.net/"
       },
       {
         "text": "DATAMIMIC CE",
@@ -78627,16 +78863,20 @@
         "url": "https://codigoaoponto.com/en/tools"
       },
       {
-        "text": "LaunchStock Test Data Generator",
-        "url": "https://launchstock.app/tools/test-data-generator"
-      },
-      {
         "text": "postal-code-formats",
         "url": "https://github.com/vinceblock99/postal-code-formats"
       },
       {
+        "text": "ByteRivet Sample Files",
+        "url": "https://byterivet.com/test-files/"
+      },
+      {
         "text": "StanzaAPI Test Data",
         "url": "https://stanzaapi.com/datasets"
+      },
+      {
+        "text": "FormFiller test data tools",
+        "url": "https://formfillerapp.com/tools/"
       },
       {
         "text": "Anchor Browser",
@@ -78663,6 +78903,10 @@
         "url": "https://chrome.google.com/webstore/detail/form-filler/bnjjngeaknajbdcgpfkgnonkmififhfo"
       },
       {
+        "text": "Keploy API Test Recorder",
+        "url": "https://chromewebstore.google.com/detail/keploy-api-test-recorder/ohcclfkaidblnjnggclkiecgkpgldihe"
+      },
+      {
         "text": "ProxySwitcher",
         "url": "https://chrome.google.com/webstore/detail/proxy-switcher-manager/onnfghpihccifgojkpnnncpagjcdbjod"
       },
@@ -78671,12 +78915,24 @@
         "url": "https://requestly.io/"
       },
       {
+        "text": "Spoof Me",
+        "url": "https://chromewebstore.google.com/detail/spoof-me/onbjkmhileedchimkcmieeiomipdljki"
+      },
+      {
         "text": "TabQA",
         "url": "https://chromewebstore.google.com/detail/tabqa/ddbodfcbakkoakaonpodnpgbkmmgpedp"
       },
       {
+        "text": "AuditReady",
+        "url": "https://feaefe371424d0725b266468856c9101.ctonew.app/"
+      },
+      {
         "text": "Colour Blindness Simulator",
         "url": "https://altreus.github.io/colourblind/"
+      },
+      {
+        "text": "Oh My Android",
+        "url": "https://github.com/ateymoori/oh-my-android"
       },
       {
         "text": "RateMyApp Testing Brief Builder",
@@ -78721,6 +78977,10 @@
       {
         "text": "Locust Kubernetes Operator",
         "url": "https://github.com/AbdelrhmanHamouda/locust-k8s-operator"
+      },
+      {
+        "text": "vhr-bench",
+        "url": "https://github.com/vpshostreview/vhr-vps-benchmark"
       },
       {
         "text": "Cannon",
@@ -78779,6 +79039,10 @@
         "url": "https://github.com/mozarkai/optics-framework"
       },
       {
+        "text": "behave",
+        "url": "https://github.com/emirmrkaljevic/behave"
+      },
+      {
         "text": "Captura",
         "url": "https://github.com/MathewSachin/Captura"
       },
@@ -78801,6 +79065,10 @@
       {
         "text": "Kirro",
         "url": "https://kirro.io"
+      },
+      {
+        "text": "SmartBench",
+        "url": "https://github.com/xianyu-sheng/SmartBench"
       },
       {
         "text": "The Scrum Field Guide, Agile advice for your first year and beyond",
@@ -78905,6 +79173,10 @@
       {
         "text": "Software Testing Weekly",
         "url": "https://softwaretestingweekly.com/"
+      },
+      {
+        "text": "RoleGig QA & Testing",
+        "url": "https://rolegig.com/qa-testing/"
       },
       {
         "text": "Falsehoods",
@@ -101639,8 +101911,7 @@
         "name": "bloglite",
         "url": "https://github.com/rikhuijzer/bloglite",
         "category": "github",
-        "description": "Micro-blog tool offering built-in syntax highlighting, mobile publishing and more (alternative to Twitter, Bluesky)",
-        "source": "awesome-selfhosted/awesome-selfhosted"
+        "description": "Micro-blog tool offering built-in syntax highlighting, mobile publishing and more (alternative to Twitter, Bluesky)"
       },
       {
         "name": "Chyrp Lite",
