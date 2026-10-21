@@ -1,6 +1,6 @@
 # Newsletter Tools Collection
 
-Total tools: 63
+Total tools: 62
 
 ## React Newsletter (59 tools)
 
@@ -240,7 +240,7 @@ Total tools: 63
 - **URL**: https://github.com/facebookexperimental/Recoil
 - **Description**: Recoil 0.7.4
 
-## TLDR (4 tools)
+## TLDR (3 tools)
 
 ### pg_vectorsearch (GitHub Repo)
 - **URL**: https://github.com/timescale/pg_vectorsearch?utm_source=tldrnewsletter
@@ -256,9 +256,4 @@ Total tools: 63
 - **URL**: https://github.com/lemma-work/lemma-platform?utm_source=tldrnewsletter
 - **Date**: 2026-09-30
 - **Description**: Lemma (GitHub Repo)Lemma is an open-source workspace where humans and AI agents work as one team. State is shared and permissioned, so many people and many agents work on the same records. It keeps running between sessions, on schedules, webhooks, and table events, and it improves as teams work with it. Lemma can be run locally or on Lemma Cloud.
-
-### LiteParse (GitHub Repo)
-- **URL**: https://github.com/run-llama/liteparse?utm_source=tldrnewsletter
-- **Date**: 2026-09-23
-- **Description**: LiteParse (GitHub Repo)LiteParse is a standalone OSS PDF parsing tool. Focused exclusively on fast and light parsing, it provides high-quality spatial text parsing with bounding boxes, without proprietary LLM features or cloud dependencies. It runs everything locally. A cloud-based version of the tool is available.
 
