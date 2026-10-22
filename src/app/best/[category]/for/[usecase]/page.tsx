@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { getCategoryBySlug } from "@/lib/convex-static-data";
+import { fallbackOrThrow } from "@/lib/build-cache";
 import BestForPageClient from "./client";
 
 export const dynamic = 'force-static';
@@ -138,7 +139,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   try {
     category = await getCategoryBySlug(mappedCategory);
   } catch (error) {
-    console.error("Failed to fetch category for best-for page metadata:", error);
+    category = fallbackOrThrow(error, null, "best-for page metadata category");
   }
   
   const useCaseInfo = useCaseDescriptions[useCaseSlug.toLowerCase()] || {

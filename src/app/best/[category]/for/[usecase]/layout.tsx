@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { getCategoriesList, getToolsList } from "@/lib/convex-static-data";
+import { getCategoriesList, getToolsByCategory } from "@/lib/convex-static-data";
+import { fallbackOrThrow } from "@/lib/build-cache";
 import Script from "next/script";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
@@ -94,14 +95,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       (c) => c.slug === category || c.name.toLowerCase() === category.toLowerCase()
     );
     if (matchingCategory) {
-      const allTools = await getToolsList(50);
-      tools = allTools
-        .filter((t) => t.categoryId === matchingCategory._id)
+      const categoryTools = await getToolsByCategory(matchingCategory.slug);
+      tools = categoryTools
         .slice(0, 5)
         .map((t) => ({ name: t.name, slug: t.slug }));
     }
   } catch (error) {
-    console.error("Failed to fetch tools for best-for metadata:", error);
+    tools = fallbackOrThrow(error, [], "best-for metadata tools");
   }
 
   const toolNames = tools.map((t) => t.name).join(", ");
@@ -173,12 +173,9 @@ async function getToolsData(category: string) {
     );
     if (!matchingCategory) return [];
     
-    const allTools = await getToolsList(50);
-    return allTools
-      .filter((t) => t.categoryId === matchingCategory._id)
-      .slice(0, 10);
-  } catch {
-    return [];
+    return await getToolsByCategory(matchingCategory.slug);
+  } catch (error) {
+    return fallbackOrThrow(error, [], "best-for tools data");
   }
 }
 

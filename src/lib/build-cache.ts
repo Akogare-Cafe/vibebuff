@@ -24,7 +24,7 @@ const TRANSIENT_CODES = new Set([
 ]);
 
 const TRANSIENT_MESSAGE =
-  /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|socket hang up|network error|timed? ?out|bad gateway|service unavailable|gateway timeout|internal server error|\b50[0-4]\b/i;
+  /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|socket hang up|network error|timed? ?out|bad gateway|service unavailable|gateway timeout|internal server error|\b(?:status(?: code)?|HTTP(?:\/\d(?:\.\d)?)?)\s*[:=]?\s*5\d\d\b/i;
 
 export function isTransientError(error: unknown, depth = 0): boolean {
   if (!error || typeof error !== "object" || depth > 3) return false;
@@ -35,6 +35,20 @@ export function isTransientError(error: unknown, depth = 0): boolean {
   if (typeof err.message === "string" && TRANSIENT_MESSAGE.test(err.message)) return true;
 
   return isTransientError(err.cause, depth + 1);
+}
+
+type Env = Record<string, string | undefined>;
+
+export function isStrictBuild(env: Env = process.env): boolean {
+  if (env.VERCEL_ENV) return env.VERCEL_ENV === "production";
+  if (env.CI && env.CI !== "false" && env.CI !== "0") return true;
+  return env.NODE_ENV === "production";
+}
+
+export function fallbackOrThrow<T>(error: unknown, fallback: T, label: string, env: Env = process.env): T {
+  if (isStrictBuild(env)) throw error;
+  console.error(`[build-cache] ${label} failed, using fallback (non-production build):`, error);
+  return fallback;
 }
 
 const defaultSleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));

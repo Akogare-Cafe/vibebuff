@@ -9,9 +9,9 @@ export function getCategoriesList() {
   );
 }
 
-export function getToolsList(limit = 50) {
-  return memoizeWithTtl(`tools.list:${limit}`, () =>
-    withRetry(() => fetchQuery(api.tools.list, { limit }), { label: "tools.list" })
+export function getToolsByCategory(categorySlug: string, limit = 10) {
+  return memoizeWithTtl(`tools.list:${categorySlug}:${limit}`, () =>
+    withRetry(() => fetchQuery(api.tools.list, { categorySlug, limit }), { label: `tools.list:${categorySlug}` })
   );
 }
 
