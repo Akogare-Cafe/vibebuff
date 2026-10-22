@@ -43,6 +43,7 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  manifest: "/manifest.webmanifest",
   title: {
     default: "VIBEBUFF - Build Your Perfect Tech Stack | Compare 500+ Developer Tools",
     template: "%s | VIBEBUFF",
