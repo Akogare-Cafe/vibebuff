@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { fetchQuery } from "convex/nextjs";
-import { api } from "../../../../../../convex/_generated/api";
+import { getCategoryBySlug } from "@/lib/convex-static-data";
 import BestForPageClient from "./client";
 
 export const dynamic = 'force-static';
@@ -135,7 +134,12 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category: categorySlug, usecase: useCaseSlug } = await params;
   
   const mappedCategory = categoryMappings[categorySlug.toLowerCase()] || categorySlug;
-  const category = await fetchQuery(api.categories.getBySlug, { slug: mappedCategory });
+  let category: Awaited<ReturnType<typeof getCategoryBySlug>> = null;
+  try {
+    category = await getCategoryBySlug(mappedCategory);
+  } catch (error) {
+    console.error("Failed to fetch category for best-for page metadata:", error);
+  }
   
   const useCaseInfo = useCaseDescriptions[useCaseSlug.toLowerCase()] || {
     title: formatSlug(useCaseSlug),

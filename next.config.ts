@@ -37,6 +37,8 @@ const nextConfig: NextConfig = {
   reactCompiler: false,
   experimental: {
     optimizeCss: true,
+    staticGenerationMaxConcurrency: 4,
+    staticGenerationRetryCount: 2,
     optimizePackageImports: ["lucide-react", "framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
   },
   images: {
