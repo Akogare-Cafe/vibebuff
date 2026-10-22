@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint || true",
+    "test": "tsx --test src/lib/*.test.ts",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf .next .turbo node_modules/.cache && echo 'Cache cleared. Restart dev server.'",
     "scrape-newsletters": "tsx scripts/newsletter-scraper.ts",
     "generate-blogs": "tsx scripts/generate-blog-posts.ts"

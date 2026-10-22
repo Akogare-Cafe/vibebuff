@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { fetchQuery } from "convex/nextjs";
-import { api } from "../../../../../../convex/_generated/api";
+import { getCategoriesList, getToolsByCategory } from "@/lib/convex-static-data";
+import { fallbackOrThrow } from "@/lib/build-cache";
 import Script from "next/script";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
@@ -90,19 +90,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   let tools: Array<{ name: string; slug: string }> = [];
   try {
-    const categories = await fetchQuery(api.categories.list, {});
+    const categories = await getCategoriesList();
     const matchingCategory = categories.find(
       (c) => c.slug === category || c.name.toLowerCase() === category.toLowerCase()
     );
     if (matchingCategory) {
-      const allTools = await fetchQuery(api.tools.list, { limit: 50 });
-      tools = allTools
-        .filter((t) => t.categoryId === matchingCategory._id)
+      const categoryTools = await getToolsByCategory(matchingCategory.slug);
+      tools = categoryTools
         .slice(0, 5)
         .map((t) => ({ name: t.name, slug: t.slug }));
     }
   } catch (error) {
-    console.error("Failed to fetch tools for best-for metadata:", error);
+    tools = fallbackOrThrow(error, [], "best-for metadata tools");
   }
 
   const toolNames = tools.map((t) => t.name).join(", ");
@@ -168,18 +167,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 async function getToolsData(category: string) {
   try {
-    const categories = await fetchQuery(api.categories.list, {});
+    const categories = await getCategoriesList();
     const matchingCategory = categories.find(
       (c) => c.slug === category || c.name.toLowerCase() === category.toLowerCase()
     );
     if (!matchingCategory) return [];
     
-    const allTools = await fetchQuery(api.tools.list, { limit: 50 });
-    return allTools
-      .filter((t) => t.categoryId === matchingCategory._id)
-      .slice(0, 10);
-  } catch {
-    return [];
+    return await getToolsByCategory(matchingCategory.slug);
+  } catch (error) {
+    return fallbackOrThrow(error, [], "best-for tools data");
   }
 }
 
