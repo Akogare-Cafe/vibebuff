@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-22T11:25:40.183455",
+  "scraped_at": "2026-10-23T11:19:11.048928",
   "pypi": {
     "langchain": {
       "name": "langchain",
@@ -111,7 +111,7 @@
     },
     "openai": {
       "name": "openai",
-      "version": "3.36.1",
+      "version": "3.37.0",
       "summary": "The official Python library for the openai API",
       "description": "# OpenAI Python API library\n\n<!-- prettier-ignore -->\n[![PyPI version](https://img.shields.io/pypi/v/openai.svg?label=pypi%20(stable))](https://pypi.org/project/openai/)\n\nThe OpenAI Python library provides convenient access to the OpenAI REST API from any Python 3.10+\napplication. The library includes type definitions for all request params and response fields,\nand offers both synchronous and asynchronous clients powered by [HTTPX2](https://httpx2.pydantic.dev/).\n\nIt is generated from our [OpenA",
       "author": null,
@@ -140,6 +140,10 @@
       },
       "recent_releases": [
         {
+          "version": "3.37.0",
+          "upload_time": "2026-10-22T20:04:37"
+        },
+        {
           "version": "3.36.1",
           "upload_time": "2026-10-22T03:33:14"
         },
@@ -154,13 +158,9 @@
         {
           "version": "3.35.0",
           "upload_time": "2026-10-17T23:14:39"
-        },
-        {
-          "version": "3.34.0",
-          "upload_time": "2026-10-17T20:34:45"
         }
       ],
-      "total_releases": 456,
+      "total_releases": 457,
       "source": "pypi"
     },
     "anthropic": {
@@ -383,7 +383,7 @@
     },
     "fastapi": {
       "name": "fastapi",
-      "version": "0.159.1",
+      "version": "0.161.1",
       "summary": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
       "description": "<p align=\"center\">\n  <a href=\"https://fastapi.tiangolo.com\"><img src=\"https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png\" alt=\"FastAPI\"></a>\n</p>\n<p align=\"center\">\n    <em>FastAPI framework, high performance, easy to learn, fast to code, ready for production</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/fastapi/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\">\n    <img src=\"https://github.com/fastapi/fastapi/actions/workflows/test.yml/badge.svg?event=push&b",
       "author": null,
@@ -415,27 +415,27 @@
       },
       "recent_releases": [
         {
+          "version": "0.161.1",
+          "upload_time": "2026-10-22T22:22:06"
+        },
+        {
+          "version": "0.161.0",
+          "upload_time": "2026-10-22T18:30:41"
+        },
+        {
+          "version": "0.160.0",
+          "upload_time": "2026-10-22T16:54:44"
+        },
+        {
           "version": "0.159.1",
           "upload_time": "2026-10-21T20:59:27"
         },
         {
           "version": "0.159.0",
           "upload_time": "2026-10-21T20:05:04"
-        },
-        {
-          "version": "0.158.2",
-          "upload_time": "2026-10-21T19:20:51"
-        },
-        {
-          "version": "0.158.1",
-          "upload_time": "2026-10-21T17:47:41"
-        },
-        {
-          "version": "0.158.0",
-          "upload_time": "2026-10-21T17:02:12"
         }
       ],
-      "total_releases": 355,
+      "total_releases": 358,
       "source": "pypi"
     },
     "django": {
@@ -666,12 +666,12 @@
     },
     "pandas": {
       "name": "pandas",
-      "version": "3.0.6",
+      "version": "3.1.0",
       "summary": "Powerful data structures for data analysis, time series, and statistics",
       "description": "<picture align=\"center\">\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pandas.pydata.org/static/img/pandas_white.svg\">\n  <img alt=\"Pandas Logo\" src=\"https://pandas.pydata.org/static/img/pandas.svg\">\n</picture>\n\n-----------------\n\n# pandas: A Powerful Python Data Analysis Toolkit\n\n| | |\n| --- | --- |\n| Testing | [![CI - Test](https://github.com/pandas-dev/pandas/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/pandas-dev/pandas/actions/workflows/unit-tests.yml) [![",
       "author": null,
       "author_email": "The Pandas Development Team <pandas-dev@python.org>",
-      "license": "BSD 3-Clause License\n         \n         Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team\n         All rights reserved.\n         \n         Copyright (c) 2011-2026, Open source contributors.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n         * Redistributions of source code must retain the above copyright notice, this\n           list of conditions and the following disclaimer.\n         \n         * Redistributions in binary form must reproduce the above copyright notice,\n           this list of conditions and the following disclaimer in the documentation\n           and/or other materials provided with the distribution.\n         \n         * Neither the name of the copyright holder nor the names of its\n           contributors may be used to endorse or promote products derived from\n           this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         Copyright (c) 2010-2019 Keith Goodman\n         Copyright (c) 2019 Bottleneck Developers\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             * Redistributions of source code must retain the above copyright notice,\n               this list of conditions and the following disclaimer.\n         \n             * Redistributions in binary form must reproduce the above copyright\n               notice, this list of conditions and the following disclaimer in the\n               documentation and/or other materials provided with the distribution.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n         ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\n         LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n         CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\n         SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n         INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\n         CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n         ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n         POSSIBILITY OF SUCH DAMAGE.Copyright 2017- Paul Ganssle <paul@ganssle.io>\n         Copyright 2017- dateutil contributors (see AUTHORS file)\n         \n            Licensed under the Apache License, Version 2.0 (the \"License\");\n            you may not use this file except in compliance with the License.\n            You may obtain a copy of the License at\n         \n                http://www.apache.org/licenses/LICENSE-2.0\n         \n            Unless required by applicable law or agreed to in writing, software\n            distributed under the License is distributed on an \"AS IS\" BASIS,\n            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n            See the License for the specific language governing permissions and\n            limitations under the License.\n         \n         The above license applies to all contributions after 2017-12-01, as well as\n         all contributions that have been re-licensed (see AUTHORS file for the list of\n         contributors who have re-licensed their code).\n         --------------------------------------------------------------------------------\n         dateutil - Extensions to the standard Python datetime module.\n         \n         Copyright (c) 2003-2011 - Gustavo Niemeyer <gustavo@niemeyer.net>\n         Copyright (c) 2012-2014 - Tomi Pievil\u00e4inen <tomi.pievilainen@iki.fi>\n         Copyright (c) 2014-2016 - Yaron de Leeuw <me@jarondl.net>\n         Copyright (c) 2015-     - Paul Ganssle <paul@ganssle.io>\n         Copyright (c) 2015-     - dateutil contributors (see AUTHORS file)\n         \n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             * Redistributions of source code must retain the above copyright notice,\n               this list of conditions and the following disclaimer.\n             * Redistributions in binary form must reproduce the above copyright notice,\n               this list of conditions and the following disclaimer in the documentation\n               and/or other materials provided with the distribution.\n             * Neither the name of the copyright holder nor the names of its\n               contributors may be used to endorse or promote products derived from\n               this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n         \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\n         CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n         EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n         PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n         PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n         LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n         NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         The above BSD License Applies to all code, even that also covered by Apache 2.0.# MIT License\n         \n         Copyright (c) 2019 Hadley Wickham; RStudio; and Evan Miller\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy\n         of this software and associated documentation files (the \"Software\"), to deal\n         in the Software without restriction, including without limitation the rights\n         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n         copies of the Software, and to permit persons to whom the Software is\n         furnished to do so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in all\n         copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.\n         Based on http://opensource.org/licenses/MIT\n         \n         This is a template. Complete and ship as file LICENSE the following 2\n         lines (only)\n         \n         YEAR:\n         COPYRIGHT HOLDER:\n         \n         and specify as\n         \n         License: MIT + file LICENSE\n         \n         Copyright (c) <YEAR>, <COPYRIGHT HOLDER>\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n         LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n         OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n         WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n         The MIT License\n         \n         Copyright (c) 2008-     Attractive Chaos <attractor@live.co.uk>\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS\n         BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN\n         ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\n         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.musl as a whole is licensed under the following standard MIT license:\n         \n         ----------------------------------------------------------------------\n         Copyright \u00a9 2005-2020 Rich Felker, et al.\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n         IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n         CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n         TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n         ----------------------------------------------------------------------\n         \n         Authors/contributors include:\n         \n         A. Wilcox\n         Ada Worcester\n         Alex Dowad\n         Alex Suykov\n         Alexander Monakov\n         Andre McCurdy\n         Andrew Kelley\n         Anthony G. Basile\n         Aric Belsito\n         Arvid Picciani\n         Bartosz Brachaczek\n         Benjamin Peterson\n         Bobby Bingham\n         Boris Brezillon\n         Brent Cook\n         Chris Spiegel\n         Cl\u00e9ment Vasseur\n         Daniel Micay\n         Daniel Sabogal\n         Daurnimator\n         David Carlier\n         David Edelsohn\n         Denys Vlasenko\n         Dmitry Ivanov\n         Dmitry V. Levin\n         Drew DeVault\n         Emil Renner Berthing\n         Fangrui Song\n         Felix Fietkau\n         Felix Janda\n         Gianluca Anzolin\n         Hauke Mehrtens\n         He X\n         Hiltjo Posthuma\n         Isaac Dunham\n         Jaydeep Patil\n         Jens Gustedt\n         Jeremy Huntwork\n         Jo-Philipp Wich\n         Joakim Sindholt\n         John Spencer\n         Julien Ramseier\n         Justin Cormack\n         Kaarle Ritvanen\n         Khem Raj\n         Kylie McClain\n         Leah Neukirchen\n         Luca Barbato\n         Luka Perkov\n         M Farkas-Dyck (Strake)\n         Mahesh Bodapati\n         Markus Wichmann\n         Masanori Ogino\n         Michael Clark\n         Michael Forney\n         Mikhail Kremnyov\n         Natanael Copa\n         Nicholas J. Kain\n         orc\n         Pascal Cuoq\n         Patrick Oppenlander\n         Petr Hosek\n         Petr Skocik\n         Pierre Carrier\n         Reini Urban\n         Rich Felker\n         Richard Pennington\n         Ryan Fairfax\n         Samuel Holland\n         Segev Finer\n         Shiz\n         sin\n         Solar Designer\n         Stefan Kristiansson\n         Stefan O'Rear\n         Szabolcs Nagy\n         Timo Ter\u00e4s\n         Trutz Behn\n         Valentin Ochs\n         Will Dietz\n         William Haddon\n         William Pitcock\n         \n         Portions of this software are derived from third-party works licensed\n         under terms compatible with the above MIT license:\n         \n         The TRE regular expression implementation (src/regex/reg* and\n         src/regex/tre*) is Copyright \u00a9 2001-2008 Ville Laurikari and licensed\n         under a 2-clause BSD license (license text in the source files). The\n         included version has been heavily modified by Rich Felker in 2012, in\n         the interests of size, simplicity, and namespace cleanliness.\n         \n         Much of the math library code (src/math/* and src/complex/*) is\n         Copyright \u00a9 1993,2004 Sun Microsystems or\n         Copyright \u00a9 2003-2011 David Schultz or\n         Copyright \u00a9 2003-2009 Steven G. Kargl or\n         Copyright \u00a9 2003-2009 Bruce D. Evans or\n         Copyright \u00a9 2008 Stephen L. Moshier or\n         Copyright \u00a9 2017-2018 Arm Limited\n         and labelled as such in comments in the individual source files. All\n         have been licensed under extremely permissive terms.\n         \n         The ARM memcpy code (src/string/arm/memcpy.S) is Copyright \u00a9 2008\n         The Android Open Source Project and is licensed under a two-clause BSD\n         license. It was taken from Bionic libc, used on Android.\n         \n         The AArch64 memcpy and memset code (src/string/aarch64/*) are\n         Copyright \u00a9 1999-2019, Arm Limited.\n         \n         The implementation of DES for crypt (src/crypt/crypt_des.c) is\n         Copyright \u00a9 1994 David Burren. It is licensed under a BSD license.\n         \n         The implementation of blowfish crypt (src/crypt/crypt_blowfish.c) was\n         originally written by Solar Designer and placed into the public\n         domain. The code also comes with a fallback permissive license for use\n         in jurisdictions that may not recognize the public domain.\n         \n         The smoothsort implementation (src/stdlib/qsort.c) is Copyright \u00a9 2011\n         Valentin Ochs and is licensed under an MIT-style license.\n         \n         The x86_64 port was written by Nicholas J. Kain and is licensed under\n         the standard MIT terms.\n         \n         The mips and microblaze ports were originally written by Richard\n         Pennington for use in the ellcc project. The original code was adapted\n         by Rich Felker for build system and code conventions during upstream\n         integration. It is licensed under the standard MIT terms.\n         \n         The mips64 port was contributed by Imagination Technologies and is\n         licensed under the standard MIT terms.\n         \n         The powerpc port was also originally written by Richard Pennington,\n         and later supplemented and integrated by John Spencer. It is licensed\n         under the standard MIT terms.\n         \n         All other files which have no copyright comments are original works\n         produced specifically for use as part of this library, written either\n         by Rich Felker, the main author of the library, or by one or more\n         contibutors listed above. Details on authorship of individual files\n         can be found in the git version control history of the project. The\n         omission of copyright and license comments in each file is in the\n         interest of source tree size.\n         \n         In addition, permission is hereby granted for all public header files\n         (include/* and arch/*/bits/*) and crt files intended to be linked into\n         applications (crt/*, ldso/dlstart.c, and arch/*/crt_arch.h) to omit\n         the copyright notice and permission notice otherwise required by the\n         license, and to use these files without any requirement of\n         attribution. These files include substantial contributions from:\n         \n         Bobby Bingham\n         John Spencer\n         Nicholas J. Kain\n         Rich Felker\n         Richard Pennington\n         Stefan Kristiansson\n         Szabolcs Nagy\n         \n         all of whom have explicitly granted such permission.\n         \n         This file previously contained text expressing a belief that most of\n         the files covered by the above exception were sufficiently trivial not\n         to be subject to copyright, resulting in confusion over whether it\n         negated the permissions granted in the license. In the spirit of\n         permissive licensing, and of not having licensing issues being an\n         obstacle to adoption, that text has been removed.Copyright (c) 2005-2023, NumPy Developers.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are\n         met:\n         \n             * Redistributions of source code must retain the above copyright\n                notice, this list of conditions and the following disclaimer.\n         \n             * Redistributions in binary form must reproduce the above\n                copyright notice, this list of conditions and the following\n                disclaimer in the documentation and/or other materials provided\n                with the distribution.\n         \n             * Neither the name of the NumPy Developers nor the names of any\n                contributors may be used to endorse or promote products derived\n                from this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n         \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n         OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n         SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n         LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n         DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n                                          Apache License\n                                    Version 2.0, January 2004\n                                 http://www.apache.org/licenses/\n         \n            TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n         \n            1. Definitions.\n         \n               \"License\" shall mean the terms and conditions for use, reproduction,\n               and distribution as defined by Sections 1 through 9 of this document.\n         \n               \"Licensor\" shall mean the copyright owner or entity authorized by\n               the copyright owner that is granting the License.\n         \n               \"Legal Entity\" shall mean the union of the acting entity and all\n               other entities that control, are controlled by, or are under common\n               control with that entity. For the purposes of this definition,\n               \"control\" means (i) the power, direct or indirect, to cause the\n               direction or management of such entity, whether by contract or\n               otherwise, or (ii) ownership of fifty percent (50%) or more of the\n               outstanding shares, or (iii) beneficial ownership of such entity.\n         \n               \"You\" (or \"Your\") shall mean an individual or Legal Entity\n               exercising permissions granted by this License.\n         \n               \"Source\" form shall mean the preferred form for making modifications,\n               including but not limited to software source code, documentation\n               source, and configuration files.\n         \n               \"Object\" form shall mean any form resulting from mechanical\n               transformation or translation of a Source form, including but\n               not limited to compiled object code, generated documentation,\n               and conversions to other media types.\n         \n               \"Work\" shall mean the work of authorship, whether in Source or\n               Object form, made available under the License, as indicated by a\n               copyright notice that is included in or attached to the work\n               (an example is provided in the Appendix below).\n         \n               \"Derivative Works\" shall mean any work, whether in Source or Object\n               form, that is based on (or derived from) the Work and for which the\n               editorial revisions, annotations, elaborations, or other modifications\n               represent, as a whole, an original work of authorship. For the purposes\n               of this License, Derivative Works shall not include works that remain\n               separable from, or merely link (or bind by name) to the interfaces of,\n               the Work and Derivative Works thereof.\n         \n               \"Contribution\" shall mean any work of authorship, including\n               the original version of the Work and any modifications or additions\n               to that Work or Derivative Works thereof, that is intentionally\n               submitted to Licensor for inclusion in the Work by the copyright owner\n               or by an individual or Legal Entity authorized to submit on behalf of\n               the copyright owner. For the purposes of this definition, \"submitted\"\n               means any form of electronic, verbal, or written communication sent\n               to the Licensor or its representatives, including but not limited to\n               communication on electronic mailing lists, source code control systems,\n               and issue tracking systems that are managed by, or on behalf of, the\n               Licensor for the purpose of discussing and improving the Work, but\n               excluding communication that is conspicuously marked or otherwise\n               designated in writing by the copyright owner as \"Not a Contribution.\"\n         \n               \"Contributor\" shall mean Licensor and any individual or Legal Entity\n               on behalf of whom a Contribution has been received by Licensor and\n               subsequently incorporated within the Work.\n         \n            2. Grant of Copyright License. Subject to the terms and conditions of\n               this License, each Contributor hereby grants to You a perpetual,\n               worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n               copyright license to reproduce, prepare Derivative Works of,\n               publicly display, publicly perform, sublicense, and distribute the\n               Work and such Derivative Works in Source or Object form.\n         \n            3. Grant of Patent License. Subject to the terms and conditions of\n               this License, each Contributor hereby grants to You a perpetual,\n               worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n               (except as stated in this section) patent license to make, have made,\n               use, offer to sell, sell, import, and otherwise transfer the Work,\n               where such license applies only to those patent claims licensable\n               by such Contributor that are necessarily infringed by their\n               Contribution(s) alone or by combination of their Contribution(s)\n               with the Work to which such Contribution(s) was submitted. If You\n               institute patent litigation against any entity (including a\n               cross-claim or counterclaim in a lawsuit) alleging that the Work\n               or a Contribution incorporated within the Work constitutes direct\n               or contributory patent infringement, then any patent licenses\n               granted to You under this License for that Work shall terminate\n               as of the date such litigation is filed.\n         \n            4. Redistribution. You may reproduce and distribute copies of the\n               Work or Derivative Works thereof in any medium, with or without\n               modifications, and in Source or Object form, provided that You\n               meet the following conditions:\n         \n               (a) You must give any other recipients of the Work or\n                   Derivative Works a copy of this License; and\n         \n               (b) You must cause any modified files to carry prominent notices\n                   stating that You changed the files; and\n         \n               (c) You must retain, in the Source form of any Derivative Works\n                   that You distribute, all copyright, patent, trademark, and\n                   attribution notices from the Source form of the Work,\n                   excluding those notices that do not pertain to any part of\n                   the Derivative Works; and\n         \n               (d) If the Work includes a \"NOTICE\" text file as part of its\n                   distribution, then any Derivative Works that You distribute must\n                   include a readable copy of the attribution notices contained\n                   within such NOTICE file, excluding those notices that do not\n                   pertain to any part of the Derivative Works, in at least one\n                   of the following places: within a NOTICE text file distributed\n                   as part of the Derivative Works; within the Source form or\n                   documentation, if provided along with the Derivative Works; or,\n                   within a display generated by the Derivative Works, if and\n                   wherever such third-party notices normally appear. The contents\n                   of the NOTICE file are for informational purposes only and\n                   do not modify the License. You may add Your own attribution\n                   notices within Derivative Works that You distribute, alongside\n                   or as an addendum to the NOTICE text from the Work, provided\n                   that such additional attribution notices cannot be construed\n                   as modifying the License.\n         \n               You may add Your own copyright statement to Your modifications and\n               may provide additional or different license terms and conditions\n               for use, reproduction, or distribution of Your modifications, or\n               for any such Derivative Works as a whole, provided Your use,\n               reproduction, and distribution of the Work otherwise complies with\n               the conditions stated in this License.\n         \n            5. Submission of Contributions. Unless You explicitly state otherwise,\n               any Contribution intentionally submitted for inclusion in the Work\n               by You to the Licensor shall be under the terms and conditions of\n               this License, without any additional terms or conditions.\n               Notwithstanding the above, nothing herein shall supersede or modify\n               the terms of any separate license agreement you may have executed\n               with Licensor regarding such Contributions.\n         \n            6. Trademarks. This License does not grant permission to use the trade\n               names, trademarks, service marks, or product names of the Licensor,\n               except as required for reasonable and customary use in describing the\n               origin of the Work and reproducing the content of the NOTICE file.\n         \n            7. Disclaimer of Warranty. Unless required by applicable law or\n               agreed to in writing, Licensor provides the Work (and each\n               Contributor provides its Contributions) on an \"AS IS\" BASIS,\n               WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n               implied, including, without limitation, any warranties or conditions\n               of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n               PARTICULAR PURPOSE. You are solely responsible for determining the\n               appropriateness of using or redistributing the Work and assume any\n               risks associated with Your exercise of permissions under this License.\n         \n            8. Limitation of Liability. In no event and under no legal theory,\n               whether in tort (including negligence), contract, or otherwise,\n               unless required by applicable law (such as deliberate and grossly\n               negligent acts) or agreed to in writing, shall any Contributor be\n               liable to You for damages, including any direct, indirect, special,\n               incidental, or consequential damages of any character arising as a\n               result of this License or out of the use or inability to use the\n               Work (including but not limited to damages for loss of goodwill,\n               work stoppage, computer failure or malfunction, or any and all\n               other commercial damages or losses), even if such Contributor\n               has been advised of the possibility of such damages.\n         \n            9. Accepting Warranty or Additional Liability. While redistributing\n               the Work or Derivative Works thereof, You may choose to offer,\n               and charge a fee for, acceptance of support, warranty, indemnity,\n               or other liability obligations and/or rights consistent with this\n               License. However, in accepting such obligations, You may act only\n               on Your own behalf and on Your sole responsibility, not on behalf\n               of any other Contributor, and only if You agree to indemnify,\n               defend, and hold each Contributor harmless for any liability\n               incurred by, or claims asserted against, such Contributor by reason\n               of your accepting any such warranty or additional liability.\n         \n            END OF TERMS AND CONDITIONS\n         \n         \n         Copyright (c) Donald Stufft and individual contributors.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             1. Redistributions of source code must retain the above copyright notice,\n                this list of conditions and the following disclaimer.\n         \n             2. Redistributions in binary form must reproduce the above copyright\n                notice, this list of conditions and the following disclaimer in the\n                documentation and/or other materials provided with the distribution.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n         ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n         WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.A. HISTORY OF THE SOFTWARE\n         ==========================\n         \n         Python was created in the early 1990s by Guido van Rossum at Stichting\n         Mathematisch Centrum (CWI, see https://www.cwi.nl) in the Netherlands\n         as a successor of a language called ABC.  Guido remains Python's\n         principal author, although it includes many contributions from others.\n         \n         In 1995, Guido continued his work on Python at the Corporation for\n         National Research Initiatives (CNRI, see https://www.cnri.reston.va.us)\n         in Reston, Virginia where he released several versions of the\n         software.\n         \n         In May 2000, Guido and the Python core development team moved to\n         BeOpen.com to form the BeOpen PythonLabs team.  In October of the same\n         year, the PythonLabs team moved to Digital Creations, which became\n         Zope Corporation.  In 2001, the Python Software Foundation (PSF, see\n         https://www.python.org/psf/) was formed, a non-profit organization\n         created specifically to own Python-related Intellectual Property.\n         Zope Corporation was a sponsoring member of the PSF.\n         \n         All Python releases are Open Source (see https://opensource.org for\n         the Open Source Definition).  Historically, most, but not all, Python\n         releases have also been GPL-compatible; the table below summarizes\n         the various releases.\n         \n             Release         Derived     Year        Owner       GPL-\n                             from                                compatible? (1)\n         \n             0.9.0 thru 1.2              1991-1995   CWI         yes\n             1.3 thru 1.5.2  1.2         1995-1999   CNRI        yes\n             1.6             1.5.2       2000        CNRI        no\n             2.0             1.6         2000        BeOpen.com  no\n             1.6.1           1.6         2001        CNRI        yes (2)\n             2.1             2.0+1.6.1   2001        PSF         no\n             2.0.1           2.0+1.6.1   2001        PSF         yes\n             2.1.1           2.1+2.0.1   2001        PSF         yes\n             2.1.2           2.1.1       2002        PSF         yes\n             2.1.3           2.1.2       2002        PSF         yes\n             2.2 and above   2.1.1       2001-now    PSF         yes\n         \n         Footnotes:\n         \n         (1) GPL-compatible doesn't mean that we're distributing Python under\n             the GPL.  All Python licenses, unlike the GPL, let you distribute\n             a modified version without making your changes open source.  The\n             GPL-compatible licenses make it possible to combine Python with\n             other software that is released under the GPL; the others don't.\n         \n         (2) According to Richard Stallman, 1.6.1 is not GPL-compatible,\n             because its license has a choice of law clause.  According to\n             CNRI, however, Stallman's lawyer has told CNRI's lawyer that 1.6.1\n             is \"not incompatible\" with the GPL.\n         \n         Thanks to the many outside volunteers who have worked under Guido's\n         direction to make these releases possible.\n         \n         \n         B. TERMS AND CONDITIONS FOR ACCESSING OR OTHERWISE USING PYTHON\n         ===============================================================\n         \n         Python software and documentation are licensed under the\n         Python Software Foundation License Version 2.\n         \n         Starting with Python 3.8.6, examples, recipes, and other code in\n         the documentation are dual licensed under the PSF License Version 2\n         and the Zero-Clause BSD license.\n         \n         Some software incorporated into Python is under different licenses.\n         The licenses are listed with code falling under that license.\n         \n         \n         PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2\n         --------------------------------------------\n         \n         1. This LICENSE AGREEMENT is between the Python Software Foundation\n         (\"PSF\"), and the Individual or Organization (\"Licensee\") accessing and\n         otherwise using this software (\"Python\") in source or binary form and\n         its associated documentation.\n         \n         2. Subject to the terms and conditions of this License Agreement, PSF hereby\n         grants Licensee a nonexclusive, royalty-free, world-wide license to reproduce,\n         analyze, test, perform and/or display publicly, prepare derivative works,\n         distribute, and otherwise use Python alone or in any derivative version,\n         provided, however, that PSF's License Agreement and PSF's notice of copyright,\n         i.e., \"Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,\n         2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Python Software Foundation;\n         All Rights Reserved\" are retained in Python alone or in any derivative version\n         prepared by Licensee.\n         \n         3. In the event Licensee prepares a derivative work that is based on\n         or incorporates Python or any part thereof, and wants to make\n         the derivative work available to others as provided herein, then\n         Licensee hereby agrees to include in any such work a brief summary of\n         the changes made to Python.\n         \n         4. PSF is making Python available to Licensee on an \"AS IS\"\n         basis.  PSF MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PSF MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON\n         FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS\n         A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON,\n         OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         6. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         7. Nothing in this License Agreement shall be deemed to create any\n         relationship of agency, partnership, or joint venture between PSF and\n         Licensee.  This License Agreement does not grant permission to use PSF\n         trademarks or trade name in a trademark sense to endorse or promote\n         products or services of Licensee, or any third party.\n         \n         8. By copying, installing or otherwise using Python, Licensee\n         agrees to be bound by the terms and conditions of this License\n         Agreement.\n         \n         \n         BEOPEN.COM LICENSE AGREEMENT FOR PYTHON 2.0\n         -------------------------------------------\n         \n         BEOPEN PYTHON OPEN SOURCE LICENSE AGREEMENT VERSION 1\n         \n         1. This LICENSE AGREEMENT is between BeOpen.com (\"BeOpen\"), having an\n         office at 160 Saratoga Avenue, Santa Clara, CA 95051, and the\n         Individual or Organization (\"Licensee\") accessing and otherwise using\n         this software in source or binary form and its associated\n         documentation (\"the Software\").\n         \n         2. Subject to the terms and conditions of this BeOpen Python License\n         Agreement, BeOpen hereby grants Licensee a non-exclusive,\n         royalty-free, world-wide license to reproduce, analyze, test, perform\n         and/or display publicly, prepare derivative works, distribute, and\n         otherwise use the Software alone or in any derivative version,\n         provided, however, that the BeOpen Python License is retained in the\n         Software, alone or in any derivative version prepared by Licensee.\n         \n         3. BeOpen is making the Software available to Licensee on an \"AS IS\"\n         basis.  BEOPEN MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, BEOPEN MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         4. BEOPEN SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF THE\n         SOFTWARE FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS\n         AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THE SOFTWARE, OR ANY\n         DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         5. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         6. This License Agreement shall be governed by and interpreted in all\n         respects by the law of the State of California, excluding conflict of\n         law provisions.  Nothing in this License Agreement shall be deemed to\n         create any relationship of agency, partnership, or joint venture\n         between BeOpen and Licensee.  This License Agreement does not grant\n         permission to use BeOpen trademarks or trade names in a trademark\n         sense to endorse or promote products or services of Licensee, or any\n         third party.  As an exception, the \"BeOpen Python\" logos available at\n         http://www.pythonlabs.com/logos.html may be used according to the\n         permissions granted on that web page.\n         \n         7. By copying, installing or otherwise using the software, Licensee\n         agrees to be bound by the terms and conditions of this License\n         Agreement.\n         \n         \n         CNRI LICENSE AGREEMENT FOR PYTHON 1.6.1\n         ---------------------------------------\n         \n         1. This LICENSE AGREEMENT is between the Corporation for National\n         Research Initiatives, having an office at 1895 Preston White Drive,\n         Reston, VA 20191 (\"CNRI\"), and the Individual or Organization\n         (\"Licensee\") accessing and otherwise using Python 1.6.1 software in\n         source or binary form and its associated documentation.\n         \n         2. Subject to the terms and conditions of this License Agreement, CNRI\n         hereby grants Licensee a nonexclusive, royalty-free, world-wide\n         license to reproduce, analyze, test, perform and/or display publicly,\n         prepare derivative works, distribute, and otherwise use Python 1.6.1\n         alone or in any derivative version, provided, however, that CNRI's\n         License Agreement and CNRI's notice of copyright, i.e., \"Copyright (c)\n         1995-2001 Corporation for National Research Initiatives; All Rights\n         Reserved\" are retained in Python 1.6.1 alone or in any derivative\n         version prepared by Licensee.  Alternately, in lieu of CNRI's License\n         Agreement, Licensee may substitute the following text (omitting the\n         quotes): \"Python 1.6.1 is made available subject to the terms and\n         conditions in CNRI's License Agreement.  This Agreement together with\n         Python 1.6.1 may be located on the internet using the following\n         unique, persistent identifier (known as a handle): 1895.22/1013.  This\n         Agreement may also be obtained from a proxy server on the internet\n         using the following URL: http://hdl.handle.net/1895.22/1013\".\n         \n         3. In the event Licensee prepares a derivative work that is based on\n         or incorporates Python 1.6.1 or any part thereof, and wants to make\n         the derivative work available to others as provided herein, then\n         Licensee hereby agrees to include in any such work a brief summary of\n         the changes made to Python 1.6.1.\n         \n         4. CNRI is making Python 1.6.1 available to Licensee on an \"AS IS\"\n         basis.  CNRI MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, CNRI MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON 1.6.1 WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         5. CNRI SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON\n         1.6.1 FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS\n         A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON 1.6.1,\n         OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         6. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         7. This License Agreement shall be governed by the federal\n         intellectual property law of the United States, including without\n         limitation the federal copyright law, and, to the extent such\n         U.S. federal law does not apply, by the law of the Commonwealth of\n         Virginia, excluding Virginia's conflict of law provisions.\n         Notwithstanding the foregoing, with regard to derivative works based\n         on Python 1.6.1 that incorporate non-separable material that was\n         previously distributed under the GNU General Public License (GPL), the\n         law of the Commonwealth of Virginia shall govern this License\n         Agreement only as to issues arising under or with respect to\n         Paragraphs 4, 5, and 7 of this License Agreement.  Nothing in this\n         License Agreement shall be deemed to create any relationship of\n         agency, partnership, or joint venture between CNRI and Licensee.  This\n         License Agreement does not grant permission to use CNRI trademarks or\n         trade name in a trademark sense to endorse or promote products or\n         services of Licensee, or any third party.\n         \n         8. By clicking on the \"ACCEPT\" button where indicated, or by copying,\n         installing or otherwise using Python 1.6.1, Licensee agrees to be\n         bound by the terms and conditions of this License Agreement.\n         \n                 ACCEPT\n         \n         \n         CWI LICENSE AGREEMENT FOR PYTHON 0.9.0 THROUGH 1.2\n         --------------------------------------------------\n         \n         Copyright (c) 1991 - 1995, Stichting Mathematisch Centrum Amsterdam,\n         The Netherlands.  All rights reserved.\n         \n         Permission to use, copy, modify, and distribute this software and its\n         documentation for any purpose and without fee is hereby granted,\n         provided that the above copyright notice appear in all copies and that\n         both that copyright notice and this permission notice appear in\n         supporting documentation, and that the name of Stichting Mathematisch\n         Centrum or CWI not be used in advertising or publicity pertaining to\n         distribution of the software without specific, written prior\n         permission.\n         \n         STICHTING MATHEMATISCH CENTRUM DISCLAIMS ALL WARRANTIES WITH REGARD TO\n         THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND\n         FITNESS, IN NO EVENT SHALL STICHTING MATHEMATISCH CENTRUM BE LIABLE\n         FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n         WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n         ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT\n         OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n         \n         ZERO-CLAUSE BSD LICENSE FOR CODE IN THE PYTHON DOCUMENTATION\n         ----------------------------------------------------------------------\n         \n         Permission to use, copy, modify, and/or distribute this software for any\n         purpose with or without fee is hereby granted.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH\n         REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY\n         AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,\n         INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM\n         LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR\n         OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR\n         PERFORMANCE OF THIS SOFTWARE.\n         Copyright (c) 2014, Al Sweigart\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n         * Redistributions of source code must retain the above copyright notice, this\n           list of conditions and the following disclaimer.\n         \n         * Redistributions in binary form must reproduce the above copyright notice,\n           this list of conditions and the following disclaimer in the documentation\n           and/or other materials provided with the distribution.\n         \n         * Neither the name of the {organization} nor the names of its\n           contributors may be used to endorse or promote products derived from\n           this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.Copyright (c) 2017 Anthony Sottile\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy\n         of this software and associated documentation files (the \"Software\"), to deal\n         in the Software without restriction, including without limitation the rights\n         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n         copies of the Software, and to permit persons to whom the Software is\n         furnished to do so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in\n         all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n         THE SOFTWARE.Copyright (c) 2015-2019 Jared Hobbs\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy of\n         this software and associated documentation files (the \"Software\"), to deal in\n         the Software without restriction, including without limitation the rights to\n         use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies\n         of the Software, and to permit persons to whom the Software is furnished to do\n         so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in all\n         copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.Developed by ESN, an Electronic Arts Inc. studio.\n         Copyright (c) 2014, Electronic Arts Inc.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         * Redistributions of source code must retain the above copyright\n         notice, this list of conditions and the following disclaimer.\n         * Redistributions in binary form must reproduce the above copyright\n         notice, this list of conditions and the following disclaimer in the\n         documentation and/or other materials provided with the distribution.\n         * Neither the name of ESN, Electronic Arts Inc. nor the\n         names of its contributors may be used to endorse or promote products\n         derived from this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n         ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n         WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL ELECTRONIC ARTS INC. BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n         (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n         LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\n         ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         ----\n         \n         Portions of code from MODP_ASCII - Ascii transformations (upper/lower, etc)\n         https://github.com/client9/stringencoders\n         \n           Copyright 2005, 2006, 2007\n           Nick Galbreath -- nickg [at] modp [dot] com\n           All rights reserved.\n         \n           Redistribution and use in source and binary forms, with or without\n           modification, are permitted provided that the following conditions are\n           met:\n         \n             Redistributions of source code must retain the above copyright\n             notice, this list of conditions and the following disclaimer.\n         \n             Redistributions in binary form must reproduce the above copyright\n             notice, this list of conditions and the following disclaimer in the\n             documentation and/or other materials provided with the distribution.\n         \n             Neither the name of the modp.com nor the names of its\n             contributors may be used to endorse or promote products derived from\n             this software without specific prior written permission.\n         \n           THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n           \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n           LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n           A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n           OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n           SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n           LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n           DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n           THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n           (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n           OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n           This is the standard \"new\" BSD license:\n           http://www.opensource.org/licenses/bsd-license.php\n         \n         https://github.com/client9/stringencoders/blob/cfd5c1507325ae497ea9bacdacba12c0ffd79d30/COPYING\n         \n         ----\n         \n         Numeric decoder derived from from TCL library\n         https://opensource.apple.com/source/tcl/tcl-14/tcl/license.terms\n          * Copyright (c) 1988-1993 The Regents of the University of California.\n          * Copyright (c) 1994 Sun Microsystems, Inc.\n         \n           This software is copyrighted by the Regents of the University of\n           California, Sun Microsystems, Inc., Scriptics Corporation, ActiveState\n           Corporation and other parties.  The following terms apply to all files\n           associated with the software unless explicitly disclaimed in\n           individual files.\n         \n           The authors hereby grant permission to use, copy, modify, distribute,\n           and license this software and its documentation for any purpose, provided\n           that existing copyright notices are retained in all copies and that this\n           notice is included verbatim in any distributions. No written agreement,\n           license, or royalty fee is required for any of the authorized uses.\n           Modifications to this software may be copyrighted by their authors\n           and need not follow the licensing terms described here, provided that\n           the new terms are clearly indicated on the first page of each file where\n           they apply.\n         \n           IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY\n           FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES\n           ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY\n           DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE\n           POSSIBILITY OF SUCH DAMAGE.\n         \n           THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,\n           INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,\n           FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE\n           IS PROVIDED ON AN \"AS IS\" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE\n           NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR\n           MODIFICATIONS.\n         \n           GOVERNMENT USE: If you are acquiring this software on behalf of the\n           U.S. government, the Government shall have only \"Restricted Rights\"\n           in the software and related documentation as defined in the Federal\n           Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you\n           are acquiring the software on behalf of the Department of Defense, the\n           software shall be classified as \"Commercial Computer Software\" and the\n           Government shall have only \"Restricted Rights\" as defined in Clause\n           252.227-7013 (c) (1) of DFARs.  Notwithstanding the foregoing, the\n           authors grant the U.S. Government and others acting in its behalf\n           permission to use and distribute the software in accordance with the\n           terms specified in this license.",
+      "license": null,
       "home_page": null,
       "project_url": "https://pypi.org/project/pandas/",
       "package_url": "https://pypi.org/project/pandas/",
@@ -681,20 +681,27 @@
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Cython",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.11"
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12"
       ],
       "project_urls": {
+        "changelog": "https://pandas.pydata.org/docs/whatsnew/index.html",
         "documentation": "https://pandas.pydata.org/docs/",
+        "funding": "https://opencollective.com/pandas",
         "homepage": "https://pandas.pydata.org",
-        "repository": "https://github.com/pandas-dev/pandas"
+        "issues": "https://github.com/pandas-dev/pandas/issues",
+        "source": "https://github.com/pandas-dev/pandas"
       },
       "recent_releases": [
+        {
+          "version": "3.1.0",
+          "upload_time": "2026-10-22T11:54:48"
+        },
         {
           "version": "3.1.0rc0",
           "upload_time": "2026-09-30T13:55:10"
@@ -710,13 +717,9 @@
         {
           "version": "3.0.4",
           "upload_time": "2026-06-28T15:29:45"
-        },
-        {
-          "version": "3.0.3",
-          "upload_time": "2026-05-11T18:52:11"
         }
       ],
-      "total_releases": 119,
+      "total_releases": 120,
       "source": "pypi"
     },
     "numpy": {
@@ -950,7 +953,7 @@
     },
     "ruff": {
       "name": "ruff",
-      "version": "0.17.1",
+      "version": "0.17.2",
       "summary": "An extremely fast Python linter and code formatter, written in Rust.",
       "description": "<!-- Begin section: Overview -->\n\n# Ruff\n\n[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)\n[![image](https://img.shields.io/pypi/v/ruff.svg)](https://pypi.python.org/pypi/ruff)\n[![image](https://img.shields.io/pypi/l/ruff.svg)](https://github.com/astral-sh/ruff/blob/main/LICENSE)\n[![image](https://img.shields.io/pypi/pyversions/ruff.svg)](https://pypi.python.org/pypi/ruff)\n[![Actions statu",
       "author": null,
@@ -981,6 +984,10 @@
       },
       "recent_releases": [
         {
+          "version": "0.17.2",
+          "upload_time": "2026-10-22T18:37:14"
+        },
+        {
           "version": "0.17.1",
           "upload_time": "2026-10-15T15:22:33"
         },
@@ -995,13 +1002,9 @@
         {
           "version": "0.16.9",
           "upload_time": "2026-09-24T20:37:13"
-        },
-        {
-          "version": "0.16.8",
-          "upload_time": "2026-09-16T15:53:57"
         }
       ],
-      "total_releases": 428,
+      "total_releases": 429,
       "source": "pypi"
     },
     "mypy": {
@@ -2076,7 +2079,7 @@
     },
     "huggingface-hub": {
       "name": "huggingface-hub",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "summary": "Client library to download and publish models, datasets and other repos on the huggingface.co hub",
       "description": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub-dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub.svg\">\n    <img alt=\"huggingface_hub library logo\" src=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub.svg\" width=\"352\" h",
       "author": "Hugging Face, Inc.",
@@ -2104,27 +2107,27 @@
       },
       "recent_releases": [
         {
+          "version": "2.3.0",
+          "upload_time": "2026-10-23T08:52:04"
+        },
+        {
+          "version": "2.3.0rc1",
+          "upload_time": "2026-10-22T13:22:58"
+        },
+        {
+          "version": "2.3.0rc0",
+          "upload_time": "2026-10-22T12:06:28"
+        },
+        {
           "version": "2.2.0",
           "upload_time": "2026-10-08T15:30:57"
         },
         {
           "version": "2.2.0rc0",
           "upload_time": "2026-10-08T14:42:17"
-        },
-        {
-          "version": "2.1.1",
-          "upload_time": "2026-10-01T12:32:32"
-        },
-        {
-          "version": "2.1.0",
-          "upload_time": "2026-10-01T12:12:11"
-        },
-        {
-          "version": "2.1.0rc0",
-          "upload_time": "2026-10-01T09:57:58"
         }
       ],
-      "total_releases": 333,
+      "total_releases": 336,
       "source": "pypi"
     },
     "datasets": {
@@ -2369,27 +2372,27 @@
       },
       "recent_releases": [
         {
+          "version": "1.6.3.dev8",
+          "upload_time": "2026-10-23T00:54:11"
+        },
+        {
+          "version": "1.6.3.dev7",
+          "upload_time": "2026-10-22T20:49:24"
+        },
+        {
+          "version": "1.6.3.dev6",
+          "upload_time": "2026-10-22T16:43:02"
+        },
+        {
           "version": "1.6.3.dev5",
           "upload_time": "2026-10-22T00:52:09"
         },
         {
           "version": "1.6.3.dev4",
           "upload_time": "2026-10-21T00:52:08"
-        },
-        {
-          "version": "1.6.3.dev3",
-          "upload_time": "2026-10-20T00:53:07"
-        },
-        {
-          "version": "1.6.3.dev2",
-          "upload_time": "2026-10-19T00:56:53"
-        },
-        {
-          "version": "1.6.3.dev1",
-          "upload_time": "2026-10-18T00:57:40"
         }
       ],
-      "total_releases": 2693,
+      "total_releases": 2696,
       "source": "pypi"
     },
     "replicate": {
@@ -2443,8 +2446,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tokio",
       "documentation": null,
-      "downloads": 1093296983,
-      "recent_downloads": 267660151,
+      "downloads": 1097981285,
+      "recent_downloads": 270839505,
       "max_version": "1.54.1",
       "max_stable_version": "1.54.1",
       "created_at": "2016-07-01T20:39:07.497766Z",
@@ -2490,8 +2493,8 @@
       "homepage": "https://serde.rs",
       "repository": "https://github.com/serde-rs/serde",
       "documentation": "https://docs.rs/serde",
-      "downloads": 1569459593,
-      "recent_downloads": 374786156,
+      "downloads": 1575699114,
+      "recent_downloads": 378724032,
       "max_version": "1.0.229",
       "max_stable_version": "1.0.229",
       "created_at": "2014-12-05T20:20:39.487502Z",
@@ -2537,8 +2540,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/reqwest",
       "documentation": "https://docs.rs/reqwest",
-      "downloads": 825201080,
-      "recent_downloads": 225696226,
+      "downloads": 829520680,
+      "recent_downloads": 228881938,
       "max_version": "0.13.5",
       "max_stable_version": "0.13.5",
       "created_at": "2016-10-16T17:29:41.599749Z",
@@ -2583,8 +2586,8 @@
       "homepage": "https://github.com/tokio-rs/axum",
       "repository": "https://github.com/tokio-rs/axum",
       "documentation": null,
-      "downloads": 536056751,
-      "recent_downloads": 137884802,
+      "downloads": 538882836,
+      "recent_downloads": 139990698,
       "max_version": "0.8.9",
       "max_stable_version": "0.8.9",
       "created_at": "2021-07-22T13:52:05.710239Z",
@@ -2630,8 +2633,8 @@
       "homepage": "https://actix.rs",
       "repository": "https://github.com/actix/actix-web",
       "documentation": null,
-      "downloads": 86661509,
-      "recent_downloads": 12106228,
+      "downloads": 86938308,
+      "recent_downloads": 12313721,
       "max_version": "4.17.0",
       "max_stable_version": "4.17.0",
       "created_at": "2017-10-23T23:08:29.260260Z",
@@ -2680,8 +2683,8 @@
       "homepage": null,
       "repository": "https://github.com/clap-rs/clap",
       "documentation": null,
-      "downloads": 1252351177,
-      "recent_downloads": 261364063,
+      "downloads": 1256651139,
+      "recent_downloads": 264128288,
       "max_version": "4.6.7",
       "max_stable_version": "4.6.7",
       "created_at": "2015-03-01T01:17:24.903018Z",
@@ -2727,8 +2730,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tracing",
       "documentation": null,
-      "downloads": 958474229,
-      "recent_downloads": 231341811,
+      "downloads": 962657505,
+      "recent_downloads": 234215721,
       "max_version": "0.1.44",
       "max_stable_version": "0.1.44",
       "created_at": "2017-11-27T18:43:02.901436Z",
@@ -2776,8 +2779,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/anyhow",
       "documentation": "https://docs.rs/anyhow",
-      "downloads": 1076133671,
-      "recent_downloads": 252001316,
+      "downloads": 1080523832,
+      "recent_downloads": 254944610,
       "max_version": "1.0.104",
       "max_stable_version": "1.0.104",
       "created_at": "2019-10-05T19:52:26.646502Z",
@@ -2821,8 +2824,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/thiserror",
       "documentation": "https://docs.rs/thiserror",
-      "downloads": 1676489321,
-      "recent_downloads": 446703811,
+      "downloads": 1684707105,
+      "recent_downloads": 452476249,
       "max_version": "2.0.21",
       "max_stable_version": "2.0.21",
       "created_at": "2019-10-09T18:05:40.346377Z",
@@ -2867,8 +2870,8 @@
       "homepage": null,
       "repository": "https://github.com/launchbadge/sqlx",
       "documentation": "https://docs.rs/sqlx",
-      "downloads": 170455859,
-      "recent_downloads": 48556144,
+      "downloads": 171493068,
+      "recent_downloads": 49358479,
       "max_version": "0.9.0",
       "max_stable_version": "0.9.0",
       "created_at": "2019-06-06T23:42:00.933224Z",
@@ -2906,8 +2909,8 @@
       "homepage": "https://diesel.rs",
       "repository": "https://github.com/diesel-rs/diesel",
       "documentation": "https://docs.rs/diesel/",
-      "downloads": 41388981,
-      "recent_downloads": 9898194,
+      "downloads": 41670315,
+      "recent_downloads": 10149005,
       "max_version": "2.3.14",
       "max_stable_version": "2.3.14",
       "created_at": "2015-11-29T17:53:47.748928Z",
@@ -2951,8 +2954,8 @@
       "homepage": "https://www.sea-ql.org/SeaORM",
       "repository": "https://github.com/SeaQL/sea-orm",
       "documentation": "https://docs.rs/sea-orm",
-      "downloads": 27351116,
-      "recent_downloads": 5130675,
+      "downloads": 27543654,
+      "recent_downloads": 5296158,
       "max_version": "2.0.4",
       "max_stable_version": "2.0.4",
       "created_at": "2021-08-07T18:38:14.382787Z",
@@ -2998,8 +3001,8 @@
       "homepage": "https://async.rs",
       "repository": "https://github.com/async-rs/async-std",
       "documentation": null,
-      "downloads": 97904481,
-      "recent_downloads": 11695780,
+      "downloads": 98035790,
+      "recent_downloads": 11759563,
       "max_version": "1.13.2",
       "max_stable_version": "1.13.2",
       "created_at": "2019-05-30T16:02:17.377461Z",
@@ -3047,8 +3050,8 @@
       "homepage": "https://hyper.rs",
       "repository": "https://github.com/hyperium/hyper",
       "documentation": "https://docs.rs/hyper",
-      "downloads": 1034538464,
-      "recent_downloads": 243926793,
+      "downloads": 1039033235,
+      "recent_downloads": 247108753,
       "max_version": "1.12.0",
       "max_stable_version": "1.12.0",
       "created_at": "2014-11-22T04:05:30.459510Z",
@@ -3094,8 +3097,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/warp",
       "documentation": "https://docs.rs/warp",
-      "downloads": 51128089,
-      "recent_downloads": 6307675,
+      "downloads": 51299472,
+      "recent_downloads": 6441267,
       "max_version": "0.4.3",
       "max_stable_version": "0.4.3",
       "created_at": "2018-03-29T17:38:58.215096Z",
@@ -3140,8 +3143,8 @@
       "homepage": "https://rocket.rs",
       "repository": "https://github.com/rwf2/Rocket",
       "documentation": "https://api.rocket.rs/v0.5/rocket/",
-      "downloads": 14466814,
-      "recent_downloads": 2261969,
+      "downloads": 14486581,
+      "recent_downloads": 2272384,
       "max_version": "0.5.1",
       "max_stable_version": "0.5.1",
       "created_at": "2016-12-23T13:09:40.202029Z",
@@ -3186,8 +3189,8 @@
       "homepage": "https://github.com/hyperium/tonic",
       "repository": "https://github.com/hyperium/tonic",
       "documentation": null,
-      "downloads": 436917191,
-      "recent_downloads": 99155802,
+      "downloads": 439002835,
+      "recent_downloads": 100785186,
       "max_version": "0.14.6",
       "max_stable_version": "0.14.6",
       "created_at": "2018-07-18T06:55:22.955614Z",
@@ -3235,8 +3238,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/prost",
       "documentation": null,
-      "downloads": 653972704,
-      "recent_downloads": 151026871,
+      "downloads": 657125650,
+      "recent_downloads": 153531500,
       "max_version": "0.14.4",
       "max_stable_version": "0.14.4",
       "created_at": "2017-06-25T07:39:15.991516Z",
@@ -3279,8 +3282,8 @@
       "homepage": "https://github.com/rustls/rustls",
       "repository": "https://github.com/rustls/rustls",
       "documentation": null,
-      "downloads": 1029166898,
-      "recent_downloads": 243272678,
+      "downloads": 1033802744,
+      "recent_downloads": 246636646,
       "max_version": "0.24.0-dev.2",
       "max_stable_version": "0.23.46",
       "created_at": "2016-08-27T06:58:30.801463Z",
@@ -3321,8 +3324,8 @@
       "homepage": null,
       "repository": "https://github.com/rayon-rs/rayon",
       "documentation": "https://docs.rs/rayon/",
-      "downloads": 614051010,
-      "recent_downloads": 146387538,
+      "downloads": 616632870,
+      "recent_downloads": 148111584,
       "max_version": "1.12.0",
       "max_stable_version": "1.12.0",
       "created_at": "2015-12-10T22:38:20.637638Z",
@@ -3368,8 +3371,8 @@
       "homepage": "https://github.com/crossbeam-rs/crossbeam",
       "repository": "https://github.com/crossbeam-rs/crossbeam",
       "documentation": null,
-      "downloads": 151200298,
-      "recent_downloads": 29267994,
+      "downloads": 151722160,
+      "recent_downloads": 29626342,
       "max_version": "0.8.5",
       "max_stable_version": "0.8.5",
       "created_at": "2015-08-27T18:36:48.638047Z",
@@ -3418,8 +3421,8 @@
       "homepage": null,
       "repository": "https://github.com/Amanieu/parking_lot",
       "documentation": null,
-      "downloads": 1187899650,
-      "recent_downloads": 248455925,
+      "downloads": 1192071279,
+      "recent_downloads": 251206817,
       "max_version": "0.13.0",
       "max_stable_version": "0.13.0",
       "created_at": "2016-05-13T15:57:59.130349Z",
@@ -3465,8 +3468,8 @@
       "homepage": "https://github.com/xacrimon/dashmap",
       "repository": "https://github.com/xacrimon/dashmap",
       "documentation": "https://docs.rs/dashmap",
-      "downloads": 420148455,
-      "recent_downloads": 94526828,
+      "downloads": 422051092,
+      "recent_downloads": 95877996,
       "max_version": "7.0.0-rc2",
       "max_stable_version": "6.2.1",
       "created_at": "2019-08-25T18:22:12.397782Z",
@@ -3512,8 +3515,8 @@
       "homepage": null,
       "repository": "https://github.com/matklad/once_cell",
       "documentation": "https://docs.rs/once_cell",
-      "downloads": 1406589848,
-      "recent_downloads": 330114754,
+      "downloads": 1412376943,
+      "recent_downloads": 333935021,
       "max_version": "1.21.4",
       "max_stable_version": "1.21.4",
       "created_at": "2018-08-02T00:12:48.969947Z",
@@ -3557,8 +3560,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
       "documentation": "https://docs.rs/lazy_static",
-      "downloads": 1087964834,
-      "recent_downloads": 221891080,
+      "downloads": 1092037839,
+      "recent_downloads": 224699651,
       "max_version": "1.5.1",
       "max_stable_version": "1.5.1",
       "created_at": "2014-11-23T01:18:10.993977Z",
@@ -3604,8 +3607,8 @@
       "homepage": "https://github.com/rust-lang/regex",
       "repository": "https://github.com/rust-lang/regex",
       "documentation": "https://docs.rs/regex",
-      "downloads": 1288092000,
-      "recent_downloads": 289340317,
+      "downloads": 1292970732,
+      "recent_downloads": 292493308,
       "max_version": "1.13.1",
       "max_stable_version": "1.13.1",
       "created_at": "2014-12-13T22:10:11.303311Z",
@@ -3645,8 +3648,8 @@
       "homepage": "https://github.com/chronotope/chrono",
       "repository": "https://github.com/chronotope/chrono",
       "documentation": "https://docs.rs/chrono/",
-      "downloads": 903058578,
-      "recent_downloads": 208230890,
+      "downloads": 906769723,
+      "recent_downloads": 210779425,
       "max_version": "0.4.45",
       "max_stable_version": "0.4.45",
       "created_at": "2014-11-20T04:21:11.545166Z",
@@ -3690,12 +3693,12 @@
       "homepage": null,
       "repository": "https://github.com/uuid-rs/uuid",
       "documentation": "https://docs.rs/uuid",
-      "downloads": 905737872,
-      "recent_downloads": 221727352,
-      "max_version": "1.28.0",
-      "max_stable_version": "1.28.0",
+      "downloads": 909720699,
+      "recent_downloads": 224499898,
+      "max_version": "1.29.0",
+      "max_stable_version": "1.29.0",
       "created_at": "2014-11-11T05:37:37.261193Z",
-      "updated_at": "2026-10-10T00:02:40.455859Z",
+      "updated_at": "2026-10-23T09:59:10.723650Z",
       "keywords": [
         "guid",
         "unique",
@@ -3703,12 +3706,16 @@
       ],
       "categories": [
         "data-structures",
-        "wasm",
         "no-std",
+        "wasm",
         "parser-implementations"
       ],
-      "versions_count": 100,
+      "versions_count": 101,
       "recent_versions": [
+        {
+          "version": "1.29.0",
+          "created_at": "2026-10-23T09:59:10.723650Z"
+        },
         {
           "version": "1.28.0",
           "created_at": "2026-10-10T00:02:40.455859Z"
@@ -3724,10 +3731,6 @@
         {
           "version": "1.26.0",
           "created_at": "2026-08-26T22:08:30.860532Z"
-        },
-        {
-          "version": "1.25.0",
-          "created_at": "2026-08-22T10:49:52.444649Z"
         }
       ],
       "source": "crates"
@@ -3738,8 +3741,8 @@
       "homepage": "https://rust-random.github.io/book",
       "repository": "https://github.com/rust-random/rand",
       "documentation": "https://docs.rs/rand",
-      "downloads": 1967370944,
-      "recent_downloads": 537552420,
+      "downloads": 1977602050,
+      "recent_downloads": 544873754,
       "max_version": "0.10.3",
       "max_stable_version": "0.10.3",
       "created_at": "2015-02-03T06:17:14.147783Z",
@@ -3783,8 +3786,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-itertools/itertools",
       "documentation": "https://docs.rs/itertools/",
-      "downloads": 1691340446,
-      "recent_downloads": 395496081,
+      "downloads": 1698964485,
+      "recent_downloads": 401104117,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-21T19:56:41.399795Z",
@@ -3832,8 +3835,8 @@
       "homepage": "https://rust-lang.github.io/futures-rs",
       "repository": "https://github.com/rust-lang/futures-rs",
       "documentation": null,
-      "downloads": 874010190,
-      "recent_downloads": 196821759,
+      "downloads": 877325256,
+      "recent_downloads": 199107911,
       "max_version": "0.3.34",
       "max_stable_version": "0.3.34",
       "created_at": "2016-07-31T20:58:03.676528Z",
@@ -3877,8 +3880,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/async-trait",
       "documentation": "https://docs.rs/async-trait",
-      "downloads": 745317942,
-      "recent_downloads": 178497008,
+      "downloads": 748614173,
+      "recent_downloads": 180810470,
       "max_version": "0.1.92",
       "max_stable_version": "0.1.92",
       "created_at": "2019-07-23T16:10:00.020678Z",
@@ -3921,8 +3924,8 @@
       "homepage": "https://github.com/tower-rs/tower",
       "repository": "https://github.com/tower-rs/tower",
       "documentation": null,
-      "downloads": 759398918,
-      "recent_downloads": 205394195,
+      "downloads": 763293720,
+      "recent_downloads": 208190211,
       "max_version": "0.5.3",
       "max_stable_version": "0.5.3",
       "created_at": "2016-12-23T17:20:31.319203Z",
@@ -3969,8 +3972,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/bytes",
       "documentation": null,
-      "downloads": 1172665075,
-      "recent_downloads": 290680429,
+      "downloads": 1177551288,
+      "recent_downloads": 293927607,
       "max_version": "1.12.1",
       "max_stable_version": "1.12.1",
       "created_at": "2015-01-30T08:04:59.453916Z",
@@ -4015,8 +4018,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang/log",
       "documentation": "https://docs.rs/log",
-      "downloads": 1405153920,
-      "recent_downloads": 337124600,
+      "downloads": 1411020370,
+      "recent_downloads": 341029874,
       "max_version": "0.4.34",
       "max_stable_version": "0.4.34",
       "created_at": "2014-12-13T22:10:19.944550Z",
@@ -4058,8 +4061,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/env_logger",
       "documentation": null,
-      "downloads": 597430002,
-      "recent_downloads": 88856809,
+      "downloads": 599261096,
+      "recent_downloads": 90147916,
       "max_version": "0.11.11",
       "max_stable_version": "0.11.11",
       "created_at": "2015-01-27T15:33:08.586936Z",
@@ -4103,8 +4106,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/config-rs",
       "documentation": null,
-      "downloads": 122852980,
-      "recent_downloads": 20854476,
+      "downloads": 123211637,
+      "recent_downloads": 21105511,
       "max_version": "0.15.27",
       "max_stable_version": "0.15.27",
       "created_at": "2015-04-16T18:35:56.393987Z",
@@ -4150,8 +4153,8 @@
       "homepage": "https://github.com/dotenv-rs/dotenv",
       "repository": "https://github.com/dotenv-rs/dotenv",
       "documentation": null,
-      "downloads": 64910436,
-      "recent_downloads": 5963959,
+      "downloads": 65091758,
+      "recent_downloads": 6112431,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-20T20:53:09.509225Z",
@@ -4483,7 +4486,7 @@
     },
     {
       "name": "openai",
-      "version": "3.36.1",
+      "version": "3.37.0",
       "summary": "The official Python library for the openai API",
       "description": "# OpenAI Python API library\n\n<!-- prettier-ignore -->\n[![PyPI version](https://img.shields.io/pypi/v/openai.svg?label=pypi%20(stable))](https://pypi.org/project/openai/)\n\nThe OpenAI Python library provides convenient access to the OpenAI REST API from any Python 3.10+\napplication. The library includes type definitions for all request params and response fields,\nand offers both synchronous and asynchronous clients powered by [HTTPX2](https://httpx2.pydantic.dev/).\n\nIt is generated from our [OpenA",
       "author": null,
@@ -4512,6 +4515,10 @@
       },
       "recent_releases": [
         {
+          "version": "3.37.0",
+          "upload_time": "2026-10-22T20:04:37"
+        },
+        {
           "version": "3.36.1",
           "upload_time": "2026-10-22T03:33:14"
         },
@@ -4526,13 +4533,9 @@
         {
           "version": "3.35.0",
           "upload_time": "2026-10-17T23:14:39"
-        },
-        {
-          "version": "3.34.0",
-          "upload_time": "2026-10-17T20:34:45"
         }
       ],
-      "total_releases": 456,
+      "total_releases": 457,
       "source": "pypi"
     },
     {
@@ -4755,7 +4758,7 @@
     },
     {
       "name": "fastapi",
-      "version": "0.159.1",
+      "version": "0.161.1",
       "summary": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
       "description": "<p align=\"center\">\n  <a href=\"https://fastapi.tiangolo.com\"><img src=\"https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png\" alt=\"FastAPI\"></a>\n</p>\n<p align=\"center\">\n    <em>FastAPI framework, high performance, easy to learn, fast to code, ready for production</em>\n</p>\n<p align=\"center\">\n<a href=\"https://github.com/fastapi/fastapi/actions?query=workflow%3ATest+event%3Apush+branch%3Amaster\">\n    <img src=\"https://github.com/fastapi/fastapi/actions/workflows/test.yml/badge.svg?event=push&b",
       "author": null,
@@ -4787,27 +4790,27 @@
       },
       "recent_releases": [
         {
+          "version": "0.161.1",
+          "upload_time": "2026-10-22T22:22:06"
+        },
+        {
+          "version": "0.161.0",
+          "upload_time": "2026-10-22T18:30:41"
+        },
+        {
+          "version": "0.160.0",
+          "upload_time": "2026-10-22T16:54:44"
+        },
+        {
           "version": "0.159.1",
           "upload_time": "2026-10-21T20:59:27"
         },
         {
           "version": "0.159.0",
           "upload_time": "2026-10-21T20:05:04"
-        },
-        {
-          "version": "0.158.2",
-          "upload_time": "2026-10-21T19:20:51"
-        },
-        {
-          "version": "0.158.1",
-          "upload_time": "2026-10-21T17:47:41"
-        },
-        {
-          "version": "0.158.0",
-          "upload_time": "2026-10-21T17:02:12"
         }
       ],
-      "total_releases": 355,
+      "total_releases": 358,
       "source": "pypi"
     },
     {
@@ -5038,12 +5041,12 @@
     },
     {
       "name": "pandas",
-      "version": "3.0.6",
+      "version": "3.1.0",
       "summary": "Powerful data structures for data analysis, time series, and statistics",
       "description": "<picture align=\"center\">\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pandas.pydata.org/static/img/pandas_white.svg\">\n  <img alt=\"Pandas Logo\" src=\"https://pandas.pydata.org/static/img/pandas.svg\">\n</picture>\n\n-----------------\n\n# pandas: A Powerful Python Data Analysis Toolkit\n\n| | |\n| --- | --- |\n| Testing | [![CI - Test](https://github.com/pandas-dev/pandas/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/pandas-dev/pandas/actions/workflows/unit-tests.yml) [![",
       "author": null,
       "author_email": "The Pandas Development Team <pandas-dev@python.org>",
-      "license": "BSD 3-Clause License\n         \n         Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team\n         All rights reserved.\n         \n         Copyright (c) 2011-2026, Open source contributors.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n         * Redistributions of source code must retain the above copyright notice, this\n           list of conditions and the following disclaimer.\n         \n         * Redistributions in binary form must reproduce the above copyright notice,\n           this list of conditions and the following disclaimer in the documentation\n           and/or other materials provided with the distribution.\n         \n         * Neither the name of the copyright holder nor the names of its\n           contributors may be used to endorse or promote products derived from\n           this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         Copyright (c) 2010-2019 Keith Goodman\n         Copyright (c) 2019 Bottleneck Developers\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             * Redistributions of source code must retain the above copyright notice,\n               this list of conditions and the following disclaimer.\n         \n             * Redistributions in binary form must reproduce the above copyright\n               notice, this list of conditions and the following disclaimer in the\n               documentation and/or other materials provided with the distribution.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n         ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\n         LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n         CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\n         SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n         INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\n         CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n         ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n         POSSIBILITY OF SUCH DAMAGE.Copyright 2017- Paul Ganssle <paul@ganssle.io>\n         Copyright 2017- dateutil contributors (see AUTHORS file)\n         \n            Licensed under the Apache License, Version 2.0 (the \"License\");\n            you may not use this file except in compliance with the License.\n            You may obtain a copy of the License at\n         \n                http://www.apache.org/licenses/LICENSE-2.0\n         \n            Unless required by applicable law or agreed to in writing, software\n            distributed under the License is distributed on an \"AS IS\" BASIS,\n            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n            See the License for the specific language governing permissions and\n            limitations under the License.\n         \n         The above license applies to all contributions after 2017-12-01, as well as\n         all contributions that have been re-licensed (see AUTHORS file for the list of\n         contributors who have re-licensed their code).\n         --------------------------------------------------------------------------------\n         dateutil - Extensions to the standard Python datetime module.\n         \n         Copyright (c) 2003-2011 - Gustavo Niemeyer <gustavo@niemeyer.net>\n         Copyright (c) 2012-2014 - Tomi Pievil\u00e4inen <tomi.pievilainen@iki.fi>\n         Copyright (c) 2014-2016 - Yaron de Leeuw <me@jarondl.net>\n         Copyright (c) 2015-     - Paul Ganssle <paul@ganssle.io>\n         Copyright (c) 2015-     - dateutil contributors (see AUTHORS file)\n         \n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             * Redistributions of source code must retain the above copyright notice,\n               this list of conditions and the following disclaimer.\n             * Redistributions in binary form must reproduce the above copyright notice,\n               this list of conditions and the following disclaimer in the documentation\n               and/or other materials provided with the distribution.\n             * Neither the name of the copyright holder nor the names of its\n               contributors may be used to endorse or promote products derived from\n               this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n         \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR\n         CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n         EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n         PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n         PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n         LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n         NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         The above BSD License Applies to all code, even that also covered by Apache 2.0.# MIT License\n         \n         Copyright (c) 2019 Hadley Wickham; RStudio; and Evan Miller\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy\n         of this software and associated documentation files (the \"Software\"), to deal\n         in the Software without restriction, including without limitation the rights\n         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n         copies of the Software, and to permit persons to whom the Software is\n         furnished to do so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in all\n         copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.\n         Based on http://opensource.org/licenses/MIT\n         \n         This is a template. Complete and ship as file LICENSE the following 2\n         lines (only)\n         \n         YEAR:\n         COPYRIGHT HOLDER:\n         \n         and specify as\n         \n         License: MIT + file LICENSE\n         \n         Copyright (c) <YEAR>, <COPYRIGHT HOLDER>\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n         LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n         OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n         WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n         The MIT License\n         \n         Copyright (c) 2008-     Attractive Chaos <attractor@live.co.uk>\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n         NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS\n         BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN\n         ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\n         CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.musl as a whole is licensed under the following standard MIT license:\n         \n         ----------------------------------------------------------------------\n         Copyright \u00a9 2005-2020 Rich Felker, et al.\n         \n         Permission is hereby granted, free of charge, to any person obtaining\n         a copy of this software and associated documentation files (the\n         \"Software\"), to deal in the Software without restriction, including\n         without limitation the rights to use, copy, modify, merge, publish,\n         distribute, sublicense, and/or sell copies of the Software, and to\n         permit persons to whom the Software is furnished to do so, subject to\n         the following conditions:\n         \n         The above copyright notice and this permission notice shall be\n         included in all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n         EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n         IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n         CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n         TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n         ----------------------------------------------------------------------\n         \n         Authors/contributors include:\n         \n         A. Wilcox\n         Ada Worcester\n         Alex Dowad\n         Alex Suykov\n         Alexander Monakov\n         Andre McCurdy\n         Andrew Kelley\n         Anthony G. Basile\n         Aric Belsito\n         Arvid Picciani\n         Bartosz Brachaczek\n         Benjamin Peterson\n         Bobby Bingham\n         Boris Brezillon\n         Brent Cook\n         Chris Spiegel\n         Cl\u00e9ment Vasseur\n         Daniel Micay\n         Daniel Sabogal\n         Daurnimator\n         David Carlier\n         David Edelsohn\n         Denys Vlasenko\n         Dmitry Ivanov\n         Dmitry V. Levin\n         Drew DeVault\n         Emil Renner Berthing\n         Fangrui Song\n         Felix Fietkau\n         Felix Janda\n         Gianluca Anzolin\n         Hauke Mehrtens\n         He X\n         Hiltjo Posthuma\n         Isaac Dunham\n         Jaydeep Patil\n         Jens Gustedt\n         Jeremy Huntwork\n         Jo-Philipp Wich\n         Joakim Sindholt\n         John Spencer\n         Julien Ramseier\n         Justin Cormack\n         Kaarle Ritvanen\n         Khem Raj\n         Kylie McClain\n         Leah Neukirchen\n         Luca Barbato\n         Luka Perkov\n         M Farkas-Dyck (Strake)\n         Mahesh Bodapati\n         Markus Wichmann\n         Masanori Ogino\n         Michael Clark\n         Michael Forney\n         Mikhail Kremnyov\n         Natanael Copa\n         Nicholas J. Kain\n         orc\n         Pascal Cuoq\n         Patrick Oppenlander\n         Petr Hosek\n         Petr Skocik\n         Pierre Carrier\n         Reini Urban\n         Rich Felker\n         Richard Pennington\n         Ryan Fairfax\n         Samuel Holland\n         Segev Finer\n         Shiz\n         sin\n         Solar Designer\n         Stefan Kristiansson\n         Stefan O'Rear\n         Szabolcs Nagy\n         Timo Ter\u00e4s\n         Trutz Behn\n         Valentin Ochs\n         Will Dietz\n         William Haddon\n         William Pitcock\n         \n         Portions of this software are derived from third-party works licensed\n         under terms compatible with the above MIT license:\n         \n         The TRE regular expression implementation (src/regex/reg* and\n         src/regex/tre*) is Copyright \u00a9 2001-2008 Ville Laurikari and licensed\n         under a 2-clause BSD license (license text in the source files). The\n         included version has been heavily modified by Rich Felker in 2012, in\n         the interests of size, simplicity, and namespace cleanliness.\n         \n         Much of the math library code (src/math/* and src/complex/*) is\n         Copyright \u00a9 1993,2004 Sun Microsystems or\n         Copyright \u00a9 2003-2011 David Schultz or\n         Copyright \u00a9 2003-2009 Steven G. Kargl or\n         Copyright \u00a9 2003-2009 Bruce D. Evans or\n         Copyright \u00a9 2008 Stephen L. Moshier or\n         Copyright \u00a9 2017-2018 Arm Limited\n         and labelled as such in comments in the individual source files. All\n         have been licensed under extremely permissive terms.\n         \n         The ARM memcpy code (src/string/arm/memcpy.S) is Copyright \u00a9 2008\n         The Android Open Source Project and is licensed under a two-clause BSD\n         license. It was taken from Bionic libc, used on Android.\n         \n         The AArch64 memcpy and memset code (src/string/aarch64/*) are\n         Copyright \u00a9 1999-2019, Arm Limited.\n         \n         The implementation of DES for crypt (src/crypt/crypt_des.c) is\n         Copyright \u00a9 1994 David Burren. It is licensed under a BSD license.\n         \n         The implementation of blowfish crypt (src/crypt/crypt_blowfish.c) was\n         originally written by Solar Designer and placed into the public\n         domain. The code also comes with a fallback permissive license for use\n         in jurisdictions that may not recognize the public domain.\n         \n         The smoothsort implementation (src/stdlib/qsort.c) is Copyright \u00a9 2011\n         Valentin Ochs and is licensed under an MIT-style license.\n         \n         The x86_64 port was written by Nicholas J. Kain and is licensed under\n         the standard MIT terms.\n         \n         The mips and microblaze ports were originally written by Richard\n         Pennington for use in the ellcc project. The original code was adapted\n         by Rich Felker for build system and code conventions during upstream\n         integration. It is licensed under the standard MIT terms.\n         \n         The mips64 port was contributed by Imagination Technologies and is\n         licensed under the standard MIT terms.\n         \n         The powerpc port was also originally written by Richard Pennington,\n         and later supplemented and integrated by John Spencer. It is licensed\n         under the standard MIT terms.\n         \n         All other files which have no copyright comments are original works\n         produced specifically for use as part of this library, written either\n         by Rich Felker, the main author of the library, or by one or more\n         contibutors listed above. Details on authorship of individual files\n         can be found in the git version control history of the project. The\n         omission of copyright and license comments in each file is in the\n         interest of source tree size.\n         \n         In addition, permission is hereby granted for all public header files\n         (include/* and arch/*/bits/*) and crt files intended to be linked into\n         applications (crt/*, ldso/dlstart.c, and arch/*/crt_arch.h) to omit\n         the copyright notice and permission notice otherwise required by the\n         license, and to use these files without any requirement of\n         attribution. These files include substantial contributions from:\n         \n         Bobby Bingham\n         John Spencer\n         Nicholas J. Kain\n         Rich Felker\n         Richard Pennington\n         Stefan Kristiansson\n         Szabolcs Nagy\n         \n         all of whom have explicitly granted such permission.\n         \n         This file previously contained text expressing a belief that most of\n         the files covered by the above exception were sufficiently trivial not\n         to be subject to copyright, resulting in confusion over whether it\n         negated the permissions granted in the license. In the spirit of\n         permissive licensing, and of not having licensing issues being an\n         obstacle to adoption, that text has been removed.Copyright (c) 2005-2023, NumPy Developers.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are\n         met:\n         \n             * Redistributions of source code must retain the above copyright\n                notice, this list of conditions and the following disclaimer.\n         \n             * Redistributions in binary form must reproduce the above\n                copyright notice, this list of conditions and the following\n                disclaimer in the documentation and/or other materials provided\n                with the distribution.\n         \n             * Neither the name of the NumPy Developers nor the names of any\n                contributors may be used to endorse or promote products derived\n                from this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n         \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n         OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n         SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n         LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n         DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n                                          Apache License\n                                    Version 2.0, January 2004\n                                 http://www.apache.org/licenses/\n         \n            TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n         \n            1. Definitions.\n         \n               \"License\" shall mean the terms and conditions for use, reproduction,\n               and distribution as defined by Sections 1 through 9 of this document.\n         \n               \"Licensor\" shall mean the copyright owner or entity authorized by\n               the copyright owner that is granting the License.\n         \n               \"Legal Entity\" shall mean the union of the acting entity and all\n               other entities that control, are controlled by, or are under common\n               control with that entity. For the purposes of this definition,\n               \"control\" means (i) the power, direct or indirect, to cause the\n               direction or management of such entity, whether by contract or\n               otherwise, or (ii) ownership of fifty percent (50%) or more of the\n               outstanding shares, or (iii) beneficial ownership of such entity.\n         \n               \"You\" (or \"Your\") shall mean an individual or Legal Entity\n               exercising permissions granted by this License.\n         \n               \"Source\" form shall mean the preferred form for making modifications,\n               including but not limited to software source code, documentation\n               source, and configuration files.\n         \n               \"Object\" form shall mean any form resulting from mechanical\n               transformation or translation of a Source form, including but\n               not limited to compiled object code, generated documentation,\n               and conversions to other media types.\n         \n               \"Work\" shall mean the work of authorship, whether in Source or\n               Object form, made available under the License, as indicated by a\n               copyright notice that is included in or attached to the work\n               (an example is provided in the Appendix below).\n         \n               \"Derivative Works\" shall mean any work, whether in Source or Object\n               form, that is based on (or derived from) the Work and for which the\n               editorial revisions, annotations, elaborations, or other modifications\n               represent, as a whole, an original work of authorship. For the purposes\n               of this License, Derivative Works shall not include works that remain\n               separable from, or merely link (or bind by name) to the interfaces of,\n               the Work and Derivative Works thereof.\n         \n               \"Contribution\" shall mean any work of authorship, including\n               the original version of the Work and any modifications or additions\n               to that Work or Derivative Works thereof, that is intentionally\n               submitted to Licensor for inclusion in the Work by the copyright owner\n               or by an individual or Legal Entity authorized to submit on behalf of\n               the copyright owner. For the purposes of this definition, \"submitted\"\n               means any form of electronic, verbal, or written communication sent\n               to the Licensor or its representatives, including but not limited to\n               communication on electronic mailing lists, source code control systems,\n               and issue tracking systems that are managed by, or on behalf of, the\n               Licensor for the purpose of discussing and improving the Work, but\n               excluding communication that is conspicuously marked or otherwise\n               designated in writing by the copyright owner as \"Not a Contribution.\"\n         \n               \"Contributor\" shall mean Licensor and any individual or Legal Entity\n               on behalf of whom a Contribution has been received by Licensor and\n               subsequently incorporated within the Work.\n         \n            2. Grant of Copyright License. Subject to the terms and conditions of\n               this License, each Contributor hereby grants to You a perpetual,\n               worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n               copyright license to reproduce, prepare Derivative Works of,\n               publicly display, publicly perform, sublicense, and distribute the\n               Work and such Derivative Works in Source or Object form.\n         \n            3. Grant of Patent License. Subject to the terms and conditions of\n               this License, each Contributor hereby grants to You a perpetual,\n               worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n               (except as stated in this section) patent license to make, have made,\n               use, offer to sell, sell, import, and otherwise transfer the Work,\n               where such license applies only to those patent claims licensable\n               by such Contributor that are necessarily infringed by their\n               Contribution(s) alone or by combination of their Contribution(s)\n               with the Work to which such Contribution(s) was submitted. If You\n               institute patent litigation against any entity (including a\n               cross-claim or counterclaim in a lawsuit) alleging that the Work\n               or a Contribution incorporated within the Work constitutes direct\n               or contributory patent infringement, then any patent licenses\n               granted to You under this License for that Work shall terminate\n               as of the date such litigation is filed.\n         \n            4. Redistribution. You may reproduce and distribute copies of the\n               Work or Derivative Works thereof in any medium, with or without\n               modifications, and in Source or Object form, provided that You\n               meet the following conditions:\n         \n               (a) You must give any other recipients of the Work or\n                   Derivative Works a copy of this License; and\n         \n               (b) You must cause any modified files to carry prominent notices\n                   stating that You changed the files; and\n         \n               (c) You must retain, in the Source form of any Derivative Works\n                   that You distribute, all copyright, patent, trademark, and\n                   attribution notices from the Source form of the Work,\n                   excluding those notices that do not pertain to any part of\n                   the Derivative Works; and\n         \n               (d) If the Work includes a \"NOTICE\" text file as part of its\n                   distribution, then any Derivative Works that You distribute must\n                   include a readable copy of the attribution notices contained\n                   within such NOTICE file, excluding those notices that do not\n                   pertain to any part of the Derivative Works, in at least one\n                   of the following places: within a NOTICE text file distributed\n                   as part of the Derivative Works; within the Source form or\n                   documentation, if provided along with the Derivative Works; or,\n                   within a display generated by the Derivative Works, if and\n                   wherever such third-party notices normally appear. The contents\n                   of the NOTICE file are for informational purposes only and\n                   do not modify the License. You may add Your own attribution\n                   notices within Derivative Works that You distribute, alongside\n                   or as an addendum to the NOTICE text from the Work, provided\n                   that such additional attribution notices cannot be construed\n                   as modifying the License.\n         \n               You may add Your own copyright statement to Your modifications and\n               may provide additional or different license terms and conditions\n               for use, reproduction, or distribution of Your modifications, or\n               for any such Derivative Works as a whole, provided Your use,\n               reproduction, and distribution of the Work otherwise complies with\n               the conditions stated in this License.\n         \n            5. Submission of Contributions. Unless You explicitly state otherwise,\n               any Contribution intentionally submitted for inclusion in the Work\n               by You to the Licensor shall be under the terms and conditions of\n               this License, without any additional terms or conditions.\n               Notwithstanding the above, nothing herein shall supersede or modify\n               the terms of any separate license agreement you may have executed\n               with Licensor regarding such Contributions.\n         \n            6. Trademarks. This License does not grant permission to use the trade\n               names, trademarks, service marks, or product names of the Licensor,\n               except as required for reasonable and customary use in describing the\n               origin of the Work and reproducing the content of the NOTICE file.\n         \n            7. Disclaimer of Warranty. Unless required by applicable law or\n               agreed to in writing, Licensor provides the Work (and each\n               Contributor provides its Contributions) on an \"AS IS\" BASIS,\n               WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n               implied, including, without limitation, any warranties or conditions\n               of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n               PARTICULAR PURPOSE. You are solely responsible for determining the\n               appropriateness of using or redistributing the Work and assume any\n               risks associated with Your exercise of permissions under this License.\n         \n            8. Limitation of Liability. In no event and under no legal theory,\n               whether in tort (including negligence), contract, or otherwise,\n               unless required by applicable law (such as deliberate and grossly\n               negligent acts) or agreed to in writing, shall any Contributor be\n               liable to You for damages, including any direct, indirect, special,\n               incidental, or consequential damages of any character arising as a\n               result of this License or out of the use or inability to use the\n               Work (including but not limited to damages for loss of goodwill,\n               work stoppage, computer failure or malfunction, or any and all\n               other commercial damages or losses), even if such Contributor\n               has been advised of the possibility of such damages.\n         \n            9. Accepting Warranty or Additional Liability. While redistributing\n               the Work or Derivative Works thereof, You may choose to offer,\n               and charge a fee for, acceptance of support, warranty, indemnity,\n               or other liability obligations and/or rights consistent with this\n               License. However, in accepting such obligations, You may act only\n               on Your own behalf and on Your sole responsibility, not on behalf\n               of any other Contributor, and only if You agree to indemnify,\n               defend, and hold each Contributor harmless for any liability\n               incurred by, or claims asserted against, such Contributor by reason\n               of your accepting any such warranty or additional liability.\n         \n            END OF TERMS AND CONDITIONS\n         \n         \n         Copyright (c) Donald Stufft and individual contributors.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n             1. Redistributions of source code must retain the above copyright notice,\n                this list of conditions and the following disclaimer.\n         \n             2. Redistributions in binary form must reproduce the above copyright\n                notice, this list of conditions and the following disclaimer in the\n                documentation and/or other materials provided with the distribution.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n         ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n         WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.A. HISTORY OF THE SOFTWARE\n         ==========================\n         \n         Python was created in the early 1990s by Guido van Rossum at Stichting\n         Mathematisch Centrum (CWI, see https://www.cwi.nl) in the Netherlands\n         as a successor of a language called ABC.  Guido remains Python's\n         principal author, although it includes many contributions from others.\n         \n         In 1995, Guido continued his work on Python at the Corporation for\n         National Research Initiatives (CNRI, see https://www.cnri.reston.va.us)\n         in Reston, Virginia where he released several versions of the\n         software.\n         \n         In May 2000, Guido and the Python core development team moved to\n         BeOpen.com to form the BeOpen PythonLabs team.  In October of the same\n         year, the PythonLabs team moved to Digital Creations, which became\n         Zope Corporation.  In 2001, the Python Software Foundation (PSF, see\n         https://www.python.org/psf/) was formed, a non-profit organization\n         created specifically to own Python-related Intellectual Property.\n         Zope Corporation was a sponsoring member of the PSF.\n         \n         All Python releases are Open Source (see https://opensource.org for\n         the Open Source Definition).  Historically, most, but not all, Python\n         releases have also been GPL-compatible; the table below summarizes\n         the various releases.\n         \n             Release         Derived     Year        Owner       GPL-\n                             from                                compatible? (1)\n         \n             0.9.0 thru 1.2              1991-1995   CWI         yes\n             1.3 thru 1.5.2  1.2         1995-1999   CNRI        yes\n             1.6             1.5.2       2000        CNRI        no\n             2.0             1.6         2000        BeOpen.com  no\n             1.6.1           1.6         2001        CNRI        yes (2)\n             2.1             2.0+1.6.1   2001        PSF         no\n             2.0.1           2.0+1.6.1   2001        PSF         yes\n             2.1.1           2.1+2.0.1   2001        PSF         yes\n             2.1.2           2.1.1       2002        PSF         yes\n             2.1.3           2.1.2       2002        PSF         yes\n             2.2 and above   2.1.1       2001-now    PSF         yes\n         \n         Footnotes:\n         \n         (1) GPL-compatible doesn't mean that we're distributing Python under\n             the GPL.  All Python licenses, unlike the GPL, let you distribute\n             a modified version without making your changes open source.  The\n             GPL-compatible licenses make it possible to combine Python with\n             other software that is released under the GPL; the others don't.\n         \n         (2) According to Richard Stallman, 1.6.1 is not GPL-compatible,\n             because its license has a choice of law clause.  According to\n             CNRI, however, Stallman's lawyer has told CNRI's lawyer that 1.6.1\n             is \"not incompatible\" with the GPL.\n         \n         Thanks to the many outside volunteers who have worked under Guido's\n         direction to make these releases possible.\n         \n         \n         B. TERMS AND CONDITIONS FOR ACCESSING OR OTHERWISE USING PYTHON\n         ===============================================================\n         \n         Python software and documentation are licensed under the\n         Python Software Foundation License Version 2.\n         \n         Starting with Python 3.8.6, examples, recipes, and other code in\n         the documentation are dual licensed under the PSF License Version 2\n         and the Zero-Clause BSD license.\n         \n         Some software incorporated into Python is under different licenses.\n         The licenses are listed with code falling under that license.\n         \n         \n         PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2\n         --------------------------------------------\n         \n         1. This LICENSE AGREEMENT is between the Python Software Foundation\n         (\"PSF\"), and the Individual or Organization (\"Licensee\") accessing and\n         otherwise using this software (\"Python\") in source or binary form and\n         its associated documentation.\n         \n         2. Subject to the terms and conditions of this License Agreement, PSF hereby\n         grants Licensee a nonexclusive, royalty-free, world-wide license to reproduce,\n         analyze, test, perform and/or display publicly, prepare derivative works,\n         distribute, and otherwise use Python alone or in any derivative version,\n         provided, however, that PSF's License Agreement and PSF's notice of copyright,\n         i.e., \"Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,\n         2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Python Software Foundation;\n         All Rights Reserved\" are retained in Python alone or in any derivative version\n         prepared by Licensee.\n         \n         3. In the event Licensee prepares a derivative work that is based on\n         or incorporates Python or any part thereof, and wants to make\n         the derivative work available to others as provided herein, then\n         Licensee hereby agrees to include in any such work a brief summary of\n         the changes made to Python.\n         \n         4. PSF is making Python available to Licensee on an \"AS IS\"\n         basis.  PSF MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PSF MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON\n         FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS\n         A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON,\n         OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         6. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         7. Nothing in this License Agreement shall be deemed to create any\n         relationship of agency, partnership, or joint venture between PSF and\n         Licensee.  This License Agreement does not grant permission to use PSF\n         trademarks or trade name in a trademark sense to endorse or promote\n         products or services of Licensee, or any third party.\n         \n         8. By copying, installing or otherwise using Python, Licensee\n         agrees to be bound by the terms and conditions of this License\n         Agreement.\n         \n         \n         BEOPEN.COM LICENSE AGREEMENT FOR PYTHON 2.0\n         -------------------------------------------\n         \n         BEOPEN PYTHON OPEN SOURCE LICENSE AGREEMENT VERSION 1\n         \n         1. This LICENSE AGREEMENT is between BeOpen.com (\"BeOpen\"), having an\n         office at 160 Saratoga Avenue, Santa Clara, CA 95051, and the\n         Individual or Organization (\"Licensee\") accessing and otherwise using\n         this software in source or binary form and its associated\n         documentation (\"the Software\").\n         \n         2. Subject to the terms and conditions of this BeOpen Python License\n         Agreement, BeOpen hereby grants Licensee a non-exclusive,\n         royalty-free, world-wide license to reproduce, analyze, test, perform\n         and/or display publicly, prepare derivative works, distribute, and\n         otherwise use the Software alone or in any derivative version,\n         provided, however, that the BeOpen Python License is retained in the\n         Software, alone or in any derivative version prepared by Licensee.\n         \n         3. BeOpen is making the Software available to Licensee on an \"AS IS\"\n         basis.  BEOPEN MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, BEOPEN MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         4. BEOPEN SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF THE\n         SOFTWARE FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS\n         AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THE SOFTWARE, OR ANY\n         DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         5. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         6. This License Agreement shall be governed by and interpreted in all\n         respects by the law of the State of California, excluding conflict of\n         law provisions.  Nothing in this License Agreement shall be deemed to\n         create any relationship of agency, partnership, or joint venture\n         between BeOpen and Licensee.  This License Agreement does not grant\n         permission to use BeOpen trademarks or trade names in a trademark\n         sense to endorse or promote products or services of Licensee, or any\n         third party.  As an exception, the \"BeOpen Python\" logos available at\n         http://www.pythonlabs.com/logos.html may be used according to the\n         permissions granted on that web page.\n         \n         7. By copying, installing or otherwise using the software, Licensee\n         agrees to be bound by the terms and conditions of this License\n         Agreement.\n         \n         \n         CNRI LICENSE AGREEMENT FOR PYTHON 1.6.1\n         ---------------------------------------\n         \n         1. This LICENSE AGREEMENT is between the Corporation for National\n         Research Initiatives, having an office at 1895 Preston White Drive,\n         Reston, VA 20191 (\"CNRI\"), and the Individual or Organization\n         (\"Licensee\") accessing and otherwise using Python 1.6.1 software in\n         source or binary form and its associated documentation.\n         \n         2. Subject to the terms and conditions of this License Agreement, CNRI\n         hereby grants Licensee a nonexclusive, royalty-free, world-wide\n         license to reproduce, analyze, test, perform and/or display publicly,\n         prepare derivative works, distribute, and otherwise use Python 1.6.1\n         alone or in any derivative version, provided, however, that CNRI's\n         License Agreement and CNRI's notice of copyright, i.e., \"Copyright (c)\n         1995-2001 Corporation for National Research Initiatives; All Rights\n         Reserved\" are retained in Python 1.6.1 alone or in any derivative\n         version prepared by Licensee.  Alternately, in lieu of CNRI's License\n         Agreement, Licensee may substitute the following text (omitting the\n         quotes): \"Python 1.6.1 is made available subject to the terms and\n         conditions in CNRI's License Agreement.  This Agreement together with\n         Python 1.6.1 may be located on the internet using the following\n         unique, persistent identifier (known as a handle): 1895.22/1013.  This\n         Agreement may also be obtained from a proxy server on the internet\n         using the following URL: http://hdl.handle.net/1895.22/1013\".\n         \n         3. In the event Licensee prepares a derivative work that is based on\n         or incorporates Python 1.6.1 or any part thereof, and wants to make\n         the derivative work available to others as provided herein, then\n         Licensee hereby agrees to include in any such work a brief summary of\n         the changes made to Python 1.6.1.\n         \n         4. CNRI is making Python 1.6.1 available to Licensee on an \"AS IS\"\n         basis.  CNRI MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\n         IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, CNRI MAKES NO AND\n         DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\n         FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON 1.6.1 WILL NOT\n         INFRINGE ANY THIRD PARTY RIGHTS.\n         \n         5. CNRI SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON\n         1.6.1 FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS\n         A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON 1.6.1,\n         OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n         \n         6. This License Agreement will automatically terminate upon a material\n         breach of its terms and conditions.\n         \n         7. This License Agreement shall be governed by the federal\n         intellectual property law of the United States, including without\n         limitation the federal copyright law, and, to the extent such\n         U.S. federal law does not apply, by the law of the Commonwealth of\n         Virginia, excluding Virginia's conflict of law provisions.\n         Notwithstanding the foregoing, with regard to derivative works based\n         on Python 1.6.1 that incorporate non-separable material that was\n         previously distributed under the GNU General Public License (GPL), the\n         law of the Commonwealth of Virginia shall govern this License\n         Agreement only as to issues arising under or with respect to\n         Paragraphs 4, 5, and 7 of this License Agreement.  Nothing in this\n         License Agreement shall be deemed to create any relationship of\n         agency, partnership, or joint venture between CNRI and Licensee.  This\n         License Agreement does not grant permission to use CNRI trademarks or\n         trade name in a trademark sense to endorse or promote products or\n         services of Licensee, or any third party.\n         \n         8. By clicking on the \"ACCEPT\" button where indicated, or by copying,\n         installing or otherwise using Python 1.6.1, Licensee agrees to be\n         bound by the terms and conditions of this License Agreement.\n         \n                 ACCEPT\n         \n         \n         CWI LICENSE AGREEMENT FOR PYTHON 0.9.0 THROUGH 1.2\n         --------------------------------------------------\n         \n         Copyright (c) 1991 - 1995, Stichting Mathematisch Centrum Amsterdam,\n         The Netherlands.  All rights reserved.\n         \n         Permission to use, copy, modify, and distribute this software and its\n         documentation for any purpose and without fee is hereby granted,\n         provided that the above copyright notice appear in all copies and that\n         both that copyright notice and this permission notice appear in\n         supporting documentation, and that the name of Stichting Mathematisch\n         Centrum or CWI not be used in advertising or publicity pertaining to\n         distribution of the software without specific, written prior\n         permission.\n         \n         STICHTING MATHEMATISCH CENTRUM DISCLAIMS ALL WARRANTIES WITH REGARD TO\n         THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND\n         FITNESS, IN NO EVENT SHALL STICHTING MATHEMATISCH CENTRUM BE LIABLE\n         FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n         WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n         ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT\n         OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n         \n         ZERO-CLAUSE BSD LICENSE FOR CODE IN THE PYTHON DOCUMENTATION\n         ----------------------------------------------------------------------\n         \n         Permission to use, copy, modify, and/or distribute this software for any\n         purpose with or without fee is hereby granted.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH\n         REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY\n         AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,\n         INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM\n         LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR\n         OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR\n         PERFORMANCE OF THIS SOFTWARE.\n         Copyright (c) 2014, Al Sweigart\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         \n         * Redistributions of source code must retain the above copyright notice, this\n           list of conditions and the following disclaimer.\n         \n         * Redistributions in binary form must reproduce the above copyright notice,\n           this list of conditions and the following disclaimer in the documentation\n           and/or other materials provided with the distribution.\n         \n         * Neither the name of the {organization} nor the names of its\n           contributors may be used to endorse or promote products derived from\n           this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.Copyright (c) 2017 Anthony Sottile\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy\n         of this software and associated documentation files (the \"Software\"), to deal\n         in the Software without restriction, including without limitation the rights\n         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n         copies of the Software, and to permit persons to whom the Software is\n         furnished to do so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in\n         all copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n         THE SOFTWARE.Copyright (c) 2015-2019 Jared Hobbs\n         \n         Permission is hereby granted, free of charge, to any person obtaining a copy of\n         this software and associated documentation files (the \"Software\"), to deal in\n         the Software without restriction, including without limitation the rights to\n         use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies\n         of the Software, and to permit persons to whom the Software is furnished to do\n         so, subject to the following conditions:\n         \n         The above copyright notice and this permission notice shall be included in all\n         copies or substantial portions of the Software.\n         \n         THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n         SOFTWARE.Developed by ESN, an Electronic Arts Inc. studio.\n         Copyright (c) 2014, Electronic Arts Inc.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are met:\n         * Redistributions of source code must retain the above copyright\n         notice, this list of conditions and the following disclaimer.\n         * Redistributions in binary form must reproduce the above copyright\n         notice, this list of conditions and the following disclaimer in the\n         documentation and/or other materials provided with the distribution.\n         * Neither the name of ESN, Electronic Arts Inc. nor the\n         names of its contributors may be used to endorse or promote products\n         derived from this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n         ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n         WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n         DISCLAIMED. IN NO EVENT SHALL ELECTRONIC ARTS INC. BE LIABLE\n         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n         (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n         LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\n         ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         ----\n         \n         Portions of code from MODP_ASCII - Ascii transformations (upper/lower, etc)\n         https://github.com/client9/stringencoders\n         \n           Copyright 2005, 2006, 2007\n           Nick Galbreath -- nickg [at] modp [dot] com\n           All rights reserved.\n         \n           Redistribution and use in source and binary forms, with or without\n           modification, are permitted provided that the following conditions are\n           met:\n         \n             Redistributions of source code must retain the above copyright\n             notice, this list of conditions and the following disclaimer.\n         \n             Redistributions in binary form must reproduce the above copyright\n             notice, this list of conditions and the following disclaimer in the\n             documentation and/or other materials provided with the distribution.\n         \n             Neither the name of the modp.com nor the names of its\n             contributors may be used to endorse or promote products derived from\n             this software without specific prior written permission.\n         \n           THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n           \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n           LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n           A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n           OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n           SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n           LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n           DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n           THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n           (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n           OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n           This is the standard \"new\" BSD license:\n           http://www.opensource.org/licenses/bsd-license.php\n         \n         https://github.com/client9/stringencoders/blob/cfd5c1507325ae497ea9bacdacba12c0ffd79d30/COPYING\n         \n         ----\n         \n         Numeric decoder derived from from TCL library\n         https://opensource.apple.com/source/tcl/tcl-14/tcl/license.terms\n          * Copyright (c) 1988-1993 The Regents of the University of California.\n          * Copyright (c) 1994 Sun Microsystems, Inc.\n         \n           This software is copyrighted by the Regents of the University of\n           California, Sun Microsystems, Inc., Scriptics Corporation, ActiveState\n           Corporation and other parties.  The following terms apply to all files\n           associated with the software unless explicitly disclaimed in\n           individual files.\n         \n           The authors hereby grant permission to use, copy, modify, distribute,\n           and license this software and its documentation for any purpose, provided\n           that existing copyright notices are retained in all copies and that this\n           notice is included verbatim in any distributions. No written agreement,\n           license, or royalty fee is required for any of the authorized uses.\n           Modifications to this software may be copyrighted by their authors\n           and need not follow the licensing terms described here, provided that\n           the new terms are clearly indicated on the first page of each file where\n           they apply.\n         \n           IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY\n           FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES\n           ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY\n           DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE\n           POSSIBILITY OF SUCH DAMAGE.\n         \n           THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,\n           INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,\n           FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE\n           IS PROVIDED ON AN \"AS IS\" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE\n           NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR\n           MODIFICATIONS.\n         \n           GOVERNMENT USE: If you are acquiring this software on behalf of the\n           U.S. government, the Government shall have only \"Restricted Rights\"\n           in the software and related documentation as defined in the Federal\n           Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you\n           are acquiring the software on behalf of the Department of Defense, the\n           software shall be classified as \"Commercial Computer Software\" and the\n           Government shall have only \"Restricted Rights\" as defined in Clause\n           252.227-7013 (c) (1) of DFARs.  Notwithstanding the foregoing, the\n           authors grant the U.S. Government and others acting in its behalf\n           permission to use and distribute the software in accordance with the\n           terms specified in this license.",
+      "license": null,
       "home_page": null,
       "project_url": "https://pypi.org/project/pandas/",
       "package_url": "https://pypi.org/project/pandas/",
@@ -5053,20 +5056,27 @@
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
         "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Cython",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.11"
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12"
       ],
       "project_urls": {
+        "changelog": "https://pandas.pydata.org/docs/whatsnew/index.html",
         "documentation": "https://pandas.pydata.org/docs/",
+        "funding": "https://opencollective.com/pandas",
         "homepage": "https://pandas.pydata.org",
-        "repository": "https://github.com/pandas-dev/pandas"
+        "issues": "https://github.com/pandas-dev/pandas/issues",
+        "source": "https://github.com/pandas-dev/pandas"
       },
       "recent_releases": [
+        {
+          "version": "3.1.0",
+          "upload_time": "2026-10-22T11:54:48"
+        },
         {
           "version": "3.1.0rc0",
           "upload_time": "2026-09-30T13:55:10"
@@ -5082,13 +5092,9 @@
         {
           "version": "3.0.4",
           "upload_time": "2026-06-28T15:29:45"
-        },
-        {
-          "version": "3.0.3",
-          "upload_time": "2026-05-11T18:52:11"
         }
       ],
-      "total_releases": 119,
+      "total_releases": 120,
       "source": "pypi"
     },
     {
@@ -5322,7 +5328,7 @@
     },
     {
       "name": "ruff",
-      "version": "0.17.1",
+      "version": "0.17.2",
       "summary": "An extremely fast Python linter and code formatter, written in Rust.",
       "description": "<!-- Begin section: Overview -->\n\n# Ruff\n\n[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)\n[![image](https://img.shields.io/pypi/v/ruff.svg)](https://pypi.python.org/pypi/ruff)\n[![image](https://img.shields.io/pypi/l/ruff.svg)](https://github.com/astral-sh/ruff/blob/main/LICENSE)\n[![image](https://img.shields.io/pypi/pyversions/ruff.svg)](https://pypi.python.org/pypi/ruff)\n[![Actions statu",
       "author": null,
@@ -5353,6 +5359,10 @@
       },
       "recent_releases": [
         {
+          "version": "0.17.2",
+          "upload_time": "2026-10-22T18:37:14"
+        },
+        {
           "version": "0.17.1",
           "upload_time": "2026-10-15T15:22:33"
         },
@@ -5367,13 +5377,9 @@
         {
           "version": "0.16.9",
           "upload_time": "2026-09-24T20:37:13"
-        },
-        {
-          "version": "0.16.8",
-          "upload_time": "2026-09-16T15:53:57"
         }
       ],
-      "total_releases": 428,
+      "total_releases": 429,
       "source": "pypi"
     },
     {
@@ -6448,7 +6454,7 @@
     },
     {
       "name": "huggingface-hub",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "summary": "Client library to download and publish models, datasets and other repos on the huggingface.co hub",
       "description": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub-dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub.svg\">\n    <img alt=\"huggingface_hub library logo\" src=\"https://huggingface.co/datasets/huggingface/documentation-images/raw/main/huggingface_hub.svg\" width=\"352\" h",
       "author": "Hugging Face, Inc.",
@@ -6476,27 +6482,27 @@
       },
       "recent_releases": [
         {
+          "version": "2.3.0",
+          "upload_time": "2026-10-23T08:52:04"
+        },
+        {
+          "version": "2.3.0rc1",
+          "upload_time": "2026-10-22T13:22:58"
+        },
+        {
+          "version": "2.3.0rc0",
+          "upload_time": "2026-10-22T12:06:28"
+        },
+        {
           "version": "2.2.0",
           "upload_time": "2026-10-08T15:30:57"
         },
         {
           "version": "2.2.0rc0",
           "upload_time": "2026-10-08T14:42:17"
-        },
-        {
-          "version": "2.1.1",
-          "upload_time": "2026-10-01T12:32:32"
-        },
-        {
-          "version": "2.1.0",
-          "upload_time": "2026-10-01T12:12:11"
-        },
-        {
-          "version": "2.1.0rc0",
-          "upload_time": "2026-10-01T09:57:58"
         }
       ],
-      "total_releases": 333,
+      "total_releases": 336,
       "source": "pypi"
     },
     {
@@ -6741,27 +6747,27 @@
       },
       "recent_releases": [
         {
+          "version": "1.6.3.dev8",
+          "upload_time": "2026-10-23T00:54:11"
+        },
+        {
+          "version": "1.6.3.dev7",
+          "upload_time": "2026-10-22T20:49:24"
+        },
+        {
+          "version": "1.6.3.dev6",
+          "upload_time": "2026-10-22T16:43:02"
+        },
+        {
           "version": "1.6.3.dev5",
           "upload_time": "2026-10-22T00:52:09"
         },
         {
           "version": "1.6.3.dev4",
           "upload_time": "2026-10-21T00:52:08"
-        },
-        {
-          "version": "1.6.3.dev3",
-          "upload_time": "2026-10-20T00:53:07"
-        },
-        {
-          "version": "1.6.3.dev2",
-          "upload_time": "2026-10-19T00:56:53"
-        },
-        {
-          "version": "1.6.3.dev1",
-          "upload_time": "2026-10-18T00:57:40"
         }
       ],
-      "total_releases": 2693,
+      "total_releases": 2696,
       "source": "pypi"
     },
     {
@@ -6813,8 +6819,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tokio",
       "documentation": null,
-      "downloads": 1093296983,
-      "recent_downloads": 267660151,
+      "downloads": 1097981285,
+      "recent_downloads": 270839505,
       "max_version": "1.54.1",
       "max_stable_version": "1.54.1",
       "created_at": "2016-07-01T20:39:07.497766Z",
@@ -6860,8 +6866,8 @@
       "homepage": "https://serde.rs",
       "repository": "https://github.com/serde-rs/serde",
       "documentation": "https://docs.rs/serde",
-      "downloads": 1569459593,
-      "recent_downloads": 374786156,
+      "downloads": 1575699114,
+      "recent_downloads": 378724032,
       "max_version": "1.0.229",
       "max_stable_version": "1.0.229",
       "created_at": "2014-12-05T20:20:39.487502Z",
@@ -6907,8 +6913,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/reqwest",
       "documentation": "https://docs.rs/reqwest",
-      "downloads": 825201080,
-      "recent_downloads": 225696226,
+      "downloads": 829520680,
+      "recent_downloads": 228881938,
       "max_version": "0.13.5",
       "max_stable_version": "0.13.5",
       "created_at": "2016-10-16T17:29:41.599749Z",
@@ -6953,8 +6959,8 @@
       "homepage": "https://github.com/tokio-rs/axum",
       "repository": "https://github.com/tokio-rs/axum",
       "documentation": null,
-      "downloads": 536056751,
-      "recent_downloads": 137884802,
+      "downloads": 538882836,
+      "recent_downloads": 139990698,
       "max_version": "0.8.9",
       "max_stable_version": "0.8.9",
       "created_at": "2021-07-22T13:52:05.710239Z",
@@ -7000,8 +7006,8 @@
       "homepage": "https://actix.rs",
       "repository": "https://github.com/actix/actix-web",
       "documentation": null,
-      "downloads": 86661509,
-      "recent_downloads": 12106228,
+      "downloads": 86938308,
+      "recent_downloads": 12313721,
       "max_version": "4.17.0",
       "max_stable_version": "4.17.0",
       "created_at": "2017-10-23T23:08:29.260260Z",
@@ -7050,8 +7056,8 @@
       "homepage": null,
       "repository": "https://github.com/clap-rs/clap",
       "documentation": null,
-      "downloads": 1252351177,
-      "recent_downloads": 261364063,
+      "downloads": 1256651139,
+      "recent_downloads": 264128288,
       "max_version": "4.6.7",
       "max_stable_version": "4.6.7",
       "created_at": "2015-03-01T01:17:24.903018Z",
@@ -7097,8 +7103,8 @@
       "homepage": "https://tokio.rs",
       "repository": "https://github.com/tokio-rs/tracing",
       "documentation": null,
-      "downloads": 958474229,
-      "recent_downloads": 231341811,
+      "downloads": 962657505,
+      "recent_downloads": 234215721,
       "max_version": "0.1.44",
       "max_stable_version": "0.1.44",
       "created_at": "2017-11-27T18:43:02.901436Z",
@@ -7146,8 +7152,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/anyhow",
       "documentation": "https://docs.rs/anyhow",
-      "downloads": 1076133671,
-      "recent_downloads": 252001316,
+      "downloads": 1080523832,
+      "recent_downloads": 254944610,
       "max_version": "1.0.104",
       "max_stable_version": "1.0.104",
       "created_at": "2019-10-05T19:52:26.646502Z",
@@ -7191,8 +7197,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/thiserror",
       "documentation": "https://docs.rs/thiserror",
-      "downloads": 1676489321,
-      "recent_downloads": 446703811,
+      "downloads": 1684707105,
+      "recent_downloads": 452476249,
       "max_version": "2.0.21",
       "max_stable_version": "2.0.21",
       "created_at": "2019-10-09T18:05:40.346377Z",
@@ -7237,8 +7243,8 @@
       "homepage": null,
       "repository": "https://github.com/launchbadge/sqlx",
       "documentation": "https://docs.rs/sqlx",
-      "downloads": 170455859,
-      "recent_downloads": 48556144,
+      "downloads": 171493068,
+      "recent_downloads": 49358479,
       "max_version": "0.9.0",
       "max_stable_version": "0.9.0",
       "created_at": "2019-06-06T23:42:00.933224Z",
@@ -7276,8 +7282,8 @@
       "homepage": "https://diesel.rs",
       "repository": "https://github.com/diesel-rs/diesel",
       "documentation": "https://docs.rs/diesel/",
-      "downloads": 41388981,
-      "recent_downloads": 9898194,
+      "downloads": 41670315,
+      "recent_downloads": 10149005,
       "max_version": "2.3.14",
       "max_stable_version": "2.3.14",
       "created_at": "2015-11-29T17:53:47.748928Z",
@@ -7321,8 +7327,8 @@
       "homepage": "https://www.sea-ql.org/SeaORM",
       "repository": "https://github.com/SeaQL/sea-orm",
       "documentation": "https://docs.rs/sea-orm",
-      "downloads": 27351116,
-      "recent_downloads": 5130675,
+      "downloads": 27543654,
+      "recent_downloads": 5296158,
       "max_version": "2.0.4",
       "max_stable_version": "2.0.4",
       "created_at": "2021-08-07T18:38:14.382787Z",
@@ -7368,8 +7374,8 @@
       "homepage": "https://async.rs",
       "repository": "https://github.com/async-rs/async-std",
       "documentation": null,
-      "downloads": 97904481,
-      "recent_downloads": 11695780,
+      "downloads": 98035790,
+      "recent_downloads": 11759563,
       "max_version": "1.13.2",
       "max_stable_version": "1.13.2",
       "created_at": "2019-05-30T16:02:17.377461Z",
@@ -7417,8 +7423,8 @@
       "homepage": "https://hyper.rs",
       "repository": "https://github.com/hyperium/hyper",
       "documentation": "https://docs.rs/hyper",
-      "downloads": 1034538464,
-      "recent_downloads": 243926793,
+      "downloads": 1039033235,
+      "recent_downloads": 247108753,
       "max_version": "1.12.0",
       "max_stable_version": "1.12.0",
       "created_at": "2014-11-22T04:05:30.459510Z",
@@ -7464,8 +7470,8 @@
       "homepage": null,
       "repository": "https://github.com/seanmonstar/warp",
       "documentation": "https://docs.rs/warp",
-      "downloads": 51128089,
-      "recent_downloads": 6307675,
+      "downloads": 51299472,
+      "recent_downloads": 6441267,
       "max_version": "0.4.3",
       "max_stable_version": "0.4.3",
       "created_at": "2018-03-29T17:38:58.215096Z",
@@ -7510,8 +7516,8 @@
       "homepage": "https://rocket.rs",
       "repository": "https://github.com/rwf2/Rocket",
       "documentation": "https://api.rocket.rs/v0.5/rocket/",
-      "downloads": 14466814,
-      "recent_downloads": 2261969,
+      "downloads": 14486581,
+      "recent_downloads": 2272384,
       "max_version": "0.5.1",
       "max_stable_version": "0.5.1",
       "created_at": "2016-12-23T13:09:40.202029Z",
@@ -7556,8 +7562,8 @@
       "homepage": "https://github.com/hyperium/tonic",
       "repository": "https://github.com/hyperium/tonic",
       "documentation": null,
-      "downloads": 436917191,
-      "recent_downloads": 99155802,
+      "downloads": 439002835,
+      "recent_downloads": 100785186,
       "max_version": "0.14.6",
       "max_stable_version": "0.14.6",
       "created_at": "2018-07-18T06:55:22.955614Z",
@@ -7605,8 +7611,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/prost",
       "documentation": null,
-      "downloads": 653972704,
-      "recent_downloads": 151026871,
+      "downloads": 657125650,
+      "recent_downloads": 153531500,
       "max_version": "0.14.4",
       "max_stable_version": "0.14.4",
       "created_at": "2017-06-25T07:39:15.991516Z",
@@ -7649,8 +7655,8 @@
       "homepage": "https://github.com/rustls/rustls",
       "repository": "https://github.com/rustls/rustls",
       "documentation": null,
-      "downloads": 1029166898,
-      "recent_downloads": 243272678,
+      "downloads": 1033802744,
+      "recent_downloads": 246636646,
       "max_version": "0.24.0-dev.2",
       "max_stable_version": "0.23.46",
       "created_at": "2016-08-27T06:58:30.801463Z",
@@ -7691,8 +7697,8 @@
       "homepage": null,
       "repository": "https://github.com/rayon-rs/rayon",
       "documentation": "https://docs.rs/rayon/",
-      "downloads": 614051010,
-      "recent_downloads": 146387538,
+      "downloads": 616632870,
+      "recent_downloads": 148111584,
       "max_version": "1.12.0",
       "max_stable_version": "1.12.0",
       "created_at": "2015-12-10T22:38:20.637638Z",
@@ -7738,8 +7744,8 @@
       "homepage": "https://github.com/crossbeam-rs/crossbeam",
       "repository": "https://github.com/crossbeam-rs/crossbeam",
       "documentation": null,
-      "downloads": 151200298,
-      "recent_downloads": 29267994,
+      "downloads": 151722160,
+      "recent_downloads": 29626342,
       "max_version": "0.8.5",
       "max_stable_version": "0.8.5",
       "created_at": "2015-08-27T18:36:48.638047Z",
@@ -7788,8 +7794,8 @@
       "homepage": null,
       "repository": "https://github.com/Amanieu/parking_lot",
       "documentation": null,
-      "downloads": 1187899650,
-      "recent_downloads": 248455925,
+      "downloads": 1192071279,
+      "recent_downloads": 251206817,
       "max_version": "0.13.0",
       "max_stable_version": "0.13.0",
       "created_at": "2016-05-13T15:57:59.130349Z",
@@ -7835,8 +7841,8 @@
       "homepage": "https://github.com/xacrimon/dashmap",
       "repository": "https://github.com/xacrimon/dashmap",
       "documentation": "https://docs.rs/dashmap",
-      "downloads": 420148455,
-      "recent_downloads": 94526828,
+      "downloads": 422051092,
+      "recent_downloads": 95877996,
       "max_version": "7.0.0-rc2",
       "max_stable_version": "6.2.1",
       "created_at": "2019-08-25T18:22:12.397782Z",
@@ -7882,8 +7888,8 @@
       "homepage": null,
       "repository": "https://github.com/matklad/once_cell",
       "documentation": "https://docs.rs/once_cell",
-      "downloads": 1406589848,
-      "recent_downloads": 330114754,
+      "downloads": 1412376943,
+      "recent_downloads": 333935021,
       "max_version": "1.21.4",
       "max_stable_version": "1.21.4",
       "created_at": "2018-08-02T00:12:48.969947Z",
@@ -7927,8 +7933,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
       "documentation": "https://docs.rs/lazy_static",
-      "downloads": 1087964834,
-      "recent_downloads": 221891080,
+      "downloads": 1092037839,
+      "recent_downloads": 224699651,
       "max_version": "1.5.1",
       "max_stable_version": "1.5.1",
       "created_at": "2014-11-23T01:18:10.993977Z",
@@ -7974,8 +7980,8 @@
       "homepage": "https://github.com/rust-lang/regex",
       "repository": "https://github.com/rust-lang/regex",
       "documentation": "https://docs.rs/regex",
-      "downloads": 1288092000,
-      "recent_downloads": 289340317,
+      "downloads": 1292970732,
+      "recent_downloads": 292493308,
       "max_version": "1.13.1",
       "max_stable_version": "1.13.1",
       "created_at": "2014-12-13T22:10:11.303311Z",
@@ -8015,8 +8021,8 @@
       "homepage": "https://github.com/chronotope/chrono",
       "repository": "https://github.com/chronotope/chrono",
       "documentation": "https://docs.rs/chrono/",
-      "downloads": 903058578,
-      "recent_downloads": 208230890,
+      "downloads": 906769723,
+      "recent_downloads": 210779425,
       "max_version": "0.4.45",
       "max_stable_version": "0.4.45",
       "created_at": "2014-11-20T04:21:11.545166Z",
@@ -8060,12 +8066,12 @@
       "homepage": null,
       "repository": "https://github.com/uuid-rs/uuid",
       "documentation": "https://docs.rs/uuid",
-      "downloads": 905737872,
-      "recent_downloads": 221727352,
-      "max_version": "1.28.0",
-      "max_stable_version": "1.28.0",
+      "downloads": 909720699,
+      "recent_downloads": 224499898,
+      "max_version": "1.29.0",
+      "max_stable_version": "1.29.0",
       "created_at": "2014-11-11T05:37:37.261193Z",
-      "updated_at": "2026-10-10T00:02:40.455859Z",
+      "updated_at": "2026-10-23T09:59:10.723650Z",
       "keywords": [
         "guid",
         "unique",
@@ -8073,12 +8079,16 @@
       ],
       "categories": [
         "data-structures",
-        "wasm",
         "no-std",
+        "wasm",
         "parser-implementations"
       ],
-      "versions_count": 100,
+      "versions_count": 101,
       "recent_versions": [
+        {
+          "version": "1.29.0",
+          "created_at": "2026-10-23T09:59:10.723650Z"
+        },
         {
           "version": "1.28.0",
           "created_at": "2026-10-10T00:02:40.455859Z"
@@ -8094,10 +8104,6 @@
         {
           "version": "1.26.0",
           "created_at": "2026-08-26T22:08:30.860532Z"
-        },
-        {
-          "version": "1.25.0",
-          "created_at": "2026-08-22T10:49:52.444649Z"
         }
       ],
       "source": "crates"
@@ -8108,8 +8114,8 @@
       "homepage": "https://rust-random.github.io/book",
       "repository": "https://github.com/rust-random/rand",
       "documentation": "https://docs.rs/rand",
-      "downloads": 1967370944,
-      "recent_downloads": 537552420,
+      "downloads": 1977602050,
+      "recent_downloads": 544873754,
       "max_version": "0.10.3",
       "max_stable_version": "0.10.3",
       "created_at": "2015-02-03T06:17:14.147783Z",
@@ -8153,8 +8159,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-itertools/itertools",
       "documentation": "https://docs.rs/itertools/",
-      "downloads": 1691340446,
-      "recent_downloads": 395496081,
+      "downloads": 1698964485,
+      "recent_downloads": 401104117,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-21T19:56:41.399795Z",
@@ -8202,8 +8208,8 @@
       "homepage": "https://rust-lang.github.io/futures-rs",
       "repository": "https://github.com/rust-lang/futures-rs",
       "documentation": null,
-      "downloads": 874010190,
-      "recent_downloads": 196821759,
+      "downloads": 877325256,
+      "recent_downloads": 199107911,
       "max_version": "0.3.34",
       "max_stable_version": "0.3.34",
       "created_at": "2016-07-31T20:58:03.676528Z",
@@ -8247,8 +8253,8 @@
       "homepage": null,
       "repository": "https://github.com/dtolnay/async-trait",
       "documentation": "https://docs.rs/async-trait",
-      "downloads": 745317942,
-      "recent_downloads": 178497008,
+      "downloads": 748614173,
+      "recent_downloads": 180810470,
       "max_version": "0.1.92",
       "max_stable_version": "0.1.92",
       "created_at": "2019-07-23T16:10:00.020678Z",
@@ -8291,8 +8297,8 @@
       "homepage": "https://github.com/tower-rs/tower",
       "repository": "https://github.com/tower-rs/tower",
       "documentation": null,
-      "downloads": 759398918,
-      "recent_downloads": 205394195,
+      "downloads": 763293720,
+      "recent_downloads": 208190211,
       "max_version": "0.5.3",
       "max_stable_version": "0.5.3",
       "created_at": "2016-12-23T17:20:31.319203Z",
@@ -8339,8 +8345,8 @@
       "homepage": null,
       "repository": "https://github.com/tokio-rs/bytes",
       "documentation": null,
-      "downloads": 1172665075,
-      "recent_downloads": 290680429,
+      "downloads": 1177551288,
+      "recent_downloads": 293927607,
       "max_version": "1.12.1",
       "max_stable_version": "1.12.1",
       "created_at": "2015-01-30T08:04:59.453916Z",
@@ -8385,8 +8391,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-lang/log",
       "documentation": "https://docs.rs/log",
-      "downloads": 1405153920,
-      "recent_downloads": 337124600,
+      "downloads": 1411020370,
+      "recent_downloads": 341029874,
       "max_version": "0.4.34",
       "max_stable_version": "0.4.34",
       "created_at": "2014-12-13T22:10:19.944550Z",
@@ -8428,8 +8434,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/env_logger",
       "documentation": null,
-      "downloads": 597430002,
-      "recent_downloads": 88856809,
+      "downloads": 599261096,
+      "recent_downloads": 90147916,
       "max_version": "0.11.11",
       "max_stable_version": "0.11.11",
       "created_at": "2015-01-27T15:33:08.586936Z",
@@ -8473,8 +8479,8 @@
       "homepage": null,
       "repository": "https://github.com/rust-cli/config-rs",
       "documentation": null,
-      "downloads": 122852980,
-      "recent_downloads": 20854476,
+      "downloads": 123211637,
+      "recent_downloads": 21105511,
       "max_version": "0.15.27",
       "max_stable_version": "0.15.27",
       "created_at": "2015-04-16T18:35:56.393987Z",
@@ -8520,8 +8526,8 @@
       "homepage": "https://github.com/dotenv-rs/dotenv",
       "repository": "https://github.com/dotenv-rs/dotenv",
       "documentation": null,
-      "downloads": 64910436,
-      "recent_downloads": 5963959,
+      "downloads": 65091758,
+      "recent_downloads": 6112431,
       "max_version": "0.15.0",
       "max_stable_version": "0.15.0",
       "created_at": "2014-11-20T20:53:09.509225Z",
