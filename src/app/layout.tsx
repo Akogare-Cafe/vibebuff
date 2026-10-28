@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Noto_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ClerkClientProvider } from "@/components/providers/clerk-provider";
@@ -15,20 +15,21 @@ import { McpNotificationBanner } from "@/components/mcp-notification-banner";
 import { PageTourProvider } from "@/components/page-tour";
 import { ErrorBoundaryProvider } from "@/components/providers/error-boundary-provider";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+// Self-hosted (OFL) so builds never fetch Google Fonts; Turbopack's
+// next/font/google loader intermittently fails to resolve its import map (KAV-288).
+const spaceGrotesk = localFont({
+  src: "./fonts/space-grotesk-latin-wght-normal.woff2",
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  weight: "300 700",
   display: "swap",
   preload: true,
 });
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
+const notoSans = localFont({
+  src: "./fonts/noto-sans-latin-wght-normal.woff2",
   variable: "--font-body",
-  weight: ["400", "500", "700"],
+  weight: "100 900",
   display: "swap",
-  preload: true,
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vibebuff.dev";
